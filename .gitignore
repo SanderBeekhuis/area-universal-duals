@@ -1,4 +1,10 @@
 
+#####################
+
+	TEX
+
+#####################
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
@@ -48,10 +54,6 @@
 *.lox
 
 
-# hyperref
-*.brf
-
-
 # pythontex
 *.pytxcode
 pythontex-files-*/
@@ -61,11 +63,8 @@ pythontex-files-*/
 *.md5
 *.auxlock
 
-# todonotes
-*.tdo
-
-# easy-todo
-*.lod
+##Texmaker editor
+*.bak
 
 
 
