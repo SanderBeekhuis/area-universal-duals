@@ -1,0 +1,79 @@
+\begin{tikzpicture}
+
+
+\node [v] (v1) at (-3,2) {};
+\node [v] (v12) at (-2,3) {};
+\node [v] (v11) at (2,3) {};
+\node [v] (v3) at (-3,-2) {};
+\node [v] (v4) at (-3,-3) {};
+\node [v] (v2) at (-3,3) {};
+\node [v] (v10) at (3,3) {};
+\node [v] (v7) at (3,-3) {};
+
+\node [lbl, font = \huge] at (0,3) {$\dots$};
+\node [lbl, font = \huge, rotate=90] at (-3,0) {$\dots$};
+
+\node [v] (w) at (-7,0) {$W$};
+\node [v] (s) at (0,-7) {$S$};
+\node [v] (n) at (0,7) {$N$};
+\node [v] (e) at (7,0) {$E$};
+
+
+
+\draw [e, bend left] (w) edge (n);
+\draw [e, bend left] (n) edge (e);
+\draw [e, bend left] (e) edge (s);
+\draw [e, bend left] (s) edge (w);
+
+%E and S
+\draw [ered] (v4) edge (s);
+\draw [ered] (s) edge (v7);
+\draw [eblue] (v7) edge (e);
+\draw [eblue] (e) edge (v10);
+
+
+%W
+\begin{scope}[]
+\clip (-10,2) rectangle (-4.2,-3);
+\draw [eblue] (w) edge (-3,1) edge (-3,0) edge (-3,-1);
+\end{scope}
+\draw [eblue] (w) edge (v2);
+\draw [eblue] (w) edge (v1);
+\draw [eblue] (w) edge (v3);
+\draw [eblue] (w) edge (v4);
+
+%N
+\begin{scope}[]
+\clip (-5,8) rectangle (5,4.2);
+\draw [ered] (n) edge (1,3) edge (0,3) edge (-1, 3);
+\end{scope}
+\draw [ered] (n) edge (v11);
+\draw [ered] (v10) edge (n);
+\draw [ered] (v12) edge (n);
+\draw [ered] (v2) edge (n);
+
+
+
+%V7
+\draw [ered] (v7) edge (v10);
+\draw [ered] (v7) edge (v11);
+\draw [ered] (v7) edge (v12);
+\draw [e] (v2) edge (v7);
+\draw [eblue] (v1) edge (v7);
+\draw [eblue] (v3) edge (v7);
+\draw [eblue] (v4) edge (v7);
+\begin{scope}[]
+\clip (-1.8,1.8) rectangle (4,-4);
+\draw [ered] (v7) edge (1,3) edge (0,3) edge (-1, 3);
+\draw [eblue] (v7) edge (-3,1) edge (-3,0) edge (-3, -1);
+\end{scope}
+
+\draw [ered] (v4) edge (v3);
+\draw [ered] (v1) edge (v2);
+\draw [eblue] (v2) edge (v12);
+\draw [eblue] (v11) edge (v10);
+
+
+
+
+\end{tikzpicture}

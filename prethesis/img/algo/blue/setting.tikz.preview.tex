@@ -1,0 +1,78 @@
+%& /home/sander/.config/TikzEdtWForms/TikzEdtWForms/0.2.1.0/temp_header
+\begin{document}
+%libs
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{positioning}
+
+\tikzstyle{lbl} = []
+
+\tikzset{node distance = .5cm}
+\tikzstyle{v}= [circle, inner sep = 2pt,fill]
+\tikzstyle{ered} = [e,red]
+\tikzstyle{eblue} = [e, blue!80!white]
+\tikzset{e/.style={
+		draw,
+        decoration={markings,
+            mark= at position 0.5 with {\arrow[scale=1.5]{>}} ,
+        },
+        postaction={decorate}
+    }
+};
+\tikzstyle{path}=[
+		draw,
+		decoration ={snake, amplitude=.7mm},
+		decorate, 
+		postaction = {
+        	decoration={markings,
+            	mark= at position 1 with {\arrow[scale=1.5]{>}} ,
+        	},
+        	decorate
+        }
+    ]
+\begin{tikzpicture}
+
+\node[v] (s) at (-4,0) {};
+\node[left of =s] {$s$};
+
+
+\node [v] (v1) at (-2,1) {};
+\node [v] (v3) at (-2,-1) {};
+\node [v] (v4) at (0,-1) {};
+\node [v] (v2) at (0,1) {};
+\node [v] (t) at (2,0) {};
+\node[right of =t] {$t$};
+\draw [e,bend left=10](s) to (v1);
+\draw [e](v1) -- (v2);
+\draw [e, bend right=10](s) to (v3);
+\draw [e](v3) -- (v4);
+\draw [path, bend right=10](v4) to (t);
+\draw [bend left=10, path] (v2) to (t);
+
+\node[above of=v1]{$a$};
+\node[above of=v2]{$b$};
+
+\node[below of=v3]{$x$};
+\node[below of=v4]{$y$};
+
+
+\usetikzlibrary{calc}
+\pgftransformreset
+\node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt] at (current bounding box) {};
+%add border to avoid cropping by pdflibnet
+\foreach \border in {0.1}
+  \useasboundingbox (current bounding box.south west)+(-\border,-\border) rectangle (current bounding box.north east)+(\border,\border);
+\newwrite\metadatafile
+\immediate\openout\metadatafile=\jobname_BB.txt
+\path
+  let
+    \p1=(current bounding box.south west),
+    \p2=(current bounding box.north east)
+  in
+  node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt,draw=white] at (current bounding box) {
+\immediate\write\metadatafile{\p1,\p2}
+};
+\immediate\closeout\metadatafile
+\end{tikzpicture}
+
+\end{document}

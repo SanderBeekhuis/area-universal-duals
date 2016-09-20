@@ -1,0 +1,70 @@
+%& /home/sander/.config/TikzEdtWForms/TikzEdtWForms/0.2.1.0/temp_header
+\begin{document}
+%libs
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{positioning}
+
+\tikzstyle{lbl} = []
+
+\tikzstyle{v}= [circle, draw]
+\tikzstyle{ered} = [e,red]
+\tikzstyle{eblue} = [e, blue!80!white]
+\tikzset{e/.style={
+		draw,
+        decoration={markings,
+            mark= at position 0.5 with {\arrow{>}} ,
+        },
+        postaction={decorate}
+    }
+}
+\tikzset{path/.style={
+		draw,
+		decoration ={snake, amplitude=.7mm},
+		decorate, 
+		postaction = {
+        	decoration={markings,
+            	mark= at position 1 with {\arrow{>}} ,
+        	},
+        	decorate
+        }
+    }
+\begin{tikzpicture}
+%\tikzset{node distance =5mm}
+
+\node [v] (sr) at (0,0) {$S_r$};
+\node [v] (nb) at (0,5) {$N_b$};
+\node [v] (sb) at (5,0) {$S_b$};
+
+\node [v] (v') at (4,3.5) {$v'$};
+\node [v] (y) at (3,2.5) {$y$};
+%\node [right = of sb] (z) {$z$};
+
+\draw[e] (nb)--(v') edge (y) --(sb);
+\draw[path] (nb) to [bend right =20] (y) ; 
+
+\draw[e, dashed] (y)--(sb);
+
+\draw [e] (nb) -- (sr) -- (sb);
+
+
+\usetikzlibrary{calc}
+\pgftransformreset
+\node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt] at (current bounding box) {};
+%add border to avoid cropping by pdflibnet
+\foreach \border in {0.1}
+  \useasboundingbox (current bounding box.south west)+(-\border,-\border) rectangle (current bounding box.north east)+(\border,\border);
+\newwrite\metadatafile
+\immediate\openout\metadatafile=\jobname_BB.txt
+\path
+  let
+    \p1=(current bounding box.south west),
+    \p2=(current bounding box.north east)
+  in
+  node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt,draw=white] at (current bounding box) {
+\immediate\write\metadatafile{\p1,\p2}
+};
+\immediate\closeout\metadatafile
+\end{tikzpicture}
+
+\end{document}
+}

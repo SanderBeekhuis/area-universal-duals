@@ -1,0 +1,9 @@
+\begin{tikzpicture}
+
+\node [v] (sr) at (0,0) {$S_r$};
+\node [v] (nb) at (0,4) {$N_b$};
+\node [v] (sb) at (4,0) {$S_b$};
+
+\draw[path] (nb) to[bend left=40] (sb);
+\draw [e] (nb) -- (sr) -- (sb);
+\end{tikzpicture}

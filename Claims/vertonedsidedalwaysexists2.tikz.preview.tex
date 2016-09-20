@@ -1,0 +1,49 @@
+%& /home/sander/.config/TikzEdtWForms/TikzEdtWForms/0.2.1.0/temp_header
+\begin{document}
+\tikzstyle{v}= [circle, fill]
+%libs
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{positioning}
+% myStyles
+\tikzstyle{e} = [draw, thick]
+\tikzstyle{lbl} = []
+\tikzstyle{path} = [
+	decorate, 
+	decoration={snake, amplitude=.7mm}
+	]
+\tikzstyle{ered} = [e,red!60!white]
+\tikzstyle{eblue} = [e, blue!80!white]
+\begin{tikzpicture}
+
+\draw (0,9) -- (0,6) edge (4,6) -- (0,4) edge(-4,4) -- (0,1);
+
+\node [v] (v3) at (-2,2) {};
+\node [v] (v1) at (-2,6) {};
+\node [v] (v2) at (2,8) {};
+\node [v] (v4) at (2,4) {};
+\draw [eblue] (v1) edge (v2);
+\draw [eblue] (v1) edge (v4);
+\draw [eblue] (v3) edge (v4);
+\draw [ered] (v1) edge (v3);
+\draw [ered] (v4) edge (v2);
+
+\usetikzlibrary{calc}
+\pgftransformreset
+\node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt] at (current bounding box) {};
+%add border to avoid cropping by pdflibnet
+\foreach \border in {0.1}
+  \useasboundingbox (current bounding box.south west)+(-\border,-\border) rectangle (current bounding box.north east)+(\border,\border);
+\newwrite\metadatafile
+\immediate\openout\metadatafile=\jobname_BB.txt
+\path
+  let
+    \p1=(current bounding box.south west),
+    \p2=(current bounding box.north east)
+  in
+  node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt,draw=white] at (current bounding box) {
+\immediate\write\metadatafile{\p1,\p2}
+};
+\immediate\closeout\metadatafile
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+
+\draw (0,9) -- (0,6) edge (-4,6) -- (0,4) edge(4,4) -- (0,1);
+
+\node [v] (v3) at (-2,4) {};
+\node [v] (v1) at (-2,8) {};
+\node [v] (v2) at (2,6) {};
+\node [v] (v4) at (2,2) {};
+\draw [eblue] (v1) edge (v2);
+\draw [eblue] (v3) edge (v2);
+\draw [eblue] (v3) edge (v4);
+\draw [ered] (v1) edge (v3);
+\draw [ered] (v4) edge (v2);
+\end{tikzpicture}

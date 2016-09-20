@@ -1,0 +1,20 @@
+\begin{tikzpicture}
+
+\node [v] (sr) at (0,0) {$S_r$};
+\node [v] (nb) at (0,5) {$N_b$};
+\node [v] (sb) at (5,0) {$S_b$};
+\node [v] (v) at (2.5,4.5) {$v$};
+\node [v] (v') at (4,3.5) {$x$};
+
+\node [v] (y) at (3,2.5) {$y$};
+\node [v] (z) at (4.5,2) {$z$};
+
+\draw[path] (nb) -- (v);
+\draw[e] (v)--(v') edge (y) --(z);
+\draw[path] (v) .. controls (2,2) .. (y) ; 
+\draw[path] (z) -- (sb);
+\draw[e, dashed] (y)--(z);
+
+\draw [e] (nb) -- (sr) -- (sb);
+
+\end{tikzpicture}

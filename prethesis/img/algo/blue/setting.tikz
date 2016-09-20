@@ -1,0 +1,26 @@
+\begin{tikzpicture}
+
+\node[v] (s) at (-4,0) {};
+\node[left of =s] {$s$};
+
+
+\node [v] (v1) at (-2,1) {};
+\node [v] (v3) at (-2,-1) {};
+\node [v] (v4) at (0,-1) {};
+\node [v] (v2) at (0,1) {};
+\node [v] (t) at (2,0) {};
+\node[right of =t] {$t$};
+\draw [e,bend left=10](s) to (v1);
+\draw [e](v1) -- (v2);
+\draw [e, bend right=10](s) to (v3);
+\draw [e](v3) -- (v4);
+\draw [path, bend right=10](v4) to (t);
+\draw [bend left=10, path] (v2) to (t);
+
+\node[above of=v1]{$a$};
+\node[above of=v2]{$b$};
+
+\node[below of=v3]{$x$};
+\node[below of=v4]{$y$};
+
+\end{tikzpicture}

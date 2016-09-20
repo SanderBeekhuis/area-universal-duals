@@ -1,0 +1,20 @@
+\begin{tikzpicture}
+
+\node[v] (v) at (0,0) {$v$};
+\node[v] (w) at (2,0) {$w$};
+\node[v] (u) at (-2,0) {$u$};
+
+\draw [e] (u) edge (v);
+\draw [e] (v) edge (w);
+
+\draw[path] (u) -- ++(-.5,1.5);
+\draw[path] (u) -- ++(-.5,-1.5);
+\draw[path] (w) -- ++(.5,1.5);
+\draw[path] (w) -- ++(.5,-1.5);
+
+\begin{scope}[]
+
+\end{scope}
+\node [lbl] at (0,1) {$F$};
+\node [lbl] at (0,-1) {$F'$};
+\end{tikzpicture}

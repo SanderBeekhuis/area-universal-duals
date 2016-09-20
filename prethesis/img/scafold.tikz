@@ -1,0 +1,102 @@
+\begin{tikzpicture}
+
+\begin{scope}
+\tikzset{every node/.style = {fill}};
+\node [v] (v1) at (-3,2) {};
+\node [v] (v12) at (-2,3) {};
+\node [v] (v11) at (2,3) {};
+\node [v] (v9) at (3,2) {};
+\node [v] (v3) at (-3,-2) {};
+\node [v] (v8) at (3,-2) {};
+\node [v] (v5) at (-2,-3) {};
+\node [v] (v6) at (2,-3) {};
+\node [v] (v4) at (-3,-3) {};
+\node [v] (v2) at (-3,3) {};
+\node [v] (v10) at (3,3) {};
+\node [v] (v7) at (3,-3) {};
+
+\tikzset{every edge/.style = {draw, ultra thick}};
+\draw [] (v2) edge (v1);
+\draw [e] (v2) edge (v12);
+\draw [e] (v11) edge (v10);
+\draw [e] (v10) edge (v9);
+\draw [e] (v7) edge (v8);
+\draw [e] (v7) edge (v6);
+\draw [e] (v5) edge (v4);
+\draw [e] (v3) edge (v4);
+
+\end{scope}
+\node [lbl, font = \huge] at (0,-3) {$\dots$};
+\node [lbl, font = \huge] at (0,3) {$\dots$};
+\node [lbl, font = \huge, rotate=90] at (-3,0) {$\dots$};
+\node [lbl, font = \huge, rotate=90] at (3,0) {$\dots$};
+\node [v] (w) at (-7,0) {$W$};
+\node [v] (s) at (0,-7) {$S$};
+\node [v] (n) at (0,7) {$N$};
+\node [v] (e) at (7,0) {$E$};
+
+\draw [e] (w) edge (v2);
+\draw [e] (w) edge (v1);
+\draw [e] (w) edge (v3);
+\draw [e] (w) edge (v4);
+\draw [e] (v4) edge (s);
+\draw [e] (s) edge (v5);
+\draw [e] (v6) edge (s);
+\draw [e] (v7) edge (s);
+\draw [e] (v8) edge (e);
+\draw [e] (v7) edge (e);
+\draw [e] (v9) edge (e);
+\draw [e] (v10) edge (e);
+\draw [e] (n) edge (v11);
+\draw [e] (v10) edge (n);
+\draw [e] (v12) edge (n);
+\draw [e] (v2) edge (n);
+
+
+\begin{scope}[]
+\clip (-10,2) rectangle (-4.2,-3);
+\draw [e] (w) edge (-3,1) edge (-3,0) edge (-3,-1);
+\end{scope}
+
+\begin{scope}[]
+\clip (10,2) rectangle (4.2,-3);
+\draw [e] (e) edge (3,1) edge (3,0) edge (3,-1);
+\end{scope}
+
+\begin{scope}[]
+\clip (-5,8) rectangle (5,4.2);
+\draw [e] (n) edge (1,3) edge (0,3) edge (-1, 3);
+\end{scope}
+
+\begin{scope}[]
+\clip (-5,-8) rectangle (5,-4.2);
+\draw [e] (s) edge (1,-3) edge (0,-3) edge (-1, -3);
+\end{scope}
+
+
+
+\draw [e, bend left] (w) edge (n);
+\draw [e, bend left] (n) edge (e);
+\draw [e, bend left] (e) edge (s);
+\draw [e, bend left] (s) edge (w);
+
+%ext(H)
+
+
+\node [v] (v13) at (-7,7) {$NW$};
+\node [v] (v14) at (7,7) {$NE$};
+\node [v] (v15) at (7,-7) {$SE$};
+\node [v] (v16) at (-7,-7) {$SW$};
+\draw [e, bend left, dashed] (v13) edge (v14);
+\draw [e, bend left, dashed] (v14) edge (v15);
+\draw [e, bend left, dashed] (v15) edge (v16);
+\draw [e, bend left, dashed] (v16) edge (v13);
+\draw [e, dashed] (v16) edge (w);
+\draw [e, dashed] (w) edge (v13);
+\draw [e, dashed] (v13) edge (n);
+\draw [e, dashed] (n) edge (v14);
+\draw [e, dashed] (v14) edge (e);
+\draw [e, dashed] (v15) edge (e);
+\draw [e, dashed] (v15) edge (s);
+\draw [e, dashed] (s) edge (v16);
+\end{tikzpicture}

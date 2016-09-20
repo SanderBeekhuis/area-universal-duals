@@ -1,0 +1,25 @@
+\begin{tikzpicture}
+
+
+\node [v] (v1) at (-2,2) {};
+\node [v] (v6) at (0,2) {};
+\node [v] (v7) at (2,2) {};
+\node [v] (v2) at (-1,0) {};
+\node [v] (v5) at (1,0) {};
+\node [v] (v3) at (-2,-2) {};
+\node [v] (v4) at (0,-2) {};
+\node [v] (v8) at (2,-2) {};
+\draw [ered] (v1) edge (v2);
+\draw [ered] (v2) edge (v3);
+\draw [ered] (v2) edge (v4);
+\draw [ered] (v5) edge (v6);
+\draw [ered] (v5) edge (v4);
+\draw [ered] (v2) edge (v6);
+\draw [ered] (v7) edge (v5);
+\draw [ered] (v8) edge (v5);
+\draw [eblue] (v1) edge (v6);
+\draw [eblue] (v6) edge (v7);
+\draw [eblue] (v3) edge (v4);
+\draw [eblue] (v2) edge (v5);
+\draw [eblue] (v8) edge (v4);
+\end{tikzpicture}

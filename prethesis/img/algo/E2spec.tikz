@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+%\tikzset{node distance =5mm}
+
+\node [v] (sr) at (0,0) {$S_r$};
+\node [v] (nb) at (0,5) {$N_b$};
+\node [v] (sb) at (5,0) {$S_b$};
+
+\node [v] (v') at (4,3.5) {$v'$};
+\node [v] (y) at (3,2.5) {$y$};
+%\node [right = of sb] (z) {$z$};
+
+\draw[e] (nb)--(v') edge (y) --(sb);
+\draw[path] (nb) to [bend right =20] (y) ; 
+
+\draw[e, dashed] (y)--(sb);
+
+\draw [e] (nb) -- (sr) -- (sb);
+
+\end{tikzpicture}
