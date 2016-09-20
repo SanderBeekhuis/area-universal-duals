@@ -1,15 +1,18 @@
 <map version="0.9.0">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node CREATED="1473773859556" ID="ID_1983158590" MODIFIED="1474126472684" TEXT="Thesis">
+<node CREATED="1473773859556" ID="ID_1983158590" MODIFIED="1474406588106" TEXT="Thesis">
 <node CREATED="1473774041237" ID="ID_1567848454" MODIFIED="1473774144084" POSITION="right" TEXT="Find and read thesis of Vincent kusters"/>
 <node CREATED="1473774222805" ID="ID_881835839" MODIFIED="1473958051482" POSITION="right" TEXT="First attempt at an algo (some constant, many)">
 <node CREATED="1473774332524" ID="ID_1984983" MODIFIED="1473774388768" TEXT="Proof formally: All vert/All horz exists"/>
 <node CREATED="1473774257838" ID="ID_1674617395" MODIFIED="1473774317527" TEXT="Sweep line algo for  all vert one-sided"/>
-<node CREATED="1473774319086" ID="ID_61844726" MODIFIED="1473774331312" TEXT="Sweep line algo for all hor one-sided"/>
+<node CREATED="1473774319086" ID="ID_61844726" MODIFIED="1474402940900" TEXT="Sweep line algo for all hor one-sided">
+<icon BUILTIN="button_ok"/>
+</node>
 <node CREATED="1473774391170" ID="ID_59443853" MODIFIED="1473774412198" TEXT="Look how red screws up blue"/>
 <node CREATED="1473958053507" ID="ID_1947205521" MODIFIED="1473958068670" TEXT="Eligible paths covering two neighbouring vertices?"/>
 </node>
-<node CREATED="1473774466811" ID="ID_157385896" MODIFIED="1473957868562" POSITION="right" TEXT="Lower bound (2, inf)">
+<node CREATED="1473774466811" FOLDED="true" ID="ID_157385896" MODIFIED="1474402949849" POSITION="right" TEXT="Lower bound (2, inf)">
+<icon BUILTIN="button_ok"/>
 <node CREATED="1473774452187" FOLDED="true" ID="ID_575345704" MODIFIED="1473957871338" TEXT="Fix corner assignment using a scafold">
 <icon BUILTIN="button_ok"/>
 <node CREATED="1473842745259" ID="ID_1630256384" MODIFIED="1473957860922" TEXT="What does the inside of a seperating 4-cycle look like?">
@@ -84,5 +87,14 @@
 </node>
 <node CREATED="1473958082232" ID="ID_1714315851" MODIFIED="1473958092028" POSITION="left" TEXT="Look at alpha_0 orientations"/>
 <node CREATED="1474126475029" ID="ID_783889295" MODIFIED="1474126481856" POSITION="left" TEXT="Versioning my thesis"/>
+<node CREATED="1474406592002" ID="ID_433711113" MODIFIED="1474414860603" POSITION="left" TEXT="OPEn todo">
+<node CREATED="1474406596843" ID="ID_1173128512" MODIFIED="1474406605562" TEXT="Figure out biblatex vs bibtex"/>
+<node CREATED="1474406613222" ID="ID_44550784" MODIFIED="1474406619699" TEXT="modify problem description"/>
+<node CREATED="1474406620779" ID="ID_891814986" MODIFIED="1474406625150" TEXT="test out git">
+<node CREATED="1474406678213" ID="ID_55432267" MODIFIED="1474406685752" TEXT="establish gitignore"/>
+</node>
+<node CREATED="1474406663291" ID="ID_175778946" MODIFIED="1474406670229" TEXT="join claim to prethesis"/>
+<node CREATED="1474414862756" ID="ID_299115084" MODIFIED="1474414869913" TEXT="Cutimise biblatex"/>
+</node>
 </node>
 </map>
