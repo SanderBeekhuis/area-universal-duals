@@ -5,7 +5,7 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
-\usepackage{cite}
+%\usepackage{cite}
 %\usepackage{graphicx}
 %\usepackage{caption} %prereq for subcaption
 %\usepackage{subcaption}  %ALLOWS SUBFIGURES
@@ -79,7 +79,7 @@
 \newcommand{\twodiagmatrix}[2]{\parens{\begin{array}{cc}#1 & 0 \\ 0 & #2 \end{array}  }}
 
 
-\title{Problem description\ Pseudo one-sided segments in rectangular duals}
+\title{Problem description:\\ Pseudo one-sided segments in rectangular duals}
 \author{Sander Beekhuis, nr: 0972717}
 \date{\today} %\today%
 
@@ -87,22 +87,23 @@
 \maketitle
 
 \subsection*{Setting}
-A  \emph{rectangular layout} is a rectangle subdivided by vertical and horizontal line segments into a number of smaller rectangles. 
-
+A  \emph{rectangular layout} is a rectangle subdivided by vertical and horizontal line segments into a number of smaller rectangles. We will call any such line segment that is not extended any further on either side a \emph{maximal segment}.
+ 
 We define a \emph{rectangular dual} of a graph $G$ as a rectangular layout, without crossings, whose adjacencies are the same as those of $G$.
 
-Some graphs admit a rectangular dual that is \emph{area-universal}. That is to say that the adjacencies of this dual hold regardless of the area sizes we force for each rectangle. It turns out that rectangular duals are area-universal exactly when they are one-sided. \cite{Eppstein2012}
+Some graphs admit a rectangular dual that is \emph{area-universal}. That is to say that the adjacencies of this dual hold regardless of the area sizes we force for each rectangle. This is useful for applications in the field of generating infographics.
 
-Unfortunately most graphs do not admit a one-sided dual. One such graph is given by  \cite{Rinsma1987}. 
+
+Eppstein et al. show that rectangular duals are area-universal exactly when they are one-sided.\cite{Eppstein2012} This makes it very unfortunate that not all graphs admit a one-sided dual. One such graph is given by Rinsma. \cite{Rinsma1987}. 
 
 \subsection*{Goal}
 The goal of this thesis is twofold.
 
-On the one hand we will try to show that all graphs can be drawn in a nearly one-sided fashion. We will investigate exactly which properties on the \emph{maximal segments} can be fullfiled. We will call such a graph \emph{psuedo one-sided}.
+On the one hand we will try to show that all graphs can be drawn in a nearly one-sided fashion. We will investigate exactly which properties on the {maximal segments} can be fulfilled. We will call such a graph \emph{pseudo one-sided}.
 
-On the other hand we will attempt to develop an algorithm that will draw any graph with as few rectangles on one side of each \emph{maximal segment} as possible.
+On the other hand we will attempt to develop an algorithm that will draw any graph with as few rectangles on one side of each {maximal segment} as possible.
 
 \bibliography{../thesis}{}
-\bibliographystyle{plain}
+\bibliographystyle{plain}[firstinits=true]
 
 \end{document}
