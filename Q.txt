@@ -1,9 +1,9 @@
 -wat is een goede manier om je bibliografie bij te houden/organiseren?
-
--Wat wordt bedoelt met "We do not detail all invariants here" in Fusy p.182
+	-Jabref
 
 
 -Waarom gebruikt Fusy 2009 alpha-orientaties, wat wint hij er mee?
-
+	-To get the lattice (and it is more elegant)
 
 -American or british english? (color vs colour)
+	-peefwrBLY amercian (consequent!!)
