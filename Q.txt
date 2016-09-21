@@ -7,3 +7,10 @@
 
 -American or british english? (color vs colour)
 	-peefwrBLY amercian (consequent!!)
+
+
+
+- DOI does not work at http://repository.tue.nl/636963
+
+
+- Wasn't it six in KustersPreprint -p 2

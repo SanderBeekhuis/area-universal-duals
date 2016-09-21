@@ -75,7 +75,8 @@ pythontex-files-*/
 #gedit
 #backups
 
-*~ 
+*.txt~
+*.gitignore~
 
 
 
