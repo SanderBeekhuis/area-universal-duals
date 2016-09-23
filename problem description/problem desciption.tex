@@ -11,6 +11,8 @@
 
 \usepackage[backend=biber, giveninits =true, isbn=false, url=false, maxbibnames=100]{biblatex}
 \usepackage{hyperref}
+\usepackage[draft]{fixme}
+\fxsetup{theme = color}
 %\usepackage{graphicx}
 %\usepackage{caption} %prereq for subcaption
 %\usepackage{subcaption}  %ALLOWS SUBFIGURES
@@ -99,9 +101,9 @@ A  \emph{rectangular layout} is a partition of a rectangle into a finite set of 
  
 We define a \emph{rectangular dual} of a graph as a rectangular layout whose adjacencies are the same as those of the graph.
 
-In for example atlases \emph{rectangular cartograms} can be used to display information. A rectangular cartogram is a map where the regions are replaced by rectangles of different areas while keeping their adjacencies. That is, we take a rectangular dual of the adjacency graph of the map.
+In for example atlases \emph{rectangular cartograms} can be used to display information. A rectangular cartogram is a map where the regions are replaced by rectangles while keeping their adjacencies. The size of each region changes according to the variable displayed in the cartogram.  \fxnote*{can i say this in a CS paper?}{Mathematically} speaking a rectangular dual of the adjacency graph of the map.
 
- The areas assigned to each region change depending upon the variable displayed in the cartogram. If the areas change it might be that a certain rectangular layout can't fulfill it's adjacencies anymore and we have to switch to another, combinatorially different, rectangular dual of the adjacency graph of the map. 
+If the areas change it might be that a certain rectangular layout can't fulfill it's adjacencies anymore and we have to switch to another, combinatorially different, rectangular dual of the adjacency graph of the map. 
 
 One would thus want to find a \emph{area-universal} rectangular dual. Such an dual has adjacencies that hold regardless of the area sizes we assign to  each rectangle. 
 
@@ -111,7 +113,7 @@ Eppstein et al. have shown that rectangular duals are area-universal exactly whe
 \subsection*{Goal}
 The goal of this thesis is twofold.
 
-On the one hand we will try to show that all graphs can be drawn in a nearly one-sided fashion. We will investigate exactly which properties on the {maximal segments} can be fulfilled. We will call such a graph \emph{pseudo one-sided}.
+On the one hand we will try to show that all graphs can be drawn in a nearly one-sided fashion. We will investigate exactly which properties on the {maximal segments} can be fulfilled. We will call such segments \emph{pseudo one-sided}.
 
 On the other hand we will attempt to develop an algorithm that will draw any graph with as few rectangles on one side of each {maximal segment} as possible.
 
