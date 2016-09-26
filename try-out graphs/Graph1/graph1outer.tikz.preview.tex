@@ -1,0 +1,77 @@
+%& /home/sander/.config/TikzEdtWForms/TikzEdtWForms/0.2.1.0/temp_header
+\begin{document}
+%libs
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{positioning}
+
+\tikzstyle{lbl} = []
+
+\tikzset{node distance = .5cm}
+\tikzstyle{v}= [circle, draw]
+
+\tikzstyle{e} = [draw, thick]
+\tikzstyle{path} = [
+	decorate, 
+	decoration={snake, amplitude=.7mm}
+	]% some LaTeX code
+\begin{tikzpicture}
+
+\node [v] (v1) at (-2,0) {$1$};
+\node [v] (v2) at (1,1) {$2$};
+\node [v] (v3) at (1,0) {$3$};
+\node [v] (v5) at (0,-1) {$5$};
+\node [v] (v10) at (0,-3) {$10$};
+\node [v] (v4) at (3,0) {$4$};
+\node [v] (v6) at (2,-1) {$6$};
+\node [v] (v7) at (4,-1) {$7$};
+\node [v] (v8) at (2,-2) {$8$};
+\node [v] (v9) at (4,-2) {$9$};
+\node [v] (v11) at (3,-3) {$11$};
+
+
+\draw [e] (v1) edge (v2);
+\draw [e] (v1) edge (v3);
+\draw [e] (v1) edge (v5);
+\draw [e](v1) -- (v10) -- (v11) -- (v9) -- (v8) -- (v7) -- (v6) -- (v4) -- (v3) -- (v5) -- (v6) -- (v8) -- (v10) -- (v5) -- (v8) -- (v11);
+\draw [e](v9) -- (v7) -- (v7) -- (v4) -- (v2) -- (v3) -- (v6);
+\node [v] (v12) at (-4.5,-1.5) {$l$};
+\node [v] (v13) at (1,3.5) {$t$};
+\node [v] (v15) at (0.5,-6) {$b$};
+\node [v] (v14) at (7,-1) {$r$};
+\draw [e] (v12) edge (v1);
+\draw [e] (v12) edge (v10);
+\draw [e] (v1) edge (v13);
+\draw [e] (v2) edge (v13);
+\draw [e, bend left =10] (v2) edge (v14);
+\draw [e] (v4) edge (v14);
+\draw [e] (v7) edge (v14);
+\draw [e] (v9) edge (v14);
+\draw [e, bend right =10] (v11) edge (v14);
+\draw [e] (v10) edge (v15);
+\draw [e] (v11) edge (v15);
+\draw [e, bend left] (v12) edge (v13);
+\draw [e, bend left] (v13) edge (v14);
+\draw [e, bend left] (v14) edge (v15);
+\draw [e, bend left] (v15) edge (v12);
+
+\usetikzlibrary{calc}
+\pgftransformreset
+\node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt] at (current bounding box) {};
+%add border to avoid cropping by pdflibnet
+\foreach \border in {0.1}
+  \useasboundingbox (current bounding box.south west)+(-\border,-\border) rectangle (current bounding box.north east)+(\border,\border);
+\newwrite\metadatafile
+\immediate\openout\metadatafile=\jobname_BB.txt
+\path
+  let
+    \p1=(current bounding box.south west),
+    \p2=(current bounding box.north east)
+  in
+  node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt,draw=white] at (current bounding box) {
+\immediate\write\metadatafile{\p1,\p2}
+};
+\immediate\closeout\metadatafile
+\end{tikzpicture}
+
+\end{document}
