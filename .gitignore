@@ -78,5 +78,9 @@ pythontex-files-*/
 *.txt~
 *.gitignore~
 
+#tikzEDT
+#all kind of preview files
+*.tikz.preview*
+
 
 
