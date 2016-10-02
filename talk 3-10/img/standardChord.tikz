@@ -1,0 +1,35 @@
+
+\begin{tikzpicture}
+
+\node [v] (u_k) at (-2,0) {};
+\node [v] (u_l) at (2,0) {};
+\node [v] (v_i) at (-2, -2) {};
+\node [v] (v_{i+1}) at (-1, -2) {};
+\node [v] (v_j) at (2, -2) {};
+\node [v] (v_{j-1}) at (1, -2) {}; 
+
+\foreach \pt/\labpos in {u_k/above, 
+						u_l/above, 
+						v_i/below left,
+						v_{i+1}/below,
+						v_j/below right,
+						v_{j-1}/below}
+{
+	\node[lbl, \labpos=of \pt] {$\pt$};
+}
+
+\draw [e] (u_k) edge (v_i);
+\draw [e] (u_k) edge (v_{i+1});
+\draw [e] (v_{i+1}) edge (v_i);
+
+
+\draw [e] (u_l) edge (v_j);
+\draw [e] (u_l) edge (v_{j-1});
+\draw [e] (v_{j-1}) edge (v_j);
+
+\draw [path] (u_k) to (u_l);
+\draw [path] (v_{i+1}) to (v_{j-1});
+
+\draw[e] (v_i) .. controls (-2,-5) and (2,-5) .. (v_j) node [midway, below, lbl]{$e_p$};
+
+\end{tikzpicture}

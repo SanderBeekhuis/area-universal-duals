@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE ipestyle SYSTEM "ipe.dtd">
+<ipestyle name="standard">
+<symbol name="arrow/normal(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<pen name="normal" value="0.4"/>
+<symbolsize name="normal" value="3"/>
+<arrowsize name="normal" value="7"/>
+<color name="black" value="0"/>
+<color name="white" value="1"/>
+<dashstyle name="normal" value="[]0"/>
+<textsize name="normal" value="\normalsize"/>
+<textstretch name="normal" value="1"/>
+<textstyle name="normal" begin="" end=""/>
+<textstyle name="normal" type="label" begin="" end=""/>
+<textstyle name="math" type="label" begin="$" end="$"/>
+<opacity name="opaque" value="1"/>
+<layout paper="595 842" origin="0 0" frame="595 842"/>
+<textpad left="0" right="0" top="1" bottom="1"/>
+<pagenumberstyle pos="10 10" color="black" size="normal" valign="baseline"></pagenumberstyle>
+<titlestyle pos="0 800" size="large" color="black"  valign="baseline"/>
+<pathstyle cap="0" join="1" fillrule="eofill"/>
+</ipestyle>
