@@ -1,68 +1,4 @@
-\documentclass[a4paper]{article}
-
-\usepackage[english]{babel}
-\usepackage[utf8x]{inputenc}
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage{enumitem}
-\usepackage{caption} %prereq for subcaption
-\usepackage{subcaption}  %ALLOWS SUBFIGURES
-\usepackage{comment}
-%\usepackage[colorinlistoftodos]{todonotes}
-%\usepackage{tikz}
-%\usepackage{algorithm,algpseudocode}
-
-%Theorems
-\newtheorem{thrm}{Theorem}
-\newtheorem{lemma}[thrm]{Lemma}
-\newtheorem{prop}[thrm]{Proposition}
-\newtheorem{remark}[thrm]{Remark}
-
-\theoremstyle{definition}
-\newtheorem*{defi}{Definition}
-
-%text
-\newcommand{\for}{\text{ for }}
-
-%math fonts
-\newcommand{\scr}[1]{\mathcal{#1}}
-\newcommand{\C}{\scr C}
-
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\F}{\mathbb{F}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Q}{\mathbb{Q}}
-
-%LinAlg
-\newcommand{\tr}{\operatorname{tr}}
-
-%AdvAlg
-\newcommand{\opt}{\operatorname{OPT}}
-\newcommand{\alg}{\operatorname{ALG}}
-\newcommand{\LB}{\operatorname{LB}}
-
-%basic probability
-\DeclareMathOperator*{\E}{\mathbb{E}}
-\DeclareMathOperator{\Var}{Var} 
-\DeclareMathOperator{\Covar}{Covar} 
-\DeclareMathOperator{\pr}{\mathbb{P}}
-
-%Distribution
-\newcommand{\poi}{\ensuremath{\mathsf{Poi}}}
-\newcommand{\bin}{\ensuremath{\mathsf{Bin}}}
-\newcommand{\be}{\ensuremath{\mathsf{Be}}}
-\newcommand{\mult}{\ensuremath{\mathsf{Mult}}}
-
-%braces etc
-\newcommand{\braces}[1]{\left\lbrace {#1} \right\rbrace}
-\newcommand{\sqbr}[1]{\left\lbrack {#1} \right\rbrack }
-\newcommand{\abs}[1]{\left\lvert {#1} \right\rvert }
-\newcommand{\ceil}[1]{\left\lceil{ #1 } \right\rceil}
-\newcommand{\floor}[1]{\left \lfloor {#1}\right\rfloor}
-\newcommand{\parens}[1]{\left( {#1} \right)}
+\input{preamble}
 
 %invariant enviroment
 \newenvironment{invariants}{%
@@ -75,31 +11,7 @@
   \endenumerate
 }
 
-%utility
-\newcommand{\id}{\mathrm{Id}}
-\newcommand{\inv}[1]{{#1}^{-1}}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\third}{\frac{1}{3}}
-\newcommand{\goes}{\rightarrow 	}
-\newcommand{\ifftext}{if and only if }
-\newcommand{\note}{\textbf{Writers note: }} 
 
-%vectors and matrices
-\newcommand{\zerov}{\vec{0}}
-\newcommand{\onev}{\vec{1}}
-
-\newcommand{\twovec}[2]{\parens{ \begin{array}{c}#1 \\ #2\end{array} }}
-\newcommand{\threevec}[3]{\prens{ \begin{array}{c}#1 \\ #2\\#3 \end{array} }}
-\newcommand{\fourvec}[4]{\parens{ \begin{arr\newcommand{\ifftext}{if and only if }ay}{c}#1 \\ #2\\#3\\#4 \end{array} }}
-\newcommand{\twomatrix}[4]{\parens{\begin{array}{cc}#1 & #2 \\ #3 & #4 \end{array}  }}
-\newcommand{\twodiagmatrix}[2]{\parens{\begin{array}{cc}#1 & 0 \\ 0 & #2 \end{array}  }}
-
-%Author names
-\newcommand{\Fusy}{Fusy}
-
-\title{Irreducible triangulations of the $4$-gon and $4$-connectedness }
-\author{Sander Beekhuis, nr: 0972717}
-\date{\today} %\today%
 
 
 
@@ -283,7 +195,6 @@ A plane triangulated graph $\G$ does not necessarily have a rectangular dual nor
 %TODO weave a corner assignment in here somewhere
 
 \subsection{Extended graphs}
-\newcommand{\ext}[1]{\bar{#1}}
 A \emph{extended graph} $\ext G$ of $G$ is a augmentation of $G$ with $4$  vertices (which we will call it's \emph{poles}). Such that 
 \begin{enumerate}
 \item every interior face has degree $3$ and the exterior face has degree $4$.
@@ -357,6 +268,7 @@ is either \emph{left-alternating} or \emph{right-alternating} %TODO define
 in the terminology of \Fusy
 
 Furthermore the above Lemma is also very useful in that it allows us to fix a extension $\ext G$ of $G$ by building a \emph{scaffold}. Suppose we want to investigate some extension $\ext G$ of $G$ with poles $N$, $E$, $S$ and $W$ then we can consider the graph $\ext G = H$ as a graph in it's own right. $H$ is a proper graph since it has no irreducible triangles in it's interior (because $\ext G$ had none) and it admits a valid extension $\ext H$ by connecting the new poles $NE, SE, SW$ and $NW$ to $N, E, SE, NW$, $S, E, NE, SW$, $S, W, SE, NW$ and $N, W, NE, SW$ respectively. See Figure \ref{fig:scafold} for this extension.  
+\fxnote{Maybe use a table}
 
 \begin{thrm}
 \label{th:fixExtension}
@@ -444,7 +356,7 @@ We call an internal path $\P$ from $v$ to $v'$ eligible if
 \end{defi}
 
 \begin{remark}
-``Shirinking'' the cycle with an eligible path will keep all the invariants true.
+``Shrinking'' the cycle with an eligible path will keep all the invariants true.
 \end{remark}
 
 We will show the following proposition.

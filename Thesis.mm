@@ -62,38 +62,6 @@
 <node TEXT="Look how red screws up blue" ID="ID_59443853" CREATED="1473774391170" MODIFIED="1473774412198"/>
 <node TEXT="Eligible paths covering two neighbouring vertices?" ID="ID_1947205521" CREATED="1473958053507" MODIFIED="1473958068670"/>
 </node>
-<node TEXT="Lower bound (2, inf)" POSITION="right" ID="ID_157385896" CREATED="1473774466811" MODIFIED="1474402949849">
-<icon BUILTIN="button_ok"/>
-<node TEXT="Fix corner assignment using a scafold" ID="ID_575345704" CREATED="1473774452187" MODIFIED="1473957871338">
-<icon BUILTIN="button_ok"/>
-<node TEXT="What does the inside of a seperating 4-cycle look like?" ID="ID_1630256384" CREATED="1473842745259" MODIFIED="1473957860922">
-<icon BUILTIN="button_ok"/>
-</node>
-</node>
-</node>
-<node TEXT="Forms" POSITION="right" ID="ID_1393785544" CREATED="1473774503984" MODIFIED="1473782842332">
-<node TEXT="Write problem description" ID="ID_937272477" CREATED="1473774511715" MODIFIED="1473782755657">
-<icon BUILTIN="button_ok"/>
-</node>
-<node TEXT="Get sign of jesper" ID="ID_1970355245" CREATED="1473774521902" MODIFIED="1473774533538"/>
-</node>
-<node TEXT="Interior of a seperating cycle is totally red/blue in one corner" POSITION="right" ID="ID_845232688" CREATED="1473774556111" MODIFIED="1473958737446">
-<icon BUILTIN="button_ok"/>
-<richcontent TYPE="NOTE">
-
-<html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      Page 1
-    </p>
-  </body>
-</html>
-</richcontent>
-<font NAME="SansSerif" SIZE="12"/>
-</node>
 <node TEXT="Complete Fusy correctnes proof" POSITION="right" ID="ID_478412164" CREATED="1473774748123" MODIFIED="1473774757980">
 <node TEXT="Compare fusy papers" ID="ID_1119133447" CREATED="1473774770240" MODIFIED="1473774781870">
 <node TEXT="eligible path properties" ID="ID_919429220" CREATED="1473774783545" MODIFIED="1473774794362"/>
@@ -132,27 +100,15 @@
 </node>
 </node>
 </node>
-<node TEXT="Questions" POSITION="left" ID="ID_1246127513" CREATED="1473842821586" MODIFIED="1475053891492" TEXT_SHORTENED="true">
-<node TEXT="Is there a difference between SIAM and arxiv eppstein et al." ID="ID_1042196915" CREATED="1473842835403" MODIFIED="1473842851219"/>
-<node TEXT="Is copying a definition plagiaat (e.g rectangular layout)?" ID="ID_350240303" CREATED="1473859715699" MODIFIED="1473859749807"/>
-<node TEXT="Proof. In any layout dual to E(G), the region enclosed by the four rectangles of the separating cycle C must be a four-sided polygon, that is, a rectangle.  ~Eppstein et al, Lemma 5 (Why is this true?, see also Page 4)" ID="ID_1685192408" CREATED="1473929319202" MODIFIED="1473929478181"/>
-<node TEXT="Writing" ID="ID_526559619" CREATED="1473931269390" MODIFIED="1474371885079">
-<node TEXT="Corner assignment vs extension" ID="ID_1988052979" CREATED="1473931279761" MODIFIED="1473931290553"/>
-<node TEXT="For triangulations of the $k$-gon, should a speak of a maximally planar interior of faces of degree 3? The first seems more clear while the second is less ambigious" ID="ID_910591816" CREATED="1474123094102" MODIFIED="1474123168262"/>
-<node TEXT="Interior vs inner vertex against outer vertex" ID="ID_1107650061" CREATED="1474126984856" MODIFIED="1474127002273"/>
-</node>
-<node TEXT="Is it usefull to provide the corner assignment argument stand-alone?" ID="ID_686055515" CREATED="1473958351956" MODIFIED="1473958385722"/>
-</node>
 <node TEXT="Look at alpha_0 orientations" POSITION="left" ID="ID_1714315851" CREATED="1473958082232" MODIFIED="1473958092028"/>
-<node TEXT="Versioning my thesis" POSITION="left" ID="ID_783889295" CREATED="1474126475029" MODIFIED="1474126481856"/>
-<node TEXT="OPEn todo" POSITION="left" ID="ID_433711113" CREATED="1474406592002" MODIFIED="1474414860603">
-<node TEXT="Figure out biblatex vs bibtex" ID="ID_1173128512" CREATED="1474406596843" MODIFIED="1474406605562"/>
-<node TEXT="modify problem description" ID="ID_44550784" CREATED="1474406613222" MODIFIED="1474406619699"/>
-<node TEXT="test out git" ID="ID_891814986" CREATED="1474406620779" MODIFIED="1474406625150">
-<node TEXT="establish gitignore" ID="ID_55432267" CREATED="1474406678213" MODIFIED="1474406685752"/>
+<node TEXT="Are graphs without c4 one-sided" POSITION="left" ID="ID_342629060" CREATED="1475662085466" MODIFIED="1475662118743"/>
+<node TEXT="Next meeting" POSITION="left" ID="ID_1686817136" CREATED="1475662192249" MODIFIED="1475662196483">
+<node TEXT="Kusters notes" ID="ID_1655252035" CREATED="1475662197267" MODIFIED="1475662202271"/>
+<node TEXT="C4" ID="ID_1044077478" CREATED="1475662203515" MODIFIED="1475662206579"/>
+<node TEXT="general planning" ID="ID_1342425969" CREATED="1475662207227" MODIFIED="1475662239163"/>
 </node>
-<node TEXT="join claim to prethesis" ID="ID_175778946" CREATED="1474406663291" MODIFIED="1474406670229"/>
-<node TEXT="Cutimise biblatex" ID="ID_299115084" CREATED="1474414862756" MODIFIED="1474414869913"/>
+<node TEXT="Questions" POSITION="right" ID="ID_1521892017" CREATED="1475675428299" MODIFIED="1475675432234">
+<node TEXT="Font for NESW" ID="ID_321342583" CREATED="1475675432886" MODIFIED="1475675446005"/>
 </node>
 </node>
 </map>

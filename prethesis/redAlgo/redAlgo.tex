@@ -1,0 +1,61 @@
+\input{../preamble}
+
+\newcommand\restrict[1]{\raisebox{-.5ex}{$|$}_{#1}}
+
+\begin{document}
+\maketitle
+
+
+\newcommand{\W}{\scr W}
+\renewcommand{\P}{\scr P}
+\newcommand{\restC}[1]{\ensuremath{\C\restrict{#1}}}
+
+\newcommand{\mrN}{\mathrm{N}}
+\newcommand{\mrS}{\mathrm{S}}
+\newcommand{\mrE}{\mathrm{E}}
+\newcommand{\mrW}{\mathrm{W}}
+
+\newcommand{\cpath}{\C \setminus \braces{\mrS}} %cycle path
+
+
+\restC{\W} versus $\C_\W$ And then $\restC{\W} | \W$ versus $\C_\W|\W$
+
+\paragraph{Notational concerns}
+We will use $\C$ to indicate the current sweep line cycle. 
+Note that we can consider the path $\C \setminus {\mathrm{S}}$. We will order it from $\mrW$ to $\mrE$. 
+
+We will let $\W$ denote a interior walk  \fxnote{have i defined this already}. Given such a walk of $k$ vertices we index it's nodes $w_1, \ldots, w_k$  in such a way that $w_1$ is closer to $W$ then $w_k$ is (and thus that $w_k$ is closer to $E$ then $w_1$ is). 
+
+Then $w_1$ and $w_k$ indicate the two unique vertices of the walk that are also part of the cycle. We will then let $\restC{\W}$ denote the part of $\C\setminus {\mathrm{S}}$ that is between $w_1$ and $w_k$ (including). $\C_\W$ will denote the closed walk formed when we paste $\restC{W}$ and $\W$.
+
+Since paths are a subclass of walks all of the above notation can also be used for a path $\P$. Note that the closed walk $\C_\P$ in this case will actually be a cycle.
+
+
+\paragraph{prelim}
+\emph{nondistinct corner.}
+
+\section{Outline}
+We will show that there is a algorithm if there are no $4$ cycles.
+
+If graph $G$ has non-distinct corners we remove them.
+
+
+The main algorithm will recieve as input a extended graph $\ext G$ without non-distinct corners and will return a regular edge labeling such that all red faces are $(1-\infty)$ using a sweepcycle approach inspired by \Fusy \fxnote{spelling Fusy and cite} \cite{F}.
+
+We will start by creating a walk $W$. This walk may not be a valid path, it doesn't even have to be a path. During the algorithm we will make a number of moves that will turn this candidate walk into a valid path. In each move we shrink $C$ by employing a valid path and change the candidate walk..
+
+One invariant we will always maintain is that the area bounded by $\C_\W$ will never have interior vertices. \fxnote{What is exactly the area bounded by a closed walk}.
+
+\subsection{The initial candidate walk}
+We define the \emph{level} of a vertex of $G$ as the distance of this vertex to the cycle minus $\mrS$ $\cpath$. Let $v_i$ denote all the level $0$ vertices in $G$ in the order that they occur on $\C$  That is $\cpath$ is given by $\mrW v_1 \ldots v_n \mrE$. 
+As candidate walk we will start with $W$, we will then take the level $1$ vertices adjacent to $v_1$ in clockwise order, followed by the level $1$ vertices adjecent to $v_2$ in clockwise order (in so far they didn't already occur) and so further until we add the level $1$ vertices adjacent to $v_n$ and finish with $E$.
+
+\fxfatal{To proof:This is a walk
+}
+\subsection{moves}
+
+The candidate walk can have two kinds of problems. It either is non-simple or it has chords.\fxnote{cf Kusters. Where there are also two problems for a proper boundary path} Otherwise it is a valid path.
+
+
+
+\end{document}
