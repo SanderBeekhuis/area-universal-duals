@@ -15,6 +15,12 @@
 \newcommand{\mrE}{\mathrm{E}}
 \newcommand{\mrW}{\mathrm{W}}
 
+%p is for pole
+\newcommand{\pN}{\mathrm{N}}
+\newcommand{\pS}{\mathrm{S}}
+\newcommand{\pE}{\mathrm{E}}
+\newcommand{\pW}{\mathrm{W}}
+
 \newcommand{\cpath}{\C \setminus \braces{\mrS}} %cycle path
 
 
@@ -22,7 +28,7 @@
 
 \paragraph{Notational concerns}
 We will use $\C$ to indicate the current sweep line cycle. 
-Note that we can consider the path $\C \setminus {\mathrm{S}}$. We will order it from $\mrW$ to $\mrE$. 
+We will repeatedly only consider the path $\cpath$. In that case we will always order it from $\mrW$ to $\mrE$. 
 
 We will let $\W$ denote a interior walk  \fxnote{have i defined this already}. Given such a walk of $k$ vertices we index it's nodes $w_1, \ldots, w_k$  in such a way that $w_1$ is closer to $W$ then $w_k$ is (and thus that $w_k$ is closer to $E$ then $w_1$ is). 
 
@@ -37,22 +43,76 @@ Since paths are a subclass of walks all of the above notation can also be used f
 \section{Outline}
 We will show that there is a algorithm if there are no $4$ cycles.
 
-If graph $G$ has non-distinct corners we remove them.
+If graph $G$ has non-distinct corners or cutvertices we treat them separately.
 
 
-The main algorithm will recieve as input a extended graph $\ext G$ without non-distinct corners and will return a regular edge labeling such that all red faces are $(1-\infty)$ using a sweepcycle approach inspired by \Fusy \fxnote{spelling Fusy and cite} \cite{F}.
+The main algorithm will recieve as input a extended graph $\ext G$ without non-distinct corners and no separating $4$ cycles and will return a regular edge labeling such that all red faces are $(1-\infty)$ using a sweepcycle approach inspired by \Fusy \fxnote{spelling Fusy and cite} \cite{F}.
 
-We will start by creating a walk $W$. This walk may not be a valid path, it doesn't even have to be a path. During the algorithm we will make a number of moves that will turn this candidate walk into a valid path. In each move we shrink $C$ by employing a valid path and change the candidate walk..
+We will start by creating a walk $W$. This walk may not be a valid path, it doesn't even have to be a path. During the algorithm we will make a number of moves that will turn this candidate walk into a valid path. In each move we shrink $C$ by employing a valid path and change the candidate walk.
 
 One invariant we will always maintain is that the area bounded by $\C_\W$ will never have interior vertices. \fxnote{What is exactly the area bounded by a closed walk}.
 
 \subsection{The initial candidate walk}
-We define the \emph{level} of a vertex of $G$ as the distance of this vertex to the cycle minus $\mrS$ $\cpath$. Let $v_i$ denote all the level $0$ vertices in $G$ in the order that they occur on $\C$  That is $\cpath$ is given by $\mrW v_1 \ldots v_n \mrE$. 
-As candidate walk we will start with $W$, we will then take the level $1$ vertices adjacent to $v_1$ in clockwise order, followed by the level $1$ vertices adjecent to $v_2$ in clockwise order (in so far they didn't already occur) and so further until we add the level $1$ vertices adjacent to $v_n$ and finish with $E$.
+Let $v_i$ denote all the vertices of $\C \setminus \braces{\pW, \pS, \pE}$ in the order that they occur on $\cpath$.  That is $\cpath$ is given by $\mrW v_1 \ldots v_n \mrE$. 
+As candidate walk we will start with $\pW$, we will then take the vertices adjacent to $v_1$ between $\pE$ and $v_2$ in clockwise order (exclusive), followed the vertices adjacent to $v_2$ between $v_1$ and $v_3$ in clockwise order and so further until we finally add the vertices adjacent to $v_n$ between $v_{n-1}$ and $\pE$ in clockwise order and finally we finish by adding $E$.
 
-\fxfatal{To proof:This is a walk
-}
-\subsection{moves}
+\begin{lemma}
+After removing subsequent duplicates the collection $W$ described above is indeed a walk.
+\end{lemma}
+
+\fxnote{introduce a term for "edges subsequent to each other in clockwise order around $v$"}
+
+\begin{proof}
+To show that $W$ is a walk it's sufficient to show that every vertex is adjacent to the next vertex. Let us suppose that $w$ and $w'$ are two subsequent vertices in $W$, we will show that they are connected if $\braces{w, w'} \cap \braces{\pW, \pE} = \emptyset$ after that we will consider this edge case. There are then two main case for $w, w'$. Either $(a)$ $w$ and $w'$ are  vertices adjecent to some $v_i$ subsequent in clockwise order or $(b)$ $w$ was the last vertex adjecent to some $v_i$ and thus $w'$ is the first vertex adjacent to $v_{i+1}$.
+
+The following two situations can also be seen in Figure \ref{fig:walkproof}.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \includegraphics[width=\linewidth]{img/walkProofA}
+        \caption{}
+    \end{subfigure}%
+    \begin{subfigure}[b]{0.5\linewidth}
+        \includegraphics[width=\linewidth]{img/walkProofB}
+        \vspace{1cm}   
+                
+        \caption{}
+    \end{subfigure}
+
+    	\caption{The two main cases of the proof showing that $W$ is a walk after removing duplicates.}
+	\label{fig:walkproof}
+\end{figure}
+
+
+In case $(a)$ we note that $v_i w$ and $v_i w'$ are edges next to each other in clockwise order around $v_i$. Since every interior face of $\ext G$ is a triangle $ww'$ must be an edge. We thus see that $w, w'$ are adjacent and not duplicates.
+
+In case $(b)$ we note that $v_i w$ and $v_i v_{i+1}$ are edges subsequent in clockwise order, hence $wv_{i+1}$ is also an edge. Hence $w$ is the first vertex adjacent to $v_{i+1}$ after $v_i$ in clockwise order. Thus $w= w'$, they are duplicates and we will remove $w$.
+
+Now for the edge cases: $\pW$ and $w_1$ are vertices adjacent to $v_1$ subsequent in clockwise order, and hence connected. $w_m$ and $\pE$ are vertices adjacent to $v_n$ subsequent in clockwise order and hence connected. 
+\end{proof}
+
+
+\subsection{Porperties the walk already satisfies}
+
+\begin{lemma}
+$\C_\W$ has no interior vertices.
+\end{lemma}
+
+\begin{lemma}
+$\restC\W$ has no chords
+\end{lemma}
+\begin{proof}
+This follows directly from $\C$ having no chords.
+\end{proof}
+
+It is clear that both paths have interior vertices
+
+\begin{lemma}
+S3 is satisfied since the walk is from $\pW$ to $\pE$
+\end{lemma}
+
+\subsection{Moves}
 
 The candidate walk can have two kinds of problems. It either is non-simple or it has chords.\fxnote{cf Kusters. Where there are also two problems for a proper boundary path} Otherwise it is a valid path.
 

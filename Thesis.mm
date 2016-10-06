@@ -110,5 +110,8 @@
 <node TEXT="Questions" POSITION="right" ID="ID_1521892017" CREATED="1475675428299" MODIFIED="1475675432234">
 <node TEXT="Font for NESW" ID="ID_321342583" CREATED="1475675432886" MODIFIED="1475675446005"/>
 </node>
+<node TEXT=" I Should decide to wich version of the FUSY proof i want to refer. Is the conference version good enough?" POSITION="left" ID="ID_1403740711" CREATED="1475744478150" MODIFIED="1475744545420">
+<icon BUILTIN="yes"/>
+</node>
 </node>
 </map>

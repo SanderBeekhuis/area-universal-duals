@@ -82,5 +82,8 @@ pythontex-files-*/
 #all kind of preview files
 *.tikz.preview*
 
+#ipe program
+*.ipe
+
 
 
