@@ -1,20 +1,19 @@
 \documentclass[a4paper]{article}
 
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
 \usepackage[english]{babel}
-\usepackage[utf8x]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{enumitem}
-%\usepackage{caption} %prereq for subcaption
 \usepackage{subcaption}  %ALLOWS SUBFIGURES
 \usepackage[draft]{fixme}
 \fxsetup{theme = color}
 
-%\usepackage[colorinlistoftodos]{todonotes}
-%\usepackage{tikz}
-%\usepackage{algorithm,algpseudocode}
+\usepackage[backend=biber, giveninits =true, isbn=false, url=false, maxbibnames=100]{biblatex}
+\usepackage{hyperref}
 
 %Theorems
 \newtheorem{thrm}{Theorem}
@@ -76,6 +75,19 @@
 \newcommand{\note}{\textbf{Writers note: }} 
 \newcommand{\ext}[1]{\bar{#1}}
 
+\newcommand{\W}{\scr W}
+\renewcommand{\P}{\scr P}
+\newcommand\restrict[1]{\raisebox{-.5ex}{$|$}_{#1}}
+\newcommand{\restC}[1]{\ensuremath{\C\restrict{#1}}}
+
+%p is for pole
+\newcommand{\pN}{\mathrm{N}}
+\newcommand{\pS}{\mathrm{S}}
+\newcommand{\pE}{\mathrm{E}}
+\newcommand{\pW}{\mathrm{W}}
+
+\newcommand{\cpath}{\C \setminus \braces{\pS}} %cycle path
+
 
 
 %vectors and matrices
@@ -88,9 +100,15 @@
 \newcommand{\twomatrix}[4]{\parens{\begin{array}{cc}#1 & #2 \\ #3 & #4 \end{array}  }}
 \newcommand{\twodiagmatrix}[2]{\parens{\begin{array}{cc}#1 & 0 \\ 0 & #2 \end{array}  }}
 
+
+%bib stuff
+\addbibresource{../thesis.bib}
+\addbibresource{../../thesis.bib}
+\bibstyle{plain}
+
 %Author names
 \newcommand{\Fusy}{Fusy}
 
-\title{Irreducible triangulations of the $4$-gon and $4$-connectedness }
-\author{Sander Beekhuis, nr: 0972717}
+\title{Thesis }
+\author{Sander Beekhuis}
 \date{\today} %\today%
