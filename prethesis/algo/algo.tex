@@ -48,7 +48,7 @@ The algorithm will always maintain the following three invariants
   \itemsep=-4pt
 
 \item \label{i:1} The cycle $\C$ contains the two edges $\pS \pW$ and $\pS \pE$.
-\item \label{i:2} $\cpath$ has no chords in it's interior \fxwarning{def chord and chord in interior}
+\item \label{i:2} $\cpath$ has no chords in it's interior \fxwarning{def chord and chord in interior (or just simplify to has no chords}
 \item \label{i:last} All inner edges of $T$ outside of $\C$ are colored and oriented in such that the innnervertex condition holds. %TODO what is the inner vertex condition
 \end{invariants}
 
@@ -69,18 +69,18 @@ It is also nice to note that the union of the cycle and it's interior form a tri
 
 
 
-\begin{defi}[eligible path]
-We call an internal path $\P$ from $v$ to $v'$ eligible if 
+\begin{defi}[valid path]
+We call an internal path $\P$ from $w_1$ to $w_k$ valid if 
 \begin{enumerate}
  \renewcommand*{\labelenumi}{(E\arabic{enumi})}%
  \renewcommand*{\theenumi}{(E\arabic{enumi})}%
 
 
-\item Neither $v$ or $v'$ is $S_r$ \label{e:notSr}
-\item The paths $\P$ and $[v,v']$ both have at least 3 vertices \footnote{i.e. both have an interior vertex} \label{e:length2borders}
-\item Each edge in the interior to $\C_\P$ connects a vertex of $\P\setminus{v,v'}$ and $[v,v']\setminus{v,v'}$. In particular $\C_\P$ is a non-separating cycle.
+\item Neither $w_1$ or $w_k$ is $\pS$ \label{e:notSr}
+\item The paths $\P$ and $\restC \P$ both are more then 1 edge \footnote{i.e. both have an interior vertex} \label{e:length2borders}
+\item Each edge in the interior to $\C_\P$ connects a vertex of $\P\setminus{\braces{w_1,w_k}}$ and $\restC \W \setminus{\braces{w_1,w_k}}$. In particular $\C_\P$ is a non-separating cycle.
 \label{e:crossingedge}
-\item The cycle $\C'$ obtained by replacing $[v,v']$ by $\P$ in $\C$ has no interior edge connecting the two vertices of $C\setminus{S_r}$.
+\item The cycle $\C'$ obtained by replacing $\restC \P$ by $\P$ in $\C$ has no chord that doesn't involve $\pS$.
 \label{e:noChordinC'}
 \end{enumerate}
 \end{defi}
@@ -91,6 +91,8 @@ We call an internal path $\P$ from $v$ to $v'$ eligible if
 
 We will show the following proposition.
 
+
+\fxfatal{This is very hard to prove, mustly the part that we can always find a path satisfying E4. See page 11. Prrof this from red algo.}
 \begin{thrm}[Existence of a eligible path]
 \label{th:eligExistence}
 When the algorithm's invariant (\ref{i:1} - \ref{i:last}) are satisfied and the cycle $\C$ is separating then there exist a \emph{eligible} internal path.
