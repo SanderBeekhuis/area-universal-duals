@@ -1,5 +1,3 @@
-\input{../preamble}
-
 %invariant enviroment
 \newenvironment{invariants}{%
   \refstepcounter{thrm}%
@@ -10,8 +8,6 @@
 }{%
   \endenumerate
 }
-
-\begin{document}
 
 \section{Algorithms}
 Kant and He \cite{KH} were the first to desing algorithms that determine a regular edge labeling. 
@@ -56,7 +52,7 @@ A cycle satisfying these three invariants will have the same general shape as in
 
 \begin{figure}[h!]
 \centering
-\includegraphics{img/invCycle}
+\includegraphics{algo/img/invCycle}
 
 \caption{An example of a cycle $\C$ satisfying the invariants 
     \label{fig:invCycle}}
@@ -113,7 +109,7 @@ Hence we have now constructed, or already had, a path that satisfies \ref{e:notS
 
 \begin{figure}[ht]
 \centering
-\includegraphics[]{img/E1}
+\includegraphics[]{algo/img/E1}
 \caption{Constructing a path satisfying \ref{e:notSr} \label{fig:E1}}
 \end{figure}
 
@@ -126,12 +122,12 @@ If $v=N_b$ and $v'=S_b$ we have found a separating triangle given by $S_rN_bS_b$
 \begin{figure}
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/E2general}
+        \includegraphics[width=\textwidth]{algo/img/E2general}
         \caption{The general case. Note that $x=v'$.}
     \end{subfigure}
     ~ 
     \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/E2spec}
+        \includegraphics[width=\textwidth]{algo/img/E2spec}
         \caption{A specific case. Note now that $N_b=v, v'=x$ and $S_b=z$}
     \end{subfigure}
 
@@ -215,19 +211,19 @@ In the second case $x$ may be connected to more vertices along the cycle border,
 \begin{figure}[ht]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/blue/setting}
+        \includegraphics[width=\textwidth]{algo/img/blue/setting}
         \caption{The setting}
         \label{bluefig:notation}
     \end{subfigure}
     
     \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/blue/case1}
+        \includegraphics[width=\textwidth]{algo/img/blue/case1}
         \caption{Case 1}
         \label{bluefig:case1}
     \end{subfigure}
     ~
     \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{img/blue/case2}
+        \includegraphics[width=\textwidth]{algo/img/blue/case2}
         \caption{Case 2}
         \label{bluefig:case2}
     \end{subfigure}
@@ -252,5 +248,3 @@ A face $F$ with at least $3$ edges on each side contains a $Z$
 \end{lemma}
 
 But a $z$ can only be the result of a seqeuncce of eligble paths that does not satisfy the requirements. 
-
-\end{document}

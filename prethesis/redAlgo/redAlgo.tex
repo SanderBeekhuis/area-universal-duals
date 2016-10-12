@@ -1,9 +1,3 @@
-\input{../preamble}
-
-
-\begin{document}
-\maketitle
-
 %Depracted
 \newcommand{\mrN}{\mathrm{N}}
 \newcommand{\mrS}{\mathrm{S}}
@@ -11,6 +5,7 @@
 \newcommand{\mrW}{\mathrm{W}}
 
 
+\section{The red algo}
 \paragraph{Notational concerns}
 We will use $\C$ to indicate the current sweep line cycle. 
 We will repeatedly only consider the path $\cpath$. In that case we will always order it from $\mrW$ to $\mrE$. 
@@ -68,11 +63,11 @@ The following two situations can also be seen in Figure \ref{fig:walkproof}.
 \begin{figure}
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
-        \includegraphics[width=\linewidth]{img/walkProofA}
+        \includegraphics[width=\linewidth]{redAlgo/img/walkProofA}
         \caption{}
     \end{subfigure}%
     \begin{subfigure}[b]{0.5\linewidth}
-        \includegraphics[width=\linewidth]{img/walkProofB}
+        \includegraphics[width=\linewidth]{redAlgo/img/walkProofB}
         \vspace{1cm}   
                 
         \caption{}
@@ -186,7 +181,7 @@ We then consider the interior of the cycle $\C_\scr U$ and the cycle $\C_\U$ its
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=1]{img/removeChord}
+\includegraphics[scale=1]{redAlgo/img/removeChord}
 
 \caption{Removing a chord 
     \label{fig:removeChord}}
@@ -219,11 +214,13 @@ We then consider the interior of the cycle $\C_\scr U$ and the cycle $\C_\U$ its
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=1]{img/removeNonSimplePoint}
+\includegraphics[scale=1]{redAlgo/img/removeNonSimplePoint}
 
 \caption{Removing a non-simple point 
     \label{fig:removeNonSimplePoint}}
 \end{figure}
+
+\subsection{Red faces are of the required size}
 
 
 \section{TODO}
@@ -231,4 +228,3 @@ Cool examples: The multiple non-simple point $v_i = v_j =v_k$
 Example of page $F1$
 
 example with lots of chords
-\end{document}

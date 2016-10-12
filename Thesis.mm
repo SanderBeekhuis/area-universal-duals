@@ -113,5 +113,6 @@
 <node TEXT=" I Should decide to wich version of the FUSY proof i want to refer. Is the conference version good enough?" POSITION="left" ID="ID_1403740711" CREATED="1475744478150" MODIFIED="1475744545420">
 <icon BUILTIN="yes"/>
 </node>
+<node TEXT="Sweeping path instead of cycle" POSITION="right" ID="ID_40269667" CREATED="1476114891112" MODIFIED="1476114901143"/>
 </node>
 </map>
