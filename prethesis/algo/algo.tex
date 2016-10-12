@@ -10,7 +10,7 @@
 }
 
 \section{Algorithms}
-Kant and He \cite{KH} were the first to desing algorithms that determine a regular edge labeling. 
+Kant and He \cite{KH} were the first to desing algorithms that determine a regular edge labeling.
 
 Fusy \cite{Fusy2006, Fusy2009} recently developed a different algorithm computing a specific regular edge labeling using a method shrinkg a sweepcycle while coloring the outside in accordance with a regular edge labeling.\footnote{The specific regular edge labelling Fusy obtained was the minimal element of the lattice of regular edge labellings.}
 
@@ -23,13 +23,13 @@ We will start this section with some notation and preliminaries in Subsection \r
 \subsection{Notation and Preliminaries}
 \label{ss:not}
 \begin{defi}[Interior path]
-We call a path $P$ an internal path of a cycle $C$ if all its edges are in the interior\fxnote{is interior defined somewhere?} of $C$ and it connects two distinct vertices of $C$ 
+We call a path $P$ an internal path of a cycle $C$ if all its edges are in the interior\fxnote{is interior defined somewhere?} of $C$ and it connects two distinct vertices of $C$
 \end{defi}
 
-We will use a script $\C$ to indicate the current sweep cycle. 
-We will repeatedly only consider the path $\cpath$. In that case we will always order it from $\pW$ to $\pE$. 
+We will use a script $\C$ to indicate the current sweep cycle.
+We will repeatedly only consider the path $\cpath$. In that case we will always order it from $\pW$ to $\pE$.
 
-We will let $\P$ denote a interior path. Given such a path of $k$ vertices we will index it's nodes by $p_1, \ldots, p_k$ in such a way that $p_1$ is closer to $\pW$ then $p_k$ is (and thus that $p_k$ is closer to $\pE$ then $p_1$ is). 
+We will let $\P$ denote a interior path. Given such a path of $k$ vertices we will index it's nodes by $p_1, \ldots, p_k$ in such a way that $p_1$ is closer to $\pW$ then $p_k$ is (and thus that $p_k$ is closer to $\pE$ then $p_1$ is).
 
 Then $p_1$ and $p_k$ indicate the two unique vertices of the walk that are also part of the cycle. We will then let $\restC{\P}$ denote the part of $\cpath$ that is between $p_1$ and $p_k$ (including). $\C_\P$ will denote the cycle we get when we paste $\restC{\P}$ and $\P$.
 
@@ -44,17 +44,17 @@ The algorithm will always maintain the following three invariants
   \itemsep=-4pt
 
 \item \label{i:1} The cycle $\C$ contains the two edges $\pS \pW$ and $\pS \pE$.
-\item \label{i:2} $\cpath$ has no chords in it's interior \fxwarning{def chord and chord in interior (or just simplify to has no chords}
+\item \label{i:noChords} $\cpath$ has no chords in it's interior \fxwarning{def chord and chord in interior (or just simplify to has no chords}
 \item \label{i:last} All inner edges of $T$ outside of $\C$ are colored and oriented in such that the innnervertex condition holds. %TODO what is the inner vertex condition
 \end{invariants}
 
-A cycle satisfying these three invariants will have the same general shape as in figure \ref{fig:invCycle}. We note that the cycle has at least $4$ vertices because otherwise a seperating triangle is created. 
+A cycle satisfying these three invariants will have the same general shape as in figure \ref{fig:invCycle}. We note that the cycle has at least $4$ vertices because otherwise a seperating triangle is created.
 
 \begin{figure}[h!]
 \centering
 \includegraphics{algo/img/invCycle}
 
-\caption{An example of a cycle $\C$ satisfying the invariants 
+\caption{An example of a cycle $\C$ satisfying the invariants
     \label{fig:invCycle}}
 \end{figure}
 
@@ -66,24 +66,31 @@ It is also nice to note that the union of the cycle and it's interior form a tri
 
 
 \begin{defi}[valid path]
-We call an internal path $\P$ from $w_1$ to $w_k$ valid if 
+We call an internal path $\P$ from $w_1$ to $w_k$ valid if
 \begin{enumerate}
  \renewcommand*{\labelenumi}{(E\arabic{enumi})}%
  \renewcommand*{\theenumi}{(E\arabic{enumi})}%
 
 
-\item Neither $w_1$ or $w_k$ is $\pS$ \label{e:notSr}
-\item The paths $\P$ and $\restC \P$ both are more then 1 edge \footnote{i.e. both have an interior vertex} \label{e:length2borders}
+\item Neither $w_1$ or $w_k$ is $\pS$
+\label{e:noS}
+
+\item The paths $\P$ and $\restC \P$ both are more then 1 edge \footnote{i.e. both have an interior vertex}
+\label{e:longBorders}
+
 \item Each edge in the interior to $\C_\P$ connects a vertex of $\P\setminus{\braces{w_1,w_k}}$ and $\restC \W \setminus{\braces{w_1,w_k}}$. In particular $\C_\P$ is a non-separating cycle.
-\label{e:crossingedge}
+\label{e:crossingEdges}
+
 \item The cycle $\C'$ obtained by replacing $\restC \P$ by $\P$ in $\C$ has no chord that doesn't involve $\pS$.
-\label{e:noChordinC'}
+\label{e:noNewChord}
+
 \end{enumerate}
 \end{defi}
 
 \begin{remark}
-``Shrinking'' the cycle with an eligible path will keep all the invariants true.
+``Shrinking'' the cycle with an valid path will keep all the invariants true.
 \end{remark}
+\fxnote{proof this}
 
 We will show the following proposition.
 
@@ -97,27 +104,27 @@ When the algorithm's invariant (\ref{i:1} - \ref{i:last}) are satisfied and the 
 \begin{proof}
 We will first show that there always exists an internal path $\P$. We will then show that a internal path can be found that satisfies conditions $(E1) - (E4)$.
 
-In the proof we will often use that a 
+In the proof we will often use that a
 
 Let us first note that if the cycle $C$ is separating (i.e has a non-empty interior), there is at least one interior vertex $v$. Since the triangulation of a $n$-gon is $2$-connected there are two ways to go from $v$ to (say) $S_r$. Hence there is an internal path $\P_0$.
 %TODO this is not true, luckily we can use the connections to cyle lemma
 
-If this path does not satisfy \ref{e:notSr} we can use the following construction. The other vertex where $P_0$ intersects $\C$ is not $S_r$. Let us call this vertex $x$ and it's neighbour on the path $y$. The vertex $x$ might be $N_b$ or $S_b$ but can't be both, hence it has at least one neighbour $z$ on the cycle that is not $S_r$. Because the triangulation of a $n$-gon is internally maximally planar we have that $yz$ is an edge. Now $xyz$ is an internal path satisfying \ref{e:notSr}. See also figure \ref{fig:E1}, here we made a choice on which side of $y$ the vertex $z$ lies, but this choice can be made without losing generality.
+If this path does not satisfy \ref{e:noS} we can use the following construction. The other vertex where $P_0$ intersects $\C$ is not $S_r$. Let us call this vertex $x$ and it's neighbour on the path $y$. The vertex $x$ might be $N_b$ or $S_b$ but can't be both, hence it has at least one neighbour $z$ on the cycle that is not $S_r$. Because the triangulation of a $n$-gon is internally maximally planar we have that $yz$ is an edge. Now $xyz$ is an internal path satisfying \ref{e:noS}. See also figure \ref{fig:E1}, here we made a choice on which side of $y$ the vertex $z$ lies, but this choice can be made without losing generality.
 
-Hence we have now constructed, or already had, a path that satisfies \ref{e:notSr}. Let us for the remainder of the proof denote this path by $\P_1$.
+Hence we have now constructed, or already had, a path that satisfies \ref{e:noS}. Let us for the remainder of the proof denote this path by $\P_1$.
 
 
 \begin{figure}[ht]
 \centering
 \includegraphics[]{algo/img/E1}
-\caption{Constructing a path satisfying \ref{e:notSr} \label{fig:E1}}
+\caption{Constructing a path satisfying \ref{e:noS} \label{fig:E1}}
 \end{figure}
 
 \paragraph{There is a path that also satsifies (E2)}
-If $\P_1$ satisfies (E2) we set $\P_2 = \P_1$ otherwise we will create a path that satisfies (E1) and (E2). 
-If the path $\P_1$ does not satisfy $(E2)$ \footnote{which will be the case if the above construction has been used} then there are two possibilities  a) $\P_1$ does not have interior vertices and/or b) $[v,v']$ does not have interior vertices. If a) would be true the existence of $P_0$ would contradict Invariant \ref{i:2}. Hence the only problem can be that $b)$ occurs. 
+If $\P_1$ satisfies (E2) we set $\P_2 = \P_1$ otherwise we will create a path that satisfies (E1) and (E2).
+If the path $\P_1$ does not satisfy $(E2)$ \footnote{which will be the case if the above construction has been used} then there are two possibilities  a) $\P_1$ does not have interior vertices and/or b) $[v,v']$ does not have interior vertices. If a) would be true the existence of $P_0$ would contradict Invariant \ref{i:noChords}. Hence the only problem can be that $b)$ occurs.
 
-If $v=N_b$ and $v'=S_b$ we have found a separating triangle given by $S_rN_bS_b$ \footnote{this is the cycle $\C$ which is separating} in original graph. Hence at least one of $v$ or $v'$ is not $N_b$ or $S_b$. If we call this vertex $x$ its neighbour on the path $y$ and it's neighbour outside $[v,v']$ $z$. We see that by the interior of $\C$ being maximally planar $yz$ must be an edge. If we now adapt $P_1$ by replacing $yx$ by $yz$ we have made $[v,v']$ one vertex longer and hence created a path satisfying \ref{e:length2borders}. In figure \ref{fig:E2} we show this procedure in two cases. Executing this procedure does not change that $S_r$ is not one of the endpoints of the path. Hence we have now created a path $\P_2$ that satisfies \ref{e:notSr} and \ref{e:length2borders}.
+If $v=N_b$ and $v'=S_b$ we have found a separating triangle given by $S_rN_bS_b$ \footnote{this is the cycle $\C$ which is separating} in original graph. Hence at least one of $v$ or $v'$ is not $N_b$ or $S_b$. If we call this vertex $x$ its neighbour on the path $y$ and it's neighbour outside $[v,v']$ $z$. We see that by the interior of $\C$ being maximally planar $yz$ must be an edge. If we now adapt $P_1$ by replacing $yx$ by $yz$ we have made $[v,v']$ one vertex longer and hence created a path satisfying \ref{e:longBorders}. In figure \ref{fig:E2} we show this procedure in two cases. Executing this procedure does not change that $S_r$ is not one of the endpoints of the path. Hence we have now created a path $\P_2$ that satisfies \ref{e:noS} and \ref{e:longBorders}.
 
 \begin{figure}
     \centering
@@ -125,42 +132,42 @@ If $v=N_b$ and $v'=S_b$ we have found a separating triangle given by $S_rN_bS_b$
         \includegraphics[width=\textwidth]{algo/img/E2general}
         \caption{The general case. Note that $x=v'$.}
     \end{subfigure}
-    ~ 
+    ~
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{algo/img/E2spec}
         \caption{A specific case. Note now that $N_b=v, v'=x$ and $S_b=z$}
     \end{subfigure}
 
-    \caption{Creating a path satisfying \ref{e:length2borders}. The dotted line is the edge we take in the new path $\P_2$}\label{fig:E2}
+    \caption{Creating a path satisfying \ref{e:longBorders}. The dotted line is the edge we take in the new path $\P_2$}\label{fig:E2}
 \end{figure}
 
 \newcommand{\intvv}{\ensuremath{[v,v']\setminus{v,v'}}}
 \newcommand{\intP}{\ensuremath{\P\setminus{v,v'}}}
 
 \paragraph{There is a path that also satisfies (E3)}
-If $\P_2$ satisfies $(E3)$, we take $\P_3 = \P_2$. Otherwise we will remedy the defect. We separate five different cases of offending edges. All of the five cases will be easy to remedy giving a path $\P'_2$ still satisfying \ref{e:notSr} and \ref{e:length2borders} such that $\C_{\P'_2}$ is strictly contained in $\C_{\P_2}$ %Q what is the right version of smaller here?
+If $\P_2$ satisfies $(E3)$, we take $\P_3 = \P_2$. Otherwise we will remedy the defect. We separate five different cases of offending edges. All of the five cases will be easy to remedy giving a path $\P'_2$ still satisfying \ref{e:noS} and \ref{e:longBorders} such that $\C_{\P'_2}$ is strictly contained in $\C_{\P_2}$ %Q what is the right version of smaller here?
 \begin{enumerate}
  \renewcommand*{\labelenumi}{\alph{enumi})}%
  \renewcommand*{\theenumi}{\alph{enumi})}%
  \item edges from \intvv to $\intvv$
  \item edges from $\intP$ to $\intP$
  \item edges incident to $v$ or $v$ and some other vertex on $\C_{\P_2}$
- \item edges from $[v,v']$ to some internal vertex 
+ \item edges from $[v,v']$ to some internal vertex
  \item edges from $\intP$ to some internal vertex
 \end{enumerate}
 
-The existence of an edge as in a) is forbidden by Invariant \ref{i:2}. If b) occurs we can simply shortcut our original path $\P_2$ with this edge. If c) occurs this edge can't go to another vertex in $[v,v']$ since that would offend Invariant \ref{i:2}. Hence they go to a vertex in $\P_2$ and we can shortcut the path as in b).
+The existence of an edge as in a) is forbidden by Invariant \ref{i:noChords}. If b) occurs we can simply shortcut our original path $\P_2$ with this edge. If c) occurs this edge can't go to another vertex in $[v,v']$ since that would offend Invariant \ref{i:noChords}. Hence they go to a vertex in $\P_2$ and we can shortcut the path as in b).
 
 If d) occurs we simply make a new path and if e) occurs we take a slightly adapted interior path. See figures
 
 %TODO pictures
 
-Since all of the moves shrink $\C_{\P_2}$ while keeping \ref{e:notSr} and \ref{e:length2borders} intact and we can't infinitely shrink this means at a certain point no more moves are available. Since every offending edges allows a move this means that there are no more offending edges. Hence this version of $\P'_2$ satisfies \ref{e:crossingedge}. For the final step of the proof we take $\P_3 = \P'_2$.
+Since all of the moves shrink $\C_{\P_2}$ while keeping \ref{e:noS} and \ref{e:longBorders} intact and we can't infinitely shrink this means at a certain point no more moves are available. Since every offending edges allows a move this means that there are no more offending edges. Hence this version of $\P'_2$ satisfies \ref{e:crossingEdges}. For the final step of the proof we take $\P_3 = \P'_2$.
 
 %TODO formulate repetition argument nicly
 
-\paragraph{There is a path that also satisfies \ref{e:noChordinC'}}
-Suppose that $\P_3$ does not satisfy \ref{e:noChordinC'}. Then we can just take the would be interior edge and take this for a nwe path. This is again a finite procedure reducing the sum of $|\P_3| -|[v,v']|$. In the end we have a path satisfying \ref{e:notSr} - \ref{e:noChordinC'}.
+\paragraph{There is a path that also satisfies \ref{e:noNewChord}}
+Suppose that $\P_3$ does not satisfy \ref{e:noNewChord}. Then we can just take the would be interior edge and take this for a nwe path. This is again a finite procedure reducing the sum of $|\P_3| -|[v,v']|$. In the end we have a path satisfying \ref{e:noS} - \ref{e:noNewChord}.
 
 %TODO picturse, why dont we lose E1-E3
 
@@ -169,13 +176,13 @@ Suppose that $\P_3$ does not satisfy \ref{e:noChordinC'}. Then we can just take 
 
 \subsection{Minimum distributive lattice element}
 \label{ss:minimal}
-We get this when we take the    ``leftmost'' eligible path. 
+We get this when we take the    ``leftmost'' eligible path.
 \fxnote{write section, potentially just refer to Fusy2006}
 
 \renewcommand{\F}{\scr F}
 \subsection{Horizontal one-sides}
 \label{ss:blue}
-\note we should define the border of a face of a bipolar orientation somewhere. 
+\note we should define the border of a face of a bipolar orientation somewhere.
 \note and what we mean with \emph{cycle border} and \emph{face border}
 \note as well as the notation of $\F_\P$ the face of a path
 
@@ -185,7 +192,7 @@ Since the horizontal segments correspond to face in the blue bipolar orientation
 
 \begin{thrm}
 \label{th:blueelig}
-In the update of the algorithm there is always an eligible path $\P$ available such that either $\P$ or $[v,v']$ is of length $2$. 
+In the update of the algorithm there is always an eligible path $\P$ available such that either $\P$ or $[v,v']$ is of length $2$.
 \end{thrm}
 
 In order to proof this theorhem we will first show the following lemma.
@@ -196,13 +203,13 @@ If $\P$ is an eligble path giving raise to a face $\F_P$ of which both border ha
 \end{lemma}
 
 \begin{proof}
-In this proof we will frequently use property \ref{e:crossingedge} of a Eligible path, we won't mention it every time we use it.
+In this proof we will frequently use property \ref{e:crossingEdges} of a Eligible path, we won't mention it every time we use it.
 
 We denote the source by $s$ and the sink by $t$. We also assign names$a, b$ and $x, y$ to the first two vertices on both borders, see Figure \ref{bluefig:notation}. Since every interior face of $G$ is a triangle $ax$ is an edge. Now we distinguis two cases, either $ay$ is an edge (case 1) or $bx$ is an edge (case 2). Tey can't both be an edge at the same time due to planarity, neither can it happen that both of them are not an edge since then the face containing the path $baxy$ is at least of degree $4$.
 
 In the first case $a$ may be connected to more vertices on the pathborder, however there is a last one, say $z$. And this vertex is then also connected to $b$, otherwise it would not be the last one. Now we can provide an shorther eligible path $\P'$ we start at $a$ go to $z$ and from there we follow the old path $\P$ to $t$.  See figure \ref{bluefig:case1}. It is easy to see that all four properties of an eligible path hold for $\P'$.
 \begin{comment}
-By construction $\P'$ satifies \ref{e:notSr} and \ref{e:internalVertices}. While the interior of $\C_{\P'}$ is a subset of that $\C_\P$%TODO this is again an eligible path
+By construction $\P'$ satifies \ref{e:noS} and \ref{e:internalVertices}. While the interior of $\C_{\P'}$ is a subset of that $\C_\P$%TODO this is again an eligible path
 \end{comment}
 
 In the second case $x$ may be connected to more vertices along the cycle border, however there is a last one, say $c$. And this vertex is then also connected to $y$, otherwise it would not be the last one. Now we can provide an shorther eligible path $\P' = sxz$.   See figure \ref{bluefig:case2}. It is straightforward to see that all four properties of an eligible path hold for $\P'$. %TODO this is again an eligible path
@@ -215,7 +222,7 @@ In the second case $x$ may be connected to more vertices along the cycle border,
         \caption{The setting}
         \label{bluefig:notation}
     \end{subfigure}
-    
+
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{algo/img/blue/case1}
         \caption{Case 1}
@@ -232,7 +239,7 @@ In the second case $x$ may be connected to more vertices along the cycle border,
 \end{figure}
 
 \begin{proof}[Proof of Theorem \ref{th:blueelig}]
-By Theorem \ref{th:eligExistence} we know there is a eligible path $\P$. If one of the borders of $\F_\P$ is of length $2$ or less we are done. If this path gives raise to a face $\F_\P$ with both borders are both of length at least $3$ we can repeatedly apply Lemma \ref{lem:bluealgo} until at least one of the borders is of length at most $2$. 
+By Theorem \ref{th:eligExistence} we know there is a eligible path $\P$. If one of the borders of $\F_\P$ is of length $2$ or less we are done. If this path gives raise to a face $\F_\P$ with both borders are both of length at least $3$ we can repeatedly apply Lemma \ref{lem:bluealgo} until at least one of the borders is of length at most $2$.
 \end{proof}
 
 If we in every update of the algorithm take the paths from Theorem  \ref{th:blueelig} we end up with the correct faces in the blue bipolar orientation and hence a horizontally one sided rectangular dual.
@@ -240,11 +247,11 @@ If we in every update of the algorithm take the paths from Theorem  \ref{th:blue
 \subsection{Vertical one-sided}
 \label{ss:red}
 
-We can also adapt Fusy's algorithm to generate a vertically one-sided dual. We do this by picking the eligible path with the leftmost starting point and letting it run for as long as possible. In the final oriented regular edge labelling we want to prevent red faces that have $3$ or more edges on both borders. 
+We can also adapt Fusy's algorithm to generate a vertically one-sided dual. We do this by picking the eligible path with the leftmost starting point and letting it run for as long as possible. In the final oriented regular edge labelling we want to prevent red faces that have $3$ or more edges on both borders.
 
-If a red face has 
+If a red face has
 \begin{lemma}
-A face $F$ with at least $3$ edges on each side contains a $Z$ 
+A face $F$ with at least $3$ edges on each side contains a $Z$
 \end{lemma}
 
-But a $z$ can only be the result of a seqeuncce of eligble paths that does not satisfy the requirements. 
+But a $z$ can only be the result of a seqeuncce of eligble paths that does not satisfy the requirements.
