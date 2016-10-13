@@ -27,7 +27,9 @@ Chords to the left/right of a path
 \begin{lemma}
 If a boundray path is without chords adding a pole to it will not create a separating triangle (cf. Yeap)
 \end{lemma}
-\fxnote{to prove}
+
+
+
 
 \subsection{Outline}
 To describe the algorithm two  more definitions are necessary
@@ -42,7 +44,7 @@ A prefence $\W$ is a interior walk of $\C$ starting at $\pW$ and ending at $\pE$
   \item all the neighbours of $w_i \in \W \sm{\pW, \pE}$ that are between $w_{i-1}$ and $w_{i+1}$ in clockwise order (if any) are in $\C \sm {\pW, \pS, \pE}$
   \label{p:W}
   \item $w_1$ and $v_1$ are next to each other in the clockwise order around $\pW$
-  \label{p:pW}  
+  \label{p:pW}
   \item $w_k$ and $v_n$ are next to each other in the clockwise order around  $\pE$
   \label{p:pE}
 \end{enumerate}
@@ -120,7 +122,8 @@ Hence $\W$ is a walk. The above also shows that $\pW w_1 v_1$ and $\pE v_n w_m$ 
 
 Moreover this walk satisfies  \ref{p:C} because $\W$ by construction contains all neighbors of any vertex $v_i \in \C \sm{\pW, \pS, \pE}$ between $v_{i-1}$ and $v_{i+1}$ in clockwise order.
 
-Finally to see that $\W$ also satisfies \ref{p:W}. Consider a vertex $w_j \in \W \sm{\pW, \pE}$ then either it is $(a)$ the neighbor of some vertex $v_i$ and only of this vertex or it is $(b)$ the unique vertex neighboring of $\ell +1$ number vertices $v_i, \ldots, v_{i+\ell}$ in the interior of the cycle. This is essentially the same case distinction as above. However now $(a)$ $w_{i-1} w_i v_i$ and $v_i w_i w_{i+1}$ or $(b)$ $w_{i-1} w_i v_i$, $v_i w_i v_{i+1}, \ldots, v_{i+\ell -1} w_i v_{i+\ell} $ and $v_{i+\ell} w_i w_{i+1}$ form a sett of triangles spanning the area between $w_{i-1}$ and $w_{i+1}$ in clockwise order. Thus any edge not going to $\C \sm {\pW, \pS, \pE}$ in this sector will lead to a separating triangle. We however have assumed $G$ has no separating triangles. Hence \ref{p:pW} holds.\footnote{I believe this is still true when separating triangles are allowed to occur. However the prove will have to be different.}
+Finally to see that $\W$ also satisfies \ref{p:W}. Consider a vertex $w_j \in \W \sm{\pW, \pE}$ then either it is $(a)$ the neighbor of some vertex $v_i$ and only of this vertex or it is $(b)$ the unique vertex neighboring of $\ell +1$ number vertices $v_i, \ldots, v_{i+\ell}$ in the interior of the cycle. This is essentially the same case distinction as above. However now $(a)$ $w_{i-1} w_i v_i$ and $v_i w_i w_{i+1}$ or $(b)$ $w_{i-1} w_i v_i$, $v_i w_i v_{i+1}, \ldots, v_{i+\ell -1} w_i v_{i+\ell} $
+ and $v_{i+\ell} w_i w_{i+1}$ form a set of triangles spanning the area between $w_{i-1}$ and $w_{i+1}$ in clockwise order. Thus any edge not going to $\C \sm {\pW, \pS, \pE}$ in this sector will lead to a separating triangle. We however have assumed $G$ has no separating triangles. Hence \ref{p:pW} holds.\footnote{I believe this is still true when separating triangles are allowed to occur. However the prove will have to be different.}
 \end{proof}
 
 
@@ -296,7 +299,7 @@ Let $H_I$ and $H_J$ be two recursion subgraphs for different maximal irregularit
 
 
 \subsection{Correctness}
-As long as the interior of $\C$ is nonempty we can find 
+As long as the interior of $\C$ is nonempty we can find
 
 The algorithm finishes because it keeps on recursing and shrinking until no graph is left.
 
