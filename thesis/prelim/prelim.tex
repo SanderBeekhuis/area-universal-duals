@@ -1,12 +1,25 @@
-\section{Types of triangulations and their properties}
-\subsection{Preliminaries}
-All graphs are presumed simple and have a fixed planar embedding. In this thesis paths and cycles are always simple while walks are not necessarily simple.
+%!TEX root = ../thesis.tex
 
-The \emph{degree} of a face is the number of vertices it is incident to. By a \emph{cycle} we will mean a simple cycle. That is a cycle without repetition of edges or vertices. By Jordan's curve theorem a cycle splits the plane into two parts, one bounded and one unbounded. %TODO cite 
+\section{Preliminaries}
+All graphs in this thesis are simple. Paths and cycles are always simple while walks are not necessarily simple. A path is a simple walk and a cylce is a closed path.
+
+We will let $\braces {i, \ldots, j}$ denote all the integers $x$ such that $i \leq x \leq j$.
+
+The \emph{degree} of a face is the number of vertices it is incident to.
+
+By Jordan's curve theorem a cycle splits the plane into two parts, one bounded and one unbounded. \fxwarning{cite Jordan}
 We will call the bounded part the \emph{interior} of this cycle and the unbounded part the \emph{exterior} of this cycle.
+We will call a cycle \emph{separating} if there are vertices in both it's interior and exterior. We will use \emph{$k$-cycle} to denote a cycle of length $k$. Moreover a \emph{triangle} is simply a cycle of length $3$ (i.e. a $3$-cycle).
 
-We will call a cycle \emph{separating} if there are vertices in both it's interior and exterior. We will use \emph{$k$-cycle} to denote a cycle of length $k$. Moreover a \emph{triangle} is simply a cycle of length $3$ (i.e. a $3$-cycle). 
+We will sometimes give vertices of a path $\P$ explicitly using $p_1 \ldots p_k$. A chord of a walk is an edge that connects two vertices in a walk that is not part of the walk.
 
+Once we fix a planar embedding of a graph we can talk about the \emph{rotation} at a vertex $v$. The rotation at a vertex is clockwise order of the edges incident to $v$. We will indentify these edges with their other endpoints. Two vertices $x, y$ are said to be \emph{consecutive} in the rotation at $v$ when the edges $vx$ and $vy$ are consecutive. In most of this thesis we implicitly fix an embedding since triangulation/3-connected \fxerror{figure this out} graphs only have one planar embedding.
+
+Given a path $\P$ with vertices $p_1 \ldots p_k$ we will say that a vertex $v \nin \P$ adjecent to $p_i, i \in \braces{2, \ldots, k-1}$ lies on the left of $\P$ if it lies between $\p_{i-1}$ and $p{i+1}$ in the rotation at $p_{i}$. Otherwise $v$ lies between $p_{i+1}$ and $p_{i-1}$ in the rotaion at $p_i$. In this case we say that $v$ lies to the \emph{right} of $\P$.
+We will use the same terminoligy \fxnote{bergirppen} for edges.
+
+
+\fxwarning{Provide a picture illustrating these concepts}
 
 \subsection{Plane triangulations}
 
@@ -26,7 +39,7 @@ Any graph $G$ is a plane triangulation \ifftext it is maximal planar
 \begin{proof}
 We will prove the equivalence of the negations.
 
-Suppose that $G$ is not maximally planar. Then there is a face $F$ to which we can add an edge, however this face must then have degree larger then $4$. Hence $G$ is also not a plane triangulation. 
+Suppose that $G$ is not maximally planar. Then there is a face $F$ to which we can add an edge, however this face must then have degree larger then $4$. Hence $G$ is also not a plane triangulation.
 
 Suppose that $G$ is not a plane triangulation. Then there must be a face $F$ of degree larger then $3$. This face will thus admit an extra edge without violating planarity and hence $G$ is not maximally planar.
 \end{proof}
@@ -56,7 +69,7 @@ Any irreducible plane triangulation $T$ is $4$-connected.
 \begin{proof}
 Note that any plane triangulation is $3$-connected by Theorhem \ref{th:plTri3Connected}.
 
-Suppose that $T$ is not $4$-connected. Then there must be some $3$-cutset (since it is $3$-connected) let us denote the vertices of this cutset by $x, y$ and $z$. Removing this cutset splits the graph into at least two connected components $C_i$ and all components are incident to all cutvertices otherwise we would have found a $2$- or $1$-cutset.  
+Suppose that $T$ is not $4$-connected. Then there must be some $3$-cutset (since it is $3$-connected) let us denote the vertices of this cutset by $x, y$ and $z$. Removing this cutset splits the graph into at least two connected components $C_i$ and all components are incident to all cutvertices otherwise we would have found a $2$- or $1$-cutset.
 
 However, now $xy$ must be an edge in the triangulation $T$ otherwise the graph is not maximal planar (There can't be an edge incident to both $C_1$ and $C_2$ because that would negate $x, y ,z$ being a cutset.). In the same way $yz$ and $xz$ are edges of $T$. But then $xyz$ is a separating triangle. This is an contradiction and thus $T$ is $4$-connected
 \end{proof}
@@ -85,15 +98,15 @@ The interior of a triangulation of the $n$-gon is maximally planar. That is to s
 \end{thrm}
 
 \begin{proof}
-Suppose the 
+Suppose the
 %TODO (not max plan. => face of degree 4
 \end{proof}
 \end{comment}
 
-The \emph{completion} of a triangulation of the $k$-gon $G = (V, E)$. Is the graph $G'= (V', E')$ with vertex set $V' = V \cup \braces{s}$ and edge set $E' = E \cup \braces{ sv | v \text{ is a outer vertex}}$ 
+The \emph{completion} of a triangulation of the $k$-gon $G = (V, E)$. Is the graph $G'= (V', E')$ with vertex set $V' = V \cup \braces{s}$ and edge set $E' = E \cup \braces{ sv | v \text{ is a outer vertex}}$
 
-The completion is plane triangulation.  %Q does this stament need proof? 
-Since the interior of the outer cycle of $G$ always consisted of faces of degree 3. The exterior of the outer cycle consisted of one face of degree $k$ (the outer face) but the completion has turned this into $k$ faces of degree $3$.  
+The completion is plane triangulation.  %Q does this stament need proof?
+Since the interior of the outer cycle of $G$ always consisted of faces of degree 3. The exterior of the outer cycle consisted of one face of degree $k$ (the outer face) but the completion has turned this into $k$ faces of degree $3$.
 
 \begin{thrm}
 A triangulation of the $k$-gon $G$ is $2$-connected.
@@ -111,16 +124,16 @@ A irreducible and chordless triangulation of the $k$-gon is $3$-connected.
 \end{proof}
 
 \begin{thrm}
-Any irreducible triangulation $T$ of the $4$-gon with $n \geq 5$ is $3$-connected. 
+Any irreducible triangulation $T$ of the $4$-gon with $n \geq 5$ is $3$-connected.
 \end{thrm}
 
 \note This proof could be a corrolary of the above theorhem \ref{th:irreducible and chordless triangulation of the kgon is 3connected}. A chord gives a separating triangle if $n\geq 5$.
-\begin{proof} 
+\begin{proof}
 Let us name the four outer vertices $a,b,c,d$ in clockwise order. Let us first note that the diagonals $ac$ and $bd$ can't be an edge since this would create a separating triangle containing the $5$th vertex. Let $I$ denote the component of all interior vertices, since every face in the interior is of degree $3$ each outer vertices is incident to at least one edge that is also incident to $I$. %TODO figure
 
 One can now easily check that there is no $2$cut set with only exterior vertices. However, a cutset with $1$ or $2$ interior vertices leads to at least one cycle of degree greater then $3$ %TODO expand/ figure.
 
-Hence no $2$-cutset of $T$ can't exist and $T$ is $3$-connected. 
+Hence no $2$-cutset of $T$ can't exist and $T$ is $3$-connected.
 \end{proof}
 
 \begin{thrm}
@@ -132,7 +145,7 @@ By Theorhem \ref{th:plTri3Connected} the completion $G'$ of $G$ is $3$-connected
 
 \note We can sharpen this to $4$ if we have a irreducible an chordless triangulation of the $k$-gon
 
-\begin{thrm} 
+\begin{thrm}
 Every interior vertex of a triangulation of the $n$-gon has degree at least $3$.
 \end{thrm}
 \begin{proof}
@@ -160,7 +173,7 @@ Suppose a interior vertex $v$ has degree $1$ then clearly the face surrounding $
 
 In this section we will explain what we mean with the rectangualr dual of a graph. We will prove some simple properties of graphs and their duals.
 
-We define a \emph{rectangular layout} (or simply \emph{layout}) $\L$ to be a partition of a rectangle into finitely many interiorly disjoint rectangles. 
+We define a \emph{rectangular layout} (or simply \emph{layout}) $\L$ to be a partition of a rectangle into finitely many interiorly disjoint rectangles.
 
 We will assume that no four rectangles meet in one point.
 
@@ -175,7 +188,7 @@ A plane triangulated graph $\G$ does not necessarily have a rectangular dual nor
 %TODO weave a corner assignment in here somewhere
 
 \subsection{Extended graphs}
-A \emph{extended graph} $\ext G$ of $G$ is a augmentation of $G$ with $4$  vertices (which we will call it's \emph{poles}). Such that 
+A \emph{extended graph} $\ext G$ of $G$ is a augmentation of $G$ with $4$  vertices (which we will call it's \emph{poles}). Such that
 \begin{enumerate}
 \item every interior face has degree $3$ and the exterior face has degree $4$.
 \item all poles are incident to the outer face
@@ -215,9 +228,9 @@ An \emph{interior edge} of a cycle is an edge on the interior of the cycle (when
 \subsubsection{Being psudeo-onesided in terms of REL}
 
 \section{Fixing a extension}
-In our explorations to find a lower bound on what kind of \emph{psuedo one-sidedness} is possible we will find it very useful to fix one particular extension $\ext G$ of $G$. Unfortunately if there is no rectangular dual that’s $(k,l)$-sided using the \emph{corner assignment} provided by some extension $\ext G$. This does not imply that $G$ is not $(k,l)$-sided. There might be another extension of $G$ such that under the corner assignment corresponding to this extension $G$ has a $(k,l)$-sided rectangular dual. 
+In our explorations to find a lower bound on what kind of \emph{psuedo one-sidedness} is possible we will find it very useful to fix one particular extension $\ext G$ of $G$. Unfortunately if there is no rectangular dual that’s $(k,l)$-sided using the \emph{corner assignment} provided by some extension $\ext G$. This does not imply that $G$ is not $(k,l)$-sided. There might be another extension of $G$ such that under the corner assignment corresponding to this extension $G$ has a $(k,l)$-sided rectangular dual.
 
-Fortunately for us however we can view $\ext G = H$ as a graph in it's own right, then $G$ is the interior of a separating $4$-cycle of $H$ and we will show this implies that $G$ (as induced sugraph) has to be coloured according to the extension $\ext G$. 
+Fortunately for us however we can view $\ext G = H$ as a graph in it's own right, then $G$ is the interior of a separating $4$-cycle of $H$ and we will show this implies that $G$ (as induced sugraph) has to be coloured according to the extension $\ext G$.
 
 \begin{remark}
 \label{re:interiorRectangle}
@@ -237,9 +250,9 @@ Let $\C = \braces{a, b, c, d}$ be a separating $4$-cyle of $\ext G$ with interio
 \begin{proof}
 %from page 4
 %We could also try a reduction along the lines of min. seperation componenets Epstein et. al
-By Remark \ref{re:interiorRectangle} the union of the rectangles in the interior of $\C$ will be some rectangle in any rectangular dual. We will denote this rectangle by $I$. Since two disjoint rectangles can only be adjacent to each other at one side all interior edges incident to any vertex of $\C$ are of the same color. 
+By Remark \ref{re:interiorRectangle} the union of the rectangles in the interior of $\C$ will be some rectangle in any rectangular dual. We will denote this rectangle by $I$. Since two disjoint rectangles can only be adjacent to each other at one side all interior edges incident to any vertex of $\C$ are of the same color.
 
-Furthermore $a, b, c, d$ are all adjacent to a different side of $I$ since $I$ has four sides that need to be covered and it is only adjacent to four rectangles. If we then apply the rules of a regular edge labelling we see that if the interior edges of $a$ are one color, those incident to $b$ and $d$ should have the second color. Then of course the interior edges incident to $c$ are again coloured with the first color. 
+Furthermore $a, b, c, d$ are all adjacent to a different side of $I$ since $I$ has four sides that need to be covered and it is only adjacent to four rectangles. If we then apply the rules of a regular edge labelling we see that if the interior edges of $a$ are one color, those incident to $b$ and $d$ should have the second color. Then of course the interior edges incident to $c$ are again coloured with the first color.
 
 \end{proof}
 
@@ -247,7 +260,7 @@ This lemma implies that any \emph{alternating 4-cycle} %TODO define
 is either \emph{left-alternating} or \emph{right-alternating} %TODO define
 in the terminology of \Fusy
 
-Furthermore the above Lemma is also very useful in that it allows us to fix a extension $\ext G$ of $G$ by building a \emph{scaffold}. Suppose we want to investigate some extension $\ext G$ of $G$ with poles $N$, $E$, $S$ and $W$ then we can consider the graph $\ext G = H$ as a graph in it's own right. $H$ is a proper graph since it has no irreducible triangles in it's interior (because $\ext G$ had none) and it admits a valid extension $\ext H$ by connecting the new poles $NE, SE, SW$ and $NW$ to $N, E, SE, NW$, $S, E, NE, SW$, $S, W, SE, NW$ and $N, W, NE, SW$ respectively. See Figure \ref{fig:scafold} for this extension.  
+Furthermore the above Lemma is also very useful in that it allows us to fix a extension $\ext G$ of $G$ by building a \emph{scaffold}. Suppose we want to investigate some extension $\ext G$ of $G$ with poles $N$, $E$, $S$ and $W$ then we can consider the graph $\ext G = H$ as a graph in it's own right. $H$ is a proper graph since it has no irreducible triangles in it's interior (because $\ext G$ had none) and it admits a valid extension $\ext H$ by connecting the new poles $NE, SE, SW$ and $NW$ to $N, E, SE, NW$, $S, E, NE, SW$, $S, W, SE, NW$ and $N, W, NE, SW$ respectively. See Figure \ref{fig:scafold} for this extension.
 \fxnote{Maybe use a table}
 
 \begin{thrm}
@@ -259,7 +272,7 @@ We can fix an extension, if we want.
 \centering
 \includegraphics[scale=0.5]{prelim/img/scafold}
 
-\caption{The construction of a scaffold. $G$ is displayed in thick lines and with closed vertices. An arbitrary extension $\ext G =H$ is then drawn with thin lines and open vertices. An extension of $H$ is then drawn with dashed edges and open vertices. 
+\caption{The construction of a scaffold. $G$ is displayed in thick lines and with closed vertices. An arbitrary extension $\ext G =H$ is then drawn with thin lines and open vertices. An extension of $H$ is then drawn with dashed edges and open vertices.
     \label{fig:scafold}}
 \end{figure}
 

@@ -1,3 +1,5 @@
+%!TEX root = thesis.tex
+
 \documentclass[a4paper]{article}
 
 \usepackage[utf8]{inputenc}
@@ -11,7 +13,10 @@
 \usepackage{subcaption}  %ALLOWS SUBFIGURES
 \usepackage[draft]{fixme}
 \fxsetup{theme = color}
-
+\definecolor{fxnote}{rgb}{0.0000, 0.6000,0.0000}
+\definecolor{fxwarning}{rgb}{1.0000,0.5490,0.0000}
+\definecolor{fxerror}{rgb}{1.0000,0.2706,0.0000}
+\definecolor{fxfatal}{rgb}{1.0000,0.0000,0.0000}
 \usepackage[backend=biber, giveninits =true, isbn=false, url=false, maxbibnames=100]{biblatex}
 \usepackage{hyperref}
 
@@ -46,8 +51,8 @@
 
 %basic probability
 \DeclareMathOperator*{\E}{\mathbb{E}}
-\DeclareMathOperator{\Var}{Var} 
-\DeclareMathOperator{\Covar}{Covar} 
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Covar}{Covar}
 \DeclareMathOperator{\pr}{\mathbb{P}}
 
 %Distribution
@@ -72,7 +77,7 @@
 \newcommand{\third}{\frac{1}{3}}
 \newcommand{\goes}{\rightarrow 	}
 \newcommand{\ifftext}{if and only if }
-\newcommand{\note}{\textbf{Writers note: }} 
+\newcommand{\note}{\textbf{Writers note: }}
 \newcommand{\ext}[1]{\bar{#1}}
 
 \newcommand{\W}{\scr W}
@@ -102,7 +107,6 @@
 
 
 %bib stuff
-\addbibresource{../thesis.bib}
 \bibstyle{plain}
 
 %Author names

@@ -1,3 +1,5 @@
+%!TEX root = ../thesis.tex
+
 %invariant enviroment
 \newenvironment{invariants}{%
   \refstepcounter{thrm}%
@@ -243,15 +245,3 @@ By Theorem \ref{th:eligExistence} we know there is a eligible path $\P$. If one 
 \end{proof}
 
 If we in every update of the algorithm take the paths from Theorem  \ref{th:blueelig} we end up with the correct faces in the blue bipolar orientation and hence a horizontally one sided rectangular dual.
-
-\subsection{Vertical one-sided}
-\label{ss:red}
-
-We can also adapt Fusy's algorithm to generate a vertically one-sided dual. We do this by picking the eligible path with the leftmost starting point and letting it run for as long as possible. In the final oriented regular edge labelling we want to prevent red faces that have $3$ or more edges on both borders.
-
-If a red face has
-\begin{lemma}
-A face $F$ with at least $3$ edges on each side contains a $Z$
-\end{lemma}
-
-But a $z$ can only be the result of a seqeuncce of eligble paths that does not satisfy the requirements.
