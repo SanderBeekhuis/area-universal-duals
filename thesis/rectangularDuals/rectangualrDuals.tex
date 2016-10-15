@@ -1,0 +1,70 @@
+%!TEX root = ../thesis.tex
+
+\section{Rectangular duals}
+\newcommand{\G}{\scr G}
+\renewcommand{\L}{\scr L}
+
+In this section we will introduce the rectangular dual of a graph. We will prove some simple properties of graphs and their (rectangualar) duals.
+
+We define a \emph{rectangular layout} (or simply \emph{layout}) $\L$ to be a partition of a rectangle into finitely many interiorly disjoint rectangles.
+
+We will for simplicity of analysis assume that no four rectangles meet in one point. \fxwarning{Probably refer to \cite{Kozminski1984}}
+
+We will then define the \emph{dual graph of a layout} $\L$ and denote this graph by $\G(\L)$. That is, we represent each rectangle by a vertex and we connect two vertices by an edge exactly when their rectangles are adjacent. Note that this graph is not the same as the \emph{graph dual} of $\L$ when we view it as a graph (namely we don't represent the outer face of $\L$ by a vertex).
+
+So $\G(\L)$ is the dual graph of a layout $\L$. In the reverse direction we say a layout $\L$ is a \emph{rectangular dual} of a graph $\G$ if we have that $\G = \G (\L)$.
+
+A plane triangulated graph $\G$ does not necessarily have a rectangular dual nor is this dual necessarily unique.
+\fxnote{in what sense not unique, provide examples}
+
+
+\subsection{Extended graphs}
+A \emph{extended graph} $\ext G$ of $G$ is a augmentation of $G$ with $4$  vertices (which we will call it's \emph{poles}). Such that
+\begin{enumerate}
+\item every interior face has degree $3$ and the exterior face has degree $4$.
+\item all poles are incident to the outer face
+\item $\ext\G$ has no separating triangles (i.e separating $3$-cycles).
+\end{enumerate}.
+
+We sometimes call an extended graph $\ext G$ of $G$ an \emph{extension} of $G$.
+
+Such a extended graph does not necessarily exist and is not necessarily unique.
+However we have the following result due to Kozminski and Kinnen
+
+\begin{thrm}[Existence of a rectangular dual]
+A plane triangulated graph $\G$ has a rectangular dual \ifftext it has an extension $\ext \G$
+\end{thrm}
+
+\begin{proof}
+  This proofed in \cite{Kozminski1984} \fxnote{Provide location, Kozminski \& kinnen and ungar, See siAM paper}
+\end{proof}
+
+We call any (plane triangulated) graph $G$ that has an extension a \emph{proper} graph.
+
+A proper graph $G$ can have more then one extensions. Each such extension fixes which of the rectangles are in the corners of the rectangular dual $\L$. Hence sometimes such an extension is called a \emph{corner assignment} by other authors.
+
+\subsection{Different kinds of rectangular duals}
+\fxerror{This subsection still has to be written}
+Here we talk about area-unviersal, onesided, vertical/horizontal onsided and psuedo-onsided/ (k,l) -s sided duals.
+We also state the result by \cite{Eppstein2012} that area-universal duals are the same as onesided duals.
+
+
+\subsection{Regular edge labeling}
+\fxerror{This subsection still has to be written}
+
+A regular edge labelling  of $\ext G$ corresponds to a rectangular dual $\L$ of some fixed extension \ext G.
+
+A regualar edge labeling has certain rules.
+
+We will refer to Kant and He \cite{Kant1997} and also note the naming by \cite{Fusy2006}
+
+
+\subsection{Oriented regular edge labeling}
+\fxerror{This subsection still has to be written}
+In this subsection we will introduce the unique orientation on a REL. We wills define red faces and blue faces (which we can also do in the unoriented version i guess) with two sides (which is difficult in unoriented settings) and define split and merge vertices as the first and last vertices of such face.
+
+We will also note it is equivalent to the oriented Fusy structure
+
+\subsubsection{Being onesided in terms of REL}
+
+\subsubsection{Being psudeo-onesided in terms of REL}
