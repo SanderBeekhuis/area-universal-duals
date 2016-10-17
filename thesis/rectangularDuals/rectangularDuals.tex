@@ -4,7 +4,7 @@
 \newcommand{\G}{\scr G}
 \renewcommand{\L}{\scr L}
 
-In this section we will introduce the rectangular dual of a graph. We will prove some simple properties of graphs and their (rectangualar) duals.
+In this section we will introduce the rectangular dual of a graph. We will prove some simple properties of graphs and their (rectangular) duals.
 
 We define a \emph{rectangular layout} (or simply \emph{layout}) $\L$ to be a partition of a rectangle into finitely many interiorly disjoint rectangles.
 
@@ -19,15 +19,17 @@ A plane triangulated graph $\G$ does not necessarily have a rectangular dual nor
 
 
 \subsection{Extended graphs}
-A \emph{extended graph} $\ext G$ of $G$ is a augmentation of $G$ with $4$  vertices (which we will call it's \emph{poles}). Such that
+When constructing the rectangular dual of a graph $G$. It will be useful to add four vertices to the graph. We will denote these vertices with $\pN, \pE, \pS, \pW$ in corresponding with the four cardinal directions.
+
+We will define define two types of these \emph{extensions}. First we define a \emph{regular extension} $\ext G$ which we can apply to any graph $G$. Then we will define a tight extension $\tightext G$ for which we will require two distinct vertices on the outer cycle of $G$.
+
+\paragraph{Regular extension}
+A \emph{extension} $\ext G$ of $G$ is a augmentation of $G$ with $4$ vertices (which we will call it's \emph{poles}). Such that
 \begin{enumerate}
 \item every interior face has degree $3$ and the exterior face has degree $4$.
 \item all poles are incident to the outer face
 \item $\ext\G$ has no separating triangles (i.e separating $3$-cycles).
-\end{enumerate}.
-
-We sometimes call an extended graph $\ext G$ of $G$ an \emph{extension} of $G$.
-
+\end{enumerate}.ext
 Such a extended graph does not necessarily exist and is not necessarily unique.
 However we have the following result due to Kozminski and Kinnen
 
@@ -36,25 +38,42 @@ A plane triangulated graph $\G$ has a rectangular dual \ifftext it has an extens
 \end{thrm}
 
 \begin{proof}
-  This proofed in \cite{Kozminski1984} \fxnote{Provide location, Kozminski \& kinnen and ungar, See siAM paper}
+  This proofed in \cite{Kozminski1984} \fxnote{Provide location, Kozminski \& Kinnen and ungar, See Siam paper}
 \end{proof}
 
 We call any (plane triangulated) graph $G$ that has an extension a \emph{proper} graph.
 
 A proper graph $G$ can have more then one extensions. Each such extension fixes which of the rectangles are in the corners of the rectangular dual $\L$. Hence sometimes such an extension is called a \emph{corner assignment} by other authors.
 
+Note that a graph $G$ with a separating triangle can't be proper, since every possible extension will have a separating triangle.
+
+\paragraph{Tight extension}
+We only define the \emph{tight extension} $\tightext G$ of graph $G$ without separating triangles in two vertices $v, v'$ if the outer cycle is split into two chordfree paths $P, P'$ by $v,v'$. Otherwise the tight extension is undefined.
+
+We can without loss of generality assume that the order of these vertices and paths is $v P v' P'$ going clockwise along the outer cycle. We will then set $\pW = v$, $\pE =v'$ and add two vertices $\pN, \pS$. We connect every vertex of $P$ to $\pN$ and every vertex of $P'$ to $\pS$.
+
+\begin{lemma}
+  If it is defined the tight extension of $G$ in $v, v'$ is a extension of $G \sm{v, v'}$.
+\end{lemma}
+\begin{proof}
+  It is clear from the construction that every interior face of $\tightext G$ is of degree 3 and that the outer face is given by $\pN \pE \pS \pW$ an is thus of degree $4$.
+  To see that $\tightext G$ has no separating triangles note that $G$ has none and that any separating triangle must thus have one of $\pN, \pS$ as a vertex. However a separating triangle containing $\pN$ or $\pS$ would imply a chord in $P$ or $P'$. However in this case the tight extension is not defined.
+\end{proof}
+
+A tight extension $\tightext G$ in $v , v'$ is uniquely determined if it exists.
+
 \subsection{Different kinds of rectangular duals}
 \fxerror{This subsection still has to be written}
-Here we talk about area-unviersal, onesided, vertical/horizontal onsided and psuedo-onsided/ (k,l) -s sided duals.
+Here we talk about area-universal, onesided, vertical/horizontal onesided and pseudo-onesided/ (k,l) -s sided duals.
 We also state the result by \cite{Eppstein2012} that area-universal duals are the same as onesided duals.
 
 
 \subsection{Regular edge labeling}
 \fxerror{This subsection still has to be written}
 
-A regular edge labelling  of $\ext G$ corresponds to a rectangular dual $\L$ of some fixed extension \ext G.
+A regular edge labeling  of $\ext G$ corresponds to a rectangular dual $\L$ of some fixed extension $\ext G$.
 
-A regualar edge labeling has certain rules.
+A regular edge labeling has certain rules.
 
 We will refer to Kant and He \cite{Kant1997} and also note the naming by \cite{Fusy2006}
 
@@ -67,4 +86,13 @@ We will also note it is equivalent to the oriented Fusy structure
 
 \subsubsection{Being onesided in terms of REL}
 
-\subsubsection{Being psudeo-onesided in terms of REL}
+
+\begin{lemma}
+\label{lm:zInRedFace}
+A face $F$ with at least $3$ edges on each side contains a $Z$
+\end{lemma}
+\begin{proof}
+\fxerror{TODO}
+\end{proof}
+
+\subsubsection{Being pseudo-onesided in terms of REL}

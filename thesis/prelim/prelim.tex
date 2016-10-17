@@ -1,7 +1,7 @@
 %!TEX root = ../thesis.tex
 
 \section{Preliminaries}
-All graphs in this thesis are simple. Paths and cycles are always simple while walks are not necessarily simple. A path is a simple walk and a cylce is a closed path.
+All graphs in this thesis are simple. Paths and cycles are always simple while walks are not necessarily simple. A path is a simple walk and a cycle is a closed path.
 
 We will let $\braces {i, \ldots, j}$ denote all the integers $x$ such that $i \leq x \leq j$.
 
@@ -9,21 +9,21 @@ The \emph{degree} of a face is the number of vertices it is incident to and a \e
 
 We will use \emph{$k$-cycle} to denote a cycle of length $k$. Moreover a \emph{triangle} is simply a cycle of length $3$ (i.e. a $3$-cycle).
 
-By Jordan's curve theorem a cycle splits the plane into two parts, one bounded and one unbounded. \fxwarning{cite Jordan}
-We will call the bounded part the \emph{interior} of this cycle and the unbounded part the \emph{exterior} of this cycle.
+\fxnote{We could cite Jordan's paper here. Should I?}
+By Jordan's curve theorem a cycle splits the plane into two parts, one bounded and one unbounded. We will call the bounded part the \emph{interior} of this cycle and the unbounded part the \emph{exterior} of this cycle.
 We will call a cycle \emph{separating} if there are vertices in both it's interior and exterior.
 An \emph{interior edge} of a cycle is then an edge contained in the interior of the cycle.
 
 
 We will sometimes give vertices of a path $\P$ explicitly using $p_1 \ldots p_k$. A chord of a walk is an edge that connects two vertices in a walk that is not part of the walk. If a walk has no chords we will call it \emph{chordfree}. Since paths and cycles are special types the same definitions will hold for them.
 
-Once we fix a planar embedding of a graph we can talk about the \emph{rotation} at a vertex $v$. The rotation at a vertex is clockwise order of the edges incident to $v$. We will indentify these edges with their other endpoints. Two vertices $x, y$ are said to be \emph{consecutive} in the rotation at $v$ when the edges $vx$ and $vy$ are consecutive. In most of this thesis we implicitly fix an embedding since triangulation/3-connected \fxerror{figure this out} graphs only have one planar embedding.
+Once we fix a planar embedding of a graph we can talk about the \emph{rotation} at a vertex $v$. The rotation at a vertex is clockwise order of the edges incident to $v$. We will identify these edges with their other endpoints. Two vertices $x, y$ are said to be \emph{consecutive} in the rotation at $v$ when the edges $vx$ and $vy$ are consecutive. In most of this thesis we implicitly fix an embedding since triangulations arr 3-connected and thus only have one planar embedding by a theorem due to Whitney (1933). This statement is proven in for example \cite[p. 267]{Bondy2008}
 
-Given a path $\P$ with vertices $p_1 \ldots p_k$ we will say that a vertex $v \nin \P$ adjecent to $p_i, i \in \braces{2, \ldots, k-1}$ lies on the \emph{left} of $\P$ if it lies between $p_{i-1}$ and $p{i+1}$ in the rotation at $p_{i}$. Otherwise $v$ lies between $p_{i+1}$ and $p_{i-1}$ in the
+Given a path $\P$ with vertices $p_1 \ldots p_k$ we will say that a vertex $v \nin \P$ adjacent to $p_i, i \in \braces{2, \ldots, k-1}$ lies on the \emph{left} of $\P$ if it lies between $p_{i-1}$ and $p{i+1}$ in the rotation at $p_{i}$. Otherwise $v$ lies between $p_{i+1}$ and $p_{i-1}$ in the
 rotation at $p_i$. In this case we say that $v$ lies to the \emph{right} of $\P$.
 
 We will use the same notion of left and right for edges.
-\fxwarning{Provide a picture illustrating these concepts}
+\fxnote{We could provide a picture illustrating these concepts}
 
 \subsection{Plane triangulations}
 
@@ -47,23 +47,23 @@ Suppose that $G$ is not maximally planar. Then there is a face $F$ to which we c
 Suppose that $G$ is not a plane triangulation. Then there must be a face $F$ of degree larger then $3$. This face will thus admit an extra edge without violating planarity and hence $G$ is not maximally planar.
 \end{proof}
 
-Because every face of a plane triangulation is traingular we can make the following remark.
+Because every face of a plane triangulation is triangular we can make the following remark.
 
 \begin{remark}
   Every edge is incident to two triangular faces
 \end{remark}
 
-\begin{thrm}
-  \fxwarning{Is this more a theorhem, lemma or proposition?}
-  \label{th:rotationEdge}
+\begin{lemma}
+  \fxnote{Is this more a remark then a lemma?}
+  \label{lm:prelim:rotationEdge}
   If two vertices $x, y$ are consecutive in the rotation at $v$ then $xy$ is an edge in $G$ and $vxy$ is a triangle.
-\end{thrm}
+\end{lemma}
 \begin{proof}
   in the described situation we have a partial face $\ldots x v y \ldots$.  Since every face of $G$ is a triangle $xy$ must be an edge and $vxy$ must be a triangle.
 \end{proof}
 
 \subsubsection{Connectedness}
-Let us first note that any maximally planar graph is $2$-conencted. Suppose there is a cutvertex, then surly we can add an edge between the components found after removing this cutvertex.
+Let us first note that any maximally planar graph is $2$-connected. Suppose there is a cutvertex, then surly we can add an edge between the components found after removing this cutvertex.
 \begin{thrm}
 Any plane triangulation $T$ is $3$-connected.
 \label{th:plTri3Connected}
@@ -73,21 +73,21 @@ Any plane triangulation $T$ is $3$-connected.
 Suppose that $T$ is not $3$-connected. Then there must be a $2$-cutset $S$, given by the vertices $x$ and $y$. Removing this cutset splits the graph into at least two connected components $C_i$ and all components are incident to all cutvertices otherwise we would have found a $1$-cutset.
 
 Since $S$ is a cutset, there can't be any edges incident to both $C_1$ and $C_2$. But then the edge $xy$ should be separating the $2$ components on both sides. This is impossible since we can only draw this edge once.
-\fxwarning{Add a figure.}
+\fxnote{We could add a figure to make this more clear}
 \end{proof}
 
 \begin{defi}[Irreducible triangulation]
 We call a triangulation irreducible if it has no separating triangles
 \end{defi}
 
-\fxnote{It is called irreducible because there is a reduction that works on seperating triangles. We might show this reduction}
+\fxnote{It is called irreducible because there is a reduction that works on separating triangles. We might show this reduction}
 
 \begin{thrm}
 Any irreducible plane triangulation $T$ is $4$-connected.
 \end{thrm}
 
 \begin{proof}
-Note that any plane triangulation is $3$-connected by Theorhem \ref{th:plTri3Connected}.
+Note that any plane triangulation is $3$-connected by Theorem \ref{th:plTri3Connected}.
 
 Suppose that $T$ is not $4$-connected. Then there must be some $3$-cutset (since it is $3$-connected) let us denote the vertices of this cutset by $x, y$ and $z$. Removing this cutset splits the graph into at least two connected components $C_i$ and all components are incident to all cutvertices otherwise we would have found a $2$- or $1$-cutset.
 
@@ -111,18 +111,6 @@ We call a triangulation of the $k$-gon irreducible if it has no separating trian
 
 Note that triangulation of the $n$-gon $n\geq 4$ is not maximally planar and thus not plane triangulation.
 
-\begin{comment}
-%Don't know yet if this a usfull construct
-\begin{thrm}
-The interior of a triangulation of the $n$-gon is maximally planar. That is to say, we can't add any edges except trough the outer face.
-\end{thrm}
-
-\begin{proof}
-Suppose the
-%TODO (not max plan. => face of degree 4
-\end{proof}
-\end{comment}
-
 The \emph{completion} of a triangulation of the $k$-gon $G = (V, E)$. Is the graph $G'= (V', E')$ with vertex set $V' = V \cup \braces{s}$ and edge set $E' = E \cup \braces{ sv | v \text{ is a outer vertex}}$
 
 The completion is plane triangulation.  %Q does this stament need proof?
@@ -142,7 +130,7 @@ Suppose that $G$ has a cutvertex $v$. Then the set $\braces{s, v}$ is a $2$-cuts
   For every interior vertex $v$ of a triangulation of the $k$-gon $G$ is connected by at least $3$ vertex disjoint paths to different outer vertices.
 \end{thrm}
 \begin{proof}
-By Theorhem \ref{th:plTri3Connected} the completion $G'$ of $G$ is $3$-connected. Hence there are 3 vertex-disjoint paths from $v$ to $s$. Since $v$ is on the interior and $s$ is on the exterior of the outer cycle $\C$ all these 3 paths cross the outer cycle at least once. These paths cross $\C$ for the first time in different vertices since they are vertex-disjoint. If we shorten the paths to their first crossing with $\C$ we obtain the $3$ paths in the theorem.
+By Theorem \ref{th:plTri3Connected} the completion $G'$ of $G$ is $3$-connected. Hence there are 3 vertex-disjoint paths from $v$ to $s$. Since $v$ is on the interior and $s$ is on the exterior of the outer cycle $\C$ all these 3 paths cross the outer cycle at least once. These paths cross $\C$ for the first time in different vertices since they are vertex-disjoint. If we shorten the paths to their first crossing with $\C$ we obtain the $3$ paths in the theorem.
 \end{proof}
 
 \fxnote{We can sharpen this to $4$ if we have a irreducible triangulation of the $k$-gon with a chordfree outer cycle}

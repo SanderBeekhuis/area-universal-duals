@@ -4,25 +4,37 @@
 \addbibresource{../thesis.bib}
 
 
-\includeonly{
+%\includeonly{
             %prelim/prelim,
             %rectangularDuals/rectangularDuals,
             %fixExtension/fixExtension,
-            algo/algo,
+            %algo/algo,
             %redAlgo/redAlgo
             %unusedTheorems/unusedTheorems
-            }
+            %}
+
+
+\title{Thesis}
+\author{Sander Beekhuis}
+\date{\today} %\today%
+
 
 \begin{document}
 \maketitle
-
-
 \include{prelim/prelim}
 \include{rectangularDuals/rectangularDuals}
 \include{fixExtension/fixExtension}
 \include{algo/algo}
 \include{redAlgo/redAlgo}
+
+\listoffixmes
+
+
 \include{unusedTheorems/unusedTheorems}
+
+\section{bib}
+I currently make latex crash if i try to give a bibliography
+%\printbibliography
 
 
 \end{document}
