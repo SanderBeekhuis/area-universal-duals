@@ -25,7 +25,7 @@ Since paths are a subclass of walks all of the above notation can also be used f
 \subsection{Outline}
 To describe the algorithm two more definitions are necessary
 
-\begin{defi}[prefence]
+\begin{defi}[Prefence]
 A prefence $\W$ is a interior walk of $\C$ starting at $v_i \in \C$ and ending at $v_j \in \C$ a both adjacent to $\pS$
 \begin{enumerate}
  \renewcommand*{\labelenumi}{(P\arabic{enumi})}%
@@ -36,7 +36,7 @@ A prefence $\W$ is a interior walk of $\C$ starting at $v_i \in \C$ and ending a
   \label{p:W}
   \item $w_2$ and $v_{i+1}$ are consecutive in the rotation at $v_i$
   \label{p:pW}
-  \item $v_{j-1}j$ and $w_{k-1}$ are consecutive in the rotation at $v_j$
+  \item $v_{j-1}$ and $w_{k-1}$ are consecutive in the rotation at $v_j$
   \label{p:pE}
 \end{enumerate}
 \end{defi}
@@ -46,7 +46,7 @@ We enforce these conditions because they imply \ref{e:crossingEdges} when $\W$ i
 
 For a walk however the interior is not clearly defined.
 
-\begin{defi}[fence]
+\begin{defi}[Fence]
 A fence is a valid path starting and ending at a vertex adjacent to $S$
 \end{defi}
 
