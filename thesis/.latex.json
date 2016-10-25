@@ -1,0 +1,11 @@
+{
+  "projectPath": "/home/sander/repos/area-universal-duals/thesis",
+  "title": "Thesis",
+  "root": "thesis.tex",
+  "program": "pdflatex",
+  "latexmkOptions": "-bibtex -pdf",
+  "output": ".latex",
+  "openOutput": "true",
+  "postAction": "view",
+  "postPath": ""
+}

@@ -114,5 +114,6 @@
 <icon BUILTIN="yes"/>
 </node>
 <node TEXT="Sweeping path instead of cycle" POSITION="right" ID="ID_40269667" CREATED="1476114891112" MODIFIED="1476114901143"/>
+<node TEXT="Look at squaring the squre" POSITION="left" ID="ID_267994688" CREATED="1476115552084" MODIFIED="1476115558940"/>
 </node>
 </map>

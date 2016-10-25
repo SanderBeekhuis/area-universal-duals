@@ -44,24 +44,11 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Q}{\mathbb{Q}}
 
-%LinAlg
-\newcommand{\tr}{\operatorname{tr}}
-%AdvAlg
-\newcommand{\opt}{\operatorname{OPT}}
-\newcommand{\alg}{\operatorname{ALG}}
-\newcommand{\LB}{\operatorname{LB}}
 
-%basic probability
-\DeclareMathOperator*{\E}{\mathbb{E}}
-\DeclareMathOperator{\Var}{Var}
-\DeclareMathOperator{\Covar}{Covar}
-\DeclareMathOperator{\pr}{\mathbb{P}}
+%Operators
+\DeclareMathOperator{\id}{Id}
 
-%Distribution
-\newcommand{\poi}{\ensuremath{\mathsf{Poi}}}
-\newcommand{\bin}{\ensuremath{\mathsf{Bin}}}
-\newcommand{\be}{\ensuremath{\mathsf{Be}}}
-\newcommand{\mult}{\ensuremath{\mathsf{Mult}}}
+
 
 %braces etc
 \newcommand{\braces}[1]{\left\lbrace {#1} \right\rbrace}
@@ -73,17 +60,31 @@
 
 
 %utility
-\newcommand{\id}{\mathrm{Id}}
 \newcommand{\inv}[1]{{#1}^{-1}}
 \newcommand{\half}{\frac{1}{2}}
 \newcommand{\third}{\frac{1}{3}}
-\newcommand{\goes}{\rightarrow 	}
-\newcommand{\ifftext}{if and only if }
-\newcommand{\note}{\textbf{Writers note: }}
+\newcommand{\goes}{\rightarrow}
+\newcommand{\nin}{\not \in}
+\newcommand{\sm}[1]{\setminus \braces{#1} }
+
+%vectors and matrices
+\newcommand{\zerov}{\vec{0}}
+\newcommand{\onev}{\vec{1}}
+
+\newcommand{\twovec}[2]{\parens{ \begin{array}{c}#1 \\ #2\end{array} }}
+\newcommand{\threevec}[3]{\prens{ \begin{array}{c}#1 \\ #2\\#3 \end{array} }}
+\newcommand{\fourvec}[4]{\parens{ \begin{arr\newcommand{\ifftext}{if and only if }ay}{c}#1 \\ #2\\#3\\#4 \end{array} }}
+\newcommand{\twomatrix}[4]{\parens{\begin{array}{cc}#1 & #2 \\ #3 & #4 \end{array}  }}
+\newcommand{\twodiagmatrix}[2]{\parens{\begin{array}{cc}#1 & 0 \\ 0 & #2 \end{array}  }}
+
+%THIS THESIS
+\DeclareMathOperator{\intplus}{Int^{+}}
+\DeclareMathOperator{\interior}{Int}
+
+
 \newcommand{\ext}[1]{\bar{#1}}
 \newcommand{\tightext}[1]{\bar{#1}_t}
 
-\newcommand{\nin}{\not \in}
 
 \newcommand{\W}{\scr W}
 \renewcommand{\P}{\scr P}
@@ -97,18 +98,9 @@
 \newcommand{\pW}{\mathrm{W}}
 
 \newcommand{\cpath}{\C \setminus \braces{\pS}} %cycle path
-\newcommand{\sm}[1]{\setminus \braces{#1} }
 
 
-%vectors and matrices
-\newcommand{\zerov}{\vec{0}}
-\newcommand{\onev}{\vec{1}}
 
-\newcommand{\twovec}[2]{\parens{ \begin{array}{c}#1 \\ #2\end{array} }}
-\newcommand{\threevec}[3]{\prens{ \begin{array}{c}#1 \\ #2\\#3 \end{array} }}
-\newcommand{\fourvec}[4]{\parens{ \begin{arr\newcommand{\ifftext}{if and only if }ay}{c}#1 \\ #2\\#3\\#4 \end{array} }}
-\newcommand{\twomatrix}[4]{\parens{\begin{array}{cc}#1 & #2 \\ #3 & #4 \end{array}  }}
-\newcommand{\twodiagmatrix}[2]{\parens{\begin{array}{cc}#1 & 0 \\ 0 & #2 \end{array}  }}
 
 
 %bib stuff
