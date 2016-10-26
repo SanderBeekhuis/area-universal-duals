@@ -76,3 +76,54 @@
   \end{figure}
 
   The only edge for which we have freedom to choose a color is the diagonal edge of $G$. However, if we color this edge blue we get a red $(2, \infty)$ cycle and if we color this edge red we get a blue $(2, \infty)$ cycle. In both cases we will thus obtain a $(2,\infty)$-sided segment in our dual.
+
+\subsection{Another application: There are graphs that are $(\infty, \infty)$-sided}
+  \label{ss:fix:manymany}
+  We will later see that all these graphs have adjacent maximal $4$-cycles.
+
+  We consider the graph $G$ with extension $\ext G$ given in Figure \ref{fig:fix:manymany0}. Note that this graph has two adjacent maximal separating $4$-cycles. These are both marked by thick lines in Figure \ref{fig:fix:manymany0}.
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[scale=1]{fixExtension/img/manymanybase}
+    \caption{}
+    \label{fig:fix:manymany0}
+  \end{figure}
+
+  This graph has a lot of forced coloring. These forced colorings are performed in Figure \ref{fig:fix:coloring}. First we color the edges incident with the poles in accordance with the exterior vertex condition. Subsequently we propagate the coloring along both maximal separating $4$-cyles in accordance whit Lemma \ref{lm:fix:fourCycleInteriorColor} and finally we color the edges in triangles that have the other two edges colored in the same color. We can do this due to the fact that traingles in a regualar edge lableing are not mono-colored by Lemma \ref{lm:rel:noMonoColoredTriangles}.
+
+
+  \begin{figure}[h]
+    \centering
+
+    \begin{subfigure}[t]{0.3\textwidth}
+      \includegraphics[width=\textwidth]{fixExtension/img/manymany1}
+      \caption{Coloring the edges adjacent to the poles}
+      \label{fig:fix:manymany1}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[t]{0.3\textwidth}
+      \includegraphics[width=\textwidth]{fixExtension/img/manymany2}
+      \caption{Propagate trough the $4$-cycle}
+      \label{fig:fix:manymany2}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[t]{0.3\textwidth}
+      \includegraphics[width=\textwidth]{fixExtension/img/manymany3}
+      \caption{Color such that there are no mono-colored triangles}
+      \label{fig:fix:manymany3}
+    \end{subfigure}
+    \caption{Coloring the graph}
+    \label{fig:fix:coloring}
+  \end{figure}
+
+   \fxwarning{TODO Show what is wrong with coloring}
+
+
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[scale=1]{fixExtension/img/manymany4}
+    \caption{}
+    \label{fig:fix:manymany4}
+  \end{figure}
