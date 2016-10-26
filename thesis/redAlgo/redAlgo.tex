@@ -10,55 +10,55 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
 
 
 \paragraph{Notational concerns}
-Just as in Section \ref{s:algo} we will use $\C$ to indicate the current sweep line cycle.
-We will repeatedly only consider the path $\cpath$. In that case we will always order it from $\pW$ to $\pE$.
+  Just as in Section \ref{s:algo} we will use $\C$ to indicate the current sweep line cycle.
+  We will repeatedly only consider the path $\cpath$. In that case we will always order it from $\pW$ to $\pE$.
 
-Instead of interior paths we will consider interior walks but we will use similar notation. That is a walk between two distinct vertices of $\C$ of which all vertices except the first and last one are in the interior of $\C$.
+  Instead of interior paths we will consider interior walks but we will use similar notation. That is a walk between two distinct vertices of $\C$ of which all vertices except the first and last one are in the interior of $\C$.
 
-We will let $\W$ denote a interior walk. Given such a walk of $k$ vertices we index it's nodes $w_1, \ldots, w_k$  in such a way that $w_1$ is closer to $W$ then $w_k$ is (and thus that $w_k$ is closer to $E$ then $w_1$ is).
+  We will let $\W$ denote a interior walk. Given such a walk of $k$ vertices we index it's nodes $w_1, \ldots, w_k$  in such a way that $w_1$ is closer to $W$ then $w_k$ is (and thus that $w_k$ is closer to $E$ then $w_1$ is).
 
-Then $w_1$ and $w_k$ indicate the two unique vertices of the walk that are also part of the cycle. We will then let $\restC{\W}$ denote the part of $\C\setminus {\mathrm{S}}$ that is between $w_1$ and $w_k$ (including). $\C_\W$ will denote the closed walk formed when we paste $\restC{W}$ and $\W$.
+  Then $w_1$ and $w_k$ indicate the two unique vertices of the walk that are also part of the cycle. We will then let $\restC{\W}$ denote the part of $\C\setminus {\mathrm{S}}$ that is between $w_1$ and $w_k$ (including). $\C_\W$ will denote the closed walk formed when we paste $\restC{W}$ and $\W$.
 
-Since paths are a subclass of walks all of the above notation can also be used for a path $\P$. Note that the closed walk $\C_\P$ in this case will actually be a cycle.
+  Since paths are a subclass of walks all of the above notation can also be used for a path $\P$. Note that the closed walk $\C_\P$ in this case will actually be a cycle.
 
 
 \subsection{Outline}
-To describe the algorithm two more definitions are necessary
+  To describe the algorithm two more definitions are necessary
 
-\begin{defi}[Prefence]
-A prefence $\W$ is a interior walk of $\C$ starting at $v_i \in \C$ and ending at $v_j \in \C$ a both adjacent to $\pS$
-\begin{enumerate}
- \renewcommand*{\labelenumi}{(P\arabic{enumi})}%
- \renewcommand*{\theenumi}{(P\arabic{enumi})}%
-  \item  For every $v_i \in \C \setminus \braces{\pW, \pS, \pE}$ we have that all vertices between $v_{i+1}$ and $v_{i-1}$ in the rotation at $v_i$ are in $\W \sm {\pW, \pE}$
-  \label{p:C}
-  \item For every $w_i \in \W \sm{\pW, \pE}$ we have that all vertices between $w_{i-1}$ and $w_{i+1}$ in rotation at $w_i$ are in $\C \sm {\pW, \pS, \pE}$
-  \label{p:W}
-  \item $w_2$ and $v_{i+1}$ are consecutive in the rotation at $v_i$
-  \label{p:pW}
-  \item $v_{j-1}$ and $w_{k-1}$ are consecutive in the rotation at $v_j$
-  \label{p:pE}
-\end{enumerate}
-\end{defi}
-
-
-We enforce these conditions because they imply \ref{e:crossingEdges} when $\W$ is a path as we will show in Lemma \ref{lm:red:regularPrefenceIsFence}.
-
-For a walk however the interior is not clearly defined.
-
-\begin{defi}[Fence]
-A fence is a valid path starting and ending at a vertex adjacent to $S$
-\end{defi}
-
-\fxnote{ expand on naming/reasons of fence}
+  \begin{defi}[Prefence]
+  A prefence $\W$ is a interior walk of $\C$ starting at $v_i \in \C$ and ending at $v_j \in \C$ a both adjacent to $\pS$
+  \begin{enumerate}
+   \renewcommand*{\labelenumi}{(P\arabic{enumi})}%
+   \renewcommand*{\theenumi}{(P\arabic{enumi})}%
+    \item  For every $v_i \in \C \setminus \braces{\pW, \pS, \pE}$ we have that all vertices between $v_{i+1}$ and $v_{i-1}$ in the rotation at $v_i$ are in $\W \sm {\pW, \pE}$
+    \label{p:C}
+    \item For every $w_i \in \W \sm{\pW, \pE}$ we have that all vertices between $w_{i-1}$ and $w_{i+1}$ in rotation at $w_i$ are in $\C \sm {\pW, \pS, \pE}$
+    \label{p:W}
+    \item $w_2$ and $v_{i+1}$ are consecutive in the rotation at $v_i$
+    \label{p:pW}
+    \item $v_{j-1}$ and $w_{k-1}$ are consecutive in the rotation at $v_j$
+    \label{p:pE}
+  \end{enumerate}
+  \end{defi}
 
 
-We will show that there is a algorithm if there are no separating $4$-cycles in $G$ and no separating $3$-cycles in $\ext G$.
+  We enforce these conditions because they imply \ref{e:crossingEdges} when $\W$ is a path as we will show in Lemma \ref{lm:red:regularPrefenceIsFence}.
+
+  For a walk however the interior is not clearly defined.
+
+  \begin{defi}[Fence]
+    A fence is a valid path starting and ending at a vertex adjacent to $S$
+  \end{defi}
+
+  \fxnote{ expand on naming/reasons of fence}
 
 
-The algorithm will receive as input a extended graph $\ext G$ and will return a regular edge labeling such that all red faces are $(1-\infty)$ using a sweep-cycle approach inspired by \Fusy \cite{Fusy2006}.
+  We will show that there is a algorithm if there are no separating $4$-cycles in $G$ and no separating $3$-cycles in $\ext G$.
 
-We will start by creating a prefence $W$. This may not be a valid path, it doesn't even have to be a path. During the algorithm we will make a number of moves that will turn this prefence into a fence. In each move we shrink $C$ by employing a valid paths and change the prefence.
+
+  The algorithm will receive as input a extended graph $\ext G$ and will return a regular edge labeling such that all red faces are $(1-\infty)$ using a sweep-cycle approach inspired by \Fusy \cite{Fusy2006}.
+
+  We will start by creating a prefence $W$. This may not be a valid path, it doesn't even have to be a path. During the algorithm we will make a number of moves that will turn this prefence into a fence. In each move we shrink $C$ by employing a valid paths and change the prefence.
 
 \subsection{Finding a initial prefence}
   Let $v_i$ denote all the vertices of $\cpath$ in the following order $\pW =  v_1 \  v_2 \  \ldots v_{n-1} \  v_n = \pE$.
@@ -190,90 +190,87 @@ We will start by creating a prefence $W$. This may not be a valid path, it doesn
   It is worth noting that other irregularities contained in such a maximal irregularity are solved in the recurrence.
 
   \subsubsection{Chords}
-  \label{ss:chords}
-  If we encounter a chord we will extract a subgraph and recurse on this subgraph. A chord $w_iw_j$ has a triangular face on the left and on the right (like every edge). The third vertex in the face to the left will be called $x$. $x$ is not necessarily distinct from $w_{i+1}$ and/or $w_{j-1}$ but this is also not necessary for the rest of the argument. \fxnote{We might also work these out in a Figure.}
+    \label{ss:chords}
+    If we encounter a chord we will extract a subgraph and recurse on this subgraph. A chord $w_iw_j$ has a triangular face on the left and on the right (like every edge). The third vertex in the face to the left will be called $x$. $x$ is not necessarily distinct from $w_{i+1}$ and/or $w_{j-1}$ but this is also not necessary for the rest of the argument. \fxnote{We might also work these out in a Figure.}
 
-  The vertex $v_a$ on the cycle is uniquely determined as the vertices adjacent to both $w_i$ and $w{i+1}$. In the same way $v_b$ is the unique neighbor of $w_{j-1}$ and $w_j$.
+    The vertex $v_a$ on the cycle is uniquely determined as the vertices adjacent to both $w_i$ and $w{i+1}$. In the same way $v_b$ is the unique neighbor of $w_{j-1}$ and $w_j$.
 
-  We will describe a walk $\scr U$ running from $v_a$ to $v_b$. This path consists of all vertices adjacent to $w_i$ in clockwise order from $v_a$ (inclusive) to $x$(inclusive) and subsequently all vertices adjacent to $w_j$ in clockwise order from $x$ (exclusive) to $v_b$ (inclusive). This path is given in bold in Figure \ref{fig:removeChord}.
+    We will describe a walk $\scr U$ running from $v_a$ to $v_b$. This path consists of all vertices adjacent to $w_i$ in clockwise order from $v_a$ (inclusive) to $x$(inclusive) and subsequently all vertices adjacent to $w_j$ in clockwise order from $x$ (exclusive) to $v_b$ (inclusive). This path is given in bold in Figure \ref{fig:removeChord}.
 
-  \begin{lemma}
-  $\U$ is a chordfree path
-  \end{lemma}
-  \begin{proof}
-   \fxnote*{Is it nice to refer to a line of reasoning like this?}{We note that $\U$ is a walk by the same reasoning as is given in Lemma \ref{lm:red:isPrefence}.}
+    \begin{lemma}
+    $\U$ is a chordfree path
+    \end{lemma}
+    \begin{proof}
+     \fxnote*{Is it nice to refer to a line of reasoning like this?}{We note that $\U$ is a walk by the same reasoning as is given in Lemma \ref{lm:red:isPrefence}.}
 
-  $\U$ cant have a non-simple point $x'$ since it would have to be connected to at least two vertices. However a vertex $x'$ that is distinct from $x$ and is connected to both $w_i$ and $w_j$ will induce a separating triangle $w_i x' w_j$. $\U$ also can't be nonsimple at $x$ since $x$ is the the third vertex of the triangular face $w_i w_j x$. Hence $\U$ is a path.
-
-
-  $\scr U$ can't have chords $u_i u_j$ since they would either induce a separating $3$- or $4$-cycle either $w_i u_i u_j$ or $w_j u_i u_j$ or $w_i u_i u_j w_j$ depending on the vertex adjacent to $u_i$ and $u_j$.
-  \fxnote{We use that we have no 4-cycles here}
-  \end{proof}
+    $\U$ cant have a non-simple point $x'$ since it would have to be connected to at least two vertices. However a vertex $x'$ that is distinct from $x$ and is connected to both $w_i$ and $w_j$ will induce a separating triangle $w_i x' w_j$. $\U$ also can't be nonsimple at $x$ since $x$ is the the third vertex of the triangular face $w_i w_j x$. Hence $\U$ is a path.
 
 
-  We then consider the interior of the cycle $\C_\scr U$ and the cycle $\C_\U$ itself as the subgraph $H$. We then take the tight extension at $v_a$ and $v_b$. We will then recurse on this graph $\tightext H$. See also Figure \ref{fig:removeChord}. Since $\C$ is chordfree by invariant \ref{i:noChords} so is $\restC{\U}$. We have also just shown that $\U$ is chordfree. So $\tightext H$ is indeed defined. Furthermore, since $H$ is a induced subgraph of $G$, $\tightext H$ contains no separating $4$-cycles not involving the poles.
+    $\scr U$ can't have chords $u_i u_j$ since they would either induce a separating $3$- or $4$-cycle either $w_i u_i u_j$ or $w_j u_i u_j$ or $w_i u_i u_j w_j$ depending on the vertex adjacent to $u_i$ and $u_j$.
+    \fxnote{We use that we have no 4-cycles here}
+    \end{proof}
 
-  We update the prefence by removing $w_{i+1}, \ldots, w_{j-1}$.
 
-  \begin{figure}[h!]
-  \centering
-  \includegraphics[scale=1]{redAlgo/img/removeChord}
+    We then consider the interior of the cycle $\C_\scr U$ and the cycle $\C_\U$ itself as the subgraph $H$. We then take the tight extension at $v_a$ and $v_b$. We will then recurse on this graph $\tightext H$. See also Figure \ref{fig:removeChord}. Since $\C$ is chordfree by invariant \ref{i:noChords} so is $\restC{\U}$. We have also just shown that $\U$ is chordfree. So $\tightext H$ is indeed defined. Furthermore, since $H$ is a induced subgraph of $G$, $\tightext H$ contains no separating $4$-cycles not involving the poles.
 
-  \caption{Removing a chord
-      \label{fig:removeChord}}
-  \end{figure}
+    We update the prefence by removing $w_{i+1}, \ldots, w_{j-1}$.
 
+    \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=1]{redAlgo/img/removeChord}
+
+    \caption{Removing a chord
+        \label{fig:removeChord}}
+    \end{figure}
 
   \subsubsection{Nonsimple points}
-  \label{ss:nonsimplePoints}
-  Removing a non-simple point is done is a similar manner.
+    \label{ss:nonsimplePoints}
+    Removing a non-simple point is done is a similar manner.
 
-  The vertex $v_a$ on $\C$ is uniquely determined as the vertices adjacent to both $w_i=w_j$ and $w{i+1}$. In the same way $v_b$ is the unique neighbor of $w_{j-1}$ and $w_j=w_i$. Note that it may be that $w_{i+1} = w{j-1}$ this does not matter for the rest of the argument. \fxnote{We may show this in a figure.}
+    The vertex $v_a$ on $\C$ is uniquely determined as the vertices adjacent to both $w_i=w_j$ and $w{i+1}$. In the same way $v_b$ is the unique neighbor of $w_{j-1}$ and $w_j=w_i$. Note that it may be that $w_{i+1} = w{j-1}$ this does not matter for the rest of the argument. \fxnote{We may show this in a figure.}
 
-  We will describe a walk $\scr U$ running from $v_a$ to $v_b$. This path consists of all vertices in the rotation at $w_i=w_j$ from $v_b$ (inclusive) to $v_a$(inclusive). This path is given in bold in Figure \ref{fig:removeNonSimplePoint}.
+    We will describe a walk $\scr U$ running from $v_a$ to $v_b$. This path consists of all vertices in the rotation at $w_i=w_j$ from $v_b$ (inclusive) to $v_a$(inclusive). This path is given in bold in Figure \ref{fig:removeNonSimplePoint}.
 
-  \begin{lemma}
-  $\U$ is a chordfree path.
-  \end{lemma}
-  \begin{proof}
-    If we orient $\U$ from $v_a$ to $v_b$  we see that $\U$ cant have a non-simple point since such a point would have edges to at least two vertices on the right. However every vertex can only be connected to $w_i=w_j$. Hence $\U$ is a path.
+    \begin{lemma}
+    $\U$ is a chordfree path.
+    \end{lemma}
+    \begin{proof}
+      If we orient $\U$ from $v_a$ to $v_b$  we see that $\U$ cant have a non-simple point since such a point would have edges to at least two vertices on the right. However every vertex can only be connected to $w_i=w_j$. Hence $\U$ is a path.
 
-    $\U$ can't have chords on the right of the path by the way we construct $\U$. Furthermore $\scr U$ can't have chords $u_i u_j$ on the left since they would either induce a separating $3$-cycle $w_i u_i u_j$.
-    \fxnote{Here we use no 4-cycles}
-  \end{proof}
+      $\U$ can't have chords on the right of the path by the way we construct $\U$. Furthermore $\scr U$ can't have chords $u_i u_j$ on the left since they would either induce a separating $3$-cycle $w_i u_i u_j$.
+    \end{proof}
 
 
-  We then consider the interior of the cycle $\C_\scr U$ and the cycle $\C_\U$ itself as the subgraph $H$.
+    We then consider the interior of the cycle $\C_\scr U$ and the cycle $\C_\U$ itself as the subgraph $H$.
 
-  We then take the tight extension of $H$ at $v_a$ and $v_b$ to recurse on. See also Figure \ref{fig:removeNonSimplePoint}. Since $\C$ is chordfree by invariant \ref{i:noChords} so is $\restC{\U}$. We have also just shown that $\U$ is chordfree. So $\tightext H$ is indeed defined. Furthermore, since $H$ is a induced subgraph of $G$, $\tightext H$ contains no separating $4$-cycles not involving the poles.
+    We then take the tight extension of $H$ at $v_a$ and $v_b$ to recurse on. See also Figure \ref{fig:removeNonSimplePoint}. Since $\C$ is chordfree by Invariant \ref{i:noChords} so is $\restC{\U}$. We have also just shown that $\U$ is chordfree. So $\tightext H$ is indeed defined. Furthermore, since $H$ is a induced subgraph of $G$, $\tightext H$ contains no separating $4$-cycles not involving the poles.
 
-   We update the prefence by removing $w_{i+1}, \ldots, w_{j-1}$ and we also recognize that $w_i = w_j$ is now a duplicate subsequent occurrence of the same vertex. So we also remove $w_j$.
+     We update the prefence by removing $w_{i+1}, \ldots, w_{j-1}$ and we also recognize that $w_i = w_j$ is now a duplicate subsequent occurrence of the same vertex. So we also remove $w_j$.
 
-  \begin{figure}[h!]
-  \centering
-  \includegraphics[scale=1]{redAlgo/img/removeNonSimplePoint}
+    \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=1]{redAlgo/img/removeNonSimplePoint}
 
-  \caption{Removing a non-simple point
-      \label{fig:removeNonSimplePoint}}
-  \end{figure}
+    \caption{Removing a non-simple point
+        \label{fig:removeNonSimplePoint}}
+    \end{figure}
 
   \subsubsection{Validity}
-  \label{ss:validity}
+    \label{ss:validity}
 
-  \begin{lemma}
-  After doing a move the updated prefence $W$ is a prefence for the updated cycle $C$
-  \end{lemma}
-  \begin{proof}
-  \fxerror{TODO}
-  \end{proof}
+    \begin{lemma}
+    After doing a move the updated prefence $W$ is a prefence for the updated cycle $C$
+    \end{lemma}
+    \begin{proof}
+    \fxerror{TODO}
+    \end{proof}
 
-  \begin{lemma}
-  Let $H_I$ and $H_J$ be two recursion subgraphs for different maximal irregularities $I$ and $J$. Then $H_I$ and $H_J$ are edge disjoint.
-  \end{lemma}
-  \begin{proof}
-  \fxerror{TODO}
-  \end{proof}
-
+    \begin{lemma}
+    Let $H_I$ and $H_J$ be two recursion subgraphs for different maximal irregularities $I$ and $J$. Then $H_I$ and $H_J$ are edge disjoint.
+    \end{lemma}
+    \begin{proof}
+    \fxerror{TODO}
+    \end{proof}
 
 \subsection{Correctness}
   As long as the interior of $\C$ is nonempty we can find a prefence. And thus we find valid paths. Since we continuously shrink the cycle with valid paths we end up with a regular edge labeling.
@@ -298,7 +295,7 @@ We will start by creating a prefence $W$. This may not be a valid path, it doesn
     A path starting at a certain recursion level will stay at that recursion level. It may share vertices with the north boundary of a lower recursion level but never with the south boundary.
   \end{lemma}
   \begin{proof}
-    A valid path can never leave the subgraph $H$ in which its start and endvertex are located. Because it is found as a fence in this subgraph. It can also never run trough a graph $H'$ on a lower recursion level (except for the north boundary path)  because in every move the vertices of the prefence in $H'$ are deleted.
+    A valid path can never leave the subgraph $H$ in which its start- and end-vertex are located. Because it is found as a fence in this subgraph. It can also never run trough a graph $H'$ on a lower recursion level (except for the north boundary path)  because in every move the vertices of the prefence in $H'$ are deleted.
   \end{proof}
 
   Recall that all our valid paths are oriented from a start vertex to end vertex.

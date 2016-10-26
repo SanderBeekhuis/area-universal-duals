@@ -6,6 +6,6 @@
   "latexmkOptions": "-bibtex -pdf",
   "output": ".latex",
   "openOutput": "true",
-  "postAction": "view",
+  "postAction": "link",
   "postPath": ""
 }

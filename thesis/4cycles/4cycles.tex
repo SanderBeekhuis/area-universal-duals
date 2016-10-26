@@ -10,8 +10,14 @@ We let $\intplus(C)$ denote the the vertices of $C$ and $C$'s interior vertices.
 
 
 \paragraph{coloring}
-In this section we will use lots of figures to demonstra how to handle each type of $4$-cycle.
+In this section we will use lots of figures to demonstrate how to handle each type of $4$-cycle.
 
+\paragraph{Usefull lemma's and notions}
+All edges adjacent to the same exterior vertex of $\D$ in the interior of $\D$ have the same color and orientation.
+
+Once we have chosen a direction and color for one such exterior vertex this choice follows for the rest of the exterior vertices.
+
+Hence it is trivial to recurse on a $4$-cyles once we haven chosen edge colors.
 
 \section{Seperating 4 cycles}
 Let $\D$ be a maximal separating $4$-cycle.
@@ -39,7 +45,7 @@ We can discern $7$ types of adjacency for $4$-cycles to a cycle if it's entirely
   \label{t:v2alt}
 \end{enumerate}
 
-We will show by case distinction that everything will be okay. Sometimes we will make a move (updating cycle and prefence) to remove a iregularity and sometimes this will not be necesarry.
+We will show by case distinction that everything will be okay. Sometimes we will make a move (updating cycle and prefence) to remove a irregularity and sometimes this will not be necessary.
 
 
 
@@ -50,43 +56,51 @@ In the second case we have that $\D \subseteq \intplus(\C_\F)$ since
 
 \subsection{On the cycle}
   Note that type \ref{t:2alt}, \ref{t:3} and \ref{t:v2cons} can't occur on the cycle $\C$ maintained by the algorithm since they give a chord, offending Invariant \ref{i:noChords}.
+
   \paragraph{Type \ref{t:1}}
-  This is a \emph{short chord}. Note that we allow a choiche of edge flip to be made after
+  This is a \emph{short chord}, that is a chord with a range of size only 3. Note that we allow a choice of edge flip to be made later.
 
   \paragraph{Type \ref{t:2cons}}
   We can do a simple move evading the problem.
   %But maybe a normal algo run will also work. However for the normal algo we assume no 4-cycles, so we should do this separately.
 
-  We make the move depicited in Figure \ref{fig:4c:cycle_b}
+  We make the move depicted in Figure \ref{fig:4c:cycle_b}
   \begin{figure}[h]
     \centering
     \includegraphics[scale=1]{4cycles/img/cycle_b}
-    \caption{Removing a Type \ref{t:2cons} seperating $4$-cycle}
+    \caption{Removing a Type \ref{t:2cons} separating $4$-cycle}
     \label{fig:4c:cycle_b}
   \end{figure}
 
   This moves the the cycle $\C$ past the problematic $4$-cycle $\D$. Note that we don't allow any freedom in the interior edges in this case.
 
   \paragraph{Type \ref{t:v1}}
-  This type of separating $4$-cycle does not induce a irregularity in the fence. Hence no operation is necessary. 
-  This is no problem, we can just ''corner-slice" it. This seperating $4$ cycle is no problem since it produces no irregularity on the (pre)fence $\W$.
+  This type of separating $4$-cycle does not induce a irregularity in the fence. Hence no operation is necessary.
+  As can be seen in Figure \ref{fig:4c:v1}, we can just ''corner-slice" it. This separating $4$ cycle is no problem since it produces no irregularity on the (pre)fence $\W$.
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[scale=1]{4cycles/img/cycle_e}
+    \caption{A prefence has no problem with a Type \ref{t:v1} separating $4$-cycle}
+    \label{fig:4c:v1}
+  \end{figure}
+
+  Note that the remainder of this maximal $4$-cycle may contain another separating $4$-cycle. Even when the two green edges are not a $4$-cycle. Such a $4$-cycle however is by design non-separating since the fence takes the topmost path.
 
   \paragraph{Type \ref{t:v2alt}}
   This is just a combination of a ordinary non-simple point and a Type \ref{t:2cons} case. If we first recurse on the inner non-simple point we can then solve the rest like the Type \ref{t:2cons} case.
 
 \subsection{On the fence}
-  \paragraph{Type \ref{t:1}}
-  This is a \emph{short chord}
+  Note that Types \ref{t:1}, \ref{t:2cons} and \ref{t:v1} do not provide irregularities when they are on the fence. Hence we don't have to do anything to deal with these separating $4$-cycles. Instead we can treat them as being ``on the cycle'' in later iterations of this algorithm.
 
-
-  \paragraph{Type \ref{t:2cons}}
+  \fxnote{Show that these types are okay with an image}
 
   \paragraph{Type \ref{t:2alt}}
 
   \begin{figure}[h]
     \centering
     \includegraphics[scale=1]{4cycles/img/fence_c}
-    \caption{}
+    \caption{Removing Type \ref{t:2alt} on the fence}
     \label{fig:4c:fence_c}
   \end{figure}
 
@@ -95,20 +109,18 @@ In the second case we have that $\D \subseteq \intplus(\C_\F)$ since
   \begin{figure}[h]
     \centering
     \includegraphics[scale=1]{4cycles/img/fence_d}
-    \caption{}
+    \caption{Removing Type \ref{t:3} on the fence}
     \label{fig:4c:fence_d}
   \end{figure}
 
-
-  \paragraph{Type \ref{t:v1}}
-
   \paragraph{Type \ref{t:v2alt}}
+
 
   \paragraph{Type \ref{t:v2cons}}
     This is the inside of a chord
 
 \subsection{Not on the cycle or on the fence}
-  Then $\D$ is no problem.
+  Then $\D$ certainly causes no problems  is no problem.
 
 \subsection{$4$-cycles with a complicated interior}
   We can just recurse
