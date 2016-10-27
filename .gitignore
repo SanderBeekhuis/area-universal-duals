@@ -85,5 +85,9 @@ pythontex-files-*/
 #ipe program
 *.ipe
 
+#latex-plus in atom
+**/.latex/
 
+#outputpdf
+thesis/thesis.pdf
 
