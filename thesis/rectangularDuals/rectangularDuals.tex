@@ -3,107 +3,137 @@
 \section{Rectangular duals}
 \newcommand{\G}{\scr G}
 \renewcommand{\L}{\scr L}
+\fxwarning{We should say something about equivalent layouts here}
 
-In this section we will introduce the rectangular dual of a graph. We will prove some simple properties of graphs and their (rectangular) duals.
+In this section we will introduce the rectangular dual of a graph.
 
-We define a \emph{rectangular layout} (or simply \emph{layout}) $\L$ to be a partition of a rectangle into finitely many interiorly disjoint rectangles.
+\subsection{Rectangular layouts and their duals}
+  We define a \emph{rectangular layout} (or simply \emph{layout}) $\L$ to be a partition of a rectangle into finitely many interiorly disjoint rectangles such that no four rectangles meet in one point.
 
-We will for simplicity of analysis assume that no four rectangles meet in one point. \fxwarning{Probably refer to \cite{Kozminski1984}}
+  In the \emph{dual graph} $\dualgraph{\L}$ of a layout $\L$ we represent each rectangle by a vertex and we connect two vertices by an edge exactly when their rectangles are adjacent. In the reverse direction we say a layout $\L$ is a \emph{rectangular dual} of a graph $G$ if we have that $G = \dualgraph{\L}$.
 
-We will then define the \emph{dual graph of a layout} $\L$ and denote this graph by $\G(\L)$. That is, we represent each rectangle by a vertex and we connect two vertices by an edge exactly when their rectangles are adjacent. Note that this graph is not the same as the \emph{graph dual} of $\L$ when we view it as a graph (namely we don't represent the outer face of $\L$ by a vertex).
 
-So $\G(\L)$ is the dual graph of a layout $\L$. In the reverse direction we say a layout $\L$ is a \emph{rectangular dual} of a graph $\G$ if we have that $\G = \G (\L)$.
+  One can also consider the \emph{extended dual graph} $\extdualgraph{\L}$ of a layout $\L$. In such a graph we not only represent each rectangle by a vertex. But furthermore we also add $4$ vertices $\pN, \pE, \pS, \pW$ (so-called \emph{poles}) in the outer face, one associated to the north, east, south, west boundary segment of the outer rectangle respectively. Two vertices are then connected if their rectangles or boundary segments intersect.
 
-A plane triangulated graph $\G$ does not necessarily have a rectangular dual nor is this dual necessarily unique.
-\fxnote{in what sense not unique, provide examples}
+  If we take the \emph{extended dual graph} of a layout and remove the $4$ vertices corresponding to the outer face we end up with the \emph{dual graph} of that layout.
+
+
+  \paragraph{Properties}
+  A plane triangulated graph $\G$ does not necessarily have a rectangular dual nor is this dual necessarily unique.
+  \fxnote{in what sense not unique, provide examples}
+
+  Let us finally note that both the dual graph and the extended dual graph of a layout $\L$ are not the same as the \emph{graph dual} of $\L$ when we view it as a graph (namely we don't represent the outer face of $\L$ by a single vertex).
+
+
+
+\subsection{Different kinds of rectangular layouts}
+  We can pose different restriction on a rectangular layout $\L$. For all these restrictions we have that if they hold for one layout $\L$ they hold for all equivalent layouts.
+
+  We will call $\L$ \emph{area-equivalent} if no matter the areas we assign to the rectangles of $\L$ there is a equivalent layout $\L'$ such that each rectangle has the assigned area.
+  \fxnote{Might add supporting figures}
+
+  All other restrictions we introduce here will consider the \emph{maximal line segments} of $\L$. A \emph{line segment} of $\L$ is a sequence of consecutive inner edges forming a line. Such a line segment is maximal if it's not contained in any other line segment. \fxnote*{Is this neccesary?}{This notion is also introduced in \cite{Eppstein2012}}. A line segment is \emph{one-sided} if it is on the boundary of one single rectangle. A line segment is \emph{$(k,l)$-sided} with $k<l$ if the line segment is on the boundary of at most $k$ different rectangles on one side and at most $l$ different rectangles on the other side.
+  \fxnote{Might add supporting figures}
+
+  We will then call a layout \emph{one-sided} if all maximal line segments are one sided. Furthermore it is called \emph{vertically one-sided} or \emph{horizontally one-sided} if all vertical or horizontal maximal line segments are one-sided. Furthermore a layout is \emph{$(k,l)$-sided} if all maximal line segments are $(k,l)$-sided.
+
+  Eppstein et al. \cite{Eppstein2012} show that a layout is one-sided if and only if it is onesided.
+
+
+\subsection{Regualar edge labeling}
+  The extended dual of a layout allow a natural coloring and orientation of their edges. This \emph{regular edge labeling} is created in the following way:
+  For every edge $vw$ in $\extdualgraph{\L}$ we consider whether the shared boundary of the rectangles is vertical or horizontal we then color the edge blue or red respectively. In the first case we orient the edge from the  leftmost point to the rightmost point and in the second case we orient from bottom to top. We don't color or orient the edges between the poles.
+
+  From the nature of the adjacencies in a rectangular layout we can deduce the following two rules for a regular edge labeling.
+  \begin{enumerate}
+    \item [Interior vertex] In the rotation around every nonempty vertex we have the following subsequent non-empty sets: Incoming red edges, incoming blue edges, outgoing red edges and outgoing blue edges. And only these sets.
+    \item [Poles] $\pN$ has only incoming red edge, $\pE$ has only incoming blue edges, $\pS$ has only outgoing red edges and $\pW$ has only outgoing blue edges. Except of course the uncoloured edges between poles.
+  \end{enumerate}
+
+  Regular edge labeling were first introduced by Kant and He \cite{Kant1997} but were also used in \cite{Eppstein2012}. Fusy also studied these structures \cite{Fusy2006,Fusy2009} but he calls them \emph{transeversal structures}.
+
+  He showed \cite{He} that given a rectangular edge labeling we can reconstruct a equivalent rectangular layout.
+  \fxwarning{TODO fix cite, and something with equivalence class. Siam p540 bottom, READ ACTUAL PAPER}
+
+  \paragraph{Properties}
+  \begin{lemma}
+    \label{lm:rel:noMonoColoredTriangles}
+    A regular edge labeling doesn't admit a monocolored triangle
+  \end{lemma}
+
+  \begin{proof}
+    Suppose we have a mononcolored triangle. Without loss of generality we will suppose that the color of this triangle is blue. Then at least one of the vertices has an incoming blue edge followed directly by an outgoing blue edge or an outgoing blue edge followed directly by an incoming blue edge in it's rotation. Thus this vertex has either an empty set of outgoing or incoming red edges, offending the coloring requirements of a REL
+  \end{proof}
+
+  A regular edge labeling  of $\ext G$ corresponds to a equivalence class of rectangular layouts $\L$ that are a rectangular dual of $G$.
+
+  \paragraph{Regular edge labelings and maximal segments}
+  A REL is a pair of st planar gra[hs]
+
+  We will define
+
+  We wills define red faces and blue faces  with two sides (which is difficult in unoriented settings) and define split and merge vertices as the first and last vertices of such face.
+
+  \paragraph{Being one-sided in terms of REL}
+  The blue and red faces of a
+
+  \begin{lemma}
+  \label{lm:zInRedFace}
+  A face $F$ with at least $3$ edges on each side contains a $Z$
+  \end{lemma}
+  \begin{proof}
+  \fxerror{TODO}
+  \end{proof}
+
+
+  \paragraph{Being pseudo-onesided in terms of REL}
+
 
 
 \subsection{Extended graphs}
-When constructing the rectangular dual of a graph $G$. It will be useful to add four vertices to the graph. We will denote these vertices with $\pN, \pE, \pS, \pW$ in corresponding with the four cardinal directions.
+  Given a layout $\L$ we can thus easily find the (extended) dual. However finding a rectangular dual of a plane triangulated graph $G$ is more involved. Due to the algorithm by He \cite{He} this boils down to finding a regular edge labeling of $G$ with $4$ additional vertices $\pN, \pE, \pS, \pW$. We will thus define $G$ and these additional vertices to be an \emph{extension} of $G$.
+  \fxwarning{TODO fix cite}
 
-We will define define two types of these \emph{extensions}. First we define a \emph{regular extension} $\ext G$ which we can apply to any graph $G$. Then we will define a tight extension $\tightext G$ for which we will require two distinct vertices on the outer cycle of $G$.
+  \begin{defi}[Extension]
+    A \emph{extension} $\ext G$ of $G$ is a augmentation of $G$ with $4$ vertices (which we will call it's \emph{poles}). Such that
+    \begin{enumerate}
+    \item every interior face has degree $3$ and the exterior face has degree $4$.
+    \item all poles are incident to the outer face
+    \item $\ext\G$ has no separating triangles (i.e separating $3$-cycles).
+    \end{enumerate}
+  \end{defi}
 
-\paragraph{Regular extension}
-A \emph{extension} $\ext G$ of $G$ is a augmentation of $G$ with $4$ vertices (which we will call it's \emph{poles}). Such that
-\begin{enumerate}
-\item every interior face has degree $3$ and the exterior face has degree $4$.
-\item all poles are incident to the outer face
-\item $\ext\G$ has no separating triangles (i.e separating $3$-cycles).
-\end{enumerate}.ext
-Such a extended graph does not necessarily exist and is not necessarily unique.
-However we have the following result due to Kozminski and Kinnen
+  Such a extended graph does not necessarily exist and is not necessarily unique.
+  However we have the following result due to Kozminski and Kinnen
 
-\begin{thrm}[Existence of a rectangular dual]
-A plane triangulated graph $\G$ has a rectangular dual if and only if it has an extension $\ext \G$
-\end{thrm}
+  \begin{thrm}[Existence of a rectangular dual]
+  A plane triangulated graph $\G$ has a rectangular dual if and only if it has an extension $\ext \G$
+  \end{thrm}
 
-\begin{proof}
-  This proofed in \cite{Kozminski1984} \fxnote{Provide location, Kozminski \& Kinnen and ungar, See Siam paper}
-\end{proof}
+  \begin{proof}
+    This shown in \cite{Kozminski1984} \fxnote{Provide location, Kozminski \& Kinnen and ungar, See Siam paper}
+  \end{proof}
 
-We call any (plane triangulated) graph $G$ that has an extension a \emph{proper} graph.
+  We call any (plane triangulated) graph $G$ that has an extension a \emph{proper} graph.
 
-A proper graph $G$ can have more then one extensions. Each such extension fixes which of the rectangles are in the corners of the rectangular dual $\L$. Hence sometimes such an extension is called a \emph{corner assignment} by other authors.
+  A proper graph $G$ can have more then one extensions. Each such extension fixes which of the rectangles are in the corners of the rectangular dual $\L$. Hence sometimes such an extension is called a \emph{corner assignment} by other authors.
 
-Note that a graph $G$ with a separating triangle can't be proper, since every possible extension will have a separating triangle.
+  Note that a graph $G$ with a separating triangle can't be proper, since every possible extension will have a separating triangle.
 
-\paragraph{Tight extension}
-We only define the \emph{tight extension} $\tightext G$ of graph $G$ without separating triangles in two vertices $v, v'$ if the outer cycle is split into two chordfree paths $P, P'$ by $v,v'$. Otherwise the tight extension is undefined.
+  \paragraph{Tight extension}
+    For use later in this thesis we will also define the closely related \emph{tight extension} of $G$.
+    Let $G$ be a triangulated plane graph without separating triangles and $v,v'$ be two vertices on its outer cycle.
+    We only define the \emph{tight extension} $\tightext G$ in $v, v'$ if the outer cycle is split into two chordfree paths $P, P'$ by $v$ and $v'$. Otherwise the tight extension is undefined.
 
-We can without loss of generality assume that the order of these vertices and paths is $v P v' P'$ going clockwise along the outer cycle. We will then set $\pW = v$, $\pE =v'$ and add two vertices $\pN, \pS$. We connect every vertex of $P$ to $\pN$ and every vertex of $P'$ to $\pS$.
+    We can without loss of generality assume that the order of these vertices and paths is $v P v' P'$ going clockwise along the outer cycle. We will then set $\pW = v$, $\pE =v'$ and add two vertices $\pN, \pS$. We connect every vertex of $P$ to $\pN$ and every vertex of $P'$ to $\pS$.
 
-\begin{lemma}
-  If it is defined the tight extension of $G$ in $v, v'$ is a extension of $G \sm{v, v'}$.
-\end{lemma}
-\begin{proof}
-  It is clear from the construction that every interior face of $\tightext G$ is of degree 3 and that the outer face is given by $\pN \pE \pS \pW$ an is thus of degree $4$.
-  To see that $\tightext G$ has no separating triangles note that $G$ has none and that any separating triangle must thus have one of $\pN, \pS$ as a vertex. However a separating triangle containing $\pN$ or $\pS$ would imply a chord in $P$ or $P'$. However in this case the tight extension is not defined.
-\end{proof}
+    \begin{lemma}
+      If it is defined the tight extension of $G$ in $v, v'$ is a extension of $G \sm{v, v'}$.
+    \end{lemma}
+    \begin{proof}
+      It is clear from the construction that every interior face of $\tightext G$ is of degree 3 and that the outer face is given by $\pN \pE \pS \pW$ an is thus of degree $4$.
+      To see that $\tightext G$ has no separating triangles note that $G$ has none and that any separating triangle must thus have one of $\pN, \pS$ as a vertex. However a separating triangle containing $\pN$ or $\pS$ would imply a chord in $P$ or $P'$. However in this case the tight extension is not defined.
+    \end{proof}
+    Hence we can also view $\tightext G$ as an extension in it's own right.
 
-A tight extension $\tightext G$ in $v , v'$ is uniquely determined if it exists.
-
-\subsection{Different kinds of rectangular duals}
-\fxerror{This subsection still has to be written}
-Here we talk about area-universal, onesided, vertical/horizontal onesided and pseudo-onesided/ (k,l) -s sided duals.
-We also state the result by \cite{Eppstein2012} that area-universal duals are the same as onesided duals.
-
-
-\subsection{Regular edge labeling}
-\fxerror{This subsection still has to be written}
-
-
-\begin{lemma}
-  \label{lm:rel:noMonoColoredTriangles}
-  A REL doesn't admit a monocolored triangle
-  \fxnote{I've seen this somewhere}
-\end{lemma}
-
-\begin{proof}
-   \fxwarning{TODO}
-\end{proof}
-
-A regular edge labeling  of $\ext G$ corresponds to a rectangular dual $\L$ of some fixed extension $\ext G$.
-
-A regular edge labeling has certain rules.
-
-We will refer to Kant and He \cite{Kant1997} and also note the naming by \cite{Fusy2006}
-
-
-\subsection{Oriented regular edge labeling}
-\fxerror{This subsection still has to be written}
-In this subsection we will introduce the unique orientation on a REL. We wills define red faces and blue faces (which we can also do in the unoriented version i guess) with two sides (which is difficult in unoriented settings) and define split and merge vertices as the first and last vertices of such face.
-
-We will also note it is equivalent to the oriented Fusy structure
-
-\subsubsection{Being onesided in terms of REL}
-
-
-\begin{lemma}
-\label{lm:zInRedFace}
-A face $F$ with at least $3$ edges on each side contains a $Z$
-\end{lemma}
-\begin{proof}
-\fxerror{TODO}
-\end{proof}
-
-\subsubsection{Being pseudo-onesided in terms of REL}
+    A tight extension $\tightext G$ in $v , v'$ is uniquely determined if it exists. This follows from the fact that there is no choice is the procedure described above.
