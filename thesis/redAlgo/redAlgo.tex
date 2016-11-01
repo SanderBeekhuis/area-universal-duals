@@ -6,7 +6,7 @@
 
 We can also adapt Fusy's algorithm to generate a vertically one-sided dual. We then need top generate a regular edge labeling without red faces that have $3$ or more edges on both borders.
 
-We will have an additional requirement on top of the requirement that $\ext G$ has no separating triangles. We will also require that $G$ has no separating four cycles.
+We will have an additional requirement on top of the requirement that $\ext G$ has no separating triangles. We will also require that $\ext G$ has no separating four cycles.
 
 
 \paragraph{Notational concerns}
@@ -22,7 +22,25 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
   Since paths are a subclass of walks all of the above notation can also be used for a path $\P$. Note that the closed walk $\C_\P$ in this case will actually be a cycle.
 
 
+  We note that the interior of some cycle $\interior(C)$ are all vertices strictly in the interior of this cycle. We will sometimes also take $\interior(C)$ to refer to the induced subgraph of these vertices.
+
+  We let $\intplus(C)$ denote the the vertices of $C$ and $C$'s interior vertices. We will also sometimes let it refer to the subgraph of $G$ induced by these vertices.
+
+  \paragraph{Non-crossing walks}
+  We will call a walk \emph{noncrossing} if at every vertex $w$ in the walk that is visited $k$ times such that $w_{i_1} = w_{i_2} = \ldots = w_{i_k}$ in the walk the clockwise intervals $[w_{i_j-1}, w_{i_j+1}]$ for $j \in \braces {1, \ldots, k}$ are disjoint in the rotation at $w$.
+  \fxnote{We might add a (small) figure for clarity (i.e. of a crossing and a non-crossing walk)}
+
+  The nice thing about non-crossing walks is that they if they return to their startpoint they allow a notion of interior and exterior. We can see this by applying Jordans curve theorem to a version of this walk that is very slightly perturbed at every vertex visited multiple times. Which we can do due to the disjoint intervals in the rotation.
+
+  Hence we can talk about the interior vertices of a closed non-crosing walk.
+
+  \fxwarning{TODO}
+
+  \fxnote{More general for non-crossing paths}
+
+
 \subsection{The neighbor walk of a path}
+  \fxwarning{Note that the same/similar things hold for the left boundary walk}
   During this proof we will frequently use the concept of the left or right neighbor walk of a path.
   Given a path $P = p_1 \ldots p_k$ in a graph $G$
   The \emph{right neighbor walk} $W$ of $P$ will consist of $p_1$, we will then take the vertices adjacent to $p_{2}$ between $p_1$ and $p_{3}$ in the clockwise rotation at $p_{2}$, followed by the vertices between $p_{2}$ and $p_{4}$ in the rotation at $p_{3}$ and so further until we add the vertices between $p_{k-2}$ and $p_k$ in the rotation around $p_{k-1}$ and finally we finish by adding $p_k$ to $W$.
@@ -33,9 +51,10 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
     The right neighbor walk $W$ is a walk.
   \end{lemma}
   \begin{proof}
-    Let us first show that $W$ is indeed a walk. We will proof that every vertex is adjacent to the next vertex. Let us suppose that $w$ and $w'$ are two subsequent vertices in $W$, we will show that $ww'$ is an edge if $\braces{w, w'} \cap \braces{p_1, p_k } = \emptyset$. Afterwards we will consider this edge case. There are then two cases for $w, w'$. Either $(a)$ $w$ and $w'$ are vertices adjacent to some $p_i$ subsequent in clockwise order or $(b)$ $w$ was the last vertex adjacent to some $p_i$ and thus $w'$ is the first vertex adjacent to $p_{i+1}$.
+    Let $w$ and $w'$ be two subsequent vertices in $W$. We will show they are connected. We first consider the case $\braces{w, w'} \cap \braces{p_1, p_k } = \emptyset$.
+    Now there are two cases. Either $(a)$ $w$ and $w'$ are vertices adjacent to some $p_i$ an thus subsequent in the rotation at $p_i$  or $(b)$ $w$ was the last vertex adjacent to some $p_i$ and thus $w'$ is the first vertex adjacent to $p_{i+1}$.
 
-    The following two situations can also be seen in Figure \ref{fig:walkproof}.
+    The following two situations can also be seen in Figure \ref{fig:red:walkproof}.
 
     \begin{figure}[h]
         \centering
@@ -51,13 +70,10 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
         \end{subfigure}
 
           \caption{The two main cases of the proof showing that $W$ is a walk}
-      \label{fig:walkproof}
+      \label{fig:red:walkproof}
     \end{figure}
 
-     \fxwarning{TODO adapt figures to $p_i$ instead of $v_i$}
-
-
-    In case $(a)$ we note that $p_i w$ and $p_i w'$ are edges next to each other in the clockwise rotation at $p_i$. Since every interior face of $\ext G$ is a triangle $ww'$ must be an edge. We thus see that $w, w'$ are adjacent and not duplicates.
+    In case $(a)$ we note that since $w$ and $w'$ are subsequent in the rotation at $p_i$ $ww'$ is an edge by Lemma \ref{lm:prelim:rotationEdge}.
 
     In case $(b)$ we note that $p_i w$ and $p_i p_{i+1}$ are edges subsequent in clockwise order, hence $wp_{i+1}$ is also an edge. Hence $w$ is the first vertex adjacent to $p_{i+1}$ subsequent to $v_i$ in the clockwise rotation. Thus $w= w'$. They are duplicates and one of them must have been removed.
 
@@ -67,11 +83,9 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
   \end{proof}
 
 
-  We will call a walk \emph{noncrossing} if at every vertex $w$ in the walk that is visited $k$ times such that $w_{i_1} = w_{i_2} = \ldots = w_{i_k}$ in the walk the clockwise intervals $[w_{i_j-1}, w_{i_j+1}]$ for $j \in \braces {1, \ldots, k}$ are disjoint in the rotation at $w$.
-  \fxnote{We might add a (small) figure for clarity (i.e. of a crossing and a non-crossing walk)}
   \begin{lemma}
     \label{lm:red:neighborWalkNoncrossing}
-    The right neighbor walk $W$ is a \emph{non-crosssing} walk.
+    The right neighbor walk $W$ is a non-crosssing walk.
   \end{lemma}
   \begin{proof}
     Suppose that the right neighbor walk is crossing at a vertex $w= w_i =w_j$. Then one of $w_{j-1}$ and $w_{j+1}$ is in the clockwise interval $[w_{i-1}, w_{i+1} ]$ at the rotation at $w$. We will denote this vertex by $w'$. It is clear that $w'$ cannot be on the path unless $w'$ is $p_1$ or $p_k$. In this case however we see that $w_{i-1}$ or $w_{i+1}$ respectively couldn't have been part of the path.
@@ -81,16 +95,25 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
     We conclude that $W$ must be a non-crossing walk.
   \end{proof}
 
-  The nice thing about non-crossing walks is that they if they return to their startpoint they allow a notion of interior and exterior. We can see this by applying Jordans curve theorem to a version of this walk that is very slightly perturbed at every vertex visited multiple times. Which we can do due to the disjoint intervals in the rotation.
+
+  \fxnote{Actullly W rev(P)}
+  \begin{lemma}
+    \label{lm:red:neighbourwalkNoInteriorVertex}
+    The closed non-crosing walk $WP$ has no interior vertex.
+  \end{lemma}
+  \begin{proof}
+    The interior of $WP$ consists of only triangles with all vertices in $WP$. We can see this from the construction of the neighbor walk. Both cases in Figure \ref{fig:red:walkproof} add a triangle to the interior with all vertices in $WP$.
+
+    Suppose there is a interior vertex. Then the triangle containing this vertex is a separating triangle.
+  \end{proof}
 
 
-   \fxwarning{TODO Define left and right of a walk}
   \begin{lemma}
     \label{lm:red:neighbourwalkChordFree}
     The left of the of a right neighbor walk and the right of the left neighbor walk are chordfree.
   \end{lemma}
   \begin{proof}
-    Suppose that the right neighbor walk $W = w_1 \ldots w_k$  has a chord on the left, say between $w_i$ and $w_j$ with $i< j -1 $. There is a vertex $p_\ell \in P$ on the path such that $w_{i+1}$ is a neighour of $p_\ell$ to the left of $p_\ell$ Consider now the following non-crossing closed walk $P w_k \ldots w_{j+1} w_j w_i w_{i-1} \ldots w_1$
+    Suppose that the right neighbor walk $W = w_1 \ldots w_k$  has a chord on the left, say between $w_i$ and $w_j$ with $i< j -1 $. There is a vertex $p_\ell \in P$ on the path such that $w_{i+1}$ is a neighbor of $p_\ell$ to the left of $p_\ell$ Consider now the following non-crossing closed walk $P w_k \ldots w_{j+1} w_j w_i w_{i-1} \ldots w_1$
     (Thick in Figure \ref{fig:red:neihbourwalkChordFree})this walk has $w_{i+1}$ in its exterior. But then $p_\ell w_{i+1}$ is a crossing edge. Which is forbidden.
 
     \begin{figure}[h]
@@ -101,8 +124,11 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
     \end{figure}
   \end{proof}
 
+  \fxnote{Alternate proof based on   ($\W$ being oriented from $\pW$ to $\pE$), since if it would lie on the left of $\W$ the vertices $w_{i+1},\ldots, w_{j-1}$ would not have been chosen in the construction of the prefence.}
 
 \subsection{Outline}
+  We will assume we have no separating $3$ or $4$ cycles.
+
   To describe the algorithm two more definitions are necessary
 
   \begin{defi}[Prefence]
@@ -110,19 +136,18 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
   \begin{enumerate}
    \renewcommand*{\labelenumi}{(P\arabic{enumi})}%
    \renewcommand*{\theenumi}{(P\arabic{enumi})}%
-    \item  For every $v_i \in \C \setminus \braces{\pW, \pS, \pE}$ we have that all vertices between $v_{i+1}$ and $v_{i-1}$ in the rotation at $v_i$ are in $\W \sm {\pW, \pE}$
-    \label{p:C}
-    \item For every $w_i \in \W \sm{\pW, \pE}$ we have that all vertices between $w_{i-1}$ and $w_{i+1}$ in rotation at $w_i$ are in $\C \sm {\pW, \pS, \pE}$
-    \label{p:W}
-    \item $w_2$ and $v_{i+1}$ are consecutive in the rotation at $v_i$
-    \label{p:pW}
-    \item $v_{j-1}$ and $w_{k-1}$ are consecutive in the rotation at $v_j$
-    \label{p:pE}
+    \item  $\C_\W$ Has no interior vertex
+    \label{p:noInteriorVertex}
+    \item  $\W$ has no chords on the left
+    \label{p:Cchordfree}
+    \item  $\restC{\W}$ has no chords on the right
+    \label{p:Wchordfree}
+
   \end{enumerate}
   \end{defi}
 
 
-  We enforce these conditions because they imply \ref{e:crossingEdges} when $\W$ is a path as we will show in Lemma \ref{lm:red:regularPrefenceIsFence}.
+  We enforce these conditions because they imply \ref{e:crossingEdges} as we will show in Lemma \ref{lm:red:regularPrefenceIsFence}.
 
   For a walk however the interior is not clearly defined.
 
@@ -133,8 +158,6 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
   \fxnote{ expand on naming/reasons of fence}
 
 
-  We will show that there is a algorithm if there are no separating $4$-cycles in $G$ and no separating $3$-cycles in $\ext G$.
-
 
   The algorithm will receive as input a extended graph $\ext G$ and will return a regular edge labeling such that all red faces are $(1-\infty)$ using a sweep-cycle approach inspired by \Fusy \cite{Fusy2006}.
 
@@ -143,49 +166,22 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
 \subsection{Finding a initial prefence}
   Let $v_i$ denote all the vertices of $\cpath$ in the following order $\pW =  v_1 \  v_2 \  \ldots v_{n-1} \  v_n = \pE$.
   Some intervals of these vertices will be adjacent to $\pS$. However, they can't be all adjacent to $S$ since then the sweepcycle would be non-separating since we can't have separating triangles. We denote by $v_i$ the last vertex of fist interval of vertices adjacent to $S$ and by $v_j$ the first vertex of the second interval.
-  As candidate walk we will start with $v_i$, we will then take the vertices adjacent to $v_{i+1}$ between $v_i$ and $v_{i+2}$ in the rotation at $v_{i+1}$, followed the vertices between $v_{i+1}$ and $v_{i+3}$ in the rotation at $v_{i+2}$ and so further until we add the vertices between $v_{j-2}$ and $v_j$ in the rotation around $v_{j-1}$ and finally we finish by adding $v_j$.
-
-  We then remove all subsequent duplicate vertices from $\W$.
+  As candidate walk we will take the right neighbor path of $C\sm{S, v_1, \ldots v_{i-1}, v_{j+1}, \dots v_n}$.
+  \fxnote{beter notation}
 
   \begin{lemma}
     \label{lm:red:isPrefence}
   The collection $W$ described above is a prefence.
   \end{lemma}
   \begin{proof}
-  We will first show that $W$ is a walk. We will proof that every vertex is adjacent to the next vertex. Let us suppose that $w$ and $w'$ are two subsequent vertices in $W$, we will show that $ww'$ is an edge if $\braces{w, w'} \cap \braces{v_i, v_j } = \emptyset$. Afterwards we will consider this edge case. There are then two cases for $w, w'$. Either $(a)$ $w$ and $w'$ are vertices adjacent to some $v_i$ subsequent in clockwise order or $(b)$ $w$ was the last vertex adjacent to some $v_i$ and thus $w'$ is the first vertex adjacent to $v_{i+1}$.
+  $W$ is a walk by lemma \ref{lm:red:neighborWalk}.
 
-  The following two situations can also be seen in Figure \ref{fig:walkproof}.
+  We note \ref{p:noInteriorVertex} holds due to Lemma \ref{lm:red:neighbourwalkNoInteriorVertex}
 
-  \begin{figure}[h]
-      \centering
-      \begin{subfigure}[b]{0.5\linewidth}
-          \includegraphics[width=\linewidth]{redAlgo/img/walkProofA}
-          \caption{}
-      \end{subfigure}%
-      \begin{subfigure}[b]{0.5\linewidth}
-          \includegraphics[width=\linewidth]{redAlgo/img/walkProofB}
-          \vspace{1cm}
+  We note \ref{p:Cchordfree} holds due to invariant \ref{i:noChords}.
 
-          \caption{}
-      \end{subfigure}
+  We note \ref{p:Wchordfree} holds due to Lemma \ref{lm:red:neighbourwalkChordFree}
 
-      	\caption{The two main cases of the proof showing that $W$ is a walk}
-  	\label{fig:walkproof}
-  \end{figure}
-
-
-  In case $(a)$ we note that $v_i w$ and $v_i w'$ are edges next to each other in clockwise order around $v_i$. Since every interior face of $\ext G$ is a triangle $ww'$ must be an edge. We thus see that $w, w'$ are adjacent and not duplicates.
-
-  In case $(b)$ we note that $v_i w$ and $v_i v_{i+1}$ are edges subsequent in clockwise order, hence $wv_{i+1}$ is also an edge. Hence $w$ is the first vertex adjacent to $v_{i+1}$ after $v_i$ in clockwise order. Thus $w= w'$. They are duplicates and one of them must have been removed.
-
-  Now for the edge cases: Let $x$ be the first vertex adjacent to $v_{i+1}$ and let $y$ be the last vertex adjacent to $v_{j-1}$. $v_i$ and $x$ are vertices adjacent to $v_{i+1}$ subsequent in clockwise order, and hence connected by Lemma \ref{lm:prelim:rotationEdge}. In the same way $y$ and $v_j$ are subsequent vertices in the rotation at $v_n$ and hence connected.
-
-  Hence $\W$ is a walk. The above also shows that $v_i v_{i+1} x$ and $v_{j-1} v_j y$ are triangles by Lemma \ref{lm:prelim:rotationEdge} and hence $\W$ satisfies properties \ref{p:pW} and \ref{p:pE} of being a prefence.
-
-  Moreover this walk satisfies  \ref{p:C} because $\W$ by construction contains all neighbors of any vertex $v_i \in \restC{\W} \sm{v_i, v_j}$ between $v_{i-1}$ and $v_{i+1}$ in the rotation of $v_i$.
-
-  Finally to see that $\W$ also satisfies \ref{p:W}. Consider a vertex $w_j \in \W \sm{v_i, v_j}$ then either it is $(a)$ the neighbor of some vertex $v_i$ and only of this vertex or it is $(b)$ the unique vertex neighboring in the interior of the cycle the $\ell +1$ vertices $v_i, \ldots, v_{i+\ell}$. This is essentially the same case distinction as above. However now $(a)$ $w_{i-1} w_i v_i$ and $v_i w_i w_{i+1}$ or $(b)$ $w_{i-1} w_i v_i$, $v_i w_i v_{i+1}, \ldots, v_{i+\ell -1} w_i v_{i+\ell} $
-  and $v_{i+\ell} w_i w_{i+1}$ form a set of triangles spanning the area between $w_{i-1}$ and $w_{i+1}$ in the rotation at $w_i$. Thus any edge not going to $\restC{\W} \sm{v_i, v_j}$ in this sector will lead to a separating triangle. We however have assumed $G$ has no separating triangles. Hence \ref{p:pW} holds.\fxnote[footnote, nomargin]{I believe this is still true when separating triangles are allowed to occur. However the prove will have to be different.}
   \end{proof}
 
   We then orient $\W$ from $v_i$ (the vertex closest to $\pW$)to $v_j$ (the vertex closest to $\pE$) and denote it's vertices by $w_1 \ldots w_k$.
@@ -197,7 +193,8 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
     \item The candidate walk has a chord on the right. That is, there is an edge $w_i w_j$ on the right of $\W$ with $i<j$ and $i$ and $j$ not subsequent (i.e. $i < j-1$).
   \end{enumerate}
 
-  Note that we can't have a chord can on the left of $\W$ ($\W$ being oriented from $\pW$ to $\pE$), since if it would lie on the left of $\W$ the vertices $w_{i+1},\ldots, w_{j-1}$ would not have been chosen in the construction of the prefence.
+  Note that we can't have a chord can on the left of $\W$ by Lemma \ref{lm:red:neighbourwalkChordFree}.
+
 
   \begin{lemma}
     \label{lm:red:regularPrefenceIsFence}
@@ -213,9 +210,7 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
      \item[\ref{e:longBorders}] For $\W$ or $\restC \W$ to have only one edge we need to have that $v_i v_j$ is an edge. However, $v_i v_j$ can not be an edge in $\C$ since $v_i$ and $v_j$ are from different intervals of vertices adjacent to $\pS$. It can also not be an edge in $\ext G \setminus \C$ since that would be a chord of the cycle and these don't exist by Invariant \ref{i:noChords}
 
      \item[\ref{e:crossingEdges}]
-     Every interior edge of $\C_\W$  with at least one endpoint on the cycle is of the required type by the conditions \ref{p:C} - \ref{p:pE}. We note that these edges in particular have both endpoints on the cycle $\C_\W$.
-
-     Interior edges with both endpoints not on the cycle can a priori exist. However since a triangulation is a connected graph there must then also be an edge with one endpoint on $\C_\W$, and one inside $\C_\W$ but this can not be if $\W$ is a prefence. However by the argument above both endpoints must then be on $\C_\W$, this is a contradiction.
+     This holds because every interior edge that does not lead to an interior vertex, nor is a chord of $\W$ or $\restC{\W}$ is of the required type. These three requirements are forces by \ref{p:noInteriorVertex}, \ref{p:Wchordfree} and \ref{p:Cchordfree} respectively.
 
      \item[\ref{e:noNewChord}] The cycle $\C'$ only changes between $v_i$ and $v_j$. There can be no chord with one vertex from cycle $\C \setminus \restC{\W}$ and one from $\W$ since such a chord would cross $\pS v_i$ or $\pS v_j$. There is no chord with two vertices in $\W$ since that would be a irregularity and there is no chord with two vertices from $\C \setminus \restC{\W}$ by Invariant \ref{i:noChords}.
    \end{itemize}
@@ -263,7 +258,7 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
   The algorithm will remove these irregularities by recursing on a subgraph for each maximal irregularity. We shrink the cycle $\C$ with every valid path that is found in the recurrence, in the order they are found. Afterwards we update the prefence by removing $w_{i+1}, \ldots, w_{j-1}$. In subsection \ref{ss:validity} we will show that the updated prefence is a prefence for the updated cycle $\C$.
 
 
-  We will first show how to remove these maximal irregularities in Subsections \ref{ss:chords} and \ref{ss:nonsimplePoints}. That is, we show which subgraph $H$ we recurse upon for both kinds of irregularity. Furthermore we show that these subgraphs suffice the requirements of the algorithm.
+  We will first show how to remove these maximal irregularities in Subsections \ref{ss:chords} and \ref{ss:nonsimplePoints}. That is, we show which \emph{recursion subgraph} $H$ we recurse upon for both kinds of irregularity. Furthermore we show that these subgraphs suffice the requirements of the algorithm.
 
   Afterwards, in subsection \ref{ss:validity} we will make sure that the subgraphs we recurse upon are edge-disjoint. That is, they only overlap in border vertices.
 
@@ -275,23 +270,26 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
 
     The vertex $v_a$ on the cycle is uniquely determined as the vertices adjacent to both $w_i$ and $w{i+1}$. In the same way $v_b$ is the unique neighbor of $w_{j-1}$ and $w_j$.
 
-    We will describe a walk $\scr U$ running from $v_a$ to $v_b$. This path consists of all vertices adjacent to $w_i$ in clockwise order from $v_a$ (inclusive) to $x$(inclusive) and subsequently all vertices adjacent to $w_j$ in clockwise order from $x$ (exclusive) to $v_b$ (inclusive). This path is given in bold in Figure \ref{fig:removeChord}.
+    We will describe a walk $\U$ running from $v_a$ to $v_b$. This path consists of all vertices adjacent to $w_i$ in clockwise order from $v_a$ (inclusive) to $x$(inclusive) and subsequently all vertices adjacent to $w_j$ in clockwise order from $x$ (exclusive) to $v_b$ (inclusive). This path is given in bold in Figure \ref{fig:removeChord}.
+
+    Note that $\U$ is the left neighbor walk of $v_a w_i w_j v_b$.
 
     \begin{lemma}
     $\U$ is a chordfree path
     \end{lemma}
     \begin{proof}
-     \fxnote*{Is it nice to refer to a line of reasoning like this?}{We note that $\U$ is a walk by the same reasoning as is given in Lemma \ref{lm:red:isPrefence}.}
+    We note that $\U$ is a walk due to Lemma \ref{lm:red:neighborWalk}.
 
     $\U$ cant have a non-simple point $x'$ since it would have to be connected to at least two vertices. However a vertex $x'$ that is distinct from $x$ and is connected to both $w_i$ and $w_j$ will induce a separating triangle $w_i x' w_j$. $\U$ also can't be nonsimple at $x$ since $x$ is the the third vertex of the triangular face $w_i w_j x$. Hence $\U$ is a path.
-
 
     $\scr U$ can't have chords $u_i u_j$ since they would either induce a separating $3$- or $4$-cycle either $w_i u_i u_j$ or $w_j u_i u_j$ or $w_i u_i u_j w_j$ depending on the vertex adjacent to $u_i$ and $u_j$.
     \fxnote{We use that we have no 4-cycles here}
     \end{proof}
 
 
-    We then consider the interior of the cycle $\C_\scr U$ and the cycle $\C_\U$ itself as the subgraph $H$. We then take the tight extension at $v_a$ and $v_b$. We will then recurse on this graph $\tightext H$. See also Figure \ref{fig:removeChord}. Since $\C$ is chordfree by invariant \ref{i:noChords} so is $\restC{\U}$. We have also just shown that $\U$ is chordfree. So $\tightext H$ is indeed defined. Furthermore, since $H$ is a induced subgraph of $G$, $\tightext H$ contains no separating $4$-cycles not involving the poles.
+    We take $\intplus(\C_\U)$ as the subgraph $H$. We then take the tight extension at $v_a$ and $v_b$. We will then recurse on this graph $\tightext H$. See also Figure \ref{fig:removeChord}. Since $\C$ is chordfree by invariant \ref{i:noChords} so is $\restC{\U}$. We have also just shown that $\U$ is chordfree. So $\tightext H$ is indeed defined.
+    Furthermore, since $H$ is a induced subgraph of $G$, $\tightext H$ contains no separating $4$-cycles not involving the poles.
+    \fxfatal{ALSO WITH POLES IS STILL BAD}
 
     We update the prefence by removing $w_{i+1}, \ldots, w_{j-1}$.
 
@@ -311,19 +309,26 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
 
     We will describe a walk $\scr U$ running from $v_a$ to $v_b$. This path consists of all vertices in the rotation at $w_i=w_j$ from $v_b$ (inclusive) to $v_a$(inclusive). This path is given in bold in Figure \ref{fig:removeNonSimplePoint}.
 
+    Note that $\U$ is the left neighbor walk of $v_a w_i v_b$.
+
+
     \begin{lemma}
     $\U$ is a chordfree path.
     \end{lemma}
     \begin{proof}
-      If we orient $\U$ from $v_a$ to $v_b$  we see that $\U$ cant have a non-simple point since such a point would have edges to at least two vertices on the right. However every vertex can only be connected to $w_i=w_j$. Hence $\U$ is a path.
+      We note that $\U$ is a walk due to Lemma \ref{lm:red:neighborWalk}.
+
+      If we orient $\U$ from $v_a$ to $v_b$  we see that $\U$ can't have a non-simple point on the left by construction and by the right since such a point would have edges to at least two vertices on the right. However every vertex can only be connected to $w_i=w_j$. Hence $\U$ is a path.
 
       $\U$ can't have chords on the right of the path by the way we construct $\U$. Furthermore $\scr U$ can't have chords $u_i u_j$ on the left since they would either induce a separating $3$-cycle $w_i u_i u_j$.
     \end{proof}
 
 
-    We then consider the interior of the cycle $\C_\scr U$ and the cycle $\C_\U$ itself as the subgraph $H$.
+    We then take $\intplus(\C_\U)$ as the subgraph $H$.
 
     We then take the tight extension of $H$ at $v_a$ and $v_b$ to recurse on. See also Figure \ref{fig:removeNonSimplePoint}. Since $\C$ is chordfree by Invariant \ref{i:noChords} so is $\restC{\U}$. We have also just shown that $\U$ is chordfree. So $\tightext H$ is indeed defined. Furthermore, since $H$ is a induced subgraph of $G$, $\tightext H$ contains no separating $4$-cycles not involving the poles.
+
+    \fxfatal{ARRARGH also poles are not allowed}
 
      We update the prefence by removing $w_{i+1}, \ldots, w_{j-1}$ and we also recognize that $w_i = w_j$ is now a duplicate subsequent occurrence of the same vertex. So we also remove $w_j$.
 
@@ -335,22 +340,39 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
         \label{fig:removeNonSimplePoint}}
     \end{figure}
 
-  \subsubsection{Validity}
-    \label{ss:validity}
+\subsubsection{Validity}
+  \label{ss:validity}
 
-    \begin{lemma}
-    After doing a move the updated prefence $W$ is a prefence for the updated cycle $C$
-    \end{lemma}
-    \begin{proof}
-    \fxerror{TODO}
-    \end{proof}
+  \begin{lemma}
+  After doing a move the updated prefence $\W'$ is a prefence for the updated cycle $\C'$
+  \end{lemma}
+  \begin{proof}
+    We want to show that the three properties of a prefence again hold for $\W'$.
 
-    \begin{lemma}
-    Let $H_I$ and $H_J$ be two recursion subgraphs for different maximal irregularities $I$ and $J$. Then $H_I$ and $H_J$ are edge disjoint.
-    \end{lemma}
-    \begin{proof}
-    \fxerror{TODO}
-    \end{proof}
+    We will first show \ref{p:noInteriorVertex} still holds.
+    We note we can cut the interior of $\C'_{\W'}$ into
+    three parts: $w_1 \ldots w_i v_a v_{a-1} \ldots v_{i+1} w_1$, $\U w_j w_i$ (or $\U w_i$) and $w_j \ldots v_j \ldots v_{b+1} v_b w_j$.
+    Note that the first and last part are free from interior vertices because they already were before the move by \ref{p:noInteriorVertex}.
+    As for the middle part since $\U$ is the left neighbor path of $v_a w_i w_j v_b$ (or $v_a w_i v_b$) this is also without interior vertices by Lemma \ref{lm:red:neighbourwalkNoInteriorVertex}.
+
+    Since in the recursion the cycle $\C$ is only updated with valid paths it remains a valid cycle. Thus Invariant \ref{i:noChords} still holds for $\C'$ and thus implies \ref{p:Cchordfree}.
+
+    Furthermore we can easily see \ref{p:Wchordfree} holds. Suppose we have a chord on the left of $\W'$ then this would already have been a chord of $\W$ however $\W$ has no chords due to \ref{p:Wchordfree}.
+  \end{proof}
+
+  \begin{lemma}
+  Let $H_I$ and $H_J$ be two recursion subgraphs for different maximal irregularities $I$ and $J$. Then $H_I$ and $H_J$ are edge disjoint.
+  \end{lemma}
+  \begin{proof}
+    Maybe the best proof is that since maximal ranges of irregularities overlap at most $1$ then the cycles $v_{a_I} \ldots v_{b_I} w_{j_I} w_{i_I}$  and  $v_{a_J} \ldots v_{b_J} w_{j_J} w_{i_J}$
+    with $v_{a_I}$ being the unique neighbor on the cycle of $w_{i_I}$ and $w_{i_I+1}$ and ....
+    don't cross
+
+    Then the left neighbor paths $U_I$ and $U_J$ are edge disjoint
+
+     \fxwarning{TODO fix this lemma}
+
+  \end{proof}
 
 \subsection{Correctness}
   As long as the interior of $\C$ is nonempty we can find a prefence. And thus we find valid paths. Since we continuously shrink the cycle with valid paths we end up with a regular edge labeling.

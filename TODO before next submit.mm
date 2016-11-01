@@ -1,6 +1,6 @@
 <map version="freeplane 1.3.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
-<node TEXT="TODO before next submit" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1477998733540"><hook NAME="MapStyle">
+<node TEXT="TODO before next submit" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1478022103414"><hook NAME="MapStyle">
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node">
@@ -68,7 +68,7 @@
 <node TEXT="Change all rotations to clockwise? Or specify exactly?" POSITION="left" ID="ID_236314936" CREATED="1477407395476" MODIFIED="1477998765113">
 <edge COLOR="#00ffff"/>
 </node>
-<node TEXT="" POSITION="left" ID="ID_1081862068" CREATED="1477998722493" MODIFIED="1477998733539">
+<node TEXT="Notation for parts of the cycle? Maybe use fusy notation instead of restrictions and ldots." POSITION="left" ID="ID_1081862068" CREATED="1477998722493" MODIFIED="1478022149630">
 <edge COLOR="#ffff00"/>
 </node>
 </node>
