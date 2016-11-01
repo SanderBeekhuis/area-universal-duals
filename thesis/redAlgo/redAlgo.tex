@@ -22,6 +22,86 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
   Since paths are a subclass of walks all of the above notation can also be used for a path $\P$. Note that the closed walk $\C_\P$ in this case will actually be a cycle.
 
 
+\subsection{The neighbor walk of a path}
+  During this proof we will frequently use the concept of the left or right neighbor walk of a path.
+  Given a path $P = p_1 \ldots p_k$ in a graph $G$
+  The \emph{right neighbor walk} $W$ of $P$ will consist of $p_1$, we will then take the vertices adjacent to $p_{2}$ between $p_1$ and $p_{3}$ in the clockwise rotation at $p_{2}$, followed by the vertices between $p_{2}$ and $p_{4}$ in the rotation at $p_{3}$ and so further until we add the vertices between $p_{k-2}$ and $p_k$ in the rotation around $p_{k-1}$ and finally we finish by adding $p_k$ to $W$.
+  We then remove all subsequent duplicates from $W$
+
+  \begin{lemma}
+    \label{lm:red:neighborWalk}
+    The right neighbor walk $W$ is a walk.
+  \end{lemma}
+  \begin{proof}
+    Let us first show that $W$ is indeed a walk. We will proof that every vertex is adjacent to the next vertex. Let us suppose that $w$ and $w'$ are two subsequent vertices in $W$, we will show that $ww'$ is an edge if $\braces{w, w'} \cap \braces{p_1, p_k } = \emptyset$. Afterwards we will consider this edge case. There are then two cases for $w, w'$. Either $(a)$ $w$ and $w'$ are vertices adjacent to some $p_i$ subsequent in clockwise order or $(b)$ $w$ was the last vertex adjacent to some $p_i$ and thus $w'$ is the first vertex adjacent to $p_{i+1}$.
+
+    The following two situations can also be seen in Figure \ref{fig:walkproof}.
+
+    \begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.5\linewidth}
+            \includegraphics[width=\linewidth]{redAlgo/img/walkProofA}
+            \caption{}
+        \end{subfigure}%
+        \begin{subfigure}[b]{0.5\linewidth}
+            \includegraphics[width=\linewidth]{redAlgo/img/walkProofB}
+            \vspace{1cm}
+
+            \caption{}
+        \end{subfigure}
+
+          \caption{The two main cases of the proof showing that $W$ is a walk}
+      \label{fig:walkproof}
+    \end{figure}
+
+     \fxwarning{TODO adapt figures to $p_i$ instead of $v_i$}
+
+
+    In case $(a)$ we note that $p_i w$ and $p_i w'$ are edges next to each other in the clockwise rotation at $p_i$. Since every interior face of $\ext G$ is a triangle $ww'$ must be an edge. We thus see that $w, w'$ are adjacent and not duplicates.
+
+    In case $(b)$ we note that $p_i w$ and $p_i p_{i+1}$ are edges subsequent in clockwise order, hence $wp_{i+1}$ is also an edge. Hence $w$ is the first vertex adjacent to $p_{i+1}$ subsequent to $v_i$ in the clockwise rotation. Thus $w= w'$. They are duplicates and one of them must have been removed.
+
+    Now for the edge cases: Let $x$ be the first vertex adjacent to $p_{i+1}$ and let $y$ be the last vertex adjacent to $p_{j-1}$. $p_i$ and $x$ are vertices adjacent to $p_{i+1}$ subsequent in the clockwise rotation, and hence connected by Lemma \ref{lm:prelim:rotationEdge}. In the same way $y$ and $v_j$ are subsequent vertices in the rotation at $v_n$ and hence connected.
+
+    Hence $\W$ is a walk.
+  \end{proof}
+
+
+  We will call a walk \emph{noncrossing} if at every vertex $w$ in the walk that is visited $k$ times such that $w_{i_1} = w_{i_2} = \ldots = w_{i_k}$ in the walk the clockwise intervals $[w_{i_j-1}, w_{i_j+1}]$ for $j \in \braces {1, \ldots, k}$ are disjoint in the rotation at $w$.
+  \fxnote{We might add a (small) figure for clarity (i.e. of a crossing and a non-crossing walk)}
+  \begin{lemma}
+    \label{lm:red:neighborWalkNoncrossing}
+    The right neighbor walk $W$ is a \emph{non-crosssing} walk.
+  \end{lemma}
+  \begin{proof}
+    Suppose that the right neighbor walk is crossing at a vertex $w= w_i =w_j$. Then one of $w_{j-1}$ and $w_{j+1}$ is in the clockwise interval $[w_{i-1}, w_{i+1} ]$ at the rotation at $w$. We will denote this vertex by $w'$. It is clear that $w'$ cannot be on the path unless $w'$ is $p_1$ or $p_k$. In this case however we see that $w_{i-1}$ or $w_{i+1}$ respectively couldn't have been part of the path.
+
+    So we continue with $w'$ not on the path. All neighbors of $w$ between $w_{i-1}$ and $w_{i+1}$ in the clockwise rotation are on the path. \fxwarning{TODO make this a lemma}. So we have a series of triangles by Lemma \ref{lm:prelim:rotationEdge}. Now $w'$ must be inside one of these triangles, otherwise we would have a crossing edge (and thus a non-planar graph.) Now the triangle containing $w$ is a separating triangle.
+
+    We conclude that $W$ must be a non-crossing walk.
+  \end{proof}
+
+  The nice thing about non-crossing walks is that they if they return to their startpoint they allow a notion of interior and exterior. We can see this by applying Jordans curve theorem to a version of this walk that is very slightly perturbed at every vertex visited multiple times. Which we can do due to the disjoint intervals in the rotation.
+
+
+   \fxwarning{TODO Define left and right of a walk}
+  \begin{lemma}
+    \label{lm:red:neighbourwalkChordFree}
+    The left of the of a right neighbor walk and the right of the left neighbor walk are chordfree.
+  \end{lemma}
+  \begin{proof}
+    Suppose that the right neighbor walk $W = w_1 \ldots w_k$  has a chord on the left, say between $w_i$ and $w_j$ with $i< j -1 $. There is a vertex $p_\ell \in P$ on the path such that $w_{i+1}$ is a neighour of $p_\ell$ to the left of $p_\ell$ Consider now the following non-crossing closed walk $P w_k \ldots w_{j+1} w_j w_i w_{i-1} \ldots w_1$
+    (Thick in Figure \ref{fig:red:neihbourwalkChordFree})this walk has $w_{i+1}$ in its exterior. But then $p_\ell w_{i+1}$ is a crossing edge. Which is forbidden.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=1]{redAlgo/img/neighbourWalkChords}
+      \caption{The construction in the proof of Lemma \ref{lm:red:neighbourwalkChordFree}}
+      \label{fig:red:neihbourwalkChordFree}
+    \end{figure}
+  \end{proof}
+
+
 \subsection{Outline}
   To describe the algorithm two more definitions are necessary
 
@@ -62,7 +142,7 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
 
 \subsection{Finding a initial prefence}
   Let $v_i$ denote all the vertices of $\cpath$ in the following order $\pW =  v_1 \  v_2 \  \ldots v_{n-1} \  v_n = \pE$.
-  Some intervals of these vertices will be adjacent to $\pS$. However, they can't be all adjacent to $S$ since then the sweepcycle will be non-separating since we can't have separating triangles. We denote by $v_i$ the last vertex of fist interval of vertices adjacent to $S$ and by $v_j$ the first vertex of the second interval.
+  Some intervals of these vertices will be adjacent to $\pS$. However, they can't be all adjacent to $S$ since then the sweepcycle would be non-separating since we can't have separating triangles. We denote by $v_i$ the last vertex of fist interval of vertices adjacent to $S$ and by $v_j$ the first vertex of the second interval.
   As candidate walk we will start with $v_i$, we will then take the vertices adjacent to $v_{i+1}$ between $v_i$ and $v_{i+2}$ in the rotation at $v_{i+1}$, followed the vertices between $v_{i+1}$ and $v_{i+3}$ in the rotation at $v_{i+2}$ and so further until we add the vertices between $v_{j-2}$ and $v_j$ in the rotation around $v_{j-1}$ and finally we finish by adding $v_j$.
 
   We then remove all subsequent duplicate vertices from $\W$.

@@ -1,6 +1,6 @@
 <map version="freeplane 1.3.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
-<node TEXT="TODO before next submit" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1477388753608"><hook NAME="MapStyle">
+<node TEXT="TODO before next submit" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1477998733540"><hook NAME="MapStyle">
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node">
@@ -49,7 +49,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="5"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="6"/>
 <node TEXT="Spelling and grammar" POSITION="right" ID="ID_626502275" CREATED="1477388757073" MODIFIED="1477388762633">
 <edge COLOR="#ff0000"/>
 <node TEXT="Spellcheck" ID="ID_516570710" CREATED="1477388763766" MODIFIED="1477388770898"/>
@@ -65,8 +65,11 @@
 <node TEXT="Change notation of extended graphs" POSITION="right" ID="ID_1687970935" CREATED="1477388831382" MODIFIED="1477388840304">
 <edge COLOR="#ff00ff"/>
 </node>
-<node TEXT="" POSITION="left" ID="ID_236314936" CREATED="1477407395476" MODIFIED="1477407395489">
+<node TEXT="Change all rotations to clockwise? Or specify exactly?" POSITION="left" ID="ID_236314936" CREATED="1477407395476" MODIFIED="1477998765113">
 <edge COLOR="#00ffff"/>
+</node>
+<node TEXT="" POSITION="left" ID="ID_1081862068" CREATED="1477998722493" MODIFIED="1477998733539">
+<edge COLOR="#ffff00"/>
 </node>
 </node>
 </map>
