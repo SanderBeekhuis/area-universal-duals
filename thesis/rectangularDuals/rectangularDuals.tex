@@ -32,12 +32,12 @@ In this section we will introduce the rectangular dual of a graph.
   We will call $\L$ \emph{area-equivalent} if no matter the areas we assign to the rectangles of $\L$ there is a equivalent layout $\L'$ such that each rectangle has the assigned area.
   \fxnote{Might add supporting figures}
 
-  All other restrictions we introduce here will consider the \emph{maximal line segments} of $\L$. A \emph{line segment} of $\L$ is a sequence of consecutive inner edges forming a line. Such a line segment is maximal if it's not contained in any other line segment. \fxnote*{Is this neccesary?}{This notion is also introduced in \cite{Eppstein2012}}. A line segment is \emph{one-sided} if it is on the boundary of one single rectangle. A line segment is \emph{$(k,l)$-sided} with $k<l$ if the line segment is on the boundary of at most $k$ different rectangles on one side and at most $l$ different rectangles on the other side.
+  All other restrictions we introduce here will consider the \emph{maximal line segments} (or simply \emph{maximal segement}) of $\L$. A \emph{line segment} (or simply \emph{segment}) of $\L$ is a sequence of consecutive inner edges forming a line. Such a segment is called maximal if it's not contained in any other line segment. \fxnote*{Is this neccesary?}{This notion is also introduced in \cite{Eppstein2012}}. A segment is \emph{one-sided} if it is on the boundary of a single rectangle. A line segment is \emph{$(k,l)$-sided} with $k<l$ if the line segment is on the boundary of at most $k$ different rectangles on one side and at most $l$ different rectangles on the other side.
   \fxnote{Might add supporting figures}
 
-  We will then call a layout \emph{one-sided} if all maximal line segments are one sided. Furthermore it is called \emph{vertically one-sided} or \emph{horizontally one-sided} if all vertical or horizontal maximal line segments are one-sided. Furthermore a layout is \emph{$(k,l)$-sided} if all maximal line segments are $(k,l)$-sided.
+  We will then call a layout \emph{one-sided} if all maximal segments are one-sided. Furthermore it is called \emph{vertically one-sided} or \emph{horizontally one-sided} if just all vertical or horizontal maximal segments are one-sided. Furthermore a layout is \emph{$(k,l)$-sided} if all maximal line segments are $(k,l)$-sided.
 
-  Eppstein et al. \cite{Eppstein2012} show that a layout is one-sided if and only if it is onesided.
+  Eppstein et al. \cite{Eppstein2012} show that a layout is area-universal if and only if it is one-sided.
 
 
 \subsection{Regualar edge labeling}
@@ -46,16 +46,19 @@ In this section we will introduce the rectangular dual of a graph.
 
   From the nature of the adjacencies in a rectangular layout we can deduce the following two rules for a regular edge labeling.
   \begin{enumerate}
-    \item [Interior vertex] In the rotation around every nonempty vertex we have the following subsequent non-empty sets: Incoming red edges, incoming blue edges, outgoing red edges and outgoing blue edges. And only these sets.
-    \item [Poles] $\pN$ has only incoming red edge, $\pE$ has only incoming blue edges, $\pS$ has only outgoing red edges and $\pW$ has only outgoing blue edges. Except of course the uncoloured edges between poles.
+    \item (Interior vertex) In the rotation around every interior vertex we have the following subsequent non-empty sets: Incoming red edges, incoming blue edges, outgoing red edges and outgoing blue edges. And only these sets.
+    \item (Pole) $\pN$ has only incoming red edge, $\pE$ has only incoming blue edges, $\pS$ has only outgoing red edges and $\pW$ has only outgoing blue edges. Except for, of course, the uncolored edges between poles.
   \end{enumerate}
 
   Regular edge labeling were first introduced by Kant and He \cite{Kant1997} but were also used in \cite{Eppstein2012}. Fusy also studied these structures \cite{Fusy2006,Fusy2009} but he calls them \emph{transeversal structures}.
 
   He showed \cite{He} that given a rectangular edge labeling we can reconstruct a equivalent rectangular layout.
   \fxwarning{TODO fix cite, and something with equivalence class. Siam p540 bottom, READ ACTUAL PAPER}
+  A regular edge labeling  of $\ext G$ corresponds to a equivalence class of rectangular layouts $\L$ that are a rectangular dual of $G$. \fxnote{What do i mean by such a eq. class}
 
   \paragraph{Properties}
+  We note that we have no monocolored directed cycles \footnote{In fact we don't have any directed cycles} because such a cycle would for example correspond to a  group of adjacent rectangles that have  no leftmost or topmost one. This is clearly absurd.
+
   \begin{lemma}
     \label{lm:rel:noMonoColoredTriangles}
     A regular edge labeling doesn't admit a monocolored triangle
@@ -65,18 +68,36 @@ In this section we will introduce the rectangular dual of a graph.
     Suppose we have a mononcolored triangle. Without loss of generality we will suppose that the color of this triangle is blue. Then at least one of the vertices has an incoming blue edge followed directly by an outgoing blue edge or an outgoing blue edge followed directly by an incoming blue edge in it's rotation. Thus this vertex has either an empty set of outgoing or incoming red edges, offending the coloring requirements of a REL
   \end{proof}
 
-  A regular edge labeling  of $\ext G$ corresponds to a equivalence class of rectangular layouts $\L$ that are a rectangular dual of $G$.
+  \paragraph{$st$-planar graphs}
+  Kant and He \cite[pp.179]{Kant1997} show that an regular edge labeling is closely linked to a pair of $st$-planar graphs.
 
-  \paragraph{Regular edge labelings and maximal segments}
-  A REL is a pair of st planar gra[hs]
+  A $st$-planar graph is an oriented planar graph with one source (indegree 0) $s$ and one sink (outdegree 0) $t$. Both $s$ and $t$ lie on the outer face. Moreover, such a $st$-planar graph is without directed cycles.
 
-  We will define
+  Every face $F$ in an $st$-planar graph has the same structure. The boundary of $F$ consists of two directed paths with common origin $\spl(F)$ and  destination $\mrg(F)$.
+  \fxnote{We might want to prove this.}
+  These boundary paths are adjacent in the orientation at $\spl(F)$. We will say the first path in the rotation, starting at the beginning of the adjacent pair, is the \emph{right boundary path} of $F$ and the second one is the \emph{left boundary path}.
 
-  We wills define red faces and blue faces  with two sides (which is difficult in unoriented settings) and define split and merge vertices as the first and last vertices of such face.
+  Kant and He propose to add an edge and orient the outer cycle. This is necessary because they require $s$ and $t$ to be adjacent. Moreover they don't a priori require such an graph to be without directed cycles. Hence we restate their result in Theorem \ref{th:rel:stPlanarGraphs}
 
-  \paragraph{Being one-sided in terms of REL}
-  The blue and red faces of a
+  \begin{thrm}
+    \label{th:rel:stPlanarGraphs}
+    The blue edges of $G$ form a $st$-planar graph with $s= \pW$ and $t=\pE$. Moreover the red edges of $G$ form a $st$-planar graph with $s= \pS$ and $t= \pN$.
+  \end{thrm}
+  \begin{proof}
+    A trivial adaptation of \cite[pp.179]{Kant1997}. We note that we can't get any directed cycles since a regular edge labeling has no monocolored directed cycles.
+  \end{proof}
 
+  We will refer to these $st$-planar graphs as the \emph{blue graph} and \emph{red graph} of some regular edge labeling. We will then refer to the faces of these graphs as \emph{blue faces} and \emph{red faces}.
+
+  \paragraph{Regular edge labellings and maximal segments}
+  From the way that we color a \rel for a given layout $\L$ we can see that a horizontal maximal segment leads to a blue face and a vertical maximal segment leads to a red face.
+   \fxwarning{TODO figure of blue face and red face}
+
+  For either type of maximal segment we denote the corresponding face with $F$. The number of interior vertices of both boundary paths without $\mrg(F)$ and $\spl(F)$ is the number of rectangles on the respective sides of the maximal segment.
+
+  Hence a one-sided maximal segment corresponds to a face with one boundary path of length $2$. \footnote{A boundary path can't have length $1$ since by construction of a \rel it encloses a maximal segment and thus has to go trough at least one intermediate rectangle/vertex.} And a $(k,l)$-sided maximal segemnt has a short boundary path of length at most $k+1$ and a longer boundary path of length at most $l+1$. \footnote{Recall that the length of a path its edgecount}.
+
+  The following Lemma will prove to be of use
   \begin{lemma}
   \label{lm:zInRedFace}
   A face $F$ with at least $3$ edges on each side contains a $Z$
@@ -84,10 +105,6 @@ In this section we will introduce the rectangular dual of a graph.
   \begin{proof}
   \fxerror{TODO}
   \end{proof}
-
-
-  \paragraph{Being pseudo-onesided in terms of REL}
-
 
 
 \subsection{Extended graphs}
