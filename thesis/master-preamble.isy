@@ -1,34 +1,6 @@
-%!TEX root = thesis.tex
+<ipestyle name="master-preamble">
+<preamble>
 
-\documentclass[a4paper]{article}
-\usepackage{amsthm}
-\usepackage[utf8]{inputenc}
-\usepackage{csquotes}
-\usepackage[english]{babel}
-\usepackage{graphicx}
-\usepackage{enumitem}
-\usepackage{subcaption}  %ALLOWS SUBFIGURES
-\usepackage{wrapfig}
-
-\usepackage[draft]{fixme}
-\fxsetup{theme = color}
-\definecolor{fxnote}{rgb}{0.0000, 0.6000,0.0000}
-\definecolor{fxwarning}{rgb}{1.0000,0.5490,0.0000}
-\definecolor{fxerror}{rgb}{1.0000,0.2706,0.0000}
-\definecolor{fxfatal}{rgb}{1.0000,0.0000,0.0000}
-\usepackage[backend=biber, giveninits =true, isbn=false, url=false, maxbibnames=100]{biblatex}
-\usepackage{hyperref}
-
-%Theorems
-\newtheorem{thrm}{Theorem}
-\newtheorem{lemma}[thrm]{Lemma}
-\newtheorem{prop}[thrm]{Proposition}
-\newtheorem{remark}[thrm]{Remark}
-
-\theoremstyle{definition}
-\newtheorem*{defi}{Definition}
-
-%%BeginIpePreamble
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsopn}
@@ -103,8 +75,5 @@
 
 \newcommand{\rel}{\text{regular edge labeling }}
 
-%%EndIpePreamble
-
-
-%bib stuff
-\bibstyle{plain}
+</preamble>
+</ipestyle>

@@ -1,0 +1,11 @@
+{
+  "projectPath": "/home/sander/repos/area-universal-duals",
+  "title": "LaTeX-Plus Project",
+  "root": "thesis/unifiedAlgo/unifiedAlgo.tex",
+  "program": "pdflatex",
+  "latexmkOptions": "-bibtex -pdf -shell-escape",
+  "output": ".latex",
+  "openOutput": "true",
+  "postAction": "link",
+  "postPath": ""
+}
