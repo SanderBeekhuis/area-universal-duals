@@ -1,6 +1,6 @@
 %!TEX root = ../thesis.tex
 
-%invariant enviroment
+%invariant environment
 \newenvironment{invariants}{%
   \refstepcounter{thrm}%
   \paragraph{Invariants~\theprop}%
@@ -25,39 +25,41 @@ The approach taken by this algorithm will be the following
 \end{enumerate}
 
 
- \subsection{Fans and curls}
+ \subsection{Fans}
  In order to effectively describe the algorithm and its proof we will have to introduce some more concepts.
 
  Consider a blue face in between two fences, we will call such a face a \emph{strip}. Every interior edge of this face goes from one fence to the other (due to property \ref{e:crossingEdges}). We will describe the edges from $\spl(F)$ to $\mrg(F)$ .
 
  Let $u_0 , u_1, \ldots u_n$ be the vertices of the upper boundary path of $F$ and $v_0, v_1, \ldots, v_m$ the vertices of the bottom boundary path. That is $u_0=v_0 = \spl(F)$ and $u_n = v_m = \mrg(F)$. Since our graph is a triangulation $u_1v_1$ must be an edge. For the second edge in the face we have two options $u_1v_2$ or $u_2v_1$, otherwise this edge and the previous one would not form a triangle. This principle holds for every subsequent edge, we can either increase a the index of the upper boundary path or the index of the bottom boundary path.
 
- We will call a maximal series of at least two edges increasing the index on the bottom boundary path (and thus keeping the index on the upper path fixed) a \emph{fan} and a maximal series of at lest two edges increasing the index on the upper boundary path will be called a \emph{curl}. The \emph{size} of such a fan or curl is the number of edges contained in the series. By the definition of fan and curl each fan or curl has size at least $2$.
+ We will call a maximal series of at least two edges increasing the index on the bottom boundary path (and thus keeping the index on the upper path fixed) a \emph{Bottom-fan} or \emph{B-fan} and a maximal series of at lest two edges increasing the index on the upper boundary path will be called a \emph{Top-fan} or \emph{T-fan}. The \emph{size} of such a fan is the number of edges contained in the series. By the definition of a fan each fan has size at least $2$.
 
- In Figure \ref{fig:uni:fansandcurls} we see a strip consisting of subsequently a curl of size $2$, a fan of size 2, a curl of size $2$, a fan of size $6$, a curl of size $3$ and a fan of size $3$.
+ In Figure \ref{fig:uni:fans} we see a strip consisting of subsequently a B-fan of size $2$, a T-fan of size 2, a B-fan of size $2$, a T-fan of size $6$, a B-fan of size $3$ and a T-fan of size $3$.
 
  \begin{figure}[h]
    \centering
-   \includegraphics[scale=.9]{unifiedAlgo/img/fansandcurls}
+   \includegraphics[scale=.9]{unifiedAlgo/img/fans}
    \caption{}
-   \label{fig:uni:fansandcurls}
+   \label{fig:uni:fans}
  \end{figure}
 
 
-In a strip we alternately encounter curls and fans. Since suppose we would have two adjacent fans or curls then we would just have a larger fan or curl.
+In a strip we alternately encounter B-fans and T-fans. Since suppose we would have two adjacent T-fans or B-fans then we would just have a larger fan.
 
-We will sometimes shorten our notation and let for example $c3$ mean a curl of size $3$ and $f2$ a fan of size $2$. Then in this notation the strip in Figure \ref{fig:uni:fansandcurls} can be characterized by $c2 f2 c2 f5 c3 f3$. In this \emph{short notation} of a strip we will sometimes use notation to express we have a large  or small curl without giving it's size explicitly. We will take $c4-$ mean a curl of size $4$ or less and $c3+$ a curl of size $3$ or larger.  Furthermore $c?$ is a curl of any size and $c\infty$ is an infinitively large curl.
-\footnote{this is useful in counterexamples.} A large curl can thus be expressed as $c5+$
+We will sometimes shorten our notation and let for example $B3$ mean a B-fan of size $3$ and $T2$ a T-fan of size $2$. Then in this notation the strip in Figure \ref{fig:uni:fans} can be characterized by $B2 T2 B2 T5 B3 T3$. In this \emph{short notation} of a strip we will sometimes use notation to express we have a large  or small B-fan without giving it's size explicitly.
+\fxnote{introduce large before intorducing new notatiob}
+ We will take $c4-$ mean a B-fan of size $4$ or less and $c3+$ a B-fan of size $3$ or larger.  Furthermore $c?$ is a B-fan of any size and $c\infty$ is an infinitively large B-fan.
+\footnote{this is useful in counterexamples.} A large B-fan can thus be expressed as $c5+$
 
-Note that the only edges that are flippable are those that are in both a fan and a curl.
+Note that the only edges that are flippable are those that are in both a T-fan and a B-fan.
 \fxnote{We might want to show this}
 
 
-We introduce some more terminology for curls \emph{outer edges} and \emph{pads}
+We introduce some more terminology for B-fans \emph{outer edges} and \emph{pads}
  \fxwarning{TODO}
 \begin{figure}[h]
   \centering
-  \includegraphics[scale=1]{unifiedAlgo/img/curlterms}
+  \includegraphics[scale=1]{unifiedAlgo/img/fanterms}
   \caption{}
   \label{fig:}
 \end{figure}
@@ -73,7 +75,7 @@ This depends how we define overlap, it seems true for vertex overlap
 
 \begin{lemma}
   \label{lm:}
-  Above curl we have fans of size $2$
+  Above B-fan we have fans of size $2$
 \end{lemma}
 \begin{proof}
   Otherwise we create a $4$-cycle
@@ -95,7 +97,7 @@ While doing flips we want to prevent the creation of multiple connected blue Z's
 \end{figure}
 
 \subsubsection{Treating a strip}
-\paragraph{Phase 1: Removing large curls}
+\paragraph{Phase 1: Removing large B-fans}
 
 While deciding which edges to flip on each strip we will maintain the following invariants
 
@@ -104,35 +106,34 @@ While deciding which edges to flip on each strip we will maintain the following 
   \item The loaded edges on the next fence occur in one of the following patterns: 1 loaded edge followed by at least 1 unloaded edge, 2 loaded edges followed by at least two unloaded edges.
 \end{invariants}
 
-For each strip we first flip both outer edges of any curl of size $5$ or larger. Such a curl will be called a \emph{large curl}.
+For each strip we first flip both outer edges of any B-fan of size $5$ or larger. Such a B-fan will be called a \emph{large B-fan}.
 
-We will show that we can create blue faces that are at most $(9, \infty)$ containing all the large curls and obeying Invariant \ref{inv:uni:load}.
+We will show that we can create blue faces that are at most $(9, \infty)$ containing all the large B-fans and obeying Invariant \ref{inv:uni:load}.
 
 \begin{lemma}
-  \label{lm:uni:removingLargeCurls}
-  We can create blue faces that are at most $(9, \infty)$ containing all the large curls and obeying Invariant \ref{inv:uni:load}.
+  \label{lm:uni:removingLargeB-fans}
+  We can create blue faces that are at most $(9, \infty)$ containing all the large B-fans and obeying Invariant \ref{inv:uni:load}.
 \end{lemma}
 
 
 \begin{proof}
-  we will begin scanning at the split of the strip when we encounter a large curl ($c5+$) we  will enter a multistage case distinction ending with a small enough blue face and and edges on the bottom fence of the strip satisfying Invariant \ref{inv:uni:load}.
+  we will begin scanning at the split of the strip when we encounter a large B-fan ($c5+$) we  will enter a multistage case distinction ending with a small enough blue face and and edges on the bottom fence of the strip satisfying Invariant \ref{inv:uni:load}.
 
-  Note that in all cases we flip the left outer edge of the first $c5+$ we encounter when scanning. Also note that we only ever flip edges bordering a large curl.
+  Note that in all cases we flip the left outer edge of the first $c5+$ we encounter when scanning. Also note that we only ever flip edges bordering a large B-fan.
 
 
-  Let us first inspect the 3 fans following our $c5+$. If any of them is size 5 or larger we flip the right outer edge of the last large curl before this fan and continue our s\newcounter{invar}
-can from the fan onward. In this case the largest face we create is $(7, \infty)$.
+  Let us first inspect the 3 T-fans following our $c5+$. If any of them is size 5 or larger we flip the right outer edge of the last large B-fan before this T-fan and continue our scan from the fan onward. In this case the largest face we create is $(7, \infty)$.
 
-  Otherwise all three fans following our $c5+$ are small, we have the following sequence $c5+ f4- c? f4- c? f4- c?$. If the rightmost curl is large we continue our scan at this curl, creating a $(9, \infty)$- face. Otherwise, if the second-right most curl is large we continue our scan there creating a $(6, \infty)$-face.
+  Otherwise all three T-fans following our $c5+$ are small, we have the following sequence $c5+ f4- c? f4- c? f4- c?$. If the rightmost B-fan is large we continue our scan at this B-fan, creating a $(9, \infty)$- face. Otherwise, if the second-right most B-fan is large we continue our scan there creating a $(6, \infty)$-face.
 
-  Otherwise we check whether the third-rightmost curl is large if this is the case we flip it's \textbf{right} outer edge and continue our scan after this curl. Otherwise we also flip the \textbf{right} outer edge of the original $c5+$. We continue the scan right after this flipped edge. In both cases we can do this without offending Invariant \ref{inv:uni:load} since the next two/three curls are small so the next one/two edges will not be loaded even when continuing the scan immediately after. These last two steps yield faces of size at most $(4, \infty)$.
+  Otherwise we check whether the third-rightmost B-fan is large if this is the case we flip it's \textbf{right} outer edge and continue our scan after this B-fan. Otherwise we also flip the \textbf{right} outer edge of the original $c5+$. We continue the scan right after this flipped edge. In both cases we can do this without offending Invariant \ref{inv:uni:load} since the next two/three B-fans are small so the next one/two edges will not be loaded even when continuing the scan immediately after. These last two steps yield faces of size at most $(4, \infty)$.
 
   One can also see the order in which we try to place edges in Figure \ref{fig:uni:placeedges}
 
   \begin{figure}[h]
     \centering
     \includegraphics[scale=1]{unifiedAlgo/img/placeEdges}
-    \caption{Order in which we try to flip edges. We only flip an edge if it neighbors a large curl.}
+    \caption{Order in which we try to flip edges. We only flip an edge if it neighbors a large B-fan.}
     \label{fig:uni:placeedges}
   \end{figure}
 
@@ -145,63 +146,64 @@ can from the fan onward. In this case the largest face we create is $(7, \infty)
 =======
 >>>>>>> Stashed changes
 
-Any further blue faces that are still to large do not contain any large curls. We will be careful to flip only if we satisfy the following invariants in addition to Invariants \ref{inv:uni:load}
+Any further blue faces that are still to large do not contain any large B-fans. We will be careful to flip only if we satisfy the following invariants in addition to Invariants \ref{inv:uni:load}
 
 \begin{invariants}
   \label{inv:uni:rest}
   \item We don't flip an edge creating a blue $Z$ containing a loaded edge.
   \label{inv:uni:noLoad}
-  \item We don't flip an edge creating a blue $Z$ containing a pad of a large curl in the next
+  \item We don't flip an edge creating a blue $Z$ containing a pad of a large B-fan in the next
    strip.
   \label{inv:uni:noPad}
 \end{invariants}
 
  \fxwarning{TODO give these a proper ref and environment (beore starting real proofs)}
 
-We consider two cases for our still to large blue face $F$, either this blue face is above the entirety of a large curl in the next strip or it isn't.
+We consider two cases for our still to large blue face $F$, either this blue face is above the entirety of a large B-fan in the next strip or it isn't.
 In the first case we can find a flippable edge satisfying all the invariants and we are done.
 
 \begin{lemma}
-  \label{lm:uni:flipAboveLargeCurl}
-  We can flip at least one edge above in any blue face that lies above the entirety of a large curl in the next strip.
+  \label{lm:uni:flipAboveLargeB-fan}
+  We can flip at least one edge above in any blue face that lies above the entirety of a large B-fan in the next strip.
   \fxnote{This lemma should probably change when we start to allow moves}
 \end{lemma}
 \begin{proof}
-  In the strip above a large curl and directly above such a large curl any fan can only be of size $2$ since otherwise we would have a separating $4$-cycle \fxnote{I could/should make this a lemma somewhere}. Furthermore there can't be large curl in the face we are treating since all large curls are in $(9,\infty)$ faces.  We are thus in the situation depicted in Figure \ref{fig:uni:flipAboveLargeCurl}.
+  In the strip above a large B-fan and directly above such a large B-fan any T-fan can only be of size $2$ since otherwise we would have a separating $4$-cycle \fxnote{I could/should make this a lemma somewhere}. Furthermore there can't be large B-fan in the face we are treating since all large B-fans are in $(9,\infty)$ faces.  We are thus in the situation depicted in Figure \ref{fig:uni:flipAboveLargeB-fan}.
 
   \begin{figure}[h]
     \centering
-    \includegraphics[scale=1]{unifiedAlgo/img/flipAboveLargeCurl}
+    \includegraphics[scale=1]{unifiedAlgo/img/flipAboveLargeBfan}
     \caption{}
-    \label{fig:uni:flipAboveLargeCurl}
+    \label{fig:uni:flipAboveLargeB-fan}
   \end{figure}
 
   Now suppose one of the edges neighboring $u$ is not loaded then we can flip here. Now let us assume both edges incident to $u$ on the fence are loaded then at least one of the edges of the fence incident to $v$ is unloadned  because the next two edges are unloaded due to Invariant \ref{inv:uni:load}.
 
-  Hence we can alway flip an edge above a large curl.
+  Hence we can alway flip an edge above a large B-fan.
 \end{proof}
 
 
-In the second case we don't have to consider more then one right pad and more the one left pad otherwise we could execute Lemma \ref{lm:uni:flipAboveLargeCurl}
+In the second case we don't have to consider more then one right pad and more the one left pad otherwise we could execute Lemma \ref{lm:uni:flipAboveLargeB-fan}
 
 \begin{lemma}
   \label{lm:}
   In any blue face that is not a $(31, \infty)$ blue face  we can flip a edge.
 \end{lemma}
 \begin{proof}
-  The face under consideration does not lie above the enirty of any curl becuase of Lemma \ref{lm:uni:flipAboveLargeCurl}.
+  The face under consideration does not lie above the enirty of any B-fan becuase of Lemma \ref{lm:uni:flipAboveLargeB-fan}.
+   \fxwarning{TODO fix this on right side only need one edge of seperation}
 
-  Such a face that is not $(31, \infty)$ has at least $32$ vertices on the top fence. This means it has at least $31$ edges lying in at least $11$ curls. These curls have $10$ inbetween fans. The two fans  closest to the both border of the face will remain unloaded in order to preserve Invariant \ref{inv:uni:load}. This leaves $6$ fans. One pad or two loaded edges can pssibly block an entire fan. We can't block two subsequent fans with loaded edges due to only small curls. We only have two pads. So one of the fans has to remain free and we can thus flip an edge satisfying both Invariants \ref{inv:uni:load} and \ref{inv:uni:rest}.
+  Such a face that is not $(31, \infty)$ has at least $32$ vertices on the top fence. This means it has at least $31$ edges lying in at least $11$ B-fans. These B-fans have $10$ inbetween T-fans. The two T-fans  closest to the both border of the face will remain unloaded in order to preserve Invariant \ref{inv:uni:load}. This leaves $6$ fans. One pad or two loaded edges can pssibly block an entire T-fan. We can't block two subsequent T-fans with loaded edges due to only small B-fans. We only have two pads. So one of the fans has to remain free and we can thus flip an edge satisfying both Invariants \ref{inv:uni:load} and \ref{inv:uni:rest}.
 \end{proof}
 
 
 \paragraph{Phase 3: Flips}
-After we have treated all strips the only overlapping blue $Z$'s are those that have their middle  edge (the one crossing a strip) as outer edge of a large curl. This because the rest of the edges has been placed obeying the properties above.
+After we have treated all strips the only overlapping blue $Z$'s are those that have their middle  edge (the one crossing a strip) as outer edge of a large B-fan. This because the rest of the edges has been placed obeying the properties above.
 
 
 
 
-We can then have essentially two cases which both occur around  both the left and right pad of the large curl. Giving  a total of at most $4$ flip operations above a large curl.
+We can then have essentially two cases which both occur around  both the left and right pad of the large B-fan. Giving  a total of at most $4$ flip operations above a large B-fan.
  \fxwarning{TODO argue this}
 They are depicted in Figures \ref{fig:uni:flipcasea} and \ref{fig:uni:flipcaseb} we treat these as depicted in Figures \ref{fig:uni:flipactiona} and \ref{fig:uni:flipactionb}.
 
@@ -245,9 +247,9 @@ We will now also describe how each flip is executed.
 
 It can be that a flip of case a) necessitates doing a flip of type b). However then we are done.
 
-Above a curl of size $5$ or $6$ we would not produces a legal \rel if we do all $4$ flips. Since the curl would become only size $3$ after the two $a)$ flips and we need a curl of size $5$ to do both $b)$ flips without them intefering.
+Above a B-fan of size $5$ or $6$ we would not produces a legal \rel if we do all $4$ flips. Since the B-fan would become only size $3$ after the two $a)$ flips and we need a B-fan of size $5$ to do both $b)$ flips without them interfering.
 
-Lucky enough for us the Algorithm proposed in Lemma \ref{lm:uni:removingLargeCurls} does only color all $4$ edges neccisacting a flip blue above curls of size $7$ or more.
+Lucky enough for us the Algorithm proposed in Lemma \ref{lm:uni:removingLargeB-fans} does only color all $4$ edges necessitatingb a flip blue above B-fans of size $7$ or more.
 
 
 
@@ -259,36 +261,36 @@ Lucky enough for us the Algorithm proposed in Lemma \ref{lm:uni:removingLargeCur
 
 \begin{proof}
   \begin{enumerate}
-    \item Every chain of Z's only occurs if both middle edges are adjacent to a large curl.
-    \item We can break such a chain in the second $Z$ for every chain doing only at most 4 flips for every large curl.
-    \item Doing any or all of these flips on a curl of size $7$ or more yields a valid \rel
-    \item On a curl of size $5$ or $6$ at most three flips are available and necessary. We can do any or all of them and yield a valid \rel
-    \item After doing all available flips for a curl there is no longer any chain of blue Z's using the edges of that curl.
+    \item Every chain of Z's only occurs if both middle edges are adjacent to a large B-fan.
+    \item We can break such a chain in the second $Z$ for every chain doing only at most 4 flips for every large B-fan.
+    \item Doing any or all of these flips on a B-fan of size $7$ or more yields a valid \rel
+    \item On a B-fan of size $5$ or $6$ at most three flips are available and necessary. We can do any or all of them and yield a valid \rel
+    \item After doing all available flips for a B-fan there is no longer any chain of blue Z's using the edges of that B-fan.
     \item Doing these flips only increases the length of any face by $1$.
   \end{enumerate}
 
-  \paragraph{Every chain of Z's only occurs if both middle edges are adjacent to a large curl}
-  A chain of Z's can only start if a first Z is followed by a second Z. By Invariant \ref{inv:uni:noLoad} this can only happen when placing edges around a large curl. The middle edge of the second $Z$ is thus adjacent to a large curl. The middle edge of the first $Z$ is also adjacent to large curl since it also can't have been placed in the second phase of the algorithm due to Invariant \ref{inv:uni:noPad}.
+  \paragraph{Every chain of Z's only occurs if both middle edges are adjacent to a large B-fan}
+  A chain of Z's can only start if a first Z is followed by a second Z. By Invariant \ref{inv:uni:noLoad} this can only happen when placing edges around a large B-fan. The middle edge of the second $Z$ is thus adjacent to a large B-fan. The middle edge of the first $Z$ is also adjacent to large B-fan since it also can't have been placed in the second phase of the algorithm due to Invariant \ref{inv:uni:noPad}.
 
-  \paragraph{We can break such a chain in the second $Z$ for every chain doing only at most 4 flips for every large curl}
-  Given any chain of blue Z's we will try to do a flip in the disrupt the chain. Given any large curl there are at most two edges of this curl coloured blue (the outer edges). Only these two edges can be midlle edges for some blue Z. The edges on the strip above this curl can only be above this Z in one way (either type a) or b) ) without creating a monocolored traingle (which is forbidden). However doing a flip of type a) may then necciastate a flip of type b).
+  \paragraph{We can break such a chain in the second $Z$ for every chain doing only at most 4 flips for every large B-fan}
+  Given any chain of blue Z's we will try to do a flip in the disrupt the chain. Given any large B-fan there are at most two edges of this B-fan coloured blue (the outer edges). Only these two edges can be midlle edges for some blue Z. The edges on the strip above this B-fan can only be above this Z in one way (either type a) or b) ) without creating a monocolored traingle (which is forbidden). However doing a flip of type a) may then necciastate a flip of type b).
   \fxnote{Figure?}
 
   Hence we might need $4$ flips in total.
 
-  \paragraph{Doing any or all of these flips on a curl of size $7$ or more yields a valid \rel}
+  \paragraph{Doing any or all of these flips on a B-fan of size $7$ or more yields a valid \rel}
   It is clear that every flip on it's own changes a valid \rel into another valid \rel.
   When we inspect the descriptions of the flips we see that they do not interfere with each other.
   \fxnote{Expand ?}
 
-  \paragraph{On a curl of size $5$ or $6$ at most three flips are available and necessary. We can do any or all of them and yield a valid \rel}
-  %This is due to the way we color in Lemma \ref{lm:uni:flipAboveLargeCurl}.
+  \paragraph{On a B-fan of size $5$ or $6$ at most three flips are available and necessary. We can do any or all of them and yield a valid \rel}
+  %This is due to the way we color in Lemma \ref{lm:uni:flipAboveLargeB-fan}.
 
-  Suppose we force these $4$ flips to happen on curl of size $5$ or $6$ then the fence above this curl offends Invariant \ref{inv:uni:load}
+  Suppose we force these $4$ flips to happen on B-fan of size $5$ or $6$ then the fence above this B-fan offends Invariant \ref{inv:uni:load}
   \fxnote{Figure?}
 
 
-  \paragraph{After doing all available flips for a curl there is no longer any chain of blue Z's using the edges of that curl.}
+  \paragraph{After doing all available flips for a B-fan there is no longer any chain of blue Z's using the edges of that B-fan.}
   It is clear that each flip break the original chain
   Argue that flips don't introduce (too long) chains
 
