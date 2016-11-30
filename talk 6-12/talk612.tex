@@ -1,0 +1,63 @@
+%!TEX root = talk612.tex
+
+\input{preamble}
+\addbibresource{../thesis.bib}
+
+
+\title{Investigations}
+\author{Sander Beekhuis}
+\date{\today} %\today%
+
+
+\begin{document}
+\maketitle
+
+\subsection*{Form all cornerassignments without any seperating $4$-cycle a onesided dual. }
+False
+
+Then it also follows that there are no onesided colorings of this graph.
+
+
+
+\subsection*{Any valid exteneded graph is a 5-connected traingulation minus one edge.}
+
+
+\begin{lemma}
+  \label{lm:5connIsNoSep4C}
+  For plane triangulations having no separating 4-cycle is the same as being 5-connected
+\end{lemma}
+
+\begin{proof}
+We will show this by contraposition (i.e. having a separating 4-cycle is equivalent to not being 5-conencted).
+If a traingulation $G$ has a separating 4-cyle then the nodes of this $4$-cycle are a $4$-cutset and $G$ is not $5$-connected.
+On the other hand, if a triangulation is not $5$ connected there is a cutset $X$ of size at most $4$. Removing $X$ splits $G$ into several connected components. By the property that $G$ maximally planar the nodes in $X$ must form a cycle. (They should form a closed curve preventing edges from the one component to the other one.)
+\end{proof}
+
+\subsection*{When we remove an edge from a 5-connected triangulation we get a valid extended graph without any seperating 4-cycle.}
+
+\begin{proof}
+  Let $G$ be any 5 connected plane triangulation. By Lemma \ref{lm:5connIsNoSep4C} we know that $G$ has no separating $4$-cycle. If we consider any edge $e$ and $\tilde{G} = G \setminus{e}$ then certainly $\tilde{G}$ also has no seperting $4$-cycle. Since any separting $4$-cycle of $\tilde{G}$ would have already been one of $G$.
+\end{proof}
+
+Note that a $5$-conneted graph minus one edge is not necessarily again $5$-connected.
+
+Unfortunatly not all extended graphs without seperating $4$-cyles can be generated this way. Conside for example the graph in Figure \ref{fig:ure}. This example has been checked by hand and python on not containing 4cycles.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=1]{NoSeperating4CycleButAdddingEdgeBackInIsBad.pdf}
+  \caption{}
+  \label{fig:ure}
+\end{figure}
+
+\section{5-connected traingulations}
+5 connected triangulations can be created iteratively using a number of moves.
+
+
+
+
+%\listoffixmes
+
+
+\printbibliography
+\end{document}
