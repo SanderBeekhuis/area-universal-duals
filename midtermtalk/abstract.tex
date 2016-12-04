@@ -1,0 +1,33 @@
+
+\input{../preamble.tex}
+\addbibresource{../thesis.bib}
+
+\title{Psuedo one-sided rectangular duals}
+\author{Sander Beekhuis}
+\date{\today} %\today%
+
+
+\begin{document}
+
+\maketitle
+
+\paragraph{Setting}
+
+A \emph{rectangular layout} is a partition of a rectangle into a finite set of interior disjoint rectangles. The interior of this rectangle thus contains vertical and horizontal line segments, such a  segment is \emph{maximal} if it can't be extended any further on either side. A rectangular layout is \emph{one-sided} if every maximal segment is the side of a single rectangle.
+
+The \emph{rectangular dual} of a graph $G$ is a rectangular layout whose rectangles have the same adjacencies as the vertices of $G$. To make such a dual one usualy adds 4 corner vertices to $G$ to obtain an \emph{extended graph}.
+
+Some rectangular duals are better then others. For example \emph{area-universal} rectangular duals have adjacencies that hold regardless of the areas we assign to each rectangle.
+
+Eppstein et al. have shown that rectangular duals are area-universal exactly when they are one-sided.~\cite{Eppstein2012} They show one can compute such a rectangular dual with a FPT algorithm if it exists. Unfortunately not all graphs admit a one-sided dual, an example is given by Rinsma.~\cite{Rinsma1987}
+
+\paragraph{Work}
+Since not all graphs admit a \emph{one-sided} rectangular dual we relax this condition slightly and consider \emph{psuedo one-sided} rectangular duals. Where we enforce that every maximal segment is on the same side of $k$ adjacent rectangles, with $k$ some (hopefully) small constant.
+
+We show that extended graphs containing a separating 4-cycle in general do not admit psuedo-onesided duals.
+
+We conjecture that all extended graphs without any separating 4-cycle can be colored in a pseudo one-sided way. And will show our progress on this conjecture so far.
+
+\printbibliography
+
+\end{document}

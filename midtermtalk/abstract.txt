@@ -1,0 +1,20 @@
+SETTING
+A rectangular layout is a partition of a rectangle into a finite set of interior disjoint rectangles. The interior of this rectangle thus contains vertical and horizontal line segments, such a  segment is $1 if it can't be extended any further on either side. A rectangular layout is one-sided if every maximal segment is the side of a single rectangle.
+
+The rectangular dual of a graph $G$ is a rectangular layout whose rectangles have the same adjacencies as the vertices of $G$. To make such a dual one usualy adds 4 corner vertices to $G$ to obtain an extended graph.
+
+Some rectangular duals are better then others. For example area-universal rectangular duals have adjacencies that hold regardless of the areas we assign to each rectangle.
+
+Eppstein et al. have shown that rectangular duals are area-universal exactly when they are one-sided.[1] They show one can compute such a rectangular dual with a FPT algorithm if it exists. Unfortunately not all graphs admit a one-sided dual, an example is given by Rinsma. [2]
+
+WORK
+Since not all graphs admit a one-sided rectangular dual we relax this condition slightly and consider psuedo one-sided rectangular duals. Where we enforce that every maximal segment is on the same side of $k$ adjacent rectangles, with $k$ some (hopefully) small constant.
+
+We show that extended graphs containing a separating 4-cycle in general do not admit psuedo-onesided duals.
+
+We conjecture that all extended graphs without any separating 4-cycle can be colored in a pseudo one-sided way. And will show our progress on this conjecture so far.
+
+
+REFERENCES
+[1] D. Eppstein, E. Mumford, B. Speckmann, and K. Verbeek. “Area-Universal and Constrained Rectangular Layouts”. In: SIAM Journal on Computing 41.3 (2012), pp. 537–564. doi: 10.1137/110834032.
+[2] I. Rinsma. “Nonexistence of a certain rectangular floorplan with specified areas and adjacency”. In: Environment and Planning B: Planning and Design 14.2 (1987), pp. 163–166. doi: 10.1068/b140163.
