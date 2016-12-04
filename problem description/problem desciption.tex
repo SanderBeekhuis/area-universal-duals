@@ -13,12 +13,7 @@
 \usepackage{hyperref}
 \usepackage[draft]{fixme}
 \fxsetup{theme = color}
-%\usepackage{graphicx}
-%\usepackage{caption} %prereq for subcaption
-%\usepackage{subcaption}  %ALLOWS SUBFIGURES
-%\usepackage[colorinlistoftodos]{todonotes}
-%\usepackage{tikz}
-%\usepackage{algorithm,algpseudocode}
+
 
 %Theorems
 \newtheorem{lemma}{Lemma}
@@ -48,8 +43,8 @@
 
 %basic probability
 \DeclareMathOperator*{\E}{\mathbb{E}}
-\DeclareMathOperator{\Var}{Var} 
-\DeclareMathOperator{\Covar}{Covar} 
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Covar}{Covar}
 \DeclareMathOperator{\pr}{\mathbb{P}}
 
 %Distribution
@@ -98,17 +93,17 @@
 
 \subsection*{Setting}
 A  \emph{rectangular layout} is a partition of a rectangle into a finite set of interior-disjoint rectangles. Hence the interior of this rectangle contains vertical and horizontal line segments. We will call any such line segment that is not extended any further on either side a \emph{maximal segment}. Such an layout is \emph{one-sided} if every maximal segment has only one rectangle on one of its sides.
- 
+
 We define a \emph{rectangular dual} of a graph as a rectangular layout whose adjacencies are the same as those of the graph.
 
 In for example atlases \emph{rectangular cartograms} can be used to display information. A rectangular cartogram is a map where the regions are replaced by rectangles while keeping their adjacencies. The size of each region changes according to the variable displayed in the cartogram.  \fxnote*{can i say this in a CS paper?}{Mathematically} speaking a rectangular dual of the adjacency graph of the map.
 
-If the areas change it might be that a certain rectangular layout can't fulfill it's adjacencies anymore and we have to switch to another, combinatorially different, rectangular dual of the adjacency graph of the map. 
+If the areas change it might be that a certain rectangular layout can't fulfill it's adjacencies anymore and we have to switch to another, combinatorially different, rectangular dual of the adjacency graph of the map.
 
-One would thus want to find a \emph{area-universal} rectangular dual. Such an dual has adjacencies that hold regardless of the area sizes we assign to  each rectangle. 
+One would thus want to find a \emph{area-universal} rectangular dual. Such an dual has adjacencies that hold regardless of the area sizes we assign to  each rectangle.
 
 
-Eppstein et al. have shown that rectangular duals are area-universal exactly when they are one-sided.~\cite{Eppstein2012} Unfortunately not all graphs admit a one-sided dual. One such graph is given by Rinsma.~\cite{Rinsma1987} 
+Eppstein et al. have shown that rectangular duals are area-universal exactly when they are one-sided.~\cite{Eppstein2012} Unfortunately not all graphs admit a one-sided dual. One such graph is given by Rinsma.~\cite{Rinsma1987}
 
 \subsection*{Goal}
 The goal of this thesis is twofold.

@@ -49,9 +49,13 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="1"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="2"/>
 <node TEXT="What exactly do we mean with combinatorally equivallent (p1 of SIAM)" POSITION="right" ID="ID_1984993958" CREATED="1477732483846" MODIFIED="1477732513649">
 <edge COLOR="#ff0000"/>
+<node TEXT="Same adjecencyis and direction of the adjecenies" ID="ID_1119715856" CREATED="1480844096441" MODIFIED="1480844121896"/>
+</node>
+<node TEXT="How do we hyphenate pseudo one-sided?" POSITION="left" ID="ID_253366827" CREATED="1480844064088" MODIFIED="1480844091965">
+<edge COLOR="#0000ff"/>
 </node>
 </node>
 </map>

@@ -1,6 +1,6 @@
 %!TEX root = talk612.tex
 
-\input{preamble}
+\input{../preamble}
 \addbibresource{../thesis.bib}
 
 
@@ -55,8 +55,54 @@ Unfortunatly not all extended graphs without seperating $4$-cyles can be generat
 
 
 
+\section{Failed attempts}
+I tried to build a 5-conencted triangulation REL using the limited amount of moves we can do to create other 5-conenected triangulations. I did also view this in the dual.
 
+Unfortunately there are valid REL's with valid moves that we can't color.
+
+\paragraph{Planar seproatrs}
+I tried something using planar separators. Unfortunately both sides seem to depend to much upon each other.
+
+\paragraph{Dual}
+I currently look at the dual. It seems slightly easier.
+
+\paragraph{Building a REL}
+We can build a REL using the steps of constructing a 5-connected triangulation. Unfortunatly it is a bad one.
+Base graph and lots of step 3.
+
+
+\paragraph{}
+There is omly one graph with faces of degree 5 and nothing else
+
+
+\section{Conjectures}
+All valid extended graphs can be generated from a base graph and a set of moves. Similarly to 5 connected triangulations.
+
+This rpoblem might be FTP in high degree nodes or NP-haard
+
+
+\section{Other ideas}
+Maybe we can uses Birkenhoff and find sets that are flipped a certain number of times
+
+Some combined red/blue step
+
+A planar separator going trough faces of a low degree (can be large, but this are relivly horles faces if an edge flip goes trough them).
+
+Inside the separator we must have no crossing paths. (This might be restrictive on colorings inf the inside is just a path.)
+
+Planar separator on primal?
+
+
+Build a REL using consttuction steps. If it goes wrong, reverse change color and try again.
+
+Can we always finish a valid partial coloring? (Of dual and or primal)
+
+
+Induction on construction steps?
 %\listoffixmes
+
+\section{TODO}
+Completly read paper. Snap daarna miisscien hoe je zo'n graaf goed opdeeld
 
 
 \printbibliography
