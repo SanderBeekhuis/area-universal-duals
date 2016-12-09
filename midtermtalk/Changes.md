@@ -3,12 +3,13 @@
 * Empty space on comparison page
 * Time presentation
 * check marks in ipe pictures
+* nice title page
+* animation
 
 
 ## fixed
 * in results we show the same thing twice
 * spell check
-* animation
 * Finish Applications section
 
 ## wont do
