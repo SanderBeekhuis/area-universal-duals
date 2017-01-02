@@ -27,10 +27,10 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
   We let $\intplus(C)$ denote the the vertices of $C$ and $C$'s interior vertices. We will also sometimes let it refer to the subgraph of $G$ induced by these vertices.
 
   \paragraph{Non-crossing walks}
-  We will call a walk \emph{noncrossing} if at every vertex $w$ in the walk that is visited $k$ times such that $w_{i_1} = w_{i_2} = \ldots = w_{i_k}$ in the walk the clockwise intervals $[w_{i_j-1}, w_{i_j+1}]$ for $j \in \braces {1, \ldots, k}$ are disjoint in the rotation at $w$.
+  We will call a walk \emph{noncrossing} if at every vertex $w$ in the walk that is visited $k >1$ times such that $w_{i_1} = w_{i_2} = \ldots = w_{i_k}$ in the walk the clockwise intervals $[w_{i_j-1}, w_{i_j+1}]$ for $j \in \braces {1, \ldots, k}$ are disjoint in the rotation at $w$.
   \fxnote{We might add a (small) figure for clarity (i.e. of a crossing and a non-crossing walk)}
 
-  The nice thing about non-crossing walks is that they if they return to their startpoint they allow a notion of interior and exterior. We can see this by applying Jordans curve theorem to a version of this walk that is very slightly perturbed at every vertex visited multiple times. Which we can do due to the disjoint intervals in the rotation.
+  The nice thing about non-crossing walks is that if they are closed they allow a notion of interior and exterior. We can see this by applying Jordans curve theorem to a version of this walk that is very slightly perturbed at every vertex visited multiple times. Which we can do due to the disjoint intervals in the rotation.
 
   Hence we can talk about the interior vertices of a closed non-crosing walk.
 
@@ -43,7 +43,7 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
   \fxwarning{Note that the same/similar things hold for the left boundary walk}
   During this proof we will frequently use the concept of the left or right neighbor walk of a path.
   Given a path $P = p_1 \ldots p_k$ in a graph $G$
-  The \emph{right neighbor walk} $W$ of $P$ will consist of $p_1$, we will then take the vertices adjacent to $p_{2}$ between $p_1$ and $p_{3}$ in the clockwise rotation at $p_{2}$, followed by the vertices between $p_{2}$ and $p_{4}$ in the rotation at $p_{3}$ and so further until we add the vertices between $p_{k-2}$ and $p_k$ in the rotation around $p_{k-1}$ and finally we finish by adding $p_k$ to $W$.
+  The \emph{right neighbor walk} $W$ of $P$ will consist of $p_1$ and the vertices adjacent to $p_{2}$ between $p_1$ and $p_{3}$ in the clockwise rotation at $p_{2}$ followed by the vertices between $p_{2}$ and $p_{4}$ in the rotation at $p_{3}$ and so further until we add the vertices between $p_{k-2}$ and $p_k$ in the rotation around $p_{k-1}$ and finally we finish by adding $p_k$ to $W$.
   We then remove all subsequent duplicates from $W$
 
   \begin{lemma}
@@ -101,7 +101,7 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
     \label{lm:red:neighbourwalkNoInteriorVertex}
     The closed non-crosing walk $WP$ has no interior vertex.
   \end{lemma}
-  \begin{proof}
+  \begin{proof}subsequent
     The interior of $WP$ consists of only triangles with all vertices in $WP$. We can see this from the construction of the neighbor walk. Both cases in Figure \ref{fig:red:walkproof} add a triangle to the interior with all vertices in $WP$.
 
     Suppose there is a interior vertex. Then the triangle containing this vertex is a separating triangle.
@@ -149,7 +149,7 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
 
   We enforce these conditions because they imply \ref{e:crossingEdges} as we will show in Lemma \ref{lm:red:regularPrefenceIsFence}.
 
-  For a walk however the interior is not clearly defined.
+  For a walk however the interior is not clearly defined. \fxnote{Use a non-crossing walk}
 
   \begin{defi}[Fence]
     A fence is a valid path starting and ending at a vertex adjacent to $S$

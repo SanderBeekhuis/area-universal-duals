@@ -77,6 +77,7 @@
 %%%%THIS THESIS
 \newcommand{\intplus}{\operatorname{Int^{+}}}
 \newcommand{\interior}{\operatorname{Int}}
+\newcommand{\rev}{\operatorname{Rev}}
 \newcommand{\spl}{\operatorname{split}}
 \newcommand{\mrg}{\operatorname{merge}}
 
@@ -106,6 +107,17 @@
 
 %%EndIpePreamble
 
+
+%invariant environment
+\newenvironment{invariants}{%
+  \refstepcounter{thrm}%
+  \paragraph{Invariants~\theprop}%
+  \renewcommand*{\theenumi}{\theprop\,(I\arabic{enumi})}%
+  \renewcommand*{\labelenumi}{(I\arabic{enumi})}%
+  \enumerate
+}{%
+  \endenumerate
+}
 
 %bib stuff
 \bibstyle{plain}

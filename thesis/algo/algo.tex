@@ -1,16 +1,5 @@
 %!TEX root = ../thesis.tex
 
-%invariant enviroment
-\newenvironment{invariants}{%
-  \refstepcounter{thrm}%
-  \paragraph{Invariants~\theprop}%
-  \renewcommand*{\theenumi}{\theprop\,(I\arabic{enumi})}%
-  \renewcommand*{\labelenumi}{(I\arabic{enumi})}%
-  \enumerate
-}{%
-  \endenumerate
-}
-
 \fxwarning{Harmonize reference invariants and eligible/valid path requirements. and change E to V (for valids)}
 
 \section{Algorithms}
