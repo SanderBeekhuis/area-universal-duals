@@ -98,7 +98,7 @@ We will assume the entire graph has no seperating 3 or 4 cyles. We will show tha
 
     Note that $\P|_{v_i, v_j} \oplus \rev(\Q)$ is a cycle. We call this chord \emph{separating} if this is a separating cycle. \fxnote{Define Rev}
 
-    We call a chord \emph{unaivoidable} if on the other side of the path $v_i$ and $v_j$ are connected with an $2-chord$. That is, a $3$-chord on the right of $\P$ is unavoidable if there is a $2-chord$ on the left of $\P$. \fxnote{Figure of this situation, two non-seperating chords}
+  %  We call a chord \emph{unaivoidable} if on the other side of the path $v_i$ and $v_j$ are connected with an $2-chord$. That is, a $3$-chord on the right of $\P$ is unavoidable if there is a $2-chord$ on the left of $\P$. \fxnote{Figure of this situation, two non-seperating chords}
 
 \subsection{Outline}
   The algorithm will consist of two phases
@@ -120,7 +120,7 @@ We will assume the entire graph has no seperating 3 or 4 cyles. We will show tha
     \item \label{i:uni:intVertCond} All inner edges of $T$ outside of $\C$ are colored and oriented in such that the inner vertex condition holds. %TODO what is the inner vertex condition
     \fxerror{We need to add a partial inner vertex condition}
     \item \label{i:uni:no2Chords} $\C\sm{\pW, \pS, \pE}$ has no separating 2-chords
-    \item \label{i:uni:no3chords} $\cpath$ has no avoidable separating 3-chords
+    %\item \label{i:uni:no3chords} $\cpath$ has no avoidable separating 3-chords
   \end{invariants}
 
 
@@ -161,7 +161,7 @@ We will assume the entire graph has no seperating 3 or 4 cyles. We will show tha
     The collection $W$ described above is a prefence.
     \end{lemma}
     \begin{proof}
-    $W$ is a walk by lemma \ref{lm:uni:neighborWalk}. Furthermore it is a path since any NSP would offend Invariant \ref{i:uni:no2Chords} of the sweepcycle.
+    $W$ is a walk by lemma \ref{lm:uni:neighborWalk}. Furthermore it is a path since any non-simple point would offend Invariant \ref{i:uni:no2Chords} of the sweepcycle.
 
 
     We note \ref{p:noInteriorVertex} holds due to Lemma \ref{lm:uni:neighbourwalkNoInteriorVertex}
@@ -181,20 +181,107 @@ We will assume the entire graph has no seperating 3 or 4 cyles. We will show tha
         \itemsep=-4pt
         \item Chords
         \item Separating 2-chords
-        \item Separating avoidable $3$-chords
       \end{enumerate}
 
-      All of these structures are on the right of the prefence since the prefence satifies \ref{p:Wchordfree} (no chords on the left) and \ref{p:noInteriorVertex} (no 2- or 3-chords on the left).
+      All of these structures are on the right of the prefence since the prefence satisfies \ref{p:Wchordfree} (no chords on the left) and \ref{p:noInteriorVertex} (no separating 2-chords on the left).
 
-      \paragraph{Avoid chords}
+      What we do depends on the first obstacle we encounter. The range of an obstcle will be given by it's start  and end vertex.
 
-      \paragraph{Avoid 2-chords}
+      \paragraph{First obstacle is a chord}
+      If our precycle has any chords we look identify the them by their start and end vertex. Of the chords with the lowest start index we will consider the one with the largest end index.
 
-      \paragraph{Avoid 3-chords}
+      Now we have a group of chords with start and end vertices. What we do now depends on whether a 2-chord shows up.
+
+      \emph{No 2-chord}
+      We look at the chord with the smallest range (i.e. highest start $i_0$ and lowest end $j_0$) then we will look at the biggest chords still starting at $i_0$ or ending at $j_0$. Say that this chord goes from $i_1$ to $j_1$ then we augment the sweepcycle with $i_1 +1$ to $j_1 -1$.
+
+      \emph{A 2-chord}
+      We find a piece to augment with in the same way  but we terminate it just before the first closing 2-chord.
+
+      \paragraph{First obstacle is a 2-chord}
+      If this 2-chord contains a chord, just apply the rules for chords as given above. Otherwise terminate the prefence just before the end of the 2-chord.
+
 
     \begin{lemma}
       \label{lm:}
-      If the prefence has no chord on the right then it is a valid path.
+      We always augment with a valid path
     \end{lemma}
+    \begin{proof}
+      By construction
+    \end{proof}
+
+    \begin{lemma}
+      \label{lm:}
+      The resulting REL is vertically one-sided
+    \end{lemma}
+    \begin{proof}
+      This is the same as saying that the resulting regular edge labeling has no blue Z's
+
+      There are two ways a blue Z can form either we start at a vertex just before a merge or we terminate on a vertex just after a split.
+
+      For start point the following holds. Either we start adjacent to $\pS$ or we start due to a chord.
+
+      For end points the following holds either we end adjacent to $\pS$, or due to a chord or 2-chord.
+
+
+      We will first show that we can't have a start just after a merge.
+      If the merge is due to the vertex being adjacent to $\pS$ then the previous vertex is also adjacent to $\pS$ and we have nowhere to go. \fxnote{provide figure}
+
+      Suppose now we ended due to a chord or a 2-chord. Then the only reason to start on this place is due to a chord.
+
+      If we start or end at a vertex adjacent to $\pS$ the diagonal edge can't exist. Because there is not enough space for moves that could have generated this ... (I Think)
+
+      \fxerror{Work this out, no energy now}
+
+
+    \end{proof}
+
 
 \subsection{Proofs Phase 1}
+
+\subsection{Phase 2}
+We will then show the following
+
+\begin{lemma}
+  \label{lm:}
+  Given a vertically one-sided REL we can produce a REL that is vertically 2-sided and in which all horizontal faces that are not 2-sides don't contain botomfans larger than 5.
+\end{lemma}
+\begin{proof}
+  There is an ordering on the strips in the REL, namely the order in which they are created. Such that every strip is larger then those above it and smaller then those below it.
+
+  We will start our procedure in the largest strip and go down the order.
+
+  For every strip we do the following:
+  \begin{enumerate}
+    \item Flip the edges next to each large bottomfan. Unless this crates a mono-colored triangle.
+    \item Check for $Z$'s  in the same direction in this strip and a higher strip and remove them.
+    \item Check for subsequent $Z$'s in the opposite direction.
+    \item Check for a $Z$ with a large left-fan
+  \end{enumerate}
+
+  For the way we flip around bottomdfans one can also consult Figure \ref{fig:uni:bottomFanFlips}.
+
+  After these flips we can have a number of undiserable structures. Please refer to Figure \ref{fig:uni:undesirableStructures}.
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[scale=1]{unifiedAlgo/img/bottomFanFlips}
+    \caption{Flipping around bottom-fans}
+    \label{fig:uni:bottomFanFlips}
+  \end{figure}
+
+  \begin{figure}
+      \centering
+      \begin{subfigure}[b]{0.45textwidth}
+          \includegraphics[width=textwidth]{}
+          \caption{}
+      \end{subfigure}
+      ~
+      \begin{subfigure}[b]{0.45textwidth}
+          \includegraphics[width=textwidth]{}
+          \caption{}
+      \end{subfigure}
+      	\caption{}
+  \label{fig:uni:undesirableStructures}
+  \end{figure}
+\end{proof}
