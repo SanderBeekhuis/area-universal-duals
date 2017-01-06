@@ -101,9 +101,10 @@ We will assume the entire graph has no seperating 3 or 4 cyles. We will show tha
   %  We call a chord \emph{unaivoidable} if on the other side of the path $v_i$ and $v_j$ are connected with an $2-chord$. That is, a $3$-chord on the right of $\P$ is unavoidable if there is a $2-chord$ on the left of $\P$. \fxnote{Figure of this situation, two non-seperating chords}
 
 \subsection{Outline}
-  The algorithm will consist of two phases
+  The algorithm will consist of three phases
 
   \begin{enumerate}
+    \item flip the graph if there is a length three north-south path with stuff on both sides
     \item Find a \emph{vertically} 1-sided layout with additional properties
     \item Do additional post-processing steps to make this layout $k$-sided.
   \end{enumerate}
@@ -240,7 +241,124 @@ We will assume the entire graph has no seperating 3 or 4 cyles. We will show tha
 \subsection{Proofs Phase 1}
 
 \subsection{Phase 2}
-We will then show the following
+We will then do the following postprocessing steps:
+
+\begin{enumerate}
+  \item Do flips isolating large topfans. Preventing creating chains of Z's that are longer then 2
+  \item treat (chains of) Z's that are large on both sides
+  \item handle the blue faces that are still large
+\end{enumerate}
+
+Before we start with these preprocessing steps let us define the blue faces as they are now as \emph{strips} that in some cases still have to be subdivided.
+
+\subsubsection{Phase 2.1}
+We view the current blue face in the reverse order of creation. We start with the face we created last.
+
+In this face we look for large (5 or more edges) topfans. If we find these we flip both edges unless we are too close to the termination of the face to be allowed to do this.
+
+See Figure \ref{fig:uni:topFanFlips}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width = \textwidth]{unifiedAlgo/img/post/topFanFlips}
+  \caption{Fliping a topfan}
+  \label{fig:uni:topFanFlips}
+\end{figure}
+\fxnote{We could also show additional splits in the examples}
+
+
+While doing this in a face that (partially) lies above another face we can then create a chain of $Z$'s. We have two kinds of these chains with the same orientation and opposite orientation.
+
+See figure \ref{fig:uni:chains}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.45 \textwidth}
+        \includegraphics[width = \textwidth]{unifiedAlgo/img/post/sameChain}
+        \caption{Same orientation}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.45 \textwidth}
+        \includegraphics[width =\textwidth]{unifiedAlgo/img/post/oppChain}
+        \caption{Opposite orientation}
+    \end{subfigure}
+    	\caption{}
+\label{fig:uni:chains}
+\end{figure}
+
+From this phase we require the following.
+\begin{lemma}
+  \label{lm:}
+  After this phase all large topfans are in $1$-sided blue faces. All blue faces that are not $1$-sided consist of only bottomfans and small topfans.
+\end{lemma}
+\begin{proof}
+  This follows from the way in wich we entomb the large topfans.
+
+  Clearly every large topfan is in a $1$-sided blue face. This even holds when we have a large topfan next to an opening and a closing of the face.
+   \fxwarning{TODO small figure}
+
+   By contraposition it is also clear that every face that is not $1$-sided cannot contain any large topfans and  thus consists of solely small topfans and botfans.
+\end{proof}
+
+\subsubsection{Phase 2.2}
+
+
+We define a \emph{flip} as a series of changes to a REL turning it to antoher valid REL.
+We first do a flip turning every same orientation chain of Z's to an oppsite orientation one. Then we do a flip breaking an oppisite orientation chain. We do this for every chain of $Z$'s created when entombing the topfans.  \fxwarning{TODO define entomb and find a better word for it}
+
+
+\paragraph{Same orientation flip}
+
+In this case we do the flip in Figure \ref{fig:uni:sameFlip}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width =\textwidth]{unifiedAlgo/img/post/sameFlip}
+  \caption{The flip we execute on same direction chains}
+  \label{fig:uni:sameFlip}
+\end{figure}
+ after this flip we changed the chain and now we have a chain of oppositely oriented $Z$'s. Luckily we know how to treat these.
+
+  \fxwarning{TODO This flip in a multi case}
+   \fxwarning{TODO Argue why these edges are like they are}
+
+
+ \paragraph{Oppistie orientation flips}
+ We namely execute the flip given in Figure \ref{fig:uni:oppFlip}. The small vertices on the bottomleft hint on the possiblity of vertices but those don't have to be there.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width = \textwidth]{unifiedAlgo/img/post/oppFlip}
+  \caption{The flip we execute on opposite chains}
+  \label{fig:uni:oppFlip}
+\end{figure}
+
+When recoling the edge blue in this flip it might be above another $Z$ and thus create a chain of $2$ $Z$'s. Howeever this chain can grow no further as above this newly blue edge there is a red closing triangle.
+
+  \fxwarning{TODO this flip in a multi case}
+   \fxwarning{TODO Argue why these edges are like they are}
+
+
+We will want to proof the following about these flips.
+
+\begin{lemma}
+  \label{lm:}
+  Faces in already treated strips will never grow with more than $2$ on the top. In particular faces containing a large topfan will remain 3-sided. At the same time there will be no more chains of more then $2$ $Z$'s.
+\end{lemma}
+
+\begin{proof}
+  Let us first describe the effects of both flips.
+
+  We apply a flip when in the current face we discover that we have 2 subsequent $Z$'s. Then applying the flip we change the size of faces in the history. \fxnote{And it will make talking of strips more dificult since we reshape them and not only subdivide them.}
+
+  Let us first describe how these flips change the faces in the historic strips.
+   \fxwarning{TODO but first I will describe flips on Z's with a middle fan}
+
+\end{proof}
+
+
+
+\paragraph{Wrong stuff}
 
 \begin{lemma}
   \label{lm:}
@@ -259,7 +377,7 @@ We will then show the following
     \item Check for a $Z$ with a large left-fan
   \end{enumerate}
 
-  For the way we flip around bottomdfans one can also consult Figure \ref{fig:uni:bottomFanFlips}.
+  For the way we flip around bottom-fans one can also consult Figure \ref{fig:uni:bottomFanFlips}.
 
   After these flips we can have a number of undiserable structures. Please refer to Figure \ref{fig:uni:undesirableStructures}.
 
@@ -272,13 +390,13 @@ We will then show the following
 
   \begin{figure}
       \centering
-      \begin{subfigure}[b]{0.45textwidth}
-          \includegraphics[width=textwidth]{}
+      \begin{subfigure}[b]{0.45\textwidth}
+  %        \includegraphics[width=textwidth]{}
           \caption{}
       \end{subfigure}
       ~
-      \begin{subfigure}[b]{0.45textwidth}
-          \includegraphics[width=textwidth]{}
+      \begin{subfigure}[b]{0.45\textwidth}
+  %        \includegraphics[width=textwidth]{}
           \caption{}
       \end{subfigure}
       	\caption{}
