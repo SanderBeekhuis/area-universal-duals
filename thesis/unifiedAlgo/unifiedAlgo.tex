@@ -246,6 +246,10 @@ We will then do the following postprocessing steps:
 \begin{enumerate}
   \item Do flips isolating large topfans. Preventing creating chains of Z's that are longer then 2
   \item treat (chains of) Z's that are large on both sides
+  \begin{enumerate}
+    \item Chains
+    \item Monster Z's
+  \end{enumerate}
   \item handle the blue faces that are still large
 \end{enumerate}
 
@@ -317,7 +321,22 @@ In this case we do the flip in Figure \ref{fig:uni:sameFlip}
   \caption{The flip we execute on same direction chains}
   \label{fig:uni:sameFlip}
 \end{figure}
- after this flip we changed the chain and now we have a chain of oppositely oriented $Z$'s. Luckily we know how to treat these.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width =\textwidth]{unifiedAlgo/img/post/sameMultiFlip}
+  \caption{The flip we execute on same direction chains with multiple edges in the middle joint}
+  \label{fig:uni:sameMultiFlip}
+\end{figure}
+
+ after this flip we changed the chain and now we have a chain of oppositely oriented $Z$'s. Luckily we know how to treat these. See Figure \ref{fig:uni:sameFlipComplete}.
+
+ \begin{figure}[h]
+   \centering
+   \includegraphics[width =\textwidth]{unifiedAlgo/img/post/sameFlipComplete}
+   \caption{The restult of both flips}
+   \label{fig:uni:sameFlipComplete}
+ \end{figure}
 
   \fxwarning{TODO This flip in a multi case}
    \fxwarning{TODO Argue why these edges are like they are}
@@ -331,6 +350,13 @@ In this case we do the flip in Figure \ref{fig:uni:sameFlip}
   \includegraphics[width = \textwidth]{unifiedAlgo/img/post/oppFlip}
   \caption{The flip we execute on opposite chains}
   \label{fig:uni:oppFlip}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width = \textwidth]{unifiedAlgo/img/post/oppMultiFlip}
+  \caption{The flip we execute on opposite chains with multiple edges in the middle}
+  \label{fig:uni:oppMultiFlip}
 \end{figure}
 
 When recoling the edge blue in this flip it might be above another $Z$ and thus create a chain of $2$ $Z$'s. Howeever this chain can grow no further as above this newly blue edge there is a red closing triangle.
@@ -352,54 +378,66 @@ We will want to proof the following about these flips.
   We apply a flip when in the current face we discover that we have 2 subsequent $Z$'s. Then applying the flip we change the size of faces in the history. \fxnote{And it will make talking of strips more dificult since we reshape them and not only subdivide them.}
 
   Let us first describe how these flips change the faces in the historic strips.
-   \fxwarning{TODO but first I will describe flips on Z's with a middle fan}
+  \fxwarning{TODO but first I will describe flips on Z's with a middle fan}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width =\textwidth]{unifiedAlgo/img/post/sameMultiFlip}
+  \caption{The flip we execute on same direction chains with multiple edges in the middle joint}
+  \label{fig:uni:sameMultiFlip}
+\end{figure}
+  The same orientation flip lengthens one historical face by one vertex on the top and one on the bottom. While the multiflip connects two faces, but will not create a large topfan \fxnote{or maybe one larger. We can definitely connect large topfans this way}.
+
+  The opposite orientation flip follows the same orientation flip without middle edges. And this case it makes one historic face 1-1 longer and another historic face 1-1 shorter. If the shortened face becomes to short we drop this edge.
+  The face we elongate now is a different face from the one we elongated in the previous flip.
+
+  Furthermore if we only have to do an opposite chain flip then we simly elongate a face by $1-\infty$ and shothen another face by $1-\infty$. Again we drop the shorthened face if it becomes to short (i.e. less then $1-1$)
+
+  \paragraph{Every face is only hit a number of times}
+  *Once on each side during same direction flips
+  *Once during opp flips (per side)
+
+  OR
+
+  * Just once
+
+  OR
+
+  * We just don't care as long as we don't open topfans (Hint: we don't)
+  * However we do enlarge topfans (at most by 1 on every side) so we end up with $3-\infty$ topfans.
+
+  Every two subsequent $Z$'s are treated in one flip. This flip makes a historic faces longer but closes them in such a way they can't be opened by other flips.
+
+  \paragraph{Remaining Z's}
+  The opp flip can place an blue edge above another blue edge. However this chain stops here since above this is a red split vertex. So the longest chain of $Z$'s is now of length two.
+
+
+
 
 \end{proof}
+\subsection{Phase 2.1 b): Monster Z's}
+
+  \begin{defi}[Joints]
+    The joints of a $Z$ are the two middle vertices
+  \end{defi}
+  \begin{defi}[Monster $Z$]
+    A monster $Z$ is a $Z$ inside a $\infty-\infty$ red face. Both joints have large fans.
+  \end{defi}
+
+  \begin{lemma}
+    \label{lm:}
+    For any remaing 2-chain of $Z$'s the top $Z$ is no monster $Z$.
+  \end{lemma}
+
+  \begin{proof}
+    By looking at the flips we see that the top joint of the top $Z$ must be simple.
+  \end{proof}
 
 
+  How we treat a monster $Z$ depends on wether one of it's joints is adjecent to a south pole.
+  If one of it's jonts is adjecent the south pole the other one can't be adjecent to the north pole by the preproccessing step.
 
-\paragraph{Wrong stuff}
+  Let us first look at the flips.
 
-\begin{lemma}
-  \label{lm:}
-  Given a vertically one-sided REL we can produce a REL that is vertically 2-sided and in which all horizontal faces that are not 2-sides don't contain botomfans larger than 5.
-\end{lemma}
-\begin{proof}
-  There is an ordering on the strips in the REL, namely the order in which they are created. Such that every strip is larger then those above it and smaller then those below it.
+  \paragraph{Ordianary monster $Z$}
 
-  We will start our procedure in the largest strip and go down the order.
-
-  For every strip we do the following:
-  \begin{enumerate}
-    \item Flip the edges next to each large bottomfan. Unless this crates a mono-colored triangle.
-    \item Check for $Z$'s  in the same direction in this strip and a higher strip and remove them.
-    \item Check for subsequent $Z$'s in the opposite direction.
-    \item Check for a $Z$ with a large left-fan
-  \end{enumerate}
-
-  For the way we flip around bottom-fans one can also consult Figure \ref{fig:uni:bottomFanFlips}.
-
-  After these flips we can have a number of undiserable structures. Please refer to Figure \ref{fig:uni:undesirableStructures}.
-
-  \begin{figure}[h]
-    \centering
-    \includegraphics[scale=1]{unifiedAlgo/img/bottomFanFlips}
-    \caption{Flipping around bottom-fans}
-    \label{fig:uni:bottomFanFlips}
-  \end{figure}
-
-  \begin{figure}
-      \centering
-      \begin{subfigure}[b]{0.45\textwidth}
-  %        \includegraphics[width=textwidth]{}
-          \caption{}
-      \end{subfigure}
-      ~
-      \begin{subfigure}[b]{0.45\textwidth}
-  %        \includegraphics[width=textwidth]{}
-          \caption{}
-      \end{subfigure}
-      	\caption{}
-  \label{fig:uni:undesirableStructures}
-  \end{figure}
-\end{proof}
+  \paragraph{Monster $Z$ adjecent to south pole}
