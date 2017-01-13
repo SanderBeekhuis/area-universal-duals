@@ -247,58 +247,33 @@ We will assume the entire graph has no separating 3 or 4 cycles. We will show th
   Before we start with these preprocessing steps let us define the blue faces as they are now as \emph{strips} that in some cases still have to be subdivided.
 
   \subsubsection{Phase 2.1}
-    We view the current blue face in the reverse order of creation. We start with the face we created last.
-
-    In this face we look for large (5 or more edges) botfans.
+    In every face we look for large (4 or more edges) topfans.
 
     \begin{invariants}
       \label{inv:uni:load}
-      \item The edges on a fence obey the following:
-      \begin{itemize}
-        \item There are no more then $2$ subsequent loaded edges
-        \item 1 loaded edge followed by at least 1 unloaded edge
-        \item 2 loaded edges followed by at least two unloaded edges
-      \end{itemize}
+      \item The edges on a fence obey the following $2$ loaded edges are followed by at least $1$ unloaded edge
     \end{invariants}
 
+    For every sequence of large topfans not separated by large botfans we flip the following:
+    1. Left rim of the first fan.
+    2. The left rim of every further odd fan.
+    3. The right rim of the last fan.
+
+    In particular: For a large topfan not neighbored by any other large topfans we recolor both rims.
+
+    Note that we only flip rims of a $T_+$.
 
     \begin{lemma}
       \label{lm:uni:removingLargeB-fans}
-      We can create blue $(9, \infty)$-faces containing all the large bottomfans while obeying Invariant \ref{inv:uni:load}.
+      We create blue $(5, \infty)$-faces containing all the large topfans while obeying Invariant \ref{inv:uni:load}.
     \end{lemma}
-
-
     \begin{proof}
-      We will begin scanning at the split of the strip when we encounter a large B-fan ($B_+$) we  will enter a multistage case distinction ending with a small enough blue face and and edges on the bottom fence of the strip satisfying Invariant \ref{inv:uni:load}.
-
-      Note that in all cases we flip the left outer edge of the first $B_+$ we encounter when scanning. Also note that we only ever flip edges bordering a large B-fan.
-
-      Let us first inspect the 3 $T$-fans following our $B_+$. If any of them is size 5 or larger we flip the right outer edge of the last large B-fan before this T-fan and continue our scan from the fan onward. In this case the largest face we create is $(7, \infty)$.
-       \fxwarning{TODO insert figure of situstion}
-
-      Otherwise all three T-fans following our $B_+$ are small, we have the following sequence $B_+ T_- B_? T_- B_? T_- B_?$. If the rightmost B-fan is large we continue our scan at this B-fan, creating a $(9, \infty)$- face. Otherwise, if the second-right most B-fan is large we continue our scan there creating a $(6, \infty)$-face.
-
-      Otherwise we check whether the third-rightmost B-fan is large if this is the case we flip it's \textbf{right} outer edge and continue our scan after this B-fan. Otherwise we also flip the \textbf{right} outer edge of the original $B_+$. We continue the scan right after this flipped edge. In both cases we can do this without offending Invariant \ref{inv:uni:load} since the next two/three B-fans are small so the next one/two edges will not be loaded even when continuing the scan immediately after. These last two steps yield faces of size at most $(4, \infty)$.
-
-      One can also see the order in which we try to place edges in Figure \ref{fig:uni:placeedges}
-
-      \begin{figure}[h]
-        \centering
-        \includegraphics[scale=1]{unifiedAlgo/img/placeEdges}
-        \caption{Order in which we try to flip edges. We only flip an edge if it neighbors a large B-fan.}
-        \label{fig:uni:placeedges}
-      \end{figure}
-
-      Trough this case distinction we've seen that we indeed can create blue $(9,\infty)$-faces containing all the large B-fans while obeying Invariant \ref{inv:uni:load}.
-
+      TODO \fxwarning{TODO But easy by the above construction}
     \end{proof}
-
-      Note that we only ever flipped outer edges of a $B_+$ in this proof
 
 
   \subsubsection{Phase 2.2}
-
-    While doing this in a face that (partially) lies above another face we can then create a chain of $Z$'s. We have two kinds of these chains with the same orientation and opposite orientation.
+    While doing this in a strip that (partially) lies above another face we can then create a chain of $Z$'s. We have two kinds of these chains with the same orientation and opposite orientation.
 
     See figure \ref{fig:uni:chains}
 
@@ -317,22 +292,33 @@ We will assume the entire graph has no separating 3 or 4 cycles. We will show th
       \label{fig:uni:chains}
     \end{figure}
 
-  From this phase we require the following.
-  \begin{lemma}
-    \label{lm:}
-    After this phase all large bottomfans are in $9$-sided blue faces. All blue faces that are not $9$-sided consist of only $T$-fans and small $B$-fans.
-  \end{lemma}
-  \begin{proof}
-    This follows from the way in which we entomb the large topfans.
+      \label{lm:}
+      After this phase all large topfans are in $9$-sided blue faces. All blue faces that are not $9$-sided consist of only $B$-fans and small $T$-fans.
+    \end{lemma}
+    \end{figure}
 
-    Clearly every large topfan is in a $9$-sided blue face. This even holds when we have a large topfan next to an opening and a closing of the face.
-     \fxwarning{TODO small figure}
+    \begin{proof}
+      This follows from the way in which we entomb the large topfans.
 
-     By contraposition it is also clear that every face that is not $1$-sided cannot contain any large topfans and  thus consists of solely small topfans and botfans.
-  \end{proof}
+      Clearly every large topfan is in a $9$-sided blue face. This even holds when we have a large topfan next to an opening and a closing of the face.
+       \fxwarning{TODO small figure}
+
+       By contraposition it is also clear that every face that is not $1$-sided cannot contain any large topfans and  thus consists of solely small topfans and botfans.
+    \end{proof}
 
     We define a \emph{flip} as a series of changes to a REL turning it to another valid REL.
-    We first do a flip turning every same orientation chain of Z's to an opposite orientation one. Then we do a flip breaking an opposite orientation chain. We do this for every chain of $Z$'s created when entombing the topfans.  \fxwarning{TODO define entomb and find a better word for it}
+    We first do a flip turning every same orientation chain of $Z$'s to an opposite orientation one. Then we do a flip breaking an opposite orientation chain. We do this for every chain of $Z$'s created in Phase 2.1.
+
+  We will work from the last created face upwards. When doing a flip we try to only alter the history, not the current face and certainly not the future. We will treat flips under a topfan of size 4 differntly, because we don't have the space to execute all standard flips.
+
+  \paragraph{The standard flips}
+  Figures of the basic same and opposite orientation flips.
+   See Figure \ref{fig:uni:sameFlip} and \ref{fig:uni:oppFlip}.
+
+  \paragraph{Flips under a topfan of size 4}
+
+
+
 
 
   \paragraph{Same orientation flip}
@@ -362,12 +348,12 @@ We will assume the entire graph has no separating 3 or 4 cycles. We will show th
      \label{fig:uni:sameFlipComplete}
    \end{figure}
 
-    \fxwarning{TODO This flip in a multi case}
-     \fxwarning{TODO Argue why these edges are like they are}
+   \fxwarning{TODO This flip in a multi case}
+   \fxwarning{TODO Argue why these edges are like they are}
 
 
-   \paragraph{Oppistie orientation flips}
-   We namely execute the flip given in Figure \ref{fig:uni:oppFlip}. The small vertices on the bottomleft hint on the possibility of vertices but those don't have to be there.
+   \paragraph{Opposite orientation flips}
+   We namely execute the flip given in Figure \ref{fig:uni:oppFlip}. The small vertices on the bottom-left hint on the possibility of vertices but those don't have to be there.
 
   \begin{figure}[h]
     \centering
@@ -385,8 +371,11 @@ We will assume the entire graph has no separating 3 or 4 cycles. We will show th
 
   When recoloring the edge blue in this flip it might be above another $Z$ and thus create a chain of $2$ $Z$'s. However this chain can grow no further as above this newly blue edge there is a red closing triangle.
 
-    \fxwarning{TODO this flip in a multi case}
-     \fxwarning{TODO Argue why these edges are like they are}
+  \fxwarning{TODO this flip in a multi case}
+  \fxwarning{TODO Argue why these edges are like they are}
+
+
+  \paragraph{Flips with multiple edges in the middle joint.}
 
 
   We will want to proof the following about these flips.
@@ -403,18 +392,18 @@ We will assume the entire graph has no separating 3 or 4 cycles. We will show th
 
     Let us first describe how these flips change the faces in the historic strips.
     \fxwarning{TODO but first I will describe flips on Z's with a middle fan}
-  \begin{figure}[h]
-    \centering
-    \includegraphics[width =\textwidth]{unifiedAlgo/img/post/sameMultiFlip}
-    \caption{The flip we execute on same direction chains with multiple edges in the middle joint}
-    \label{fig:uni:sameMultiFlip}
-  \end{figure}
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width =\textwidth]{unifiedAlgo/img/post/sameMultiFlip}
+      \caption{The flip we execute on same direction chains with multiple edges in the middle joint}
+      \label{fig:uni:sameMultiFlip}
+    \end{figure}
     The same orientation flip lengthens one historical face by one vertex on the top and one on the bottom. While the multiflip connects two faces, but will not create a large topfan \fxnote{or maybe one larger. We can definitely connect large topfans this way}.
 
     The opposite orientation flip follows the same orientation flip without middle edges. And this case it makes one historic face 1-1 longer and another historic face 1-1 shorter. If the shortened face becomes to short we drop this edge.
     The face we elongate now is a different face from the one we elongated in the previous flip.
 
-    Furthermore if we only have to do an opposite chain flip then we simply elongate a face by $1-\infty$ and shothen another face by $1-\infty$. Again we drop the shortened face if it becomes to short (i.e. less then $1-1$)
+    Furthermore if we only have to do an opposite chain flip then we simply elongate a face by $1-\infty$ and shorten another face by $1-\infty$. Again we drop the shortened face if it becomes to short (i.e. less then $1-1$)
 
     \paragraph{Every face is only hit a number of times}
     *Once on each side during same direction flips
