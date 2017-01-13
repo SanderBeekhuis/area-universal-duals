@@ -98,13 +98,10 @@ We will assume the entire graph has no seperating 3 or 4 cyles. We will show tha
 
     Note that $\P|_{v_i, v_j} \oplus \rev(\Q)$ is a cycle. We call this chord \emph{separating} if this is a separating cycle. \fxnote{Define Rev}
 
-  %  We call a chord \emph{unaivoidable} if on the other side of the path $v_i$ and $v_j$ are connected with an $2-chord$. That is, a $3$-chord on the right of $\P$ is unavoidable if there is a $2-chord$ on the left of $\P$. \fxnote{Figure of this situation, two non-seperating chords}
-
 \subsection{Outline}
   The algorithm will consist of three phases
 
   \begin{enumerate}
-    \item flip the graph if there is a length three north-south path with stuff on both sides
     \item Find a \emph{vertically} 1-sided layout with additional properties
     \item Do additional post-processing steps to make this layout $k$-sided.
   \end{enumerate}
@@ -121,11 +118,7 @@ We will assume the entire graph has no seperating 3 or 4 cyles. We will show tha
     \item \label{i:uni:intVertCond} All inner edges of $T$ outside of $\C$ are colored and oriented in such that the inner vertex condition holds. %TODO what is the inner vertex condition
     \fxerror{We need to add a partial inner vertex condition}
     \item \label{i:uni:no2Chords} $\C\sm{\pW, \pS, \pE}$ has no separating 2-chords
-    %\item \label{i:uni:no3chords} $\cpath$ has no avoidable separating 3-chords
   \end{invariants}
-
-
-
 
 
   \begin{defi}[Prefence]
@@ -136,9 +129,7 @@ We will assume the entire graph has no seperating 3 or 4 cyles. We will show tha
     \item  $\C_\W$ Has no interior vertex
     \label{p:noInteriorVertex}
     \item  $\W$ has no chords on the left     \label{p:Wchordfree}
-
     \item  $\restC{\W}$ has no chords on the right     \label{p:Cchordfree}
-
   \end{enumerate}
   \end{defi}
 
@@ -186,7 +177,7 @@ We will assume the entire graph has no seperating 3 or 4 cyles. We will show tha
 
       All of these structures are on the right of the prefence since the prefence satisfies \ref{p:Wchordfree} (no chords on the left) and \ref{p:noInteriorVertex} (no separating 2-chords on the left).
 
-      What we do depends on the first obstacle we encounter. The range of an obstcle will be given by it's start  and end vertex.
+      What we do depends on the first obstacle we encounter. The range of an obstacle will be given by it's start and end vertex.
 
       \paragraph{First obstacle is a chord}
       If our precycle has any chords we look identify the them by their start and end vertex. Of the chords with the lowest start index we will consider the one with the largest end index.
@@ -244,12 +235,8 @@ We will assume the entire graph has no seperating 3 or 4 cyles. We will show tha
 We will then do the following postprocessing steps:
 
 \begin{enumerate}
-  \item Do flips isolating large topfans. Preventing creating chains of Z's that are longer then 2
-  \item treat (chains of) Z's that are large on both sides
-  \begin{enumerate}
-    \item Chains
-    \item Monster Z's
-  \end{enumerate}
+  \item Do flips isolating large botfans.
+  \item treat long chains of Z's
   \item handle the blue faces that are still large
 \end{enumerate}
 
@@ -258,18 +245,54 @@ Before we start with these preprocessing steps let us define the blue faces as t
 \subsubsection{Phase 2.1}
 We view the current blue face in the reverse order of creation. We start with the face we created last.
 
-In this face we look for large (5 or more edges) topfans. If we find these we flip both edges unless we are too close to the termination of the face to be allowed to do this.
+In this face we look for large (5 or more edges) botfans.
 
-See Figure \ref{fig:uni:topFanFlips}.
+\begin{invariants}
+  \label{inv:uni:load}
+  \item The edges on a fence obey the following:
+  \begin{itemize}
+    \item There are no more then $2$ subsequent loaded edges
+    \item 1 loaded edge followed by at least 1 unloaded edge
+    \item 2 loaded edges followed by at least two unloaded edges
+  \end{itemize}
+\end{invariants}
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width = \textwidth]{unifiedAlgo/img/post/topFanFlips}
-  \caption{Fliping a topfan}
-  \label{fig:uni:topFanFlips}
-\end{figure}
-\fxnote{We could also show additional splits in the examples}
 
+\begin{lemma}
+  \label{lm:uni:removingLargeB-fans}
+  We can create blue $(9, \infty)$-faces containing all the large bottomfans while obeying Invariant \ref{inv:uni:load}.
+\end{lemma}
+
+
+\begin{proof}
+  We will begin scanning at the split of the strip when we encounter a large B-fan ($B_+$) we  will enter a multistage case distinction ending with a small enough blue face and and edges on the bottom fence of the strip satisfying Invariant \ref{inv:uni:load}.
+
+  Note that in all cases we flip the left outer edge of the first $B_+$ we encounter when scanning. Also note that we only ever flip edges bordering a large B-fan.
+
+  Let us first inspect the 3 $T$-fans following our $B_+$. If any of them is size 5 or larger we flip the right outer edge of the last large B-fan before this T-fan and continue our scan from the fan onward. In this case the largest face we create is $(7, \infty)$.
+   \fxwarning{TODO insert figure of situstion}
+
+  Otherwise all three T-fans following our $B_+$ are small, we have the following sequence $B_+ T_- B_? T_- B_? T_- B_?$. If the rightmost B-fan is large we continue our scan at this B-fan, creating a $(9, \infty)$- face. Otherwise, if the second-right most B-fan is large we continue our scan there creating a $(6, \infty)$-face.
+
+  Otherwise we check whether the third-rightmost B-fan is large if this is the case we flip it's \textbf{right} outer edge and continue our scan after this B-fan. Otherwise we also flip the \textbf{right} outer edge of the original $B_+$. We continue the scan right after this flipped edge. In both cases we can do this without offending Invariant \ref{inv:uni:load} since the next two/three B-fans are small so the next one/two edges will not be loaded even when continuing the scan immediately after. These last two steps yield faces of size at most $(4, \infty)$.
+
+  One can also see the order in which we try to place edges in Figure \ref{fig:uni:placeedges}
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[scale=1]{unifiedAlgo/img/placeEdges}
+    \caption{Order in which we try to flip edges. We only flip an edge if it neighbors a large B-fan.}
+    \label{fig:uni:placeedges}
+  \end{figure}
+
+  Trough this case distinction we've seen that we indeed can create blue $(9,\infty)$-faces containing all the large B-fans while obeying Invariant \ref{inv:uni:load}.
+
+\end{proof}
+
+  Note that we only ever flipped outer edges of a $B_+$ in this proof
+
+
+\subsubsection{Phase 2.2}
 
 While doing this in a face that (partially) lies above another face we can then create a chain of $Z$'s. We have two kinds of these chains with the same orientation and opposite orientation.
 
@@ -293,22 +316,19 @@ See figure \ref{fig:uni:chains}
 From this phase we require the following.
 \begin{lemma}
   \label{lm:}
-  After this phase all large topfans are in $1$-sided blue faces. All blue faces that are not $1$-sided consist of only bottomfans and small topfans.
+  After this phase all large bottomfans are in $9$-sided blue faces. All blue faces that are not $9$-sided consist of only $T$-fans and small $B$-fans.
 \end{lemma}
 \begin{proof}
-  This follows from the way in wich we entomb the large topfans.
+  This follows from the way in which we entomb the large topfans.
 
-  Clearly every large topfan is in a $1$-sided blue face. This even holds when we have a large topfan next to an opening and a closing of the face.
+  Clearly every large topfan is in a $9$-sided blue face. This even holds when we have a large topfan next to an opening and a closing of the face.
    \fxwarning{TODO small figure}
 
    By contraposition it is also clear that every face that is not $1$-sided cannot contain any large topfans and  thus consists of solely small topfans and botfans.
 \end{proof}
 
-\subsubsection{Phase 2.2}
-
-
-We define a \emph{flip} as a series of changes to a REL turning it to antoher valid REL.
-We first do a flip turning every same orientation chain of Z's to an oppsite orientation one. Then we do a flip breaking an oppisite orientation chain. We do this for every chain of $Z$'s created when entombing the topfans.  \fxwarning{TODO define entomb and find a better word for it}
+We define a \emph{flip} as a series of changes to a REL turning it to another valid REL.
+We first do a flip turning every same orientation chain of Z's to an opposite orientation one. Then we do a flip breaking an opposite orientation chain. We do this for every chain of $Z$'s created when entombing the topfans.  \fxwarning{TODO define entomb and find a better word for it}
 
 
 \paragraph{Same orientation flip}
@@ -334,7 +354,7 @@ In this case we do the flip in Figure \ref{fig:uni:sameFlip}
  \begin{figure}[h]
    \centering
    \includegraphics[width =\textwidth]{unifiedAlgo/img/post/sameFlipComplete}
-   \caption{The restult of both flips}
+   \caption{The result of both flips}
    \label{fig:uni:sameFlipComplete}
  \end{figure}
 
@@ -359,7 +379,7 @@ In this case we do the flip in Figure \ref{fig:uni:sameFlip}
   \label{fig:uni:oppMultiFlip}
 \end{figure}
 
-When recoling the edge blue in this flip it might be above another $Z$ and thus create a chain of $2$ $Z$'s. Howeever this chain can grow no further as above this newly blue edge there is a red closing triangle.
+When recoloring the edge blue in this flip it might be above another $Z$ and thus create a chain of $2$ $Z$'s. However this chain can grow no further as above this newly blue edge there is a red closing triangle.
 
   \fxwarning{TODO this flip in a multi case}
    \fxwarning{TODO Argue why these edges are like they are}
@@ -409,35 +429,4 @@ We will want to proof the following about these flips.
 
   \paragraph{Remaining Z's}
   The opp flip can place an blue edge above another blue edge. However this chain stops here since above this is a red split vertex. So the longest chain of $Z$'s is now of length two.
-
-
-
-
 \end{proof}
-\subsection{Phase 2.1 b): Monster Z's}
-
-  \begin{defi}[Joints]
-    The joints of a $Z$ are the two middle vertices
-  \end{defi}
-  \begin{defi}[Monster $Z$]
-    A monster $Z$ is a $Z$ inside a $\infty-\infty$ red face. Both joints have large fans.
-  \end{defi}
-
-  \begin{lemma}
-    \label{lm:}
-    For any remaing 2-chain of $Z$'s the top $Z$ is no monster $Z$.
-  \end{lemma}
-
-  \begin{proof}
-    By looking at the flips we see that the top joint of the top $Z$ must be simple.
-  \end{proof}
-
-
-  How we treat a monster $Z$ depends on wether one of it's joints is adjecent to a south pole.
-  If one of it's jonts is adjecent the south pole the other one can't be adjecent to the north pole by the preproccessing step.
-
-  Let us first look at the flips.
-
-  \paragraph{Ordianary monster $Z$}
-
-  \paragraph{Monster $Z$ adjecent to south pole}

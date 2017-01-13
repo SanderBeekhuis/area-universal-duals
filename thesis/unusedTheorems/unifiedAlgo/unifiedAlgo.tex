@@ -46,7 +46,7 @@ Now we have presented sweep-line based algorithms that preserver vertical and ho
 
 
  We will sometimes describe a strip using a compact notation. In this notation we will denote a fan by $\text{Type}_\text{Size}$ so $B_3$ will be B-fan of size $3$ and $T_2$ a T-fan of size $2$. The strip in Figure \ref{fig:uni:fans} can be characterized by $B_2 T_2 B_2 T_5 B_3 T_3$ in this notation.
-
+subsubsection name
  We will expand this notation with special characters ($+,-,?, \infty$) to denote a fan without knowing it's exact size.
  We will let $T_-$ or $B_-$ imply a small fan, $T_+$ or $B_+$ a large fan, $T_?$ or $B_?$ a fan of any size and $T_\infty$ or $B_\infty$ an arbitrarily large fan.
  \footnote{this is useful in counterexamples.}
@@ -277,7 +277,6 @@ It can be that a flip of case a) necessitates doing a flip of type b). However t
 Above a B-fan of size $5$ or $6$ we would not produces a legal \rel if we do all $4$ flips. Since the B-fan would become only size $3$ after the two $a)$ flips and we need a B-fan of size $5$ to do both $b)$ flips without them interfering.
 
 Lucky enough for us this is not a problem as the Algorithm proposed in Lemma \ref{lm:uni:removingLargeB-fans} does only color all $4$ edges necessitating a flip blue above B-fans of size $7$ or more which we will show in Lemma below.
-
 
 
 
