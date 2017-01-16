@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE ipestyle SYSTEM "ipe.dtd">
+<ipestyle name="minusMark">
+
+<symbol name="mark/dash(sx)" transformations="translations">
+<group>
+
+<path fill="sym-stroke">
+-.6 0.07 m
+0.6 0.07 l
+0.6 -0.07 l
+-0.6 -0.07 l
+h
+</path>
+</group>
+</symbol>
+
+</ipestyle>
