@@ -100,7 +100,6 @@ We will assume the entire graph has no separating 3 or 4 cycles. We will show th
 
     \fxnote{Alternate proof based on   ($\W$ being oriented from $\pW$ to $\pE$), since if it would lie on the left of $\W$ the vertices $w_{i+1},\ldots, w_{j-1}$ would not have been chosen in the construction of the prefence.}
 
-
 \section{Algorithm}
   The algorithm will consist of two phases
 
@@ -172,6 +171,7 @@ We will assume the entire graph has no separating 3 or 4 cycles. We will show th
 
 
     \subsubsection{Irregularities}
+      \fxerror{Account for polebound 2-chords}
       Now the prefence we found can have several structures we want to avoid
       namely
       \begin{enumerate}
@@ -236,7 +236,7 @@ We will assume the entire graph has no separating 3 or 4 cycles. We will show th
       \end{proof}
 
 \subsection{Phase 2}
-  We will then do the following postprocessing steps:
+  We will then do the following post-processing steps:
 
   \begin{enumerate}
     \item Do flips isolating large botfans.
@@ -263,6 +263,8 @@ We will assume the entire graph has no separating 3 or 4 cycles. We will show th
 
     Note that we only flip rims of a $T_+$.
 
+    We don't flip the first and last edge we would normally flip in a strip. If this edge does not separate the large topfan from at least three top edges we dont flip these edges.
+
     \begin{lemma}
       \label{lm:uni:removingLargeB-fans}
       We create blue $(5, \infty)$-faces containing all the large topfans while obeying Invariant \ref{inv:uni:load}.
@@ -270,7 +272,6 @@ We will assume the entire graph has no separating 3 or 4 cycles. We will show th
     \begin{proof}
       TODO \fxwarning{TODO But easy by the above construction}
     \end{proof}
-
 
   \subsubsection{Phase 2.2}
     While doing this in a strip that (partially) lies above another face we can then create a chain of $Z$'s. We have two kinds of these chains with the same orientation and opposite orientation.
@@ -292,10 +293,11 @@ We will assume the entire graph has no separating 3 or 4 cycles. We will show th
       \label{fig:uni:chains}
     \end{figure}
 
+    From this phase we require the following.
+    \begin{lemma}
       \label{lm:}
       After this phase all large topfans are in $9$-sided blue faces. All blue faces that are not $9$-sided consist of only $B$-fans and small $T$-fans.
     \end{lemma}
-    \end{figure}
 
     \begin{proof}
       This follows from the way in which we entomb the large topfans.
@@ -309,14 +311,39 @@ We will assume the entire graph has no separating 3 or 4 cycles. We will show th
     We define a \emph{flip} as a series of changes to a REL turning it to another valid REL.
     We first do a flip turning every same orientation chain of $Z$'s to an opposite orientation one. Then we do a flip breaking an opposite orientation chain. We do this for every chain of $Z$'s created in Phase 2.1.
 
-  We will work from the last created face upwards. When doing a flip we try to only alter the history, not the current face and certainly not the future. We will treat flips under a topfan of size 4 differntly, because we don't have the space to execute all standard flips.
+  We will work from the last created face upwards. When doing a flip we try to only alter the history, not the current face and certainly not the future. We will treat flips under a topfan of size 4 differently, because we don't have the space to execute all standard flips.
+
+  \paragraph{Size of left joints}
+  We will show the following
+
+  \begin{defi}
+    A \emph{left joint} is the vertex in a $Z$ with at least two outgoing blue edges.
+  \end{defi}
+
+  A left joint corresponds with a split.
+
+  \begin{lemma}
+    \label{lm:}
+    A left joint not adjacent to $\pS$ with a split has no top fan below it.
+  \end{lemma}
+  \begin{proof}
+    If we are not adjacent to $\pS$ the only reasons for a split vertex $v_i$ are a chord or a polebound separating 2-chord.
+
+    We will first consider the case of a chord.
+
+    Let $v_i$ denote the split vertex. And $v_j$ denote the vertex where the path that split off joined the sweepcycle again (merge vertex). The chord that causes (the bottommost represent of) this split and merge is from $w_i$ to $w_j$ with $v_i$ connected to $w_i$ and $w_{i+1}$ and $v_j$ to $w_j$ and $w_{j-1}$ (cf. chord and chord multi figures). (See description of evading a chord irregularity).
+
+    Now in the next candidate walk $w_i$ and $w_j$ are next to each other and both have a $B$-fan of size at least $2$ (to $v_i$ and $w_{i+1}$ and to $v_j$ and $w_{j-1}$ respectively.)
+
+  \end{proof}
 
   \paragraph{The standard flips}
   Figures of the basic same and opposite orientation flips.
-   See Figure \ref{fig:uni:sameFlip} and \ref{fig:uni:oppFlip}.
+   See Figure \ref{fig:uni:sameFlip}, \ref{fig:uni:sameFlipComplete} and \ref{fig:uni:oppFlip}.
 
   \paragraph{Flips under a topfan of size 4}
-
+  Suppose we have a topfan $F$ of size $4$
+  As long as there is only one chain of $Z$'s with one of the rims of $F$. We can just execute a regular flip without running out of space.
 
 
 
