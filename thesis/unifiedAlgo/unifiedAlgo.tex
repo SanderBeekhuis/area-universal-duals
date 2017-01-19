@@ -1,8 +1,10 @@
 %!TEX root = ../thesis.tex
 \renewcommand{\Q}{\scr Q}
 
+\fxnote[inline]{While defining polebound 2-chords show why a poleboudn chord is bolocks}
 
-We will assume the entire graph has no separating 3 or 4 cycles. We will show that in this case ...
+
+We will assume the entire graph has no separating 3 or 4 cycles. Furthermore we need that we don't have any nontrivial seperating 5-cycles.  We will show that in this case ...
 
 
 
@@ -25,7 +27,7 @@ We will assume the entire graph has no separating 3 or 4 cycles. We will show th
     \item \label{i:uni:noChords} $\cpath$ has no chords
     \item \label{i:uni:intVertCond} All inner edges of $T$ outside of $\C$ are colored and oriented in such that the inner vertex condition holds. %TODO what is the inner vertex condition
     \fxerror{We need to add a partial inner vertex condition}
-    \item \label{i:uni:no2Chords} $\C\sm{\pW, \pS, \pE}$ has no separating 2-chords
+    \item \label{i:uni:no2Chords} $\C\sm{\pS}$ has no separating 2-chords
   \end{invariants}
 
 
@@ -77,7 +79,6 @@ We will assume the entire graph has no separating 3 or 4 cycles. We will show th
 
 
     \subsubsection{Irregularities}
-      \fxerror{Account for polebound 2-chords}
       Now the prefence we found can have several structures we want to avoid
       namely
       \begin{enumerate}
@@ -90,8 +91,7 @@ We will assume the entire graph has no separating 3 or 4 cycles. We will show th
 
       What we do depends on the first obstacle we encounter. The \emph{range} of an obstacle will be given by it's start and end vertex.
 
-      \fxwarning{TODO Rewrite this to be clear}
-      \paragraph{First obstacle is a chord}
+      \paragraph{We have any chord}
       If our precycle has any chords we look identify the them by their start and end vertex. Of the chords with the lowest start index we will consider the one with the largest end index.
 
       Now we have a group of chords with start and end vertices. What we do now depends on whether a 2-chord shows up.
@@ -102,10 +102,12 @@ We will assume the entire graph has no separating 3 or 4 cycles. We will show th
       \emph{A 2-chord}
       We find a piece to augment with in the same way  but we terminate it just before the first closing 2-chord.
 
-      \paragraph{First obstacle is a 2-chord}
-      If this 2-chord contains a chord, just apply the rules for chords as given above. Otherwise terminate the prefence just before the end of the 2-chord.
+      \paragraph{Only separating 2-chords}
+      \emph{Any $\pE$-bound 2-chords} \fxnote{define this}
+      Start a path inside the smallest 2-chord. Do this as soon as possible.
 
-      \fxwarning{TODO Rewrite this to be clear}
+      \emph{Only free 2-chords}
+      The 2-chord can't contain a chord since then we would be in the above case. Otherwise terminate the prefence as late as possible but inside the first 2-chord to end.
 
       \begin{lemma}
         \label{lm:}
@@ -114,6 +116,10 @@ We will assume the entire graph has no separating 3 or 4 cycles. We will show th
       \begin{proof}
         By construction
       \end{proof}
+
+      Hence the resulting structure is a REL \fxwarning{TODO exapand and/or reference Fusy or my earlier chapters}
+
+
 
       \begin{lemma}
         \label{lm:}
@@ -126,15 +132,31 @@ We will assume the entire graph has no separating 3 or 4 cycles. We will show th
 
         For start point the following holds. Either we start adjacent to $\pS$ or we start due to a chord.
 
-        For end points the following holds either we end adjacent to $\pS$, or due to a chord or 2-chord.
+        For merge points the following holds either we end adjacent to $\pS$, or due to a chord or 2-chord.
+
+        \vspace{2ex}
+        \emph{We can't merge just after a split.}
+
+        If the merge $v$ is due to the vertex being adjacent to $\pS$ we have nowhere to go with the freshly split of path. \fxnote{provide figure}
+
+        Suppose now we the merge was due to a chord or a 2-chord. Then the only reason to start on this place is due to a chord or a polebound 2-chord. However such chord or polbound 2-chord would have to cross the cycle that forced the merge. Only a 2-chord can do this to another 2-chord, but then the one forcing a merge was a polebound 2-chord and that should have taken precedence.
 
 
-        We will first show that we can't have a start just after a merge.
-        If the merge is due to the vertex being adjacent to $\pS$ then the previous vertex is also adjacent to $\pS$ and we have nowhere to go. \fxnote{provide figure}
+        \vspace{2ex}
+        \emph{We can't split just before a merge.}
 
-        Suppose now we ended due to a chord or a 2-chord. Then the only reason to start on this place is due to a chord.
+        Suppose the merge $v$ was due to $\pS$-adjencency. Then the split $w$ can not be due to a chord or 2-chord since such a structure would have to pass $v \pS$ (and we don't consider 2-chords with $\pS$) \fxnote{I guess we could consider this starting at the first free $\pS$-adjecent vertex}. However the split also can't be due to $\pS$-adjecency because that would give us the seperating triangle $\pS v w$
 
-        If we start or end at a vertex adjacent to $\pS$ the diagonal edge can't exist. Because there is not enough space for moves that could have generated this ... (I Think)
+        Suppose that the merge is due to chord or 2-chord. Then a split can't be due to $\pS$-adjecency since the chord/2-chord is blocking this. It also can't be due to a chord or polebound 2-chord since those would have to cross.
 
-        \fxerror{Work this out, no energy now}
+        \fxwarning{TODO add figures}
+      \end{proof}
+
+
+      \begin{lemma}
+        \label{lm:}
+        The resulting REL never has a red $T$-fanhandle connected to both split and merge vertex of the same path. Unless the split is $\pS$-adjecent \fxnote{define $\pS$-adjecent}
+      \end{lemma}
+      \begin{proof}
+          This would give a non-trivial seperating $5$-cycle. Wether we onsider a chord or a polebound 2-chord.
       \end{proof}
