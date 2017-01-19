@@ -67,7 +67,7 @@ We then have the following Lemma's.
 \end{lemma}
 
 \begin{proof}
-  Such an cycle $\C$ would be created by an 2 edge connection between $A$ and $C$, $B$ and $D$ or $A$ and $D$. The last one would imply a seperating 2-chord on the sweepcyle, so this can't be.
+  Such an cycle $\C$ would be created by an 2 edge connection between $A$ and $C$, $B$ and $D$ or $A$ and $D$. The last one would imply a separating 2-chord on the sweepcyle, so this can't be.
 
   The other two would imply a larger chord containing the chord $BC$. However we took the largest chord.
 \end{proof}
@@ -77,14 +77,69 @@ Any 4-cycle partially above the 4-cycle doens't infuence the solvability of this
 More rigorously we could show that these things don't affect or possibility to find new valid paths.
 
 
-\subsection{One has one edge and the other one more}
+\subsection{One has one edge and the other more than one}
 This is the most complicated situation. If there is one vertex with only one edge going into an interior component, then this edge goes to a vertex which we will denote by $v$.
 
 \subsubsection{B has only one edge}
 We see that $AvCD$ is also a 3-chord. If it is a separating chord we recurse on this chord. Otherwise we color it like in the figure. Depending on the result of that recursion we shrink it or we recurse again.
 
-In any case we color as in the Figure \ref{}. This is exceptional as we're adding paths while not in that point in the algorithm. And even more exceptionall because they are splits not adjacent to $S$ but due to the oustide chord their location and size is very controlled. 
+In any case we color as in the Figure \ref{fig:shrink:boneedge}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=1]{chordShrink/img/bOneEdge}
+  \caption{}
+  \label{fig:shrink:boneedge}
+\end{figure}
+
+This is exceptional as we're adding paths while not in that point in the algorithm. And even more exceptional because they are splits not adjacent to $S$ but due to the outside chord their location and size is very controlled.
 \fxwarning{TODO we also check neighbour count of A}
 
 \subsubsection{C has only one edge}
 We see that $ABvD$ is also a 3-chord. If it is a separating chord we recurse on this chord.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=1]{chordShrink/img/cOneEdge}
+  \caption{}
+  \label{fig:shrink:coneedge}
+\end{figure}
+
+
+
+\subsubsection{The recursion}
+The interior of the $3$-chords $wvCD$ and $ABvw$ has three possible case. Note that $v$ can't have only one edge going into the componnent. This would lead to a sep 4-cycle.
+
+\begin{enumerate}
+  \item The component is trivial (i.e. it has no interior vertices)
+  \item $B/C$ (the other corner) has only one edge going into the component.
+  \item Both $B/C$ and $v$ have multiple edges going into the component.
+\end{enumerate}
+
+
+In the first case we color. In the second case we recurse. In the third case we shrink and after that we color.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.45 \textwidth}
+        \includegraphics[width = \textwidth]{chordShrink/img/trivialColoring}
+        \caption{Trival component coloring}
+        \label{fig:chord:trivialColoring}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.45 \textwidth}
+        \includegraphics[width =\textwidth]{chordShrink/img/shrunkColoring}
+        \caption{Shrunk component coloring}
+        \label{fig:chord:shrunkColoring}
+    \end{subfigure}
+    \caption{Component colorings}
+\end{figure}
+
+
+\fxnote{TODO Example of recursion}
+The recursion can actually cause splits. As can be seen in the following Figure.
+
+\fxwarning{TODO some edges are not colored because i forget to color them in recursions. (3 recursion deep). They should be red}
+
+
+\fxwarning{TODO show we leave the sweepline in a valid state}s

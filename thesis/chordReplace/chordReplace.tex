@@ -6,6 +6,8 @@ We hope to show that our algorithm can handle $4-$cyles running trough $N$ or $S
 We also obtain: We never start at a vertex that's not adjecent to $S$
 
 
+Shrinkages can overlap with each other. Hence we roll them back in the opsite order of that they were created in.
+
 \subsection{State}
 When the algorithm runs trough a removed chord we end with one of the 4 options provided in Figure
 \ref{fig:replace:options}. Where the small black dots indicate any integral number (including 0) of inbetween edges.
@@ -104,7 +106,7 @@ Some resulting options of fan-flips and preflip states are the same so in total 
 
 \fxwarning{For fan flips to work we must be careful around $4$-cycles}
 
-For fan flips to work we require the absence of $4$-cycles. Unforunatly there can be
+For fan flips to work we require the absence of $4$-cycles. Unfortunately there can be
 
 
 \fxwarning{When expending the chord we can get a large topfan. But those are large in this subgraph as well so hopefully fixed in the recursion?. More layers of recursion, but only maxdegree many. Or some other quatity expressing recurion depth. Maybe something with nested 5-cycles. If the same thing can't happen with multi topfans}
