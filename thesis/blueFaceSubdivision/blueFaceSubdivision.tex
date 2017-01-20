@@ -32,9 +32,14 @@ Because we do this we can also say the following
   \fxnote{Might add a figure}
 \end{proof}
 
+
+\subsection{Without large topfans}
+Let us first consider the base case: no failed top fan flips and thus nor large topfans
+
 \begin{lemma}
   \label{lm:}
   We can subdivide any blue face without large topfans into 7-sided chunks while obeying the load rules above.
+  That is: We have at most one toploaded edge. On the bottom we never have two subsequent loaded edges. All topfans are of size 2.
   \fxnote{We can make this Lemma WAY tighter if all topfans are of size exactly 2}
 \end{lemma}
 
@@ -47,20 +52,27 @@ Because we do this we can also say the following
     \caption{A worst case blue face. We don't flip any edge in this face.}
     \label{fig:subdiv:worstCase}
   \end{figure}
+  \fxwarning{TODO update figure}
 
   Note that we can flip above each edge in the bottom boundary path.
 
   We will look at the vertex on the bottom fence that's adjacent to the freshly flipped edge,  or if we haven't flipped an edge yet the vertex next to the split (and we will call it $v$). The following are then the rules for flipping above the edges following $v$.
   \begin{enumerate}
-    \item We don't flip above the first three edges.
-    \item We flip above the fourth edge if it's unloaded.
-    \item We flip above the fifth edge if it's not next to (or next to next to) the merge
-    \item Otherwise the sixth or seventh edge is followed by the merge
+    \item We don't flip above the first edge.
+    \item We flip above the second edge if it's unloaded.
+    \item If the second edge has a topload we flip above the fourth edge if it has no botload and otherwise we flip above the fidth edge.
+    \item If the second edge has a botload then we flip above the third edge. Unless this one has a topload. In that case we flip above the fifth edge if it has no botload and otherwise we flip above the sixth edge.
+    \item We never flip next to the merge the merge
   \end{enumerate}
 
-The first three edges give us the required separation of loaded edges along the top boundary path. The other items make sure we obey the other rules in a straightforward manner. If we arrive at the fifth edge the fourth edge was loaded and thus the fifth one isn't.
+The first edge give us the required separation of loaded edges along the top boundary path. The other items make sure we obey the other rules in a straightforward manner.
+
+The worst case is given by a combination of the last two items. We would in that case want to flip above the sixth edge. But we don't because the next edge is the merge. This gives at worst 7 edges.
+
+
 
 See Figure \ref{fig:subdiv:sampleExecution} for an example of an execution of this algorithm.
+\fxwarning{TODO update figure}
 
 \begin{figure}[h]
   \centering
@@ -72,6 +84,17 @@ See Figure \ref{fig:subdiv:sampleExecution} for an example of an execution of th
 \end{proof}
 
 
+\subsection{Face starting with a larger topfan}
+\fxwarning{TODO write this}
+
+\subsection{Face encountering a larger topfan}
+\fxwarning{TODO write this}
+
+
+
+\subsection{General conclusion}
+
+
 \begin{lemma}
   \label{lm:}
   We have a 7-sided REL
@@ -79,5 +102,5 @@ See Figure \ref{fig:subdiv:sampleExecution} for an example of an execution of th
 
 \begin{proof}
   By construction a blue faces are 7-sided. We haven't chained $Z's$ so all red face contain at most one blue $Z$. Because fanflips are not layered the largest split is of size two. So red faces are 3-sided.
-  \fxerror{This doesn't account for south-adjecent vertices. Maybe make the goal dependen on size of southadjecent vertices.}
+  \fxerror{This doesn't account for south-adjecent vertices. Maybe make the goal dependent on size of southadjecent vertices.}
 \end{proof}
