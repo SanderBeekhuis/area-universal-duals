@@ -102,7 +102,7 @@ Befor the topfanflips we had a vertically one-sided REL. After we have a vertica
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  The first thing happens in the merge on the last vertex cases. The second thing happens in cases with a split.
+  The first thing happens in the merge on the last vertex cases and in all split cases where a split is not on the first vertex. The second thing happens in cases with a split.
 \end{proof}
 
 
@@ -113,11 +113,11 @@ We in principle try to flip all topfans. We do this in a topdown manner.
 \paragraph{South-adjacent topfans}
 We call a topfan south-adjecent if any of it's rim vertices is next to the south pole.
 
-At most two vertices of a top fan can be adjecent to the south pole. And in this case these vertices must be adjecent. Otherwise we have a seperating 4-cycle.
+At most two vertices of a top fan can be adjacent to the south pole. And in this case these vertices must be adjacent. Otherwise we have a separating 4-cycle.
 
-Before the south pole we can have a split followed by a merge followed by the south pole adjecent vertices followed again by possibly splits and merges.
+Before the south pole we can have a split followed by a merge followed by the south pole adjacent vertices followed again by possibly splits and merges.
 
-Furtunatly we can treat this complicated faces just like any split fan. Where we stop flipping before the first split or $\pS$-adjacent vertex.
+Fortunately we can treat this complicated faces just like any split fan. Where we stop flipping before the first split or $\pS$-adjacent vertex.
 
 
 

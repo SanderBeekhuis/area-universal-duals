@@ -3,10 +3,7 @@
 \section{Blue face subdivision}
 
 \paragraph{Assumptions}
-At this point we have a vertically one-sided graph without large (4 or more edges) topfans. Due to flipping topfans we don't know where exactly we have split and merge vertices. Due to topfanflips not overlapping we know that the splits are small \fxwarning{TODO is this true? I hope it is}
-
-\paragraph{Goal}
-We want to recolor edges in each blue face such that in the subdivision of that face every blue face is 3-sided.
+At this point we have a vertically one-sided graph without large (3 or more edges) topfans. Due to flipping topfans we don't know where exactly we have split and merge vertices. Due to topfanflips not overlapping we know that the splits are small \fxwarning{TODO is this true? I hope it is}
 
 
 \paragraph{How}
@@ -84,17 +81,25 @@ See Figure \ref{fig:subdiv:sampleExecution} for an example of an execution of th
 \end{proof}
 
 
-\subsection{Face starting with a larger topfan}
+\subsection{Face starting with a large topfan}
+The same algorithm finds us an edge keeping this face as a $ d - 3 +7 = d+4$ face.
 \fxwarning{TODO write this}
 
 \subsection{Face encountering a larger topfan}
+\fxnote{We can do the flips in a first stage, or we can keep them like this. Just ignore loads for them.}
+If we have a large topfan in the middle of the face then above the left outer edge of this topfan we can't have another topfan that failed to flip its left outer edges.
+It can't have been due to split on the first vertex because that would imply a chord trough the current large topfan \fxwarning{TODO make this a lemma in the right place}
+
+It can't have been due to $\pS$-adjecency. Because the first edge of such a flip is adjacent to $\pS$ and thus can't be above the middle of some face.
+
+The other topfans are at the start of a face, so their left edge is flipped. So in that case we evaded loaded edges.
+
+This leads to the following rule: we flip the first edge of a topfan even above a loaded edge.
 \fxwarning{TODO write this}
 
 
-
 \subsection{General conclusion}
-
-
+\fxwarning{TODO update}
 \begin{lemma}
   \label{lm:}
   We have a 7-sided REL

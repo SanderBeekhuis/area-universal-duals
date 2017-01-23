@@ -1,12 +1,12 @@
 %!TEX root = ../thesis.tex
 \renewcommand{\Q}{\scr Q}
 
-\fxnote[inline]{While defining polebound 2-chords show why a poleboudn chord is bolocks}
+\fxnote[inline]{While defining polebound 2-chords show why a polebound chord is bolocks}
 
 
-We will assume the entire graph has no separating 3 or 4 cycles. Furthermore we need that we don't have any nontrivial seperating 5-cycles.  We will show that in this case ...
+We will assume the entire graph has no separating 3 or 4 cycles. Furthermore we need that we don't have any nontrivial separating 5-cycles.  We will show that in this case ...
 
-The lack of nontrivial seperating 5-cycle leads to always escapble 3-chords (not yet used) and also the imposibility of two trouble edges being in the same red face.
+The lack of nontrivial separating 5-cycle leads to always escapable 3-chords (not yet used) and also the impossibility of two trouble edges being in the same red face.
 
 
 \section{Algorithm}
@@ -158,5 +158,15 @@ The lack of nontrivial seperating 5-cycle leads to always escapble 3-chords (not
         The resulting REL never has a red $T$-fanhandle connected to both split and merge vertex of the same path. Unless the split is $\pS$-adjecent \fxnote{define $\pS$-adjecent}
       \end{lemma}
       \begin{proof}
-          This would give a non-trivial seperating $5$-cycle. Wether we onsider a chord or a polebound 2-chord.
+          This would give a non-trivial seperating $5$-cycle. Whether we consider a chord or a polebound 2-chord.
+      \end{proof}
+
+      \begin{lemma}
+        \label{lm:uni:NoTwoSplitsAboveEachOther}
+        If the left outer vertex of a topfan is a split vertex as well then any on the outermost split path is not the handle of a big topfan.
+      \end{lemma}
+
+      \begin{proof}
+        \fxwarning{TODO}
+        This is inside a chord Figure and stuff
       \end{proof}
