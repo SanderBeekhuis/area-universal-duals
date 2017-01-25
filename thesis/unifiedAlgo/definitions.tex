@@ -1,6 +1,31 @@
 %!TEX root = ../thesis.tex
 
 \section{Some Definitions}
+\label{s:algo}
+Kant and He \cite{Kant1997} were the first to design algorithms that determine a regular edge labeling.
+
+Fusy \cite{Fusy2006} recently developed a different algorithm computing a specific regular edge labeling using a method shrinking a sweepcycle while coloring the outside in accordance with a regular edge labeling.\footnote{The specific regular edge labeling Fusy obtained was the minimal element of the distributive lattice of regular edge labellings.}
+
+All algorithms in this section will have the same core (based on \cite{Fusy2006}). Consisting of shrinking a sweepcycle by so called \emph{valid} paths.\footnote{In Fusy's work he calls these \emph{eligible paths}} But will differ in which valid paths they choose (if there are multiple).
+
+We will start this section with some notation and preliminaries in Subsection \ref{ss:not}. Then we will state the core algorithm and show that it always computes a regular edge labeling in Subsection \ref{ss:core}. Afterwards we show in Subsections \ref{ss:minimal}, \ref{ss:blue} and Section \ref{s:red} how one can adapt the choice of the valid paths to obtain regular edge labellings with certain properties. Namely a the minimal element of the distributive lattices of regular edge labellings and regular edge labeling corresponding to horizontal and vertical rectangular duals.
+
+
+\subsection{Notation and Preliminaries}
+  \label{ss:not}
+  \begin{defi}[Interior path]
+  We call a path $P$ an internal path of a cycle $C$ if all vertices except the first and last one are in the interior of $C$ and it connects two distinct vertices of $C$
+  \end{defi}
+
+  We will use a script $\C$ to indicate the current sweep cycle.
+  We will repeatedly only consider the path $\cpath$. In that case we will always order it from $\pW$ to $\pE$. That these edges are always in $\C$ is a result of Invariant \ref{i:SWandSE}.
+  paragraph name
+  We will let $\P$ denote a interior path. Given such a path of $k$ vertices we will index it's nodes by $p_1, \ldots, p_k$ in such a way that $p_1$ is closer to $\pW$ then $p_k$ is (and thus that $p_k$ is closer to $\pE$ then $p_1$ is).
+
+  Then $p_1$ and $p_k$ indicate the two unique vertices of the walk that are also part of the cycle. We will then let $\restC{\P}$ denote the part of $\cpath$ that is between $p_1$ and $p_k$ (including). $\C_\P$ will denote the cycle we get when we paste $\restC{\P}$ and $\P$.
+
+
+
   \subsubsection{More chords}
     Recall that a \emph{chord} of a path $\P$ is a edge that connects two non-subsequent vertices of that path. Note that this edge can't be in the path. A \emph{k-chord} is a path $\Q$ of $k$ edges that connects two nonsubsequent vertices $v_i, v_j$ of the path such that $\P \cap \Q = \braces{v_i, v_j}$.
 
