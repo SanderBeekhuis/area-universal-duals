@@ -139,21 +139,3 @@ In this section we will introduce the rectangular dual of a graph.
   A proper graph $G$ can have more then one extensions. Each such extension fixes which of the rectangles are in the corners of the rectangular dual $\L$. Hence sometimes such an extension is called a \emph{corner assignment} by other authors.
 
   Note that a graph $G$ with a separating triangle can't be proper, since every possible extension will have a separating triangle.
-
-  \paragraph{Tight extension}
-    For use later in this thesis we will also define the closely related \emph{tight extension} of $G$.
-    Let $G$ be a triangulated plane graph without separating triangles and $v,v'$ be two vertices on its outer cycle.
-    We only define the \emph{tight extension} $\tightext G$ in $v, v'$ if the outer cycle is split into two chordfree paths $P, P'$ by $v$ and $v'$. Otherwise the tight extension is undefined.
-
-    We can without loss of generality assume that the order of these vertices and paths is $v P v' P'$ going clockwise along the outer cycle. We will then set $\pW = v$, $\pE =v'$ and add two vertices $\pN, \pS$. We connect every vertex of $P$ to $\pN$ and every vertex of $P'$ to $\pS$.
-
-    \begin{lemma}
-      If it is defined the tight extension of $G$ in $v, v'$ is a extension of $G \sm{v, v'}$.
-    \end{lemma}
-    \begin{proof}
-      It is clear from the construction that every interior face of $\tightext G$ is of degree 3 and that the outer face is given by $\pN \pE \pS \pW$ an is thus of degree $4$.
-      To see that $\tightext G$ has no separating triangles note that $G$ has none and that any separating triangle must thus have one of $\pN, \pS$ as a vertex. However a separating triangle containing $\pN$ or $\pS$ would imply a chord in $P$ or $P'$. However in this case the tight extension is not defined.
-    \end{proof}
-    Hence we can also view $\tightext G$ as an extension in it's own right.
-
-    A tight extension $\tightext G$ in $v , v'$ is uniquely determined if it exists. This follows from the fact that there is no choice is the procedure described above.
