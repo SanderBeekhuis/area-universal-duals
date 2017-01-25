@@ -61,39 +61,6 @@ Because every face of a plane triangulation is triangular we can make the follow
   in the described situation we have a partial face $\ldots x v y \ldots$.  Since every face of $G$ is a triangle $xy$ must be an edge and $vxy$ must be a triangle.
 \end{proof}
 
-\subsubsection{Connectedness}
-Let us first note that any maximally planar graph is $2$-connected. Suppose there is a cutvertex, then surly we can add an edge between the components found after removing this cutvertex.
-
-\begin{thrm}
-  Any plane triangulation $T$ is $3$-connected.
-  \label{th:plTri3Connected}
-\end{thrm}
-
-\begin{proof}
-  Suppose that $T$ is not $3$-connected. Then there must be a $2$-cutset $S$, given by the vertices $x$ and $y$. Removing this cutset splits the graph into at least two connected components $C_i$ with all components incident to all cutvertices. Since otherwise we would have found a $1$-cutset.
-
-  Because $S$ is a cutset, there can't be any edges connecting $C_1$ and $C_2$. But then the edge $xy$ should be separating the $2$ components on both sides. This is impossible since we can only draw this edge once.
-  %\fxnote{We could add a figure to make this more clear}
-\end{proof}
-
-\begin{defi}[Irreducible triangulation]
-We call a triangulation irreducible if it has no separating triangles
-\end{defi}
-
-\fxnote{It is called irreducible because there is a reduction that works on separating triangles. We might show this reduction. predraft-2}
-
-\begin{thrm}
-Any irreducible plane triangulation $T$ is $4$-connected.
-\end{thrm}
-
-\begin{proof}
-Note that any plane triangulation is $3$-connected by Theorem \ref{th:plTri3Connected}.
-
-Suppose that $T$ is not $4$-connected. Then there must be some $3$-cutset (since it is $3$-connected) let us denote the vertices of this cutset by $x, y$ and $z$. Removing this cutset splits the graph into at least two connected components $C_i$ and all components are incident to all cutvertices otherwise we would have found a $2$- or $1$-cutset.
-
-However, now $xy$ must be an edge in the triangulation $T$ otherwise the graph is not maximal planar (There can't be an edge incident to both $C_1$ and $C_2$ because that would negate $x, y ,z$ being a cutset.). In the same way $yz$ and $xz$ are edges of $T$. But then $xyz$ is a separating triangle. This is an contradiction and thus $T$ is $4$-connected
-\end{proof}
-
 \subsection{Triangulations of the $k$-gon}
 
 \begin{defi}[Triangulation of the $k$-gon]
@@ -102,33 +69,3 @@ We call a graph a triangulation of the $k$-gon if the outer face has degree $k$ 
 Vertices bordering the outer face are \emph{outer vertices} while all other vertices are \emph{interior vertices}. Furthermore the cycle formed by all vertices outer vertices is the \emph{outer cycle}.
 
 Sometimes such triangulations of the $k$-gon are called \emph{(plane) triangulated graphs}.
-
-
-\begin{defi}[Irreducible triangulation of the $k$-gon]
-We call a triangulation of the $k$-gon irreducible if it has no separating triangles.
-\end{defi}
-
-
-Note that triangulation of the $n$-gon $n\geq 4$ is not maximally planar and thus not plane triangulation.
-
-The \emph{completion} of a triangulation of the $k$-gon $G = (V, E)$. Is the graph $G'= (V', E')$ with vertex set $V' = V \cup \braces{s}$ and edge set $E' = E \cup \braces{ sv | v \text{ is a outer vertex}}$
-
-The completion is plane triangulation.  %Q does this stament need proof?
-Since the interior of the outer cycle of $G$ always consisted of faces of degree 3. The exterior of the outer cycle consisted of one face of degree $k$ (the outer face) but the completion has turned this into $k$ faces of degree $3$.
-
-\begin{thrm}
-A triangulation of the $k$-gon $G$ is $2$-connected.
-\end{thrm}
-\begin{proof}
-Suppose that $G$ has a cutvertex $v$. Then the set $\braces{s, v}$ is a $2$-cutset of the completion $G'$ of $G$. This however is in contradiction to Theorem \ref{th:plTri3Connected} stating that $G'$ is $3$-connected. Hence $G$ has no cutvertex and is thus $2$-connected.
-\end{proof}
-
-\begin{thrm}
-  \label{th:triOfK3:VertexDisjointPaths}
-  For every interior vertex $v$ of a triangulation of the $k$-gon $G$ is connected by at least $3$ vertex disjoint paths to different outer vertices.
-\end{thrm}
-\begin{proof}
-By Theorem \ref{th:plTri3Connected} the completion $G'$ of $G$ is $3$-connected. Hence there are 3 vertex-disjoint paths from $v$ to $s$. Since $v$ is on the interior and $s$ is on the exterior of the outer cycle $\C$ all these 3 paths cross the outer cycle at least once. These paths cross $\C$ for the first time in different vertices since they are vertex-disjoint. If we shorten the paths to their first crossing with $\C$ we obtain the $3$ paths in the theorem.
-\end{proof}
-
-\fxnote{We can sharpen this to $4$ if we have a irreducible triangulation of the $k$-gon with a chordfree outer cycle}
