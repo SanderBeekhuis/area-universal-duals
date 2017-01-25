@@ -1,14 +1,16 @@
 %!TEX root = ../thesis.tex
 
-\section{Fixing a extension}
-  In our explorations to find a lower bound on what kind of \emph{pseudo one-sidedness} is possible we will find it very useful to fix one particular extension $\ext G$ of $G$. Unfortunately if there is no rectangular dual that's $(k,l)$-sided using some extension $\ext G$ of $G$. This does not imply that $G$ is not $(k,l)$-sided. There might be another extension of $G$ that has a $(k,l)$-sided rectangular dual.
+\fxnote[inline,no-margin]{We might drop the whole notion of $(k,l)$-sidedness and only consider $k$-sidednes}
 
-  Fortunately for us however we can view $\ext G = H$ as a graph in it's own right, then $G$ is the interior of a separating $4$-cycle of $H$ and we will show this implies that $G$ (as induced subgraph) has to be colored \fxnote*{right choice of words?}{according to} the extension $\ext G$.
+\section{Fixing a corner assignment}
+  In our explorations to find a lower bound on what kind of \emph{(k,l)-sidedness} is possible we will find it very useful to fix one particular corner assignment $\ext G$ of $G$. Unfortunately if there is no rectangular dual that's $(k,l)$-sided using some corner assignment $\ext G$ of $G$. This does not imply that $G$ is not $(k,l)$-sided. There might be another corner assignment of $G$ that has a $(k,l)$-sided rectangular dual.
+
+  Fortunately for us however we can view $\ext G = H$ as a graph in it's own right, then $G$ is the interior of a separating $4$-cycle of $H$ and we will show this implies that $G$ (as induced subgraph) has to be colored \fxnote*{right choice of words?}{according to} the corner assignment $\ext G$.
 
   We will thus proof the following theorem in this section.
   \begin{thrm}
-  \label{th:fixExtension}
-  When considering if there are rectangular duals satisfying a certain property. We can consider a fixed extension for a graph.
+  \label{th:fixCorner assignment}
+  When considering if there are rectangular duals satisfying a certain property. We can consider a fixed corner assignment for a graph.
   \end{thrm}
 
   \begin{remark}
@@ -48,30 +50,30 @@
     \label{tab:scaffold}
   \end{wraptable}
 
-  Lemma \ref{lm:fix:fourCycleInteriorColor} is useful because it allows us to fix a extension $\ext G$ of $G$ by building a \emph{scaffold}. Suppose we want to investigate some extension $\ext G$ of $G$ with poles $N$, $E$, $S$ and $W$ then we can consider the graph $\ext G = H$ as a graph in it's own right. $H$ is a proper graph since it has no irreducible triangles in it's interior (because $\ext G$ had none) and it admits a valid extension $\ext H$ by connecting the new poles as in Table \ref{tab:scaffold}. $\ext H$ is shown in Figure \ref{fig:scafold}.
+  Lemma \ref{lm:fix:fourCycleInteriorColor} is useful because it allows us to fix a corner assignment $\ext G$ of $G$ by building a \emph{scaffold}. Suppose we want to investigate some corner assignment $\ext G$ of $G$ with poles $N$, $E$, $S$ and $W$ then we can consider the graph $\ext G = H$ as a graph in it's own right. $H$ is a proper graph since it has no irreducible triangles in it's interior (because $\ext G$ had none) and it admits a valid corner assignment $\ext H$ by connecting the new poles as in Table \ref{tab:scaffold}. $\ext H$ is shown in Figure \ref{fig:scafold}.
 
   \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.5]{fixExtension/img/scafold}
 
-  \caption{The construction of a scaffold. $G$ is displayed in thick lines and with closed vertices. An arbitrary extension $\ext G =H$ is then drawn with thin lines and open vertices. An extension of $H$ is then drawn with dashed edges and open vertices.
+  \caption{The construction of a scaffold. $G$ is displayed in thick lines and with closed vertices. An arbitrary corner assignment $\ext G =H$ is then drawn with thin lines and open vertices. An corner assignment of $H$ is then drawn with dashed edges and open vertices.
       \label{fig:scafold}}
   \end{figure}
 
-  \begin{proof}[Proof of Theorem \ref{th:fixExtension}]
-    The graph $H$ can have more then one extension but they all contain the separating $4$-cycle $\C= NESW$ thus by Lemma \ref{lm:fix:fourCycleInteriorColor} we see that, without loss of generality, the interior edges of $\C$ incident to $N$ and $S$ are colored red and those incident to $E$ or $W$ are colored blue. This is exactly as if we forced the extension $\ext G$
+  \begin{proof}[Proof of Theorem \ref{th:fixCorner assignment}]
+    The graph $H$ can have more then one corner assignment but they all contain the separating $4$-cycle $\C= NESW$ thus by Lemma \ref{lm:fix:fourCycleInteriorColor} we see that, without loss of generality, the interior edges of $\C$ incident to $N$ and $S$ are colored red and those incident to $E$ or $W$ are colored blue. This is exactly as if we forced the corner assignment $\ext G$
     \end{proof}
 
 \subsection{An application: There are graphs that are $(2, \infty)$-sided}
 
-  We will show this by providing an example graph $G$ with a fixed extension $\ext G$ which we can do according to Theorem \ref{th:fixExtension}. Consider the graph in Figure \ref{fig:2manysidedLowerBound}. Note that most of the interior vertices are of degree $4$ and thus the largest part of any regular edge labeling is forced. Those edges that are forced to have a certain color are already colored in Figure \ref{fig:2manysidedLowerBound}.
+  We will show this by providing an example graph $G$ with a fixed corner assignment $\ext G$ which we can do according to Theorem \ref{th:fixCorner assignment}. Consider the graph in Figure \ref{fig:2manysidedLowerBound}. Note that most of the interior vertices are of degree $4$ and thus the largest part of any regular edge labeling is forced. Those edges that are forced to have a certain color are already colored in Figure \ref{fig:2manysidedLowerBound}.
 
 
   \begin{figure}[h!]
   \centering
   \includegraphics[scale=.5]{fixExtension/img/2manysidedLowerBound}
 
-  \caption{The fixed extension $\ext G$
+  \caption{The fixed corner assignment $\ext G$
       \label{fig:2manysidedLowerBound}}
   \end{figure}
 
@@ -81,7 +83,7 @@
   \label{ss:fix:manymany}
   We will later see that all these graphs have adjacent maximal $4$-cycles.
 
-  We consider the graph $G$ with extension $\ext G$ given in Figure \ref{fig:fix:manymany0}. Note that this graph has two adjacent maximal separating $4$-cycles. These are both marked by thick lines in Figure \ref{fig:fix:manymany0}.
+  We consider the graph $G$ with corner assignment $\ext G$ given in Figure \ref{fig:fix:manymany0}. Note that this graph has two adjacent maximal separating $4$-cycles. These are both marked by thick lines in Figure \ref{fig:fix:manymany0}.
 
   \begin{figure}[h]
     \centering
