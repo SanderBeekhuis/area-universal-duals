@@ -8,22 +8,39 @@ We will let $\braces {i, \ldots, j}$ denote all the integers $x$ such that $i \l
 
 The \emph{degree} of a face is the number of vertices it is incident to and a \emph{triangular} face is a face of degree $3$.
 
-We will use \emph{$k$-cycle} to denote a cycle of length $k$. Moreover a \emph{triangle} is simply a cycle of length $3$ (i.e. a $3$-cycle).
+\paragraph{Cycles}
+ We will use \emph{$k$-cycle} to denote a cycle of length $k$. Moreover a \emph{triangle} is simply a cycle of length $3$ (i.e. a $3$-cycle).
 
 \fxnote{We could cite Jordan's paper here. Should I? Or is this overdoing it? My textbook doesn't have a reference p. 245}
 By Jordan's curve theorem a cycle splits the plane into two parts, one bounded and one unbounded. We will call the bounded part the \emph{interior} of this cycle and the unbounded part the \emph{exterior} of this cycle.
 We will call a cycle \emph{separating} if there are vertices in both it's interior and exterior.
-An \emph{interior edge} of a cycle is then an edge contained in the interior of the cycle.
+An \emph{interior edge} of a cycle is then an edge contained in the interior of the cycle. Much in the same vein a \emph{interior path} is path connecting two distinct vertices on the cycle of which all edges are interior edges.
 
+\paragraph{Path notations}
+  We will sometimes give vertices of a path $\P$ explicitly using $p_1 \ldots p_k$.
 
-We will sometimes give vertices of a path $\P$ explicitly using $p_1 \ldots p_k$. A chord of a path is an edge that connects two vertices in this path but is not part of the path. If a path has no chords we will call it \emph{chordfree}. Since paths and cycles are special types the same definitions will hold for them.
+  With $\rev(P)$ we denote the \emph{reverse path} $p_k \ldots p_1$. We use $\oplus$ to denote the \emph{concatenation} of paths. That is given a second path $\Q$ with vertices $q_1 \ldots q_l$ and $p_k = q_1$ the new path $\P \oplus \Q$ consists of $p_1 \ldots p_{k-1} p_k=q_1 q_2 \ldots q_l$.
 
-Once we fix a planar embedding of a graph we can talk about the \emph{rotation} at a vertex $v$. The rotation at a vertex is clockwise order of the edges incident to $v$. We will identify these edges with their other endpoints. Two vertices $x, y$ are said to be \emph{consecutive} in the rotation at $v$ when the edges $vx$ and $vy$ are consecutive in the clockwise order. In most of this thesis we implicitly fix an embedding since triangulations are 3-connected and thus only have one planar embedding by a theorem due to Whitney (1933). This theorem is proven in for example \cite[p. 267]{Bondy2008}
+  Recall that a cycle is simply a path starting and ending at the same vertex. Hence if we have two disjoint paths $\P, \Q$ from $s$ to $t$ then $\P \oplus \rev(\Q)$ is a cycle.
 
-Given a path $\P$ with vertices $p_1 \ldots p_k$ we will say that a vertex $v \nin \P$ adjacent to $p_i, i \in \braces{2, \ldots, k-1}$ lies on the \emph{left} of $\P$ if it lies between $p_{i-1}$ and $p_{i+1}$ in the rotation at $p_{i}$. Otherwise $v$ lies between $p_{i+1}$ and $p_{i-1}$ in the
-rotation at $p_i$. In this case we say that $v$ lies to the \emph{right} of $\P$.
+  Furthermore we use a vertical bar to denote the \emph{restriction} of a path to a certain set of vertices. So $\P|_{p_i, p_j}$ with $i<j$ is the subpath of $\P$ that has vertices $p_i \ldots p_j$.
 
-We will use the same notion of left and right for edges.
+\paragraph{Chords}
+ A \emph{chord} of a path is an edge that connects two vertices in this path but is not part of the path. If a path has no chords we will call it \emph{chordfree}.
+
+  A \emph{k-chord} is a path $\Q$ of $k$ edges that connects two non-subsequent vertices $p_i, p_j$ of $\P$ such that $\P \cap \Q = \braces{p_i, p_j}$.
+
+  Since cycles are special type of paths the same definitions will also apply to them.
+
+  As long $\P$ is a path $\P|_{v_i, v_j} \oplus \rev(\Q)$ is a welldefined cycle. We call a ($k$-)chord \emph{separating} if this is a separating cycle.
+
+\paragraph{Rotations}
+  Once we fix a planar embedding of a graph we can talk about the \emph{rotation} at a vertex $v$. The rotation at a vertex is clockwise order of the edges incident to $v$. We will identify these edges with their other endpoints. Two vertices $x, y$ are said to be \emph{consecutive} in the rotation at $v$ when the edges $vx$ and $vy$ are consecutive in the clockwise order. In most of this thesis we implicitly fix an embedding since triangulations are 3-connected and thus only have one planar embedding by a theorem due to Whitney (1933). This theorem is proven in for example \cite[p. 267]{Bondy2008}
+
+  Given a path $\P$ with vertices $p_1 \ldots p_k$ we will say that a vertex $v \nin \P$ adjacent to $p_i, i \in \braces{2, \ldots, k-1}$ lies on the \emph{left} of $\P$ if it lies between $p_{i-1}$ and $p_{i+1}$ in the rotation at $p_{i}$. Otherwise $v$ lies between $p_{i+1}$ and $p_{i-1}$ in the
+  rotation at $p_i$. In this case we say that $v$ lies to the \emph{right} of $\P$.
+
+  We will use the same notion of left and right for edges.
 
 \subsection{Plane triangulations}
 

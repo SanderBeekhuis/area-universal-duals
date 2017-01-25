@@ -4,21 +4,17 @@
 \fxnote[inline]{While defining polebound 2-chords show why a polebound chord is bolocks}
 
 
-We will assume the entire graph has no separating 3 or 4 cycles. Furthermore we need that we don't have any nontrivial separating 5-cycles.  We will show that in this case ...
+\fxwarning{TODO integrate this in the start of this chapter - predraft 1}
+We will use a script $\C$ to indicate the current sweep cycle.
+We will repeatedly only consider the path $\cpath$. In that case we will always order it from $\pW$ to $\pE$. That these edges are always in $\C$ is a result of Invariant \ref{i:SWandSE}.
 
-The lack of nontrivial separating 5-cycle leads to always escapable 3-chords (not yet used) and also the impossibility of two trouble edges being in the same red face.
+We will let $\P$ denote a interior path. Given such a path of $k$ vertices we will index it's nodes by $p_1, \ldots, p_k$ in such a way that $p_1$ is closer to $\pW$ then $p_k$ is (and thus that $p_k$ is closer to $\pE$ then $p_1$ is).
+
+Then $p_1$ and $p_k$ indicate the two unique vertices of the walk that are also part of the cycle. We will then let $\restC{\P}$ denote the part of $\cpath$ that is between $p_1$ and $p_k$ (including). $\C_\P$ will denote the cycle given by $\restC{\P} \oplus \rev(\P)$.
 
 
-\section{Algorithm}
-  The algorithm will consist of two phases
-
-  \begin{enumerate}
-    \item Find a \emph{vertically} 1-sided layout with additional properties
-    \item Do additional post-processing steps to make this layout $k$-sided.
-  \end{enumerate}
-
-\subsection{Phase 1}
-  In Phase 1 we execute a sweepcycle algorithm comparable to Fusy's \cite{Fusy2006}.
+\section{Sweepcycle algorithm}
+  We first execute a sweepcycle algorithm comparable to Fusy's \cite{Fusy2006}.
   During the algorithm we will want to maintain several invariants. The first three are equivalent to those imposed by Fusy. The final two invariants are new and impose a nice structure on the sweepcycle so far.
 
   \begin{invariants}
