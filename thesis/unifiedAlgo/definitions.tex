@@ -23,11 +23,8 @@
       Now there are two cases. Either $(a)$ $w$ and $w'$ are vertices adjacent to some $p_i$ an thus subsequent in the rotation at $p_i$  or $(b)$ $w$ was the last vertex adjacent to some $p_i$ and thus $w'$ is the first vertex adjacent to $p_{i+1}$.
 
     \begin{figure}[h]
-  \centering
-  \includegraphics[scale=1]
-  \caption{}
-  \label{fig:}
-\end{figure}      \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \begin{subfigure}[b]{0.5\linewidth}
               \includegraphics[width=\linewidth]{unifiedAlgo/img/walkProofA}
               \caption{}
           \end{subfigure}%
@@ -44,12 +41,7 @@
 
       In case $(a)$ we note that since $w$ and $w'$ are subsequent in the rotation at $p_i$ $ww'$ is an edge by Lemma \ref{lm:prelim:rotationEdge}.
 
-      In case $(b)$ we note that $p_i w$ and $p_i p_{i+1}$ are edges subsequent in clockwise order,\begin{figure}[h]
-  \centering
-  \includegraphics[scale=1]
-  \caption{}
-  \label{fig:}
-\end{figure} hence $wp_{i+1}$ is also an edge. Hence $w$ is the first vertex adjacent to $p_{i+1}$ subsequent to $v_i$ in the clockwise rotation. Thus $w= w'$. They are duplicates and one of them must have been removed.
+      In case $(b)$ we note that $p_i w$ and $p_i p_{i+1}$ are edges subsequent in clockwise order, hence $wp_{i+1}$ is also an edge. Hence $w$ is the first vertex adjacent to $p_{i+1}$ subsequent to $v_i$ in the clockwise rotation. Thus $w= w'$. They are duplicates and one of them must have been removed.
 
       Now for the edge cases: Let $x$ be the first vertex adjacent to $p_{i+1}$ and let $y$ be the last vertex adjacent to $p_{j-1}$. $p_i$ and $x$ are vertices adjacent to $p_{i+1}$ subsequent in the clockwise rotation, and hence connected by Lemma \ref{lm:prelim:rotationEdge}. In the same way $y$ and $v_j$ are subsequent vertices in the rotation at $v_n$ and hence connected.
 
@@ -63,23 +55,13 @@
       The right neighbor walk $W$ is a non-crosssing walk.
     \end{lemma}
     \begin{proof}
-      Suppose that the right neighbor walk is crossing at a vertex $w= w_i =w_j$. Then one of $w_{j-1}$ and $w_{j+1}$ is in the clockwise interval $[w_{i-1}, w_{i+1} ]$ at the rotation at\begin{figure}[h]
-  \centering
-  \includegraphics[scale=1]
-  \caption{}
-  \label{fig:}
-\end{figure} the triangle containing $w$ is a separating triangle.
+      Suppose that the right neighbor walk is crossing at a vertex $w= w_i =w_j$. Then one of $w_{j-1}$ and $w_{j+1}$ is in the clockwise interval $[w_{i-1}, w_{i+1} ]$ at the rotation at the triangle containing $w$ is a separating triangle.
 
       We conclude that $W$ must be a non-crossing walk.
     \end{proof}
 
 
-  \begin{figure}[h]
-  \centering
-  \includegraphics[scale=1]
-  \caption{}
-  \label{fig:}
-\end{figure}  \fxnote{Actullly W rev(P)}
+ \fxnote{Actullly W rev(P)}
     \fxnote{Change wording to cycle}
     \begin{lemma}
       \label{lm:uni:neighbourwalkNoInteriorVertex}
