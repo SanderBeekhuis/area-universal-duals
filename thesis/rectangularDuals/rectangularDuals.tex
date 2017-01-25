@@ -10,21 +10,24 @@ In this section we will introduce the rectangular dual of a graph.
 \subsection{Rectangular layouts and their duals}
   We define a \emph{rectangular layout} (or simply \emph{layout}) $\L$ to be a partition of a rectangle into finitely many interiorly disjoint rectangles such that no four rectangles meet in one point.
 
-  In the \emph{dual graph} $\dualgraph{\L}$ of a layout $\L$ we represent each rectangle by a vertex and we connect two vertices by an edge exactly when their rectangles are adjacent. In the reverse direction we say a layout $\L$ is a \emph{rectangular dual} of a graph $G$ if we have that $G = \dualgraph{\L}$.
+  Equivalent layouts \fxwarning{TODO predraft2}
 
+
+\subsection{Duals of rectangular layouts}
+  In the \emph{dual graph} $\dualgraph{\L}$ of a layout $\L$ we represent each rectangle by a vertex and we connect two vertices by an edge exactly when their rectangles are adjacent.
 
   One can also consider the \emph{extended dual graph} $\extdualgraph{\L}$ of a layout $\L$. In such a graph we not only represent each rectangle by a vertex. But furthermore we also add $4$ vertices $\pN, \pE, \pS, \pW$ (so-called \emph{poles}) in the outer face, one associated to the north, east, south, west boundary segment of the outer rectangle respectively. Two vertices are then connected if their rectangles or boundary segments intersect.
 
   If we take the \emph{extended dual graph} of a layout and remove the $4$ vertices corresponding to the outer face we end up with the \emph{dual graph} of that layout.
 
+  Let us note that both the dual graph and the extended dual graph of a layout $\L$ are not the same as the \emph{graph dual} of $\L$ when we view it as a graph (namely we don't represent the outer face of $\L$ by a single vertex).
 
-  \paragraph{Properties}
-  A plane triangulated graph $\G$ does not necessarily have a rectangular dual nor is this dual necessarily unique.
-  \fxnote{in what sense not unique, provide examples}
+\subsection{Rectangular dual}
+  We have introduced two ways to define the dual $G$ of a layout $\L$. In the reverse direction we say a layout $\L$ is a \emph{rectangular dual} of a certian graph $G$ if we have that $G = \dualgraph{\L}$.
 
-  Let us finally note that both the dual graph and the extended dual graph of a layout $\L$ are not the same as the \emph{graph dual} of $\L$ when we view it as a graph (namely we don't represent the outer face of $\L$ by a single vertex).
-
-
+  A triangulation of the $k$-gon $\G$ does not necessarily have a rectangular dual nor is this dual necessarily unique.
+  \fxnote{in what sense not unique, provide examples predraft-2}
+  \fxnote{result by kozminski and kinnen?}
 
 \subsection{Different kinds of rectangular layouts}
   We can pose different restriction on a rectangular layout $\L$. For all these restrictions we have that if they hold for one layout $\L$ they hold for all equivalent layouts.
@@ -32,16 +35,16 @@ In this section we will introduce the rectangular dual of a graph.
   We will call $\L$ \emph{area-equivalent} if no matter the areas we assign to the rectangles of $\L$ there is a equivalent layout $\L'$ such that each rectangle has the assigned area.
   \fxnote{Might add supporting figures}
 
-  All other restrictions we introduce here will consider the \emph{maximal line segments} (or simply \emph{maximal segement}) of $\L$. A \emph{line segment} (or simply \emph{segment}) of $\L$ is a sequence of consecutive inner edges forming a line. Such a segment is called maximal if it's not contained in any other line segment. \fxnote*{Is this neccesary?}{This notion is also introduced in \cite{Eppstein2012}}. A segment is \emph{one-sided} if it is on the boundary of a single rectangle. A line segment is \emph{$(k,l)$-sided} with $k<l$ if the line segment is on the boundary of at most $k$ different rectangles on one side and at most $l$ different rectangles on the other side.
+  All other restrictions we introduce here will consider the \emph{maximal line segments} (or simply \emph{maximal segement}) of $\L$. A \emph{line segment} (or simply \emph{segment}) of $\L$ is a sequence of consecutive inner boundary segments forming a line. Such a segment is called maximal if it's not contained in any other line segment. \fxnote*{Is this neccesary?}{This notion is also introduced in \cite{Eppstein2012}}. A segment is \emph{one-sided} if it is on the boundary of a single rectangle. We call it \emph{$k$-sideded} if on one of the sides it is the boundary of at most $k$ rectangles. Finally, a line segment is \emph{$(k,l)$-sided} with $k<l$ if the line segment is on the boundary of at most $k$ different rectangles on one side and at most $l$ different rectangles on the other side.
   \fxnote{Might add supporting figures}
+  \fxwarning{Think about removing defi for $(k,l)$ sideds, this will proc a rewrite}
 
   We will then call a layout \emph{one-sided} if all maximal segments are one-sided. Furthermore it is called \emph{vertically one-sided} or \emph{horizontally one-sided} if just all vertical or horizontal maximal segments are one-sided. Furthermore a layout is \emph{$(k,l)$-sided} if all maximal line segments are $(k,l)$-sided.
 
   Eppstein et al. \cite{Eppstein2012} show that a layout is area-universal if and only if it is one-sided.
 
-
 \subsection{Regualar edge labeling}
-  The extended dual of a layout allow a natural coloring and orientation of their edges. This \emph{regular edge labeling} is created in the following way:
+  The extended dual of a layout allows a natural coloring and orientation of its edges. This \emph{regular edge labeling} can be found in the following way:
   For every edge $vw$ in $\extdualgraph{\L}$ we consider whether the shared boundary of the rectangles is vertical or horizontal we then color the edge blue or red respectively. In the first case we orient the edge from the  leftmost point to the rightmost point and in the second case we orient from bottom to top. We don't color or orient the edges between the poles.
 
   From the nature of the adjacencies in a rectangular layout we can deduce the following two rules for a regular edge labeling.
@@ -50,14 +53,13 @@ In this section we will introduce the rectangular dual of a graph.
     \item (Pole) $\pN$ has only incoming red edge, $\pE$ has only incoming blue edges, $\pS$ has only outgoing red edges and $\pW$ has only outgoing blue edges. Except for, of course, the uncolored edges between poles.
   \end{enumerate}
 
-  Regular edge labeling were first introduced by Kant and He \cite{Kant1997} but were also used in \cite{Eppstein2012}. Fusy also studied these structures \cite{Fusy2006,Fusy2009} but he calls them \emph{transeversal structures}.
+  Regular edge labeling were first introduced by Kant and He \cite{Kant1997} and were also used in \cite{Eppstein2012}. Fusy also studied these structures \cite{Fusy2006,Fusy2009} but he calls them \emph{transeversal structures}.
 
-  He showed \cite{He} that given a rectangular edge labeling we can reconstruct a equivalent rectangular layout.
-  \fxwarning{TODO fix cite, and something with equivalence class. Siam p540 bottom, READ ACTUAL PAPER}
+  He showed \cite{He1993} that given a regular edge labeling we can reconstruct a rectangular layout giving this regular edge labeling.
+
   A regular edge labeling  of $\ext G$ corresponds to a equivalence class of rectangular layouts $\L$ that are a rectangular dual of $G$. \fxnote{What do i mean by such a eq. class}
 
-  \paragraph{Properties}
-  We note that we have no monocolored directed cycles \footnote{In fact we don't have any directed cycles} because such a cycle would for example correspond to a  group of adjacent rectangles that have  no leftmost or topmost one. This is clearly absurd.
+  Note that we have no monocolored directed cycles because such a cycle would for example correspond to a  group of adjacent rectangles that have  no leftmost or topmost one. This is clearly absurd.
 
   \begin{lemma}
     \label{lm:rel:noMonoColoredTriangles}
@@ -68,49 +70,51 @@ In this section we will introduce the rectangular dual of a graph.
     Suppose we have a mononcolored triangle. Without loss of generality we will suppose that the color of this triangle is blue. Then at least one of the vertices has an incoming blue edge followed directly by an outgoing blue edge or an outgoing blue edge followed directly by an incoming blue edge in it's rotation. Thus this vertex has either an empty set of outgoing or incoming red edges, offending the coloring requirements of a REL
   \end{proof}
 
-  \paragraph{$st$-planar graphs}
-  Kant and He \cite[pp.179]{Kant1997} show that an regular edge labeling is closely linked to a pair of $st$-planar graphs.
+  \subsubsection{$st$-planar graphs}
+    Kant and He \cite[pp.179]{Kant1997} show that an regular edge labeling is closely linked to a pair of $st$-planar graphs. As can be seen in Theorem \ref{th:rel:stPlanarGraphs} below.
 
-  A $st$-planar graph is an oriented planar graph with one source (indegree 0) $s$ and one sink (outdegree 0) $t$. Both $s$ and $t$ lie on the outer face. Moreover, such a $st$-planar graph is without directed cycles.
+    A $st$-planar graph is an oriented planar graph with one source (indegree 0) $s$ and one sink (outdegree 0) $t$. Both $s$ and $t$ lie on the outer face. Moreover, such a $st$-planar graph has no directed cycles.
 
-  Every face $F$ in an $st$-planar graph has the same structure. The boundary of $F$ consists of two directed paths with common origin $\spl(F)$ and  destination $\mrg(F)$.
-  \fxnote{We might want to prove this.}
-  These boundary paths are adjacent in the orientation at $\spl(F)$. We will say the first path in the rotation, starting at the beginning of the adjacent pair, is the \emph{right boundary path} of $F$ and the second one is the \emph{left boundary path}.
+    \begin{thrm}
+      \label{th:rel:stPlanarGraphs}
+      The blue edges of $G\sm{\pN,\pS}$ form a $st$-planar graph with $s= \pW$ and $t=\pE$. Moreover the red edges of $G\sm{\pW,\pE}$ form a $st$-planar graph with $s= \pS$ and $t= \pN$.
+    \end{thrm}
+    \begin{proof}
+      Kant and He propose to add an edge and orient the outer cycle. This is necessary because they require $s$ and $t$ to be adjacent. Moreover they don't a priori require such an graph to be without directed cycles.
 
-  Kant and He propose to add an edge and orient the outer cycle. This is necessary because they require $s$ and $t$ to be adjacent. Moreover they don't a priori require such an graph to be without directed cycles. Hence we restate their result in Theorem \ref{th:rel:stPlanarGraphs}
+      A trivial adaptation of \cite[pp.179]{Kant1997} then gives us the theorem. We note that we can't get any directed cycles since a regular edge labeling has no monocolored directed cycles.
+      \fxnote{We might write our own proof.}
+    \end{proof}
 
-  \begin{thrm}
-    \label{th:rel:stPlanarGraphs}
-    The blue edges of $G$ form a $st$-planar graph with $s= \pW$ and $t=\pE$. Moreover the red edges of $G$ form a $st$-planar graph with $s= \pS$ and $t= \pN$.
-  \end{thrm}
-  \begin{proof}
-    A trivial adaptation of \cite[pp.179]{Kant1997}. We note that we can't get any directed cycles since a regular edge labeling has no monocolored directed cycles.
-  \end{proof}
+    We will refer to these $st$-planar graphs as the \emph{blue graph} and \emph{red graph} of some regular edge labeling. We will then refer to the faces of these graphs as \emph{blue faces} and \emph{red faces}.
 
-  We will refer to these $st$-planar graphs as the \emph{blue graph} and \emph{red graph} of some regular edge labeling. We will then refer to the faces of these graphs as \emph{blue faces} and \emph{red faces}.
+    Every face $F$ in an $st$-planar graph has the same structure. The boundary of $F$ consists of two directed paths with common origin $\spl(F)$ and  destination $\mrg(F)$.
+    \fxnote{We might want to prove this.}
+    These boundary paths are adjacent in the orientation at $\spl(F)$. We will say the first path in the rotation, starting at the beginning of the adjacent pair, is the \emph{right boundary path} of $F$ and the second one is the \emph{left boundary path}.
 
-  \paragraph{Regular edge labellings and maximal segments}
-  From the way that we color a \rel for a given layout $\L$ we can see that a horizontal maximal segment leads to a blue face and a vertical maximal segment leads to a red face.
-   \fxwarning{TODO figure of blue face and red face}
+  \subsubsection{Regular edge labellings and maximal segments}
+    From the way that we color a \rel for a given layout $\L$ we can see that a horizontal maximal segment leads to a blue face and a vertical maximal segment leads to a red face.
+     \fxwarning{TODO figure of blue face and red face}
 
-  For either type of maximal segment we denote the corresponding face with $F$. The number of interior vertices of both boundary paths without $\mrg(F)$ and $\spl(F)$ is the number of rectangles on the respective sides of the maximal segment.
+    For either type of maximal segment we denote the corresponding face with $F$. The number of interior vertices of both boundary paths without $\mrg(F)$ and $\spl(F)$ is the number of rectangles on the respective sides of the maximal segment.
 
-  Hence a one-sided maximal segment corresponds to a face with one boundary path of length $2$. \footnote{A boundary path can't have length $1$ since by construction of a \rel it encloses a maximal segment and thus has to go trough at least one intermediate rectangle/vertex.} And a $(k,l)$-sided maximal segment has a short boundary path of length at most $k+1$ and a longer boundary path of length at most $l+1$. \footnote{Recall that the length of a path its edgecount}.
-  We will for the ease of the discussion ofter refer to such a face as an $(k,l)$-face.
+    Hence a one-sided maximal segment corresponds to a face with one boundary path of length $2$\footnote{A boundary path can't have length $1$ since by construction of a \rel it encloses a maximal segment and thus has to go trough at least one intermediate rectangle/vertex.}. And a $(k,l)$-sided maximal segment has a short boundary path of length at most $k+1$ and a longer boundary path of length at most $l+1$\footnote{Recall that the length of a path its edgecount.}.
+    We will for the ease of the discussion ofter refer to such a face as an $(k,l)$-face.
 
-  The following Lemma will prove to be of use
-  \begin{lemma}
-  \label{lm:zInRedFace}
-  A face $F$ with at least $3$ edges on each side contains a $Z$
-  \end{lemma}
-  \begin{proof}
-  \fxerror{TODO}
-  \end{proof}
-
+    The following Lemma will prove to be of use
+    \begin{lemma}
+    \label{lm:zInRedFace}
+    A face $F$ with at least $3$ edges on each side contains a $Z$
+    \end{lemma}
+    \begin{proof}
+    \fxerror{TODO}
+    \end{proof}
 
 \subsection{Extended graphs}
-  Given a layout $\L$ we can thus easily find the (extended) dual. However finding a rectangular dual of a plane triangulated graph $G$ is more involved. Due to the algorithm by He \cite{He} this boils down to finding a regular edge labeling of $G$ with $4$ additional vertices $\pN, \pE, \pS, \pW$. We will thus define $G$ and these additional vertices to be an \emph{extension} of $G$.
-  \fxwarning{TODO fix cite}
+  \fxwarning{Rename this to corner assignment? predraft-1}
+  \fxwarning{Make a distinction between corner asignments and valid corner assignments? predraft-1}
+
+  Given a layout $\L$ we can thus easily find the (extended) dual. However finding a rectangular dual of a plane triangulated graph $G$ is more involved. Due to the algorithm by He \cite{He1993} this boils down to finding a regular edge labeling of $G$ with $4$ additional vertices $\pN, \pE, \pS, \pW$. We will thus define $G$ and these additional vertices to be an \emph{extension} of $G$.
 
   \begin{defi}[Extension]
     A \emph{extension} $\ext G$ of $G$ is a augmentation of $G$ with $4$ vertices (which we will call it's \emph{poles}). Such that
@@ -131,8 +135,6 @@ In this section we will introduce the rectangular dual of a graph.
   \begin{proof}
     This shown in \cite{Kozminski1984} \fxnote{Provide location, Kozminski \& Kinnen and ungar, See Siam paper}
   \end{proof}
-
-  We call any (plane triangulated) graph $G$ that has an extension a \emph{proper} graph.
 
   A proper graph $G$ can have more then one extensions. Each such extension fixes which of the rectangles are in the corners of the rectangular dual $\L$. Hence sometimes such an extension is called a \emph{corner assignment} by other authors.
 
