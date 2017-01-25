@@ -110,32 +110,29 @@ In this section we will introduce the rectangular dual of a graph.
     \fxerror{TODO}
     \end{proof}
 
-\subsection{Extended graphs}
-  \fxwarning{Rename this to corner assignment? predraft-1}
-  \fxwarning{Make a distinction between corner asignments and valid corner assignments? predraft-1}
+\subsection{Corner assignments}
+  Given a layout $\L$ we can thus easily find the (extended) dual. However finding a rectangular dual of a plane triangulated graph $G$ is more involved. Due to the algorithm by He \cite{He1993} this boils down to finding a regular edge labeling of $G$ with $4$ additional vertices $\pN, \pE, \pS, \pW$. We will define $G$ and these $4$ additional vertices to be a \emph{corner assignment} of $G$.
 
-  Given a layout $\L$ we can thus easily find the (extended) dual. However finding a rectangular dual of a plane triangulated graph $G$ is more involved. Due to the algorithm by He \cite{He1993} this boils down to finding a regular edge labeling of $G$ with $4$ additional vertices $\pN, \pE, \pS, \pW$. We will thus define $G$ and these additional vertices to be an \emph{extension} of $G$.
-
-  \begin{defi}[Extension]
-    A \emph{extension} $\ext G$ of $G$ is a augmentation of $G$ with $4$ vertices (which we will call it's \emph{poles}). Such that
+  \begin{defi}[Corner assignment]
+    A \emph{corner assignment} $\ext G$ of $G$ is a augmentation of $G$ with $4$ vertices (which we will call it's \emph{poles}). Such that
     \begin{enumerate}
     \item every interior face has degree $3$ and the exterior face has degree $4$.
     \item all poles are incident to the outer face
-    \item $\ext\G$ has no separating triangles (i.e separating $3$-cycles).
     \end{enumerate}
   \end{defi}
 
-  Such a extended graph does not necessarily exist and is not necessarily unique.
-  However we have the following result due to Kozminski and Kinnen
+  We have the following result due to Kozminski and Kinnen
 
   \begin{thrm}[Existence of a rectangular dual]
-  A plane triangulated graph $\G$ has a rectangular dual if and only if it has an extension $\ext \G$
+    A plane triangulated graph $\G$ has a rectangular dual if and only if it has an corner assignment without separating triangles $\ext \G$
   \end{thrm}
 
   \begin{proof}
     This shown in \cite{Kozminski1984} \fxnote{Provide location, Kozminski \& Kinnen and ungar, See Siam paper}
   \end{proof}
 
-  A proper graph $G$ can have more then one extensions. Each such extension fixes which of the rectangles are in the corners of the rectangular dual $\L$. Hence sometimes such an extension is called a \emph{corner assignment} by other authors.
+  Due to this theorem we will call a corner assignment without separating triangles a valid corner assignment.
 
-  Note that a graph $G$ with a separating triangle can't be proper, since every possible extension will have a separating triangle.
+  A graph with a valid corner assignment $G$ can have more then one valid corner assignment. Each such corner assignment fixes which of the rectangles are in the corners of the rectangular dual $\L$.
+
+  Note that a graph $G$ with a separating triangle can't have any valid corner assignment, since every possible corner assignment will have a separating triangle.
