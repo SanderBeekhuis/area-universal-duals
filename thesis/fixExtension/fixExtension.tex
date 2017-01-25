@@ -5,7 +5,7 @@
 \section{Fixing a corner assignment}
   In our explorations to find a lower bound on what kind of \emph{(k,l)-sidedness} is possible we will find it very useful to fix one particular corner assignment $\ext G$ of $G$. Unfortunately if there is no rectangular dual that's $(k,l)$-sided using some corner assignment $\ext G$ of $G$. This does not imply that $G$ is not $(k,l)$-sided. There might be another corner assignment of $G$ that has a $(k,l)$-sided rectangular dual.
 
-  Fortunately for us however we can view $\ext G = H$ as a graph in it's own right, then $G$ is the interior of a separating $4$-cycle of $H$ and we will show this implies that $G$ (as induced subgraph) has to be colored \fxnote*{right choice of words?}{according to} the corner assignment $\ext G$.
+  Fortunately for us however we can view $\ext G = H$ as a graph in it's own right, then $G$ is the interior of a separating $4$-cycle of $H$ and we will show this implies that $G$ (as induced subgraph) has to be colored in accordance with the corner assignment $\ext G$.
 
   We will thus proof the following theorem in this section.
   \begin{thrm}
@@ -32,11 +32,11 @@
   \begin{proof}
   By Remark \ref{re:interiorRectangle} the union of the rectangles in the interior of $\C$ will be some rectangle in any rectangular dual. We will denote this rectangle by $I$. Since two disjoint rectangles can only be adjacent to each other at one side all interior edges incident to any vertex of $\C$ are of the same color.
 
-  Furthermore $a, b, c, d$ are all adjacent to a different side of $I$ since $I$ has four sides that need to be covered and it is only adjacent to four rectangles. If we then apply the rules of a regular edge labeling we see that if the interior edges of $a$ are one color, those incident to $b$ and $d$ should have the second color. Then of course the interior edges incident to $c$ are again colored with the first color.
+  Furthermore $a, b, c, d$ are all adjacent to a different side of $I$ since $I$ has four sides that need to be covered and it is only adjacent to four rectangles. If we then apply the rules of a regular edge labeling we see that if the interior edges incident to $a$ are one color, those incident to $b$ and $d$ should have the second color. Then of course the interior edges incident to $c$ are again colored with the first color.
 
   \end{proof}
 
-  \fxnote{This lemma implies that any \emph{alternating 4-cycle} is either \emph{left-alternating} or \emph{right-alternating} in the terminology of Fusy}
+  \fxnote{This lemma implies that any \emph{alternating 4-cycle} is either \emph{left-alternating} or \emph{right-alternating} in the terminology of Fusy. Should I note this since he does not provide a real proof.}
 
   \begin{wraptable}{o}{6cm}
     \centering
@@ -50,7 +50,7 @@
     \label{tab:scaffold}
   \end{wraptable}
 
-  Lemma \ref{lm:fix:fourCycleInteriorColor} is useful because it allows us to fix a corner assignment $\ext G$ of $G$ by building a \emph{scaffold}. Suppose we want to investigate some corner assignment $\ext G$ of $G$ with poles $N$, $E$, $S$ and $W$ then we can consider the graph $\ext G = H$ as a graph in it's own right. $H$ is a proper graph since it has no irreducible triangles in it's interior (because $\ext G$ had none) and it admits a valid corner assignment $\ext H$ by connecting the new poles as in Table \ref{tab:scaffold}. $\ext H$ is shown in Figure \ref{fig:scafold}.
+  Lemma \ref{lm:fix:fourCycleInteriorColor} is useful because it allows us to fix a corner assignment $\ext G$ of $G$ by building a \emph{scaffold}. Suppose we want to investigate some specific corner assignment $\ext G$ of $G$ with poles $N$, $E$, $S$ and $W$ then we can consider the graph $\ext G = H$ as a graph in it's own right. $H$ is a proper graph since it has no irreducible triangles in it's interior (because $\ext G$ had none) and it admits a valid corner assignment $\ext H$ by connecting the new poles as in Table \ref{tab:scaffold}. $\ext H$ is shown in Figure \ref{fig:scafold}.
 
   \begin{figure}[h!]
   \centering
@@ -66,7 +66,7 @@
 
 \subsection{An application: There are graphs that are $(2, \infty)$-sided}
 
-  We will show this by providing an example graph $G$ with a fixed corner assignment $\ext G$ which we can do according to Theorem \ref{th:fixCorner assignment}. Consider the graph in Figure \ref{fig:2manysidedLowerBound}. Note that most of the interior vertices are of degree $4$ and thus the largest part of any regular edge labeling is forced. Those edges that are forced to have a certain color are already colored in Figure \ref{fig:2manysidedLowerBound}.
+  We will show this by providing an example graph $G$ with a fixed corner assignment $\ext G$ we can do this due to Theorem \ref{th:fixCorner assignment}. Consider the graph in Figure \ref{fig:2manysidedLowerBound}. Note that most of the interior vertices are of degree $4$ and thus the largest part of any regular edge labeling is forced. Those edges that are forced to have a certain color are already colored in Figure \ref{fig:2manysidedLowerBound}.
 
 
   \begin{figure}[h!]
@@ -77,13 +77,11 @@
       \label{fig:2manysidedLowerBound}}
   \end{figure}
 
-  The only edge for which we have freedom to choose a color is the diagonal edge of $G$. However, if we color this edge blue we get a red $(2, \infty)$ cycle and if we color this edge red we get a blue $(2, \infty)$ cycle. In both cases we will thus obtain a $(2,\infty)$-sided segment in our dual.
+  The only edge for which we have freedom to choose a color is the diagonal edge of $G$. However, if we color this edge blue we get a red $(2, \infty)$ cycle and if we color this edge red we get a blue $(2, \infty)$ cycle. In both cases we will thus obtain a maximal $(2,\infty)$-sided segment in our dual.
 
 \subsection{Another application: There are graphs that are $(\infty, \infty)$-sided}
   \label{ss:fix:manymany}
-  We will later see that all these graphs have adjacent maximal $4$-cycles.
-
-  We consider the graph $G$ with corner assignment $\ext G$ given in Figure \ref{fig:fix:manymany0}. Note that this graph has two adjacent maximal separating $4$-cycles. These are both marked by thick lines in Figure \ref{fig:fix:manymany0}.
+  We consider the graph $G$ with corner assignment $\ext G$ given in Figure \ref{fig:fix:manymany0}. This graph has 2 maximal separating $4$-cycles. These are both marked by thick lines in Figure \ref{fig:fix:manymany0}.
 
   \begin{figure}[h]
     \centering
@@ -92,7 +90,7 @@
     \label{fig:fix:manymany0}
   \end{figure}
 
-  This graph has a lot of forced coloring. These forced colorings are performed in Figure \ref{fig:fix:coloring}. First we color the edges incident with the poles in accordance with the exterior vertex condition. Subsequently we propagate the coloring along both maximal separating $4$-cyles in accordance whit Lemma \ref{lm:fix:fourCycleInteriorColor} and finally we color the edges in triangles that have the other two edges colored in the same color. We can do this due to the fact that triangles in a regular edge labeling are not mono-colored by Lemma \ref{lm:rel:noMonoColoredTriangles}.
+  This graph again has a lot of forced coloring. These forced colorings are performed in Figure \ref{fig:fix:coloring}. First we color the edges incident with the poles in accordance with the exterior vertex condition. Subsequently we propagate the coloring along both maximal separating $4$-cyles in accordance whit Lemma \ref{lm:fix:fourCycleInteriorColor} and finally we color the edges in triangles that have the other two edges colored in the same color. We can do this due to the fact that triangles in a regular edge labeling are not mono-colored by Lemma \ref{lm:rel:noMonoColoredTriangles}.
 
 
   \begin{figure}[h]
@@ -119,11 +117,12 @@
     \label{fig:fix:coloring}
   \end{figure}
 
-  The result is then the graph displayed in Figure \ref{fig:fix:manymany4}. The black edges in this figure are edges that don't have a force coloring by the above argument.
-  \footnote{Altough most of them can be force by Lemma \ref{lm:fix:fourCycleInteriorColor}}.
-  We will focus on the centered black edge $e$ lying on both the maximal separating 4-cycles. We note that tis edges is an interior edges of both the red an blue faces that we drew extra thick. These faces are currently $(\infty, \infty)$-faces. Hence $e$ has to be colored both red and blue to prevent a $(\infty, \infty)$-sided maximal segment. This is impossible.
 
 
+  The result is then the graph displayed in Figure \ref{fig:fix:manymany4}. The black edges in this figure are edges that don't have a forced coloring by the above argument\footnote{Altough most of them can be forced by Lemma \ref{lm:fix:fourCycleInteriorColor}}.
+  We will focus on the centered black edge $e$ lying on both the maximal separating 4-cycles. We note that this edge is an interior edges of both the red an blue faces that we drew extra thick in Figure \ref{fig:fix:manymany4}. These faces are currently $(\infty, \infty)$-faces. Hence $e$ has to be colored both red and blue to prevent a $(\infty, \infty)$-sided maximal segment. This is impossible.
+
+  Hence the graph is $\infty$-sided.
 
   \begin{figure}[h]
     \centering
