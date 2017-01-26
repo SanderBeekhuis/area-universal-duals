@@ -2,7 +2,7 @@
 
 \section{Sweepcycle algorithm}
   \label{s:sweep}
-  The first step of the algorithm is executing a sweepcycle algorithm comparable to Fusy's \cite{Fusy2006}. We will use a script $\C$ to indicate the current sweep cycle.
+  The first step of the algorithm is executing a sweepcycle algorithm comparable to Fusy's \cite{Fusy2006}. We will use a script $\C$ to indicate the current sweep cycle. With vertices $\pS, v_1 = \pW, v_2, \ldots v_{n-1}, v_n = \pE, \pS$.
 
   We will repeatedly only consider the path $\cpath$. In that case we will always order it from $\pW$ to $\pE$. That these edges are always in $\C$ is a result of Invariant \ref{i:uni:SWandSE}.
 
@@ -30,13 +30,14 @@
       \renewcommand*{\labelenumi}{(P\arabic{enumi})}%
       \renewcommand*{\theenumi}{(P\arabic{enumi})}%
 
-      \item  $\C_\W$ Has no interior vertex
+      \item  $\C_\P$ Has no interior vertex
       \label{p:noInteriorVertex}
-      \item  $\W$ has no chords on the left     \label{p:Wchordfree}
-      \item  $\restC{\W}$ has no chords on the right     \label{p:Cchordfree}
+      \item  $\P$ has no chords on the left     \label{p:Wchordfree}
+      \item  The paths $v_1 v_2 \ldots v_i$ and $v_j v_{j+1} \ldots v_n$ have no chords nor 2chords on the right     \label{p:Cchordfree}
     \end{enumerate}
   \end{defi}
 
+  \fxwarning{This is a bit weird - predraft 2}
   We do the following
   \begin{enumerate}
     \itemsep=-4pt
@@ -57,14 +58,14 @@
       The right neighbor path $\P$ of $\cpath|_{v_i, v_j}$ described above is indeed prefence.
     \end{lemma}
     \begin{proof}
-      $\P$ is a walk by lemma \ref{lm:uni:neighborWalk}. Furthermore it is a path since any non-simple point would offend Invariant \ref{i:uni:no2Chords} of the sweepcycle.
+      $\P$ is a walk by Lemma \ref{lm:uni:neighborWalk}. Furthermore it is a path since any non-simple point would offend Invariant \ref{i:uni:no2Chords} of the sweepcycle.
 
 
       We note \ref{p:noInteriorVertex} holds due to Lemma \ref{lm:uni:neighbourwalkNoInteriorVertex}
 
       We note \ref{p:Wchordfree} holds due to Lemma \ref{lm:uni:neighbourwalkChordFree}.
 
-      We note \ref{p:Cchordfree} holds due to invariant \ref{i:uni:noChords}.
+      We note \ref{p:Cchordfree} holds due to Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords}.
     \end{proof}
 
     We then orient $\P$ from $v_i$ (the vertex closest to $\pW$)to $v_j$ (the vertex closest to $\pE$) and denote it's vertices by $w_1 \ldots w_k$.
@@ -83,6 +84,15 @@
     The \emph{range} of an irregularity will be given by it's start and end vertex.
 
     \paragraph{We have no irregularity}
+      When there are no irregularities we \emph{augument} the sweecyle with the prefence $\P$.
+      We do this in the following way. We color all interior edge of $\C_\P$ red and orient them towards $\C$. We also color all edges of $\cpath|_{v_i,v_j}$  blue and orient them towards $v_j$. We then update the sweepcyle to $\C'$ by replacing $\cpath|_{v_i,v_j}$ by $\P$.
+
+      Consider that the new sweepcyle $\C'$ is again a valid sweepcycle. Invariant \ref{i:uni:SWandSE} remains trivially true. Invariant \ref{i:uni:intVertCond} hold due to the way we colored the edges around the new interior vertices.
+
+      It is a bit more work to see that Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords} still hold. Due to prefence Property \ref{p:Cchordfree} and the fact that the prefence has no irregularities we know any $(2-)$chord $C$ has to have one vertex on $\P$ and one vertex on the unchanged part of old sweepcyle $\C \cap C'$.
+      However since $v_i$ and $v_j$ are both adjacent to $\pS$ we see that $C$ has to be a $2$-chord with $\pS$ as middle vertex. However then their must have also been a $2$-chord on the old sweepcyle and this offends Invariant \ref{i:uni:no2Chords}.
+
+      Hence $\C'$ is a valid new sweepcycle.
 
     \paragraph{We have any chord}
     We know that we can't have any polebound chords on the prefence since any such chord would offend Invariant \ref{i:uni:no2Chords} of the sweepcycle.
@@ -109,6 +119,16 @@
     \emph{Only free 2-chords}
     The 2-chord can't contain a chord since then we would be in the above case.
     Find the $2$-chord with the lowest end of range. Say that this is $j_1$. We then augment the sweepcycle with $\pW$ to $j_1$.
+
+    \begin{lemma}
+      The augmenting paths have no chords or separating $2$-chords
+    \end{lemma}
+    \begin{proof}
+        All of these structures are on the right of the augmenting path, since the augmenting path is a subset of a prefence and a  prefence satisfies \ref{p:Wchordfree} (no chords on the left) and \ref{p:noInteriorVertex} (no separating 2-chords on the left).
+
+
+
+    \end{proof}
 
     \begin{lemma}
       We always augment with a valid path
