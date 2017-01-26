@@ -1,8 +1,8 @@
 %!TEX root = ../thesis.tex
 
 \section{The right neighbor walk of a path}
-  \fxwarning{Note that the same/similar things hold for the left boundary walk}
-  During this proof we will frequently use the concept of the right neighbor walk of a path.
+  \fxnote{Note that the same/similar things hold for the left boundary walk. However we don't need this. So I don't mention it?}
+  During the proof of the sweepcycle step of the algorithm we will frequently use the concept of the right neighbor walk of a path.
   Given a path $P = p_1 \ldots p_k$ in a graph $G$
   The \emph{right neighbor walk} $W$ of $P$ will consist of $p_1$ and the vertices adjacent to $p_{2}$ between $p_1$ and $p_{3}$ in the clockwise rotation at $p_{2}$ followed by the vertices between $p_{2}$ and $p_{4}$ in the rotation at $p_{3}$ and so further until we add the vertices between $p_{k-2}$ and $p_k$ in the rotation around $p_{k-1}$ and finally we finish by adding $p_k$ to $W$.
   We then remove all subsequent duplicates from $W$
