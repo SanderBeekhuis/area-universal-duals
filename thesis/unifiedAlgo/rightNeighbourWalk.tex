@@ -1,8 +1,14 @@
 %!TEX root = ../thesis.tex
 
+\fxnote[inline, nomargin]{Note that the same/similar things hold for the left boundary walk. However we don't need this. So do I mention it?}
+
+\fxnote[inline, nomargin]{If invariant I4 (no separating 2-chords) is satisfied then we actually have a path and not only a non-crossing walk. We currently don't do this here such that other algorithms on a Fusy based core can also use this algorithm. And I might still add 1 or 2 in the final version. }
+
+
+
 \section{The right neighbor walk of a path}
   \label{s:rightNeighbour}
-  \fxnote{Note that the same/similar things hold for the left boundary walk. However we don't need this. So I don't mention it?}
+
   During the proof of the sweepcycle step of the algorithm we will frequently use the concept of the right neighbor walk of a path.
   Given a path $P = p_1 \ldots p_k$ in a graph $G$
   The \emph{right neighbor walk} $W$ of $P$ will consist of $p_1$ and the vertices adjacent to $p_{2}$ between $p_1$ and $p_{3}$ in the clockwise rotation at $p_{2}$ followed by the vertices between $p_{2}$ and $p_{4}$ in the rotation at $p_{3}$ and so further until we add the vertices between $p_{k-2}$ and $p_k$ in the rotation around $p_{k-1}$ and finally we finish by adding $p_k$ to $W$.
@@ -42,8 +48,6 @@
     Hence $\W$ is a walk.
   \end{proof}
 
-
-   \fxwarning{TODO Change to path iff I4 is satisfied}
   \begin{lemma}
     \label{lm:uni:neighborWalkNoncrossing}
     The right neighbor walk $W$ is a non-crosssing walk.
@@ -55,14 +59,12 @@
   \end{proof}
 
 
-\fxnote{Actullly W rev(P)}
-  \fxnote{Change wording to cycle}
   \begin{lemma}
     \label{lm:uni:neighbourwalkNoInteriorVertex}
-    The closed non-crosing walk $WP$ has no interior vertex.
+    The closed non-crosing walk $W \oplus \rev(P)$ has no interior vertex.
   \end{lemma}
-  \begin{proof}subsequent
-    The interior of $WP$ consists of only triangles with all vertices in $WP$. We can see this from the construction of the neighbor walk. Both cases in Figure \ref{fig:uni:walkproof} add a triangle to the interior with all vertices in $WP$.
+  \begin{proof}
+    The interior of $W \oplus \rev(P)$ consists of only triangles with all vertices in $W \oplus \rev(P)$. We can see this from the construction of the neighbor walk. Both cases in Figure \ref{fig:uni:walkproof} add a triangle to the interior with all vertices in $W \oplus \rev(P)$.
 
     Suppose there is a interior vertex. Then the triangle containing this vertex is a separating triangle.
   \end{proof}
