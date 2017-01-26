@@ -2,9 +2,8 @@
 
 \section{Top Fan flips}
 \label{s:fanflip}
-\fxnote{We should  go into the strucutre of the fence below the topfan.}
 
-The second stage of the algorithm will consist of flipping most large topfans. The first stage of the algorimth finished by computing a vertically one-sided REL (Lemma's \ref{lm:sweep:REL} and \ref{lm:sweep:vertOnsided}) that nver has two splits below each other (Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther})
+The second stage of the algorithm will consist of flipping most large topfans. The first stage of the algorithm finished by computing a vertically one-sided \rel (Lemma's \ref{lm:sweep:REL} and \ref{lm:sweep:vertOnsided}) that never has two splits below each other (Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther})
 
 Using some local recolorings (\emph{flips}) on the topfans we will maintain a onesided REL (Lemma \ref{lm:topfan:oneSidedREL}) and make sure that large topfans only occr in very specific situations (Lemma \ref{lm:topfan:remainingTopfans}).
 
@@ -59,14 +58,19 @@ Refer to Figure \ref{fig:fanflip:fanflips} for the different kinds of topfanflip
 
 
 \paragraph{Description}
+\fxwarning{We should  go into the strucutre of the fence below the topfan.}
+
 When we encounter a topfan we start flipping edges.
 
 We can just flip above a merge. So we do that.
 
 We can't continue flipping above a join. So we don't so this.
 
-\paragraph{What topfan flip do we do?}
+We make a distinction between \emph{south-adjacent topfans} that don't have a rim vertex adjecent to $\pS$ and \emph{regular} topfans that don't have such a vertex.
+
+\paragraph{Regular topfans}
 We consider all faces we currently have in a topdown order. We don't consider topfans whose left edge is already blue. \fxnote{These topfans must be followed by a small botfan. But maybe we will still want to request a closing? Or we want to treat the last topfan below?}
+\fxnote{Why dont we?}
 
 A topfan is above a number of edges of the bottom fence. These edges are the rim of the fan.  Along this fan we can't have a merge followed by a split. Unless we are south adjacent (but we can solve this by splitting the fans). See the paragraph below.
 
@@ -80,6 +84,16 @@ A special case is given by a merge on the last vertex on the bottom edges of the
 
 Splits are more difficult to handle. We are unfortunatly unable to keep flipping once we hit a split hence we stop before we get that far. See Figure \ref{fig:fanflip:split}. It this happens on the first vefrtex we don't flip at all, see Figure \ref{fig:fanflip:splitFirstVertex}. In both cases we indicate a topload with a red $\ell$.
 
+
+\fxwarning{Integrate in proofs -predraft 2}
+\paragraph{South-adjacent topfans}
+We call a topfan south-adjecent if any of it's rim vertices is next to the south pole.
+
+At most two vertices of a top fan can be adjacent to the south pole. And in this case these vertices must be adjacent. Otherwise we have a separating 4-cycle.
+
+Before the south pole we can have a split followed by a merge followed by the south pole adjacent vertices followed again by possibly splits and merges.
+
+Fortunately we can treat this complicated faces just like any split fan. Where we stop flipping before the first split or $\pS$-adjacent vertex.
 
 \paragraph{The result}
 Before the topfanflips we had a vertically one-sided REL. Afterwards we have a vertically one-sided REL. This we will prove in Lemma \ref{lm:topfan:oneSidedREL}. With no large top-fans except for some controlled cases as we will prove in Lemma \ref{lm:topfan:remainingTopfans}.
@@ -108,13 +122,3 @@ Before the topfanflips we had a vertically one-sided REL. Afterwards we have a v
 \begin{proof}
   The first thing happens in the merge on the last vertex cases and in all split cases where a split is not on the first vertex. The second thing happens in cases with a split.
 \end{proof}
-
-\fxwarning{Integrate in proofs -predraft 2}
-\paragraph{South-adjacent topfans}
-We call a topfan south-adjecent if any of it's rim vertices is next to the south pole.
-
-At most two vertices of a top fan can be adjacent to the south pole. And in this case these vertices must be adjacent. Otherwise we have a separating 4-cycle.
-
-Before the south pole we can have a split followed by a merge followed by the south pole adjacent vertices followed again by possibly splits and merges.
-
-Fortunately we can treat this complicated faces just like any split fan. Where we stop flipping before the first split or $\pS$-adjacent vertex.

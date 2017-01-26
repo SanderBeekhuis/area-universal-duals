@@ -20,7 +20,7 @@
     \item \label{i:uni:SWandSE} The cycle $\C$ contains the two edges $\pS \pW$ and $\pS \pE$.
     \item \label{i:uni:noChords} $\cpath$ has no chords
     \item \label{i:uni:intVertCond} All inner edges of $G$ in the exterior of $\C$ are colored and oriented such that the inner vertex condition holds for all vertices in the exterior of $C$.
-    \item \label{i:uni:no2Chords} $\C\sm{\pS}$ has no separating 2-chords
+    \item \label{i:uni:no2Chords} $\C\sm{\pS}$ has no separating 2-chords that don't use $\S$
   \end{invariants}
 
   \begin{defi}[Prefence]
@@ -90,7 +90,7 @@
       Consider that the new sweepcyle $\C'$ is again a valid sweepcycle. Invariant \ref{i:uni:SWandSE} remains trivially true. Invariant \ref{i:uni:intVertCond} hold due to the way we colored the edges around the new interior vertices.
 
       It is a bit more work to see that Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords} still hold. Due to prefence Property \ref{p:Cchordfree} and the fact that the prefence has no irregularities we know any $(2-)$chord $C$ has to have one vertex on $\P$ and one vertex on the unchanged part of old sweepcyle $\C \cap C'$.
-      However since $v_i$ and $v_j$ are both adjacent to $\pS$ we see that $C$ has to be a $2$-chord with $\pS$ as middle vertex. However then their must have also been a $2$-chord on the old sweepcyle and this offends Invariant \ref{i:uni:no2Chords}.
+      However since $v_i$ and $v_j$ are both adjacent to $\pS$ we see that $C$ has to be a $2$-chord with $\pS$ as middle vertex. However these are allowed for Invariant \ref{i:uni:no2Chords}.
 
       Hence $\C'$ is a valid new sweepcycle.
 
@@ -113,7 +113,7 @@
     We find a piece to augment with in the same way  but we terminate it just before the first closing separating 2-chord. If separating 2-chord with the lowest end range in the interior of $\P_{C_\text{final}}$ has end range $j_2$ then we augument the sweepcycle by  $i_1 +1$ to $j_2 -1$.
 
     \paragraph{Only separating 2-chords}
-    \emph{Any $\pE$-bound 2-chords} \fxnote{define this}
+    \emph{Any $\pE$-bound 2-chords}
     Start a path inside the smallest 2-chord (i.e. with the highest starting number for its range). Say the start of this range is $i_1$ we then augment the sweepcycle by $i_1 +1$ to $\pE$.
 
     \emph{Only free 2-chords}
@@ -166,22 +166,18 @@
 
       If the merge $v$ is due to the vertex being adjacent to $\pS$ we have nowhere to go with the freshly split of path. \fxnote{provide figure}
 
-      Suppose now we the merge was due to a chord or a 2-chord. Then the only reason to start on this place is due to a chord or a polebound 2-chord. However such chord or polbound 2-chord would have to cross the cycle that forced the merge. Only a 2-chord can do this to another 2-chord, but then the one forcing a merge was a polebound 2-chord and that should have taken precedence.
+      Suppose now we the merge was due to a chord or a 2-chord. Then the only reason to start on this place is due to a chord or a polebound 2-chord. However such chord or polebound 2-chord would have to cross the cycle that forced the merge. Only a 2-chord can do this to another 2-chord, but then the one forcing a merge was a polebound 2-chord and that should have taken precedence.
 
 
       \vspace{2ex}
       \emph{We can't split just before a merge.}
 
-      Suppose the merge $v$ was due to $\pS$-adjencency. Then the split $w$ can not be due to a chord or 2-chord since such a structure would have to pass $v \pS$ (and we don't consider 2-chords with $\pS$) \fxnote{I guess we could consider this starting at the first free $\pS$-adjecent vertex}. However the split also can't be due to $\pS$-adjecency because that would give us the seperating triangle $\pS v w$
+      Suppose the merge $v$ was due to $\pS$-adjencency. Then the split $w$ can not be due to a chord or 2-chord since such a structure would have to pass $v \pS$ (and we don't consider 2-chords with $\pS$). However the split also can't be due to $\pS$-adjecency because that would give us the separating triangle $\pS v w$
 
       Suppose that the merge is due to chord or 2-chord. Then a split can't be due to $\pS$-adjecency since the chord/2-chord is blocking this. It also can't be due to a chord or polebound 2-chord since those would have to cross.
-
-      \fxwarning{TODO add figures}
+      \fxnote{We might add figures}
     \end{proof}
 
-
-      \fxwarning{introduce top and bot fans. I must have some text somewhere. -predraft 2}
-      \fxnote{define $\pS$-adjecent -predraft 2}
     \begin{lemma}
       \label{lm:uni:noTfan above whole path}
       The resulting REL never has a red $T$-fanhandle connected to both split and merge vertex of the same path. Unless the split is $\pS$-adjecent
