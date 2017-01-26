@@ -142,6 +142,7 @@ In this section we will introduce the rectangular dual of a graph.
     \end{proof}
 
 \subsection{Corner assignments}
+  \fxwarning[inline, nomargin]{might want to move this to the next section}
   Given a layout $\L$ we can thus easily find the (extended) dual. However finding a rectangular dual of a plane triangulated graph $G$ is more involved. Due to the algorithm by He \cite{He1993} this boils down to finding a regular edge labeling of $G$ with $4$ additional vertices $\pN, \pE, \pS, \pW$. We will define $G$ and these $4$ additional vertices to be a \emph{corner assignment} of $G$.
 
   \begin{defi}[Corner assignment]
@@ -167,3 +168,6 @@ In this section we will introduce the rectangular dual of a graph.
   A graph with a valid corner assignment $G$ can have more then one valid corner assignment. Each such corner assignment fixes which of the rectangles are in the corners of the rectangular dual $\L$.
 
   Note that a graph $G$ with a separating triangle can't have any valid corner assignment, since every possible corner assignment will have a separating triangle.
+
+  \subsubsection{Adjecent vertices and chords}
+  We will call a vertex \emph{$\pS$-adjecent} when it is adjacent to $\pS$ in the current corner assignment. In the same way we will call a chord or $2$-chord \emph{$\pE$-bound}, \emph{$\pW$-bound} or \emph{polebound} when it is adjacent to $\pE$, $\pW$ or any pole respectively. 
