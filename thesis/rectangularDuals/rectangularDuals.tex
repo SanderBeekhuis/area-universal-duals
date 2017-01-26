@@ -92,6 +92,50 @@ In this section we will introduce the rectangular dual of a graph.
     \fxnote{We might want to prove this.}
     These boundary paths are adjacent in the orientation at $\spl(F)$. We will say the first path in the rotation, starting at the beginning of the adjacent pair, is the \emph{right boundary path} of $F$ and the second one is the \emph{left boundary path}.
 
+    \subsubsection{Fans}
+    We introduce some more concepts to describe the interior of a blue (or red) face. Every interior edge of this face goes from one fence to the other (otherwise it's start or end vertex would offend the interior vertex condition). \fxnote{This could be a useful result in the section about cycles and their interiors.} To better understand the structure of such a strip we will describe the edges from $\spl(F)$ to $\mrg(F)$ .
+
+    Let $u_0 , u_1, \ldots u_n$ be the vertices of the upper boundary path of $F$ and $v_0, v_1, \ldots, v_m$ the vertices of the bottom boundary path. That is $u_0=v_0 = \spl(F)$ and $u_n = v_m = \mrg(F)$. Since our graph is a triangulation $u_1v_1$ must be an edge. For the second edge in the face we have two options $u_1v_2$ or $u_2v_1$, otherwise this edge and the previous one would not form a triangle. This principle holds for every subsequent edge, we can either increase a the index of the upper boundary path or the index of the bottom boundary path. In other words, this face is a so-called \emph{triangle strip}.
+
+    We will call a maximal sequence of at least two edges increasing the index on the bottom boundary path (and thus keeping the index on the upper path fixed) a \emph{Bottom-fan} or simply \emph{B-fan} and a maximal sequence of at least two edges increasing the index on the upper boundary path will be called a \emph{Top-fan} or just \emph{T-fan}. The \emph{size} of such a fan is the number of edges contained in the sequence. By the definition of a fan it has size of at least $2$.
+    We will simply use \emph{fans} to refer to both these \emph{types} of fans (i.e. T- and B-fans).
+
+    %We will call a fan of size $5$ or larger a \emph{large fan}. Then it is only natural that we call fans of size $2, 3$ or $4$ \emph{small fans}. This distinction may seem arbitrary but turns out to be very useful in the proof.
+    %\fxnote{Emphize fan in \emph{large fan} or not?}
+
+
+    In a strip we alternately encounter B- and T-fans. Since if we would have two adjacent fans of the same type we would just have a single larger fan of that type.
+    In Figure \ref{fig:uni:fans} we see a strip consisting of subsequently a B-fan of size $3$, a T-fan of size 2, a B-fan of size $2$, a T-fan of size $6$, a B-fan of size $3$ and a T-fan of size $3$.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=.9]{rectangularDuals/img/fans}
+      \caption{}
+      \label{fig:uni:fans}
+    \end{figure}
+
+
+    %We will sometimes describe a strip using a compact notation. In this notation we will denote a fan by $\text{Type}_\text{Size}$ so $B_3$ will be B-fan of size $3$ and $T_2$ a T-fan of size $2$. The strip in Figure \ref{fig:uni:fans} can be characterized by $B_2 T_2 B_2 T_5 B_3 T_3$ in this notation.
+
+    %We will expand this notation with special characters ($+,-,?, \infty$) to denote a fan without knowing it's exact size.
+    %We will let $T_-$ or $B_-$ imply a small fan, $T_+$ or $B_+$ a large fan, $T_?$ or $B_?$ a fan of any size and $T_\infty$ or $B_\infty$ an arbitrarily large fan.
+    %\footnote{this is useful in counterexamples.}
+
+
+
+
+   We introduce some more terminology for fans: \emph{outer edges}, \emph{fan handles} and the \emph{rim}
+    \fxwarning{TODO}
+   \begin{figure}[h]
+     \centering
+     \includegraphics[scale=1]{rectangularDuals/img/fanterms}
+     \caption{}
+     \label{fig:}
+   \end{figure}
+
+   Note that the only edges that are flippable are those that are in both a T-fan and a B-fan. This are exactly the outer edges of any fan.
+   \fxnote{We might want to show this. Flipable doesn't really make sense in this part of the thesis.}
+
   \subsubsection{Regular edge labellings and maximal segments}
     From the way that we color a \rel for a given layout $\L$ we can see that a horizontal maximal segment leads to a blue face and a vertical maximal segment leads to a red face.
      \fxwarning{TODO figure of blue face and red face}
