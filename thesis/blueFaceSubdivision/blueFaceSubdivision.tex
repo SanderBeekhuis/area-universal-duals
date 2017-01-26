@@ -2,16 +2,29 @@
 
 \section{Blue face subdivision}
 
-\paragraph{Assumptions}
-At this point we have a vertically one-sided graph without large (3 or more edges) topfans. Due to flipping topfans we don't know where exactly we have split and merge vertices. Due to topfanflips not overlapping we know that the splits are small \fxwarning{TODO is this true? I hope it is}
+
+At this point we have a vertically one-sided graph (due to Lemma \ref{lm:topfan:oneSidedREL}) without large topfans except possibly for the locations provided in Lemma \ref{lm:topfan:remainingTopfans}.
+
+\paragraph{Outline}
+In this stage we are going to recolor edges in all blue faces to make all of them $d+1$-sided. We will start at the bottommost face in the creation order (which we will have to recalcualte after the topfanflips, but every REL has one). And we will recolor some if it's edges if a blue face that is to large will appear.
+
+We then mark the edges on the top boundary path of this face above the recolored edges as \emph{loaded}. This means that we will try to not flip above these edges in future iterations of the algorithm.
+
+Then we continue with the next face in the order we just calcualted.
+
+\paragraph{Order of faces}
+TODO
+
+\paragraph{Loads}
+TODO what is a load, puttting trough loads
 
 
-\paragraph{How}
+\paragraph{Step requirements}
 We flip edges in each face, taking into account loads on the bottom fence. Such that
 
 \begin{enumerate}
   \item We never load the edge next to a split/merge
-  \item We never load two adjecent edges
+  \item We never load two adjacent edges
 \end{enumerate}
 
 It's important to note that we put trough edge loads on splits and merges
@@ -30,8 +43,8 @@ Because we do this we can also say the following
 \end{proof}
 
 
-\subsection{Without large topfans}
-Let us first consider the base case: no failed top fan flips and thus nor large topfans
+\subsection{Faces without large topfans}
+Let us first consider the base case: no failed top fan flips and thus no large topfans
 
 \begin{lemma}
   \label{lm:}
@@ -57,14 +70,15 @@ Let us first consider the base case: no failed top fan flips and thus nor large 
   \begin{enumerate}
     \item We don't flip above the first edge.
     \item We flip above the second edge if it's unloaded.
-    \item If the second edge has a topload we flip above the fourth edge if it has no botload and otherwise we flip above the fidth edge.
-    \item If the second edge has a botload then we flip above the third edge. Unless this one has a topload. In that case we flip above the fifth edge if it has no botload and otherwise we flip above the sixth edge.
+    \item Otherwise we flip above the third edge.
     \item We never flip next to the merge the merge
   \end{enumerate}
 
+  When flipping above a edge we always flip the right edge.
+
 The first edge give us the required separation of loaded edges along the top boundary path. The other items make sure we obey the other rules in a straightforward manner.
 
-The worst case is given by a combination of the last two items. We would in that case want to flip above the sixth edge. But we don't because the next edge is the merge. This gives at worst 7 edges.
+The worst case is given by a combination of the last two items. We would in that case want to flip above the third edge. But we don't because the next edge is the merge. This gives at worst 5 edges along the whole bottom boundary path and hance a 4-sided face.
 
 
 
@@ -82,11 +96,10 @@ See Figure \ref{fig:subdiv:sampleExecution} for an example of an execution of th
 
 
 \subsection{Face starting with a large topfan}
-The same algorithm finds us an edge keeping this face as a $ d - 3 +7 = d+4$ face.
+The same algorithm finds us an edge keeping this face as a $ d - 3 +4 = d+1$ face.
 \fxwarning{TODO write this}
 
 \subsection{Face encountering a larger topfan}
-\fxnote{We can do the flips in a first stage, or we can keep them like this. Just ignore loads for them.}
 If we have a large topfan in the middle of the face then above the left outer edge of this topfan we can't have another topfan that failed to flip its left outer edges.
 It can't have been due to split on the first vertex because that would imply a chord trough the current large topfan \fxwarning{TODO make this a lemma in the right place}
 
@@ -99,13 +112,13 @@ This leads to the following rule: we flip the first edge of a topfan even above 
 
 
 \subsection{General conclusion}
-\fxwarning{TODO update}
 \begin{lemma}
   \label{lm:}
-  We have a 7-sided REL
+  We have a d+1-sided REL
 \end{lemma}
 
 \begin{proof}
-  By construction a blue faces are 7-sided. We haven't chained $Z's$ so all red face contain at most one blue $Z$. Because fanflips are not layered the largest split is of size two. So red faces are 3-sided.
-  \fxerror{This doesn't account for south-adjecent vertices. Maybe make the goal dependent on size of southadjecent vertices.}
+  By construction a blue faces are $d+1$-sided. We have  chained at most two $Z's$ so all red face contain at most two blue $Z$. So red faces are $d-3$-sided.
+  \fxerror{This might not account for south-adjecent vertices.}
+  \fxerror{We have to think about how we want to deal with two chained $Z$'s. How larger can these faces get?}
 \end{proof}

@@ -1,13 +1,16 @@
 %!TEX root = ../thesis.tex
 
 \section{Top Fan flips}
+\fxnote{We should  go into the strucutre of the fence below the topfan.}
 
-We never fan flip a fan flip again. We fan flip to remove large topfans. Say larger than 3.
+The second stage of the algorithm will consist of flipping most large topfans. The first stage of the algorimth finished by computing a vertically one-sided REL (Lemma's \ref{lm:sweep:REL} and \ref{lm:sweep:vertOnsided}) that nver has two splits below each other (Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther})
 
+Using some local recolorings (\emph{flips}) on the topfans we will maintain a onesided REL (Lemma \ref{lm:topfan:oneSidedREL}) and make sure that large topfans only occr in very specific situations (Lemma \ref{lm:topfan:remainingTopfans}).
 
-We flip top fans from last fence upwards. We flip any topfan of 3 edges or larger.
+\fxnote{We never fan flip a fan flip again. Is this true and do we need it?}
 
-Our flip differs slightly if we encounter a split in the bottom boundary path or a already flipped edge below on the rightmost bottom.
+Our flips differ depending on whether we we encounter a split and or merge in the bottom boundary path.
+
 
 Refer to Figure \ref{fig:fanflip:fanflips} for the different kinds of topfanflips.
 
@@ -59,7 +62,7 @@ When we encounter a topfan we start flipping edges.
 
 We can just flip above a merge. So we do that.
 
-We can't continue flipping above a join. So we don't so this. Instead we mark an edge for potential topload. We will see in the next section how we treat these edges in the next section.
+We can't continue flipping above a join. So we don't so this.
 
 \paragraph{What topfan flip do we do?}
 We consider all faces we currently have in a topdown order. We don't consider topfans whose left edge is already blue. \fxnote{These topfans must be followed by a small botfan. But maybe we will still want to request a closing? Or we want to treat the last topfan below?}
@@ -78,10 +81,10 @@ Splits are more difficult to handle. We are unfortunatly unable to keep flipping
 
 
 \paragraph{The result}
-Befor the topfanflips we had a vertically one-sided REL. After we have a vertically onsided REL. With no large top-fans except at the beginning of faces. Except for the \emph{Trouble!} case.
+Before the topfanflips we had a vertically one-sided REL. Afterwards we have a vertically one-sided REL. This we will prove in Lemma \ref{lm:topfan:oneSidedREL}. With no large top-fans except for some controlled cases as we will prove in Lemma \ref{lm:topfan:remainingTopfans}.
 
 \begin{lemma}
-  \label{lm:}
+  \label{lm:topfan:oneSidedREL}
   If the graph was onesided before a topfanflip it is still onesided after such a flip in the regular and merge cases.
 \end{lemma}
 \begin{proof}
@@ -94,7 +97,7 @@ Befor the topfanflips we had a vertically one-sided REL. After we have a vertica
 
 
 \begin{lemma}
-  \label{lm:}
+  \label{lm:topfan:remainingTopfans}
   In the remaing faces every large topfan is in one of the following two situations.
   \begin{enumerate}
     \item  This topfan is at the start of the face
@@ -105,11 +108,7 @@ Befor the topfanflips we had a vertically one-sided REL. After we have a vertica
   The first thing happens in the merge on the last vertex cases and in all split cases where a split is not on the first vertex. The second thing happens in cases with a split.
 \end{proof}
 
-
-\paragraph{Topfans below topfans}
-We in principle try to flip all topfans. We do this in a topdown manner.
-
-
+\fxwarning{Integrate in proofs -predraft 2}
 \paragraph{South-adjacent topfans}
 We call a topfan south-adjecent if any of it's rim vertices is next to the south pole.
 
@@ -118,18 +117,3 @@ At most two vertices of a top fan can be adjacent to the south pole. And in this
 Before the south pole we can have a split followed by a merge followed by the south pole adjacent vertices followed again by possibly splits and merges.
 
 Fortunately we can treat this complicated faces just like any split fan. Where we stop flipping before the first split or $\pS$-adjacent vertex.
-
-
-
-\paragraph{Trouble}
-(If) we can't do anything with the \emph{Trouble!} case  it will increase our bound by $$\max_{(u,v) \in E}   \min\parens{ \deg(u), \deg(v) }$$
-
-We can prove this bound by using  to well-placed chords. \fxnote{We might be able to prevent Trouble! with 3chords. But I'm not sure. I don't think it is straightforward. }
-
-I'm going to ignore this for now.
-
-I guess the other topload can also be very unfortunate. It can even be next to a very large split. So it runs in the same trouble as Trouble.
-
-We kinda want only merges to a certain middle line and only joins afterwards. We can make that transition with topfans. We just can't transition back.
-
-Something weird with topfans adjecent to $\pS$ view them as separate fans. Then things i say are true. Not entirily tough
