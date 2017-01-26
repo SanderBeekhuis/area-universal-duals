@@ -21,11 +21,9 @@ In this section we will introduce the rectangular dual of a graph.
   Let us note that both the dual graph and the extended dual graph of a layout $\L$ are not the same as the \emph{graph dual} of $\L$ when we view it as a graph (namely we don't represent the outer face of $\L$ by a single vertex).
 
 \subsection{Rectangular dual}
-  We have introduced two ways to define the dual $G$ of a layout $\L$. In the reverse direction we say a layout $\L$ is a \emph{rectangular dual} of a certian graph $G$ if we have that $G = \dualgraph{\L}$.
+  We have introduced two ways to define the dual $G$ of a layout $\L$. In the reverse direction we say a layout $\L$ is a \emph{rectangular dual} of a certain graph $G$ if we have that $G = \dualgraph{\L}$.
 
-  A triangulation of the $k$-gon $\G$ does not necessarily have a rectangular dual nor is this dual necessarily unique.
-  \fxnote{in what sense not unique, provide examples predraft-2}
-  \fxnote{result by kozminski and kinnen?}
+  A triangulation of the $k$-gon $\G$ does not necessarily have a rectangular dual nor is this dual necessarily unique. When existence is guaranteed can be seen in Theorem \ref{th:rect:exsitenceREctangularDual}
 
 \subsection{Different kinds of rectangular layouts}
   We can pose different restriction on a rectangular layout $\L$. For all these restrictions we have that if they hold for one layout $\L$ they hold for all equivalent layouts.
@@ -55,7 +53,7 @@ In this section we will introduce the rectangular dual of a graph.
 
   He showed \cite{He1993} that given a regular edge labeling we can reconstruct a rectangular layout giving this regular edge labeling.
 
-  A regular edge labeling  of $\ext G$ corresponds to a equivalence class of rectangular layouts $\L$ that are a rectangular dual of $G$. \fxnote{What do i mean by such a eq. class}
+  A regular edge labeling  of $\ext G$ corresponds to a equivalence class of rectangular layouts $\L$ that are a rectangular dual of $G$.
 
   Note that we have no monocolored directed cycles because such a cycle would for example correspond to a  group of adjacent rectangles that have  no leftmost or topmost one. This is clearly absurd.
 
@@ -86,12 +84,11 @@ In this section we will introduce the rectangular dual of a graph.
 
     We will refer to these $st$-planar graphs as the \emph{blue graph} and \emph{red graph} of some regular edge labeling. We will then refer to the faces of these graphs as \emph{blue faces} and \emph{red faces}.
 
-    Every face $F$ in an $st$-planar graph has the same structure. The boundary of $F$ consists of two directed paths with common origin $\spl(F)$ and  destination $\mrg(F)$.
-    \fxnote{We might want to prove this.}
+    Every face $F$ in an $st$-planar graph has the same structure. The boundary of $F$ consists of two directed paths with common origin $\spl(F)$ and  destination $\mrg(F)$.\fxnote{We might want to prove this.}
     These boundary paths are adjacent in the orientation at $\spl(F)$. We will say the first path in the rotation, starting at the beginning of the adjacent pair, is the \emph{right boundary path} or \emph{bottom boundary path} of $F$ and the second one is the \emph{left boundary path} or \emph{top boundary path}.
 
     \subsubsection{Fans}
-    We introduce some more concepts to describe the interior of a blue (or red) face. Every interior edge of this face goes from one fence to the other (otherwise it's start or end vertex would offend the interior vertex condition). \fxnote{This could be a useful result in the section about cycles and their interiors.} To better understand the structure of such a strip we will describe the edges from $\spl(F)$ to $\mrg(F)$ .
+    We introduce some more concepts to describe the interior of a blue (or red) face. Every interior edge of this face goes from one fence to the other (otherwise it's start or end vertex would offend the interior vertex condition).\fxnote{This could be a useful result in the section about cycles and their interiors.} To better understand the structure of such a strip we will describe the edges from $\spl(F)$ to $\mrg(F)$ .
 
     Let $u_0 , u_1, \ldots u_n$ be the vertices of the upper boundary path of $F$ and $v_0, v_1, \ldots, v_m$ the vertices of the bottom boundary path. That is $u_0=v_0 = \spl(F)$ and $u_n = v_m = \mrg(F)$. Since our graph is a triangulation $u_1v_1$ must be an edge. For the second edge in the face we have two options $u_1v_2$ or $u_2v_1$, otherwise this edge and the previous one would not form a triangle. This principle holds for every subsequent edge, we can either increase a the index of the upper boundary path or the index of the bottom boundary path. In other words, this face is a so-called \emph{triangle strip}.
 
@@ -111,17 +108,17 @@ In this section we will introduce the rectangular dual of a graph.
     \end{figure}
 
 
-   We introduce some more terminology for fans: \emph{outer edges}, \emph{fan handles} and the \emph{rim}.
-    \fxwarning{TODO}
+   We introduce some more terminology for fans: \emph{outer edges}, \emph{fan handles} and the \emph{rim} as can be seen in Figure \ref{fig:rect:fanTerms}. The \emph{fan handle} is the vertex shared by all edges in the fan. The \emph{rim} is the path between the vertices of each edge that is not the fan handle. The \emph{outer rim} are the two extreme edges of this path and the \emph{outer edges} are the edges between the fan handles and the extreme vertices of the \emph{rim}.
+
    \begin{figure}[h]
      \centering
      \includegraphics[scale=1]{rectangularDuals/img/fanterms}
      \caption{}
-     \label{fig:}
+     \label{fig:rect:fanTerms}
    \end{figure}
 
    Note that the only edges that are flippable are those that are in both a T-fan and a B-fan. This are exactly the outer edges of any fan.
-   \fxnote{We might want to show this. Flipable doesn't really make sense in this part of the thesis.}
+   \fxnote{We might want to show this. Flippable doesn't really make sense in this part of the thesis.}
 
   \subsubsection{Regular edge labellings and maximal segments}
     From the way that we color a \rel for a given layout $\L$ we can see that a horizontal maximal segment leads to a blue face and a vertical maximal segment leads to a red face.
@@ -156,6 +153,7 @@ In this section we will introduce the rectangular dual of a graph.
   We have the following result due to Kozminski and Kinnen
 
   \begin{thrm}[Existence of a rectangular dual]
+    \label{th:rect:exsitenceREctangularDual}
     A plane triangulated graph $\G$ has a rectangular dual if and only if it has an corner assignment without separating triangles $\ext \G$
   \end{thrm}
 
