@@ -4,27 +4,20 @@
 \fxwarning{Merge contenst of this section in a sensible manner}
 
 \label{s:algo}
-\paragraph{part 1}
+Kant and He \cite{Kant1997} were the first to design algorithms that determine a regular edge labeling. Fusy \cite{Fusy2006} recently developed a different algorithm computing a specific regular edge labeling using a method shrinking a sweepcycle while coloring the outside in accordance with a regular edge labeling.
 
-Kant and He \cite{Kant1997} were the first to design algorithms that determine a regular edge labeling.
+In Section \ref{s:fix} we see that corner assignments with a seperating $4$-cycle may lead to a $\infty$-sided graph.
 
-Fusy \cite{Fusy2006} recently developed a different algorithm computing a specific regular edge labeling using a method shrinking a sweepcycle while coloring the outside in accordance with a regular edge labeling.\footnote{The specific regular edge labeling Fusy obtained was the minimal element of the distributive lattice of regular edge labellings.}
 
-All algorithms in this section will have the same core (based on \cite{Fusy2006}). Consisting of shrinking a sweepcycle by so called \emph{valid} paths.\footnote{In Fusy's work he calls these \emph{eligible paths}} But will differ in which valid paths they choose (if there are multiple).
+\fxwarning{Do we need this ban of nontrivial 5-cycles? -predraft 2}
+Hence for our algorithm we will assume that $\ext G$ has no separating $4-cycles$. Furthermore we won't allow nontrivial separating $5$-cycles. Let $d$ be the highest degree among vertices of $G$ after adding the corners. Our algorithm will calculate a $d+1$ sided layout.
 
-\fxwarning{TODO section description - predraft 1}
 
-\paragraph{part 2}
 
-We will assume the entire graph has no separating 3 or 4 cycles. Furthermore we need that we don't have any nontrivial separating 5-cycles.  We will show that in this case ...
+Our algorithm will use an adaption of the algorithm by Fusy as a first stage in Section \ref{s:sweep}.  consisting of shrinking a sweepcycle by so called \emph{valid} paths.\footnote{In Fusy's work he calls these \emph{eligible paths}}
 
-The lack of nontrivial separating 5-cycle leads to always escapable 3-chords (not yet used) and also the impossibility of two trouble edges being in the same red face.
+Before we can dive into this we first need to introduce some more theory on right neighbor walks. We do this in Section \ref{s:rightNeighbour}.
 
-\fxwarning{Do we need this ban of nontrival 5-cycles? -predraft 2}
+The second stage of the algorithm will consist of a procedure to get rid of most large topfans. This will be treated in Section \ref{s:fanflip}.
 
-The algorithm will consist of two phases
-
-\begin{enumerate}
-  \item Find a \emph{vertically} 1-sided layout with additional properties
-  \item Do additional post-processing steps to make this layout $k$-sided.
-\end{enumerate}
+The final stage of the algorithm will consist of flipping edges when blue faces are still to large. This will be described in Section \ref{s:subdiv}.
