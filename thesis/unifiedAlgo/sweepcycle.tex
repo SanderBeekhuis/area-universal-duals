@@ -1,11 +1,10 @@
 %!TEX root = ../thesis.tex
-\fxnote[inline]{While defining polebound 2-chords show why a polebound chord is bolocks}
 
 \section{Sweepcycle algorithm}
   \label{s:sweep}
   The first step of the algorithm is executing a sweepcycle algorithm comparable to Fusy's \cite{Fusy2006}. We will use a script $\C$ to indicate the current sweep cycle.
 
-  We will repeatedly only consider the path $\cpath$. In that case we will always order it from $\pW$ to $\pE$. That these edges are always in $\C$ is a result of Invariant \ref{i:SWandSE}.
+  We will repeatedly only consider the path $\cpath$. In that case we will always order it from $\pW$ to $\pE$. That these edges are always in $\C$ is a result of Invariant \ref{i:uni:SWandSE}.
 
   We will let $\P$ denote a interior path. Given such a path of $k$ vertices we will index it's nodes by $p_1, \ldots, p_k$ in such a way that $p_1$ is closer to $\pW$ then $p_k$ is (and thus that $p_k$ is closer to $\pE$ then $p_1$ is).
 
@@ -13,29 +12,29 @@
 
   During the algorithm we will want to maintain several invariants on $\C$. The first three are equivalent to those imposed by Fusy. The final invariants is new and will turn out to impose a nice structure on the sweepcycle so far.
 
+  Before giving the invariant let us recall the Interior vertex condition: In the rotation around every vertex we have the following subsequent non-empty sets: Incoming red edges, incoming blue edges, outgoing red edges and outgoing blue edges.
+
   \begin{invariants}
     \itemsep=-4pt
 
     \item \label{i:uni:SWandSE} The cycle $\C$ contains the two edges $\pS \pW$ and $\pS \pE$.
     \item \label{i:uni:noChords} $\cpath$ has no chords
-    \item \label{i:uni:intVertCond} All inner edges of $G$ outside of $\C$ are colored and oriented such that the inner vertex condition holds. \fxwarning{TODO what is the inner vertex condition}
-    \fxerror{We need to add a partial inner vertex condition}
+    \item \label{i:uni:intVertCond} All inner edges of $G$ in the exterior of $\C$ are colored and oriented such that the inner vertex condition holds for all vertices in the exterior of $C$.
     \item \label{i:uni:no2Chords} $\C\sm{\pS}$ has no separating 2-chords
   \end{invariants}
 
-
   \begin{defi}[Prefence]
-  A prefence $\P$ is a interior path of $\C$ starting at $v_i \in \C$ and ending at $v_j \in \C$ a both adjacent to $\pS$
-  \begin{enumerate}
-    \itemsep=-4pt
-    \renewcommand*{\labelenumi}{(P\arabic{enumi})}%
-    \renewcommand*{\theenumi}{(P\arabic{enumi})}%
+    A prefence $\P$ is a interior path of $\C$ starting at $v_i \in \C$ and ending at $v_j \in \C$ a both adjacent to $\pS$
+    \begin{enumerate}
+      \itemsep=-4pt
+      \renewcommand*{\labelenumi}{(P\arabic{enumi})}%
+      \renewcommand*{\theenumi}{(P\arabic{enumi})}%
 
-    \item  $\C_\W$ Has no interior vertex
-    \label{p:noInteriorVertex}
-    \item  $\W$ has no chords on the left     \label{p:Wchordfree}
-    \item  $\restC{\W}$ has no chords on the right     \label{p:Cchordfree}
-  \end{enumerate}
+      \item  $\C_\W$ Has no interior vertex
+      \label{p:noInteriorVertex}
+      \item  $\W$ has no chords on the left     \label{p:Wchordfree}
+      \item  $\restC{\W}$ has no chords on the right     \label{p:Cchordfree}
+    \end{enumerate}
   \end{defi}
 
   We do the following
@@ -48,135 +47,135 @@
 
   We then repeat this until the sweepcycle does not contain any more interior vertices. At which point we can terminate the algorithm by coloring the edges still on the cycle blue and its interior edges red.
 
-
-
   \paragraph{Find the right neighbor path}
     Let $v_i$ denote all the vertices of $\cpath$ in the following order $\pW =  v_1 \  v_2 \  \ldots v_{n-1} \  v_n = \pE$.
     Some intervals of these vertices will be adjacent to $\pS$. However, they can't be all adjacent to $S$ since then any vertex still in the interior of $\C$ would lie in a separating triangle of $G$. We denote by $v_i$ the last vertex of first interval of vertices adjacent to $S$ and by $v_j$ the first vertex of the second interval.
-    As candidate path we will take the right neighbor path of $\P|_{v_i, v_j}$.
+    As candidate path we will take the right neighbor path of $\cpath|_{v_i, v_j}$.
 
     \begin{lemma}
       \label{lm:uni:isPrefence}
-      The right neighbor path of $\P|_{v_i, v_j}$ described above is indeed prefence.
+      The right neighbor path $\P$ of $\cpath|_{v_i, v_j}$ described above is indeed prefence.
     \end{lemma}
     \begin{proof}
-    $\P$ is a walk by lemma \ref{lm:uni:neighborWalk}. Furthermore it is a path since any non-simple point would offend Invariant \ref{i:uni:no2Chords} of the sweepcycle.
+      $\P$ is a walk by lemma \ref{lm:uni:neighborWalk}. Furthermore it is a path since any non-simple point would offend Invariant \ref{i:uni:no2Chords} of the sweepcycle.
 
 
-    We note \ref{p:noInteriorVertex} holds due to Lemma \ref{lm:uni:neighbourwalkNoInteriorVertex}
+      We note \ref{p:noInteriorVertex} holds due to Lemma \ref{lm:uni:neighbourwalkNoInteriorVertex}
 
-    We note \ref{p:Wchordfree} holds due to Lemma \ref{lm:uni:neighbourwalkChordFree}.
+      We note \ref{p:Wchordfree} holds due to Lemma \ref{lm:uni:neighbourwalkChordFree}.
 
-    We note \ref{p:Cchordfree} holds due to invariant \ref{i:uni:noChords}.
+      We note \ref{p:Cchordfree} holds due to invariant \ref{i:uni:noChords}.
     \end{proof}
 
     We then orient $\P$ from $v_i$ (the vertex closest to $\pW$)to $v_j$ (the vertex closest to $\pE$) and denote it's vertices by $w_1 \ldots w_k$.
-    \fxwarning{Do we use this? - predraft 2}
+
+  \subsection{Irregularities}
+    Now the prefence we found can have several structures we want to avoid
+    namely
+    \begin{enumerate}
+      \itemsep=-4pt
+      \item Chords
+      \item Separating 2-chords
+    \end{enumerate}
+
+    All of these structures are on the right of the prefence since the prefence satisfies \ref{p:Wchordfree} (no chords on the left) and \ref{p:noInteriorVertex} (no separating 2-chords on the left).
+
+    The \emph{range} of an irregularity will be given by it's start and end vertex.
+
+    \paragraph{We have no irregularity}
+
+    \paragraph{We have any chord}
+    We know that we can't have any polebound chords on the prefence since any such chord would offend Invariant \ref{i:uni:no2Chords} of the sweepcycle.
+
+    If our prefence has any chords we look identify the them by their start and end vertex. Of the chords with the lowest start index we will consider the one with the largest end index. Let's call this chord $C_\text{outer}$.
+
+    We now consider $C_\text{outer}$ and any chord contained therein. In this collection we look for the chord $C_\text{min}$ with the smallest range (i.e. highest start $i_0$ and lowest end $j_0$) then we find the chord $C_\text{final}$ with the largest range that still starts at $i_0$ or ends at $j_0$. We will denote the range of $C_\text{final}$ by $\braces{i_1, \ldots, j_1}$.
+    \fxnote{We might add a figure of these chords, draft 2}
+
+    What we do now depends on whether a 2-chord shows up in the interior of $\P_{C_\text{final}}$.
+
+    \fxwarning{Define augument, paster operation between right neighbor walk and cycle. take care of normal vertices and begin/end vertices- predraft 2}
+
+    \emph{No 2-chord}
+    If there is no-2 chord in the interior of $\P_{C_\text{final}}$ we augment the sweepcycle with $i_1 +1$ to $j_1 -1$.
+
+    \emph{A separating 2-chord}
+    We find a piece to augment with in the same way  but we terminate it just before the first closing separating 2-chord. If separating 2-chord with the lowest end range in the interior of $\P_{C_\text{final}}$ has end range $j_2$ then we augument the sweepcycle by  $i_1 +1$ to $j_2 -1$.
+
+    \paragraph{Only separating 2-chords}
+    \emph{Any $\pE$-bound 2-chords} \fxnote{define this}
+    Start a path inside the smallest 2-chord (i.e. with the highest starting number for its range). Say the start of this range is $i_1$ we then augment the sweepcycle by $i_1 +1$ to $\pE$.
+
+    \emph{Only free 2-chords}
+    The 2-chord can't contain a chord since then we would be in the above case.
+    Find the $2$-chord with the lowest end of range. Say that this is $j_1$. We then augment the sweepcycle with $\pW$ to $j_1$.
+
+    \begin{lemma}
+      We always augment with a valid path
+    \end{lemma}
+    \begin{proof}
+      By construction
+      \fxwarning{expand this proof a little bit. predraft 2}
+    \end{proof}
+
+    \begin{lemma}
+      \label{lm:sweep:REL}
+      The resulting structure is a REL
+    \end{lemma}
+
+    \begin{proof}
+      \fxwarning{TODO exapand and/or reference Fusy or my earlier chapters}
+
+    \end{proof}
+
+    \begin{lemma}
+      \label{lm:sweep:vertOnsided}
+      The resulting REL is vertically one-sided
+    \end{lemma}
+    \begin{proof}
+      This is the same as saying that the resulting regular edge labeling has no blue Z's
+
+      There are two ways a blue Z can form either we start at a vertex just before a merge or we terminate on a vertex just after a split.
+
+      For start point the following holds. Either we start adjacent to $\pS$ or we start due to a chord.
+
+      For merge points the following holds either we end adjacent to $\pS$, or due to a chord or 2-chord.
+
+      \vspace{2ex}
+      \emph{We can't merge just after a split.}
+
+      If the merge $v$ is due to the vertex being adjacent to $\pS$ we have nowhere to go with the freshly split of path. \fxnote{provide figure}
+
+      Suppose now we the merge was due to a chord or a 2-chord. Then the only reason to start on this place is due to a chord or a polebound 2-chord. However such chord or polbound 2-chord would have to cross the cycle that forced the merge. Only a 2-chord can do this to another 2-chord, but then the one forcing a merge was a polebound 2-chord and that should have taken precedence.
 
 
-    \subsection{Irregularities}
-      Now the prefence we found can have several structures we want to avoid
-      namely
-      \begin{enumerate}
-        \itemsep=-4pt
-        \item Chords
-        \item Separating 2-chords
-      \end{enumerate}
+      \vspace{2ex}
+      \emph{We can't split just before a merge.}
 
-      All of these structures are on the right of the prefence since the prefence satisfies \ref{p:Wchordfree} (no chords on the left) and \ref{p:noInteriorVertex} (no separating 2-chords on the left).
+      Suppose the merge $v$ was due to $\pS$-adjencency. Then the split $w$ can not be due to a chord or 2-chord since such a structure would have to pass $v \pS$ (and we don't consider 2-chords with $\pS$) \fxnote{I guess we could consider this starting at the first free $\pS$-adjecent vertex}. However the split also can't be due to $\pS$-adjecency because that would give us the seperating triangle $\pS v w$
 
-      The \emph{range} of an irregularity will be given by it's start and end vertex.
+      Suppose that the merge is due to chord or 2-chord. Then a split can't be due to $\pS$-adjecency since the chord/2-chord is blocking this. It also can't be due to a chord or polebound 2-chord since those would have to cross.
 
-      \paragraph{We have any chord}
-      If our prefence has any chords we look identify the them by their start and end vertex. Of the chords with the lowest start index we will consider the one with the largest end index. Let's call this chord $C_\text{outer}$.
-
-      We now consider $C_\text{outer}$ and any chord contained therein. In this collection we look for the chord $C_\text{min}$ with the smallest range (i.e. highest start $i_0$ and lowest end $j_0$) then we find the chord $C_\text{final}$ with the largest range that still starts at $i_0$ or ends at $j_0$. We will denote the range of $C_\text{final}$ by $\braces{i_1, \ldots, j_1}$.
-      \fxwarning{TODO figure of these chords, predraft 2}
-
-      What we do now depends on whether a 2-chord shows up in the interior of $\P_{C_\text{final}}$.
-
-      \fxwarning{Define augument, paster operation between right neighbor walk and cycle. take care of normal vertices and begin/end vertices- predraft 2}
-
-      \emph{No 2-chord}
-      If there is no-2 chord in the interior of $\P_{C_\text{final}}$ we augment the sweepcycle with $i_1 +1$ to $j_1 -1$.
-
-      \emph{A separating 2-chord}
-      We find a piece to augment with in the same way  but we terminate it just before the first closing separating 2-chord. If separating 2-chord with the lowest end range in the interior of $\P_{C_\text{final}}$ has end range $j_2$ then we augument the sweepcycle by  $i_1 +1$ to $j_2 -1$.
-
-      \paragraph{Only separating 2-chords}
-      \emph{Any $\pE$-bound 2-chords} \fxnote{define this}
-      Start a path inside the smallest 2-chord (i.e. with the highest starting number for its range). Say the start of this range is $i_1$ we then augment the sweepcycle by $i_1 +1$ to $\pE$.
-
-      \emph{Only free 2-chords}
-      The 2-chord can't contain a chord since then we would be in the above case.
-      Find the $2$-chord with the lowest end of range. Say that this is $j_1$. We then augment the sweepcycle with $\pW$ to $j_1$.
-
-      \begin{lemma}
-        We always augment with a valid path
-      \end{lemma}
-      \begin{proof}
-        By construction
-        \fxwarning{expand this proof a little bit. predraft 2}
-      \end{proof}
-
-      \begin{lemma}
-        \label{lm:sweep:REL}
-        The resulting structure is a REL
-      \end{lemma}
-
-      \begin{proof}
-        \fxwarning{TODO exapand and/or reference Fusy or my earlier chapters}
-
-      \end{proof}
-
-      \begin{lemma}
-        \label{lm:sweep:vertOnsided}
-        The resulting REL is vertically one-sided
-      \end{lemma}
-      \begin{proof}
-        This is the same as saying that the resulting regular edge labeling has no blue Z's
-
-        There are two ways a blue Z can form either we start at a vertex just before a merge or we terminate on a vertex just after a split.
-
-        For start point the following holds. Either we start adjacent to $\pS$ or we start due to a chord.
-
-        For merge points the following holds either we end adjacent to $\pS$, or due to a chord or 2-chord.
-
-        \vspace{2ex}
-        \emph{We can't merge just after a split.}
-
-        If the merge $v$ is due to the vertex being adjacent to $\pS$ we have nowhere to go with the freshly split of path. \fxnote{provide figure}
-
-        Suppose now we the merge was due to a chord or a 2-chord. Then the only reason to start on this place is due to a chord or a polebound 2-chord. However such chord or polbound 2-chord would have to cross the cycle that forced the merge. Only a 2-chord can do this to another 2-chord, but then the one forcing a merge was a polebound 2-chord and that should have taken precedence.
+      \fxwarning{TODO add figures}
+    \end{proof}
 
 
-        \vspace{2ex}
-        \emph{We can't split just before a merge.}
+      \fxwarning{introduce top and bot fans. I must have some text somewhere. -predraft 2}
+      \fxnote{define $\pS$-adjecent -predraft 2}
+    \begin{lemma}
+      \label{lm:uni:noTfan above whole path}
+      The resulting REL never has a red $T$-fanhandle connected to both split and merge vertex of the same path. Unless the split is $\pS$-adjecent
+    \end{lemma}
+    \begin{proof}
+        This would give a non-trivial seperating $5$-cycle. Whether we consider a chord or a polebound 2-chord.
+    \end{proof}
 
-        Suppose the merge $v$ was due to $\pS$-adjencency. Then the split $w$ can not be due to a chord or 2-chord since such a structure would have to pass $v \pS$ (and we don't consider 2-chords with $\pS$) \fxnote{I guess we could consider this starting at the first free $\pS$-adjecent vertex}. However the split also can't be due to $\pS$-adjecency because that would give us the seperating triangle $\pS v w$
+    \begin{lemma}
+      \label{lm:sweep:NoTwoSplitsAboveEachOther}
+      If the left outer vertex of a topfan is a split vertex as well then any on the outermost split path is not the handle of a big topfan.
+    \end{lemma}
 
-        Suppose that the merge is due to chord or 2-chord. Then a split can't be due to $\pS$-adjecency since the chord/2-chord is blocking this. It also can't be due to a chord or polebound 2-chord since those would have to cross.
-
-        \fxwarning{TODO add figures}
-      \end{proof}
-
-
-        \fxwarning{introduce top and bot fans. I must have some text somewhere. -predraft 2}
-        \fxnote{define $\pS$-adjecent -predraft 2}
-      \begin{lemma}
-        \label{lm:uni:noTfan above whole path}
-        The resulting REL never has a red $T$-fanhandle connected to both split and merge vertex of the same path. Unless the split is $\pS$-adjecent
-      \end{lemma}
-      \begin{proof}
-          This would give a non-trivial seperating $5$-cycle. Whether we consider a chord or a polebound 2-chord.
-      \end{proof}
-
-      \begin{lemma}
-        \label{lm:sweep:NoTwoSplitsAboveEachOther}
-        If the left outer vertex of a topfan is a split vertex as well then any on the outermost split path is not the handle of a big topfan.
-      \end{lemma}
-
-      \begin{proof}
-        \fxwarning{TODO -predraft 2}
-        This is inside a chord Figure and stuff
-      \end{proof}
+    \begin{proof}
+      \fxwarning{TODO -predraft 2}
+      This is inside a chord Figure and stuff
+    \end{proof}
