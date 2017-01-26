@@ -119,21 +119,12 @@ In this section we will introduce the rectangular dual of a graph.
 
   \subsubsection{Regular edge labellings and maximal segments}
     From the way that we color a \rel for a given layout $\L$ we can see that a horizontal maximal segment leads to a blue face and a vertical maximal segment leads to a red face.
-     \fxwarning{TODO figure of blue face and red face}
+     \fxnote{Might want to support with a figure}
 
     For either type of maximal segment we denote the corresponding face with $F$. The number of interior vertices of both boundary paths without $\mrg(F)$ and $\spl(F)$ is the number of rectangles on the respective sides of the maximal segment.
 
     Hence a one-sided maximal segment corresponds to a face with one boundary path of length $2$\footnote{A boundary path can't have length $1$ since by construction of a \rel it encloses a maximal segment and thus has to go trough at least one intermediate rectangle/vertex.}. And a $(k,l)$-sided maximal segment has a short boundary path of length at most $k+1$ and a longer boundary path of length at most $l+1$\footnote{Recall that the length of a path its edgecount.}.
     We will for the ease of the discussion ofter refer to such a face as an $(k,l)$-face.
-
-    The following Lemma will prove to be of use
-    \begin{lemma}
-    \label{lm:zInRedFace}
-    A face $F$ with at least $3$ edges on each side contains a $Z$
-    \end{lemma}
-    \begin{proof}
-    \fxerror{TODO}
-    \end{proof}
 
 \subsection{Corner assignments}
   \fxwarning[inline, nomargin]{might want to move this to the next section}
