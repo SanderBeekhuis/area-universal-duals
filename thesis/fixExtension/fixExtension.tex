@@ -25,16 +25,19 @@
 
   \begin{lemma}
   \label{lm:fix:fourCycleInteriorColor}
-  \fxerror{We  want to provide a oriented version of this lemma for Section \ref{ss:fix:manymany}}
-  Let $\C = \braces{a, b, c, d}$ be a separating $4$-cycle of $\ext G$ with interior $I$. Then all interior edges incident to $a, b, c$ and $d$ respectively are red, blue, red and blue or blue, red, blue and red.
+  Let $\C$ be a separating $4$-cycle of $\ext G$ with interior $I$. We can label the vertices $a$, $b$ $c$ and $d$ in clockwise order around $I$ such that all interior edges incident to $a, b, c$ and $d$ are incoming red, incoming blue, outgoing red and  incoming blue respectively.
   \end{lemma}
 
   \begin{proof}
   By Remark \ref{re:interiorRectangle} the union of the rectangles in the interior of $\C$ will be some rectangle in any rectangular dual. We will denote this rectangle by $I$. Since two disjoint rectangles can only be adjacent to each other at one side all interior edges incident to any vertex of $\C$ are of the same color.
 
-  Furthermore $a, b, c, d$ are all adjacent to a different side of $I$ since $I$ has four sides that need to be covered and it is only adjacent to four rectangles. If we then apply the rules of a regular edge labeling we see that if the interior edges incident to $a$ are one color, those incident to $b$ and $d$ should have the second color. Then of course the interior edges incident to $c$ are again colored with the first color.
+  Furthermore $a, b, c, d$ are all adjacent to a different side of $I$ since $I$ has four sides that need to be covered and it is only adjacent to four rectangles. We then denote by $a$ the vertex corresponding to the rectangle above $I$. Then $b$ must be to the left of $I$, $c$ must be below $I$ and $d$ must be to the right of $I$.
+
+  Then the required coloring follows from the properties of a \rel.
 
   \end{proof}
+
+  Hence if we know the color and orientation of one interior edges incident to a vertex of a separating $4$-cycle $\C$ we know the color and orientation of all interior edges incident to $\C$.
 
   \fxnote{This lemma implies that any \emph{alternating 4-cycle} is either \emph{left-alternating} or \emph{right-alternating} in the terminology of Fusy. Should I note this since he does not provide a real proof.}
 
