@@ -37,13 +37,12 @@
     \end{enumerate}
   \end{defi}
 
-  \fxwarning{This is a bit weird - predraft 2}
-  We do the following
+  Each update of the sweepcycle consists of the following three steps do the following
   \begin{enumerate}
     \itemsep=-4pt
-    \item Find the right neighbor walk
-    \item Evade any future irregularities
-    \item Update with this valid path
+    \item Take the right neighbor walk
+    \item Evade irregularities on this path
+    \item Update the sweepcycle with this path
   \end{enumerate}
 
   We then repeat this until the sweepcycle does not contain any more interior vertices. At which point we can terminate the algorithm by coloring the edges still on the cycle blue and its interior edges red.
@@ -259,11 +258,22 @@
 
     \begin{lemma}
       \label{lm:sweep:NoTwoSplitsAboveEachOther}
-      If we split due to a chord any vertex on the outermost split path is not the handle of a big topfan.
+      If the left outer vertex of a topfan is a split vertex then all vertices to the left of the top fan handle are not a splits.
     \end{lemma}
 
     \begin{proof}
-      We have
-      \fxwarning{TODO -predraft 2}
-      This is inside a chord Figure and stuff
+      \fxnote{Try to clear up reasoning furthera}
+      We have drawn Figure \ref{fig:sweep:splitsAboveEachOther} to clarify the statement and introduce notation. The statement is that if $w$ is a split vertex and on the left outer rim of a large topfan with handle $v$ then $u$ is not also a split vertex.
+
+      If $v$ is a merge vertex we are done immediately using Lemma \ref{lm:sweep:vertOnsided}. Hence there is only a single vertex left of $v$, which we will call $u$. $u$ is not $\pS$-adjecent so the only reason it can be a split vertex is if it was under a chord starting at $w$. However due to the topfan we can't start any chord.
+
+      The split off edge $e$ also can't form a chord since this would break the \rel since the neighbors of $w$ wouldn't get any incoming red.
     \end{proof}
+
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=1]{unifiedAlgo/img/splitsAboveEachOther.pdf}
+      \caption{}
+      \label{fig:sweep:splitsAboveEachOther}
+    \end{figure}
