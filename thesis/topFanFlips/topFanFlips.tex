@@ -7,8 +7,6 @@ The second stage of the algorithm will consist of flipping most large topfans. T
 
 Using some local recolorings (\emph{flips}) on the topfans we will maintain a onesided REL (Lemma \ref{lm:topfan:oneSidedREL}) and make sure that large topfans only occr in very specific situations (Lemma \ref{lm:topfan:remainingTopfans}).
 
-%\fxnote{We never fan flip a fan flip again. Is this true and do we need it?}
-
 Our flips differ depending on whether we we encounter a split and or merge in the bottom boundary path. Refer to Figure \ref{fig:fanflip:fanflips} for the different kinds of topfanflips.
 
 
@@ -54,7 +52,7 @@ Our flips differ depending on whether we we encounter a split and or merge in th
 \end{figure}
 
 
-\fxwarning{Go into the strucutre of the fence below the topfan. - draft 2}
+\fxnote{We could make structure of the fence below the topfan more explicit. }
 
 %When we encounter a topfan we start flipping edges. In principle we want to color all edges in the fan blue except for the right outer edge. In order to maintain a \rel we then recolor all of the rim except for the right outer edge to be red. Then we also need to to color the left outer edges of all topfans below this topfan blue. Note that all rim vertices are topfan handles since otherwise we would have a separating 4-cycle.
 
