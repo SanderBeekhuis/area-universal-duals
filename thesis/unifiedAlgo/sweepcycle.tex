@@ -52,6 +52,14 @@
     Let $v_i$ denote all the vertices of $\cpath$ in the following order $\pW =  v_1 \  v_2 \  \ldots v_{n-1} \  v_n = \pE$.
     Some intervals of these vertices will be adjacent to $\pS$. However, they can't be all adjacent to $S$ since then any vertex still in the interior of $\C$ would lie in a separating triangle of $G$. We denote by $v_i$ the last vertex of first interval of vertices adjacent to $S$ and by $v_j$ the first vertex of the second interval.
     As candidate path we will take the right neighbor path of $\cpath|_{v_i, v_j}$.
+    The current situation is also depicted in Figure \ref{fig:sweep:rightNeighbourwalk}.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=1]{unifiedAlgo/img/rightNeighbourWalk}
+      \caption{}
+      \label{fig:sweep:rightNeighbourwalk}
+    \end{figure}
 
     \begin{lemma}
       \label{lm:uni:isPrefence}
@@ -104,21 +112,56 @@
 
     What we do now depends on whether a 2-chord shows up in the interior of $\P_{C_\text{final}}$.
 
-    \fxwarning{Define augument, paster operation between right neighbor walk and cycle. take care of normal vertices and begin/end vertices- predraft 2}
+    \fxwarning{Define augment, paster operation between right neighbor walk and cycle. take care of normal vertices and begin/end vertices- predraft 2}
 
-    \emph{No 2-chord}
-    If there is no-2 chord in the interior of $\P_{C_\text{final}}$ we augment the sweepcycle with $i_1 +1$ to $j_1 -1$.
+    \emph{No separating 2-chord}
+    If there is no separating 2-chord in the interior of $\P_{C_\text{final}}$ we do the following. Let $v_k$ be the shared neighbor on the sweepcycle of $p_{i_1}$ $p_{i_1 +1}$ and $v_l$ the shared neighbor on the sweepcycle  of $p_{j_1 -1}$ and $p_{j_1}$. We augment the sweepcycle with the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:chordUpdate}.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=1]{unifiedAlgo/img/chordUpdate}
+      \caption{}
+      \label{fig:sweep:chordUpdate}
+    \end{figure}
 
     \emph{A separating 2-chord}
-    We find a piece to augment with in the same way  but we terminate it just before the first closing separating 2-chord. If separating 2-chord with the lowest end range in the interior of $\P_{C_\text{final}}$ has end range $j_2$ then we augument the sweepcycle by  $i_1 +1$ to $j_2 -1$.
+      If separating 2-chord with the lowest end range in the interior of $\P_{C_\text{final}}$ has end range $j_2$ then we augument the sweepcycle in the following way.
+
+      Let $v_k$ be the shared neighbor on the sweepcycle of $p_{i_1}$ $p_{i_1 +1}$ and $v_l$ the shared neighbor on the sweepcycle  of $p_{j_2 -1}$ and $p_{j_2}$. We augment the sweepcycle with the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:2chordInChordUpdate}.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=1]{unifiedAlgo/img/2chordInChordUpdate}
+      \caption{}
+      \label{fig:sweep:2chordInChordUpdate}
+    \end{figure}
 
     \paragraph{Only separating 2-chords}
     \emph{Any $\pE$-bound 2-chords}
-    Start a path inside the smallest 2-chord (i.e. with the highest starting number for its range). Say the start of this range is $i_1$ we then augment the sweepcycle by $i_1 +1$ to $\pE$.
+    Start a path inside the smallest 2-chord (i.e. with the highest starting number for its range). Say the start of this range is $i_1$ we then augment the sweepcycle in the following way.
+
+    Let $v_k$ be the shared neighbor on the sweepcycle of $p_{i_1}$ $p_{i_1 +1}$. We augment the sweepcycle with the right neighbor path of $\cpath|_{v_k, \pE}$. See Figure \ref{fig:sweep:pEBound}.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=1]{unifiedAlgo/img/pEBound}
+      \caption{}
+      \label{fig:sweep:pEBound}
+    \end{figure}
+
 
     \emph{Only free 2-chords}
     The 2-chord can't contain a chord since then we would be in the above case.
-    Find the $2$-chord with the lowest end of range. Say that this is $j_1$. We then augment the sweepcycle with $\pW$ to $j_1$.
+    Find the $2$-chord with the lowest end of range. Say that this is $j_1$. We then augment the sweepcycle in the following way.
+
+    Let $v_l$ be the shared neighbor on the sweepcycle of $p_{j_1}$ $p_{j_1 -1}$. We augment the sweepcycle with the right neighbor path of $\cpath|_{v_i, v_l}$. See Figure \ref{fig:sweep:free2chord}.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=1]{unifiedAlgo/img/free2chord}
+      \caption{}
+      \label{fig:sweep:free2chord}
+    \end{figure}
 
     \begin{lemma}
       The augmenting paths have no chords or separating $2$-chords
@@ -175,7 +218,7 @@
       Suppose the merge $v$ was due to $\pS$-adjencency. Then the split $w$ can not be due to a chord or 2-chord since such a structure would have to pass $v \pS$ (and we don't consider 2-chords with $\pS$). However the split also can't be due to $\pS$-adjecency because that would give us the separating triangle $\pS v w$
 
       Suppose that the merge is due to chord or 2-chord. Then a split can't be due to $\pS$-adjecency since the chord/2-chord is blocking this. It also can't be due to a chord or polebound 2-chord since those would have to cross.
-      \fxnote{We might add figures}
+      \fxnote   {We might add figures}
     \end{proof}
 
     \begin{lemma}
