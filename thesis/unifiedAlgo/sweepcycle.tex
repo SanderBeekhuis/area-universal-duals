@@ -93,14 +93,6 @@
 
     \paragraph{We have no irregularity}
       When there are no irregularities we \emph{augument} the sweecyle with the prefence $\P$.
-      We do this in the following way. We color all interior edge of $\C_\P$ red and orient them towards $\C$. We also color all edges of $\cpath|_{v_i,v_j}$  blue and orient them towards $v_j$. We then update the sweepcyle to $\C'$ by replacing $\cpath|_{v_i,v_j}$ by $\P$.
-
-      Consider that the new sweepcyle $\C'$ is again a valid sweepcycle. Invariant \ref{i:uni:SWandSE} remains trivially true. Invariant \ref{i:uni:intVertCond} hold due to the way we colored the edges around the new interior vertices.
-
-      It is a bit more work to see that Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords} still hold. Due to prefence Property \ref{p:Cchordfree} and the fact that the prefence has no irregularities we know any $(2-)$chord $C$ has to have one vertex on $\P$ and one vertex on the unchanged part of old sweepcyle $\C \cap C'$.
-      However since $v_i$ and $v_j$ are both adjacent to $\pS$ we see that $C$ has to be a $2$-chord with $\pS$ as middle vertex. However these are allowed for Invariant \ref{i:uni:no2Chords}.
-
-      Hence $\C'$ is a valid new sweepcycle.
 
     \paragraph{We have any chord}
     We know that we can't have any polebound chords on the prefence since any such chord would offend Invariant \ref{i:uni:no2Chords} of the sweepcycle.
@@ -148,9 +140,7 @@
       \caption{}
       \label{fig:sweep:pEBound}
     \end{figure}
-
-
-    \emph{Only free 2-chords}
+    \emph{Other separating 2-chords}
     The 2-chord can't contain a chord since then we would be in the above case.
     Find the $2$-chord with the lowest end of range. Say that this is $j_1$. We then augment the sweepcycle in the following way.
 
@@ -163,22 +153,59 @@
       \label{fig:sweep:free2chord}
     \end{figure}
 
+    \paragraph{Augmenting}
+      Once we found this augmenting path we augment the sweepcycle with this path. We do this in the following way. We color all interior edge of $\C_\P$ red and orient them towards $\C$. We also color all edges of $\cpath|_{v_i,v_j}$  blue and orient them towards $v_j$. We then update the sweepcycle to $\C'$ by replacing $\cpath|_{v_i,v_j}$ by $\P$.
+
+
     \begin{lemma}
       The augmenting paths have no chords or separating $2$-chords
+      \label{lm:sweep:augNoIregularity}
     \end{lemma}
     \begin{proof}
         All of these structures are on the right of the augmenting path, since the augmenting path is a subset of a prefence and a  prefence satisfies \ref{p:Wchordfree} (no chords on the left) and \ref{p:noInteriorVertex} (no separating 2-chords on the left).
 
+        If the prefence had any chords the augmenting path is adapted to be entirely inside a chord containing no more chords. Hence the augmenting path can't have any chords.
 
-
+        Moreover any augmenting path stops before the end of a separating 2-chord unless it is a $\pE$-bound separating 2-chord in which case it only starts after the begin of this 2-chord. Either way the augmenting path also has no separating 2-chords.
     \end{proof}
 
     \begin{lemma}
-      We always augment with a valid path
+      \label{lm:sweep:noConnectingIregularity}
+      There are no chords or separating $2$-chords not containing $\pS$ with one endpoint on the old sweepcycle and the other endpoint on the augmenting path.
+    \end{lemma}
+
+    \begin{proof}
+      \emph{No irregularity}
+      Since $v_i$ and $v_j$ are both adjacent to $\pS$ we can't have any chords. And any $2$-chords have $\pS$ as middle vertex. However these are allowed for the Lemma.
+
+      \emph{Chord, not containing a 2-chord}
+      Any chord or separating $2$-chord will have to cross $v_k p_i p_j v_l$ so we can't have a chord. Any 2-chord has to have $p_i$ or $p_j$ as middle vertex. But with this restriction the 2-chord can't be separating.
+
+      \emph{Chord, containing a 2-chord}
+      In the same manner as in the above case we can't expect any chord or separating 2-chord to connect outside the containing chord.
+      Suppose that we have a separating $2$-chord then that would have been a chord of the prefence. This is in contradiction with the fact that the outer chord contained no more chords.
+      Suppose that we have a chord not connecting to the second-to-last vertex of the augmenting path. This chord would offend Invariant \ref{i:uni:no2Chords} of the old sweepcycle. Furthermore the second-to-last vertex of the augmenting path has no chords since it would break $v_l p_j x p_u$. (see Figure \ref{fig:sweep:2chordInChordUpdate}).
+
+      \emph{$\pE$-bound separating $2$-chord}
+      We can't have any chords since these would have to break $\pE x p_i v_k$. Any $2-chords$ would have $x$ or $p_i$ as middle vertex. However the first yields a $2$-chord of the prefence with a higher start range, this is a contradiction. And the second can't yield an separating $2$-chord.
+
+
+      \emph{Other separating $2$-chord}
+      Any chord or $2$-chord with one vertex in the augmenting path and the other on the old sweepcycle must end to the right of the augmenting path since the augmenting path starts at $\pW$.
+      Suppose that we have a separating $2$-chord then that would have been a chord of the prefence. This is in contradiction with the assumption that the prefence had no chords.
+      Suppose that we have a chord not connecting to the second-to-last vertex of the augmenting path. This chord would offend Invariant \ref{i:uni:no2Chords} of the old sweepcycle. Furthermore the second-to-last vertex of the augmenting path has no chords since it would break $v_l p_j x p_u$. (see Figure \ref{fig:sweep:free2chord}).
+    \end{proof}
+
+    \begin{lemma}
+      All five augmenting path types maintain the sweepcycle invariants
     \end{lemma}
     \begin{proof}
-      By construction
-      \fxwarning{expand this proof a little bit. predraft 2}
+      We will proof that the new sweepcycle $\C'$ obtained by augmenting $\C$ is again a valid sweepcycle. Invariant \ref{i:uni:SWandSE} remains trivially true. Invariant \ref{i:uni:intVertCond} hold due to the way we colored the edges around the new interior vertices.
+
+      To see that Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords} still hold note that due to prefence Property \ref{p:Cchordfree} and the fact that the augmenting path itself has no irregularities (Lemma \ref{lm:sweep:augNoIregularity})
+      we know any $(2-)$chord $C$ has to have one vertex on $\P$ and one vertex on the unchanged part of old sweepcyle $\C \cap C'$. However these potential chords are also not offending by Lemma \ref{lm:sweep:noConnectingIregularity}.
+
+      Hence $\C'$ is a valid new sweepcycle.
     \end{proof}
 
     \begin{lemma}
@@ -187,8 +214,8 @@
     \end{lemma}
 
     \begin{proof}
-      \fxwarning{TODO exapand and/or reference Fusy or my earlier chapters}
-
+      \fxnote{We should patch up the last step. That is, what to do when the sweepcycle is no longer separating }
+      After running the whole algorithm the interior vertex condition holds for all vertices in the graph. Furthermore the poles are also colored correctly due to Invariant \ref{i:uni:SWandSE}.
     \end{proof}
 
     \begin{lemma}
@@ -221,20 +248,22 @@
       \fxnote   {We might add figures}
     \end{proof}
 
+    \fxnote{do we need this to complete the proof? I currently do use it}
     \begin{lemma}
       \label{lm:uni:noTfan above whole path}
       The resulting REL never has a red $T$-fanhandle connected to both split and merge vertex of the same path. Unless the split is $\pS$-adjecent
     \end{lemma}
     \begin{proof}
-        This would give a non-trivial seperating $5$-cycle. Whether we consider a chord or a polebound 2-chord.
+        This would give a non-trivial separating $5$-cycle. Whether we consider a chord or a polebound 2-chord.
     \end{proof}
 
     \begin{lemma}
       \label{lm:sweep:NoTwoSplitsAboveEachOther}
-      If the left outer vertex of a topfan is a split vertex as well then any on the outermost split path is not the handle of a big topfan.
+      If we split due to a chord any vertex on the outermost split path is not the handle of a big topfan.
     \end{lemma}
 
     \begin{proof}
+      We have
       \fxwarning{TODO -predraft 2}
       This is inside a chord Figure and stuff
     \end{proof}
