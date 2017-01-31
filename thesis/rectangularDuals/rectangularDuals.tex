@@ -21,21 +21,40 @@ In this section we will introduce the rectangular dual of a graph.
   Let us note that both the dual graph and the extended dual graph of a layout $\L$ are not the same as the \emph{graph dual} of $\L$ when we view it as a graph (namely we don't represent the outer face of $\L$ by a single vertex).
 
 \subsection{Rectangular dual}
-  We have introduced two ways to define the dual $G$ of a layout $\L$. In the reverse direction we say a layout $\L$ is a \emph{rectangular dual} of a certain graph $G$ if we have that $G = \dualgraph{\L}$.
+  We have already introduced two ways to define the dual $G$ of a layout $\L$. In the reverse direction we say a layout $\L$ is a \emph{rectangular dual} of a certain graph $G$ if we have that $G = \dualgraph{\L}$.
 
-  A triangulation of the $k$-gon $\G$ does not necessarily have a rectangular dual nor is this dual necessarily unique. When existence is guaranteed can be seen in Theorem \ref{th:rect:exsitenceREctangularDual}
+  A triangulation of the $k$-gon $\G$ does not necessarily have a rectangular dual nor is this dual necessarily unique. The requirements for existence are given in Theorem \ref{th:rect:exsitenceREctangularDual}. To see that a rectangular  dual is not necisicairly unique one can simply consder the two non-equivalent duals of the same graph given in Figures \ref{fig:rect:segmentdefs} and \ref{fig:rect:vertonesided}.
+
+
 
 \subsection{Different kinds of rectangular layouts}
   We can pose different restriction on a rectangular layout $\L$. For all these restrictions we have that if they hold for one layout $\L$ they hold for all equivalent layouts.
 
   We will call $\L$ \emph{area-equivalent} if no matter the areas we assign to the rectangles of $\L$ there is a equivalent layout $\L'$ such that each rectangle has the assigned area.
-  \fxnote{Might add supporting figures}
 
-  All other restrictions we introduce here will consider the \emph{maximal line segments} (or simply \emph{maximal segement}) of $\L$. A \emph{line segment} (or simply \emph{segment}) of $\L$ is a sequence of consecutive inner boundary segments forming a line. Such a segment is called maximal if it's not contained in any other line segment. \fxnote*{Is this neccesary?}{This notion is also introduced in \cite{Eppstein2012}}. A segment is \emph{one-sided} if it is on the boundary of a single rectangle. We call it \emph{$k$-sideded} if on one of the sides it is the boundary of at most $k$ rectangles. Finally, a line segment is \emph{$(k,l)$-sided} with $k<l$ if the line segment is on the boundary of at most $k$ different rectangles on one side and at most $l$ different rectangles on the other side.
-  \fxnote{Might add supporting figures}
+  All other restrictions we introduce here will consider the \emph{maximal line segments} (or simply \emph{maximal segements}) of $\L$. A \emph{line segment} (or simply \emph{segment}) of $\L$ is a sequence of consecutive inner boundary segments forming a line. Such a segment is called maximal if it's not contained in any other line segment. \fxnote*{Is this neccesary?}{This notion is also introduced in \cite{Eppstein2012}}.
+  A segment is \emph{one-sided} if it is on the boundary of a single rectangle. We call it \emph{$k$-sideded} if on one of the sides it is the boundary of at most $k$ rectangles. Finally, a line segment is \emph{$(k,l)$-sided} with $k<l$ if the line segment is on the boundary of at most $k$ different rectangles on one side and at most $l$ different rectangles on the other side.
+
+  Consider for example Figure \ref{fig:rect:segmentdefs}. The three highlighted lines are all line segments. However only the red and blue segment are maximal segments. The red segment is one-sided and $(1,5)$-sided. The blue segment is $2$-sided and $(2,3)$-sided.
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[scale=1]{rectangularDuals/img/segmentdefs}
+    \caption{Rectangular layout with three highlighted segments}
+    \label{fig:rect:segmentdefs}
+  \end{figure}
+
   \fxwarning{Think about removing defi for $(k,l)$ sideds, this will proc a rewrite}
 
-  We will then call a layout \emph{one-sided} if all maximal segments are one-sided. Furthermore it is called \emph{vertically one-sided} or \emph{horizontally one-sided} if just all vertical or horizontal maximal segments are one-sided. Furthermore a layout is \emph{$(k,l)$-sided} if all maximal line segments are $(k,l)$-sided.
+  We will then call a layout \emph{one-sided} if all maximal segments are one-sided. Furthermore it is called \emph{vertically one-sided} or \emph{horizontally one-sided} if just all vertical or horizontal maximal segments are one-sided. Furthermore a layout is \emph{$k$-sided} if all maximal line segments are $k$-sided and \emph{$(k,l)$-sided}  if all maximal line segments are $(k,l)$-sided.
+
+  Consider  Figure \ref{fig:rect:vertonesided}. In this Figure a vertically one-sided rectangular layout is depicted. This layout is also $4$-sided and $(4,5)$-sided.
+  \begin{figure}[h]
+    \centering
+    \includegraphics[scale=1]{rectangularDuals/img/vertonesided}
+    \caption{A vertically one-sided rectangular layout}
+    \label{fig:rect:vertonesided}
+  \end{figure}
 
   Eppstein et al. \cite{Eppstein2012} show that a layout is area-universal if and only if it is one-sided.
 
@@ -63,7 +82,7 @@ In this section we will introduce the rectangular dual of a graph.
   \end{lemma}
 
   \begin{proof}
-    Suppose we have a mononcolored triangle. Without loss of generality we will suppose that the color of this triangle is blue. Then at least one of the vertices has an incoming blue edge followed directly by an outgoing blue edge or an outgoing blue edge followed directly by an incoming blue edge in it's rotation. Thus this vertex has either an empty set of outgoing or incoming red edges, offending the coloring requirements of a REL
+    Suppose we have a monocolored triangle. Without loss of generality we will suppose that the color of this triangle is blue. Then at least one of the vertices has an incoming blue edge followed directly by an outgoing blue edge or an outgoing blue edge followed directly by an incoming blue edge in it's rotation. Thus this vertex has either an empty set of outgoing or incoming red edges, offending the coloring requirements of a REL
   \end{proof}
 
   \subsubsection{$st$-planar graphs}
@@ -128,7 +147,7 @@ In this section we will introduce the rectangular dual of a graph.
 
 \subsection{Corner assignments}
   \fxnote[inline, nomargin]{might want to move this to the next section}
-  
+
   Given a layout $\L$ we can thus easily find the (extended) dual. However finding a rectangular dual of a plane triangulated graph $G$ is more involved. Due to the algorithm by He \cite{He1993} this boils down to finding a regular edge labeling of $G$ with $4$ additional vertices $\pN, \pE, \pS, \pW$. We will define $G$ and these $4$ additional vertices to be a \emph{corner assignment} of $G$.
 
   \begin{defi}[Corner assignment]
