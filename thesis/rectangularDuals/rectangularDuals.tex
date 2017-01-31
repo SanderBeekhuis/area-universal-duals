@@ -59,8 +59,9 @@ In this section we will introduce the rectangular dual of a graph.
   Eppstein et al. \cite{Eppstein2012} show that a layout is area-universal if and only if it is one-sided.
 
 \subsection{Regualar edge labeling}
+  \fxwarning{Does this handle poles correctly}
   The extended dual of a layout allows a natural coloring and orientation of its edges. This \emph{regular edge labeling} can be found in the following way:
-  For every edge $vw$ in $\extdualgraph{\L}$ we consider whether the shared boundary of the rectangles is vertical or horizontal we then color the edge blue or red respectively. In the first case we orient the edge from the  leftmost point to the rightmost point and in the second case we orient from bottom to top. We don't color or orient the edges between the poles.
+  For every edge $vw$ in $\extdualgraph{\L}$ we consider whether the shared boundary of the rectangles is vertical or horizontal we then color the edge blue or red respectively. In the first case we orient the edge from the leftmost rectangle to the rightmost rectangle and in the second case we orient from bottom to top. We don't color or orient the edges between the poles.
 
   From the nature of the adjacencies in a rectangular layout we can deduce the following two rules for a regular edge labeling.
   \begin{enumerate}
