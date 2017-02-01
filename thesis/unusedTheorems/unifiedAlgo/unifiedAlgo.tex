@@ -105,7 +105,7 @@ The approach taken by this algorithm will be the following
 \begin{enumerate}
   \item Subdivided the graph by fences as in the red algorithm.
   \item We separate big B-fans from the rest of the fans in this strip
-  \item If blue faces  in this strip are still too long we will flip some of their interior edges. We try to prevent the creation of new chained blue Z's.
+  \item If blue faces  in this strip are still too long we will flip some of their interior edges. We try to prevent the creation of new chained blue $Z$'s.
   \item We solve the blue $Z$'s we have created by doing a few flips.
 \end{enumerate}
 
@@ -293,10 +293,10 @@ Lucky enough for us this is not a problem as the Algorithm proposed in Lemma \re
   \end{enumerate}
 
   \paragraph{Every chain of $Z$'s only occurs if both middle edges are adjacent to a large B-fan}
-  A chain of $Z$'s can only start if a first $Z$ is followed by a second Z. By Invariant \ref{inv:uni:noLoad} this can only happen when placing edges around a large B-fan. The middle edge of the second $Z$ is thus adjacent to a large B-fan. The middle edge of the first $Z$ is also adjacent to large B-fan since it also can't have been placed in the second phase of the algorithm due to Invariant \ref{inv:uni:noPad}.
+  A chain of $Z$'s can only start if a first $Z$ is followed by a second $Z$. By Invariant \ref{inv:uni:noLoad} this can only happen when placing edges around a large B-fan. The middle edge of the second $Z$ is thus adjacent to a large B-fan. The middle edge of the first $Z$ is also adjacent to large B-fan since it also can't have been placed in the second phase of the algorithm due to Invariant \ref{inv:uni:noPad}.
 
   \paragraph{We can break such a chain in the second $Z$ for every chain doing only at most 4 flips for every large B-fan}
-  Given any chain of blue $Z$'s we will try to do a flip in the disrupt the chain. Given any large B-fan there are at most two edges of this B-fan colored blue (the outer edges). Only these two edges can be middle edges for some blue Z. The edges on the strip above this B-fan can only be above this $Z$ in one way (either type a) or b) ) without creating a monocolored triangle (which is forbidden). However doing a flip of type a) may then necessitate a flip of type b).
+  Given any chain of blue $Z$'s we will try to do a flip in the disrupt the chain. Given any large B-fan there are at most two edges of this B-fan colored blue (the outer edges). Only these two edges can be middle edges for some blue $Z$. The edges on the strip above this B-fan can only be above this $Z$ in one way (either type a) or b) ) without creating a monocolored triangle (which is forbidden). However doing a flip of type a) may then necessitate a flip of type b).
   \fxnote{Figure?}
 
   Hence we might need $4$ flips in total.

@@ -3,7 +3,7 @@
 
   \begin{enumerate}
     \item Do flips isolating large botfans.
-    \item treat long chains of Z's
+    \item treat long chains of $Z$'s
     \item handle the blue faces that are still large
   \end{enumerate}
 
@@ -181,7 +181,7 @@
     We apply a flip when in the current face we discover that we have 2 subsequent $Z$'s. Then applying the flip we change the size of faces in the history. \fxnote{And it will make talking of strips more difficult since we reshape them and not only subdivide them.}
 
     Let us first describe how these flips change the faces in the historic strips.
-    \fxwarning{TODO but first I will describe flips on Z's with a middle fan}
+    \fxwarning{TODO but first I will describe flips on $Z$'s with a middle fan}
     \begin{figure}[h]
       \centering
       \includegraphics[width =\textwidth]{unifiedAlgo/img/post/sameMultiFlip}
@@ -210,6 +210,6 @@
 
     Every two subsequent $Z$'s are treated in one flip. This flip makes a historic faces longer but closes them in such a way they can't be opened by other flips.
 
-    \paragraph{Remaining Z's}
+    \paragraph{Remaining $Z$'s}
     The opp flip can place an blue edge above another blue edge. However this chain stops here since above this is a red split vertex. So the longest chain of $Z$'s is now of length two.
   \end{proof}
