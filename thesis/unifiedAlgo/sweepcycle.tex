@@ -98,7 +98,7 @@
 
     If our prefence has any chords we look identify the them by their start and end vertex. Of the chords with the lowest start index we will consider the one with the largest end index. Let's call this chord $C_\text{outer}$.
 
-    We now consider $C_\text{outer}$ and any chord contained therein. In this collection we look for the chord $C_\text{min}$ with the smallest range (i.e. highest start $i_0$ and lowest end $j_0$) then we find the chord $C_\text{final}$ with the largest range that still starts at $i_0$ or ends at $j_0$. We will denote the range of $C_\text{final}$ by $\braces{i_1, \ldots, j_1}$.
+    We now consider $C_\text{outer}$ and any chord contained therein. In this collection we look for the chord $C_\text{inner}$ with the smallest range (i.e. highest start $i_0$ and lowest end $j_0$) then we find the chord $C_\text{final}$ with the largest range that still starts at $i_0$ or ends at $j_0$. We will denote the range of $C_\text{final}$ by $\braces{i_1, \ldots, j_1}$.
     \fxnote{We might add a figure of these chords, draft 2}
 
     What we do now depends on whether a 2-chord shows up in the interior of the chord pasted to the prefence $\P|_{i_1, j_1} \oplus \rev({C_\text{final}})$.
