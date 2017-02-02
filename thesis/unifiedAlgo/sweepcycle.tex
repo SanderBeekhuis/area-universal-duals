@@ -226,34 +226,15 @@
       After running the whole algorithm the interior vertex condition holds for all vertices in the graph. Furthermore the poles are also colored correctly due to Invariant \ref{i:uni:SWandSE}.
     \end{proof}
 
+    \fxwarning{Move this to a suitable place and explain it}
+    We then flip all remaining $Z$'s
+
     \begin{lemma}
       \label{lm:sweep:vertOnsided}
       The resulting REL is vertically one-sided
     \end{lemma}
     \begin{proof}
-      This is the same as saying that the resulting regular edge labeling has no blue $Z$'s
-
-      There are two ways a blue $Z$ can form either we start at a vertex just before a merge or we terminate on a vertex just after a split.
-
-      For start point the following holds. Either we start adjacent to $\pS$ or we start due to a chord.
-
-      For merge points the following holds either we end adjacent to $\pS$, or due to a chord or 2-chord.
-
-      \vspace{2ex}
-      \emph{We can't merge just after a split.}
-
-      If the merge $v$ is due to the vertex being adjacent to $\pS$ we have nowhere to go with the freshly split of path. \fxnote{provide figure}
-
-      Suppose now we the merge was due to a chord or a 2-chord. Then the only reason to start on this place is due to a chord or a polebound 2-chord. However such chord or polebound 2-chord would have to cross the cycle that forced the merge. Only a 2-chord can do this to another 2-chord, but then the one forcing a merge was a polebound 2-chord and that should have taken precedence.
-
-
-      \vspace{2ex}
-      \emph{We can't split just before a merge.}
-
-      Suppose the merge $v$ was due to $\pS$-adjencency. Then the split $w$ can not be due to a chord or 2-chord since such a structure would have to pass $v \pS$ (and we don't consider 2-chords with $\pS$). However the split also can't be due to $\pS$-adjecency because that would give us the separating triangle $\pS v w$
-
-      Suppose that the merge is due to chord or 2-chord. Then a split can't be due to $\pS$-adjecency since the chord/2-chord is blocking this. It also can't be due to a chord or polebound 2-chord since those would have to cross.
-      \fxnote   {We might add figures}
+      By construction we flip all blue $Z$'s
     \end{proof}
 
     \fxnote{do we need this to complete the proof? I currently do use it}
