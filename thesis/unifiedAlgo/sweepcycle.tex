@@ -241,10 +241,29 @@
 
       \vspace{2ex}
       \emph{We can't merge just after a split.}
+      Any merge $v$ just after a split $w$ must be on the bottommost fence (the fence just split of). Since otherwise we would get a monocolored triangle as can be seen in Figure \ref{fig:sweep:mergeOnBottomFan}.
+      \fxerror{I don't thinks this is true, it can also be adjacent to the topmost fan. (Note we must use the idiom that a split splits off to the bottom and a merge merges to the top)}
 
-      If the merge $v$ is due to the vertex being adjacent to $\pS$ we have nowhere to go with the freshly split of path. \fxnote{provide figure}
+      If the merge $v$ is due to the vertex being adjacent to $\pS$ we have nowhere to go with the freshly split of path as can been seen in Figure \ref{}
 
       Suppose now we the merge was due to a chord or a 2-chord. Then the only reason to start on this place is due to a chord or a polebound 2-chord. However such chord or polebound 2-chord would have to cross the cycle that forced the merge. Only a 2-chord can do this to another 2-chord, but then the one forcing a merge was a polebound 2-chord and that should have taken precedence.
+
+      \begin{figure}
+          \centering
+          \begin{subfigure}[b]{0.45 \textwidth}
+              \includegraphics[width = \textwidth]{unifiedAlgo/img/sweep/mergeOnBottomFan}
+              \caption{}
+              \label{fig:sweep:mergeOnBottomFan}
+          \end{subfigure}
+          ~
+          \begin{subfigure}[b]{0.45 \textwidth}
+              \includegraphics[width =\textwidth]{unifiedAlgo/img/sweep/mergeAfterSplit1}
+              \caption{}
+              \label{fig:sweep:}
+          \end{subfigure}
+          	\caption{}
+            \label{}
+      \end{figure}
 
 
       \vspace{2ex}
