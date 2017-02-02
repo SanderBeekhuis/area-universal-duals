@@ -226,8 +226,40 @@
       After running the whole algorithm the interior vertex condition holds for all vertices in the graph. Furthermore the poles are also colored correctly due to Invariant \ref{i:uni:SWandSE}.
     \end{proof}
 
+
+    \begin{lemma}
+      \label{lm:sweep:NoTwoSplitsAboveEachOther}
+      Let $v$ be any splitvertex. Then the subsequent vertex on the rightmost path $w$ can't be the handle of a large topfan.
+    \end{lemma}
+
+    \begin{proof}
+      \fxnote{Try to clear up reasoning furthera}
+      We have drawn Figure \ref{fig:sweep:splitsAboveEachOther} to clarify the situation and notation.
+
+      Suppose that $w$ is the handle of a big topfan on the rightmost path
+
+      Note that if $v$ is a splitvertex because it is adjacent to $\pS$ then since $w$ is on the rightmost path it also has to be adjacent to $\pS$. \fxwarning{TODO figure, something about interior vertex conditon}
+      Hence $w$ is not the handle of a large topfan.
+
+
+      On the other hand if the path $\P = vw\ldots x$ started due to a chord then this chord is given by $v a b x$.
+
+      The interior of the rightmost path $\P$ and  $vabx$ has no vertices. Otherwise $\P$ would not be the rightmost path since any augmenting path would find $ab$ as chord.
+
+      Now $w$ can't be connected to any vertex in $\P$ that would give a chord. So $w$ can only be connected to $a$ and $b$ and is thus a topfan of size at most $2$.
+    \end{proof}
+
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=1]{unifiedAlgo/img/sweep/splitsAboveEachOther.pdf}
+      \caption{}
+      \label{fig:sweep:splitsAboveEachOther}
+    \end{figure}
+
+
     \fxwarning{Move this to a suitable place and explain it}
-    We then flip all remaining $Z$'s
+    We then flip all blue $Z$'s. To be more exact, the midlle edges.
 
     \begin{lemma}
       \label{lm:sweep:vertOnsided}
@@ -235,6 +267,15 @@
     \end{lemma}
     \begin{proof}
       By construction we flip all blue $Z$'s
+    \end{proof}
+
+    \begin{lemma}
+      \label{lm:sweep:NoTwoSplitsAboveEachOtherVertOnesided}
+      Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther} still holds.
+    \end{lemma}
+
+    \begin{proof}
+      The edges of $\P$ and $ab$ are not midlle edges of any $Z$. Hence they are not flipped. The same proof still holds.
     \end{proof}
 
     \fxnote{do we need this to complete the proof? I currently do use it}
@@ -245,25 +286,3 @@
     \begin{proof}
         This would give a non-trivial separating $5$-cycle. Whether we consider a chord or a polebound 2-chord.
     \end{proof}
-
-    \begin{lemma}
-      \label{lm:sweep:NoTwoSplitsAboveEachOther}
-      If the left outer vertex of a topfan is a split vertex then all vertices to the left of the top fan handle are not a splits.
-    \end{lemma}
-
-    \begin{proof}
-      \fxnote{Try to clear up reasoning furthera}
-      We have drawn Figure \ref{fig:sweep:splitsAboveEachOther} to clarify the statement and introduce notation. The statement is that if $w$ is a split vertex and on the left outer rim of a large topfan with handle $v$ then $u$ is not also a split vertex.
-
-      If $v$ is a merge vertex we are done immediately using Lemma \ref{lm:sweep:vertOnsided}. Hence there is only a single vertex left of $v$, which we will call $u$. $u$ is not $\pS$-adjecent so the only reason it can be a split vertex is if it was under a chord starting at $w$. However due to the topfan we can't start any chord.
-
-      The split off edge $e$ also can't form a chord since this would break the \rel since the neighbors of $w$ wouldn't get any incoming red.
-    \end{proof}
-
-
-    \begin{figure}[h]
-      \centering
-      \includegraphics[scale=1]{unifiedAlgo/img/sweep/splitsAboveEachOther.pdf}
-      \caption{}
-      \label{fig:sweep:splitsAboveEachOther}
-    \end{figure}
