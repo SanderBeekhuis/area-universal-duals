@@ -226,27 +226,41 @@
       After running the whole algorithm the interior vertex condition holds for all vertices in the graph. Furthermore the poles are also colored correctly due to Invariant \ref{i:uni:SWandSE}.
     \end{proof}
 
+    Given a splitvertex $v$ we will by \emph{bottom} path mean the path that comes in trough the first incoming blue edge in the the rotation at $v$ and leaves through the last outgoing blue edge in the rotation at $v$. See Figure \ref{fig:sweep:bottomPath}.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=1]{unifiedAlgo/img/sweep/bottompath.pdf}
+      \caption{The bottom path of this splitvertex is given in bold}
+      \label{fig:sweep:bottomPath}
+    \end{figure}
 
     \begin{lemma}
       \label{lm:sweep:NoTwoSplitsAboveEachOther}
-      Let $v$ be any splitvertex. Then the subsequent vertex on the rightmost path $w$ can't be the handle of a large topfan.
+      Let $v$ be any splitvertex. Then the subsequent vertex on the bottom path $w$ can't be the handle of a large topfan.
     \end{lemma}
 
     \begin{proof}
       \fxnote{Try to clear up reasoning furthera}
       We have drawn Figure \ref{fig:sweep:splitsAboveEachOther} to clarify the situation and notation.
 
-      Suppose that $w$ is the handle of a big topfan on the rightmost path
+      Note that if $v$ is a splitvertex because it is adjacent to $\pS$ then since $w$ is on the bottom path it also has to be adjacent to $\pS$ by the definition of the bottom path.
+      Hence $w$ is not the handle of a large topfan in this case.
 
-      Note that if $v$ is a splitvertex because it is adjacent to $\pS$ then since $w$ is on the rightmost path it also has to be adjacent to $\pS$. \fxwarning{TODO figure, something about interior vertex conditon}
-      Hence $w$ is not the handle of a large topfan.
+      On the other hand if $v$ is a splitvertex due to a chord $v a b x$ we can continue the bottom path past $w$ as an bottom path that will eventually go to $x$. By the way we treat chords in the algorithm. \fxnote{Formalize: "By the way we treat chords"} We will denote this extended bottom path by $\P$. The situation is depicted in Figure \ref{fig:botomPathChord}.
 
+      \begin{figure}[h]
+        \centering
+        \includegraphics[scale=1]{unifiedAlgo/img/sweep/bottompathChord.pdf}
+        \caption{}
+        \label{fig:botomPathChord}
+      \end{figure}
 
-      On the other hand if the path $\P = vw\ldots x$ started due to a chord then this chord is given by $v a b x$.
+      The interior of  $vabx \oplus \rev \P$ and has no vertices. Suppose there would be such a vertex then since $\P$ is a bottom path the blue path going trough this vertex has to start at $a$ and end at $b$. But then this gives a blue face with only one edge on it's bottom boundary path, hence the interior of this face has no incoming red edges. \fxnote{Or i could make a lemma about face borders somewhere and contradict with that.} So the result is not a \rel. Since our graph is a \rel $vabx \oplus \rev \P$ has no interior vertices.
 
-      The interior of the rightmost path $\P$ and  $vabx$ has no vertices. Otherwise $\P$ would not be the rightmost path since any augmenting path would find $ab$ as chord.
+      This also implies all interior edges are red (by the definition of bottom path) and thus that $ab$ is blue otherwise we would get a monocolored triangle.
 
-      Now $w$ can't be connected to any vertex in $\P$ that would give a chord. So $w$ can only be connected to $a$ and $b$ and is thus a topfan of size at most $2$.
+      Now $w$ can't be connected to any vertex in $\P$ that would give a chord. And we don't allow chords in any valid path on the moment we add it. So $w$ can only be connected to $a$ and $b$ and is thus a topfan of size at most $2$. (If it's a topfan at all, since we don't consider topfans of size 1 as topfans.)
     \end{proof}
 
 
@@ -259,7 +273,7 @@
 
 
     \fxwarning{Move this to a suitable place and explain it}
-    We then flip all blue $Z$'s. To be more exact, the midlle edges.
+    We then flip all blue $Z$'s. To be more exact, the middle edges.
 
     \begin{lemma}
       \label{lm:sweep:vertOnsided}
@@ -275,7 +289,7 @@
     \end{lemma}
 
     \begin{proof}
-      The edges of $\P$ and $ab$ are not midlle edges of any $Z$. Hence they are not flipped. The same proof still holds.
+      The edges of $\P$ and $ab$ are not middle edges of any $Z$. Hence they are not flipped. The same proof still holds.
     \end{proof}
 
     \fxnote{do we need this to complete the proof? I currently do use it}
