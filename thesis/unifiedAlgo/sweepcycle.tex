@@ -242,8 +242,6 @@
 
     \begin{proof}
       \fxnote{Try to clear up reasoning furthera}
-      We have drawn Figure \ref{fig:sweep:splitsAboveEachOther} to clarify the situation and notation.
-
       Note that if $v$ is a splitvertex because it is adjacent to $\pS$ then since $w$ is on the bottom path it also has to be adjacent to $\pS$ by the definition of the bottom path.
       Hence $w$ is not the handle of a large topfan in this case.
 
@@ -263,24 +261,39 @@
       Now $w$ can't be connected to any vertex in $\P$ that would give a chord. And we don't allow chords in any valid path on the moment we add it. So $w$ can only be connected to $a$ and $b$ and is thus a topfan of size at most $2$. (If it's a topfan at all, since we don't consider topfans of size 1 as topfans.)
     \end{proof}
 
+\newpage
+\section{Flipping Blue $Z$'s}
+    The \rel provided by the algorithm so far is vertically one-sided in most cases but not always. In the case that this \rel is not one-sided there must be a blue $Z$ (see Figure \ref{fig:zflip:blueZ})
 
     \begin{figure}[h]
       \centering
-      \includegraphics[scale=1]{unifiedAlgo/img/sweep/splitsAboveEachOther.pdf}
-      \caption{}
-      \label{fig:sweep:splitsAboveEachOther}
+      \includegraphics[scale=1]{unifiedAlgo/img/zflip/blueZ.pdf}
+      \caption{The two possible blue $Z$'s}
+      \label{fig:zflip:blueZ}
     \end{figure}
 
+    We will say that such a $Z$ consists of a \emph{top}, \emph{bottom} and \emph{midlle} edge in straightforward manner. \fxnote{I have some introduction on this subject somewhere}
 
-    \fxwarning{Move this to a suitable place and explain it}
-    We then flip all blue $Z$'s. To be more exact, the middle edges.
+
+    As long as the \rel is not vertically one-sided we find such a blue $Z$ and recolor it's middle edge as in Figure \ref{fig:zflip:flip}. We will say that this edge is \emph{flipped}
+
+    Note that both flips transfer one valid \rel to another valid \rel. If the interior vertex condition was fulfilled in Figure \ref{fig:zflip:blueZ} then it is also fulfilled in Figure \ref{fig:zflip:flip}.
+
+     We do this until the \rel is vertically one-sided. Since every flip reduces the number of blue edges by one this is a finite procedure.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=1]{unifiedAlgo/img/zflip/flip.pdf}
+      \caption{The flip}
+      \label{fig:zflip:flip}
+    \end{figure}
 
     \begin{lemma}
       \label{lm:sweep:vertOnsided}
       The resulting REL is vertically one-sided
     \end{lemma}
     \begin{proof}
-      By construction we flip all blue $Z$'s
+      By construction we flip all blue $Z$'s. If we don't have any more $Z$'s then the remaining \rel is vertically one-sided. \fxnote{refer to some lemma?}
     \end{proof}
 
     \begin{lemma}
@@ -289,7 +302,12 @@
     \end{lemma}
 
     \begin{proof}
-      The edges of $\P$ and $ab$ are not middle edges of any $Z$. Hence they are not flipped. The same proof still holds.
+      Flipping middle edges of these $Z$'s  can only reduce the number of split vertices.
+
+      For a split vertex $v$ adjacent to $\pS$ we can note that the edge $vw$ will not be flipped because it can't be a middle edge. Hence $w$ is still on the bottom path and still not the handle of a big topfan.
+
+      If $v$ is a split vertex due to a chord let us note the following.
+      The edges of $\P$ and $ab$ can't have been flipped since then we would find a monocolored red triangle while a flip leads to another valid \rel. Hence $w$ is still on the bottom path trough $v$ and still can't be the handle of a large topfan.
     \end{proof}
 
     \fxnote{do we need this to complete the proof? I currently do use it}
