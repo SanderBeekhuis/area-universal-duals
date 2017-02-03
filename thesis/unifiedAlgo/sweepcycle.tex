@@ -214,13 +214,18 @@
       Hence $\C'$ is a valid new sweepcycle.
     \end{proof}
 
+    \subsection{Last steps}
+    When the sweepcycle is no longer separating we can't update it anymore. However at this point it is easy to color the rest of the graph. All vertices in $\C$ must be adjacent to $\pS$ since $\pS \pW$ and $\pS \pE$ are part of $C$ by Invariant \ref{i:uni:SWandSE} $C$ has no chords by Invariant \ref{i:uni:noChords} and $C$ does not contain any interior vertices. Sice all vertices are adjacent to $\S$ all interior edges are adjacent to $\pS$.
+
+    We coll and we color all interior edges red and the edges in $\cpath$ are colored blue. This last move completes the interior vertex condition for vertices in $\C \sm {\pW, \pS, \pE}$ and also correctly completes the exterior vertices.
+
+
     \begin{lemma}
       \label{lm:sweep:REL}
       The resulting structure is a REL
     \end{lemma}
 
     \begin{proof}
-      \fxnote{We should patch up the last step. That is, what to do when the sweepcycle is no longer separating }
       After running the whole algorithm the interior vertex condition holds for all vertices in the graph. Furthermore the poles are also colored correctly due to Invariant \ref{i:uni:SWandSE}.
     \end{proof}
 

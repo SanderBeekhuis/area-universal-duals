@@ -52,11 +52,11 @@ Our flips differ depending on whether we we encounter a split and or merge in th
 \end{figure}
 
 
-\fxnote{We could make structure of the fence below the topfan more explicit. }
+%\fxnote{We could make structure of the fence below the topfan more explicit. But we don't really need this}
 
-We consider all faces we have in order from first created to last created. We make a distinction between \emph{south-adjacent topfans} that have a rim vertex adjacent to $\pS$ and \emph{regular} topfans that don't have such a vertex.
+We consider all faces we have in order from first created to last created.
 
-\paragraph{Regular topfans}
+\paragraph{Flipping topfans}
 A topfan is above a number of edges of the bottom fence of the face containing the topfan. These edges are the rim of the fan.
 
 We flip the topfan along the rim starting at the first vertex and ending at the the vertex \textbf{before} the first split or $\pS$ adjacent vertex or the vertex \textbf{before} the last vertex. This can imply that we don't flip any edges (in the case that the first vertex is a split vertex or $\pS$-adjecent).
