@@ -226,63 +226,86 @@
       After running the whole algorithm the interior vertex condition holds for all vertices in the graph. Furthermore the poles are also colored correctly due to Invariant \ref{i:uni:SWandSE}.
     \end{proof}
 
+    Given a splitvertex $v$ we will by \emph{bottom} path mean the path that comes in trough the first incoming blue edge in the the rotation at $v$ and leaves through the last outgoing blue edge in the rotation at $v$. See Figure \ref{fig:sweep:bottomPath}.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=1]{unifiedAlgo/img/sweep/bottompath.pdf}
+      \caption{The bottom path of this splitvertex is given in bold}
+      \label{fig:sweep:bottomPath}
+    \end{figure}
+
+    \begin{lemma}
+      \label{lm:sweep:NoTwoSplitsAboveEachOther}
+      Let $v$ be any splitvertex. Then the subsequent vertex on the bottom path $w$ can't be the handle of a large topfan.
+    \end{lemma}
+
+    \begin{proof}
+      \fxnote{Try to clear up reasoning furthera}
+      Note that if $v$ is a splitvertex because it is adjacent to $\pS$ then since $w$ is on the bottom path it also has to be adjacent to $\pS$ by the definition of the bottom path.
+      Hence $w$ is not the handle of a large topfan in this case.
+
+      On the other hand if $v$ is a splitvertex due to a chord $v a b x$ we can continue the bottom path past $w$ as an bottom path that will eventually go to $x$. By the way we treat chords in the algorithm. \fxnote{Formalize: "By the way we treat chords"} We will denote this extended bottom path by $\P$. The situation is depicted in Figure \ref{fig:botomPathChord}.
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[scale=1]{unifiedAlgo/img/sweep/bottompathChord.pdf}
+        \caption{}
+        \label{fig:botomPathChord}
+      \end{figure}
+
+      The interior of  $vabx \oplus \rev \P$ and has no vertices. Suppose there would be such a vertex then since $\P$ is a bottom path the blue path going trough this vertex has to start at $a$ and end at $b$. But then this gives a blue face with only one edge on it's bottom boundary path, hence the interior of this face has no incoming red edges. \fxnote{Or i could make a lemma about face borders somewhere and contradict with that.} So the result is not a \rel. Since our graph is a \rel $vabx \oplus \rev \P$ has no interior vertices.
+
+      This also implies all interior edges are red (by the definition of bottom path) and thus that $ab$ is blue otherwise we would get a monocolored triangle.
+
+      Now $w$ can't be connected to any vertex in $\P$ that would give a chord. And we don't allow chords in any valid path on the moment we add it. So $w$ can only be connected to $a$ and $b$ and is thus a topfan of size at most $2$. (If it's a topfan at all, since we don't consider topfans of size 1 as topfans.)
+    \end{proof}
+
+\newpage
+\section{Flipping Blue $Z$'s}
+    The \rel provided by the algorithm so far is vertically one-sided in most cases but not always. In the case that this \rel is not one-sided there must be a blue $Z$ (see Figure \ref{fig:zflip:blueZ})
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=1]{unifiedAlgo/img/zflip/blueZ.pdf}
+      \caption{The two possible blue $Z$'s}
+      \label{fig:zflip:blueZ}
+    \end{figure}
+
+    We will say that such a $Z$ consists of a \emph{top}, \emph{bottom} and \emph{midlle} edge in straightforward manner. \fxnote{I have some introduction on this subject somewhere}
+
+
+    As long as the \rel is not vertically one-sided we find such a blue $Z$ and recolor it's middle edge as in Figure \ref{fig:zflip:flip}. We will say that this edge is \emph{flipped}
+
+    Note that both flips transfer one valid \rel to another valid \rel. If the interior vertex condition was fulfilled in Figure \ref{fig:zflip:blueZ} then it is also fulfilled in Figure \ref{fig:zflip:flip}.
+
+     We do this until the \rel is vertically one-sided. Since every flip reduces the number of blue edges by one this is a finite procedure.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=1]{unifiedAlgo/img/zflip/flip.pdf}
+      \caption{The flip}
+      \label{fig:zflip:flip}
+    \end{figure}
+
     \begin{lemma}
       \label{lm:sweep:vertOnsided}
       The resulting REL is vertically one-sided
     \end{lemma}
     \begin{proof}
-      This is the same as saying that the resulting regular edge labeling has no blue $Z$'s
-
-      There are two ways a blue $Z$ can form either we start at a vertex just before a merge or we terminate on a vertex just after a split.
-
-      For start point the following holds. Either we start adjacent to $\pS$ or we start due to a chord.
-
-      For merge points the following holds either we end adjacent to $\pS$, or due to a chord or 2-chord.
-
-      \vspace{2ex}
-      \emph{We can't merge just after a split.}
-
-      If the merge $v$ is due to the vertex being adjacent to $\pS$ we have nowhere to go with the freshly split of path. \fxnote{provide figure}
-
-      Suppose now we the merge was due to a chord or a 2-chord. Then the only reason to start on this place is due to a chord or a polebound 2-chord. However such chord or polebound 2-chord would have to cross the cycle that forced the merge. Only a 2-chord can do this to another 2-chord, but then the one forcing a merge was a polebound 2-chord and that should have taken precedence.
-
-
-      \vspace{2ex}
-      \emph{We can't split just before a merge.}
-
-      Suppose the merge $v$ was due to $\pS$-adjencency. Then the split $w$ can not be due to a chord or 2-chord since such a structure would have to pass $v \pS$ (and we don't consider 2-chords with $\pS$). However the split also can't be due to $\pS$-adjecency because that would give us the separating triangle $\pS v w$
-
-      Suppose that the merge is due to chord or 2-chord. Then a split can't be due to $\pS$-adjecency since the chord/2-chord is blocking this. It also can't be due to a chord or polebound 2-chord since those would have to cross.
-      \fxnote   {We might add figures}
-    \end{proof}
-
-    \fxnote{do we need this to complete the proof? I currently do use it}
-    \begin{lemma}
-      \label{lm:uni:noTfan above whole path}
-      The resulting REL never has a red $T$-fanhandle connected to both split and merge vertex of the same path. Unless the split is $\pS$-adjecent
-    \end{lemma}
-    \begin{proof}
-        This would give a non-trivial separating $5$-cycle. Whether we consider a chord or a polebound 2-chord.
+      By construction we flip all blue $Z$'s. If we don't have any more $Z$'s then the remaining \rel is vertically one-sided. \fxnote{refer to some lemma?}
     \end{proof}
 
     \begin{lemma}
-      \label{lm:sweep:NoTwoSplitsAboveEachOther}
-      If the left outer vertex of a topfan is a split vertex then all vertices to the left of the top fan handle are not a splits.
+      \label{lm:sweep:NoTwoSplitsAboveEachOtherVertOnesided}
+      Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther} still holds.
     \end{lemma}
 
     \begin{proof}
-      \fxnote{Try to clear up reasoning furthera}
-      We have drawn Figure \ref{fig:sweep:splitsAboveEachOther} to clarify the statement and introduce notation. The statement is that if $w$ is a split vertex and on the left outer rim of a large topfan with handle $v$ then $u$ is not also a split vertex.
+      Flipping middle edges of these $Z$'s  can only reduce the number of split vertices.
 
-      If $v$ is a merge vertex we are done immediately using Lemma \ref{lm:sweep:vertOnsided}. Hence there is only a single vertex left of $v$, which we will call $u$. $u$ is not $\pS$-adjecent so the only reason it can be a split vertex is if it was under a chord starting at $w$. However due to the topfan we can't start any chord.
+      For a split vertex $v$ adjacent to $\pS$ we can note that the edge $vw$ will not be flipped because it can't be a middle edge. Hence $w$ is still on the bottom path and still not the handle of a big topfan.
 
-      The split off edge $e$ also can't form a chord since this would break the \rel since the neighbors of $w$ wouldn't get any incoming red.
+      If $v$ is a split vertex due to a chord let us note the following.
+      The edges of $\P$ and $ab$ can't have been flipped since then we would find a monocolored red triangle while a flip leads to another valid \rel. Hence $w$ is still on the bottom path trough $v$ and still can't be the handle of a large topfan.
     \end{proof}
-
-
-    \begin{figure}[h]
-      \centering
-      \includegraphics[scale=1]{unifiedAlgo/img/sweep/splitsAboveEachOther.pdf}
-      \caption{}
-      \label{fig:sweep:splitsAboveEachOther}
-    \end{figure}

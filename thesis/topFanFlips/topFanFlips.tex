@@ -3,9 +3,9 @@
 \section{Top Fan flips}
 \label{s:fanflip}
 
-The second stage of the algorithm will consist of flipping most large topfans. The first stage of the algorithm finished by computing a vertically one-sided \rel (Lemma's \ref{lm:sweep:REL} and \ref{lm:sweep:vertOnsided}) that never has two splits below each other (Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther})
+The second stage of the algorithm will consist of flipping most large topfans. The first stage of the algorithm finished by computing a vertically one-sided \rel (Lemma's \ref{lm:sweep:REL} and \ref{lm:sweep:vertOnsided}) that never has a split next to a topfan handle along the rightmost edge of the split (Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOtherVertOnesided}).
 
-Using some local recolorings (\emph{flips}) on the topfans we will maintain a onesided REL (Lemma \ref{lm:topfan:oneSidedREL}) and make sure that large topfans only occr in very specific situations (Lemma \ref{lm:topfan:remainingTopfans}).
+Using some local recoloring (\emph{flips}) on the topfans we will maintain a onesided REL (Lemma \ref{lm:topfan:oneSidedREL}) and make sure that large topfans only occur in very specific situations (Lemma \ref{lm:topfan:remainingTopfans}).
 
 Our flips differ depending on whether we we encounter a split and or merge in the bottom boundary path. Refer to Figure \ref{fig:fanflip:fanflips} for the different kinds of topfanflips.
 
@@ -54,33 +54,29 @@ Our flips differ depending on whether we we encounter a split and or merge in th
 
 \fxnote{We could make structure of the fence below the topfan more explicit. }
 
-%When we encounter a topfan we start flipping edges. In principle we want to color all edges in the fan blue except for the right outer edge. In order to maintain a \rel we then recolor all of the rim except for the right outer edge to be red. Then we also need to to color the left outer edges of all topfans below this topfan blue. Note that all rim vertices are topfan handles since otherwise we would have a separating 4-cycle.
-
-We consider all faces we have in order from first created to last created. We make a distinction between \emph{south-adjacent topfans} that don't have a rim vertex adjecent to $\pS$ and \emph{regular} topfans that don't have such a vertex.
+We consider all faces we have in order from first created to last created. We make a distinction between \emph{south-adjacent topfans} that have a rim vertex adjacent to $\pS$ and \emph{regular} topfans that don't have such a vertex.
 
 \paragraph{Regular topfans}
-A topfan is above a number of edges of the bottom fence. These edges are the rim of the fan.  Along this fan we can't have a merge followed by a split (Lemma \ref{lm:uni:noTfan above whole path}).
+A topfan is above a number of edges of the bottom fence of the face containing the topfan. These edges are the rim of the fan.
 
-This means the rim of a fan can have a number of merges followed by a number of splits.
+We flip the topfan along the rim starting at the first vertex and ending at the the vertex \textbf{before} the first split or $\pS$ adjacent vertex or the vertex \textbf{before} the last vertex. This can imply that we don't flip any edges (in the case that the first vertex is a split vertex or $\pS$-adjecent).
 
+
+For the first vertex $v_1$ we recolor the adjacent outer edge of the topfan. For subsequent vertices $v_i$ we recolor the rim edge between this vertex and the previous vertex $v_{i-1}$ red and we recolor the edges adjacent to this edge in the rotation at $v_i$ blue (if they weren't already blue).
+
+If we stop flipping before a merge vertex $v_{i+1}$ we flip and additional edge $v_i v_{i+1}$ along the rim.
+
+Examples of this procedure are given in the following paragraph.
+
+
+\paragraph{Examples}
 If the rim has no merges or splits we execute the topfanflip depicted in Figure \ref{fig:fanflip:regular}. We color all but the rightmost fan edge blue, color all but the rightmost rim edge red. And color the left sides of all topfans below this topfan in the face below the current face blue.
 
-If the rim consists of only merges we can easily adept a topfanflip to this situation. We simply don't flip the edge merging in as depicted in Figure \ref{fig:fanflip:merge}.
+If the rim consists of only merges we easily adept a topfanflip to this situation. We simply don't flip the edge merging in as depicted in Figure \ref{fig:fanflip:merge}.
 
 A special case is given by a merge on the last vertex on the bottom edges of the top fan. In that case we flip all rim edges (even the last one) to prevent a blue $Z$ from forming. See figure \ref{fig:fanflip:mergeLastVertex}.
 
-Splits are more difficult to handle. We are unfortunatly unable to keep flipping once we hit a split hence we stop before we get that far. See Figure \ref{fig:fanflip:split}. It this happens on the first vefrtex we don't flip at all, see Figure \ref{fig:fanflip:splitFirstVertex}.
-
-\paragraph{South-adjacent topfans}
-We call a topfan south-adjecent if any of it's rim vertices is next to the south pole.
-
-At most two vertices of a top fan can be adjacent to the south pole. And in this case these vertices must be adjacent. Otherwise we have a separating 4-cycle.
-
-Before the south pole we can have a split followed by a merge followed by the south pole adjacent vertices followed again by possibly splits and merges.
-
-Fortunately we can treat this complicated faces just like any split fan. Where we stop flipping before the first split or $\pS$-adjacent vertex.
-
-\fxnote{We might add a figure}
+Splits are more difficult to handle. We are unfortunately unable to keep flipping once we hit a split hence we stop before we get that far. See Figure \ref{fig:fanflip:split}. It this happens on the first vertex we don't flip at all, see Figure \ref{fig:fanflip:splitFirstVertex}.
 
 \paragraph{The result}
 Before the topfanflips we had a vertically one-sided REL. Afterwards we still have a vertically one-sided \rel as we will prove in Lemma \ref{lm:topfan:oneSidedREL}. Moreover we have no large top-fans except for some controlled cases as we will prove in Lemma \ref{lm:topfan:remainingTopfans}.
@@ -108,7 +104,7 @@ Before the topfanflips we had a vertically one-sided REL. Afterwards we still ha
   In the remaining faces every large topfan is in one of the following two situations.
   \begin{enumerate}
     \item  This topfan is at the start of the face
-    \item  This topfan is in the midlle of the face and it's left outer rim vertex is a split.
+    \item  This topfan is in the middle of the face and it's left outer rim vertex is a split.
   \end{enumerate}
 \end{lemma}
 \begin{proof}
