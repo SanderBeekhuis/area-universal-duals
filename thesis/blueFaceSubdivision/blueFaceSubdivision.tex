@@ -15,8 +15,16 @@ Then we continue with the next face in the order we just calculated.
 
 
 \paragraph{Loads}
-\fxwarning{Still have to describe loads}
-What is a load, putting trough loads
+As is mentioned above we will mark some edges using so-called \emph{loads}, we will in the rest of the section refer to these edges as \emph{loaded}. The exact use of these loaded edges will become clear in the rest of this section. But as is mentioned above we try to not flip above these edges.
+
+It is important to note that if we load any blue edge we regard any other blue edge sharing at least one vertex with this edge to be loaded as well. The occurrence of this phenomenon will be called \emph{putting trough a load}. An example can be seen in Figure \ref{fig:subdiv:putTrougLoad}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=1]{blueFaceSubdivision/img/puttingTroughLoad.pdf}
+  \caption{The fat edge is flipped. Hence we mark $uv$ as loaded. Via the mechanism of putting trough load $uw$ also becomes marked as loaded.}
+  \label{fig:subdiv:putTrougLoad}
+\end{figure}
 
 
 \paragraph{Step requirements}
