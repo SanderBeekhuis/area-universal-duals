@@ -46,8 +46,7 @@ Because we do this we can also say the following
 \begin{proof}
   A single face would never load two subsequent edges. Hence the only way to get two subsequent loaded edges is using different faces and thus splits and merges.
 
-  However due to the built-in safety of never flipping next to a split/merge we never get subsequent loaded edges.
-  \fxnote{Might add a figure}
+  However due to never flipping next to a split/merge we never get subsequent loaded edges.
 \end{proof}
 
 
@@ -83,7 +82,7 @@ Let us first consider the base case: no failed top fan flips and thus all topfan
 
   The first edge give us the required separation of loaded edges along the top boundary path. The other items make sure we obey the other rules in a straightforward manner.
 
-  The worst case is given by a combination of the last two items. We would in that case want to flip above the third edge. But we don't because the next edge is the merge. This gives at worst 5 edges along the whole bottom boundary path and hence a 4-sided face.
+  The worst case is given by a combination of the last two items. We would in that case want to flip above the third edge. But we don't because the next edge is the merge. This gives at worst 5 edges along the whole bottom boundary path and hence a $4$-sided face.
 
 
 
@@ -100,8 +99,16 @@ See Figure \ref{fig:subdiv:sampleExecution} for a sample execution of the algori
 
 
 \subsection{Face starting with a large topfan}
-The same algorithm as in Lemma \ref{lm:subdiv:withoutTopfan} after skipping the first topfan instead of the first edge finds us a finds us an edge keeping this face as a $ d - 3 +3 = d$ face.
-\fxnote{Might add figure of worst case.}
+\fxnote{It might be $d-1$ in worst case}
+The same algorithm as in Lemma \ref{lm:subdiv:withoutTopfan} after skipping the first topfan instead of the first edge finds us a finds us an edge keeping this face as at most a $ d - 3 +3 = d$-sided face. A sample worst case scenario is given in Figure \ref{fig:subdiv:worstCaseWithTopFan}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=1]{blueFaceSubdivision/img/worstCaseWithTopFan}
+  \caption{A worst case blue face. We don't flip any edge in this face.}
+  \label{fig:subdiv:worstCaseWithTopFan}
+\end{figure}
+
 
 \subsection{Face encountering a larger topfan}
 If we have a large topfan in the middle of the face then above the left outer edge of this topfan we can't have another topfan that failed to flip its left outer edges by Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther}.
