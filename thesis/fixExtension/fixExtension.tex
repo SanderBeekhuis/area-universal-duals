@@ -1,10 +1,8 @@
 %!TEX root = ../thesis.tex
 
-\fxnote[inline,nomargin]{We might drop the whole notion of $(k,l)$-sidedness and only consider $k$-sidednes}
-
 \section{Fixing a corner assignment}
   \label{s:fix}
-  In our explorations to find a lower bound on what kind of \emph{(k,l)-sidedness} is possible we will find it very useful to fix one particular corner assignment $\ext G$ of $G$. Unfortunately if there is no rectangular dual that's $(k,l)$-sided using some corner assignment $\ext G$ of $G$. This does not imply that $G$ is not $(k,l)$-sided. There might be another corner assignment of $G$ that has a $(k,l)$-sided rectangular dual.
+  In our explorations to find a lower bound on what kind of \emph{$k$-sidedness} is possible we will find it very useful to fix one particular corner assignment $\ext G$ of $G$. Unfortunately if there is no rectangular dual that's $k$-sided using some corner assignment $\ext G$ of $G$. This does not imply that $G$ is not $k$-sided. There might be another corner assignment of $G$ that has a $k$-sided rectangular dual.
 
   Fortunately for us however we can view $\ext G = H$ as a graph in its own right, then $G$ is the interior of a separating $4$-cycle of $H$ and we will show this implies that $G$ (as induced subgraph) has to be colored in accordance with the corner assignment $\ext G$.
 
@@ -68,22 +66,7 @@
     The graph $H$ can have more then one corner assignment but they all contain the separating $4$-cycle $\C= NESW$ thus by Lemma \ref{lm:fix:fourCycleInteriorColor} we see that, without loss of generality, the interior edges of $\C$ incident to $N$ and $S$ are colored red and those incident to $E$ or $W$ are colored blue. This is exactly as if we forced the corner assignment $\ext G$
     \end{proof}
 
-\subsection{An application: There are graphs that are $(2, \infty)$-sided}
-
-  We will show this by providing an example graph $G$ with a fixed corner assignment $\ext G$ we can do this due to Theorem \ref{th:fixCorner assignment}. Consider the graph in Figure \ref{fig:2manysidedLowerBound}. Note that most of the interior vertices are of degree $4$ and thus the largest part of any regular edge labeling is forced. Those edges that are forced to have a certain color are already colored in Figure \ref{fig:2manysidedLowerBound}.
-
-
-  \begin{figure}[h!]
-  \centering
-  \includegraphics[scale=.5]{fixExtension/img/2manysidedLowerBound}
-
-  \caption{The fixed corner assignment $\ext G$
-      \label{fig:2manysidedLowerBound}}
-  \end{figure}
-
-  The only edge for which we have freedom to choose a color is the diagonal edge of $G$. However, if we color this edge blue we get a red $(2, \infty)$ cycle and if we color this edge red we get a blue $(2, \infty)$ cycle. In both cases we will thus obtain a maximal $(2,\infty)$-sided segment in our dual.
-
-\subsection{Another application: There are graphs that are $(\infty, \infty)$-sided}
+\subsection{An application: There are graphs that are $\infty$-sided}
   \label{ss:fix:manymany}
   We consider the graph $G$ with corner assignment $\ext G$ given in Figure \ref{fig:fix:manymany0}. This graph has 2 maximal separating $4$-cycles. These are both marked by thick lines in Figure \ref{fig:fix:manymany0}.
 
@@ -124,9 +107,7 @@
 
 
   The result is then the graph displayed in Figure \ref{fig:fix:manymany4}. The black edges in this figure are edges that do not have a forced coloring by the above argument\footnote{Altough most of them can be forced by Lemma \ref{lm:fix:fourCycleInteriorColor}}.
-  We will focus on the centered black edge $e$ lying on both the maximal separating 4-cycles. We note that this edge is an interior edges of both the red an blue faces that we drew extra thick in Figure \ref{fig:fix:manymany4}. These faces are currently $(\infty, \infty)$-faces. Hence $e$ has to be colored both red and blue to prevent a $(\infty, \infty)$-sided maximal segment. This is impossible.
-
-  Hence the graph is $\infty$-sided.
+  We will focus on the centered black edge $e$ lying on both the maximal separating 4-cycles. We note that this edge is an interior edges of both the red an blue faces that we drew extra thick in Figure \ref{fig:fix:manymany4}. These faces both have that both their boundary paths are of arbitrarily large length. Hence $e$ has to be colored both red and blue to prevent such a face existing in the final \rel. This is impossible and hence the graph is $\infty$-sided.
 
   \begin{figure}[h]
     \centering
