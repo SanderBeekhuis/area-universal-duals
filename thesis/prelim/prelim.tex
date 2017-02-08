@@ -3,43 +3,37 @@
 \section{Preliminaries}
 All graphs in this thesis are simple. Paths and cycles are always simple while walks are not necessarily simple. A path is a simple walk and a cycle is a closed path.
 The \emph{length} of a walk (and thus of a path or cycle) is the number of edges it contains.
-
 We will let $\braces {i, \ldots, j}$ denote all the integers $x$ such that $i \leq x \leq j$.
-
 The \emph{degree} of a face is the number of vertices it is incident to and a \emph{triangular} face is a face of degree $3$.
 
-\mypar{Cycles}
- We will use \emph{$k$-cycle} to denote a cycle of length $k$. Moreover a \emph{triangle} is simply a cycle of length $3$ (i.e. a $3$-cycle).
+\mypar{Paths}
+  A path $\P$ is a sequence of vertices such that every two consecutive vertices are connected with each other. The first and last vertex of the path are it's \emph{extreme} vertices while the rest are \emph{interior} vertices of this path. The \emph{length} of a path is the number of edges used to connect the vertices. That, is one less then the number of vertices. All paths are \emph{simple}, that is, no vertex occurs twice in the path except the extreme vertices.
 
-\fxnote{We could cite Jordan's paper here. Should I? Or is this overdoing it? My textbook doesn't have a reference p. 245}
-By Jordan's curve theorem a cycle splits the plane into two parts, one bounded and one unbounded. We will call the bounded part the \emph{interior} of this cycle and the unbounded part the \emph{exterior} of this cycle.
-We will call a cycle \emph{separating} if there are vertices in both it's interior and exterior.
-An \emph{interior edge} of a cycle is then an edge contained in the interior of the cycle. Much in the same vein a \emph{interior path} is path connecting two distinct vertices on the cycle of which all edges are interior edges.
+\mypar{Cycles}
+  We call a cycle of length $k$  a \emph{$k$-cycle}. A \emph{triangle} is cycle of length $3$ (i.e. a $3$-cycle).
+  By Jordan's curve theorem a cycle splits the plane into two parts, one bounded and one unbounded. We will call the bounded part the \emph{interior} of this cycle and the unbounded part the \emph{exterior} of this cycle.
+  We call a cycle \emph{separating} if there are vertices in both it's interior and exterior.
+  An \emph{interior edge} of a cycle is then an edge contained in the interior of the cycle.
+  An \emph{interior path} is a path connecting two distinct vertices off the cycle and whose edges are interior edges.
 
 \mypar{Path notations}
-  We will sometimes give vertices of a path $\P$ explicitly using $p_1 \ldots p_k$.
-
-  With $\rev{P}$ we denote the \emph{reversed path} $p_k \ldots p_1$. We use $\oplus$ to denote the \emph{concatenation} of paths. That is given a second path $\Q$ with vertices $q_1 \ldots q_l$ and $p_k = q_1$ the new path $\P \oplus \Q$ consists of $p_1 \ldots p_{k-1} p_k=q_1 q_2 \ldots q_l$.
-  Recall that a cycle is simply a path starting and ending at the same vertex. Hence if we have two disjoint paths $\P, \Q$ from $s$ to $t$ then $\P \oplus \rev{\Q}$ is a cycle.
-
-  Furthermore we use a vertical bar to denote the \emph{restriction} of a path to a certain set of vertices. So $\P|_{p_i, p_j}$ with $i<j$ is the subpath of $\P$ that has vertices $p_i \ldots p_j$.
+  We denote the vertices of a path $\P$ by $p_1 \ldots p_k$.
+  With $\rev{P}$ we denote the \emph{reversed path} $p_k \ldots p_1$. We use $\oplus$ to denote the \emph{concatenation} of paths. That is, given a second path $\Q$ with vertices $q_1 \ldots q_l$ and $p_k = q_1$ the path $\P \oplus \Q$ consists of $p_1 \ldots p_{k-1} q_1 q_2 \ldots q_l$.
+  Recall that a cycle is simply a path starting and ending at the same vertex. Hence if we have two  internally disjoint paths $\P, \Q$ from $s$ to $t$ then $\P \oplus \rev{\Q}$ is a cycle.
+  Furthermore we use a vertical bar to denote the \emph{restriction} of a path to a certain set of vertices. So $\P|_{p_i, p_j}$ with $i<j$ is the subpath of $\P$ with vertices $p_i \ldots p_j$.
 
 \mypar{Chords}
- A \emph{chord} of a path is an edge that connects two vertices in this path but is not part of the path. If a path has no chords we will call it \emph{chordfree}.
-
-  A \emph{k-chord} is a path $\Q$ of $k$ edges that connects two non-subsequent vertices $p_i, p_j$ of $\P$ such that $\P \cap \Q = \braces{p_i, p_j}$.
-
-  Since cycles are special type of paths the same definitions will also apply to them.
-
-  As long $\P$ is a path $\P|_{v_i, v_j} \oplus \rev{\Q}$ is a welldefined cycle. We call a ($k$-)chord \emph{separating} if this is a separating cycle.
+  A \emph{chord} of a path is an edge that connects two vertices in this path, but is not part of the path. A path without chords is \emph{chordfree}.
+  A \emph{k-chord} is a path $\Q$ of length $k$ that connects two non-subsequent vertices $p_i, p_j$ of $\P$ such that $\P \cap \Q = \braces{p_i, p_j}$.
+  Since a cycle is a special type of path the same definitions also apply to them.
+  Note that $\P|_{v_i, v_j} \oplus \rev{\Q}$ is a cycle. The ($k$-)chord $\Q$ is \emph{separating} if this cycle is separating.
 
 \mypar{Rotations}
-  Once we fix a planar embedding of a graph we can talk about the \emph{rotation} at a vertex $v$. The rotation at a vertex is clockwise order of the edges incident to $v$. We will identify these edges with their other endpoints. Two vertices $x, y$ are said to be \emph{consecutive} in the rotation at $v$ when the edges $vx$ and $vy$ are consecutive in the clockwise order. In most of this thesis we implicitly fix an embedding since triangulations are 3-connected and thus only have one planar embedding by a theorem due to Whitney (1933). This theorem is proven in for example \cite[p. 267]{Bondy2008}
-
-  Given a path $\P$ with vertices $p_1 \ldots p_k$ we will say that a vertex $v \nin \P$ adjacent to $p_i, i \in \braces{2, \ldots, k-1}$ lies on the \emph{left} of $\P$ if it lies between $p_{i-1}$ and $p_{i+1}$ in the rotation at $p_{i}$. Otherwise $v$ lies between $p_{i+1}$ and $p_{i-1}$ in the
-  rotation at $p_i$. In this case we say that $v$ lies to the \emph{right} of $\P$.
-
-  We will use the same notion of left and right for edges.
+  All graphs in this thesis have a fixed an embedding since triangulations are 3-connected and thus only have one planar embedding by a theorem due to Whitney\cite{Bondy2008}. \fxnote{What about plane triangulated graphs, art those 3connected?}
+  In this fixed embedding the \emph{rotation} at a vertex $v$ is the clockwise order of the edges incident to $v$. We will identify these edges with their other endpoints.
+  Two vertices $x, y$ are said to be \emph{consecutive} in the rotation at $v$ when the edges $vx$ and $vy$ are consecutive.
+  Given a path $\P$ and a interior vertex $p_i$. A neighbor $v \nin \P$ of $p_i$ lies on the \emph{left} of $\P$ if it lies in the interval from $p_{i-1}$ to $p_{i+1}$ in the clockwise rotation at $p_{i}$. Otherwise $v$ lies in the interval from $p_{i+1}$ to $p_{i-1}$ in the rotation clockwise at $p_i$. In this case $v$ lies on the \emph{right} of $\P$.
+  We will use the same notion of left and right for edges. That is, an edge $e\nin P$ adjacent to $p_i$ lies to left or right if its other end point lies to the left or right, respectively.
 
 \subsection{Plane triangulations}
 
@@ -56,9 +50,7 @@ Any graph $G$ is a plane triangulation if and only if it is maximal planar
 \end{thrm}
 
 \begin{proof}
-We will prove the equivalence of the negations.
-
-Suppose that $G$ is not maximally planar. Then there is a face $F$ to which we can add an edge while keeping $G$ planar, however this face must then have degree of degree $4$ or larger since we can split into two faces with an edges. But a face has at least degree 3. Hence $G$ is not a plane triangulation.
+Suppose that $G$ is not maximally planar. Then there is a face $F$ to which we can add an edge while keeping $G$ planar. However, this face must then have a degree larger than $4$ since we can split it into two faces with an edge. But a face has at most degree 3. Hence $G$ is not a plane triangulation.
 
 Suppose that $G$ is not a plane triangulation. Then there must be a face $F$ of degree larger then $3$. This face will thus admit an extra edge without violating planarity and hence $G$ is not maximally planar.
 \end{proof}
@@ -71,10 +63,10 @@ Because every face of a plane triangulation is triangular we can make the follow
 
 \begin{lemma}
   \label{lm:prelim:rotationEdge}
-  If two vertices $x, y$ are consecutive in the rotation at $v$ then $xy$ is an edge in $G$ and $vxy$ is a triangle.
+  If two vertices $x, y$ are consecutive in the rotation at $v$, then $xy$ is an edge in $G$ and $vxy$ is a triangle.
 \end{lemma}
 \begin{proof}
-  in the described situation we have a partial face $\ldots x v y \ldots$.  Since every face of $G$ is a triangle $xy$ must be an edge and $vxy$ must be a triangle.
+  In the described situation we have a partial face $\ldots x v y \ldots$.  Since every face of $G$ is a triangle $xy$ must be an edge and $vxy$ must be a triangle.
 \end{proof}
 
 \subsection{Triangulations of the $k$-gon}
@@ -82,6 +74,6 @@ Because every face of a plane triangulation is triangular we can make the follow
 \begin{defi}[Triangulation of the $k$-gon]
 We call a graph a triangulation of the $k$-gon if the outer face has degree $k$ and all interior faces have degree $3$.
 \end{defi}
-Vertices bordering the outer face are \emph{outer vertices} while all other vertices are \emph{interior vertices}. Furthermore the cycle formed by all vertices outer vertices is the \emph{outer cycle}.
+Vertices bordering the outer face are \emph{outer vertices} while all other vertices are \emph{interior vertices}. Furthermore, the cycle formed by all vertices outer vertices is the \emph{outer cycle}.
 
 Sometimes such triangulations of the $k$-gon are called \emph{(plane) triangulated graphs}.
