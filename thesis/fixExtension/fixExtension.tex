@@ -6,7 +6,7 @@
   \label{s:fix}
   In our explorations to find a lower bound on what kind of \emph{(k,l)-sidedness} is possible we will find it very useful to fix one particular corner assignment $\ext G$ of $G$. Unfortunately if there is no rectangular dual that's $(k,l)$-sided using some corner assignment $\ext G$ of $G$. This does not imply that $G$ is not $(k,l)$-sided. There might be another corner assignment of $G$ that has a $(k,l)$-sided rectangular dual.
 
-  Fortunately for us however we can view $\ext G = H$ as a graph in it's own right, then $G$ is the interior of a separating $4$-cycle of $H$ and we will show this implies that $G$ (as induced subgraph) has to be colored in accordance with the corner assignment $\ext G$.
+  Fortunately for us however we can view $\ext G = H$ as a graph in its own right, then $G$ is the interior of a separating $4$-cycle of $H$ and we will show this implies that $G$ (as induced subgraph) has to be colored in accordance with the corner assignment $\ext G$.
 
   We will thus proof the following theorem in this section.
   \begin{thrm}
@@ -54,7 +54,7 @@
     \label{tab:scaffold}
   \end{wraptable}
 
-  Lemma \ref{lm:fix:fourCycleInteriorColor} is useful because it allows us to fix a corner assignment $\ext G$ of $G$ by building a \emph{scaffold}. Suppose we want to investigate some specific corner assignment $\ext G$ of $G$ with poles $N$, $E$, $S$ and $W$ then we can consider the graph $\ext G = H$ as a graph in it's own right. $H$ is a proper graph since it has no irreducible triangles in it's interior (because $\ext G$ had none) and it admits a valid corner assignment $\ext H$ by connecting the new poles as in Table \ref{tab:scaffold}. $\ext H$ is shown in Figure \ref{fig:scafold}.
+  Lemma \ref{lm:fix:fourCycleInteriorColor} is useful because it allows us to fix a corner assignment $\ext G$ of $G$ by building a \emph{scaffold}. Suppose we want to investigate some specific corner assignment $\ext G$ of $G$ with poles $N$, $E$, $S$ and $W$ then we can consider the graph $\ext G = H$ as a graph in its own right. $H$ is a proper graph since it has no irreducible triangles in its interior (because $\ext G$ had none) and it admits a valid corner assignment $\ext H$ by connecting the new poles as in Table \ref{tab:scaffold}. $\ext H$ is shown in Figure \ref{fig:scafold}.
 
   \begin{figure}[h!]
   \centering
@@ -123,7 +123,7 @@
 
 
 
-  The result is then the graph displayed in Figure \ref{fig:fix:manymany4}. The black edges in this figure are edges that don't have a forced coloring by the above argument\footnote{Altough most of them can be forced by Lemma \ref{lm:fix:fourCycleInteriorColor}}.
+  The result is then the graph displayed in Figure \ref{fig:fix:manymany4}. The black edges in this figure are edges that do not have a forced coloring by the above argument\footnote{Altough most of them can be forced by Lemma \ref{lm:fix:fourCycleInteriorColor}}.
   We will focus on the centered black edge $e$ lying on both the maximal separating 4-cycles. We note that this edge is an interior edges of both the red an blue faces that we drew extra thick in Figure \ref{fig:fix:manymany4}. These faces are currently $(\infty, \infty)$-faces. Hence $e$ has to be colored both red and blue to prevent a $(\infty, \infty)$-sided maximal segment. This is impossible.
 
   Hence the graph is $\infty$-sided.

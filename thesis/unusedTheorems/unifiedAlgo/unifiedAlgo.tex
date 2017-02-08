@@ -174,9 +174,9 @@ Any further blue faces that are still to large do not contain any large B-fans. 
 
 \begin{invariants}
   \label{inv:uni:rest}
-  \item We don't flip an edge creating a blue $Z$ containing a loaded edge.
+  \item We do not flip an edge creating a blue $Z$ containing a loaded edge.
   \label{inv:uni:noLoad}
-  \item We don't flip an edge creating a blue $Z$ containing a pad of a large B-fan in the next
+  \item We do not flip an edge creating a blue $Z$ containing a pad of a large B-fan in the next
    strip.
   \label{inv:uni:noPad}
 \end{invariants}
@@ -192,7 +192,7 @@ In the first case we can find a flippable edge satisfying all the invariants and
   \fxnote{This lemma should probably change when we start to allow moves}
 \end{lemma}
 \begin{proof}
-  In the strip above a large B-fan and directly above such a large B-fan any T-fan can only be of size $2$ since otherwise we would have a separating $4$-cycle \fxnote{I could/should make this a lemma somewhere}. Furthermore there can't be large B-fan in the face we are treating since all large B-fans are in $(9,\infty)$ faces.  We are thus in the situation depicted in Figure \ref{fig:uni:flipAboveLargeB-fan}.
+  In the strip above a large B-fan and directly above such a large B-fan any T-fan can only be of size $2$ since otherwise we would have a separating $4$-cycle \fxnote{I could/should make this a lemma somewhere}. Furthermore there can not be large B-fan in the face we are treating since all large B-fans are in $(9,\infty)$ faces.  We are thus in the situation depicted in Figure \ref{fig:uni:flipAboveLargeB-fan}.
 
   \begin{figure}[h]
     \centering
@@ -207,7 +207,7 @@ In the first case we can find a flippable edge satisfying all the invariants and
 \end{proof}
 
 
-In the second case we don't have to consider more then one right pad and more the one left pad otherwise we could execute Lemma \ref{lm:uni:flipAboveLargeB-fan}
+In the second case we do not have to consider more then one right pad and more the one left pad otherwise we could execute Lemma \ref{lm:uni:flipAboveLargeB-fan}
 
 \begin{lemma}
   \label{lm:}
@@ -217,7 +217,7 @@ In the second case we don't have to consider more then one right pad and more th
   The face under consideration does not lie above the enirty of any B-fan becuase of Lemma \ref{lm:uni:flipAboveLargeB-fan}.
    \fxwarning{TODO fix this on right side only need one edge of seperation}
 
-  Such a face that is not $(31, \infty)$ has at least $32$ vertices on the top fence. This means it has at least $31$ edges lying in at least $11$ B-fans. These B-fans have $10$ inbetween T-fans. The two T-fans  closest to the both border of the face will remain unloaded in order to preserve Invariant \ref{inv:uni:load}. This leaves $6$ fans. One pad or two loaded edges can possibly block an entire T-fan. We can't block two subsequent T-fans with loaded edges due to the fact that only small B-fans. We only have two pads. So one of the fans has to remain free and we can thus flip an edge satisfying both Invariants \ref{inv:uni:load} and \ref{inv:uni:rest}.
+  Such a face that is not $(31, \infty)$ has at least $32$ vertices on the top fence. This means it has at least $31$ edges lying in at least $11$ B-fans. These B-fans have $10$ inbetween T-fans. The two T-fans  closest to the both border of the face will remain unloaded in order to preserve Invariant \ref{inv:uni:load}. This leaves $6$ fans. One pad or two loaded edges can possibly block an entire T-fan. We can not block two subsequent T-fans with loaded edges due to the fact that only small B-fans. We only have two pads. So one of the fans has to remain free and we can thus flip an edge satisfying both Invariants \ref{inv:uni:load} and \ref{inv:uni:rest}.
 \end{proof}
 
 
@@ -293,7 +293,7 @@ Lucky enough for us this is not a problem as the Algorithm proposed in Lemma \re
   \end{enumerate}
 
   \mypar{Every chain of $Z$'s only occurs if both middle edges are adjacent to a large B-fan}
-  A chain of $Z$'s can only start if a first $Z$ is followed by a second $Z$. By Invariant \ref{inv:uni:noLoad} this can only happen when placing edges around a large B-fan. The middle edge of the second $Z$ is thus adjacent to a large B-fan. The middle edge of the first $Z$ is also adjacent to large B-fan since it also can't have been placed in the second phase of the algorithm due to Invariant \ref{inv:uni:noPad}.
+  A chain of $Z$'s can only start if a first $Z$ is followed by a second $Z$. By Invariant \ref{inv:uni:noLoad} this can only happen when placing edges around a large B-fan. The middle edge of the second $Z$ is thus adjacent to a large B-fan. The middle edge of the first $Z$ is also adjacent to large B-fan since it also can not have been placed in the second phase of the algorithm due to Invariant \ref{inv:uni:noPad}.
 
   \mypar{We can break such a chain in the second $Z$ for every chain doing only at most 4 flips for every large B-fan}
   Given any chain of blue $Z$'s we will try to do a flip in the disrupt the chain. Given any large B-fan there are at most two edges of this B-fan colored blue (the outer edges). Only these two edges can be middle edges for some blue $Z$. The edges on the strip above this B-fan can only be above this $Z$ in one way (either type a) or b) ) without creating a monocolored triangle (which is forbidden). However doing a flip of type a) may then necessitate a flip of type b).
@@ -313,7 +313,7 @@ Lucky enough for us this is not a problem as the Algorithm proposed in Lemma \re
 
   \mypar{After doing all available flips for a B-fan there is no longer any chain of blue $Z$'s using the edges of that B-fan.}
   It is clear that each flip break the original chain
-  Argue that flips don't introduce (too long) chains
+  Argue that flips do not introduce (too long) chains
 
   \mypar{Doing these flips only increases the length of any face by $2$.}
   It is clear every flip only increase face length with $1$.
@@ -327,4 +327,4 @@ Lucky enough for us this is not a problem as the Algorithm proposed in Lemma \re
 
 \fxnote{I feel the order of treatment of strips is important and i've not yet used it.}
 
-Then after doing these flips we don't have any subsequent blue $Z$'s Except for after a flip of type b) While we sometimes have enlarged faces with $1$.  Hence the final coloring has $(3, \infty)$ red faces and $(33, \infty)$ blue faces.
+Then after doing these flips we do not have any subsequent blue $Z$'s Except for after a flip of type b) While we sometimes have enlarged faces with $1$.  Hence the final coloring has $(3, \infty)$ red faces and $(33, \infty)$ blue faces.

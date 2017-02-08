@@ -18,7 +18,7 @@ We make a case distinction on the number of edges going from A and B to the comp
 
 \subsection{Both one edge}
 
-If both have only one edge both these edge will go to the same vertex $v$ and this vertex must also be adjacent to $A$ and $D$. This makes $AvD$ a 2-chord. Since the sweepcycle doesn't admit any separating 2-chords we know the rest must be exactly as drawn. We escape the chord by departing at $B$ and taking the path $BvD$.
+If both have only one edge both these edge will go to the same vertex $v$ and this vertex must also be adjacent to $A$ and $D$. This makes $AvD$ a 2-chord. Since the sweepcycle does not admit any separating 2-chords we know the rest must be exactly as drawn. We escape the chord by departing at $B$ and taking the path $BvD$.
 See also Figure \ref{fig:chord:oneonefan}.
 
 \begin{figure}[h]
@@ -56,7 +56,7 @@ We then have the following Lemma's.
 
   An connection $AC$ or $BD$ would give a separating $2-$chord on the sweepline. Which is something we avoid.
 
-  Hence the shrink can't create a separating triangle.
+  Hence the shrink can not create a separating triangle.
 \end{proof}
 
 
@@ -67,14 +67,14 @@ We then have the following Lemma's.
 \end{lemma}
 
 \begin{proof}
-  Such an cycle $\C$ would be created by an 2 edge connection between $A$ and $C$, $B$ and $D$ or $A$ and $D$. The last one would imply a separating 2-chord on the sweepcyle, so this can't be.
+  Such an cycle $\C$ would be created by an 2 edge connection between $A$ and $C$, $B$ and $D$ or $A$ and $D$. The last one would imply a separating 2-chord on the sweepcyle, so this can not be.
 
   The other two would imply a larger chord containing the chord $BC$. However we took the largest chord.
 \end{proof}
 
 Any 4-cycle partially above the 4-cycle doens't infuence the solvability of this graph badly. Since the part of the graph is above the sweepcycle is functionally the same as a large North vertex. \fxwarning{TODO Make this rigorous?}
 
-More rigorously we could show that these things don't affect or possibility to find new valid paths.
+More rigorously we could show that these things do not affect or possibility to find new valid paths.
 
 
 \subsection{One has one edge and the other more than one}
@@ -108,7 +108,7 @@ We see that $ABvD$ is also a 3-chord. If it is a separating chord we recurse on 
 
 
 \subsubsection{The recursion}
-The interior of the $3$-chords $wvCD$ and $ABvw$ has three possible case. Note that $v$ can't have only one edge going into the componnent. This would lead to a sep 4-cycle.
+The interior of the $3$-chords $wvCD$ and $ABvw$ has three possible case. Note that $v$ can not have only one edge going into the componnent. This would lead to a sep 4-cycle.
 
 \begin{enumerate}
   \item The component is trivial (i.e. it has no interior vertices)

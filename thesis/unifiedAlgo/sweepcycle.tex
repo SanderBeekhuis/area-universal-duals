@@ -6,7 +6,7 @@
 
   We will repeatedly only consider the path $\cpath$. In that case we will always order it from $\pW$ to $\pE$. That these edges are always in $\C$ is a result of Invariant \ref{i:uni:SWandSE}.
 
-  We will let $\P$ denote a interior path. Given such a path of $k$ vertices we will index it's nodes by $p_1, \ldots, p_k$ in such a way that $p_1$ is closer to $\pW$ then $p_k$ is (and thus that $p_k$ is closer to $\pE$ then $p_1$ is). Given such a path the \emph{index} of a vertex $p_i\ in \P$ is it's position in the path, that is, the index of $p_i$ is $i$.
+  We will let $\P$ denote a interior path. Given such a path of $k$ vertices we will index its nodes by $p_1, \ldots, p_k$ in such a way that $p_1$ is closer to $\pW$ then $p_k$ is (and thus that $p_k$ is closer to $\pE$ then $p_1$ is). Given such a path the \emph{index} of a vertex $p_i\ in \P$ is its position in the path, that is, the index of $p_i$ is $i$.
 
   Then $p_1$ and $p_k$ indicate the two unique vertices of the walk that are also part of the cycle. We will then let $\restC{\P}$ denote the part of $\cpath$ that is between $p_1$ and $p_k$ (including). $\C_\P$ will denote the cycle given by $\restC{\P} \oplus \rev{\P}$.
 
@@ -20,7 +20,7 @@
     \item \label{i:uni:SWandSE} The cycle $\C$ contains the two edges $\pS \pW$ and $\pS \pE$.
     \item \label{i:uni:noChords} $\cpath$ has no chords
     \item \label{i:uni:intVertCond} All inner edges of $G$ in the exterior of $\C$ are colored and oriented such that the inner vertex condition holds for all vertices in the exterior of $C$.
-    \item \label{i:uni:no2Chords} $\C\sm{\pS}$ has no separating 2-chords that don't use $\S$
+    \item \label{i:uni:no2Chords} $\C\sm{\pS}$ has no separating 2-chords that do not use $\S$
   \end{invariants}
 
   \begin{defi}[Prefence]
@@ -49,7 +49,7 @@
 
   \mypar{Find the right neighbor path}
     Let $v_i$ denote all the vertices of $\cpath$ in the following order $\pW =  v_1 \  v_2 \  \ldots v_{n-1} \  v_n = \pE$.
-    Some intervals of these vertices will be adjacent to $\pS$. However, they can't be all adjacent to $S$ since then any vertex still in the interior of $\C$ would lie in a separating triangle of $G$. We denote by $v_i$ the last vertex of first interval of vertices adjacent to $S$ and by $v_j$ the first vertex of the second interval.
+    Some intervals of these vertices will be adjacent to $\pS$. However, they can not be all adjacent to $S$ since then any vertex still in the interior of $\C$ would lie in a separating triangle of $G$. We denote by $v_i$ the last vertex of first interval of vertices adjacent to $S$ and by $v_j$ the first vertex of the second interval.
     As candidate path we will take the right neighbor path of $\cpath|_{v_i, v_j}$.
     The current situation is also depicted in Figure \ref{fig:sweep:rightNeighbourwalk}.
 
@@ -75,7 +75,7 @@
       We note \ref{p:Cchordfree} holds due to Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords}.
     \end{proof}
 
-    We then orient $\P$ from $v_i$ (the vertex closest to $\pW$)to $v_j$ (the vertex closest to $\pE$) and denote it's vertices by $w_1 \ldots w_k$.
+    We then orient $\P$ from $v_i$ (the vertex closest to $\pW$)to $v_j$ (the vertex closest to $\pE$) and denote its vertices by $w_1 \ldots w_k$.
 
   \subsection{Irregularities}
     Now the prefence we found can have several structures we want to avoid
@@ -88,14 +88,14 @@
 
     All of these structures are on the right of the prefence since the prefence satisfies \ref{p:Wchordfree} (no chords on the left) and \ref{p:noInteriorVertex} (no separating 2-chords on the left).
 
-    The \emph{range} of an irregularity will be given by it's start and end index. Depending on what irregularities we find on the prefence we will update the sweepcycle with a different path. We will call this path the \emph{update path}. How this update works exactly will be shown in Subsection \ref{ss:sweep:Update}.
+    The \emph{range} of an irregularity will be given by its start and end index. Depending on what irregularities we find on the prefence we will update the sweepcycle with a different path. We will call this path the \emph{update path}. How this update works exactly will be shown in Subsection \ref{ss:sweep:Update}.
 
     \mypar{We have no irregularity}
       When there are no irregularities we update the sweepcycle with the prefence entire $\P$.
 
     \mypar{We have any chord} \mbox{ }
     \fxwarning[nomargin, inline]{Why not just take the inner chord?}
-    We know that we can't have any polebound chords on the prefence since any such chord would offend Invariant \ref{i:uni:no2Chords} of the sweepcycle.
+    We know that we can not have any polebound chords on the prefence since any such chord would offend Invariant \ref{i:uni:no2Chords} of the sweepcycle.
 
     If our prefence has any chords we look identify the them by their start and end vertex. Of the chords with the lowest start index we will consider the one with the largest end index. Let's call this chord $C_\text{outer}$.
 
@@ -146,7 +146,7 @@
       \label{fig:sweep:pEBound}
     \end{figure}
     \emph{Other separating 2-chords}
-    The 2-chord can't contain a chord since then we would be in the above case.
+    The 2-chord can not contain a chord since then we would be in the above case.
     Find the $2$-chord with the lowest end of range. Say that this is $j_1$. We then update the sweepcycle in the following way.
 
     Let $v_l$ be the shared neighbor on the sweepcycle of $p_{j_1}$ $p_{j_1 -1}$. We update the sweepcycle with the right neighbor path of $\cpath|_{v_i, v_l}$. See Figure \ref{fig:sweep:free2chord}.
@@ -170,7 +170,7 @@
     \begin{proof}
         All of these structures are on the right of the updating path, since the updating path is a subset of a prefence and a  prefence satisfies \ref{p:Wchordfree} (no chords on the left) and \ref{p:noInteriorVertex} (no separating 2-chords on the left).
 
-        If the prefence had any chords the updating path is adapted to be entirely inside a chord containing no more chords. Hence the updating path can't have any chords.
+        If the prefence had any chords the updating path is adapted to be entirely inside a chord containing no more chords. Hence the updating path can not have any chords.
 
         Moreover any updating path stops before the end of a separating 2-chord unless it is a $\pE$-bound separating 2-chord in which case it only starts after the begin of this 2-chord. Either way the updating path also has no separating 2-chords.
     \end{proof}
@@ -182,18 +182,18 @@
 
     \begin{proof}
       \emph{No irregularity}
-      Since $v_i$ and $v_j$ are both adjacent to $\pS$ we can't have any chords. And any $2$-chords have $\pS$ as middle vertex. However these are allowed for the Lemma.
+      Since $v_i$ and $v_j$ are both adjacent to $\pS$ we can not have any chords. And any $2$-chords have $\pS$ as middle vertex. However these are allowed for the Lemma.
 
       \emph{Chord, not containing a 2-chord}
-      Any chord or separating $2$-chord will have to cross $v_k p_i p_j v_l$ so we can't have a chord. Any 2-chord has to have $p_i$ or $p_j$ as middle vertex. But with this restriction the 2-chord can't be separating.
+      Any chord or separating $2$-chord will have to cross $v_k p_i p_j v_l$ so we can not have a chord. Any 2-chord has to have $p_i$ or $p_j$ as middle vertex. But with this restriction the 2-chord can not be separating.
 
       \emph{Chord, containing a 2-chord}
-      In the same manner as in the above case we can't expect any chord or separating 2-chord to connect outside the containing chord.
+      In the same manner as in the above case we can not expect any chord or separating 2-chord to connect outside the containing chord.
       Suppose that we have a separating $2$-chord then that would have been a chord of the prefence. This is in contradiction with the fact that the outer chord contained no more chords.
       Suppose that we have a chord not connecting to the second-to-last vertex of the updating path. This chord would offend Invariant \ref{i:uni:no2Chords} of the old sweepcycle. Furthermore the second-to-last vertex of the updating path has no chords since it would break $v_l p_j x p_u$. (see Figure \ref{fig:sweep:2chordInChordUpdate}).
 
       \emph{$\pE$-bound separating $2$-chord}
-      We can't have any chords since these would have to break $\pE x p_i v_k$. Any $2-chords$ would have $x$ or $p_i$ as middle vertex. However the first yields a $2$-chord of the prefence with a higher start range, this is a contradiction. And the second can't yield an separating $2$-chord.
+      We can not have any chords since these would have to break $\pE x p_i v_k$. Any $2-chords$ would have $x$ or $p_i$ as middle vertex. However the first yields a $2$-chord of the prefence with a higher start range, this is a contradiction. And the second can not yield an separating $2$-chord.
 
 
       \emph{Other separating $2$-chord}
@@ -215,7 +215,7 @@
     \end{proof}
 
     \subsection{Last steps}
-    When the sweepcycle is no longer separating we can't update it anymore. However at this point it is easy to color the rest of the graph. All vertices in $\C$ must be adjacent to $\pS$ since $\pS \pW$ and $\pS \pE$ are part of $C$ by Invariant \ref{i:uni:SWandSE} $C$ has no chords by Invariant \ref{i:uni:noChords} and $C$ does not contain any interior vertices. Sice all vertices are adjacent to $\S$ all interior edges are adjacent to $\pS$.
+    When the sweepcycle is no longer separating we can not update it anymore. However at this point it is easy to color the rest of the graph. All vertices in $\C$ must be adjacent to $\pS$ since $\pS \pW$ and $\pS \pE$ are part of $C$ by Invariant \ref{i:uni:SWandSE} $C$ has no chords by Invariant \ref{i:uni:noChords} and $C$ does not contain any interior vertices. Sice all vertices are adjacent to $\S$ all interior edges are adjacent to $\pS$.
 
     We coll and we color all interior edges red and the edges in $\cpath$ are colored blue. This last move completes the interior vertex condition for vertices in $\C \sm {\pW, \pS, \pE}$ and also correctly completes the exterior vertices.
 
@@ -240,7 +240,7 @@
 
     \begin{lemma}
       \label{lm:sweep:NoTwoSplitsAboveEachOther}
-      Let $v$ be any splitvertex. Then the subsequent vertex on the bottom path $w$ can't be the handle of a large topfan.
+      Let $v$ be any splitvertex. Then the subsequent vertex on the bottom path $w$ can not be the handle of a large topfan.
     \end{lemma}
 
     \begin{proof}
@@ -257,11 +257,11 @@
         \label{fig:botomPathChord}
       \end{figure}
 
-      The interior of  $vabx \oplus \rev \P$ and has no vertices. Suppose there would be such a vertex then since $\P$ is a bottom path the blue path going trough this vertex has to start at $a$ and end at $b$. But then this gives a blue face with only one edge on it's bottom boundary path, hence the interior of this face has no incoming red edges. \fxnote{Or i could make a lemma about face borders somewhere and contradict with that.} So the result is not a \rel. Since our graph is a \rel $vabx \oplus \rev \P$ has no interior vertices.
+      The interior of  $vabx \oplus \rev \P$ and has no vertices. Suppose there would be such a vertex then since $\P$ is a bottom path the blue path going trough this vertex has to start at $a$ and end at $b$. But then this gives a blue face with only one edge on its bottom boundary path, hence the interior of this face has no incoming red edges. \fxnote{Or i could make a lemma about face borders somewhere and contradict with that.} So the result is not a \rel. Since our graph is a \rel $vabx \oplus \rev \P$ has no interior vertices.
 
       This also implies all interior edges are red (by the definition of bottom path) and thus that $ab$ is blue otherwise we would get a monocolored triangle.
 
-      Now $w$ can't be connected to any vertex in $\P$ that would give a chord. And we don't allow chords in any valid path on the moment we add it. So $w$ can only be connected to $a$ and $b$ and is thus a topfan of size at most $2$. (If it's a topfan at all, since we don't consider topfans of size 1 as topfans.)
+      Now $w$ can not be connected to any vertex in $\P$ that would give a chord. And we do not allow chords in any valid path on the moment we add it. So $w$ can only be connected to $a$ and $b$ and is thus a topfan of size at most $2$. (If it is a topfan at all, since we do not consider topfans of size 1 as topfans.)
     \end{proof}
 
 \newpage
@@ -278,7 +278,7 @@
     We will say that such a $Z$ consists of a \emph{top}, \emph{bottom} and \emph{midlle} edge in straightforward manner. \fxnote{I have some introduction on this subject somewhere}
 
 
-    As long as the \rel is not vertically one-sided we find such a blue $Z$ and recolor it's middle edge as in Figure \ref{fig:zflip:flip}. We will say that this edge is \emph{flipped}
+    As long as the \rel is not vertically one-sided we find such a blue $Z$ and recolor its middle edge as in Figure \ref{fig:zflip:flip}. We will say that this edge is \emph{flipped}
 
     Note that both flips transfer one valid \rel to another valid \rel. If the interior vertex condition was fulfilled in Figure \ref{fig:zflip:blueZ} then it is also fulfilled in Figure \ref{fig:zflip:flip}.
 
@@ -296,7 +296,7 @@
       The resulting REL is vertically one-sided
     \end{lemma}
     \begin{proof}
-      By construction we flip all blue $Z$'s. If we don't have any more $Z$'s then the remaining \rel is vertically one-sided. \fxnote{refer to some lemma?}
+      By construction we flip all blue $Z$'s. If we do not have any more $Z$'s then the remaining \rel is vertically one-sided. \fxnote{refer to some lemma?}
     \end{proof}
 
     \begin{lemma}
@@ -307,8 +307,8 @@
     \begin{proof}
       Flipping middle edges of these $Z$'s  can only reduce the number of split vertices.
 
-      For a split vertex $v$ adjacent to $\pS$ we can note that the edge $vw$ will not be flipped because it can't be a middle edge. Hence $w$ is still on the bottom path and still not the handle of a big topfan.
+      For a split vertex $v$ adjacent to $\pS$ we can note that the edge $vw$ will not be flipped because it can not be a middle edge. Hence $w$ is still on the bottom path and still not the handle of a big topfan.
 
       If $v$ is a split vertex due to a chord let us note the following.
-      The edges of $\P$ and $ab$ can't have been flipped since then we would find a monocolored red triangle while a flip leads to another valid \rel. Hence $w$ is still on the bottom path trough $v$ and still can't be the handle of a large topfan.
+      The edges of $\P$ and $ab$ can not have been flipped since then we would find a monocolored red triangle while a flip leads to another valid \rel. Hence $w$ is still on the bottom path trough $v$ and still can not be the handle of a large topfan.
     \end{proof}

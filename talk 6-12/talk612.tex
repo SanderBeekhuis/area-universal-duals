@@ -35,7 +35,7 @@ A \emph{valid} extended graph (or valid EG) is a extended graph containing no se
   There is a close link between valid EG's and 5-connected triangulation's via the \emph{point-completion} of the EG. Unfortuantly this is not $5$ connected due to the completing point.
 
 
-  One can also try the \emph{edge-completion}. This unfortunatly also doesn't work
+  One can also try the \emph{edge-completion}. This unfortunatly also does not work
 
   The dual of a $5$-connected traingulation is a cyclically $5$-connected cubic graph.
 
@@ -44,7 +44,7 @@ A \emph{valid} extended graph (or valid EG) is a extended graph containing no se
   We can probably do this while maintaining a dual REL. This algorithm is actually really close to Kant and He's edge contraction. However it seems hard to maintain any quality in this solution.
   \fxnote{Show with figure}
 
-  While we do this we probably also don't destroy flips. So that would mean that every valid EG leads to a graph that's at best $(2, \infty)$.
+  While we do this we probably also do not destroy flips. So that would mean that every valid EG leads to a graph that's at best $(2, \infty)$.
 
 
   \begin{con}
@@ -83,7 +83,7 @@ A \emph{valid} extended graph (or valid EG) is a extended graph containing no se
 
 \section{Failed attempts}
 \paragraph{Planar separoatrs}
-I tried something using planar separators. Unfortunately both sides seem to depend to much upon each other. I.e. we can't properly separate using a boundary. It might be fruitful to see the interior as separating.
+I tried something using planar separators. Unfortunately both sides seem to depend to much upon each other. I.e. we can not properly separate using a boundary. It might be fruitful to see the interior as separating.
 
 
 \paragraph{Building a REL}
@@ -124,7 +124,7 @@ Note that a non-simple point is not something that has to occur. It is something
 \subsection{Algorithm Plan}
 
 \begin{enumerate}
-  \item We find fences taking care that we don't hit any NSP while also not doing something horrible for red. \emph{Not quite sure about the exact implementaion}
+  \item We find fences taking care that we do not hit any NSP while also not doing something horrible for red. \emph{Not quite sure about the exact implementaion}
   \item We scan bottom-up for chords and mustflip edges. We orient chords such that:
   \begin{enumerate}
     \item A chord above another chord is oriented such that it has a \emph{preventable $Z$}
@@ -172,7 +172,7 @@ Note that a non-simple point is not something that has to occur. It is something
   \begin{con}
     This problem might be FTP in high degree nodes or NP-hard
   \end{con}
-    I don't actually think it's true. But I did spend some time looking for an obvious reduction
+    I do not actually think it's true. But I did spend some time looking for an obvious reduction
 
 
     \subsection{Other ideas}
@@ -197,7 +197,7 @@ Note that a non-simple point is not something that has to occur. It is something
 
     There is some structure to the interior of cycles. Can we understand this structure?
 
-    The current approach is to try and draw graphs that don't work
+    The current approach is to try and draw graphs that do not work
 
 \printbibliography
 \end{document}

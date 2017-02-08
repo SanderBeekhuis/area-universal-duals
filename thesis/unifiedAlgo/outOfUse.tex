@@ -26,7 +26,7 @@
 
     Note that we only flip rims of a $T_+$.
 
-    We don't flip the first and last edge we would normally flip in a strip. If this edge does not separate the large topfan from at least three top edges we dont flip these edges.
+    We do not flip the first and last edge we would normally flip in a strip. If this edge does not separate the large topfan from at least three top edges we dont flip these edges.
 
     \begin{lemma}
       \label{lm:uni:removingLargeB-fans}
@@ -74,7 +74,7 @@
     We define a \emph{flip} as a series of changes to a REL turning it to another valid REL.
     We first do a flip turning every same orientation chain of $Z$'s to an opposite orientation one. Then we do a flip breaking an opposite orientation chain. We do this for every chain of $Z$'s created in Phase 2.1.
 
-  We will work from the last created face upwards. When doing a flip we try to only alter the history, not the current face and certainly not the future. We will treat flips under a topfan of size 4 differently, because we don't have the space to execute all standard flips.
+  We will work from the last created face upwards. When doing a flip we try to only alter the history, not the current face and certainly not the future. We will treat flips under a topfan of size 4 differently, because we do not have the space to execute all standard flips.
 
   \mypar{Size of left joints}
   We will show the following
@@ -143,7 +143,7 @@
 
 
    \mypar{Opposite orientation flips}
-   We namely execute the flip given in Figure \ref{fig:uni:oppFlip}. The small vertices on the bottom-left hint on the possibility of vertices but those don't have to be there.
+   We namely execute the flip given in Figure \ref{fig:uni:oppFlip}. The small vertices on the bottom-left hint on the possibility of vertices but those do not have to be there.
 
   \begin{figure}[h]
     \centering
@@ -205,10 +205,10 @@
 
     OR
 
-    * We just don't care as long as we don't open topfans (Hint: we don't)
+    * We just do not care as long as we do not open topfans (Hint: we do not)
     * However we do enlarge topfans (at most by 1 on every side) so we end up with $3-\infty$ topfans.
 
-    Every two subsequent $Z$'s are treated in one flip. This flip makes a historic faces longer but closes them in such a way they can't be opened by other flips.
+    Every two subsequent $Z$'s are treated in one flip. This flip makes a historic faces longer but closes them in such a way they can not be opened by other flips.
 
     \mypar{Remaining $Z$'s}
     The opp flip can place an blue edge above another blue edge. However this chain stops here since above this is a red split vertex. So the longest chain of $Z$'s is now of length two.

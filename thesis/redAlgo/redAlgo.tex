@@ -15,7 +15,7 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
 
   Instead of interior paths we will consider interior walks but we will use similar notation. That is a walk between two distinct vertices of $\C$ of which all vertices except the first and last one are in the interior of $\C$.
 
-  We will let $\W$ denote a interior walk. Given such a walk of $k$ vertices we index it's nodes $w_1, \ldots, w_k$  in such a way that $w_1$ is closer to $W$ then $w_k$ is (and thus that $w_k$ is closer to $E$ then $w_1$ is).
+  We will let $\W$ denote a interior walk. Given such a walk of $k$ vertices we index its nodes $w_1, \ldots, w_k$  in such a way that $w_1$ is closer to $W$ then $w_k$ is (and thus that $w_k$ is closer to $E$ then $w_1$ is).
 
   Then $w_1$ and $w_k$ indicate the two unique vertices of the walk that are also part of the cycle. We will then let $\restC{\W}$ denote the part of $\C\setminus {\mathrm{S}}$ that is between $w_1$ and $w_k$ (including). $\C_\W$ will denote the closed walk formed when we paste $\restC{W}$ and $\W$.
 
@@ -161,11 +161,11 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
 
   The algorithm will receive as input a extended graph $\ext G$ and will return a regular edge labeling such that all red faces are $(1-\infty)$ using a sweep-cycle approach inspired by Fusy \cite{Fusy2006}.
 
-  We will start by creating a prefence $W$. This may not be a valid path, it doesn't even have to be a path. During the algorithm we will make a number of moves that will turn this prefence into a fence. In each move we shrink $C$ by employing a valid paths and change the prefence.
+  We will start by creating a prefence $W$. This may not be a valid path, it does not even have to be a path. During the algorithm we will make a number of moves that will turn this prefence into a fence. In each move we shrink $C$ by employing a valid paths and change the prefence.
 
 \subsection{Finding a initial prefence}
   Let $v_i$ denote all the vertices of $\cpath$ in the following order $\pW =  v_1 \  v_2 \  \ldots v_{n-1} \  v_n = \pE$.
-  Some intervals of these vertices will be adjacent to $\pS$. However, they can't be all adjacent to $S$ since then the sweepcycle would be non-separating since we can't have separating triangles. We denote by $v_i$ the last vertex of fist interval of vertices adjacent to $S$ and by $v_j$ the first vertex of the second interval.
+  Some intervals of these vertices will be adjacent to $\pS$. However, they can not be all adjacent to $S$ since then the sweepcycle would be non-separating since we can not have separating triangles. We denote by $v_i$ the last vertex of fist interval of vertices adjacent to $S$ and by $v_j$ the first vertex of the second interval.
   As candidate walk we will take the right neighbor path of $C\sm{S, v_1, \ldots v_{i-1}, v_{j+1}, \dots v_n}$.
   \fxnote{beter notation}
 
@@ -184,7 +184,7 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
 
   \end{proof}
 
-  We then orient $\W$ from $v_i$ (the vertex closest to $\pW$)to $v_j$ (the vertex closest to $\pE$) and denote it's vertices by $w_1 \ldots w_k$.
+  We then orient $\W$ from $v_i$ (the vertex closest to $\pW$)to $v_j$ (the vertex closest to $\pE$) and denote its vertices by $w_1 \ldots w_k$.
 
 \subsection{Irregularities}
   We will distinguish two kinds of \emph{irregularities} in a prefence.
@@ -193,7 +193,7 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
     \item The candidate walk has a chord on the right. That is, there is an edge $w_i w_j$ on the right of $\W$ with $i<j$ and $i$ and $j$ not subsequent (i.e. $i < j-1$).
   \end{enumerate}
 
-  Note that we can't have a chord can on the left of $\W$ by Lemma \ref{lm:red:neighbourwalkChordFree}.
+  Note that we can not have a chord can on the left of $\W$ by Lemma \ref{lm:red:neighbourwalkChordFree}.
 
 
   \begin{lemma}
@@ -207,7 +207,7 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
 
      \item[\ref{e:noS}] It is clear that both $w_1$ and $w_k$ are not $\pS$ by the construction of the candidate walk.
 
-     \item[\ref{e:longBorders}] For $\W$ or $\restC \W$ to have only one edge we need to have that $v_i v_j$ is an edge. However, $v_i v_j$ can not be an edge in $\C$ since $v_i$ and $v_j$ are from different intervals of vertices adjacent to $\pS$. It can also not be an edge in $\ext G \setminus \C$ since that would be a chord of the cycle and these don't exist by Invariant \ref{i:noChords}
+     \item[\ref{e:longBorders}] For $\W$ or $\restC \W$ to have only one edge we need to have that $v_i v_j$ is an edge. However, $v_i v_j$ can not be an edge in $\C$ since $v_i$ and $v_j$ are from different intervals of vertices adjacent to $\pS$. It can also not be an edge in $\ext G \setminus \C$ since that would be a chord of the cycle and these do not exist by Invariant \ref{i:noChords}
 
      \item[\ref{e:crossingEdges}]
      This holds because every interior edge that does not lead to an interior vertex, nor is a chord of $\W$ or $\restC{\W}$ is of the required type. These three requirements are forces by \ref{p:noInteriorVertex}, \ref{p:Wchordfree} and \ref{p:Cchordfree} respectively.
@@ -225,14 +225,14 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
   A chord $w_i w_j$ with $i< j-1$ has \emph{range} $\braces{i, \ldots, j} \subset \N$.
   \end{defi}
 
-  Note that a chord can't have the same range as a non-simple point since then $w_i w_j$ will be a loop and we are considering simple graphs. Furthermore two chords have different ranges because we otherwise have a multiedge. Two nonsimple points with the same range are, in fact, the same. This leads us to the following remark.
+  Note that a chord can not have the same range as a non-simple point since then $w_i w_j$ will be a loop and we are considering simple graphs. Furthermore two chords have different ranges because we otherwise have a multiedge. Two nonsimple points with the same range are, in fact, the same. This leads us to the following remark.
   \begin{remark}
   \label{rk:diffIregDiffRange}
   Distinct irregularities have distinct ranges.
   \end{remark}
 
   \begin{defi}[Maximal irregularity]
-  A irregularity is maximal if it's range is not contained\footnote{Because of Remark \ref{rk:diffIregDiffRange} being contained is the same as being strictly contained} in the range of any other irregularity.
+  A irregularity is maximal if its range is not contained\footnote{Because of Remark \ref{rk:diffIregDiffRange} being contained is the same as being strictly contained} in the range of any other irregularity.
   \end{defi}
 
   \begin{lemma}
@@ -244,13 +244,13 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
 
   Without loss of generality we thus have $i_1 < j_1 < i_2 < j_2$.
 
-  Now two chords to the right of $\W$ would cross each other but we have a planar graph so this can't be the case.
+  Now two chords to the right of $\W$ would cross each other but we have a planar graph so this can not be the case.
 
   Now let us without loss of generality suppose that $I$ is a non-simple point. A non-simple point $w_{i_1} = w_{i_2}$ is adjacent to two ranges of vertices in $\cpath$. $v_a \ldots v_b$ and $v_c \ldots v_d$
   then $\tilde{C} = w_{i_1} v_b \ldots v_c$ is a cycle. And because of the rotation at $w_{i_1} = w_{i_2}$ we have that $w_{i_{1 +1}}, \ldots, w_{i_{2 -1}}$ are inside this cycle while $w_1 \ldots w_{i_1 -1}$ and $ w_{i_2 +1} \ldots w_k$ are outside the cycle. See Figure.
     \fxnote{We could add figure to clarify.}
 
-  Now if $J$ is a chord we have $\tilde{C}$, which can't be. If $J$ is also a nonsimple point this would imply that the vertex $w_{j_i} = w_{j_2}$ is at the same time inside and outside $\tilde{C}$ which is clearly impossible.
+  Now if $J$ is a chord we have $\tilde{C}$, which can not be. If $J$ is also a nonsimple point this would imply that the vertex $w_{j_i} = w_{j_2}$ is at the same time inside and outside $\tilde{C}$ which is clearly impossible.
   \end{proof}
 
 \subsection{Moves}
@@ -280,9 +280,9 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
     \begin{proof}
     We note that $\U$ is a walk due to Lemma \ref{lm:red:neighborWalk}.
 
-    $\U$ cant have a non-simple point $x'$ since it would have to be connected to at least two vertices. However a vertex $x'$ that is distinct from $x$ and is connected to both $w_i$ and $w_j$ will induce a separating triangle $w_i x' w_j$. $\U$ also can't be nonsimple at $x$ since $x$ is the the third vertex of the triangular face $w_i w_j x$. Hence $\U$ is a path.
+    $\U$ cant have a non-simple point $x'$ since it would have to be connected to at least two vertices. However a vertex $x'$ that is distinct from $x$ and is connected to both $w_i$ and $w_j$ will induce a separating triangle $w_i x' w_j$. $\U$ also can not be nonsimple at $x$ since $x$ is the the third vertex of the triangular face $w_i w_j x$. Hence $\U$ is a path.
 
-    $\scr U$ can't have chords $u_i u_j$ since they would either induce a separating $3$- or $4$-cycle either $w_i u_i u_j$ or $w_j u_i u_j$ or $w_i u_i u_j w_j$ depending on the vertex adjacent to $u_i$ and $u_j$.
+    $\scr U$ can not have chords $u_i u_j$ since they would either induce a separating $3$- or $4$-cycle either $w_i u_i u_j$ or $w_j u_i u_j$ or $w_i u_i u_j w_j$ depending on the vertex adjacent to $u_i$ and $u_j$.
     \fxnote{We use that we have no 4-cycles here}
     \end{proof}
 
@@ -318,9 +318,9 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
     \begin{proof}
       We note that $\U$ is a walk due to Lemma \ref{lm:red:neighborWalk}.
 
-      If we orient $\U$ from $v_a$ to $v_b$  we see that $\U$ can't have a non-simple point on the left by construction and by the right since such a point would have edges to at least two vertices on the right. However every vertex can only be connected to $w_i=w_j$. Hence $\U$ is a path.
+      If we orient $\U$ from $v_a$ to $v_b$  we see that $\U$ can not have a non-simple point on the left by construction and by the right since such a point would have edges to at least two vertices on the right. However every vertex can only be connected to $w_i=w_j$. Hence $\U$ is a path.
 
-      $\U$ can't have chords on the right of the path by the way we construct $\U$. Furthermore $\scr U$ can't have chords $u_i u_j$ on the left since they would either induce a separating $3$-cycle $w_i u_i u_j$.
+      $\U$ can not have chords on the right of the path by the way we construct $\U$. Furthermore $\scr U$ can not have chords $u_i u_j$ on the left since they would either induce a separating $3$-cycle $w_i u_i u_j$.
     \end{proof}
 
 
@@ -366,7 +366,7 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
   \begin{proof}
     Maybe the best proof is that since maximal ranges of irregularities overlap at most $1$ then the cycles $v_{a_I} \ldots v_{b_I} w_{j_I} w_{i_I}$  and  $v_{a_J} \ldots v_{b_J} w_{j_J} w_{i_J}$
     with $v_{a_I}$ being the unique neighbor on the cycle of $w_{i_I}$ and $w_{i_I+1}$ and ....
-    don't cross
+    do not cross
 
     Then the left neighbor paths $U_I$ and $U_J$ are edge disjoint
 
@@ -403,17 +403,17 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
   Recall that all our valid paths are oriented from a start vertex to end vertex.
 
   \begin{lemma}
-    A split can't directly be followed by a merge along any valid path during the algorithm.
+    A split can not directly be followed by a merge along any valid path during the algorithm.
   \end{lemma}
   \begin{proof}
-    One of paths after the split is no longer on the south boundary of this subgraph $H$, nor on the south boundary of any other subgraph by Lemma \ref{lm:pathsStayOnRecursionLevel}. This path hence can't contain a merge.
+    One of paths after the split is no longer on the south boundary of this subgraph $H$, nor on the south boundary of any other subgraph by Lemma \ref{lm:pathsStayOnRecursionLevel}. This path hence can not contain a merge.
 
     The other path still potentially follow the south boundary. However merging from the southward side of the path is impossible by Lemma \ref{lm:pathsStayOnRecursionLevel} from the northward side is equally impossible since the split and merge have to be neighboring vertices in the rotations of these vertices and thus the path $\P$ that merged must also join again.
 
     But then it is not a valid path.
   \end{proof}
 
-  However for a blue $Z$ to occur there has to be a valid path that first has a split and then has a merge. Since this can't be all red faces must have only $2$ edges on at least one side. Hence the regular edge labeling this algorithm produces corresponds to a vertically one-sided rectangular dual.
+  However for a blue $Z$ to occur there has to be a valid path that first has a split and then has a merge. Since this can not be all red faces must have only $2$ edges on at least one side. Hence the regular edge labeling this algorithm produces corresponds to a vertically one-sided rectangular dual.
 
 
   \fxnote[inline, nomargin]{Show how the algorithm works with some cool examples: For example:    The multiple non-simple point $v_i = v_j =v_k$;   Example of page $F1$;  Example with lots of layered chords  }
