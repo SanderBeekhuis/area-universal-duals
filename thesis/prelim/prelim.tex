@@ -34,45 +34,7 @@ The \emph{degree} of a face is the number of vertices it is incident to and a \e
   Given a path $\P$ and a interior vertex $p_i$. A neighbor $v \nin \P$ of $p_i$ lies on the \emph{left} of $\P$ if it lies in the interval from $p_{i-1}$ to $p_{i+1}$ in the clockwise rotation at $p_{i}$. Otherwise $v$ lies in the interval from $p_{i+1}$ to $p_{i-1}$ in the rotation clockwise at $p_i$. In this case $v$ lies on the \emph{right} of $\P$.
   We will use the same notion of left and right for edges. That is, an edge $e\nin P$ adjacent to $p_i$ lies to left or right if its other end point lies to the left or right, respectively.
 
-\subsection{Plane triangulations}
-
-\begin{defi} [Plane triangulation]
-A graph in which all faces are of degree $3$.
-\end{defi}
-
-\begin{defi} [Maximal planar graph]
-A graph such that adding any one edge makes it non-planar.
-\end{defi}
-
-\begin{thrm}
-Any graph $G$ is a plane triangulation if and only if it is maximal planar
-\end{thrm}
-
-\begin{proof}
-Suppose that $G$ is not maximally planar. Then there is a face $F$ to which we can add an edge while keeping $G$ planar. However, this face must then have a degree larger than $4$ since we can split it into two faces with an edge. But a face has at most degree 3. Hence $G$ is not a plane triangulation.
-
-Suppose that $G$ is not a plane triangulation. Then there must be a face $F$ of degree larger then $3$. This face will thus admit an extra edge without violating planarity and hence $G$ is not maximally planar.
-\end{proof}
-
-Because every face of a plane triangulation is triangular we can make the following remark.
-
-\begin{remark}
-  Every edge is incident to two triangular faces
-\end{remark}
-
-\begin{lemma}
-  \label{lm:prelim:rotationEdge}
-  If two vertices $x, y$ are consecutive in the rotation at $v$, then $xy$ is an edge in $G$ and $vxy$ is a triangle.
-\end{lemma}
-\begin{proof}
-  In the described situation we have a partial face $\ldots x v y \ldots$.  Since every face of $G$ is a triangle $xy$ must be an edge and $vxy$ must be a triangle.
-\end{proof}
-
-\subsection{Triangulations of the $k$-gon}
-
-\begin{defi}[Triangulation of the $k$-gon]
-We call a graph a triangulation of the $k$-gon if the outer face has degree $k$ and all interior faces have degree $3$.
-\end{defi}
-Vertices bordering the outer face are \emph{outer vertices} while all other vertices are \emph{interior vertices}. Furthermore, the cycle formed by all vertices outer vertices is the \emph{outer cycle}.
-
-Sometimes such triangulations of the $k$-gon are called \emph{(plane) triangulated graphs}.
+\mypar{Triangulations of the $\mathbf{k}$-gon}
+  A graph is a \emph{triangulation of the $k$-gon} if the outer face has degree $k$ and all interior faces have degree $3$.
+  Vertices bordering the outer face are \emph{outer vertices} while all other vertices are \emph{interior vertices}. Furthermore, the cycle formed by all vertices outer vertices is the \emph{outer cycle}.
+  Triangulations of the $k$-gon are called \emph{(plane) triangulated graphs} by some authors.
