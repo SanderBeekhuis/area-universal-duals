@@ -3,7 +3,7 @@
 %invariant environment
 \newenvironment{invariants}{%
   \refstepcounter{thrm}%
-  \paragraph{Invariants~\theprop}%
+  \mypar{Invariants~\theprop}%
   \renewcommand*{\theenumi}{\theprop\,(I\arabic{enumi})}%
   \renewcommand*{\labelenumi}{(I\arabic{enumi})}%
   \enumerate
@@ -100,7 +100,7 @@ Note that the only edges that are flippable are those that are in both a T-fan a
 
 \subsection{Algorithm}
 
-\paragraph{Outline}
+\mypar{Outline}
 The approach taken by this algorithm will be the following
 \begin{enumerate}
   \item Subdivided the graph by fences as in the red algorithm.
@@ -109,7 +109,7 @@ The approach taken by this algorithm will be the following
   \item We solve the blue $Z$'s we have created by doing a few flips.
 \end{enumerate}
 
-\paragraph{order of strips}
+\mypar{order of strips}
 There is a partial order of strips. we start with the largest element and can always treat such a strip such that all strips larger than that strip are already treated while all strips smaller than that strip are note yet treated.
  \fxwarning{TODO Does this order exists, find ref in literature}
 
@@ -260,10 +260,10 @@ They are depicted in Figures \ref{fig:uni:flipcasea} and \ref{fig:uni:flipcaseb}
 
 We will now also describe how each flip is executed and that each flip individually maintains a \rel.
 
-\paragraph{Flip type a)}
+\mypar{Flip type a)}
 \fxwarning{TODO}
 
-\paragraph{Flip type b)}
+\mypar{Flip type b)}
 \fxwarning{TODO}
 
 
@@ -292,30 +292,30 @@ Lucky enough for us this is not a problem as the Algorithm proposed in Lemma \re
     \item Doing these flips only increases the length of any face by $2$. (what is the length of a face)
   \end{enumerate}
 
-  \paragraph{Every chain of $Z$'s only occurs if both middle edges are adjacent to a large B-fan}
+  \mypar{Every chain of $Z$'s only occurs if both middle edges are adjacent to a large B-fan}
   A chain of $Z$'s can only start if a first $Z$ is followed by a second $Z$. By Invariant \ref{inv:uni:noLoad} this can only happen when placing edges around a large B-fan. The middle edge of the second $Z$ is thus adjacent to a large B-fan. The middle edge of the first $Z$ is also adjacent to large B-fan since it also can't have been placed in the second phase of the algorithm due to Invariant \ref{inv:uni:noPad}.
 
-  \paragraph{We can break such a chain in the second $Z$ for every chain doing only at most 4 flips for every large B-fan}
+  \mypar{We can break such a chain in the second $Z$ for every chain doing only at most 4 flips for every large B-fan}
   Given any chain of blue $Z$'s we will try to do a flip in the disrupt the chain. Given any large B-fan there are at most two edges of this B-fan colored blue (the outer edges). Only these two edges can be middle edges for some blue $Z$. The edges on the strip above this B-fan can only be above this $Z$ in one way (either type a) or b) ) without creating a monocolored triangle (which is forbidden). However doing a flip of type a) may then necessitate a flip of type b).
   \fxnote{Figure?}
 
   Hence we might need $4$ flips in total.
 
-  \paragraph{Doing any or all of these flips on a B-fan of size $7$ or more yields a valid \rel}
+  \mypar{Doing any or all of these flips on a B-fan of size $7$ or more yields a valid \rel}
   It is clear that every flip on it's own changes a valid \rel into another valid \rel.
   When we inspect the descriptions of the flips we see that they do not interfere with each other.
   \fxnote{Expand ?}
 
-  \paragraph{On a B-fan of size $5$ or $6$ at most three flips are available and necessary. We can do any or all of them and yield a valid \rel}
+  \mypar{On a B-fan of size $5$ or $6$ at most three flips are available and necessary. We can do any or all of them and yield a valid \rel}
   Suppose we force these $4$ flips to happen on B-fan of size $5$ or $6$ then the fence above this B-fan offends Invariant \ref{inv:uni:load}
   \fxnote{Figure?}
 
 
-  \paragraph{After doing all available flips for a B-fan there is no longer any chain of blue $Z$'s using the edges of that B-fan.}
+  \mypar{After doing all available flips for a B-fan there is no longer any chain of blue $Z$'s using the edges of that B-fan.}
   It is clear that each flip break the original chain
   Argue that flips don't introduce (too long) chains
 
-  \paragraph{Doing these flips only increases the length of any face by $2$.}
+  \mypar{Doing these flips only increases the length of any face by $2$.}
   It is clear every flip only increase face length with $1$.
   \fxwarning{TODO Make this precise for red/blue faces}
 

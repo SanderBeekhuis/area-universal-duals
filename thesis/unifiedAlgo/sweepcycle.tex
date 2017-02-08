@@ -47,7 +47,7 @@
 
   We then repeat this until the sweepcycle does not contain any more interior vertices. At which point we can terminate the algorithm by coloring the edges still on the cycle blue and its interior edges red.
 
-  \paragraph{Find the right neighbor path}
+  \mypar{Find the right neighbor path}
     Let $v_i$ denote all the vertices of $\cpath$ in the following order $\pW =  v_1 \  v_2 \  \ldots v_{n-1} \  v_n = \pE$.
     Some intervals of these vertices will be adjacent to $\pS$. However, they can't be all adjacent to $S$ since then any vertex still in the interior of $\C$ would lie in a separating triangle of $G$. We denote by $v_i$ the last vertex of first interval of vertices adjacent to $S$ and by $v_j$ the first vertex of the second interval.
     As candidate path we will take the right neighbor path of $\cpath|_{v_i, v_j}$.
@@ -90,10 +90,10 @@
 
     The \emph{range} of an irregularity will be given by it's start and end index. Depending on what irregularities we find on the prefence we will update the sweepcycle with a different path. We will call this path the \emph{update path}. How this update works exactly will be shown in Subsection \ref{ss:sweep:Update}.
 
-    \paragraph{We have no irregularity}
+    \mypar{We have no irregularity}
       When there are no irregularities we update the sweepcycle with the prefence entire $\P$.
 
-    \paragraph{We have any chord} \mbox{ }
+    \mypar{We have any chord} \mbox{ }
     \fxwarning[nomargin, inline]{Why not just take the inner chord?}
     We know that we can't have any polebound chords on the prefence since any such chord would offend Invariant \ref{i:uni:no2Chords} of the sweepcycle.
 
@@ -133,7 +133,7 @@
       \label{fig:sweep:2chordInChordUpdate}
     \end{figure}
 
-    \paragraph{Only separating 2-chords}
+    \mypar{Only separating 2-chords}
     \emph{Any $\pE$-bound 2-chords}
     Start a path inside the smallest 2-chord (i.e. with the highest starting number for its range). Say the start of this range is $i_1$ we then update the sweepcycle in the following way.
 

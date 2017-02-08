@@ -9,7 +9,7 @@ We can also adapt Fusy's algorithm to generate a vertically one-sided dual. We t
 We will have an additional requirement on top of the requirement that $\ext G$ has no separating triangles. We will also require that $\ext G$ has no separating four cycles.
 
 
-\paragraph{Notational concerns}
+\mypar{Notational concerns}
   Just as in Section \ref{s:algo} we will use $\C$ to indicate the current sweep line cycle.
   We will repeatedly only consider the path $\cpath$. In that case we will always order it from $\pW$ to $\pE$.
 
@@ -26,7 +26,7 @@ We will have an additional requirement on top of the requirement that $\ext G$ h
 
   We let $\intplus(C)$ denote the the vertices of $C$ and $C$'s interior vertices. We will also sometimes let it refer to the subgraph of $G$ induced by these vertices.
 
-  \paragraph{Non-crossing walks}
+  \mypar{Non-crossing walks}
   We will call a walk \emph{noncrossing} if at every vertex $w$ in the walk that is visited $k >1$ times such that $w_{i_1} = w_{i_2} = \ldots = w_{i_k}$ in the walk the clockwise intervals $[w_{i_j-1}, w_{i_j+1}]$ for $j \in \braces {1, \ldots, k}$ are disjoint in the rotation at $w$.
   \fxnote{We might add a (small) figure for clarity (i.e. of a crossing and a non-crossing walk)}
 

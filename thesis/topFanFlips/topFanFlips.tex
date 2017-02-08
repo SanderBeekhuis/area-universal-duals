@@ -56,7 +56,7 @@ Our flips differ depending on whether we we encounter a split and or merge in th
 
 We consider all faces we have in order from first created to last created.
 
-\paragraph{Flipping topfans}
+\mypar{Flipping topfans}
 A topfan is above a number of edges of the bottom fence of the face containing the topfan. These edges are the rim of the fan.
 
 We flip the topfan along the rim starting at the first vertex and ending at the the vertex \textbf{before} the first split or $\pS$ adjacent vertex or the vertex \textbf{before} the last vertex. This can imply that we don't flip any edges (in the case that the first vertex is a split vertex or $\pS$-adjecent).
@@ -69,7 +69,7 @@ If we stop flipping before a merge vertex $v_{i+1}$ we flip and additional edge 
 Examples of this procedure are given in the following paragraph.
 
 
-\paragraph{Examples}
+\mypar{Examples}
 If the rim has no merges or splits we execute the topfanflip depicted in Figure \ref{fig:fanflip:regular}. We color all but the rightmost fan edge blue, color all but the rightmost rim edge red. And color the left sides of all topfans below this topfan in the face below the current face blue.
 
 If the rim consists of only merges we easily adept a topfanflip to this situation. We simply don't flip the edge merging in as depicted in Figure \ref{fig:fanflip:merge}.
@@ -78,7 +78,7 @@ A special case is given by a merge on the last vertex on the bottom edges of the
 
 Splits are more difficult to handle. We are unfortunately unable to keep flipping once we hit a split hence we stop before we get that far. See Figure \ref{fig:fanflip:split}. It this happens on the first vertex we don't flip at all, see Figure \ref{fig:fanflip:splitFirstVertex}.
 
-\paragraph{The result}
+\mypar{The result}
 Before the topfanflips we had a vertically one-sided REL. Afterwards we still have a vertically one-sided \rel as we will prove in Lemma \ref{lm:topfan:oneSidedREL}. Moreover we have no large top-fans except for some controlled cases as we will prove in Lemma \ref{lm:topfan:remainingTopfans}.
 
 \begin{lemma}

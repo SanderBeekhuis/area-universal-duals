@@ -6,7 +6,7 @@
 
 At this point we have a vertically one-sided graph (due to Lemma \ref{lm:topfan:oneSidedREL}) without large topfans except possibly for the locations provided in Lemma \ref{lm:topfan:remainingTopfans}.
 
-\paragraph{Outline}
+\mypar{Outline}
 In this stage we are going to recolor edges in all blue faces to make all of them $d+1$-sided. We will start at the bottommost face in the creation order (which we will have to recalculate after the topfanflips, but every REL has one). And we will recolor some if it's edges if a blue face that is to large will appear. \fxnote{I may need to expand a bit more on this order}
 
 We then mark the edges on the top boundary path of this face above the recolored edges as \emph{loaded}. This means that we will try to not flip above these edges in future iterations of the algorithm.
@@ -14,7 +14,7 @@ We then mark the edges on the top boundary path of this face above the recolored
 Then we continue with the next face in the order we just calculated.
 
 
-\paragraph{Loads}
+\mypar{Loads}
 As is mentioned above we will mark some edges using so-called \emph{loads}, we will in the rest of the section refer to these edges as \emph{loaded}. The exact use of these loaded edges will become clear in the rest of this section. But as is mentioned above we try to not flip above these edges.
 
 It is important to note that if we load any blue edge we regard any other blue edge sharing at least one vertex with this edge to be loaded as well. The occurrence of this phenomenon will be called \emph{putting trough a load}. An example can be seen in Figure \ref{fig:subdiv:putTrougLoad}.
@@ -27,7 +27,7 @@ It is important to note that if we load any blue edge we regard any other blue e
 \end{figure}
 
 
-\paragraph{Step requirements}
+\mypar{Step requirements}
 We flip edges in each face, taking into account loads on the bottom fence. Such that
 
 \begin{enumerate}

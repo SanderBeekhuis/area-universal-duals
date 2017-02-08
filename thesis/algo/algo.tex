@@ -116,7 +116,7 @@ Hence we have now constructed, or already had, a path that satisfies \ref{e:noS}
 \caption{Constructing a path satisfying \ref{e:noS} \label{fig:E1}}
 \end{figure}
 
-\paragraph{There is a path that also satisfies (E2)}
+\mypar{There is a path that also satisfies (E2)}
 If $\P_1$ satisfies (E2) we set $\P_2 = \P_1$ otherwise we will create a path that satisfies (E1) and (E2).
 If the path $\P_1$ does not satisfy $(E2)$ \footnote{which will be the case if the above construction has been used} then there are two possibilities  a) $\P_1$ does not have interior vertices and/or b) $[v,v']$ does not have interior vertices. If a) would be true the existence of $P_0$ would contradict Invariant \ref{i:noChords}. Hence the only problem can be that $b)$ occurs.
 
@@ -140,7 +140,7 @@ If $v=N_b$ and $v'=S_b$ we have found a separating triangle given by $S_rN_bS_b$
 \newcommand{\intvv}{\ensuremath{[v,v']\setminus{v,v'}}}
 \newcommand{\intP}{\ensuremath{\P\setminus{v,v'}}}
 
-\paragraph{There is a path that also satisfies (E3)}
+\mypar{There is a path that also satisfies (E3)}
 If $\P_2$ satisfies $(E3)$, we take $\P_3 = \P_2$. Otherwise we will remedy the defect. We separate five different cases of offending edges. All of the five cases will be easy to remedy giving a path $\P'_2$ still satisfying \ref{e:noS} and \ref{e:longBorders} such that $\C_{\P'_2}$ is strictly contained in $\C_{\P_2}$ %Q what is the right version of smaller here?
 \begin{enumerate}
  \renewcommand*{\labelenumi}{\alph{enumi})}%
@@ -162,7 +162,7 @@ Since all of the moves shrink $\C_{\P_2}$ while keeping \ref{e:noS} and \ref{e:l
 
 %TODO formulate repetition argument nicly
 
-\paragraph{There is a path that also satisfies \ref{e:noNewChord}}
+\mypar{There is a path that also satisfies \ref{e:noNewChord}}
 Suppose that $\P_3$ does not satisfy \ref{e:noNewChord}. Then we can just take the would be interior edge and take this for a new path. This is again a finite procedure reducing the sum of $|\P_3| -|[v,v']|$. In the end we have a path satisfying \ref{e:noS} - \ref{e:noNewChord}.
 
 %TODO picturse, why dont we lose E1-E3

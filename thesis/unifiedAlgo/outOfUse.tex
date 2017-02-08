@@ -76,7 +76,7 @@
 
   We will work from the last created face upwards. When doing a flip we try to only alter the history, not the current face and certainly not the future. We will treat flips under a topfan of size 4 differently, because we don't have the space to execute all standard flips.
 
-  \paragraph{Size of left joints}
+  \mypar{Size of left joints}
   We will show the following
 
   \begin{defi}
@@ -100,18 +100,18 @@
 
   \end{proof}
 
-  \paragraph{The standard flips}
+  \mypar{The standard flips}
   Figures of the basic same and opposite orientation flips.
    See Figure \ref{fig:uni:sameFlip}, \ref{fig:uni:sameFlipComplete} and \ref{fig:uni:oppFlip}.
 
-  \paragraph{Flips under a topfan of size 4}
+  \mypar{Flips under a topfan of size 4}
   Suppose we have a topfan $F$ of size $4$
   As long as there is only one chain of $Z$'s with one of the rims of $F$. We can just execute a regular flip without running out of space.
 
 
 
 
-  \paragraph{Same orientation flip}
+  \mypar{Same orientation flip}
 
   In this case we do the flip in Figure \ref{fig:uni:sameFlip}
 
@@ -142,7 +142,7 @@
    \fxwarning{TODO Argue why these edges are like they are}
 
 
-   \paragraph{Opposite orientation flips}
+   \mypar{Opposite orientation flips}
    We namely execute the flip given in Figure \ref{fig:uni:oppFlip}. The small vertices on the bottom-left hint on the possibility of vertices but those don't have to be there.
 
   \begin{figure}[h]
@@ -165,7 +165,7 @@
   \fxwarning{TODO Argue why these edges are like they are}
 
 
-  \paragraph{Flips with multiple edges in the middle joint.}
+  \mypar{Flips with multiple edges in the middle joint.}
 
 
   We will want to proof the following about these flips.
@@ -195,7 +195,7 @@
 
     Furthermore if we only have to do an opposite chain flip then we simply elongate a face by $1-\infty$ and shorten another face by $1-\infty$. Again we drop the shortened face if it becomes to short (i.e. less then $1-1$)
 
-    \paragraph{Every face is only hit a number of times}
+    \mypar{Every face is only hit a number of times}
     *Once on each side during same direction flips
     *Once during opp flips (per side)
 
@@ -210,6 +210,6 @@
 
     Every two subsequent $Z$'s are treated in one flip. This flip makes a historic faces longer but closes them in such a way they can't be opened by other flips.
 
-    \paragraph{Remaining $Z$'s}
+    \mypar{Remaining $Z$'s}
     The opp flip can place an blue edge above another blue edge. However this chain stops here since above this is a red split vertex. So the longest chain of $Z$'s is now of length two.
   \end{proof}
