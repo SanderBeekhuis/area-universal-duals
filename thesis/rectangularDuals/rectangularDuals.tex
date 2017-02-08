@@ -73,15 +73,15 @@ In this section we will introduce the rectangular dual of a graph.
 
   A regular edge labeling  of $\ext G$ corresponds to a equivalence class of rectangular layouts $\L$ that are a rectangular dual of $G$.
 
-  Note that we have no monocolored directed cycles because such a cycle would for example correspond to a  group of adjacent rectangles that have  no leftmost or topmost one. This is clearly absurd.
+  Note that we have no monochromatic directed cycles because such a cycle would for example correspond to a  group of adjacent rectangles that have  no leftmost or topmost one. This is clearly absurd.
 
   \begin{lemma}
     \label{lm:rel:noMonoColoredTriangles}
-    A regular edge labeling does not admit a monocolored triangle
+    A regular edge labeling does not admit a monochromatic triangle
   \end{lemma}
 
   \begin{proof}
-    Suppose we have a monocolored triangle. Without loss of generality we will suppose that the color of this triangle is blue. Then at least one of the vertices has an incoming blue edge followed directly by an outgoing blue edge or an outgoing blue edge followed directly by an incoming blue edge in its rotation. Thus this vertex has either an empty set of outgoing or incoming red edges, offending the coloring requirements of a REL
+    Suppose we have a monochromatic triangle. Without loss of generality we will suppose that the color of this triangle is blue. Then at least one of the vertices has an incoming blue edge followed directly by an outgoing blue edge or an outgoing blue edge followed directly by an incoming blue edge in its rotation. Thus this vertex has either an empty set of outgoing or incoming red edges, offending the coloring requirements of a REL
   \end{proof}
 
   \subsubsection{$st$-planar graphs}
@@ -96,7 +96,7 @@ In this section we will introduce the rectangular dual of a graph.
     \begin{proof}
       Kant and He propose to add an edge and orient the outer cycle. This is necessary because they require $s$ and $t$ to be adjacent. Moreover they do not a priori require such an graph to be without directed cycles.
 
-      A trivial adaptation of \cite[pp.179]{Kant1997} then gives us the theorem. We note that we can not get any directed cycles since a regular edge labeling has no monocolored directed cycles.
+      A trivial adaptation of \cite[pp.179]{Kant1997} then gives us the theorem. We note that we can not get any directed cycles since a regular edge labeling has no monochromatic directed cycles.
       \fxnote{We might write our own proof.}
     \end{proof}
 
