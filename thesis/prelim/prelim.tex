@@ -19,9 +19,8 @@ An \emph{interior edge} of a cycle is then an edge contained in the interior of 
 \mypar{Path notations}
   We will sometimes give vertices of a path $\P$ explicitly using $p_1 \ldots p_k$.
 
-  With $\rev(P)$ we denote the \emph{reverse path} $p_k \ldots p_1$. We use $\oplus$ to denote the \emph{concatenation} of paths. That is given a second path $\Q$ with vertices $q_1 \ldots q_l$ and $p_k = q_1$ the new path $\P \oplus \Q$ consists of $p_1 \ldots p_{k-1} p_k=q_1 q_2 \ldots q_l$.
-
-  Recall that a cycle is simply a path starting and ending at the same vertex. Hence if we have two disjoint paths $\P, \Q$ from $s$ to $t$ then $\P \oplus \rev(\Q)$ is a cycle.
+  With $\rev{P}$ we denote the \emph{reversed path} $p_k \ldots p_1$. We use $\oplus$ to denote the \emph{concatenation} of paths. That is given a second path $\Q$ with vertices $q_1 \ldots q_l$ and $p_k = q_1$ the new path $\P \oplus \Q$ consists of $p_1 \ldots p_{k-1} p_k=q_1 q_2 \ldots q_l$.
+  Recall that a cycle is simply a path starting and ending at the same vertex. Hence if we have two disjoint paths $\P, \Q$ from $s$ to $t$ then $\P \oplus \rev{\Q}$ is a cycle.
 
   Furthermore we use a vertical bar to denote the \emph{restriction} of a path to a certain set of vertices. So $\P|_{p_i, p_j}$ with $i<j$ is the subpath of $\P$ that has vertices $p_i \ldots p_j$.
 
@@ -32,7 +31,7 @@ An \emph{interior edge} of a cycle is then an edge contained in the interior of 
 
   Since cycles are special type of paths the same definitions will also apply to them.
 
-  As long $\P$ is a path $\P|_{v_i, v_j} \oplus \rev(\Q)$ is a welldefined cycle. We call a ($k$-)chord \emph{separating} if this is a separating cycle.
+  As long $\P$ is a path $\P|_{v_i, v_j} \oplus \rev{\Q}$ is a welldefined cycle. We call a ($k$-)chord \emph{separating} if this is a separating cycle.
 
 \mypar{Rotations}
   Once we fix a planar embedding of a graph we can talk about the \emph{rotation} at a vertex $v$. The rotation at a vertex is clockwise order of the edges incident to $v$. We will identify these edges with their other endpoints. Two vertices $x, y$ are said to be \emph{consecutive} in the rotation at $v$ when the edges $vx$ and $vy$ are consecutive in the clockwise order. In most of this thesis we implicitly fix an embedding since triangulations are 3-connected and thus only have one planar embedding by a theorem due to Whitney (1933). This theorem is proven in for example \cite[p. 267]{Bondy2008}

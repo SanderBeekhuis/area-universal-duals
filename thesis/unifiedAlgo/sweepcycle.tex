@@ -8,7 +8,7 @@
 
   We will let $\P$ denote a interior path. Given such a path of $k$ vertices we will index it's nodes by $p_1, \ldots, p_k$ in such a way that $p_1$ is closer to $\pW$ then $p_k$ is (and thus that $p_k$ is closer to $\pE$ then $p_1$ is). Given such a path the \emph{index} of a vertex $p_i\ in \P$ is it's position in the path, that is, the index of $p_i$ is $i$.
 
-  Then $p_1$ and $p_k$ indicate the two unique vertices of the walk that are also part of the cycle. We will then let $\restC{\P}$ denote the part of $\cpath$ that is between $p_1$ and $p_k$ (including). $\C_\P$ will denote the cycle given by $\restC{\P} \oplus \rev(\P)$.
+  Then $p_1$ and $p_k$ indicate the two unique vertices of the walk that are also part of the cycle. We will then let $\restC{\P}$ denote the part of $\cpath$ that is between $p_1$ and $p_k$ (including). $\C_\P$ will denote the cycle given by $\restC{\P} \oplus \rev{\P}$.
 
   During the algorithm we will want to maintain several invariants on $\C$. The first three are equivalent to those imposed by Fusy. The final invariants is new and will turn out to impose a nice structure on the sweepcycle so far.
 
@@ -110,10 +110,10 @@
       \label{fig:sweep:chordsOnPrefence}
     \end{figure}
 
-    What we do now depends on whether a 2-chord shows up in the interior of the chord pasted to the prefence $\P|_{i_1, j_1} \oplus \rev({C_\text{final}})$.
+    What we do now depends on whether a 2-chord shows up in the interior of the chord pasted to the prefence $\P|_{i_1, j_1} \oplus \rev{{C_\text{final}}}$.
 
     \emph{No separating 2-chord}
-    If there is no separating 2-chord in the interior of $\P|_{i_1, j_1} \oplus \rev({C_\text{final}})$ we do the following. Let $v_k$ be the shared neighbor on the sweepcycle of $p_{i_1}$ $p_{i_1 +1}$ and $v_l$ the shared neighbor on the sweepcycle  of $p_{j_1 -1}$ and $p_{j_1}$. We update the sweepcycle with the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:chordUpdate}.
+    If there is no separating 2-chord in the interior of $\P|_{i_1, j_1} \oplus \rev{{C_\text{final}}}$ we do the following. Let $v_k$ be the shared neighbor on the sweepcycle of $p_{i_1}$ $p_{i_1 +1}$ and $v_l$ the shared neighbor on the sweepcycle  of $p_{j_1 -1}$ and $p_{j_1}$. We update the sweepcycle with the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:chordUpdate}.
 
     \begin{figure}[h]
       \centering
@@ -123,7 +123,7 @@
     \end{figure}
 
     \emph{A separating 2-chord}
-      Let $j_2$ be end index of the separating 2-chord with the lowest end range in the interior of $\P|_{i_1, j_1} \oplus \rev({C_\text{final}})$. And let $v_k$ be the shared neighbor on the sweepcycle of $p_{i_1}$ $p_{i_1 +1}$ and $v_l$ the shared neighbor on the sweepcycle  of $p_{j_2 -1}$ and $p_{j_2}$.
+      Let $j_2$ be end index of the separating 2-chord with the lowest end range in the interior of $\P|_{i_1, j_1} \oplus \rev{{C_\text{final}}}$. And let $v_k$ be the shared neighbor on the sweepcycle of $p_{i_1}$ $p_{i_1 +1}$ and $v_l$ the shared neighbor on the sweepcycle  of $p_{j_2 -1}$ and $p_{j_2}$.
       We then update the sweepcycle with the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:2chordInChordUpdate}.
 
     \begin{figure}[h]
