@@ -1,0 +1,37 @@
+%!TEX root = ../thesis.tex
+
+%What problems did i study this thesis? What results can be found in this thesis?
+%\fxwarning{Work this out in predaft-2}
+
+%What does each section contain in one sectence?
+%\fxwarning{Work this out in predaft-2}
+
+
+\section{Introduction}
+
+\mypar{Setting}
+A  \emph{rectangular layout} $\L$ is a partition of a rectangle into a finite set of interior-disjoint rectangles. Hence the interior of this rectangle contains vertical and horizontal line segments. We will call any such line segment that is not extended any further on either side a \emph{maximal segment}. Such an layout is \emph{one-sided} if every maximal segment has only one rectangle on one of its sides.
+
+A \emph{graph} $G$ is an abstraction for a network. The objects are represented by a set of \emph{vertices}. Connections are represented by \emph{edges}. Each edge connects two \emph{vertices}. All graphs are \emph{simple}. That is, every pair of vertices is connected by at most one edge and there are no edges starting and ending at the same vertex. An edge is \emph{incident} to a vertex $v$ if that edge connects $v$ to another vertex. The \emph{degree} of a vertex is the number of edges incident to this vertex.
+
+Two vertices are \emph{adjacent} when they are connected by an edge. Two rectangles are \emph{adjacent} when their boundaries overlap. A \emph{rectangular dual} of $G$ is a rectangular layout whose adjacencies are the same as those of $G$ when we consider a correspondence between vertices and rectangles.
+
+In for example atlases \emph{rectangular cartograms} are used to display information. A rectangular cartogram is a map where the regions are replaced by rectangles while keeping their adjacencies. The size of each region changes according to the variable displayed in the cartogram.  A rectangular rectangular cartogram is the dual of the adjacency graph of the map.
+\fxnote{Figure of cartogram, where to find. Pres of speckman?}
+
+If the areas change it might be that a certain rectangular layout can not fulfill its adjacencies anymore and we have to switch to another, combinatorially different, rectangular dual of the adjacency graph of the map. It would be better to find a dual that has adjacencies that hold regardless of the area sizes we assign to each rectangle. We say such a dual is  \emph{area-universal}.
+
+Eppstein et al. have shown that rectangular duals are area-universal exactly when they are one-sided.~\cite{Eppstein2012} Unfortunately not all graphs admit a one-sided dual. One such graph is given by Rinsma.~\cite{Rinsma1987}
+
+\mypar{Results}
+A rectangular layout $\L$ is \emph{$k$-sided} if all maximal segments have at most $k$ rectangles on one of their sides. This is a generalization of one-sidedness. A $k$-sided layout is not area-universal but it is more robust to changes in the areas of it's rectangles. \fxnote{Argue this or does that break the flow?} This thesis has two main results.
+
+\begin{enumerate}
+  \item There are graphs that admit only $\infty$-sided rectangular duals
+  \item For graphs satisfying a simple condition we show that they are at most $d$-sided, where $d$ is the maximal degree of all vertices.
+\end{enumerate}
+
+We will give the exact condition at the end of the next section after we introduced more terminlogy.
+
+\mypar{Structure}
+\fxinnote{Do we need to declare this here?}
