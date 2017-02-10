@@ -3,21 +3,15 @@
 \section{Fixing a corner assignment}
   \label{s:fix}
   In this section we will show that there is a family of graphs that for any $k \in \N$ has members that are not $k$-sided. All members of this family contain separating $4$-cycles.
+  If there is no $k$-sided rectangular dual for a certain corner assignment $\ext G$ of $G$. There may still be another corner assignment of $G$ admitting a $k$-sided dual.
 
-  In our explorations to find a lower bound on what kind of \emph{$k$-sidedness} is possible we will find it very useful to fix one particular corner assignment $\ext G$ of $G$. Unfortunately if there is no rectangular dual that's $k$-sided using some corner assignment $\ext G$ of $G$. This does not imply that $G$ is not $k$-sided. There might be another corner assignment of $G$ that has a $k$-sided rectangular dual.
-
-  Fortunately for us however we can view $\ext G = H$ as a graph in its own right, then $G$ is the interior of a separating $4$-cycle of $H$ and we will show this implies that $G$ (as induced subgraph) has to be colored in accordance with the corner assignment $\ext G$.
-
-  We will thus proof the following theorem in this section.
-  \begin{thrm}
-  \label{th:fixCorner assignment}
-  When considering if there are rectangular duals satisfying a certain property. We can consider a fixed corner assignment for a graph.
-  \end{thrm}
+  However, if we view $\ext G = H$ as a graph in its own right, then $G$ is the interior of a separating $4$-cycle of $H$ and we will show in Lemma \ref{lm:fix:fourCycleInteriorColor} this implies that $G$ (as induced subgraph) has to be colored in accordance with the corner assignment $\ext G$.
 
   \begin{remark}
   \label{re:interiorRectangle}
   Let $\C$ be a separating $4$-cycle of $G$ with interior $I$. Then in any rectangular dual of $G$ the region enclosed by the rectangles dual to the vertices in $\C$ is a rectangle.
   \end{remark}
+  \fxinnote{Actually proof this}
 
   \begin{remark}
   \label{re:disjointRectanglesOnlyHaveOneAdjecentSide}
@@ -26,7 +20,7 @@
 
   \begin{lemma}
   \label{lm:fix:fourCycleInteriorColor}
-  Let $\C$ be a separating $4$-cycle of $\ext G$ with interior $I$. We can label the vertices $a$, $b$ $c$ and $d$ in clockwise order around $I$ such that all interior edges incident to $a, b, c$ and $d$ are incoming red, incoming blue, outgoing red and  incoming blue respectively.
+  Let $\C$ be a separating $4$-cycle of $\ext G$ with interior $I$. We can label the vertices $a$, $b$, $c$ and $d$ in clockwise order around $I$ such that all interior edges incident to $a, b, c$ and $d$ are incoming red, incoming blue, outgoing red and outgoing blue respectively.
   \end{lemma}
 
   \begin{proof}
@@ -39,8 +33,6 @@
   \end{proof}
 
   Hence if we know the color and orientation of one interior edges incident to a vertex of a separating $4$-cycle $\C$ we know the color and orientation of all interior edges incident to $\C$.
-
-  \fxnote{This lemma implies that any \emph{alternating 4-cycle} is either \emph{left-alternating} or \emph{right-alternating} in the terminology of Fusy. Should I note this since he does not provide a real proof.}
 
   \begin{wraptable}{o}{6cm}
     \centering
@@ -64,13 +56,15 @@
       \label{fig:scafold}}
   \end{figure}
 
-  \begin{proof}[Proof of Theorem \ref{th:fixCorner assignment}]
-    The graph $H$ can have more then one corner assignment but they all contain the separating $4$-cycle $\C= NESW$ thus by Lemma \ref{lm:fix:fourCycleInteriorColor} we see that, without loss of generality, the interior edges of $\C$ incident to $N$ and $S$ are colored red and those incident to $E$ or $W$ are colored blue. This is exactly as if we forced the corner assignment $\ext G$
-    \end{proof}
 
-\subsection{An application: There are graphs that are $\infty$-sided}
+  The graph $H$ can have more then one corner assignment but they all contain the separating $4$-cycle $\C= NESW$. Thus by Lemma \ref{lm:fix:fourCycleInteriorColor} we see that, without loss of generality, the interior edges of $\C$ incident to $N$ and $S$ are colored red and those incident to $E$ or $W$ are colored blue. This is exactly as if we forced the corner assignment $\ext G$ of $G$. \fxnote{better word then forced}
+
+
+\subsection{There are graphs that are $\infty$-sided}
   \label{ss:fix:manymany}
+
   We consider the graph $G$ with corner assignment $\ext G$ given in Figure \ref{fig:fix:manymany0}. This graph has 2 maximal separating $4$-cycles. These are both marked by thick lines in Figure \ref{fig:fix:manymany0}.
+  Many of the edges in this graph have only one possible color and orientation if we do not want to violate the constraints of a \rel. Firstly, we can color the edges incident with the poles in accordance with the exterior vertex condition. Subsequently we can use Lemma \ref{lm:fix:fourCycleInteriorColor} on both maximal separating $4$-cyles in accordance to color even more edges and finally we can color the edges in triangles of which the other two edges have  the same color using Lemma \ref{lm:rel:noMonoColoredTriangles}. These forced colorings are performed in Figure \ref{fig:fix:coloring}.
 
   \begin{figure}[h]
     \centering
@@ -79,7 +73,7 @@
     \label{fig:fix:manymany0}
   \end{figure}
 
-  This graph again has a lot of forced coloring. These forced colorings are performed in Figure \ref{fig:fix:coloring}. First we color the edges incident with the poles in accordance with the exterior vertex condition. Subsequently we propagate the coloring along both maximal separating $4$-cyles in accordance whit Lemma \ref{lm:fix:fourCycleInteriorColor} and finally we color the edges in triangles that have the other two edges colored in the same color. We can do this due to the fact that triangles in a regular edge labeling are not monochromatic by Lemma \ref{lm:rel:noMonoColoredTriangles}.
+
 
 
   \begin{figure}[h]
@@ -106,10 +100,8 @@
     \label{fig:fix:coloring}
   \end{figure}
 
-
-
-  The result is then the graph displayed in Figure \ref{fig:fix:manymany4}. The black edges in this figure are edges that do not have a forced coloring by the above argument\footnote{Altough most of them can be forced by Lemma \ref{lm:fix:fourCycleInteriorColor}}.
-  We will focus on the centered black edge $e$ lying on both the maximal separating 4-cycles. We note that this edge is an interior edges of both the red an blue faces that we drew extra thick in Figure \ref{fig:fix:manymany4}. These faces both have that both their boundary paths are of arbitrarily large length. Hence $e$ has to be colored both red and blue to prevent such a face existing in the final \rel. This is impossible and hence the graph is $\infty$-sided.
+  The result is then the graph displayed in Figure \ref{fig:fix:manymany4}. The black edges in this figure are edges that do not have a forced coloring by the above argument\footnote{Altough most of them can be forced by Lemma \ref{lm:fix:fourCycleInteriorColor}.}.
+  We will focus on the centered black edge $e$. $e$ is an interior edges of both the red and blue faces that we drew thick in Figure \ref{fig:fix:manymany4}. These faces both have that both their boundary paths are of arbitrarily large length. Hence $e$ has to be colored both red and blue to prevent such a face existing in the final \rel. This is impossible and hence the graph is $\infty$-sided.
 
   \begin{figure}[h]
     \centering
