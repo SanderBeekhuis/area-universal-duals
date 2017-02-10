@@ -7,26 +7,19 @@
 
   Given a layout $\L$ we can thus easily find it's adjacency graph. However, finding a rectangular dual of a triangulation of the $k$-gon $G$ is more involved. Due to the algorithm by He \cite{He1993} it is sufficient to find a \emph{regular edge labeling} on a corner assignment of $G$. In this section we will introduce regular edge labellings.
 
-\subsection{Rectangular layouts and their duals}
-  \fxinnote{move to relevant location}
+\mypar{Adjacency graphs of layouts}
+  The \emph{ adjacency graph} $\dualgraph{\L}$ of a layout $\L$ each rectangle is represented by a vertex and we connect two vertices by an edge exactly when their rectangles are adjacent. In the \emph{extended adjacency graph} $\extdualgraph{\L}$ we also add $4$ vertices $\pN, \pE, \pS, \pW$ (so-called \emph{poles}) in the outer face, one associated to the north, east, south, west boundary segment of the outer rectangle, respectively. Two vertices are then connected if their rectangles or boundary segments intersect.
+  If we take the \emph{extended adjacency graph} of a layout and remove the $4$ vertices corresponding to the outer face we end up with the \emph{adjacency graph} of that layout.
 
-
-\subsection{Duals of rectangular layouts}
-  In the \emph{dual graph} $\dualgraph{\L}$ of a layout $\L$ we represent each rectangle by a vertex and we connect two vertices by an edge exactly when their rectangles are adjacent.
-  One can also consider the \emph{extended dual graph} $\extdualgraph{\L}$ of a layout $\L$. In such a graph we not only represent each rectangle by a vertex. But furthermore we also add $4$ vertices $\pN, \pE, \pS, \pW$ (so-called \emph{poles}) in the outer face, one associated to the north, east, south, west boundary segment of the outer rectangle respectively. Two vertices are then connected if their rectangles or boundary segments intersect.
-  If we take the \emph{extended dual graph} of a layout and remove the $4$ vertices corresponding to the outer face we end up with the \emph{dual graph} of that layout.
-  Let us note that both the dual graph and the extended dual graph of a layout $\L$ are not the same as the \emph{graph dual} of $\L$ when we view it as a graph (namely we do not represent the outer face of $\L$ by a single vertex).
-
-\subsection{Rectangular dual}
-  We have already introduced two ways to define the dual $G$ of a layout $\L$. In the reverse direction we say a layout $\L$ is a \emph{rectangular dual} of a certain graph $G$ if we have that $G = \dualgraph{\L}$.
+  In this setting a layout $\L$ is a \emph{rectangular dual} of a certain graph $G$ if we have that $G = \dualgraph{\L}$.
   A triangulation of the $k$-gon $\G$ does not necessarily have a rectangular dual nor is this dual necessarily unique. The requirements for existence are given in Theorem \ref{th:rect:exsitenceREctangularDual}.
   To see that a rectangular  dual is not necessarily unique one can simply consider the two non-equivalent duals of the same graph given in Figures \ref{fig:rect:segmentdefs} and \ref{fig:rect:vertonesided}.
 
 
 \subsection{Different kinds of rectangular layouts}
-  We can pose different restrictions on a rectangular layout $\L$. For all these restrictions we have that if they hold for one layout $\L$ they hold for all equivalent layouts.
-  We call $\L$ \emph{area-universal} if, no matter the areas we assign to the rectangles of $\L$, some equivalent layout $\L'$ has rectangle of the assigned areas.
-  All other restrictions we introduce here consider the \emph{maximal line segments} (or simply \emph{maximal segments}) of $\L$. A \emph{line segment} (or simply \emph{segment}) of $\L$ is a sequence of consecutive inner boundary segments forming a line. Such a segment is called maximal if it is not contained in any other line segment.
+  A rectangular layout $\L$ can have different properties.
+  Recall that $\L$ is area-universal if, no matter the areas we assign to the rectangles of $\L$, some combinatorially equivalent layout $\L'$ has rectangle of the assigned areas.
+  Recall also that a \emph{maximal line segments} (or simply \emph{maximal segments}) of $\L$ is a line segment not contained in any other line segment. That is, it can not be extended any further. In this definition a \emph{line segment} (or simply \emph{segment}) of $\L$ is a sequence of consecutive inner boundary segments forming a line.
   A segment is \emph{one-sided} if it is on the boundary of a single rectangle. We call it \emph{$k$-sided} if on one of the sides it is the boundary of at most $k$ rectangles.
 
   Consider for example Figure \ref{fig:rect:segmentdefs}. The three highlighted lines are all line segments. However only the red and blue segment are maximal segments. The red segment is one-sided and the blue segment is $2$-sided.
@@ -40,8 +33,7 @@
 
   We say a layout \emph{one-sided} if all maximal segments are one-sided.
   Furthermore,  we say it is \emph{vertically one-sided} or \emph{horizontally one-sided} if all vertical or horizontal maximal segments are one-sided, respectively. Finally, a layout is \emph{$k$-sided} if all maximal line segments are $k$-sided.
-
-  Consider Figure \ref{fig:rect:vertonesided}. In this Figure a vertically one-sided rectangular layout is depicted. This layout is also $4$-sided.
+  Consider for example Figure \ref{fig:rect:vertonesided}. In this Figure a vertically one-sided rectangular layout is depicted. This layout is also $4$-sided.
   \begin{figure}[h]
     \centering
     \includegraphics[scale=1]{rectangularDuals/img/vertonesided}
@@ -49,7 +41,6 @@
     \label{fig:rect:vertonesided}
   \end{figure}
 
-  Eppstein et al. \cite{Eppstein2012} show that a layout is area-universal if and only if it is one-sided. \fxnote{We could build more context}
 
 \subsection{Regular edge labellings}
   Regular edge labellings were first introduced by Kant and He \cite{Kant1997} and were also used in \cite{Eppstein2012}. Fusy also studied these structures \cite{Fusy2006,Fusy2009} under the name of \emph{transversal structures}.
@@ -65,7 +56,7 @@
 
   In \cite{He1993} He showed that given a regular edge labeling we can reconstruct a rectangular layout represented by this regular edge labeling.
   A regular edge labeling  of $\ext G$ corresponds to an equivalence class of rectangular layouts $\L$ that are a rectangular dual of $G$.
-  \fxnote{Do we use this anywhere?}{A \rel has no monochromatic directed cycles because such a cycle would for example correspond to a  group of adjacent rectangles that have  no leftmost or topmost rectangle.}
+  \fxnote*{Do we use this anywhere? If so we should proof it.}{A \rel has no monochromatic directed cycles because such a cycle would for example correspond to a  group of adjacent rectangles that have  no leftmost or topmost rectangle.}
 
   \begin{lemma}
     \label{lm:rel:noMonoColoredTriangles}
@@ -77,6 +68,7 @@
   \end{proof}
 
   \mypar{$\mathbf{st}$-planar graphs}
+  \fxinnote{do we actually use this? At least parially}
     Kant and He \cite[pp.179]{Kant1997} show that a regular edge labeling is closely linked to a pair of $st$-planar graphs. We show this in Theorem \ref{th:rel:stPlanarGraphs} below.
 
     An $st$-planar graph is an oriented planar graph with one source (in-degree 0) $s$ and one sink (out-degree 0) $t$. Both $s$ and $t$ lie on the outer face. Moreover, such an $st$-planar graph has no directed cycles.
@@ -98,38 +90,7 @@
 
     Every face $F$ in an $st$-planar graph has the same structure. The boundary of $F$ consists of two directed paths with common start the orientation at $\spl(F)$. We say the first path in the rotation, starting at the beginning of the adjacent pair, is the \emph{right boundary path} or \emph{bottom boundary path} of $F$ and the second one is the \emph{left boundary path} or \emph{top boundary path}.
 
-    \subsubsection{Fans}
-    We introduce some more concepts to describe the interior of a blue (or red) face. Every interior edge of this face goes from one fence to the other (otherwise its start or end vertex would violate the interior vertex condition).\fxnote{This could be a useful result in the section about cycles and their interiors.} To better understand the structure of such a strip we will describe the edges from $\spl(F)$ to $\mrg(F)$ .
-
-    Let $u_0 , u_1, \ldots u_n$ be the vertices of the upper boundary path of $F$ and $v_0, v_1, \ldots, v_m$ the vertices of the bottom boundary path. That is $u_0=v_0 = \spl(F)$ and $u_n = v_m = \mrg(F)$. Since our graph is a triangulation $u_1v_1$ must be an edge. For the second edge in the face we have two options $u_1v_2$ or $u_2v_1$, otherwise this edge and the previous one would not form a triangle. This principle holds for every subsequent edge, we can either increase the index of the upper boundary path or the index of the bottom boundary path. In other words, this face is a so-called \emph{triangle strip}.
-
-    We call a maximal sequence of at least two edges increasing the index on the bottom boundary path (and thus keeping the index on the upper path fixed) a \emph{Bottom-fan} or simply \emph{B-fan} and a maximal sequence of at least two edges increasing the index on the upper boundary path is called a \emph{Top-fan} or just \emph{T-fan}. \fxnote*{Q What's wrong here?}{The \emph{size} of such a fan is the number of edges contained in the sequence}. By the definition of a fan it has size of at least $2$.
-    We use \emph{fans} to refer to both these \emph{types} of fans (i.e. T- and B-fans).
-    We call a fan of size $3$ or larger a \emph{large fan} and a fan of size $2$ a \emph{small fan}.
-
-    In a strip we alternately encounter B- and T-fans. Since if we would have two adjacent fans of the same type we would just have a single larger fan of that type.
-    In Figure \ref{fig:uni:fans} we see a strip consisting of subsequently a B-fan of size $3$, a T-fan of size 2, a B-fan of size $2$, a T-fan of size $6$, a B-fan of size $3$ and a T-fan of size $3$.
-
-    \begin{figure}[h]
-      \centering
-      \includegraphics[scale=.9]{rectangularDuals/img/fans}
-      \caption{}
-      \label{fig:uni:fans}
-    \end{figure}
-
-
-   We introduce some more terminology for fans: \emph{outer edges}, \emph{fan handles} and the \emph{rim} as can be seen in Figure \ref{fig:rect:fanTerms}. The \emph{fan handle} $v$ is the vertex shared by all edges in the fan. Let $F$ be the induced subgraph of vertices adjacent to the edges in the fan. $F$ contains no edges not belonging to the triangle strip since these would lead to separating 3-cycles. The \emph{rim} is the path given by $F\sm{v}$.
-   \fxnote{Q is this definition of Rim more clear or still unclear?}
-   \fxnote*{Do we use this}{The \emph{outer rim} are the two extreme edges of this path and} the \emph{outer edges} are the edges between the fan handles and the extreme vertices of the \emph{rim}.
-
-   \begin{figure}[h]
-     \centering
-     \includegraphics[scale=1]{rectangularDuals/img/fanterms}
-     \caption{}
-     \label{fig:rect:fanTerms}
-   \end{figure}
-
-  \subsubsection{Regular edge labellings and maximal segments}
+  \mypar{Maximal segments}
     From the way that we color a \rel for a given layout $\L$ we can see in Figure \ref{fig:rect:relSegmentFace} that a horizontal maximal segment leads to a blue face and a vertical maximal segment leads to a red face.
 
     \begin{figure}[h]
@@ -142,7 +103,3 @@
     For either type of maximal segment we denote the corresponding face with $F$. The number of interior vertices of both boundary paths without $\mrg(F)$ and $\spl(F)$ is the number of rectangles on the respective sides of the maximal segment.
 
     Hence a one-sided maximal segment corresponds to a face with one boundary path of length $2$\footnote{A boundary path can not have length $1$ since by construction of a \rel it encloses a maximal segment and thus has to go trough at least one intermediate rectangle/vertex.} and a $k$-sided maximal segment has a short boundary path of length at most $k+1$ and a longer boundary path of any length.
-
-  \subsection{Adjacent vertices and chords}
-  \fxnote{introduce where this gets relevant}
-  We call a vertex \emph{$\pS$-adjacent} when it is adjacent to $\pS$ in the current corner assignment. In the same way we call a chord or $2$-chord \emph{$\pE$-bound}, \emph{$\pW$-bound} or \emph{polebound} when it is adjacent to $\pE$, $\pW$ or any pole,  respectively.
