@@ -5,11 +5,11 @@
 \fxinnote{restructre, less numbered headings}
 \fxinnote{Lead in paragrah}
 
-In this section we  introduce the rectangular dual of a graph.
+  Given a layout $\L$ we can thus easily find it's adjacency graph. However, finding a rectangular dual of a triangulation of the $k$-gon $G$ is more involved. Due to the algorithm by He \cite{He1993} it is sufficient to find a \emph{regular edge labeling} on a corner assignment of $G$. In this section we will introduce regular edge labellings.
 
 \subsection{Rectangular layouts and their duals}
-  We define a \emph{rectangular layout} (or simply \emph{layout}) $\L$ to be a partition of a rectangle into finitely many interiorly disjoint rectangles such that no four rectangles meet in one point.
-  We say two layouts are  \emph{combinatorially equivalent} or simply \emph{equivalent} when they have the same adjacencies with the same orientation(horizontal or vertical) between their rectangles.
+  \fxinnote{move to relevant location}
+
 
 \subsection{Duals of rectangular layouts}
   In the \emph{dual graph} $\dualgraph{\L}$ of a layout $\L$ we represent each rectangle by a vertex and we connect two vertices by an edge exactly when their rectangles are adjacent.
@@ -21,7 +21,6 @@ In this section we  introduce the rectangular dual of a graph.
   We have already introduced two ways to define the dual $G$ of a layout $\L$. In the reverse direction we say a layout $\L$ is a \emph{rectangular dual} of a certain graph $G$ if we have that $G = \dualgraph{\L}$.
   A triangulation of the $k$-gon $\G$ does not necessarily have a rectangular dual nor is this dual necessarily unique. The requirements for existence are given in Theorem \ref{th:rect:exsitenceREctangularDual}.
   To see that a rectangular  dual is not necessarily unique one can simply consider the two non-equivalent duals of the same graph given in Figures \ref{fig:rect:segmentdefs} and \ref{fig:rect:vertonesided}.
-
 
 
 \subsection{Different kinds of rectangular layouts}
@@ -97,8 +96,7 @@ In this section we  introduce the rectangular dual of a graph.
 
     We refer to these $st$-planar graphs as the \emph{blue graph} and \emph{red graph} of some regular edge labeling and we refer to their faces as \emph{blue faces} and \emph{red faces}.
 
-    Every face $F$ in an $st$-planar graph has the same structure. The boundary of $F$ consists of two directed paths with common start vertex $v$ and end vertex $w$. We say $v$ is the \emph{split} vertex of $F$ and $w$ is the \emph{merge} vertex of $F$.
-    These boundary paths are adjacent in the orientation at $\spl(F)$. We say the first path in the rotation, starting at the beginning of the adjacent pair, is the \emph{right boundary path} or \emph{bottom boundary path} of $F$ and the second one is the \emph{left boundary path} or \emph{top boundary path}.
+    Every face $F$ in an $st$-planar graph has the same structure. The boundary of $F$ consists of two directed paths with common start the orientation at $\spl(F)$. We say the first path in the rotation, starting at the beginning of the adjacent pair, is the \emph{right boundary path} or \emph{bottom boundary path} of $F$ and the second one is the \emph{left boundary path} or \emph{top boundary path}.
 
     \subsubsection{Fans}
     We introduce some more concepts to describe the interior of a blue (or red) face. Every interior edge of this face goes from one fence to the other (otherwise its start or end vertex would violate the interior vertex condition).\fxnote{This could be a useful result in the section about cycles and their interiors.} To better understand the structure of such a strip we will describe the edges from $\spl(F)$ to $\mrg(F)$ .
@@ -145,35 +143,6 @@ In this section we  introduce the rectangular dual of a graph.
 
     Hence a one-sided maximal segment corresponds to a face with one boundary path of length $2$\footnote{A boundary path can not have length $1$ since by construction of a \rel it encloses a maximal segment and thus has to go trough at least one intermediate rectangle/vertex.} and a $k$-sided maximal segment has a short boundary path of length at most $k+1$ and a longer boundary path of any length.
 
-\subsection{Corner assignments}
-  \fxnote[inline, nomargin]{might want to move this to the next section, or instead move this up}
-
-  Given a layout $\L$ we can thus easily find the (extended) dual. However finding a rectangular dual of a plane triangulated graph $G$ is more involved. Due to the algorithm by He \cite{He1993} this boils down to finding a regular edge labeling of $G$ with $4$ additional vertices $\pN, \pE, \pS, \pW$. We define $G$ and these $4$ additional vertices to be a \emph{corner assignment} of $G$.
-
-  \begin{defi}[Corner assignment]
-    A \emph{corner assignment} $\ext G$ of $G$ is a augmentation of $G$ with $4$ vertices (which we call its \emph{poles}). Such that
-    \begin{enumerate}
-    \item every interior face has degree $3$ and the exterior face has degree $4$.
-    \item all poles are incident to the outer face
-    \end{enumerate}
-  \end{defi}
-
-  The following result is due to Kozminski and Kinnen
-
-  \begin{thrm}[Existence of a rectangular dual]
-    \label{th:rect:exsitenceREctangularDual}
-    A plane triangulated graph $\G$ has a rectangular dual if and only if it has an corner assignment without separating triangles $\ext \G$
-    \fxnote{Q how should this be done diffently}
-  \end{thrm}
-
-  \begin{proof}
-    This is shown independently in \cite{Kozminski1984} and  \cite{Ungar1953}
-  \end{proof}
-
-  Due to this theorem we call a corner assignment without separating triangles a valid corner assignment.
-  A graph with a valid corner assignment $G$ can have more then one valid corner assignment. Each such corner assignment fixes which of the rectangles are in the corners of the rectangular dual $\L$.
-  Note that a graph $G$ with a separating triangle can not have any valid corner assignment, since every possible corner assignment has a separating triangle.
-
-  \subsubsection{Adjacent vertices and chords}
+  \subsection{Adjacent vertices and chords}
   \fxnote{introduce where this gets relevant}
   We call a vertex \emph{$\pS$-adjacent} when it is adjacent to $\pS$ in the current corner assignment. In the same way we call a chord or $2$-chord \emph{$\pE$-bound}, \emph{$\pW$-bound} or \emph{polebound} when it is adjacent to $\pE$, $\pW$ or any pole,  respectively.
