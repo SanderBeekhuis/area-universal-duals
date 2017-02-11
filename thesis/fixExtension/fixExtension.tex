@@ -7,11 +7,15 @@
 
   However, if we view $\ext G_k = H_k$ as a graph in its own right, then $G_k$ is the interior of a separating $4$-cycle of $H_k$ and we will show in Lemma \ref{lm:fix:fourCycleInteriorColor} this implies that $G_k$ (as induced subgraph) has to be colored in accordance with the corner assignment $\ext G_k$.
 
-  \begin{remark}
-  \label{re:interiorRectangle}
-  Let $\C$ be a separating $4$-cycle of a graph $G$ with interior $I$. Then in any rectangular dual of $G$ the region enclosed by the rectangles dual to the vertices in $\C$ is a rectangle.
-  \end{remark}
-  \fxinnote{Actually proof this}
+  \begin{lemma}
+    \label{lm:interiorRectangle}
+    Let $\C$ be a separating $4$-cycle of a graph $G$ with interior $I$. Then in any rectangular dual of $G$ the region enclosed by the rectangles dual to the vertices in $\C$ is a rectangle.
+  \end{lemma}
+  \begin{proof}
+    The interior $I$ of $\C$ will be represented by some rectilinear shape in every rectangular dual $\L$ of G. Such a shape must have at least $4$ clockwise right turns if we travel its boundary in a clockwise direction otherwise the shape is not closed.
+
+    On the other hand such a clokwise turn can not occur due to a single rectangle. Instead such a turn can only occur when two rectangles are adjecent to each other. Since a $4$-cyle has only $4$ pairs of adjecent rectangles the representaion of $I$ in $\L$ can only have $4$ clokwise turns. Hence it must be a rectangle, the only rectilinear shape with just $4$ clokwise turns
+  \end{proof}
 
   \begin{remark}
   \label{re:disjointRectanglesOnlyHaveOneAdjecentSide}
@@ -24,7 +28,7 @@
   \end{lemma}
 
   \begin{proof}
-  By Remark \ref{re:interiorRectangle} the union of the rectangles in the interior of $\C$ will be some rectangle in any rectangular dual. We will denote this rectangle by $I$. Since two disjoint rectangles can only be adjacent to each other at one side all interior edges incident to any vertex of $\C$ are of the same color.
+  By Lemma \ref{lm:interiorRectangle} the union of the rectangles in the interior of $\C$ will be some rectangle in any rectangular dual. We will denote this rectangle by $I$. Since two disjoint rectangles can only be adjacent to each other at one side all interior edges incident to any vertex of $\C$ are of the same color.
 
   Furthermore $a, b, c, d$ are all adjacent to a different side of $I$ since $I$ has four sides that need to be covered and it is only adjacent to four rectangles. We then denote by $a$ the vertex corresponding to the rectangle above $I$. Then $b$ must be to the left of $I$, $c$ must be below $I$ and $d$ must be to the right of $I$.
 
