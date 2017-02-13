@@ -5,37 +5,11 @@
 \fxinnote{define notations and concepts in one go}
 \fxinnote{state results at and of this section}
 
-\mypar{Paths}
-  A path $\P$ is a sequence of vertices such that every two consecutive vertices are connected with each other. The first and last vertex of the path are its \emph{extreme} vertices while the rest are \emph{interior} vertices of this path. The \emph{length} of a path is the number of edges used to connect the vertices. That, is one less then the number of vertices. All paths are \emph{simple}, that is, no vertex occurs twice in the path except the extreme vertices.
-
-\mypar{Cycles}
-  We call a cycle of length $k$  a \emph{$k$-cycle}. A \emph{triangle} is cycle of length $3$ (i.e. a $3$-cycle).
-  By Jordan's curve theorem a cycle splits the plane into two parts, one bounded and one unbounded. We will call the bounded part the \emph{interior} of this cycle and the unbounded part the \emph{exterior} of this cycle.
-  We call a cycle \emph{separating} if there are vertices in both its interior and exterior.
-  An \emph{interior edge} of a cycle is then an edge contained in the interior of the cycle.
-
-
 \mypar{Path notations}
   We denote the vertices of a path $\P$ by $p_1 \ldots p_k$.
   With $\rev{P}$ we denote the \emph{reversed path} $p_k \ldots p_1$. We use $\oplus$ to denote the \emph{concatenation} of paths. That is, given a second path $\Q$ with vertices $q_1 \ldots q_l$ and $p_k = q_1$ the path $\P \oplus \Q$ consists of $p_1 \ldots p_{k-1} q_1 q_2 \ldots q_l$.
   Recall that a cycle is simply a path starting and ending at the same vertex. Hence if we have two  internally disjoint paths $\P, \Q$ from $s$ to $t$ then $\P \oplus \rev{\Q}$ is a cycle.
   Furthermore we use a vertical bar to denote the \emph{restriction} of a path to a certain set of vertices. So $\P|_{p_i, p_j}$ with $i<j$ is the subpath of $\P$ with vertices $p_i \ldots p_j$.
-
-\mypar{Chords}
-  \fxinnote{Move to relevant place}
-  A \emph{chord} of a path is an edge that connects two vertices in this path, but is not part of the path. A path without chords is \emph{chordfree}.
-  A \emph{k-chord} is a path $\Q$ of length $k$ that connects two non-subsequent vertices $p_i, p_j$ of $\P$ such that $\P \cap \Q = \braces{p_i, p_j}$.
-  Since a cycle is a special type of path the same definitions also apply to them.
-  Note that $\P|_{v_i, v_j} \oplus \rev{\Q}$ is a cycle. The ($k$-)chord $\Q$ is \emph{separating} if this cycle is separating.
-
-\mypar{Rotations}
-  \fxinnote{Move to relevant place}
-  We fix an embedding for all graphs in this thesis. In this embedding the \emph{rotation} at a vertex $v$ is the clockwise order of the edges incident to $v$. We will identify these edges with their other endpoints.
-  Two vertices $x, y$ are said to be \emph{consecutive} in the rotation at $v$ when the edges $vx$ and $vy$ are consecutive.
-  Given a path $\P$ and a interior vertex $p_i$. A neighbor $v \nin \P$ of $p_i$ lies on the \emph{left} of $\P$ if it lies in the interval from $p_{i-1}$ to $p_{i+1}$ in the clockwise rotation at $p_{i}$. Otherwise $v$ lies in the interval from $p_{i+1}$ to $p_{i-1}$ in the rotation clockwise at $p_i$. In this case $v$ lies on the \emph{right} of $\P$.
-  We will use the same notion of left and right for edges. That is, an edge $e\nin P$ adjacent to $p_i$ lies to left or right if its other end point lies to the left or right, respectively.
-
-
 
 \mypar{Adjacent vertices and chords}
   \fxnote{introduce where this gets relevant}
