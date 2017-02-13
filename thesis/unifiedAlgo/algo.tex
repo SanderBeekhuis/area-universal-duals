@@ -3,15 +3,20 @@
 \section{Algorithm}
 \label{s:algo}
 Kant and He \cite{Kant1997} were the first to design algorithms that determine a regular edge labeling. Fusy \cite{Fusy2006} recently developed a different algorithm computing a specific regular edge labeling using a method shrinking a sweepcycle while coloring the outside in accordance with a regular edge labeling.
+\mypar{Sweepcycle algorithms}
+In such a sweepcycle approach one starts by denoting the outer cycle as the sweepcycle $\C$ and then shrinks this sweepcycle by updating it with \emph{interior paths} of $\C$. An \emph{interior path} is a path connecting two distinct vertices of $\C$ and whose edges are in the interior of $\C$. During this update one maintains some invariants on the structure of both the cycle and its exterior.
 
-In Section \ref{s:fix} we see that corner assignments with a separating $4$-cycle may lead to a $\infty$-sided graph.
+After a finite amount of updates the sweepcycle has no more interior vertices. At this point we can complete the algorithm and we obtain a \rel.
 
-Hence for our algorithm we will assume that $\ext G$ has no separating $4-cycles$. Let $d$ be the highest degree among vertices of $G$ after adding the corners. Then the largest possible fan in a \rel is of size $d-3$. Our algorithm will calculate a $d$ sided layout.
+\mypar{Our algorithm}
+For our algorithm we will assume that $\ext G$ has no separating $4-cycles$. Let $d$ be the highest degree among vertices of $G$ after adding the corners. Then our algorithm will calculate a $d$ sided layout.
 
-
-Our algorithm will use an adaption of the algorithm by Fusy as a first stage in Section \ref{s:sweep}.  consisting of shrinking a sweepcycle by so called \emph{valid} paths.\footnote{In Fusy's work he calls these \emph{eligible paths}}
+Unfortunatly a straight up sweepcycle approach did not work. So instead of that the algorithm will use a sweep cycle as first stage in Section \ref{s:sweep}.
+%Consisting of shrinking a sweepcycle by so called \emph{valid} paths.\footnote{In Fusy's work he calls these \emph{eligible paths}}
 
 Before we can dive into this we first need to introduce some more theory on right neighbor walks. We do this in Section \ref{s:rightNeighbour}.
+
+After the sweepcycle we still need to do $3$ postprocessing steps before we obtain a $d$-sided layout.
 
 The second stage of the algorithm will consist of a procedure to get rid of most large topfans. This will be treated in Section \ref{s:fanflip}.
 
