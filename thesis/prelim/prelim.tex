@@ -5,12 +5,6 @@
 \fxinnote{define notations and concepts in one go}
 \fxinnote{state results at and of this section}
 
-\mypar{Path notations}
-  We denote the vertices of a path $\P$ by $p_1 \ldots p_k$.
-  With $\rev{P}$ we denote the \emph{reversed path} $p_k \ldots p_1$. We use $\oplus$ to denote the \emph{concatenation} of paths. That is, given a second path $\Q$ with vertices $q_1 \ldots q_l$ and $p_k = q_1$ the path $\P \oplus \Q$ consists of $p_1 \ldots p_{k-1} q_1 q_2 \ldots q_l$.
-  Recall that a cycle is simply a path starting and ending at the same vertex. Hence if we have two  internally disjoint paths $\P, \Q$ from $s$ to $t$ then $\P \oplus \rev{\Q}$ is a cycle.
-  Furthermore we use a vertical bar to denote the \emph{restriction} of a path to a certain set of vertices. So $\P|_{p_i, p_j}$ with $i<j$ is the subpath of $\P$ with vertices $p_i \ldots p_j$.
-
 \mypar{Adjacent vertices and chords}
   \fxnote{introduce where this gets relevant}
   We call a vertex \emph{$\pS$-adjacent} when it is adjacent to $\pS$ in the current corner assignment. In the same way we call a chord or $2$-chord \emph{$\pE$-bound}, \emph{$\pW$-bound} or \emph{polebound} when it is adjacent to $\pE$, $\pW$ or any pole,  respectively.

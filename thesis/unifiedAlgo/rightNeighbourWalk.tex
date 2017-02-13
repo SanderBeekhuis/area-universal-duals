@@ -1,17 +1,21 @@
 %!TEX root = ../thesis.tex
 
-\fxnote[inline, nomargin]{Note that the same/similar things hold for the left boundary walk. However we do not need this. So do I mention it?}
+\fxnote[inline, nomargin]{Q: Note that the same/similar things hold for the left boundary walk. However we do not need this. So do I mention it?}
 
 \section{The right neighbor path of a path}
   \label{s:rightNeighbour}
-  Before we can define anything in this section we first need to carefully define what the right of a path is, hence we introduce the notion of rotations at a vertex. During the proofs in this section we will also need various types of chords and thus we also introduce more information on chords
+  In the sweepcycle step of the algorithm (Section \ref{s:sweep}) we will use the \emph{right neighbor path} of a path. Suppose we are given a path $P = p_1 \ldots p_k$ with no interior vertices incident to the outer face and without chords or separating 2-chords on the right of the path.
+  Then we show in this section that the right side neighbors of $P$ are a path (Lemma \ref{lm:uni:neighborPath}).
+
+  Of course the right side of a path is not yet defined and to do this we introduce the notion of rotations at a vertex. During the proofs in this section we will also need various types of chords so we subsequently introduce these.
 
   \mypar{Rotations}
-    We assume a fixed embedding for $G$. In this embedding the \emph{rotation} at a vertex $v$ is the clockwise order of the edges incident to $v$. We will identify these edges with their other endpoints.
+    We assume a fixed embedding for $G$. The \emph{rotation} at a vertex $v$ is the clockwise order of the edges incident to $v$. We will identify these edges with their other endpoints.
     Two vertices $x, y$ are said to be \emph{consecutive} in the rotation at $v$ when the edges $vx$ and $vy$ are consecutive in the rotation.
-    We sometimes want to denote number of subsequent vertices or \emph{interval} in the rotation. We let $[x,y]$ denote all the vertices in the rotation of $v$ from $x$ to $y$ and we let the \emph{exclusive interval} $(x,y)$ denote the same vertices without $x$ or $y$.
-    Given a path $P$ and a interior vertex $p_i$. A neighbor $v \nin \P$ of $p_i$ lies on the \emph{left} of $P$ if it lies in the interval from $p_{i-1}$ to $p_{i+1}$ in the clockwise rotation at $p_{i}$. Otherwise $v$ lies in the interval from $p_{i+1}$ to $p_{i-1}$ in the rotation clockwise at $p_i$. In this case $v$ lies on the \emph{right} of $P$.
-    We will use the same notion of left and right for edges. That is, an edge $e\nin P$ adjacent to $p_i$ lies to left or right if its other end point lies to the left or right, respectively. In Figure \ref{fig:right:rot} $v$ lies on the left of $P$ and $u$ lies on the right of $P$.
+    We sometimes want to denote number of subsequent vertices, which we call an \emph{interval}, in the rotation. We let $[x,y]$ denote all the vertices in the rotation of $v$ from $x$ to $y$ and we let the \emph{exclusive interval} $(x,y)$ denote the same vertices without $x$ and $y$.
+
+    Given a path $P$ and a interior vertex $p_i \in P$. A neighbor $v \nin \P$ of $p_i$ lies on the \emph{left} of $P$ if it lies in the interval $(p_{i-1}, p_{i+1})$ in the rotation of $p_{i}$. Otherwise $v$ lies in the interval $(p_{i+1}, p_{i-1})$ in the rotation of $p_i$. In this case $v$ lies on the \emph{right} of $P$.
+    We will use the same notion of left and right for edges. That is, an edge $e\nin P$ adjacent to $p_i$ lies to left or right if its other end point lies to the left or right, respectively. In Figure \ref{fig:right:rot} $v$ and $p_i v$ lie on the left of $P$ and $u$ and $p_i u$ lie on the right of $P$.
 
     \begin{figure}[h]
       \centering
@@ -20,14 +24,27 @@
       \label{fig:right:rot}
     \end{figure}
 
+  \mypar{Path manipulations}
+    With $\rev{P}$ we denote the \emph{reversed path} $p_k \ldots p_1$. We use $\oplus$ to denote the \emph{concatenation} of paths. That is, given a second path $\Q$ with vertices $q_1 \ldots q_l$ and $p_k = q_1$ the path $\P \oplus \Q$ consists of $p_1 \ldots p_{k-1} q_1 q_2 \ldots q_l$.
+    Recall that a cycle is simply a path starting and ending at the same vertex. Hence if we have two  internally disjoint paths $\P, \Q$ from $s$ to $t$ then $\P \oplus \rev{\Q}$ is a cycle.
+    Furthermore we use a vertical bar to denote the \emph{restriction} of a path to a certain set of vertices. So $\P|_{p_i, p_j}$ with $i<j$ is the subpath of $\P$ with vertices $p_i \ldots p_j$.
+
   \mypar{Chords}
-    A \emph{chord} of a path is an edge that connects two vertices in this path, but is not part of the path. A path without chords is \emph{chordfree}.
-    A \emph{k-chord} is a path $\Q$ of length $k$ that connects two non-subsequent vertices $p_i, p_j$ of $\P$ such that $\P \cap \Q = \braces{p_i, p_j}$.
-    Since a cycle is a special type of path the same definitions also apply to them.
-    Note that $\P|_{v_i, v_j} \oplus \rev{\Q}$ is a cycle. The ($k$-)chord $\Q$ is \emph{separating} if this cycle is separating.
+    A \emph{chord} of a path is an edge that connects two non-subsequent vertices. A path without chords is \emph{chordfree}. The path $P$ in Figure \ref{fig:right:chord} has the chord $p_1 p_3$.
+    A \emph{k-chord} is a path $Q$ of length $k$ that connects two non-subsequent vertices $p_i, p_j$ of $P$ such that $P \cap Q = \braces{p_i, p_j}$.
+    Note that $\P|_{v_i, v_j} \oplus \rev{\Q}$ is a cycle.
+    A ($k$-)chord $Q$ is \emph{separating} if this cycle is separating. In Figure \ref{fig:right:chord} there are two $2$-chords, $p_3 u p_5$ and $p_3 v p_5$, but only one of them is separating, namely $p_3 v p_5$.
+    Since a cycle is a special type of path the same definitions apply to them.
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[scale=1]{unifiedAlgo/img/rightNeighbourwalk/chords.pdf}
+    \caption{A path with a chord and a separating 2-chord}
+    \label{fig:right:chord}
+  \end{figure}
 
   \mypar{Right neighbor paths}
-    In the sweepcycle step of the algorithm (Section \ref{s:sweep}) we will use the right neighbor path of a path. We show that given a path $P = p_1 \ldots p_k$ whose interior vertices are not incident to the outer face and without chords or separating 2-chords on the right of the path. The the right neighbors of $P$ are again a path (Lemma \ref{lm:uni:neighborWalk}).
+    We already mentioned that in the sweepcycle step we use the right neighbor path of a path. Recall that  $P$ has no interior vertices incident to the outer face and no chords or separating 2-chords on the right. We first show that every vertex has right neighbours, then we give the procedure for making the right neighbor path. Afterwards we show that the right neighbour path is a walk (Lemma \ref{lm:uni:neighborWalk}) and a path (Lemma \ref{lm:uni:neighborPath}).
 
     \begin{lemma}
       \label{lm:right:pHasRightNeihgbours}
@@ -59,14 +76,25 @@
     \end{figure}
 
 
-  \fxnote{Walk is not yet defined}
+  To break the proof that $Q$ is a path into two parts we define a \emph{walk} as a path without the constraint to be simple. Hence a walk is a sequence of vertices that are connected to each other but vertices may repeatedly occur.
   \begin{lemma}
     \label{lm:uni:neighborWalk}
     The right neighbor path $Q$ is a walk.
   \end{lemma}
   \begin{proof}
-    Let $q_i$ and $q_{i+1}$ be two subsequent vertices of $Q'$. We will show they are either connected or the same vertex. We first consider the case where $1 < i < k-1$.
+    \fxinnote{Q: Is it better to use different subscripts for $p$ and $q$?}
+    Let us denote the vertices of $Q$ by $q_1 q_2 \ldots q_\ell$.
+    Let $q_i$ and $q_{i+1}$ be two subsequent vertices of $Q'$. We will show they are either connected or the same vertex. We first consider the case where $1 < i < \ell-1$.
     Now there are two sub-cases. Either $(a)$ $q_i$ and $ q_{i+1}$ are vertices adjacent to the same vertex $p_j$ an thus subsequent in the rotation at $p_j$ or $(b)$ $q_i$ was the last vertex adjacent to $p_j$ and thus $q_{i+1}$ is the first vertex adjacent to $p_{j+1}$ since by Lemma \ref{lm:right:pHasRightNeihgbours} every interior vertex of $P$ has right neighbors.
+    Both cases are depicted in Figure \ref{fig:uni:walkproof.}
+
+    In case $(a)$ we note that since $q_i$ and $q_{i+1}$ are subsequent in the rotation at $p_j$ $q_i q_{i+1}$ is an edge since $p_j$ is not incident to the outer face and every interior face of $G$ is a triangle.
+
+    In case $(b)$ we note that $p_i q_i$ and $p_i p_{i+1}$ are edges subsequent in clockwise order, hence $q_{i} p_{i+1}$ is also an edge. Hence $q_i$ is the first vertex adjacent to $p_{i+1}$ subsequent to $v_i$ in the clockwise rotation. Thus $q_{i} = q_{i+1}$. They are duplicates.
+
+    Now for the cases $i=1$ and $i=k-1$. $q_1$ and $q_2$ are vertices adjacent to $p_{2}$ subsequent in the clockwise rotation of ${p_2}$ and hence connected since every interior face is a triangle. In the same way $q_{k-1}$ and $q_k$ are subsequent vertices in the rotation at $q_{k-1}$ and hence connected. As can also be seen in Figure \ref{fig:right:neighborPath}.
+
+    Since all pairs of subsequent vertices in $Q'$ are connected or duplicates the step removing all duplicates ensures $Q$ is a walk.
 
     \begin{figure}[h]
       \centering
@@ -82,15 +110,6 @@
       \caption{The two main cases of the proof showing that $W$ is a walk}
       \label{fig:uni:walkproof}
     \end{figure}
-
-    In case $(a)$ we note that since $q_i$ and $q_{i+1}$ are subsequent in the rotation at $p_j$ $q_i q_{i+1}$ is an edge since $p_j$ is not incident to the outer face and every interior face of $G$ is a triangle.
-
-    In case $(b)$ we note that $p_i q_i$ and $p_i p_{i+1}$ are edges subsequent in clockwise order, hence $q_{i} p_{i+1}$ is also an edge. Hence $q_i$ is the first vertex adjacent to $p_{i+1}$ subsequent to $v_i$ in the clockwise rotation. Thus $q_{i} = q_{i+1}$. They are duplicates.
-
-    Now for the cases $i=1$ and $i=k-1$. $q_1$ and $q_2$ are vertices adjacent to $p_{2}$ subsequent in the clockwise rotation of ${p_2}$, and hence connected since every interior face is a triangle. In the same way $q_{k-1}$ and $q_k$ are subsequent vertices in the rotation at $q_{k-1}$ and hence connected.
-    \fxnote{Add figure of the cases $i=1$ and $i=k-1$}
-
-    Since all pairs of subsequent vertices in $Q'$ are connected or duplicates $Q$ is a walk.
   \end{proof}
 
   \begin{lemma}
@@ -114,16 +133,14 @@
     \label{fig:right:path}
   \end{figure}
 
-  \fxinnote{Concat notation}
   \begin{lemma}
     \label{lm:uni:neighbourwalkNoInteriorVertex}
     The cycle $P \oplus \rev{Q}$ has no interior vertices.
   \end{lemma}
   \begin{proof}
-    The interior of $W \oplus \rev{P}$ consists of only triangles with all vertices in $W \oplus \rev{P}$. We can see this from the construction of the neighbor path. Both cases in Figure \ref{fig:uni:walkproof} add a triangle to the interior with all vertices in $W \oplus \rev{P}$.
+    In the construction of the right neighbor path both cases in Figure \ref{fig:uni:walkproof} add a triangle to the interior with all vertices of the triangle in $W \oplus \rev{P}$. Hence the interior of $P \oplus \rev{Q}$ can be subdivided in a number triangles.
 
-    Suppose there is a interior vertex. Then the triangle containing this vertex is a separating triangle.
-    \fxnote{This is hardly formal}
+    Suppose there is a interior vertex in the cycle $P \oplus \rev{Q}$. Then the triangle containing this vertex is a separating triangle. Hence $P \oplus \rev{Q}$ has no interior vertices.
   \end{proof}
 
 
@@ -132,7 +149,7 @@
     The left of a right neighbor path is chordfree.
   \end{lemma}
   \begin{proof}
-    Suppose that the right neighbor path $Q = q_1 \ldots q_k$  has a chord on the left, say between $q_i$ and $q_j$ with $i< j -1 $. There is a vertex $p_\ell \in P$ on the path such that $q_{i+1}$ is a neighbor of $p_\ell$ to the left of $p_\ell$. Consider now the cycle $P q_k \ldots q_{j+1} q_j q_i q_{i-1} \ldots q_1$
+    Suppose that the right neighbor path $Q = q_1 \ldots q_k$  has a chord on the left, say an edge between $q_i$ and $q_j$ with $i< j -1 $. There is a vertex $p_\ell \in P$ on the path such that $q_{i+1}$ is a neighbor of $p_\ell$ to the left of $p_\ell$. Consider now the cycle $P q_k \ldots q_{j+1} q_j q_i q_{i-1} \ldots q_1$
     (Thick in Figure \ref{fig:uni:neihbourwalkChordFree})this cycle has $q_{i+1}$ in its exterior. But then $p_\ell w_{i+1}$ is a crossing edge. Which is forbidden.
     %\fxnote{Alternate proof based on   ($\W$ being oriented from $\pW$ to $\pE$), since if it would lie on the left of $\W$ the vertices $w_{i+1},\ldots, w_{j-1}$ would not have been chosen in the construction of the prefence.}
 
