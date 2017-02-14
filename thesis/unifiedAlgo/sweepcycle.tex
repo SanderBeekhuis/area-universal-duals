@@ -2,17 +2,18 @@
 
 \section{Sweepcycle algorithm}
   \label{s:sweep}
-  The first step of the algorithm is executing a sweepcycle algorithm comparable to Fusy's \cite{Fusy2006}. We will use a script $\C$ to indicate the current sweep cycle. With vertices $\pS, v_1 = \pW, v_2, \ldots v_{n-1}, v_n = \pE, \pS$.
+  \fxnote{Note the lack of proof?}
+  The first step of the algorithm is executing a sweepcycle algorithm inspired to Fusy's \cite{Fusy2006}. We use $\C$ to indicate the current sweep cycle.
 
-  We will repeatedly only consider the path $\cpath$. In that case we will always order it from $\pW$ to $\pE$. That these edges are always in $\C$ is a result of Invariant \ref{i:uni:SWandSE}.
 
-  We will let $\P$ denote a interior path. Given such a path of $k$ vertices we will index its nodes by $p_1, \ldots, p_k$ in such a way that $p_1$ is closer to $\pW$ then $p_k$ is (and thus that $p_k$ is closer to $\pE$ then $p_1$ is). Given such a path the \emph{index} of a vertex $p_i\ in \P$ is its position in the path, that is, the index of $p_i$ is $i$.
 
-  Then $p_1$ and $p_k$ indicate the two unique vertices of the walk that are also part of the cycle. We will then let $\restC{\P}$ denote the part of $\cpath$ that is between $p_1$ and $p_k$ (including). $\C_\P$ will denote the cycle given by $\restC{\P} \oplus \rev{\P}$.
+  %We will let $\P$ denote a interior path. Given such a path of $k$ vertices we will index its nodes by $p_1, \ldots, p_k$ in such a way that $p_1$ is closer to $\pW$ then $p_k$ is (and thus that $p_k$ is closer to $\pE$ then $p_1$ is). Given such a path the \emph{index} of a vertex $p_i\ in \P$ is its position in the path, that is, the index of $p_i$ is $i$.
 
-  During the algorithm we will want to maintain several invariants on $\C$. The first three are equivalent to those imposed by Fusy. The final invariants is new and will turn out to impose a nice structure on the sweepcycle so far.
+  %Then $p_1$ and $p_k$ indicate the two unique vertices of the walk that are also part of the cycle. We will then let $\restC{\P}$ denote the part of $\cpath$ that is between $p_1$ and $p_k$ (including). $\C_\P$ will denote the cycle given by $\restC{\P} \oplus \rev{\P}$.
 
-  Before giving the invariant let us recall the Interior vertex condition: In the rotation around every vertex we have the following subsequent non-empty sets: Incoming red edges, incoming blue edges, outgoing red edges and outgoing blue edges.
+  During the algorithm we will want to maintain several invariants on $\C$. The first three are equivalent to those imposed by Fusy. The final invariant is new and imposes a nice structure on the sweepcycle so far.
+
+  %Before giving the invariants let us recall the Interior vertex condition: In the rotation around every vertex we have the following subsequent non-empty sets: Incoming red edges, incoming blue edges, outgoing red edges and outgoing blue edges.
 
   \begin{invariants}
     \itemsep=-4pt
@@ -23,21 +24,25 @@
     \item \label{i:uni:no2Chords} $\C\sm{\pS}$ has no separating 2-chords that do not use $\S$
   \end{invariants}
 
-  \begin{defi}[Prefence]
-    A prefence $\P$ is a interior path of $\C$ starting at $v_i \in \C$ and ending at $v_j \in \C$ a both adjacent to $\pS$
-    \begin{enumerate}
-      \itemsep=-4pt
-      \renewcommand*{\labelenumi}{(P\arabic{enumi})}%
-      \renewcommand*{\theenumi}{(P\arabic{enumi})}%
+  We denote the  vertices of the sweepcycle by $\pS, v_1 = \pW, v_2, \ldots v_{n-1}, v_n = \pE, \pS$.   We will repeatedly consider the path $\cpath$. In that case we will always order it from $\pW$ to $\pE$. That these edges are always in $\C$ is a result of Invariant \ref{i:uni:SWandSE}.
 
-      \item  $\C_\P$ Has no interior vertex
-      \label{p:noInteriorVertex}
-      \item  $\P$ has no chords on the left     \label{p:Wchordfree}
-      \item  The paths $v_1 v_2 \ldots v_i$ and $v_j v_{j+1} \ldots v_n$ have no chords nor 2chords on the right     \label{p:Cchordfree}
-    \end{enumerate}
-  \end{defi}
+%  \begin{defi}[Prefence]
+%    A prefence $\P$ is a interior path of $\C$ starting at $v_i \in \C$ and ending
+%    at $v_j \in \C$ a both adjacent to $\pS$
+%    \begin{enumerate}
+%      \itemsep=-4pt
+%      \renewcommand*{\labelenumi}{(P\arabic{enumi})}%
+%      \renewcommand*{\theenumi}{(P\arabic{enumi})}%
+%
+%      \item  $\C_\P$ Has no interior vertex
+%      \label{p:noInteriorVertex}
+%      \item  $\P$ has no chords on the left     \label{p:Wchordfree}
+%      \item  The paths $v_1 v_2 \ldots v_i$ and $v_j v_{j+1} \ldots v_n$
+%      have no chords nor 2chords on the right     \label{p:Cchordfree}
+%    \end{enumerate}
+%  \end{defi}
 
-  Each update of the sweepcycle consists of the following three steps do the following
+  Each update of the sweepcycle consists of the following three steps
   \begin{enumerate}
     \itemsep=-4pt
     \item Take the right neighbor walk
@@ -45,7 +50,7 @@
     \item Update the sweepcycle with this path
   \end{enumerate}
 
-  We then repeat this until the sweepcycle does not contain any more interior vertices. At which point we can terminate the algorithm by coloring the edges still on the cycle blue and its interior edges red.
+  We then repeat these steps until the sweepcycle does not contain any more interior vertices. At which point we can terminate the algorithm by coloring the edges still on the cycle $\C$ blue and its interior edges red.
 
   \mypar{Find the right neighbor path}
     Let $v_i$ denote all the vertices of $\cpath$ in the following order $\pW =  v_1 \  v_2 \  \ldots v_{n-1} \  v_n = \pE$.
