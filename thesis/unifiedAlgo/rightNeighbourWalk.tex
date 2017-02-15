@@ -81,21 +81,20 @@
     The right neighbor path $Q$ is a walk.
   \end{lemma}
   \begin{proof}
-    \fxinnote{Q: Is it better to use different subscripts for $p$ and $q$?}
     Let us denote the vertices of $Q$ by $q_1 q_2 \ldots q_\ell$.
     Let $q_i$ and $q_{i+1}$ be two subsequent vertices of $Q'$. We will show they are either connected or the same vertex. We first consider the case where $1 < i < \ell-1$.
     Now there are two sub-cases. Either $(a)$ $q_i$ and $ q_{i+1}$ are vertices adjacent to the same vertex $p_j$ an thus subsequent in the rotation at $p_j$ or $(b)$ $q_i$ was the last vertex adjacent to $p_j$ and thus $q_{i+1}$ is the first vertex adjacent to $p_{j+1}$ since by Lemma \ref{lm:right:pHasRightNeihgbours} every interior vertex of $P$ has right neighbors.
-    Both cases are depicted in Figure \ref{fig:uni:walkproof.}
+    Both cases are depicted in Figure \ref{fig:uni:walkproof}
 
     In case $(a)$ we note that since $q_i$ and $q_{i+1}$ are subsequent in the rotation at $p_j$ $q_i q_{i+1}$ is an edge since $p_j$ is not incident to the outer face and every interior face of $G$ is a triangle.
 
     In case $(b)$ we note that $p_i q_i$ and $p_i p_{i+1}$ are edges subsequent in clockwise order, hence $q_{i} p_{i+1}$ is also an edge. Hence $q_i$ is the first vertex adjacent to $p_{i+1}$ subsequent to $v_i$ in the clockwise rotation. Thus $q_{i} = q_{i+1}$. They are duplicates.
 
-    Now for the cases $i=1$ and $i=k-1$. $q_1$ and $q_2$ are vertices adjacent to $p_{2}$ subsequent in the clockwise rotation of ${p_2}$ and hence connected since every interior face is a triangle. In the same way $q_{k-1}$ and $q_k$ are subsequent vertices in the rotation at $q_{k-1}$ and hence connected. As can also be seen in Figure \ref{fig:right:neighborPath}.
+    Now for the cases $i=1$ and $i=k-1$. $q_1$ and $q_2$ are vertices adjacent to $p_{2}$ subsequent in the clockwise rotation of ${p_2}$ and hence connected since every interior face is a triangle. In the same way $q_{k-1}$ and $q_k$ are subsequent vertices in the rotation at $q_{k-1}$ and hence connected. This can also be seen in Figure \ref{fig:right:neighborPath}.
 
-    Since all pairs of subsequent vertices in $Q'$ are connected or duplicates the step removing all duplicates ensures $Q$ is a walk.
+    Since all pairs of subsequent vertices in $Q'$ are connected or duplicates the step removing all duplicates from $Q'$ ensures $Q$ is a walk.
 
-    \begin{figure}[h]
+    \begin{figure}[b]
       \centering
       \begin{subfigure}[b]{0.5\linewidth}
           \includegraphics[width=\linewidth]{unifiedAlgo/img/walkProofA}
@@ -118,11 +117,17 @@
   \begin{proof}
     We already know $Q$ is a path by \ref{lm:uni:neighborWalk}. Hence we only have to show that $Q$ contains no duplicate vertices.
 
-    Suppose that $Q$ has a duplicate vertex $q_i=q_j$ with $i<j$. Then this vertex must have been a neighbor to two different vertices in $P$. We denote these vertices $p_i$, $p_j$ with $i<j$. We are now in the situation of Figure \ref{fig:right:path}.
+    Suppose that $Q$ has a duplicate vertex $q_i=q_j$ with $i<j$. Then this vertex must have been a neighbor to two different vertices in $P$. We denote these vertices $p_\ell$, $p_k$ with $\ell<k$. We are now in the situation of Figure \ref{fig:right:path}.
 
-    By the order in which we added vertices to $Q'$, which is preserved by the removal of when we go to $Q$, we know that any vertices in-between $q_i$ and $q_j$ must be one of the following: $1)$ Adjacent to $p_i$ and in the interval $(q_i, p_{i+1})$ in $p_i$'s rotation. $2)$ Adjacent to one of $p_{i+1},  p_{i+2},\ldots, p_{j-1}$ and to the right of $P$. $3)$ Adjacent to $p_j$ and in the interval $(p_{j-1}, q_j)$ in $p_j$'s rotation.
+    By the order in which we added vertices to $Q'$, which is preserved by the removal of when we go to $Q$, we know that any vertices in-between $q_i$ and $q_j$ in $Q$ must be one of the following:
+    \begin{enumerate}
+      \item Adjacent to $p_\ell$ and in the interval $(q_i, p_{\ell+1})$ in $p_\ell$'s rotation.
+      \item Adjacent to one of $p_{\ell+1},  p_{\ell+2},\ldots, p_{k-1}$ and to the right of $P$.
+      \item Adjacent to $p_k$ and in the interval $(p_{k-1}, q_j)$ in $p_k$'s rotation.
+    \end{enumerate}
 
-    All of the three cases describe a vertex that must lie in the interior of the cycle $q_i p_i p_{i+1} \ldots p_j$. However, since $P$ has no separating $2$-chords on the right this cycle must be empty. Therefore there are no vertices in-between $q_i$ and $q_j$ but since $Q$ is a walk and $G$ is simple $Q$ can't contain any subsequent duplicates. Hence $Q$ contains no duplicates and $Q$ is thus a path.
+
+    All three cases describe a vertex that lies in the interior of the cycle $q_i p_i p_{i+1} \ldots p_j$. However, since $P$ has no separating $2$-chords on the right this cycle must be empty. Therefore there are no vertices in-between $q_i$ and $q_j$. But $Q$ is a walk and $G$ is simple  so $Q$ has no subsequent duplicates. Hence $Q$ contains no duplicates at all and is thus a path.
   \end{proof}
 
   \begin{figure}[h]
@@ -149,7 +154,8 @@
   \end{lemma}
   \begin{proof}
     Suppose that the right neighbor path $Q = q_1 \ldots q_k$  has a chord on the left, say an edge between $q_i$ and $q_j$ with $i< j -1 $. There is a vertex $p_\ell \in P$ on the path such that $q_{i+1}$ is a neighbor of $p_\ell$ to the left of $p_\ell$. Consider now the cycle $P q_k \ldots q_{j+1} q_j q_i q_{i-1} \ldots q_1$
-    (Thick in Figure \ref{fig:uni:neihbourwalkChordFree})this cycle has $q_{i+1}$ in its exterior. But then $p_\ell w_{i+1}$ is a crossing edge. Which is forbidden.
+    (thick in Figure \ref{fig:uni:neihbourwalkChordFree}) this cycle has $q_{i+1}$ in its exterior. But then $p_\ell w_{i+1}$ is a crossing edge, which is forbidden.
+    \fxwarning{TODO argue that an edge in the extreiro is also imposible usning the path $P$. Maybe the vertex $q_{i+1}$ is actually in some cycle} 
     %\fxnote{Alternate proof based on   ($\W$ being oriented from $\pW$ to $\pE$), since if it would lie on the left of $\W$ the vertices $w_{i+1},\ldots, w_{j-1}$ would not have been chosen in the construction of the prefence.}
 
     \begin{figure}[h]
