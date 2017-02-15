@@ -27,21 +27,6 @@
 
   We denote the  vertices of the sweepcycle by $\pS, v_1 = \pW, v_2, \ldots v_{n-1}, v_n = \pE, \pS$.   We will repeatedly consider the path $\cpath$. In that case we will always order it from $\pW$ to $\pE$. That these edges are always in $\C$ is a result of Invariant \ref{i:uni:SWandSE}.
 
-%  \begin{defi}[Prefence]
-%    A prefence $\P$ is a interior path of $\C$ starting at $v_i \in \C$ and ending
-%    at $v_j \in \C$ a both adjacent to $\pS$
-%    \begin{enumerate}
-%      \itemsep=-4pt
-%      \renewcommand*{\labelenumi}{(P\arabic{enumi})}%
-%      \renewcommand*{\theenumi}{(P\arabic{enumi})}%
-%
-%      \item  $\C_\P$ Has no interior vertex
-%      \label{p:noInteriorVertex}
-%      \item  $\P$ has no chords on the left     \label{p:Wchordfree}
-%      \item  The paths $v_1 v_2 \ldots v_i$ and $v_j v_{j+1} \ldots v_n$
-%      have no chords nor 2chords on the right     \label{p:Cchordfree}
-%    \end{enumerate}
-%  \end{defi}
 
   Each update of the sweepcycle consists of the following three steps
   \begin{enumerate}
@@ -66,25 +51,10 @@
       \label{fig:sweep:rightNeighbourwalk}
     \end{figure}
 
-    \begin{lemma}
-      \label{lm:uni:isPrefence}
-      The right neighbor path $\P$ of $\cpath|_{v_i, v_j}$ described above is indeed prefence.
-    \end{lemma}
-    \begin{proof}
-      $\P$ is a walk by Lemma \ref{lm:uni:neighborWalk}. Furthermore it is a path since any non-simple point would offend Invariant \ref{i:uni:no2Chords} of the sweepcycle.
-
-
-      We note \ref{p:noInteriorVertex} holds due to Lemma \ref{lm:uni:neighbourwalkNoInteriorVertex}
-
-      We note \ref{p:Wchordfree} holds due to Lemma \ref{lm:uni:neighbourwalkChordFree}.
-
-      We note \ref{p:Cchordfree} holds due to Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords}.
-    \end{proof}
-
     We then orient $\P$ from $v_i$ (the vertex closest to $\pW$)to $v_j$ (the vertex closest to $\pE$) and denote its vertices by $w_1 \ldots w_k$.
 
   \subsection{Irregularities}
-    Now the prefence we found can have several structures we want to avoid
+    Now the candidate path we found can have several structures we want to avoid
     namely
     \begin{enumerate}
       \itemsep=-4pt
@@ -92,31 +62,32 @@
       \item Separating 2-chords
     \end{enumerate}
 
-    All of these structures are on the right of the prefence since the prefence satisfies \ref{p:Wchordfree} (no chords on the left) and \ref{p:noInteriorVertex} (no separating 2-chords on the left).
+    All of these structures are on the right of the candidate path due to Lemma \ref{lm:uni:neighbourwalkChordFree} (no chords on the left) and Lemma \ref{lm:uni:neighbourwalkNoInteriorVertex} (no separating 2-chords on the left).
 
-    The \emph{range} of an irregularity will be given by its start and end index. Depending on what irregularities we find on the prefence we will update the sweepcycle with a different path. We will call this path the \emph{update path}. How this update works exactly will be shown in Section \ref{ss:sweep:Update}.
+    The \emph{range} of an irregularity will be given by its start and end index. Depending on what irregularities we find on the candidate path we will update the sweepcycle with a different path. We will call this path the \emph{update path}. How this update works exactly will be shown in Section \ref{ss:sweep:Update}.
 
     \mypar{We have no irregularity}
-      When there are no irregularities we update the sweepcycle with the prefence entire $\P$.
+      When there are no irregularities we update the sweepcycle with the entire candidate path$\P$.
 
     \mypar{We have any chord} \mbox{ }
     \fxwarning[nomargin, inline]{Why not just take the inner chord?}
-    We know that we can not have any polebound chords on the prefence since any such chord would offend Invariant \ref{i:uni:no2Chords} of the sweepcycle.
+    We know that we can not have any polebound chords on the candidate path since any such chord would offend Invariant \ref{i:uni:no2Chords} of the sweepcycle.
+    \fxwarning{Show this polebound thing using a figure}
 
-    If our prefence has any chords we look identify the them by their start and end vertex. Of the chords with the lowest start index we will consider the one with the largest end index. Let's call this chord $C_\text{outer}$.
+    If our candidate path has any chords we look identify the them by their start and end vertex. Of the chords with the lowest start index we will consider the one with the largest end index. Let's call this chord $C_\text{outer}$.
 
     We now consider $C_\text{outer}$ and any chord contained therein. In this collection we look for the chord $C_\text{inner}$ with the smallest range (i.e. highest start $i_0$ and lowest end $j_0$) then we find the chord $C_\text{final}$ with the largest range that still starts at $i_0$ or ends at $j_0$. We will denote the range of $C_\text{final}$ by $\braces{i_1, \ldots, j_1}$.
 
-    The way in which these chords are chosen is illustrated in Figure \ref{fig:sweep:chordsOnPrefence}.
+    The way in which these chords are chosen is illustrated in Figure \ref{fig:sweep:chordsOnCandidatePath}.
 
     \begin{figure}[h]
       \centering
-      \includegraphics[scale=1]{unifiedalgo/img/sweep/chordsOnPrefence}
+      \includegraphics[scale=1]{unifiedalgo/img/sweep/chordsOnCandidatePath}
       \caption{}
-      \label{fig:sweep:chordsOnPrefence}
+      \label{fig:sweep:chordsOnCandidatePath}
     \end{figure}
 
-    What we do now depends on whether a 2-chord shows up in the interior of the chord pasted to the prefence $\P|_{i_1, j_1} \oplus \rev{{C_\text{final}}}$.
+    What we do now depends on whether a 2-chord shows up in the interior of the chord pasted to the candidate path $\P|_{i_1, j_1} \oplus \rev{{C_\text{final}}}$.
 
     \emph{No separating 2-chord}
     If there is no separating 2-chord in the interior of $\P|_{i_1, j_1} \oplus \rev{{C_\text{final}}}$ we do the following. Let $v_k$ be the shared neighbor on the sweepcycle of $p_{i_1}$ $p_{i_1 +1}$ and $v_l$ the shared neighbor on the sweepcycle  of $p_{j_1 -1}$ and $p_{j_1}$. We update the sweepcycle with the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:chordUpdate}.
@@ -174,9 +145,9 @@
       \label{lm:sweep:augNoIregularity}
     \end{lemma}
     \begin{proof}
-        All of these structures are on the right of the updating path, since the updating path is a subset of a prefence and a  prefence satisfies \ref{p:Wchordfree} (no chords on the left) and \ref{p:noInteriorVertex} (no separating 2-chords on the left).
+        All of these structures are on the right of the updating path, since the updating path is a subset of a right neighbor path and a right neighbor path satisfies Lemma \ref{lm:uni:neighbourwalkChordFree} (no chords on the left) and Lemma \ref{lm:uni:neighbourwalkNoInteriorVertex} (no separating 2-chords on the left).
 
-        If the prefence had any chords the updating path is adapted to be entirely inside a chord containing no more chords. Hence the updating path can not have any chords.
+        If the candidate path had any chords the updating path is adapted to be entirely inside a chord containing no more chords. Hence the updating path can not have any chords.
 
         Moreover any updating path stops before the end of a separating 2-chord unless it is a $\pE$-bound separating 2-chord in which case it only starts after the begin of this 2-chord. Either way the updating path also has no separating 2-chords.
     \end{proof}
@@ -195,16 +166,16 @@
 
       \emph{Chord, containing a 2-chord}
       In the same manner as in the above case we can not expect any chord or separating 2-chord to connect outside the containing chord.
-      Suppose that we have a separating $2$-chord then that would have been a chord of the prefence. This is in contradiction with the fact that the outer chord contained no more chords.
+      Suppose that we have a separating $2$-chord then that would have been a chord of the candidate path. This is in contradiction with the fact that the outer chord contained no more chords.
       Suppose that we have a chord not connecting to the second-to-last vertex of the updating path. This chord would offend Invariant \ref{i:uni:no2Chords} of the old sweepcycle. Furthermore the second-to-last vertex of the updating path has no chords since it would break $v_l p_j x p_u$. (see Figure \ref{fig:sweep:2chordInChordUpdate}).
 
       \emph{$\pE$-bound separating $2$-chord}
-      We can not have any chords since these would have to break $\pE x p_i v_k$. Any $2-chords$ would have $x$ or $p_i$ as middle vertex. However the first yields a $2$-chord of the prefence with a higher start range, this is a contradiction. And the second can not yield an separating $2$-chord.
+      We can not have any chords since these would have to break $\pE x p_i v_k$. Any $2-chords$ would have $x$ or $p_i$ as middle vertex. However the first yields a $2$-chord of the candidate path with a higher start range, this is a contradiction. And the second can not yield an separating $2$-chord.
 
 
       \emph{Other separating $2$-chord}
       Any chord or $2$-chord with one vertex in the updating path and the other on the old sweepcycle must end to the right of the updating path since the updating path starts at $\pW$.
-      Suppose that we have a separating $2$-chord then that would have been a chord of the prefence. This is in contradiction with the assumption that the prefence had no chords.
+      Suppose that we have a separating $2$-chord then that would have been a chord of the candidate path. This is in contradiction with the assumption that the candidate path had no chords.
       Suppose that we have a chord not connecting to the second-to-last vertex of the updating path. This chord would offend Invariant \ref{i:uni:no2Chords} of the old sweepcycle. Furthermore the second-to-last vertex of the updating path has no chords since it would break $v_l p_j x p_u$. (see Figure \ref{fig:sweep:free2chord}).
     \end{proof}
 
@@ -214,8 +185,8 @@
     \begin{proof}
       We will proof that the new sweepcycle $\C'$ obtained by updating $\C$ is again a valid sweepcycle. Invariant \ref{i:uni:SWandSE} remains trivially true. Invariant \ref{i:uni:intVertCond} hold due to the way we colored the edges around the new interior vertices.
 
-      To see that Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords} still hold note that due to prefence Property \ref{p:Cchordfree} and the fact that the updating path itself has no irregularities (Lemma \ref{lm:sweep:augNoIregularity})
-      we know any $(2-)$chord $C$ has to have one vertex on $\P$ and one vertex on the unchanged part of old sweepcycle $\C \cap C'$. However these potential chords are also not offending by Lemma \ref{lm:sweep:noConnectingIregularity}.
+      To see that Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords} hold note that there can be no chords or $2$-chords with both endpoints in the overlap of the old and new sweepcycle $\C \cap \C'$ by the same Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords}. Since the updating path itself also has no irregularities (Lemma \ref{lm:sweep:augNoIregularity}),
+      we know any chord or separating $2$-chord $C$ has to have one vertex on $\P$ and one vertex on the unchanged part of old sweepcycle $\C \cap \C'$. However these potential chords are also not offending by Lemma \ref{lm:sweep:noConnectingIregularity}.
 
       Hence $\C'$ is a valid new sweepcycle.
     \end{proof}
