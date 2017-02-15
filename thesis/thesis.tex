@@ -25,10 +25,45 @@
 \date{\today} %\today%
 
 
-\begin{document}
-\maketitle
+%
+% These commands need to be defined in order to produce a correct and personalized document
+%
+\newcommand{\shortdoctitle}{Master's Thesis}
+\newcommand{\doctitle}{My Thesis Title}
+\newcommand{\docsubtitle}{Master Thesis}
 
-\fxinnote{Q: Do we need a toc?}
+\newcommand{\me}{My Name}
+\newcommand{\keywords}{keyword1, keyword2, keyword3}
+\newcommand{\version}{EMPTY version}
+\newcommand{\monthYear}{Month 201X}
+
+%Be sure to use all the titles for your committee members!!! (their names show up on the very first page!)
+\newcommand{\firstCommitteeMember}{Your First Committee Member}
+\newcommand{\secondCommitteeMember}{Your second Committee Member, usually the daily supervisor}
+\newcommand{\thirdCommitteeMember}{Your Third Committee Member, usually the external member}
+
+\author{\me}
+
+%
+% PDF settings
+%
+\hypersetup
+{
+    pdfauthor={\me},
+    pdftitle={\shortdoctitle},
+    pdfsubject={\doctitle},
+    pdfkeywords={\keywords}
+}
+
+
+\begin{document}
+\pagenumbering{roman}
+
+
+
+\include{titlepage}
+\normalsize
+
 
 \fxinnote{Q: Do we need to declare structure explicitly? And how do we do this? Separate chapter or in first chapter?}
 
@@ -36,13 +71,39 @@
 
 \fxinnote{Q: Do we have sections or chapters?}
 
+%ABSTRACT
+
+%PREFACE
+
+
+\tableofcontents
+
+
+\listoffigures
+
+
+\listoftables
+
+
+\lstlistoflistings
+
+
+\setcounter{page}{0}
+\pagenumbering{arabic}
+%from here on, start the 'real' page numbering, from 1, with normal digits
+
+
 \include{introduction/introduction}
 %\include{prelim/prelim}
+
 \include{rectangularDuals/rectangularDuals}
+
 \include{fixExtension/fixExtension}
 
 \include{unifiedAlgo/algo}
+
 \include{unifiedAlgo/rightNeighbourWalk}
+
 \include{unifiedAlgo/sweepCycle}
 %\include{topFanFlips/topFanFlips}
 %\include{blueFaceSubdivision/blueFaceSubdivision}
@@ -50,7 +111,10 @@
 %\include{examples/examples}
 
 %\section{Running time analysis}
+\thispagestyle{plain}
 %\section{Conclusion}
+\thispagestyle{plain}
+
 
 \listoffixmes
 
@@ -59,5 +123,5 @@
 %\include{conclusion/researchQuestions}
 
 
-%\printbibliography
+\printbibliography
 \end{document}
