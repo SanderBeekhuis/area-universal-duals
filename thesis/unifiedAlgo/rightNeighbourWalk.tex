@@ -1,12 +1,11 @@
 %!TEX root = ../thesis.tex
 
-\fxnote[inline, nomargin]{Q: Note that the same/similar things hold for the left boundary walk. However we do not need this. So do I mention it?}
-
 \section{The right neighbor path of a path}
 \thispagestyle{plain}
   \label{s:rightNeighbour}
-  In the sweepcycle step of the algorithm (Section \ref{s:sweep}) we will use the \emph{right neighbor path} of a path. Suppose we are given a path $P = p_1 \ldots p_k$ with no interior vertices incident to the outer face and without chords or separating 2-chords on the right of the path.
-  Then we show in this section that the right side neighbors of $P$ are a path (Lemma \ref{lm:uni:neighborPath}).
+  In the sweepcycle step of the algorithm (Section \ref{s:sweep}) we will use the \emph{right neighbor path} of a path. In this section we show that for any path $P = p_1 \ldots p_k$ with no interior vertices incident to the outer face and without chords or separating 2-chords on the right of the path, the right side neighbors of $P$ are a path (Lemma \ref{lm:uni:neighborPath}).
+  We even show some additional properties hold for this path $P$.
+  Similar things also hold for the the left neighbors of $P$ but we will not need this for the proof of our algorithm.
 
   The right side of a path is not yet defined and to do this we introduce the notion of rotations at a vertex. During the proofs in this section we will also need various types of chords so we subsequently introduce these.
 
@@ -68,7 +67,6 @@
     We obtain $Q$ from $Q'$ by removing all subsequent duplicates from $Q$.
     In Figure \ref{fig:right:neighborPath} an example of a right neighbor path is given.
 
-    \fxnote{Q: figure  \ref{fig:right:neighborPath}  with or without half edges on the borders?}
     \begin{figure}[h]
       \centering
       \includegraphics[scale=1]{unifiedAlgo/img/rightNeighbourwalk/neighborPath.pdf}

@@ -1,8 +1,5 @@
 %!TEX root = ../thesis.tex
 
-%What does each section contain in one sectence?
-%\fxwarning{Work this out in predaft-2}
-
 \section{Introduction}
 \thispagestyle{plain}
 
@@ -11,7 +8,7 @@
 
   We say two layouts are  \emph{combinatorially equivalent} or simply \emph{equivalent} when their rectangles have the same adjacencies with the same orientation(horizontal or vertical) between their rectangles.
 
-  Consider for example Figure \ref{fig:rect:segmentdefs}. The three highlighted lines are all line segments. However only the red and blue segment are maximal segments. The red segment is one-sided and the blue segment is $2$-sided. The whole layout is $2$-sided as well. The layout in Figure \ref{fig:intr:vertonesided} we have a $4$-sided layout.
+  Consider for example Figure \ref{fig:intr:segmentdefs}. The three highlighted lines are all line segments. However only the red and blue segment are maximal segments. The red segment is one-sided and the blue segment is $2$-sided. The whole layout is $2$-sided as well. The layout in Figure \ref{fig:intr:vertonesided} we have a $4$-sided layout.
 
   \begin{figure}
       \centering
@@ -52,19 +49,15 @@
 
 
 \mypar{Existance and uniqueness}
-  Now we can answer the question which graphs admit a rectangular dual. The following result is due to Kozminski and Kinnen
+  Now we can answer the question which graphs admit a rectangular dual. The following result was shown independently by Kozminski and Kinnen \cite{Kozminski1984} and Ungar \cite{Ungar1953}
+  \fxnote{Q Double citation. The inline ones should probably go but K and K and U becomes ambigious.}
 
-  \begin{thrm}[Existence of a rectangular dual]
+  \begin{thrm}[Existence of a rectangular dual \cite{Kozminski1984, Ungar1953}]
     \label{th:rect:exsitenceREctangularDual}
     A triangulation of the $k$-gon $\G$ has a rectangular dual if and only if it has an corner assignment without separating triangles $\ext \G$
-    \fxnote{Q how should this be done differently, p9}
   \end{thrm}
 
-  \begin{proof}
-    This is shown independently in \cite{Kozminski1984} and  \cite{Ungar1953}
-  \end{proof}
-
-    A graph $G$ can have multiple rectangular duals. $G$ can even have duals that are not equivalent. As an example one can consider the two non-equivalent duals of the same graph given in Figure \ref{fig:intr:graphs}.
+  A graph $G$ can have multiple rectangular duals. $G$ can even have duals that are not equivalent. As an example one can consider the two non-equivalent duals of the same graph given in Figure \ref{fig:intr:graphs}.
 
 \mypar{Rectangular cartograms}
   In for example atlases \emph{rectangular cartograms} are used to display information. A rectangular cartogram is a map where the regions are replaced by rectangles while keeping their adjacencies. The size of each region changes according to the variable displayed in the cartogram.  A rectangular cartogram is the rectangular dual of the adjacency graph of the map $G$.
@@ -72,11 +65,11 @@
   If the areas change it might be that a certain rectangular layout can not fulfill its adjacencies anymore and we have to switch to another non-equivalent rectangular dual of $G$.
 
   We would to find a rectangular dual that has adjacencies that hold regardless of the area sizes we assign to each rectangle. We say such a dual is \emph{area-universal}.
-  Eppstein et al. have shown that rectangular duals are area-universal exactly when they are one-sided.~\cite{Eppstein2012} Unfortunately not all graphs admit a one-sided dual. One such graph is given by Rinsma.~\cite{Rinsma1987} \fxnote{Q figure of this graph??}
+  Eppstein et al. have shown that rectangular duals are area-universal exactly when they are one-sided.~\cite{Eppstein2012} Unfortunately not all graphs admit a one-sided dual. One such graph is given by Rinsma.~\cite{Rinsma1987} \fxwarning{TODO figure of this graph with ciation}
 
 \mypar{Results}
   Unfortunately $k$-sided layouts for $k>1$ are not area-universal but we suspect that for small $k$ they are more robust to changes in the areas of their rectangles. This thesis has two results on $k$-sidedness.
-  \fxnote{Q How do I make this robust to changes notion more quative? Do I? Or do I remove the enitre sentence?}
+  \fxwarning{TODO Make this robust to changes notion more quative?  Explain why many sides are bad e.g. suing figure of many sided layout}
   \begin{enumerate}
     \item There is a family of graphs $G_k$ that for any $k \in \N$ has members that are not $k$-sided (Theorem \ref{fix:th:family}).
     \item Triangulations of the $k$-gon $G$ that have a corner assignment without separating 4-cycles are $d$-sided, where $d$ is the maximal degree of the vertices of $G$. (Theorem \ref{th:dsided})
