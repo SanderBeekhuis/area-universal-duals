@@ -5,13 +5,11 @@
 \label{ss:subdiv}
 At this point we have a vertically one-sided graph (due to Lemma \ref{lm:topfan:oneSidedREL}) without large topfans except possibly for the locations provided in Lemma \ref{lm:topfan:remainingTopfans}.
 
-\mypar{Outline}
-In this stage we are going to recolor edges in all blue faces to make all of them $d+1$-sided. We will start at the bottommost face in the creation order (which we will have to recalculate after the topfanflips, but every REL has one). And we will recolor some of its edges if a blue face that is to large will appear. \fxnote{I may need to expand a bit more on this order}
+In this section we are going to recolor edges in blue faces to make all of them $d+1$-sided. While at the same time not recoloring too many edges above each other as too create a too large red face.
 
+We will start at the bottommost face $F$ in the creation order (which we will have to recalculate after the topfanflips, but every REL has one). And we will recolor some of its edges if it is too large. \fxnote{I may need to expand a bit more on this order}
 We then mark the edges on the top boundary path of this face above the recolored edges as \emph{loaded}. This means that we will try to not flip above these edges in future iterations of the algorithm.
-
-Then we continue with the next face in the order we just calculated.
-
+Then we continue with the next face in the creation order.
 
 \mypar{Loads}
 As is mentioned above we will mark some edges using so-called \emph{loads}, we will in the rest of the section refer to these edges as \emph{loaded}. The exact use of these loaded edges will become clear in the rest of this section. But as is mentioned above we try to not flip above these edges.
@@ -115,7 +113,7 @@ If we have a large topfan in the middle of the face then above the left outer ed
 This means we can use the following rule: we flip the first edge of a topfan even above a loaded edge. And still make only chains of at most $2$ $Z$'s.
 
 
-\subsection{General conclusion}
+\subsubsection{General conclusion}
 \begin{lemma}
   \label{lm:subdiv:2chaindedZ}
   Two chained $Z$'s give at worst a $d-1$-sided face

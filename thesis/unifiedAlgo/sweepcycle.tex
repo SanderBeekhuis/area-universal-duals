@@ -6,13 +6,9 @@
   \fxnote{Note the lack of proof?}
   The first step of our algorithm is executing a sweepcycle algorithm inspired by Fusy's \cite{Fusy2006}. We use $\C$ to indicate the current sweep cycle.
 
+  During the algorithm we will want to maintain several invariants on $\C$. The first three are equivalent to those imposed by Fusy. The final invariant is new and imposes a nice structure on the sweepcycle so far.  \fxnote{Can i be more precise}
 
-
-  %
-
-  %Then $p_1$ and $p_k$ indicate the two unique vertices of the walk that are also part of the cycle. We will then let $\restC{\P}$ denote the part of $\cpath$ that is between $p_1$ and $p_k$ (including). $\C_\P$ will denote the cycle given by $\restC{\P} \oplus \rev{\P}$.
-
-  During the algorithm we will want to maintain several invariants on $\C$. The first three are equivalent to those imposed by Fusy. The final invariant is new and imposes a nice structure on the sweepcycle so far. \fxnote{Can i be more precise}
+  One of the nicest things about the \rel we produce is Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther} which will turn out to be very useful throughout the rest of the algorithm. \fxnote{Is this due to the last invariant?}
 
   \begin{invariants}
     \itemsep=-4pt

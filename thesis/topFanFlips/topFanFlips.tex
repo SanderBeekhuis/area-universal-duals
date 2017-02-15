@@ -4,9 +4,10 @@
 \thispagestyle{plain}
 \label{ss:fanflip}
 
-The second stage of the algorithm will consist of flipping most large topfans. The first stage of the algorithm finished by computing a vertically one-sided \rel (Lemma's \ref{lm:sweep:REL} and \ref{lm:sweep:vertOnsided}) that never has a split next to a topfan handle along the rightmost edge of the split (Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOtherVertOnesided}).
+In Section \ref{ss:flipBlueZ} we obtained a vertically one-sided \rel (Lemma's \ref{lm:sweep:REL} and \ref{lm:sweep:vertOnsided}).
+Moreover this \rel never has a split next to a topfan handle along the rightmost edge of the split (Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOtherVertOnesided}). \fxwarning{TODO What is a topfan/fan}
 
-Using some local recoloring (\emph{flips}) on the topfans we will maintain a onesided REL (Lemma \ref{lm:topfan:oneSidedREL}) and make sure that large topfans only occur in very specific situations (Lemma \ref{lm:topfan:remainingTopfans}).
+Using some local recoloring (\emph{flips}) on the topfans we will maintain a onesided REL (Lemma \ref{lm:topfan:oneSidedREL}) and make sure that large topfans only occur in very specific situations (Lemma \ref{lm:topfan:remainingTopfans}). It will turn out that we can deal with these specific situations in the final step of Section \ref{ss:subdiv}.
 
 Our flips differ depending on whether we we encounter a split and or merge in the bottom boundary path. Refer to Figure \ref{fig:fanflip:fanflips} for the different kinds of topfanflips.
 

@@ -4,7 +4,11 @@
 \thispagestyle{plain}
 \label{ss:flipBlueZ}
 
-  The \rel provided by the algorithm so far is vertically one-sided in most cases but not always. In the case that this \rel is not one-sided there must be a blue $Z$ (see Figure \ref{fig:zflip:blueZ})
+  The \rel provided by the sweepcycle algorithm of Section \ref{ss:sweep} often is vertically one-sided but not always. One example is the graph in Figure \fxwarning{TODO give such a graph}
+  We prefer to obtain a vertically one-sided \rel since if we then flip edges to break large blue faces we cannot accidentally create many-sided vertical segments. Hence we will in this section modify the current \rel to make it vertically one-sided while maintaining the nice property of Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther}.
+
+
+  In the case that this \rel is not one-sided there must be a blue $Z$ (see Figure \ref{fig:zflip:blueZ})
 
   \begin{figure}[h]
     \centering
@@ -40,6 +44,7 @@
   \begin{lemma}
     \label{lm:sweep:NoTwoSplitsAboveEachOtherVertOnesided}
     Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther} still holds.
+    \fxwarning{TODO This must be restated}
   \end{lemma}
 
   \begin{proof}
