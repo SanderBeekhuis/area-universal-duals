@@ -67,30 +67,28 @@
     The \emph{range} of an irregularity will be given by its start and end index. Depending on what irregularities we find on the candidate path we will update the sweepcycle with a different path. We will call this path the \emph{update path}. How this update works exactly will be shown in Section \ref{ss:sweep:Update}.
 
     \mypar{We have no irregularity}
-      When there are no irregularities we update the sweepcycle with the entire candidate path$\P$.
+      When there are no irregularities we update the sweepcycle with the entire candidate path $\P$.
 
-    \mypar{We have any chord} \mbox{ }
-    \fxwarning[nomargin, inline]{Why not just take the inner chord?}
+    \mypar{We have any chord}
     We know that we can not have any polebound chords on the candidate path since any such chord would offend Invariant \ref{i:uni:no2Chords} of the sweepcycle.
     \fxwarning{Show this polebound thing using a figure}
 
-    If our candidate path has any chords we look identify the them by their start and end vertex. Of the chords with the lowest start index we will consider the one with the largest end index. Let's call this chord $C_\text{outer}$.
+    If our candidate path has any chords we look identify the them by their start and end vertex. Of the chords with the lowest start index we will consider the one with the largest end index. We denote this chord by $C_\text{outer}$.
 
-    We now consider $C_\text{outer}$ and any chord contained therein. In this collection we look for the chord $C_\text{inner}$ with the smallest range (i.e. highest start $i_0$ and lowest end $j_0$) then we find the chord $C_\text{final}$ with the largest range that still starts at $i_0$ or ends at $j_0$. We will denote the range of $C_\text{final}$ by $\braces{i_1, \ldots, j_1}$.
-
+    We now consider $C_\text{outer}$ and any chord contained therein. In this collection we look for the chord $C_\text{inner}$ with the smallest range (i.e. highest start $i$ and lowest end $j$).
     The way in which these chords are chosen is illustrated in Figure \ref{fig:sweep:chordsOnCandidatePath}.
 
-    \begin{figure}[h]
+    \begin{figure}[b]
       \centering
       \includegraphics[scale=1]{unifiedalgo/img/sweep/chordsOnCandidatePath}
       \caption{}
       \label{fig:sweep:chordsOnCandidatePath}
     \end{figure}
 
-    What we do now depends on whether a 2-chord shows up in the interior of the chord pasted to the candidate path $\P|_{i_1, j_1} \oplus \rev{{C_\text{final}}}$.
+    What we do now depends on whether a 2-chord shows up in the interior of the chord pasted to the candidate path $\P|_{i, j} \oplus \rev{{C_\text{inner}}}$.
 
-    \emph{No separating 2-chord}
-    If there is no separating 2-chord in the interior of $\P|_{i_1, j_1} \oplus \rev{{C_\text{final}}}$ we do the following. Let $v_k$ be the shared neighbor on the sweepcycle of $p_{i_1}$ $p_{i_1 +1}$ and $v_l$ the shared neighbor on the sweepcycle  of $p_{j_1 -1}$ and $p_{j_1}$. We update the sweepcycle with the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:chordUpdate}.
+    \emph{No separating 2-chord.}
+    If there is no separating 2-chord in the interior of $\P|_{i, j} \oplus \rev{{C_\text{inner}}}$ we do the following. Let $v_k$ be the shared neighbor on the sweepcycle of $p_{i}$ $p_{i +1}$ and $v_l$ the shared neighbor on the sweepcycle  of $p_{j -1}$ and $p_{j}$. Then the updating path is the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:chordUpdate}.
 
     \begin{figure}[h]
       \centering
@@ -99,9 +97,10 @@
       \label{fig:sweep:chordUpdate}
     \end{figure}
 
-    \emph{A separating 2-chord}
-      Let $j_2$ be end index of the separating 2-chord with the lowest end range in the interior of $\P|_{i_1, j_1} \oplus \rev{{C_\text{final}}}$. And let $v_k$ be the shared neighbor on the sweepcycle of $p_{i_1}$ $p_{i_1 +1}$ and $v_l$ the shared neighbor on the sweepcycle  of $p_{j_2 -1}$ and $p_{j_2}$.
-      We then update the sweepcycle with the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:2chordInChordUpdate}.
+    \emph{At least one separating 2-chord.}
+      \fxinnote{None of these are polebound. Be more clear when indicating what an end range is}
+      Let $j'$ be end index of the separating 2-chord with the lowest end range in the interior of $\P|_{i, j} \oplus \rev{{C_\text{inner}}}$. And let $v_k$ be the shared neighbor on the sweepcycle of $p_{i_1}$ $p_{i_1 +1}$ and $v_l$ the shared neighbor on the sweepcycle  of $p_{j' -1}$ and $p_{j'}$.
+      Then the updating path is the  right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:2chordInChordUpdate}.
 
     \begin{figure}[h]
       \centering
@@ -112,9 +111,9 @@
 
     \mypar{Only separating 2-chords}
     \emph{Any $\pE$-bound 2-chords}
-    Start a path inside the smallest 2-chord (i.e. with the highest starting number for its range). Say the start of this range is $i_1$ we then update the sweepcycle in the following way.
+    Start a path inside the smallest 2-chord (i.e. with the highest starting number for its range). Say the start of this range is $i$ we then update the sweepcycle in the following way.
 
-    Let $v_k$ be the shared neighbor on the sweepcycle of $p_{i_1}$ $p_{i_1 +1}$. We update the sweepcycle with the right neighbor path of $\cpath|_{v_k, \pE}$. See Figure \ref{fig:sweep:pEBound}.
+    Let $v_k$ be the shared neighbor on the sweepcycle of $p_{i}$ $p_{i +1}$. The updating path is the right neighbor path of $\cpath|_{v_k, \pE}$. See Figure \ref{fig:sweep:pEBound}.
 
     \begin{figure}[h]
       \centering
@@ -124,20 +123,20 @@
     \end{figure}
     \emph{Other separating 2-chords}
     The 2-chord can not contain a chord since then we would be in the above case.
-    Find the $2$-chord with the lowest end of range. Say that this is $j_1$. We then update the sweepcycle in the following way.
+    Find the $2$-chord with the lowest end of range. Say that this is $j$. We then update the sweepcycle in the following way.
 
-    Let $v_l$ be the shared neighbor on the sweepcycle of $p_{j_1}$ $p_{j_1 -1}$. We update the sweepcycle with the right neighbor path of $\cpath|_{v_i, v_l}$. See Figure \ref{fig:sweep:free2chord}.
+    Let $v_l$ be the shared neighbor on the sweepcycle of $p_{j}$ $p_{j-1}$. The updating path is the right neighbor path of $\cpath|_{v_i, v_l}$. See Figure \ref{fig:sweep:free2chord}.
 
-    \begin{figure}[h]
+    \begin{figure}[b]
       \centering
       \includegraphics[scale=1]{unifiedAlgo/img/sweep/free2chord}
       \caption{}
       \label{fig:sweep:free2chord}
     \end{figure}
 
-    \subsection{Updating}
-      \label{ss:sweep:Update}
-      Once we found the path $\P$ which we want to update with we can update the sweepcycle with this path. We do this in the following way. We color all interior edge of $\C_\P$ red and orient them towards $\C$. We also color all edges of $\cpath|_{v_i,v_j}$  blue and orient them towards $v_j$. We then update the sweepcycle to $\C'$ by replacing $\cpath|_{v_i,v_j}$ by $\P$.
+  \subsection{Updating}
+    \label{ss:sweep:Update}
+    Once we found the updating path $\P$ we can update the sweepcycle with this path. We do this in the following way. We color all interior edge of $\C_\P$ red and orient them towards $\C$. We also color all edges of $\cpath|_{v_i,v_j}$  blue and orient them towards $v_j$. We then update the sweepcycle to $\C'$ by replacing $\cpath|_{v_i,v_j}$ by $\P$.
 
 
     \begin{lemma}
