@@ -64,7 +64,6 @@
 \include{titlepage}
 \normalsize
 
-\clearemptydoublepage
 
 \fxinnote{Q: Do we need to declare structure explicitly? And how do we do this? Separate chapter or in first chapter?}
 
@@ -76,19 +75,15 @@
 
 %PREFACE
 
-\clearemptydoublepage
 
 \tableofcontents
 
-\clearemptydoublepage
 
 \listoffigures
 
-\clearemptydoublepage
 
 \listoftables
 
-\clearemptydoublepage
 
 \lstlistoflistings
 
@@ -97,22 +92,17 @@
 \pagenumbering{arabic}
 %from here on, start the 'real' page numbering, from 1, with normal digits
 
-\clearemptydoublepage
 
 \include{introduction/introduction}
 %\include{prelim/prelim}
-\clearemptydoublepage
 
 \include{rectangularDuals/rectangularDuals}
-\clearemptydoublepage
 
 \include{fixExtension/fixExtension}
 
 \include{unifiedAlgo/algo}
-\clearemptydoublepage
 
 \include{unifiedAlgo/rightNeighbourWalk}
-\clearemptydoublepage
 
 \include{unifiedAlgo/sweepCycle}
 %\include{topFanFlips/topFanFlips}
@@ -121,9 +111,10 @@
 %\include{examples/examples}
 
 %\section{Running time analysis}
+\thispagestyle{plain}
 %\section{Conclusion}
+\thispagestyle{plain}
 
-\clearemptydoublepage
 
 \listoffixmes
 
@@ -131,7 +122,6 @@
 %\include{unusedTheorems/unusedTheorems}
 %\include{conclusion/researchQuestions}
 
-\clearemptydoublepage
 
 \printbibliography
 \end{document}
