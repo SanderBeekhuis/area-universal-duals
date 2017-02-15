@@ -62,7 +62,7 @@
       \item Separating 2-chords
     \end{enumerate}
 
-    All of these structures are on the right of the candidate path due to Lemma \ref{lm:uni:neighbourwalkChordFree} (no chords on the left) and Lemma \ref{lm:uni:neighbourwalkNoInteriorVertex} (no separating 2-chords on the left).
+    All of these structures are on the right of the candidate path due to Lemma \ref{lm:right:neighbourwalkChordFree} (no chords on the left) and Lemma \ref{lm:right:neighbourwalkNoInteriorVertex} (no separating 2-chords on the left).
 
     The \emph{range} of an irregularity will be given by its start and end index. Depending on what irregularities we find on the candidate path we will update the sweepcycle with a different path. We will call this path the \emph{update path}. How this update works exactly will be shown in Section \ref{ss:sweep:Update}.
 
@@ -144,7 +144,7 @@
       \label{lm:sweep:augNoIregularity}
     \end{lemma}
     \begin{proof}
-        All of these structures are on the right of the updating path, since the updating path is a subset of a right neighbor path and a right neighbor path satisfies Lemma \ref{lm:uni:neighbourwalkChordFree} (no chords on the left) and Lemma \ref{lm:uni:neighbourwalkNoInteriorVertex} (no separating 2-chords on the left).
+        All of these structures are on the right of the updating path, since the updating path is a subset of a right neighbor path and a right neighbor path satisfies Lemma \ref{lm:right:neighbourwalkChordFree} (no chords on the left) and Lemma \ref{lm:right:neighbourwalkNoInteriorVertex} (no separating 2-chords on the left).
 
         If the candidate path had any chords the updating path is adapted to be entirely inside a chord containing no more chords. Hence the updating path can not have any chords.
 
