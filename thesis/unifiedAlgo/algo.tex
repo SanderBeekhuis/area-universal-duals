@@ -4,44 +4,31 @@
 \thispagestyle{plain}
 \label{s:algo}
 
-In the coming section we show the following theorem
-
-\begin{thrm}
-  \label{th:dsided}
-  Triangulations of the $k$-gon $G$ that have a corner assignment without separating 4-cycles are $d$-sided, where $d$ is the maximal degree of the vertices of $G$.
-\end{thrm}
-
-We will show this in a constructive manner by providing an algorithm. But first we have to introduce some more notions on graphs.
+Before we can introduce algorithms that compute regular edge labellings we will have to introduce paths and cycles.
 
 \mypar{Paths}
-  A path $\P$ is a sequence of vertices such that every two consecutive vertices are connected by an edge. The first and last vertex of the path are its \emph{extreme} vertices while the rest are \emph{interior} vertices of this path. The \emph{length} of a path is the number of edges used to connect the vertices. That, is one less then the number of vertices. In this thesis all paths are \emph{simple}, that is, no vertex occurs twice in the path except the extreme vertices.
+A path $\P$ is a sequence of vertices such that every two consecutive vertices are connected by an edge. The first and last vertex of the path are its \emph{extreme} vertices while the rest are \emph{interior} vertices of this path. The \emph{length} of a path is the number of edges used to connect the vertices. That, is one less then the number of vertices. In this thesis all paths are \emph{simple}, that is, no vertex occurs twice in the path except the extreme vertices.
 
 \mypar{Cycles}
-  A cycle is a path whose extreme vertices coincide\footnote{Because of this technically a cycle is not a simple path.}. We require that the start and end vertex are the only two vertices that are the same. We call a cycle of length $k$  a \emph{$k$-cycle}. A \emph{triangle} is cycle of length $3$ (i.e. a $3$-cycle). By Jordan's curve theorem a cycle splits the plane into two parts, one bounded and one unbounded. We will call the bounded part the \emph{interior} of this cycle and the unbounded part the \emph{exterior} of this cycle.
-  We call a cycle \emph{separating} if there are vertices in both its interior and exterior.
-  An \emph{interior edge} of a cycle is then an edge contained in the interior of the cycle.
-  An \emph{interior path} is a path connecting two distinct vertices off the cycle and whose edges are interior edges.
-
+A cycle is a path whose extreme vertices coincide\footnote{Because of this technically a cycle is not a simple path.}. We require that the start and end vertex are the only two vertices that are the same. We call a cycle of length $k$  a \emph{$k$-cycle}. A \emph{triangle} is cycle of length $3$ (i.e. a $3$-cycle). By Jordan's curve theorem a cycle splits the plane into two parts, one bounded and one unbounded. We will call the bounded part the \emph{interior} of this cycle and the unbounded part the \emph{exterior} of this cycle.
+Furthermore, the cycle of all outer vertices of $G$ is the \emph{outer cycle}.
+We call a cycle \emph{separating} if there are vertices in both its interior and exterior.
+An \emph{interior edge} of a cycle is then an edge contained in the interior of the cycle.
+An \emph{interior path} is a path connecting two distinct vertices off the cycle and whose edges are interior edges.
 
 \mypar{Algorithms for regular edge labellings}
-  Kant and He \cite{Kant1997} were the first to design algorithms that determine a regular edge labeling. Fusy \cite{Fusy2006} recently developed a different algorithm computing a specific regular edge labeling using a method shrinking a sweepcycle while coloring the outside in accordance with a regular edge labeling. Unfortunately his proof of this algorithm is rather concise.
+Kant and He \cite{Kant1997} were the first to design algorithms that determine a regular edge labeling given a graph. Fusy \cite{Fusy2006} recently developed a different algorithm computing a specific regular edge labeling using a method which shrinks a cycle while coloring the exterior of this cycle in accordance with a regular edge labeling. Such a cycle will be referred to as \emph{sweepcycle}. Unfortunately his proof of this algorithm is rather concise.
 
-\mypar{Sweepcycle algorithms}
-  In such a sweepcycle approach one starts by denoting the outer cycle as the sweepcycle $\C$ and then shrinks this sweepcycle by updating it with \emph{interior paths} of $\C$. During this update we maintains invariants on the structure of both the cycle and its exterior.
+In a sweepcycle approach one starts by denoting the outer cycle of $\ext G$ as the sweepcycle $\C$ and then shrinks this sweepcycle by updating it with \emph{interior paths} of $\C$. During this update we maintains invariants on the structure of both the cycle and its exterior.
 
-  After a finite amount of updates the sweepcycle has no more interior vertices. At this point we can complete the algorithm and we obtain a \rel.
+After a finite amount of updates the sweepcycle has no more interior vertices. At this point we can complete the algorithm and we obtain a \rel.
 
 \mypar{Our algorithm}
-  \fxinnote{Q: This needs a different organization, but how?}
-  For our algorithm we will assume that $\ext G$ has no separating $4-cycles$. Let $d$ be the highest degree among vertices of $G$ after adding the corners. Then our algorithm will calculate a $d$ sided layout.
+In this section we will present an algorithm providing a $d$-sided rectangular dual for any corner assignment $\ext G$ without separating $4$-cycles. Where $d$ be the highest degree among vertices of $G$ in $\ext G$.  Hence we will proof the following theorem.
 
-  Unfortunately a straight up sweepcycle approach did not work. So instead of that the algorithm will use a sweep cycle as first stage in Section \ref{s:sweep}.
-  %Consisting of shrinking a sweepcycle by so called \emph{valid} paths.\footnote{In Fusy's work he calls these \emph{eligible paths}}
+\begin{thrm}
+\label{th:dsided}
+Triangulations of the $k$-gon $G$ that have a corner assignment without separating 4-cycles are $d$-sided, where $d$ is the maximal degree of the vertices of $G$.
+\end{thrm}
 
-  Before we can dive into this we first need to introduce some more theory on right neighbor walks. We do this in Section \ref{s:rightNeighbour}.
-
-  After the sweepcycle we still need to do $3$ post-processing steps before we obtain a $d$-sided layout.
-
-  The second stage of the algorithm will consist of a procedure to get rid of most large topfans. This will be treated in Section \ref{s:fanflip}.
-
-  The final stage of the algorithm will consist of flipping edges when blue faces are still to large. This will be described in Section \ref{s:subdiv}.
+To describe this algorithm we introduce the the notion of right neighbor paths in Section \ref{ss:rightNeighbour}.  We use these right neighbor paths to find a \rel with some nice properties in Section \ref{ss:sweep}. Afterwards we unfortunately still have to do $3$ post-processing steps. In Section \ref{ss:flipBlueZ} we make sure our \rel is \emph{vertically one-sided}, that is, that all vertical segments are one-sided. In Section \ref{ss:fanflip} we will remove most occurrences of something called topfans. Then, in Section \ref{ss:subdiv} we can finally subdivide all blue faces that are too large without creating red faces that are too large. This finishes the algorithm.
