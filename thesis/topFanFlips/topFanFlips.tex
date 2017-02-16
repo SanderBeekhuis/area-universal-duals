@@ -4,8 +4,8 @@
 \thispagestyle{plain}
 \label{ss:fanflip}
 
-In Section \ref{ss:flipBlueZ} we obtained a vertically one-sided \rel (Lemma's \ref{lm:sweep:REL} and \ref{lm:sweep:vertOnsided}).
-Moreover this \rel never has a split next to a topfan handle along the rightmost edge of the split (Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOtherVertOnesided}). \fxwarning{TODO What is a topfan/fan}
+In Section \ref{ss:flipBlueZ} we obtained a vertically one-sided regular edge labeling (Lemma's \ref{lm:sweep:REL} and \ref{lm:sweep:vertOnsided}).
+Moreover this regular edge labeling never has a split next to a topfan handle along the rightmost edge of the split (Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOtherVertOnesided}). \fxwarning{TODO What is a topfan/fan}
 
 Using some local recoloring (\emph{flips}) on the topfans we will maintain a onesided REL (Lemma \ref{lm:topfan:oneSidedREL}) and make sure that large topfans only occur in very specific situations (Lemma \ref{lm:topfan:remainingTopfans}). It will turn out that we can deal with these specific situations in the final step of Section \ref{ss:subdiv}.
 
@@ -81,7 +81,7 @@ A special case is given by a merge on the last vertex on the bottom edges of the
 Splits are more difficult to handle. We are unfortunately unable to keep flipping once we hit a split hence we stop before we get that far. See Figure \ref{fig:fanflip:split}. It this happens on the first vertex we do not flip at all, see Figure \ref{fig:fanflip:splitFirstVertex}.
 
 \mypar{The result}
-Before the topfanflips we had a vertically one-sided REL. Afterwards we still have a vertically one-sided \rel as we will prove in Lemma \ref{lm:topfan:oneSidedREL}. Moreover we have no large top-fans except for some controlled cases as we will prove in Lemma \ref{lm:topfan:remainingTopfans}.
+Before the topfanflips we had a vertically one-sided REL. Afterwards we still have a vertically one-sided regular edge labeling as we will prove in Lemma \ref{lm:topfan:oneSidedREL}. Moreover we have no large top-fans except for some controlled cases as we will prove in Lemma \ref{lm:topfan:remainingTopfans}.
 
 \begin{lemma}
   \label{lm:topfan:oneSidedREL}

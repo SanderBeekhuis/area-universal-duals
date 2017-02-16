@@ -23,7 +23,7 @@
 
   In \cite{He1993} He showed that given a regular edge labeling of a corner assignment we can reconstruct a rectangular layout represented by this regular edge labeling.
   A regular edge labeling  of $\ext G$ corresponds to an equivalence class of rectangular layouts $\L$ that are a rectangular dual of $G$.
-  \fxnote*{Do we use this anywhere? If so we should proof it.}{A \rel has no monochromatic directed cycles because such a cycle would for example correspond to a  group of adjacent rectangles that have  no leftmost or topmost rectangle.}
+  \fxnote*{Do we use this anywhere? If so we should proof it.}{A regular edge labeling has no monochromatic directed cycles because such a cycle would for example correspond to a  group of adjacent rectangles that have  no leftmost or topmost rectangle.}
 
   \begin{lemma}
     \label{lm:rel:noMonoColoredTriangles}
@@ -58,7 +58,7 @@
 
 
     \mypar{Maximal segments}
-    Due to the way we color a \rel of $\extdualgraph{\L}$ given a layout $\L$ horizontal maximal segments correspond to a blue faces while a vertical maximal segments correspond to a red faces. As one can see in Figure \ref{fig:rect:relSegmentFace}.
+    Due to the way we color a regular edge labeling of $\extdualgraph{\L}$ given a layout $\L$ horizontal maximal segments correspond to a blue faces while a vertical maximal segments correspond to a red faces. As one can see in Figure \ref{fig:rect:relSegmentFace}.
 
     \begin{figure}[h]
       \centering
@@ -70,4 +70,4 @@
     Consider a face corresponding to a maximal segment.
     The number of interior vertices of both boundary paths without counting the split and merge vertices is the number of rectangles on the respective sides of the maximal segment.
 
-    Hence a one-sided maximal segment corresponds to a face with one boundary path of length $2$\footnote{A boundary path can not have length $1$ since by construction of a \rel it encloses a maximal segment and thus has to go trough at least one intermediate rectangle/vertex.} and a $k$-sided maximal segment to face with shortest boundary path of length at most $k+1$.
+    Hence a one-sided maximal segment corresponds to a face with one boundary path of length $2$\footnote{A boundary path can not have length $1$ since by construction of a regular edge labeling it encloses a maximal segment and thus has to go trough at least one intermediate rectangle/vertex.} and a $k$-sided maximal segment to face with shortest boundary path of length at most $k+1$.

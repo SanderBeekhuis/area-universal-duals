@@ -32,7 +32,7 @@
   \begin{proof}
   By Lemma \ref{lm:interiorRectangle} the interior $I$ of $\C$ will be represented by a rectangle $\I$ in any rectangular dual. Since two disjoint rectangles can only be adjacent to each other at one side, $\I$ has four sides that need to be covered and $\I$ is adjacent to only four rectangles we know that every side of the rectangle $\I$ is adjacent to a single rectangle. We then denote by $a$ the vertex corresponding to the rectangle above $\I$. Then $b$ must be to the left of $\I$, $c$ must be below $\I$ and $d$ must be to the right of $\I$.
 
-  Then the required coloring follows from the properties of a \rel.
+  Then the required coloring follows from the properties of a regular edge labeling.
 
   \end{proof}
 
@@ -66,7 +66,7 @@
 
 \begin{proof}[Proof of Theorem \ref{fix:th:family}]
   Now all the preparations are done we can consider the family of graphs $G_k$ with the corner assignment $\ext G_k$ given in Figure \ref{fig:fix:manymany0}. We know we only have to look at this single corner assignment since we can force it with a scaffold. In $G_1$ the dots are replaced by a single vertex, in $G_2$ the dots are replaced by two vertices and so on. Each member has 2 maximal separating $4$-cycles. These are both marked by thick lines in Figure \ref{fig:fix:manymany0}.
-  Many of the edges in this graph have only one possible color and orientation that does not violate the constraints of a \rel. Firstly, we can color the edges incident with the poles in accordance with the exterior vertex condition. Subsequently, we can use Lemma \ref{lm:fix:fourCycleInteriorColor} on both maximal separating $4$-cyles in accordance to color even more edges and finally we can color the edges in triangles of which the other two edges have  the same color using Lemma \ref{lm:rel:noMonoColoredTriangles}. These forced colorings are performed in Figure \ref{fig:fix:coloring}.
+  Many of the edges in this graph have only one possible color and orientation that does not violate the constraints of a regular edge labeling. Firstly, we can color the edges incident with the poles in accordance with the exterior vertex condition. Subsequently, we can use Lemma \ref{lm:fix:fourCycleInteriorColor} on both maximal separating $4$-cyles in accordance to color even more edges and finally we can color the edges in triangles of which the other two edges have  the same color using Lemma \ref{lm:rel:noMonoColoredTriangles}. These forced colorings are performed in Figure \ref{fig:fix:coloring}.
 
   \begin{figure}[h]
     \centering
@@ -103,7 +103,7 @@
   \end{figure}
 
   The result is then the graph displayed in Figure \ref{fig:fix:manymany4}. The black edges in this figure are edges that do not have a forced coloring by the above argument\footnote{Altough most of them can be forced by Lemma \ref{lm:fix:fourCycleInteriorColor}.}.
-  We will focus on the centered black edge $e$, $e$ is an interior edges of both the red and blue faces that are drawn \fxnote*{change to dashed}{thick} in Figure \ref{fig:fix:manymany4}. These faces both have that both their boundary paths are of length larger then $k$ for a member $G_k$. Hence $e$ has to be colored both red and blue to prevent that face corresponding to a $k$-sided segment occurs in the final \rel. An edge can not be colored red and blue at the same time and hence $G_k$ is not $k$-sided.
+  We will focus on the centered black edge $e$, $e$ is an interior edges of both the red and blue faces that are drawn \fxnote*{change to dashed}{thick} in Figure \ref{fig:fix:manymany4}. These faces both have that both their boundary paths are of length larger then $k$ for a member $G_k$. Hence $e$ has to be colored both red and blue to prevent that face corresponding to a $k$-sided segment occurs in the final regular edge labeling. An edge can not be colored red and blue at the same time and hence $G_k$ is not $k$-sided.
 
   Since this proof doesn't depend on the value of $k$, the family $G_k$ has graphs that are not $k$-sided for any $k$.
 \end{proof}

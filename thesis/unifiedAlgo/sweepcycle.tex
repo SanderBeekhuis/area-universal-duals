@@ -8,7 +8,7 @@
 
   During the algorithm we will want to maintain several invariants on $\C$. The first three are equivalent to those imposed by Fusy. The final invariant is new and imposes a nice structure on the sweepcycle so far.  \fxnote{Can i be more precise}
 
-  One of the nicest things about the \rel we produce is Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther} which will turn out to be very useful throughout the rest of the algorithm. \fxnote{Is this due to the last invariant?}
+  One of the nicest things about the regular edge labeling we produce is Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther} which will turn out to be very useful throughout the rest of the algorithm. \fxnote{Is this due to the last invariant?}
 
   \begin{invariants}
     \itemsep=-4pt
@@ -231,7 +231,7 @@
         \label{fig:botomPathChord}
       \end{figure}
 
-      The interior of  $vabx \oplus \rev \P$ and has no vertices. Suppose there would be such a vertex then since $\P$ is a bottom path the blue path going trough this vertex has to start at $a$ and end at $b$. But then this gives a blue face with only one edge on its bottom boundary path, hence the interior of this face has no incoming red edges. \fxnote{Or i could make a lemma about face borders somewhere and contradict with that.} So the result is not a \rel. Since our graph is a \rel $vabx \oplus \rev \P$ has no interior vertices.
+      The interior of  $vabx \oplus \rev \P$ and has no vertices. Suppose there would be such a vertex then since $\P$ is a bottom path the blue path going trough this vertex has to start at $a$ and end at $b$. But then this gives a blue face with only one edge on its bottom boundary path, hence the interior of this face has no incoming red edges. \fxnote{Or i could make a lemma about face borders somewhere and contradict with that.} So the result is not a regular edge labeling. Since our graph is a regular edge labeling $vabx \oplus \rev \P$ has no interior vertices.
 
       This also implies all interior edges are red (by the definition of bottom path) and thus that $ab$ is blue otherwise we would get a monochromatic triangle.
 

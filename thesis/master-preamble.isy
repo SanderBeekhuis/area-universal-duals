@@ -74,7 +74,7 @@
 
 \newcommand{\cpath}{\C \setminus \braces{\pS}} %cycle path
 
-\newcommand{\rel}{\text{regular edge labeling }}
+\newcommand{regular edge labeling}{\text{regular edge labeling }}
 
 </preamble>
 </ipestyle>
