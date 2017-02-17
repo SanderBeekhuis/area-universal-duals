@@ -80,11 +80,8 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
       \label{fig:sweep:noChordOnExteriorVertex}
     \end{figure}
 
-
-    We identify the chords by their ranges. Of the chords with the lowest start index we will consider the one with the largest end index. We denote this chord by $C_\text{outer}$.
-
-    We now consider the range of $C_\text{outer}$ and any chord whose range is contained therein. In this collection we look for the chord $C_\text{inner}$ with the smallest range (i.e. highest start $i$ and lowest end $j$).
-    The way in which these chords are chosen is illustrated in Figure \ref{fig:sweep:chordsOnCandidatePath}.
+    We identify the chords by their ranges. Of the chords with the smallest end index $j$ we will consider the one with the largest start index $i$. We denote this chord by $C$. Note that this chord can not contain any other chords since they would have either a large start index or a smaller end index.
+    The way in which we find $C$ is illustrated in Figure \ref{fig:sweep:chordsOnCandidatePath}.
 
     \begin{figure}[b]
       \centering
@@ -93,10 +90,10 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
       \label{fig:sweep:chordsOnCandidatePath}
     \end{figure}
 
-    What we do now depends on whether a 2-chord shows up in the interior of the chord pasted to the candidate path $P|_{i, j} \oplus \rev{{C_\text{inner}}}$.
+    What we do now depends on whether a 2-chord shows up in the interior of the chord pasted to the candidate path $P|_{i, j} \oplus \rev{{C}}$.
 
     \emph{No separating 2-chord.}
-    If there is no separating 2-chord in the interior of $P|_{i, j} \oplus \rev{{C_\text{inner}}}$ we do the following. Let $v_k$ be the shared neighbor on $\C$ of $p_{i}$ and $p_{i +1}$ and $v_l$ the shared neighbor on $\C$ of $p_{j -1}$ and $p_{j}$. Then the updating path is the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:chordUpdate}.
+    If there is no separating 2-chord in the interior of $P|_{i, j} \oplus \rev{{C}}$ we do the following. Let $v_k$ be the shared neighbor on $\C$ of $p_{i}$ and $p_{i +1}$ and $v_l$ the shared neighbor on $\C$ of $p_{j -1}$ and $p_{j}$. Then the updating path is the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:chordUpdate}.
 
     \begin{figure}[h]
       \centering
@@ -107,7 +104,7 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
 
     \emph{At least one separating 2-chord.}
       \fxinnote{None of these are polebound.}
-      Let $j'$ be end index of the separating 2-chord with the lowest end index in the interior of $P|_{i, j} \oplus \rev{{C_\text{inner}}}$. And let $v_k$ be the shared neighbor on the sweepcycle of $p_{i_1}$ $p_{i_1 +1}$ and $v_l$ the shared neighbor on the sweepcycle  of $p_{j' -1}$ and $p_{j'}$.
+      Let $j'$ be end index of the separating 2-chord with the lowest end index in the interior of $P|_{i, j} \oplus \rev{{C}}$. And let $v_k$ be the shared neighbor on the sweepcycle of $p_{i_1}$ $p_{i_1 +1}$ and $v_l$ the shared neighbor on the sweepcycle  of $p_{j' -1}$ and $p_{j'}$.
       Then the updating path $P'$ is the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:2chordInChordUpdate}.
 
       \begin{figure}[h]
