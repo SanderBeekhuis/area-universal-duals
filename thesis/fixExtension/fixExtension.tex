@@ -46,18 +46,18 @@
       $SW$ & $S$ & $ W$ & $ SE$ & $ NW$\\
       $NW$ & $N$ & $ W$ & $ NE$ & $ SW$\\
     \end{tabular}
-    \caption{The neighbors of the new poles}
+    \caption{The neighbors of the new poles.}
     \label{tab:scaffold}
   \end{wraptable}
 
   Lemma \ref{lm:fix:fourCycleInteriorColor} is useful because it allows us to consider a single corner assignment $\ext G$ of $G$ by building a \emph{scaffold}. Suppose we want to investigate some specific corner assignment $\ext G$ of $G$ with poles $N$, $E$, $S$ and $W$ then we can consider the graph $\ext G = H$ as a graph in its own right.
-   $H$ is a proper graph since it has no irreducible triangles in its interior (because $\ext G$ had none) and it admits a corner assignment $\ext H$ without separating triangles by connecting the new poles as in Table \ref{tab:scaffold}. $\ext H$ is shown in Figure \ref{fig:scafold}.
+   $H$ is a proper graph since it has no irreducible triangles in its interior (because $\ext G$ had none) and it admits a corner assignment $\ext H$ without separating triangles by connecting the new poles as in Table \ref{tab:scaffold}. $\ext H$ is shown in Figure \ref{fig:scafold}. $G$ is displayed in thick lines and with closed vertices. An arbitrary corner assignment $\ext G =H$ is then drawn with thin lines and open vertices. An corner assignment of $H$ is then drawn with dashed edges and open vertices.
 
   \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.5]{fixExtension/img/scafold}
 
-  \caption{The construction of a scaffold. $G$ is displayed in thick lines and with closed vertices. An arbitrary corner assignment $\ext G =H$ is then drawn with thin lines and open vertices. An corner assignment of $H$ is then drawn with dashed edges and open vertices.
+  \caption{The construction of a scaffold.
       \label{fig:scafold}}
   \end{figure}
 
@@ -71,7 +71,7 @@
   \begin{figure}[h]
     \centering
     \includegraphics[scale=1]{fixExtension/img/manymanybase}
-    \caption{}
+    \caption{A family of graphs not $k$-sided for any $k$}
     \label{fig:fix:manymany0}
   \end{figure}
 
@@ -80,25 +80,24 @@
 
   \begin{figure}[h]
     \centering
-
     \begin{subfigure}[t]{0.3\textwidth}
       \includegraphics[width=\textwidth]{fixExtension/img/manymany1}
-      \caption{Coloring the edges adjacent to the poles}
+      \caption{Coloring the edges adjacent to the poles.}
       \label{fig:fix:manymany1}
     \end{subfigure}
     \quad
     \begin{subfigure}[t]{0.3\textwidth}
       \includegraphics[width=\textwidth]{fixExtension/img/manymany2}
-      \caption{Propagate trough the $4$-cycle}
+      \caption{Propagate trough the $4$-cycle.}
       \label{fig:fix:manymany2}
     \end{subfigure}
     \quad
     \begin{subfigure}[t]{0.3\textwidth}
       \includegraphics[width=\textwidth]{fixExtension/img/manymany3}
-      \caption{Color such that there are no monochromatic triangles}
+      \caption{Color such that there are no monochromatic triangles.}
       \label{fig:fix:manymany3}
     \end{subfigure}
-    \caption{Coloring the graph}
+    \caption{Coloring the graph.}
     \label{fig:fix:coloring}
   \end{figure}
 
@@ -112,6 +111,6 @@
   \begin{figure}[h]
     \centering
     \includegraphics[scale=1]{fixExtension/img/manymany4}
-    \caption{}
+    \caption{The graph after all coloring steps}
     \label{fig:fix:manymany4}
   \end{figure}

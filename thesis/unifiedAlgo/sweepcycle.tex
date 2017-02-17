@@ -44,7 +44,7 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
   \begin{figure}[h]
     \centering
     \includegraphics[scale=1]{unifiedAlgo/img/sweep/noIrregularity}
-    \caption{}
+    \caption{Updating path when $P$ contains no irregularity.}
     \label{fig:sweep:noIrregularity}
   \end{figure}
 
@@ -76,7 +76,7 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
     \begin{figure}[h]
       \centering
       \includegraphics[scale=1]{unifiedAlgo/img/sweep/noChordOnExtriorVertex.pdf}
-      \caption{}
+      \caption{Hypothetical situation where $P$ would have a chord on an exterior vertex.}
       \label{fig:sweep:noChordOnExteriorVertex}
     \end{figure}
 
@@ -86,7 +86,7 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
     \begin{figure}[b]
       \centering
       \includegraphics[scale=1]{unifiedalgo/img/sweep/chordsOnCandidatePath}
-      \caption{}
+      \caption{Finding the chord $C$.}
       \label{fig:sweep:chordsOnCandidatePath}
     \end{figure}
 
@@ -98,7 +98,7 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
     \begin{figure}[h]
       \centering
       \includegraphics[scale=1]{unifiedAlgo/img/sweep/chordUpdate}
-      \caption{}
+      \caption{Updating path when $P$ has a chord not containing a separating 2-chord.}
       \label{fig:sweep:chordUpdate}
     \end{figure}
 
@@ -110,20 +110,20 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
       \begin{figure}[h]
         \centering
         \includegraphics[scale=1]{unifiedAlgo/img/sweep/2chordInChordUpdate}
-        \caption{}
+        \caption{Updating path when $P$ has a chord containing at least one separating 2-chord.}
         \label{fig:sweep:2chordInChordUpdate}
       \end{figure}
 
   \mypar{Only separating 2-chords}
     In this case the candidate path $P$ has no chords since otherwise we would be in the above case.
-    \emph{Any separating 2-chords with as end vertex the last vertex of $P$}
+    \emph{Any separating 2-chords with $v_j$ as end vertex.}
       We find the smallest separating 2-chord (i.e. with the highest start index). Say this separating $2$-chord has start index $i$.
       Let $v_k$ be the shared neighbor on the sweepcycle of $p_{i}$ and $p_{i +1}$. The updating path is the right neighbor path of $\cpath|_{v_k, v_j}$. See Figure \ref{fig:sweep:pEBound}.
 
     \begin{figure}[h]
       \centering
       \includegraphics[scale=1]{unifiedAlgo/img/sweep/pEBound}
-      \caption{}
+      \caption{Updating path when $P$ has a separating 2-chord with $v_j$ as end vertex.}
       \label{fig:sweep:pEBound}
     \end{figure}
     \emph{Only other separating 2-chords}
@@ -134,7 +134,7 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
     \begin{figure}[b]
       \centering
       \includegraphics[scale=1]{unifiedAlgo/img/sweep/free2chord}
-      \caption{}
+      \caption{Updating path when $P$ has separating 2-chords none of which have $v_j$ as end vertex.}
       \label{fig:sweep:free2chord}
     \end{figure}
 
@@ -278,14 +278,14 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
      \begin{figure}[h]
        \centering
        \includegraphics[scale=.9]{rectangularDuals/img/fans}
-       \caption{}
+       \caption{An example face with fans.}
        \label{fig:uni:fans}
      \end{figure}
 
      \begin{figure}[h]
        \centering
        \includegraphics[scale=1]{rectangularDuals/img/fanterms}
-       \caption{}
+       \caption{A number of fan-related terms.}
        \label{fig:rect:fanTerms}
      \end{figure}
 
@@ -298,7 +298,7 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
   \begin{figure}[h]
     \centering
     \includegraphics[scale=1]{unifiedAlgo/img/sweep/bottompath.pdf}
-    \caption{The bottom path of this splitvertex is given in bold}
+    \caption{The bottom path of this splitvertex is given in bold.}
     \label{fig:sweep:bottomPath}
   \end{figure}
 
@@ -319,7 +319,7 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
     \begin{figure}[h]
       \centering
       \includegraphics[scale=1]{unifiedAlgo/img/sweep/bottompathChord.pdf}
-      \caption{}
+      \caption{The situation in the proof of Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther}}
       \label{fig:sweep:botomPathChord}
     \end{figure}
 
@@ -329,7 +329,7 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
     \begin{figure}[h]
       \centering
       \includegraphics[scale=1]{unifiedAlgo/img/sweep/noFaceWithOneBottomEdge.pdf}
-      \caption{}
+      \caption{The hypothetical situation of a face with bottom boundary path of length one.}
       \label{fig:sweep:noFaceWithOneBottomEdge}
     \end{figure}
 
