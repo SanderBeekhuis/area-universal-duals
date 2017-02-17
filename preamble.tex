@@ -75,16 +75,16 @@ stringstyle=\color[rgb]{0.627,0.126,0.941},  %
 % header!
 
 %Common header attributes - see also http://en.wikibooks.org/wiki/LaTeX/Page_Layout
-\fancyfoot[RE,LO]{\doctitle}
+\fancyfoot[L]{\doctitle}
 \fancyfoot[C]{}
 %\fancyfoot[RE,LO]{\me}
-\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[R]{\thepage}
 \renewcommand{\footrulewidth}{0.4pt} %thickness of the decorative lines on the footer
 
 % Headers for the pages that start a chapter, also for the TOC
 \fancypagestyle{plain}{
-\fancyhead[LE,RO]{}
-\fancyhead[LO,RE]{}
+\fancyhead[R]{}
+\fancyhead[L]{}
 \renewcommand{\headrulewidth}{0pt} %thickness of the decorative lines on the header
 }
 
@@ -96,8 +96,8 @@ stringstyle=\color[rgb]{0.627,0.126,0.941},  %
 
 % Headers for the other pages
 \pagestyle{fancy}{
-\fancyhead[LE,RO]{\slshape \leftmark} % \rightmark = represent section heading
-\fancyhead[LO,RE]{\slshape } % \leftmark = represent chapter heading
+\fancyhead[R]{\slshape \leftmark} % \rightmark = represent section heading
+\fancyhead[L]{\slshape } % \leftmark = represent chapter heading
 }
 
 

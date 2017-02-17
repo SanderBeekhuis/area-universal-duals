@@ -3,12 +3,10 @@
 \subsection{Sweepcycle algorithm}
 \thispagestyle{plain}
   \label{ss:sweep}
-  \fxnote{Note the lack of proof?}
-  The first step of our algorithm is executing a sweepcycle algorithm inspired by Fusy's \cite{Fusy2006}. We use $\C$ to indicate the current sweep cycle.
+  The first step of our algorithm is executing a sweepcycle algorithm inspired by the sweepcycle algorithm by Fusy \cite{Fusy2006}. We use $\C$ to indicate the current sweep cycle. We shrink $\C$ by updating it with certain interior paths.
+  One of the nicest things about the regular edge labeling we produce is Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther} which will turn out to be very useful throughout the rest of the algorithm. This lemma states that most interior paths we can't have the fan handle of a large splitfan after a split vertex on a so-called bottom path. \fxnote{Q: These are all words the reader doesn't know yet. How to explain?}
 
-  During the algorithm we will want to maintain several invariants on $\C$. The first three are equivalent to those imposed by Fusy. The final invariant is new and imposes a nice structure on the sweepcycle so far.  \fxnote{Can i be more precise}
-
-  One of the nicest things about the regular edge labeling we produce is Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther} which will turn out to be very useful throughout the rest of the algorithm. \fxnote{Is this due to the last invariant?}
+  During the algorithm we maintain several invariants on $\C$. The first three are equivalent to those imposed by Fusy. The final invariant is new and allows is us to prove Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther}.
 
   \begin{invariants}
     \itemsep=-4pt
@@ -19,7 +17,7 @@
     \item \label{i:uni:no2Chords} $\C\sm{\pS}$ has no separating 2-chords that do not use $\S$
   \end{invariants}
 
-  We denote the vertices of the sweepcycle $\C$ by $\pS, v_1 = \pW, v_2, \ldots v_{n-1}, v_n = \pE, \pS$.   We will repeatedly consider the path $\cpath$. In that case we will always order it from $\pW$ to $\pE$. That these edges are always in $\C$ is a result of Invariant \ref{i:uni:SWandSE}.
+  We denote the vertices of the sweepcycle $\C$ by $\pS, v_1 = \pW, v_2, \ldots v_{n-1}, v_n = \pE, \pS$.   We will repeatedly consider the path $\cpath$. In that case we will always order it from $\pW$ to $\pE$. That the edges $\pS \pW$ and $\pS \pE$ are always in $\C$ is a result of Invariant \ref{i:uni:SWandSE}.
 
 
   Each update of the sweepcycle consists of the following three steps
@@ -33,20 +31,24 @@
   We repeat these steps until the sweepcycle does not contain any more interior vertices. At which point we can terminate the algorithm by coloring the edges still on the cycle $\C$ blue and its interior edges red.
 
   \subsubsection{Find the right neighbor path}
-    Let $v_i$ denote all the vertices of $\cpath$ in the following order $\pW =  v_1   v_2   \ldots v_{n-1}   v_n = \pE$.
-    Some intervals of these vertices will be adjacent to $\pS$. However, they can not be all adjacent to $S$ since then any vertex still in the interior of $\C$ would lie in a separating triangle of $G$. So we have no interior vertices and hence we can terminate the algorithm as described in Section \ref{sss:terminating}. We denote by $v_i$ the last vertex of first interval of vertices adjacent to $S$ and by $v_j$ the first vertex of the second interval.
+    Recall we denote all the vertices of $\cpath$ by $\pW =  v_1   v_2   \ldots v_{n-1}   v_n = \pE$.
+    Some of these vertices will not be adjacent to $\pS$.
+    Suppose they are all adjacent to $S$, then any vertex still in the interior of $\C$ would lie in a separating triangle of $G$. So we have no interior vertices and hence we can terminate the algorithm as described in Section \ref{sss:terminating}.
+
+    Since $\cpath$ has some vertices incident to $\pS$ ($\pW , \pE$) and some that are not we can consider maximal subpaths of $\cpath$ consisting of vertices adjacent to $\pS$.
+    We denote by $v_i$ the last vertex of first maximal subpath of vertices adjacent to $\pS$ and by $v_j$ the first vertex of the second maximal subpath.
     As candidate path $P$ we take the right neighbor path of $\cpath|_{v_i, v_j}$. This right neighbor path does indeed exist since all interior vertices of $\cpath|_{v_i, v_j}$ are interior vertices of $G$ and $\cpath$ has no cycles or separating 2-chords by Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords}.
-    The current situation is also depicted in Figure \ref{fig:sweep:rightNeighbourwalk}.
+    The current situation is depicted in Figure \ref{fig:sweep:noIrregularity}.
 
     \begin{figure}[h]
       \centering
-      \includegraphics[scale=1]{unifiedAlgo/img/sweep/rightNeighbourWalk}
+      \includegraphics[scale=1]{unifiedAlgo/img/sweep/noIrregularity}
       \caption{}
-      \label{fig:sweep:rightNeighbourwalk}
+      \label{fig:sweep:noIrregularity}
     \end{figure}
 
-  \subsubsection{Irregularities}
-    The candidate path $P$ we found can have several structures we want to avoid
+  \subsubsection{Evade chords and separating 2-chords}
+    The candidate path $P$ we found can have two structures we want to avoid
     namely
     \begin{enumerate}
       \itemsep=-4pt
@@ -54,22 +56,33 @@
       \item Separating 2-chords
     \end{enumerate}
 
-    Both of these structures are on the right of the candidate path due to Lemma \ref{lm:right:neighbourwalkChordFree} (no chords on the left) and Lemma \ref{lm:right:neighbourwalkNoInteriorVertex} (no separating 2-chords on the left).
+    By \emph{irregularities} we will mean these two classes of structures together.
+    All irregularities are on the right of the candidate path due to Lemma \ref{lm:right:neighbourwalkChordFree} (no chords on the left) and Lemma \ref{lm:right:neighbourwalkNoInteriorVertex} (no separating 2-chords on the left).
 
-    To evade these structures we firs have to introduce more notation. We orient $P$ from $v_i$ (the vertex closest to $\pW$)to $v_j$ (the vertex closest to $\pE$) and denote its vertices by $p_1 \ldots p_k$. The \emph{index} of a vertex $p_i \in P$ is its position in the path, that is, the index of $p_i$ is $i$.
-
-    The \emph{range} of an irregularity will be given by its start and end index. Depending on what irregularities we find on the candidate path we will update the sweepcycle with a \emph{update path} $P'$. This update is described in \ref{sss:sweep:update}.
+    Before we can show how to evade these structures we first introduce more notation. We orient $P$ from $v_i$ (the vertex closest to $\pW$)to $v_j$ (the vertex closest to $\pE$) and denote its vertices by $p_1 \ldots p_k$.
+    The \emph{index} of a vertex $p_i \in P$ is its position in the path, that is, the index of $p_i$ is $i$.
+    %TODO could do a figure showing these indices
+    The \emph{start index} of a irregularity $I$ is the index of the first vertex in $P$ that is also in $I$. Similarly, the \emph{end index} is the index of the last vertex in $P$ that is also in $I$.
+    The \emph{range} of an irregularity will be given by its start and end index. Depending on what irregularities we find on the candidate path $P$ we will update the sweepcycle with a \emph{update path} $P'$. This update is described in Section \ref{sss:sweep:update}.
 
     \mypar{We have no irregularity}
-      When there are no irregularities we update the sweepcycle with the entire candidate path $\P$. The update path $P'$ is $P$ in this case.
+      When there are no irregularities we update the sweepcycle with the entire candidate path $P$.
+      In this case the update path $P'$ is equal to $P$.
 
     \mypar{We have any chord}
-    We know that we can not have any polebound chords on the candidate path since any such chord would offend Invariant \ref{i:uni:no2Chords} of the sweepcycle.
-    \fxwarning{Show this polebound thing using a figure}
+      Note that we can not have any polebound chords on the exterior vertices of the candidate path $P$ since any such chord would offend Invariant \ref{i:uni:no2Chords} of $\C$ as can been seen in Figure \ref{fig:sweep:noChordOnExteriorVertex}.
 
-    If our candidate path has any chords we look identify the them by their start and end vertex. Of the chords with the lowest start index we will consider the one with the largest end index. We denote this chord by $C_\text{outer}$.
+      \begin{figure}[h]
+        \centering
+        \includegraphics[scale=1]{unifiedAlgo/img/sweep/noChordOnExtriorVertex.pdf}
+        \caption{}
+        \label{fig:sweep:noChordOnExteriorVertex}
+      \end{figure}
 
-    We now consider $C_\text{outer}$ and any chord contained therein. In this collection we look for the chord $C_\text{inner}$ with the smallest range (i.e. highest start $i$ and lowest end $j$).
+
+    We identify the chords by their ranges. Of the chords with the lowest start index we will consider the one with the largest end index. We denote this chord by $C_\text{outer}$.
+
+    We now consider the range of $C_\text{outer}$ and any chord whose range is contained therein. In this collection we look for the chord $C_\text{inner}$ with the smallest range (i.e. highest start $i$ and lowest end $j$).
     The way in which these chords are chosen is illustrated in Figure \ref{fig:sweep:chordsOnCandidatePath}.
 
     \begin{figure}[b]
@@ -79,10 +92,10 @@
       \label{fig:sweep:chordsOnCandidatePath}
     \end{figure}
 
-    What we do now depends on whether a 2-chord shows up in the interior of the chord pasted to the candidate path $\P|_{i, j} \oplus \rev{{C_\text{inner}}}$.
+    What we do now depends on whether a 2-chord shows up in the interior of the chord pasted to the candidate path $P|_{i, j} \oplus \rev{{C_\text{inner}}}$.
 
     \emph{No separating 2-chord.}
-    If there is no separating 2-chord in the interior of $\P|_{i, j} \oplus \rev{{C_\text{inner}}}$ we do the following. Let $v_k$ be the shared neighbor on the sweepcycle of $p_{i}$ $p_{i +1}$ and $v_l$ the shared neighbor on the sweepcycle  of $p_{j -1}$ and $p_{j}$. Then the updating path is the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:chordUpdate}.
+    If there is no separating 2-chord in the interior of $P|_{i, j} \oplus \rev{{C_\text{inner}}}$ we do the following. Let $v_k$ be the shared neighbor on $\C$ of $p_{i}$ and $p_{i +1}$ and $v_l$ the shared neighbor on $\C$ of $p_{j -1}$ and $p_{j}$. Then the updating path is the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:chordUpdate}.
 
     \begin{figure}[h]
       \centering
@@ -92,22 +105,22 @@
     \end{figure}
 
     \emph{At least one separating 2-chord.}
-      \fxinnote{None of these are polebound. Be more clear when indicating what an end range is}
-      Let $j'$ be end index of the separating 2-chord with the lowest end range in the interior of $\P|_{i, j} \oplus \rev{{C_\text{inner}}}$. And let $v_k$ be the shared neighbor on the sweepcycle of $p_{i_1}$ $p_{i_1 +1}$ and $v_l$ the shared neighbor on the sweepcycle  of $p_{j' -1}$ and $p_{j'}$.
-      Then the updating path is the  right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:2chordInChordUpdate}.
+      \fxinnote{None of these are polebound.}
+      Let $j'$ be end index of the separating 2-chord with the lowest end index in the interior of $P|_{i, j} \oplus \rev{{C_\text{inner}}}$. And let $v_k$ be the shared neighbor on the sweepcycle of $p_{i_1}$ $p_{i_1 +1}$ and $v_l$ the shared neighbor on the sweepcycle  of $p_{j' -1}$ and $p_{j'}$.
+      Then the updating path $P'$ is the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:2chordInChordUpdate}.
 
-    \begin{figure}[h]
-      \centering
-      \includegraphics[scale=1]{unifiedAlgo/img/sweep/2chordInChordUpdate}
-      \caption{}
-      \label{fig:sweep:2chordInChordUpdate}
-    \end{figure}
+      \begin{figure}[h]
+        \centering
+        \includegraphics[scale=1]{unifiedAlgo/img/sweep/2chordInChordUpdate}
+        \caption{}
+        \label{fig:sweep:2chordInChordUpdate}
+      \end{figure}
 
     \mypar{Only separating 2-chords}
-    \emph{Any $\pE$-bound 2-chords}
-    Start a path inside the smallest 2-chord (i.e. with the highest starting number for its range). Say the start of this range is $i$ we then update the sweepcycle in the following way.
-
-    Let $v_k$ be the shared neighbor on the sweepcycle of $p_{i}$ $p_{i +1}$. The updating path is the right neighbor path of $\cpath|_{v_k, \pE}$. See Figure \ref{fig:sweep:pEBound}.
+      In this case the candidate path $P$ has no chords since otherwise we would be in the above case.
+    \emph{Any separating 2-chords with as end vertex the last vertex of $P$}
+      We find the smallest separating 2-chord (i.e. with the highest start index). Say this separating $2$-chord has start index $i$.
+      Let $v_k$ be the shared neighbor on the sweepcycle of $p_{i}$ and $p_{i +1}$. The updating path is the right neighbor path of $\cpath|_{v_k, v_j}$. See Figure \ref{fig:sweep:pEBound}.
 
     \begin{figure}[h]
       \centering
@@ -115,11 +128,10 @@
       \caption{}
       \label{fig:sweep:pEBound}
     \end{figure}
-    \emph{Other separating 2-chords}
-    The 2-chord can not contain a chord since then we would be in the above case.
-    Find the $2$-chord with the lowest end of range. Say that this is $j$. We then update the sweepcycle in the following way.
-
-    Let $v_l$ be the shared neighbor on the sweepcycle of $p_{j}$ $p_{j-1}$. The updating path is the right neighbor path of $\cpath|_{v_i, v_l}$. See Figure \ref{fig:sweep:free2chord}.
+    \emph{Only other separating 2-chords}
+      Find the $2$-chord with the lowest end index, say that this is $j$.
+      Let $v_l$ be the shared neighbor on the sweepcycle of $p_{j}$ and $p_{j-1}$.
+      The updating path is the right neighbor path of $\cpath|_{v_i, v_l}$. See Figure \ref{fig:sweep:free2chord}.
 
     \begin{figure}[b]
       \centering
@@ -130,7 +142,27 @@
 
   \subsubsection{Updating}
     \label{sss:sweep:update}
-    Once we found the updating path $P'$ we can update the sweepcycle with this path. Here we describe how we do this we also show that the update maintains the sweepcycle invariants \ref{lm:sweep:updateMaintainsInvariants}. We first color all interior edge of $\cpath|_{P'} \oplus \rev{P'}$ red and orient them towards $\cpath|_{P'}$. We also color all edges of $\cpath|_{P'}$  blue and orient them from lower to higher induces. We then update the sweepcycle to $\C'$ by replacing $\cpath|_{v_i,v_j}$ by $P'$.
+    Once we found the updating path $P'$ we can update the sweepcycle with this path.
+    We describe how to do this and we also show that the update maintains the sweepcycle invariants (Lemma \ref{lm:sweep:updateMaintainsInvariants}).
+    To update we color all interior edge of $\cpath|_{P'} \oplus \rev{P'}$ red and orient them towards $\cpath|_{P'}$.
+    We also color all edges of $\cpath|_{P'}$  blue and orient them from lower to higher induces.
+    We then update the sweepcycle to $\C'$ by replacing $\cpath|_{v_i,v_j}$ by $P'$ in $\C$.
+    An example of the whole update for a updating path $P'$ can be seen in Figure \ref{fig:sweep:update}.
+
+    \begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.45 \textwidth}
+            \includegraphics[width = \textwidth]{unifiedAlgo/img/sweep/updateBefore.pdf}
+            \caption{Before.}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.45 \textwidth}
+            \includegraphics[width =\textwidth]{unifiedAlgo/img/sweep/updateAfter.pdf}
+            \caption{After.}
+        \end{subfigure}
+        	\caption{The update.}
+    \label{fig:sweep:update}
+    \end{figure}
 
 
     \begin{lemma}
@@ -173,26 +205,43 @@
     \end{proof}
 
     \begin{lemma}
-      \ref{lm:sweep:updateMaintainsInvariants}
+      \label{lm:sweep:updateMaintainsInvariants}
       All five updating path types maintain the sweepcycle invariants
     \end{lemma}
     \begin{proof}
-      We will proof that the new sweepcycle $\C'$ obtained by updating $\C$ is again a valid sweepcycle. Invariant \ref{i:uni:SWandSE} remains trivially true. Invariant \ref{i:uni:intVertCond} hold due to the way we colored the edges around the new interior vertices.
+      We will proof that the new sweepcycle $\C'$ obtained by updating $\C$ is again a valid sweepcycle. Invariant \ref{i:uni:SWandSE} remains trivially true. Invariant \ref{i:uni:intVertCond} hold due to the way we colored the edges around the new interior vertices as can be seen in Figure \ref{fig:sweep:update}.
 
       To see that Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords} hold note that there can be no chords or $2$-chords with both endpoints in the overlap of the old and new sweepcycle $\C \cap \C'$ by the same Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords}. Since the updating path itself also has no irregularities (Lemma \ref{lm:sweep:augNoIregularity}),
-      we know any chord or separating $2$-chord $C$ has to have one vertex on $\P$ and one vertex on the unchanged part of old sweepcycle $\C \cap \C'$. However these potential chords are also not offending by Lemma \ref{lm:sweep:noConnectingIregularity}.
-
+      we know any chord or separating $2$-chord $C$ has to have one vertex on $\P$ and one vertex on the unchanged part of old sweepcycle $\C \cap \C'$.
+      However these potential chords can not exist by Lemma \ref{lm:sweep:noConnectingIregularity}.
       Hence $\C'$ is a valid new sweepcycle.
     \end{proof}
 
-    If after the update the new sweepcyle $\C'$ is not separating we do not do another update round and we instead terminate the algorithm as will be described in Section \ref{sss:terminating}.
+    If after the update the new sweepcycle $\C'$ has no interior vertices we terminate the algorithm as will be described in Section \ref{sss:terminating}. Otherwise we start the loop again by finding a new candidate path.
 
   \subsubsection{Terminating}
     \label{sss:terminating}
-    When the sweepcycle is no longer separating we can not update it anymore. However at this point it is easy to color the remainder of the graph. All vertices in $\C$ must be adjacent to $\pS$ since $\pS \pW$ and $\pS \pE$ are part of $C$ by Invariant \ref{i:uni:SWandSE} $C$ has no chords by Invariant \ref{i:uni:noChords} and $C$ does not contain any interior vertices. Since all vertices are adjacent to $\S$ all sweepcycle interior edges are adjacent to $\pS$.
+    When the sweepcycle has no more interior vertices we can not update it anymore.
+    However, at this point it is easy to color the remainder of the graph.
+    All vertices in $\cpath$ must be adjacent to $\pS$ since $\pS \pW$ and $\pS \pE$ are part of $\C$ by Invariant \ref{i:uni:SWandSE}, $\cpath$ has no chords by Invariant \ref{i:uni:noChords} and $\C$ does not contain any interior vertices. Since all vertices are adjacent to $\pS$ all sweepcycle interior edges are adjacent to $\pS$.
 
-    We color all interior edges of $\C$ red and orient them towards $\cpath$ and the edges in $\cpath$ are colored blue and oriented towards $\pE$. This last move completes the interior vertex condition for vertices in $\C \sm {\pW, \pS, \pE}$ and also correctly completes the exterior vertices.
+    We color all interior edges of $\C$ red and orient them towards $\cpath$ and the edges in $\cpath$ are colored blue and oriented towards $\pE$. The termination step can be seen in Figure \ref{fig:sweep:terminate}. This last move completes the interior vertex condition for vertices in $\C \sm {\pW, \pS, \pE}$ and also correctly completes the exterior vertex condition.
 
+
+    \begin{figure}[h]
+      \centering
+      \begin{subfigure}[b]{0.45 \textwidth}
+          \includegraphics[width = \textwidth]{unifiedAlgo/img/sweep/terminateBefore.pdf}
+          \caption{Before.}
+      \end{subfigure}
+      ~
+      \begin{subfigure}[b]{0.45 \textwidth}
+          \includegraphics[width =\textwidth]{unifiedAlgo/img/sweep/terminateAfter.pdf}
+          \caption{After.}
+      \end{subfigure}
+      \caption{The termination step.}
+      \label{fig:sweep:terminate}
+    \end{figure}
 
     \begin{lemma}
       \label{lm:sweep:REL}
@@ -203,7 +252,9 @@
       After running the whole algorithm the interior vertex condition holds for all vertices in the graph. Furthermore the poles are also colored correctly due to Invariant \ref{i:uni:SWandSE}.
     \end{proof}
 
-    Given a splitvertex $v$ we will by \emph{bottom} path mean the path that comes in trough the first incoming blue edge in the the rotation at $v$ and leaves through the last outgoing blue edge in the rotation at $v$. See Figure \ref{fig:sweep:bottomPath}.
+    A \emph{splitvertex} is a vertex with more than one outgoing blue edge.
+    Given a splitvertex $v$ we will by \emph{bottom} path mean the path that comes in trough the first edge in the interval of incoming blue edges in the the rotation at $v$ and leaves through the last edge in the interval of outgoing blue edge in the rotation at $v$.
+    See Figure \ref{fig:sweep:bottomPath}.
 
     \begin{figure}[h]
       \centering
@@ -218,11 +269,13 @@
     \end{lemma}
 
     \begin{proof}
-      \fxnote{Try to clear up reasoning furthera}
       Note that if $v$ is a splitvertex because it is adjacent to $\pS$ then since $w$ is on the bottom path it also has to be adjacent to $\pS$ by the definition of the bottom path.
       Hence $w$ is not the handle of a large topfan in this case.
 
-      On the other hand if $v$ is a splitvertex due to a chord $v a b x$ we can continue the bottom path past $w$ as an bottom path that will eventually go to $x$. By the way we treat chords in the algorithm. \fxnote{Formalize: "By the way we treat chords"} We will denote this extended bottom path by $\P$. The situation is depicted in Figure \ref{fig:botomPathChord}.
+      On the other hand if $v$ is a splitvertex due to a chord $v a b x$ we can continue the bottom path past $w$ as an bottom path that will eventually go to $x$.
+      Since every chord is evaded by a single path from $v_k$ to $v_\ell$ in the algorithm.
+      We will denote this extended bottom path by $\P$.
+      The situation is depicted in Figure \ref{fig:botomPathChord}.
 
       \begin{figure}[h]
         \centering
@@ -231,9 +284,21 @@
         \label{fig:botomPathChord}
       \end{figure}
 
-      The interior of  $vabx \oplus \rev \P$ and has no vertices. Suppose there would be such a vertex then since $\P$ is a bottom path the blue path going trough this vertex has to start at $a$ and end at $b$. But then this gives a blue face with only one edge on its bottom boundary path, hence the interior of this face has no incoming red edges. \fxnote{Or i could make a lemma about face borders somewhere and contradict with that.} So the result is not a regular edge labeling. Since our graph is a regular edge labeling $vabx \oplus \rev \P$ has no interior vertices.
+      The interior of  $vabx \oplus \rev \P$ and has no vertices. Suppose there would be such a vertex then since $\P$ is a bottom path the blue path going trough this vertex has to start at $a$ and end at $b$. But then this gives a blue face with only one edge on its bottom boundary path, hence the interior of this face has no incoming red edges.
+      Which is impossible as can be seen in Figure \ref{fig:sweep:noFaceWithOneBottomEdge}.
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[scale=1]{unifiedAlgo/img/sweep/noFaceWithOneBottomEdge.pdf}
+        \caption{}
+        \label{fig:sweep:noFaceWithOneBottomEdge}
+      \end{figure}
+
+      So the result is not a regular edge labeling. Since our graph is a regular edge labeling $vabx \oplus \rev \P$ has no interior vertices.
 
       This also implies all interior edges are red (by the definition of bottom path) and thus that $ab$ is blue otherwise we would get a monochromatic triangle.
 
-      Now $w$ can not be connected to any vertex in $\P$ that would give a chord. And we do not allow chords in any valid path on the moment we add it. So $w$ can only be connected to $a$ and $b$ and is thus a topfan of size at most $2$. (If it is a topfan at all, since we do not consider topfans of size 1 as topfans.)
+      Now $w$ can not be connected to any vertex in $\P$ since that would imply the sweepcycle had a chord at some point.
+      So $w$ can only be connected to $a$ and $b$ and is thus a topfan of size at most $2$.
+      (If it is a topfan at all, since we do not consider topfans of size 1 as topfans.)
     \end{proof}
