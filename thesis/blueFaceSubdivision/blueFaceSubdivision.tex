@@ -12,29 +12,28 @@ We then mark the edges on the top boundary path of this face above the recolored
 Then we continue with the next face in the creation order.
 
 \mypar{Loads}
-As is mentioned above we will mark some edges using so-called \emph{loads}, we will in the rest of the section refer to these edges as \emph{loaded}. The exact use of these loaded edges will become clear in the rest of this section. But as is mentioned above we try to not flip above these edges.
+As is mentioned above we will mark some edges with so-called \emph{loads}, we will in the rest of the section refer to these edges as \emph{loaded}.
+The exact use of these loaded edges will become clear in the rest of this section.
 
-It is important to note that if we load any blue edge we regard any other blue edge sharing at least one vertex with this edge to be loaded as well. The occurrence of this phenomenon will be called \emph{putting trough a load}. An example can be seen in Figure \ref{fig:subdiv:putTrougLoad}.
+It is important to note that if we load any blue edge we regard any other blue edge sharing at least one vertex with this edge to be loaded as well. The occurrence of this phenomenon will be called \emph{putting trough a load}. An example can be seen in Figure \ref{fig:subdiv:putTrougLoad}. Here we flit the thick edge. Hence we mark $uv$ as loaded. But because of putting trough load $uw$ also becomes loaded.
 
 \begin{figure}[h]
   \centering
   \includegraphics[scale=1]{blueFaceSubdivision/img/puttingTroughLoad.pdf}
-  \caption{The fat edge is flipped. Hence we mark $uv$ as loaded. Via the mechanism of putting trough load $uw$ also becomes marked as loaded.}
+  \caption{Putting trough load.}
   \label{fig:subdiv:putTrougLoad}
 \end{figure}
 
 
 \mypar{Step requirements}
-We flip edges in each face, taking into account loads on the bottom fence. Such that
+We flip edges in each face, taking into account loads on the bottom boundary path. Such that
 
 \begin{enumerate}
-  \item We never load the edge next to a split/merge
-  \item We never load two adjacent edges
+  \item We never load the two edges next to a split or merge vertex on the top boundary path.
+  \item We never load two adjacent edges on the top boundary path
 \end{enumerate}
 
-It is important to note that we put trough edge loads on splits and merges
-
-Because we do this we can also say the following
+If we flips edges in line with the step requirements for every face then the following lemma holds for the bottom boundary path for yet untreated faces.
 
 \begin{lemma}
   \label{lm:}
@@ -42,8 +41,7 @@ Because we do this we can also say the following
 \end{lemma}
 \begin{proof}
   A single face would never load two subsequent edges. Hence the only way to get two subsequent loaded edges is using different faces and thus splits and merges.
-
-  However due to never flipping next to a split/merge we never get subsequent loaded edges.
+  However due to never flipping the two edges next to a split or merge we neither get subsequent loaded edges in such a case.
 \end{proof}
 
 
@@ -110,25 +108,37 @@ The same algorithm as in Lemma \ref{lm:subdiv:withoutTopfan} after skipping the 
 \subsubsection{Face encountering a larger topfan}
 If we have a large topfan in the middle of the face then above the left outer edge of this topfan we can not have another topfan that failed to flip its left outer edges by Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther}.
 
-This means we can use the following rule: we flip the first edge of a topfan even above a loaded edge. And still make only chains of at most $2$ $Z$'s.
+This means we can use the following rule: we flip the first edge of a topfan even above a loaded edge.
+We call such an edge a \emph{forced} flip. We can not have two such forced flips above each other because that would give a situation as in Figure \ref{fig:subdiv:forcedFlips}.
+However that would mean the fan with fanhandle $u$ must be the handle of a topfan that failed its flip and hence $v$ must have been a split vertex. But then by lemma \ref{lm:zflip:NoTwoSplitsAboveEachOtherVertOnesided} $w$ can not be the handle of a large topfan.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=1]{blueFaceSubdivision/img/forcedFlips.pdf}
+  \caption{Two forced flips above each other}
+  \label{fig:subdiv:forcedFlips}
+\end{figure}
+
+Since we don't allow a flip above a load (whether it was forced or not) this means that the worst thing that can happen is an ordinary flip followed by a \emph{forced} flip. That can't be followed by any other flip. Hence the worst case only makes chains of at most $2$ blue $Z$'s, that is a blue path of length $5$.
 
 
-\subsubsection{General conclusion}
+\subsubsection{Conclusion}
+This concludes the last step in the algorithm.
+Now all the steps in the algorithm are done all that is left is to show that we indeed generated a $d$-sided regular edge labeling.
 \begin{lemma}
   \label{lm:subdiv:2chaindedZ}
-  Two chained $Z$'s give at worst a $d-1$-sided face
+  Two chained $Z$'s give at worst a red $d-1$-sided face
 \end{lemma}
 \begin{proof}
-  Before creating the $Z$'s in this section the regular edge labeling was vertically onesided. This also implies that  any $Z$ we now create can have at most one large merge/split fan on the top and one large merg/split fan on the bottom.
+  The two chained $Z$'s give a blue path $\P$ of length $5$ inside a red face.
 
-  So for two $Z$'s we have at most three large merge or split fans. Hence we have at most off one of these. Let's say without loss of generality that we have only one large merge. Then the left boundary edge of this face has at most $d-3 + 1 +1 =d-1$ vertices not counting the split and merge vertex of the red face.
+  Before creating the $Z$'s in this section the regular edge labeling was vertically one-sided. That is, before recoloring the two edges in this section there where no paths of length $3$ inside the face. This also implies that any $Z$ we now create can have at most one blue fan on the top and one blue fan on the bottom, otherwise we would already have had a $3$-path.
+
+  So for two $Z$'s we have at most three blue fans. Hence on one side we have at most one of these. Then the boundary path at this side of the face face has at most $d-3 + 1 +1 =d-1$ vertices not counting the split and merge vertex of the red face.
 \end{proof}
 
-\begin{thrm}
-  \label{th:final}
-  We have a d-sided REL
-\end{thrm}
+  Then we can now proof Theorhem \ref{th:dsided}.
 
-\begin{proof}
-  By construction a blue faces are $d$-sided. We have chained at most two $Z's$ so all red face contain at most two blue $Z$. So red faces are $d-1$-sided by Lemma \ref{lm:subdiv:2chaindedZ}.
+\begin{proof}[of Theorem \ref{th:dsided} ]
+  By construction a blue faces are $d$-sided. We have chained at most two $Z's$ so all red face contain at most two blue $Z$. So red faces are $d-1$-sided by Lemma \ref{lm:subdiv:2chaindedZ}. Hence we have a $d$-sided rectangular edge labeling of $\ext G$ corresponding to a $d$-sided rectangular dual of $\ext G$
 \end{proof}
