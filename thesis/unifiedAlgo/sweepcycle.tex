@@ -275,13 +275,13 @@
       On the other hand if $v$ is a splitvertex due to a chord $v a b x$ we can continue the bottom path past $w$ as an bottom path that will eventually go to $x$.
       Since every chord is evaded by a single path from $v_k$ to $v_\ell$ in the algorithm.
       We will denote this extended bottom path by $\P$.
-      The situation is depicted in Figure \ref{fig:botomPathChord}.
+      The situation is depicted in Figure \ref{fig:sweep:botomPathChord}.
 
       \begin{figure}[h]
         \centering
         \includegraphics[scale=1]{unifiedAlgo/img/sweep/bottompathChord.pdf}
         \caption{}
-        \label{fig:botomPathChord}
+        \label{fig:sweep:botomPathChord}
       \end{figure}
 
       The interior of  $vabx \oplus \rev \P$ and has no vertices. Suppose there would be such a vertex then since $\P$ is a bottom path the blue path going trough this vertex has to start at $a$ and end at $b$. But then this gives a blue face with only one edge on its bottom boundary path, hence the interior of this face has no incoming red edges.

@@ -1,57 +1,56 @@
 %!TEX root = ../thesis.tex
 
-\subsection{Top Fan flips}
-\thispagestyle{plain}
-\label{ss:fanflip}
 
-In Section \ref{ss:flipBlueZ} we obtained a vertically one-sided regular edge labeling (Lemma's \ref{lm:sweep:REL} and \ref{lm:sweep:vertOnsided}).
-Moreover this regular edge labeling never has a split next to a topfan handle along the rightmost edge of the split (Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOtherVertOnesided}). \fxwarning{TODO What is a topfan/fan}
-
-Using some local recoloring (\emph{flips}) on the topfans we will maintain a onesided REL (Lemma \ref{lm:topfan:oneSidedREL}) and make sure that large topfans only occur in very specific situations (Lemma \ref{lm:topfan:remainingTopfans}). It will turn out that we can deal with these specific situations in the final step of Section \ref{ss:subdiv}.
-
-Our flips differ depending on whether we we encounter a split and or merge in the bottom boundary path. Refer to Figure \ref{fig:fanflip:fanflips} for the different kinds of topfanflips.
-
-
-\begin{figure}
+\begin{figure}[!b]
     \centering
     \begin{subfigure}[b]{0.8 \textwidth}
         \includegraphics[width = \textwidth]{topFanFlips/img/regular}
-        \caption{The regular topfanflip}
+        \caption{The regular topfanflip.}
         \label{fig:fanflip:regular}
     \end{subfigure}
     ~
     \centering
     \begin{subfigure}[b]{0.45 \textwidth}
         \includegraphics[width = \textwidth]{topFanFlips/img/merge}
-        \caption{Topfanflip above a merge}
+        \caption{Topfanflip above a merge.}
         \label{fig:fanflip:merge}
-
     \end{subfigure}
     ~
     \begin{subfigure}[b]{0.45 \textwidth}
         \includegraphics[width =\textwidth]{topFanFlips/img/mergeend}
         \caption{Topfanflip next to merge. Note the additional red edge.}
         \label{fig:fanflip:mergeLastVertex}
-
     \end{subfigure}
     \centering
     \begin{subfigure}[b]{0.45 \textwidth}
         \includegraphics[width = \textwidth]{topFanFlips/img/split}
-        \caption{Above a split we stop}
+        \caption{Before a split we stop.}
         \label{fig:fanflip:split}
-
     \end{subfigure}
     ~
     \begin{subfigure}[b]{0.45 \textwidth}
         \includegraphics[width =\textwidth]{topFanFlips/img/splitfront}
-        \caption{If the split is on the first vertex we do not flip at all}
+        \caption{If the split is on the first vertex we do not flip at all.}
         \label{fig:fanflip:splitFirstVertex}
-
     \end{subfigure}
 
-    \caption{}
+    \caption{Top Fan Flips}
     \label{fig:fanflip:fanflips}
 \end{figure}
+
+\subsection{Top Fan flips}
+\thispagestyle{plain}
+\label{ss:fanflip}
+
+In Section \ref{ss:flipBlueZ} we obtained a vertically one-sided regular edge labeling (Lemma \ref{lm:sweep:vertOnsided}).
+Moreover, this regular edge labeling never has a split next to a topfan handle along the rightmost edge of the split (Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOtherVertOnesided}). \fxwarning{TODO What is a topfan/fan}
+
+Using local recoloring (\emph{flips}) on the topfans we will maintain a one-sided regular edge labeling (Lemma \ref{lm:topfan:oneSidedREL}) and make sure that large topfans only occur in very specific situations (Lemma \ref{lm:topfan:remainingTopfans}). It will turn out that we can deal with these specific situations in the final step of Section \ref{ss:subdiv}.
+
+Our flips differ depending on whether we we encounter a split and or merge in the bottom boundary path. Refer to Figure \ref{fig:fanflip:fanflips} for a first glance at the different kinds of topfanflips.
+
+
+
 
 
 %\fxnote{We could make structure of the fence below the topfan more explicit. But we do not really need this}

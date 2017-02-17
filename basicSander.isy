@@ -189,6 +189,8 @@ h
 <arrowsize name="tiny" value="3"/>
 <color name="red" value="1 0 0"/>
 <color name="blue" value="0 0 1"/>
+<color name="lightred" value="1 .5 .5"/>
+<color name="lightblue" value=".5 .5 1"/>
 <color name="green" value="0 1 0"/>
 <color name="yellow" value="1 1 0"/>
 <color name="orange" value="1 0.647 0"/>
