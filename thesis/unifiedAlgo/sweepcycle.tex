@@ -62,13 +62,26 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
 
   Before we can show how to evade these structures we first introduce more notation. We orient $P$ from $v_i$ (the vertex closest to $\pW$)to $v_j$ (the vertex closest to $\pE$) and denote its vertices by $p_1 \ldots p_k$.
   The \emph{index} of a vertex $p_i \in P$ is its position in the path, that is, the index of $p_i$ is $i$.
-  %TODO could do a figure showing these indices
   The \emph{start index} of a irregularity $I$ is the index of the first vertex in $P$ that is also in $I$. Similarly, the \emph{end index} is the index of the last vertex in $P$ that is also in $I$.
   The \emph{range} of an irregularity will be given by its start and end index. Depending on what irregularities we find on the candidate path $P$ we will update the sweepcycle with a \emph{update path} $P'$. This update is described in Section \ref{sss:sweep:update}.
+
+  While describing the steps we will also show that the following two lemmas (Lemmas \ref{lm:sweep:augNoIregularity} and \ref{lm:sweep:noConnectingIregularity}) hold for every case.
+
+  \begin{lemma}
+    The updating paths have no chords or separating $2$-chords
+    \label{lm:sweep:augNoIregularity}
+  \end{lemma}
+
+  \begin{lemma}
+    \label{lm:sweep:noConnectingIregularity}
+    There are no chords or separating $2$-chords not containing $\pS$ with one endpoint on the old sweepcycle and the other endpoint on the updating path.
+  \end{lemma}
 
   \mypar{We have no irregularity}
     When there are no irregularities we update the sweepcycle with the entire candidate path $P$.
     In this case the update path $P'$ is equal to $P$.
+
+    $P'$ has no irregularity by the definition of this case. Moreover, irrefuglaities with one ednopint on $P'$ and one endpoint on $\C$. Since $v_i$ and $v_j$ are both adjacent to $\pS$ we can not have any chords. And any $2$-chords must have $\pS$ as middle vertex.
 
   \mypar{We have any chord}
     Note that we can not have any polebound chords on the exterior vertices of the candidate path $P$ since any such chord would violate Invariant \ref{i:uni:no2Chords} of $\C$ as can been seen in Figure \ref{fig:sweep:noChordOnExteriorVertex}.
@@ -95,6 +108,8 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
     \emph{No separating 2-chord.}
     If there is no separating 2-chord in the interior of $P|_{i, j} \oplus \rev{{C}}$ we do the following. Let $v_k$ be the shared neighbor on $\C$ of $p_{i}$ and $p_{i +1}$ and $v_l$ the shared neighbor on $\C$ of $p_{j -1}$ and $p_{j}$. Then the updating path is the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:chordUpdate}.
 
+    $P'$ is entirely inside a chord containing no more chords and thus can't contain a chord. Moreover, there are no separating $2$-chords on $P$ so $P'$ can not have separating $2$-chords. Any chord or separating $2$-chord with one endpoint in $P'$ and one in $\C$ will have to cross $v_k p_i p_j v_l$ so we can not have a chord. Any 2-chord has to have $p_i$ or $p_j$ as middle vertex. But with this restriction the 2-chord can not be separating.
+
     \begin{figure}[h]
       \centering
       \includegraphics[scale=1]{unifiedAlgo/img/sweep/chordUpdate}
@@ -105,6 +120,10 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
     \emph{At least one separating 2-chord.}
       Let $j'$ be end index of the separating 2-chord with the lowest end index in the interior of $P|_{i, j} \oplus \rev{{C}}$. And let $v_k$ be the shared neighbor on the sweepcycle of $p_{i_1}$ $p_{i_1 +1}$ and $v_l$ the shared neighbor on the sweepcycle  of $p_{j' -1}$ and $p_{j'}$.
       Then the updating path $P'$ is the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:2chordInChordUpdate}.
+
+      $P'$ is entirely inside a chord containing no more chords and thus can't contain a chord. Moreover, all separating $2$-chords are evaded since we evaded the ending of the first one ending.  In the same manner as in the above case we can not expect any chord or separating $2$-chord with one endpoint in $P'$ and one in $\C$ any chord or separating 2-chord to connect outside the containing chord.
+      Suppose that we have a separating $2$-chord then that would have been a chord of the candidate path. This is in contradiction with the fact that the outer chord contained no more chords.
+      Suppose that we have a chord not connecting to the second-to-last vertex of the updating path. This chord would violate Invariant \ref{i:uni:no2Chords} of the old sweepcycle. Furthermore the second-to-last vertex of the updating path has no chords since it would break $v_l p_j x p_u$. (see Figure \ref{fig:sweep:2chordInChordUpdate}).
 
       \begin{figure}[h]
         \centering
@@ -119,16 +138,27 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
       We find the smallest separating 2-chord (i.e. with the highest start index). Say this separating $2$-chord has start index $i$.
       Let $v_k$ be the shared neighbor on the sweepcycle of $p_{i}$ and $p_{i +1}$. The updating path is the right neighbor path of $\cpath|_{v_k, v_j}$. See Figure \ref{fig:sweep:pEBound}.
 
+      $P'$ has no chords. Moreover, $P'$ starts inside the smallest separating $2$-chord hence it has no $2$-chords.
+
+      We can not have any chords with one endpoint in $P'$ and one in $\C$  since these would have to break $\pE x p_i v_k$. Any $2$-chords with one endpoint in $P'$ and one in $\C$ would have $x$ or $p_i$ as middle vertex. However the first yields a $2$-chord of the candidate path with a higher start range, this is a contradiction. And the second can not yield an separating $2$-chord.
+
     \begin{figure}[h]
       \centering
       \includegraphics[scale=1]{unifiedAlgo/img/sweep/pEBound}
       \caption{Updating path when $P$ has a separating 2-chord with $v_j$ as end vertex.}
       \label{fig:sweep:pEBound}
     \end{figure}
+
     \emph{Only other separating 2-chords}
       Find the $2$-chord with the lowest end index, say that this is $j$.
       Let $v_l$ be the shared neighbor on the sweepcycle of $p_{j}$ and $p_{j-1}$.
       The updating path is the right neighbor path of $\cpath|_{v_i, v_l}$. See Figure \ref{fig:sweep:free2chord}.
+
+      Any updating path stops before the end of a separating 2-chord and furthermore conatins no chords since $P$ already didn't.
+
+      Any chord or $2$-chord with one vertex in the updating path and the other on the old sweepcycle must end to the right of the updating path since the updating path starts at $\pW$.
+      Suppose that we have a separating $2$-chord then that would have been a chord of the candidate path. This is in contradiction with the assumption that the candidate path had no chords.
+      Suppose that we have a chord not connecting to the second-to-last vertex of the updating path. This chord would violate Invariant \ref{i:uni:no2Chords} of the old sweepcycle. Furthermore the second-to-last vertex of the updating path has no chords since it would break $v_l p_j x p_u$. (see Figure \ref{fig:sweep:free2chord}).
 
     \begin{figure}[b]
       \centering
@@ -161,45 +191,6 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
   \label{fig:sweep:update}
   \end{figure}
 
-
-  \begin{lemma}
-    The updating paths have no chords or separating $2$-chords
-    \label{lm:sweep:augNoIregularity}
-  \end{lemma}
-  \begin{proof}
-      All of these structures are on the right of the updating path, since the updating path is a subset of a right neighbor path and a right neighbor path satisfies Lemma \ref{lm:right:neighbourwalkChordFree} (no chords on the left) and Lemma \ref{lm:right:neighbourwalkNoInteriorVertex} (no separating 2-chords on the left).
-
-      If the candidate path had any chords the updating path is adapted to be entirely inside a chord containing no more chords. Hence the updating path can not have any chords.
-
-      Moreover any updating path stops before the end of a separating 2-chord unless it is a $\pE$-bound separating 2-chord in which case it only starts after the begin of this 2-chord. Either way the updating path also has no separating 2-chords.
-  \end{proof}
-
-  \begin{lemma}
-    \label{lm:sweep:noConnectingIregularity}
-    There are no chords or separating $2$-chords not containing $\pS$ with one endpoint on the old sweepcycle and the other endpoint on the updating path.
-  \end{lemma}
-
-  \begin{proof}
-    \emph{No irregularity}
-    Since $v_i$ and $v_j$ are both adjacent to $\pS$ we can not have any chords. And any $2$-chords have $\pS$ as middle vertex. However these are allowed for the Lemma.
-
-    \emph{Chord, not containing a 2-chord}
-    Any chord or separating $2$-chord will have to cross $v_k p_i p_j v_l$ so we can not have a chord. Any 2-chord has to have $p_i$ or $p_j$ as middle vertex. But with this restriction the 2-chord can not be separating.
-
-    \emph{Chord, containing a 2-chord}
-    In the same manner as in the above case we can not expect any chord or separating 2-chord to connect outside the containing chord.
-    Suppose that we have a separating $2$-chord then that would have been a chord of the candidate path. This is in contradiction with the fact that the outer chord contained no more chords.
-    Suppose that we have a chord not connecting to the second-to-last vertex of the updating path. This chord would violate Invariant \ref{i:uni:no2Chords} of the old sweepcycle. Furthermore the second-to-last vertex of the updating path has no chords since it would break $v_l p_j x p_u$. (see Figure \ref{fig:sweep:2chordInChordUpdate}).
-
-    \emph{$\pE$-bound separating $2$-chord}
-    We can not have any chords since these would have to break $\pE x p_i v_k$. Any $2-chords$ would have $x$ or $p_i$ as middle vertex. However the first yields a $2$-chord of the candidate path with a higher start range, this is a contradiction. And the second can not yield an separating $2$-chord.
-
-
-    \emph{Other separating $2$-chord}
-    Any chord or $2$-chord with one vertex in the updating path and the other on the old sweepcycle must end to the right of the updating path since the updating path starts at $\pW$.
-    Suppose that we have a separating $2$-chord then that would have been a chord of the candidate path. This is in contradiction with the assumption that the candidate path had no chords.
-    Suppose that we have a chord not connecting to the second-to-last vertex of the updating path. This chord would violate Invariant \ref{i:uni:no2Chords} of the old sweepcycle. Furthermore the second-to-last vertex of the updating path has no chords since it would break $v_l p_j x p_u$. (see Figure \ref{fig:sweep:free2chord}).
-  \end{proof}
 
   \begin{lemma}
     \label{lm:sweep:updateMaintainsInvariants}
