@@ -6,15 +6,15 @@
 The first step of our algorithm is executing a sweepcycle algorithm inspired by the sweepcycle algorithm by Fusy \cite{Fusy2006}. We use $\C$ to indicate the current sweep cycle. We shrink $\C$ by updating it with certain interior paths.
 One of the nicest things about the regular edge labeling we produce is Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther} which will turn out to be very useful throughout the rest of the algorithm. This lemma states that most interior paths we can't have the fan handle of a large splitfan after a split vertex on a so-called bottom path. \fxnote{Q: These are all words the reader doesn't know yet. How to explain?}
 
-During the algorithm we maintain several invariants on $\C$. The first three are equivalent to those imposed by Fusy. The final invariant is new and allows is us to prove Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther}.
+During the algorithm we maintain several invariants on $\C$. The first four are equivalent to those imposed by Fusy. The final invariant is new and allows is us to prove Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther}.
 
 \begin{invariants}
   \itemsep=-4pt
-
   \item \label{i:uni:SWandSE} The cycle $\C$ contains the two edges $\pS \pW$ and $\pS \pE$.
-  \item \label{i:uni:noChords} $\cpath$ has no chords
-  \item \label{i:uni:intVertCond} All inner edges of $G$ in the exterior of $\C$ are colored and oriented such that the inner vertex condition holds for all vertices in the exterior of $C$.
-  \item \label{i:uni:no2Chords} $\C\sm{\pS}$ has no separating 2-chords that do not use $\pS$
+  \item \label{i:uni:noChords} $\cpath$ has no chords.
+  \item \label{i:uni:intVertCond} The inner vertex condition holds for all vertices in the exterior of $C$.
+  \item \label{i:uni:redOutgoing} Every non-pole vertex on the sweepcycle has a red outgoing edge.
+  \item \label{i:uni:no2Chords} $\C\sm{\pS}$ has no separating 2-chords that do not use $\pS$.
 \end{invariants}
 
 We initialize the sweepcycle $\C$ with the outer cycle of $\ext G$.
@@ -198,6 +198,7 @@ We repeat these steps until the sweepcycle does not contain any more interior ve
   \end{lemma}
   \begin{proof}
     We will proof that the new sweepcycle $\C'$ obtained by updating $\C$ is again a valid sweepcycle. Invariant \ref{i:uni:SWandSE} remains trivially true. Invariant \ref{i:uni:intVertCond} hold due to the way we colored the edges around the new interior vertices as can be seen in Figure \ref{fig:sweep:update}.
+    Furthermore, Invariant \ref{i:uni:redOutgoing} holds because every interior vertex of $P'$ has a left neighbor by Lemma \ref{lm:right:leftNeighborsOfTheRightNeighborPath}.
 
     To see that Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords} hold note that there can be no chords or $2$-chords with both endpoints in the overlap of the old and new sweepcycle $\C \cap \C'$ by the same Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords}. Since the updating path itself also has no irregularities (Lemma \ref{lm:sweep:augNoIregularity}),
     we know any chord or separating $2$-chord $C$ has to have one vertex on $\P$ and one vertex on the unchanged part of old sweepcycle $\C \cap \C'$.

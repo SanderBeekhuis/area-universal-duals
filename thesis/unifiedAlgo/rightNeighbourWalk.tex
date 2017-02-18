@@ -151,10 +151,18 @@
       Suppose there is a interior vertex in the cycle $P \oplus \rev{Q}$. Then the triangle containing this vertex is a separating triangle. Hence $P \oplus \rev{Q}$ has no interior vertices.
     \end{proof}
 
+    \begin{lemma}
+      \label{lm:right:leftNeighborsOfTheRightNeighborPath}
+      Every interior vertex of a right neighbor path $Q$ has a left neighbor.
+    \end{lemma}
+    \begin{proof}
+      Let $q$ be an interior vertex of $Q$. Consider that $q$ was added as right neighbor of some interior vertex $p$ of $P$. Since $Q$ does not start or end at $p$, $p$ must also be a left neighbor of $q$ in $Q$.
+    \end{proof}
 
     \begin{lemma}
       \label{lm:right:neighbourwalkChordFree}
       The left of a right neighbor path is chordfree.
+      %TODO we could probably simplify this proof using the above lemma, I just don't trust it that much.
     \end{lemma}
     \begin{proof}
       Suppose that the right neighbor path $Q = q_1 \ldots q_k$  has a chord on the left, say between $q_i$ and $q_j$ with $i< j -1 $. Then $q_i q_j$ is an interior edge of $P \oplus \rev{Q}$.  There is also vertex $p_\ell \in P$ such that $q_{i+1}$ is a right neighbor of $p_\ell$, hence $p_\ell q_{i+1}$ is an interior edge of $P \oplus \rev{Q}$.  But now we must have a crossing between the edges $q_i q_j$ and $p_\ell q_{i+1}$ since both run in the interior of $P \oplus \rev{Q}$.
