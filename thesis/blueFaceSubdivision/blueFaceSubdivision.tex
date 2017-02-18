@@ -7,7 +7,21 @@
 
   In this section we are going to recolor edges in blue faces to make all of them $d+1$-sided. While at the same time not recoloring too many edges above each other as too create a too large red face.
 
-  We will start at the bottommost face $F$ in the creation order (which we will have to recalculate after the topfanflips, but every regular edge labeling has one). And we will recolor some of its edges if it is too large. \fxnote{I may need to expand a bit more on this order}
+  We would like to start at the bottommost face $F$. We can unfortunately no longer use the creation order since the topfan flips may have changed which faces lie above which other faces, the topfan flips may even have introduced new faces. Hence we will have to show that there always is a face $F$  that lies bellow all untreated faces. That is $F$ has the following property, the whole top boundary path of $F$ borders faces that are not treated.
+
+  \begin{lemma}
+    \label{lm:}
+    There is a face $F$ such that the whole top boundary path of $F$ borders faces that are not treated. While the bottom boundary path doesn't border such faces
+  \end{lemma}
+  \begin{proof}
+    Let us first remove all treated faces from $\ext G$ by removing their blue edges and conencting their red edges with $S$.
+
+    Unless there are no faces remaining there is at least one \emph{splitvertex} (vertex with at least two outgoing blue edges) and one \emph{mergevertex} (vertex with at least two blue incoming edge) along the path formed by the vertices adjacent to $\pS$.\fxnote{This is the left boundary path of $\pW \pS \pE$ in this REL}
+    There can be no merges before the first split, nor splits after the last merge.  Hence somewhere along the path there is a split followed by a merge. This face has a bottom boundary path that is entirely adjecent to $\pS$ after removing treated faces. The top boundary path clearly borders untreated faces.
+  \end{proof}
+
+
+  We will recolor some of $F$'s edges if it is too large.
   We then mark the edges on the top boundary path of this face above the recolored edges as \emph{loaded}. This means that we will try to not flip above these edges in future iterations of the algorithm.
   Then we continue with the next face in the creation order.
 
