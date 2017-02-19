@@ -17,7 +17,7 @@
     Let us first remove all treated faces from $\ext G$ by removing their blue edges and conencting their red edges with $S$.
 
     Unless there are no faces remaining there is at least one \emph{splitvertex} (vertex with at least two outgoing blue edges) and one \emph{mergevertex} (vertex with at least two blue incoming edge) along the path formed by the vertices adjacent to $\pS$.\fxnote{This is the left boundary path of $\pW \pS \pE$ in this REL}
-    There can be no merges before the first split, nor splits after the last merge.  Hence somewhere along the path there is a split followed by a merge. This face has a bottom boundary path that is entirely adjecent to $\pS$ after removing treated faces. The top boundary path clearly borders untreated faces.
+    There can be no merges before the first split, nor splits after the last merge.  Hence somewhere along the path there is a split followed by a merge. This face has a bottom boundary path that is entirely adjecent to $\pS$ after removing treated faces. The top boundary path borders untreated faces.
   \end{proof}
 
 
@@ -44,17 +44,17 @@
 
   \begin{enumerate}
     \item We never load the two edges next to a split or merge vertex on the top boundary path.
-    \item We never load two adjacent edges on the top boundary path
+    \item We never load two adjacent edges on the top boundary path.
   \end{enumerate}
 
-  If we flips edges in line with the step requirements for every face then the following lemma holds for the bottom boundary path for yet untreated faces.
+  If we flip edges in line with the step requirements for every face then the following lemma holds for the bottom boundary path for yet untreated faces.
 
   \begin{lemma}
     \label{lm:}
     On the bottom boundary path of every face we never find two subsequent loaded edges. Even when we put trough loads on splits and merges.
   \end{lemma}
   \begin{proof}
-    A single face would never load two subsequent edges. Hence the only way to get two subsequent loaded edges is using different faces and thus splits and merges.
+    A single face would never load two subsequent edges. Hence, the only way to get two subsequent loaded edges is using different faces and thus splits and merges.
     However due to never flipping the two edges next to a split or merge we neither get subsequent loaded edges in such a case.
   \end{proof}
 
@@ -62,7 +62,7 @@
 \subsubsection{Faces without large topfans in the midlle}
   \begin{lemma}
     \label{lm:subdiv:withoutTopfan}
-      \fxnote{It might be $d-1$ in worst case}
+      \fxnote{It might be $d-1$ in the worst case}
     We can subdivide any blue face without large topfans into $d$-sided chunks while obeying the load rules above.
   \end{lemma}
 
@@ -82,13 +82,13 @@
   \begin{enumerate}
     \item We do not flip above the edges of the first topfan.
     \item We flip above the second edge if it is unloaded.
-    \item Otherwise we flip above the third edge.
-    \item We never flip next to the merge the merge
+    \item Otherwise, we flip above the third edge.
+    \item We never flip next to the merge.
   \end{enumerate}
 
-  When flipping above a edge we always flip the right edge above that edge.
+  When flipping above an edge we always flip the right edge above that edge.
 
-  The first edge give us the required separation of loaded edges along the top boundary path. The other items make sure we obey the other rules in a straightforward manner.
+  The first edge give us the required separation of loaded edges along the top boundary path. The other items make sure we obey the other rules.
 
   The worst case is given by a large topfan at the start and  a combination of the last two items. We would in that case want to flip above the third edge. But we do not because the next edge is the merge. This gives at worst a topfan and 3 edges along the whole bottom boundary path and hence a $ d - 3 +3 = d$-sided face.
   \end{proof}
@@ -116,7 +116,7 @@
     \label{fig:subdiv:forcedFlips}
   \end{figure}
 
-  Since we don't allow a flip above a load (whether it was forced or not) this means that the worst thing that can happen is an ordinary flip followed by a \emph{forced} flip. That can't be followed by any other flip. Hence the worst case only makes chains of at most $2$ blue $Z$'s, that is a blue path of length $5$.
+  Since we don't allow a flip above a load (whether it was forced or not) this means that the worst thing that can happen is an ordinary flip followed by a \emph{forced} flip. That can't be followed by any other flip. Hence, the worst case only makes chains of at most $2$ blue $Z$'s, that is a blue path of length $5$.
 
 
 \subsubsection{Conclusion}
@@ -129,13 +129,13 @@
   \begin{proof}
     The two chained $Z$'s give a blue path $\P$ of length $5$ inside a red face.
 
-    Before creating the $Z$'s in this section the regular edge labeling was vertically one-sided. That is, before recoloring the two edges in this section there where no paths of length $3$ inside the face. This also implies that any $Z$ we now create can have at most one blue fan on the top and one blue fan on the bottom, otherwise we would already have had a $3$-path.
+    Before creating the $Z$'s in this section the regular edge labeling was vertically one-sided. That is, before recoloring the two edges in this section there were no paths of length $3$ inside the face. This also implies that any $Z$ we now create can have at most one blue fan on the top and one blue fan on the bottom, otherwise we would already have had a $3$-path.
 
-    So for two $Z$'s we have at most three blue fans. Hence on one side we have at most one of these. Then the boundary path at this side of the face face has at most $d-3 + 1 +1 =d-1$ vertices not counting the split and merge vertex of the red face.
+    So for two $Z$'s we have at most three blue fans. Hence on one side we have at most one of these. Then the boundary path at this side of the face has at most $d-3 + 1 +1 =d-1$ vertices not counting the split and merge vertex of the red face.
   \end{proof}
 
-    Then we can now proof Theorhem \ref{th:dsided}.
+    Then we can now proof Theorem \ref{th:dsided}.
 
   \begin{proof}[of Theorem \ref{th:dsided} ]
-    By construction a blue faces are $d$-sided. We have chained at most two $Z's$ so all red face contain at most two blue $Z$. So red faces are $d-1$-sided by Lemma \ref{lm:subdiv:2chaindedZ}. Hence we have a $d$-sided rectangular edge labeling of $\ext G$ corresponding to a $d$-sided rectangular dual of $\ext G$
+    By construction all blue faces are $d$-sided. We have chained at most two $Z's$ so all red face contain at most two blue $Z$. So red faces are $d-1$-sided by Lemma \ref{lm:subdiv:2chaindedZ}. Hence, we have a $d$-sided rectangular edge labeling of $\ext G$ corresponding to a $d$-sided rectangular dual of $\ext G$
   \end{proof}

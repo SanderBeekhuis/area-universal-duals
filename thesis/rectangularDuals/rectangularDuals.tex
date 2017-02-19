@@ -15,7 +15,7 @@
   A \emph{regular edge labeling} is a coloring and orientation of the edges of the extended adjacency graph $\extdualgraph{\L}$. This coloring and orientation is given by the following procedure. For every edge $vw$ in $\extdualgraph{\L}$ we consider whether the shared boundary of the rectangles is vertical or horizontal we then color the edge blue or red respectively. In the first case we orient the edge from the leftmost rectangle to the rightmost rectangle and in the second case we orient from bottom to top. We do not color or orient the edges between the poles.
 
   From the nature of the adjacencies in a rectangular layout we can deduce the following two rules for a regular edge labeling.
-  \fxnote{figure, for example from powerpoint}
+  \fxnote{Figure, for example from powerpoint}
   \begin{enumerate}
     \item (Interior vertex) In the rotation around every interior vertex we have the following subsequent non-empty sets: Incoming red edges, incoming blue edges, outgoing red edges and outgoing blue edges and only these sets.
     \item (Pole) $\pN$ has only incoming red edges, $\pE$ has only incoming blue edges, $\pS$ has only outgoing red edges and $\pW$ has only outgoing blue edges ,except for the uncolored edges between the poles.
@@ -30,7 +30,7 @@
   \end{lemma}
 
   \begin{proof}
-    Suppose we have a monochromatic triangle. Without loss of generality we suppose that the color of this triangle is blue. Then at least one of the vertices has an incoming blue edge followed directly by an outgoing blue edge or an outgoing blue edge followed directly by an incoming blue edge in its rotation. Thus this vertex has either an empty set of outgoing or incoming red edges, violating the interior vertex requirement of a REL.
+    Suppose we have a monochromatic triangle. Without loss of generality we suppose that the color of this triangle is blue. Then at least one of the vertices has an incoming blue edge followed directly by an outgoing blue edge or an outgoing blue edge followed directly by an incoming blue edge in its rotation. Thus, this vertex has either an empty set of outgoing or incoming red edges and hence violates the interior vertex condition of a regular edge labeling.
   \end{proof}
 
   \mypar{$\mathbf{st}$-planar graphs}
@@ -41,10 +41,10 @@
 
     \begin{thrm}
       \label{th:rel:stPlanarGraphs}
-      The blue edges of $G\sm{\pN,\pS}$ form an $st$-planar graph with $s= \pW$ and $t=\pE$. Moreover the red edges of $G\sm{\pW,\pE}$ form an $st$-planar graph with $s= \pS$ and $t= \pN$.
+      The blue edges of $G\sm{\pN,\pS}$ form an $st$-planar graph with $s= \pW$ and $t=\pE$. Moreover, the red edges of $G\sm{\pW,\pE}$ form an $st$-planar graph with $s= \pS$ and $t= \pN$.
     \end{thrm}
     \begin{proof}
-      Kant and He propose to add an edge and orient the outer cycle. This is necessary because they require $s$ and $t$ to be adjacent. Moreover they do not a priori require such an graph to be without directed cycles.
+      Kant and He propose to add an edge and orient the outer cycle. This is necessary because they require $s$ and $t$ to be adjacent. Moreover, they do not a priori require such a graph to be without directed cycles.
 
       A trivial adaptation of \cite[pp.179]{Kant1997} then gives us the theorem. We note that we can not get any directed cycles since a regular edge labeling has no monochromatic directed cycles.
       \fxnote{We write our own proof.}
@@ -57,7 +57,7 @@
 
 
     \mypar{Maximal segments}
-    Due to the way we color a regular edge labeling of $\extdualgraph{\L}$ given a layout $\L$ horizontal maximal segments correspond to a blue faces while a vertical maximal segments correspond to a red faces. As one can see in Figure \ref{fig:rect:relSegmentFace}.
+    Due to the way we color a regular edge labeling of $\extdualgraph{\L}$ given a layout $\L$ a horizontal maximal segment corresponds to a blue face and a vertical maximal segment corresponds to a red face; as one can see in Figure \ref{fig:rect:relSegmentFace}.
 
     \begin{figure}[h]
       \centering
@@ -69,4 +69,4 @@
     Consider a face corresponding to a maximal segment.
     The number of interior vertices of both boundary paths without counting the split and merge vertices is the number of rectangles on the respective sides of the maximal segment.
 
-    Hence a one-sided maximal segment corresponds to a face with one boundary path of length $2$\footnote{A boundary path can not have length $1$ since by construction of a regular edge labeling it encloses a maximal segment and thus has to go trough at least one intermediate rectangle/vertex.} and a $k$-sided maximal segment to face with shortest boundary path of length at most $k+1$.
+    Hence a one-sided maximal segment corresponds to a face with one boundary path of length $2$ (A boundary path can not have length $1$ since by construction of a regular edge labeling it encloses a maximal segment and thus has to go trough at least one intermediate rectangle/vertex.) and a $k$-sided maximal segment to face with a shortest boundary path of length at most $k+1$.

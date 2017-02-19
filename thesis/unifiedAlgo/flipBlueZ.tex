@@ -5,7 +5,7 @@
 \label{ss:flipBlueZ}
 
   The regular edge labeling provided by the sweepcycle algorithm of Section \ref{ss:sweep} is often vertically one-sided but we have not succeeded in proving that this is always the case.
-  We prefer to obtain a vertically one-sided regular edge labeling since if we then recolor edges to subdivide large blue faces we cannot accidentally create many-sided vertical segments.
+  We prefer to get a vertically one-sided regular edge labeling since if we then recolor edges to subdivide large blue faces we cannot accidentally create many-sided vertical segments.
   In this section we modify the current regular edge labeling to make it vertically one-sided while maintaining the nice property of Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther}.
 
 
@@ -16,8 +16,10 @@
     A regular edge labeling is not one sided if and only if it contains a blue $Z$
   \end{lemma}
   \begin{proof}
-    Consider a regular edge labeling that is not one-sided, then it contains a red face of which both boundary paths are of length at least $3$. However since the interior faces of $G$ are triangles there must then be a blue $Z$ in this face.
-    On the other hand, if a face contains a blue $Z$ it can not be one-sided.
+    Consider a regular edge labeling that is not one-sided, then it contains a red face of which both boundary paths are of length at least $3$.
+    However, since the interior faces of $G$ are triangles there must then be a blue $Z$ in this face.
+
+    If a face contains a blue $Z$ it can not be one-sided. Since path of length $3$ inside a red face must have at least $2$ vertices on both boundary paths.
   \end{proof}
 
   \begin{figure}[h]
@@ -45,7 +47,7 @@
     The result is a rectangular edge labeling and vertically one-sided
   \end{lemma}
   \begin{proof}
-    By construction we flip all blue $Z$'s. If we do not have any more $Z$'s then the remaining regular edge labeling is vertically one-sided by Lemma \ref{lm:zflip:blueZNorVertOneSided}.
+    By construction, we flip all blue $Z$'s. If we do not have anymore $Z$'s then the remaining regular edge labeling is vertically one-sided by Lemma \ref{lm:zflip:blueZNorVertOneSided}.
   \end{proof}
 
   \begin{lemma}

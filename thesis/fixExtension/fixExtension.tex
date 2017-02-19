@@ -12,7 +12,7 @@
 
   All members of this family contain separating $4$-cycles.
   If there is no $k$-sided rectangular dual for a certain corner assignment $\ext G_k$ of $G_k$. There may still be another corner assignment of $G_k$ admitting a $k$-sided dual.
-  However, if we view $\ext G_k = H_k$ as a graph in its own right, then $G_k$ is the interior of a separating $4$-cycle of $H_k$ and we will show in Lemma \ref{lm:fix:fourCycleInteriorColor} this implies that $G_k$ (as induced subgraph) has to be colored in accordance with the corner assignment $\ext G_k$. Hence we first have to proof some lemma's before we can turn to the proof of Theorem \ref{fix:th:family}.
+  However, if we view $\ext G_k = H_k$ as a graph in its own right, then $G_k$ is the interior of a separating $4$-cycle of $H_k$ and we will show in Lemma \ref{lm:fix:fourCycleInteriorColor} this implies that $G_k$ (as induced subgraph) has to be colored in accordance with the corner assignment $\ext G_k$. Hence we first have to proof some lemmas before we can turn to the proof of Theorem \ref{fix:th:family}.
 
   \begin{lemma}
     \label{lm:interiorRectangle}
@@ -21,7 +21,7 @@
   \begin{proof}
     The interior $I$ of $\C$ will be represented by some rectilinear shape in every rectangular dual $\L$ of G. Such a shape must have at least $4$ clockwise right turns if we travel its boundary in a clockwise direction otherwise the shape is not closed.
 
-    On the other hand such a clockwise turn can not occur due to a single rectangle. Instead such a turn can only occur when two rectangles are adjacent to each other. Since a $4$-cyle represents only $4$ pairs of adjacent rectangles the representation of $I$ in $\L$ can only have $4$ clockwise turns. Hence it must be a rectangle, the only rectilinear shape with just $4$ clockwise turns
+    Yet such a clockwise turn can not occur due to a single rectangle. Instead, such a turn can only occur when two rectangles are adjacent to each other. Because a $4$-cyle represents only $4$ pairs of adjacent rectangles the representation of $I$ in $\L$ can only have $4$ clockwise turns. Hence, it must be a rectangle, the only rectilinear shape with just $4$ clockwise turns
   \end{proof}
 
   \begin{lemma}
@@ -51,7 +51,7 @@
   \end{wraptable}
 
   Lemma \ref{lm:fix:fourCycleInteriorColor} is useful because it allows us to consider a single corner assignment $\ext G$ of $G$ by building a \emph{scaffold}. Suppose we want to investigate some specific corner assignment $\ext G$ of $G$ with poles $N$, $E$, $S$ and $W$ then we can consider the graph $\ext G = H$ as a graph in its own right.
-   $H$ is a proper graph since it has no irreducible triangles in its interior (because $\ext G$ had none) and it admits a corner assignment $\ext H$ without separating triangles by connecting the new poles as in Table \ref{tab:scaffold}. $\ext H$ is shown in Figure \ref{fig:scafold}. $G$ is displayed in thick lines and with closed vertices. An arbitrary corner assignment $\ext G =H$ is then drawn with thin lines and open vertices. An corner assignment of $H$ is then drawn with dashed edges and open vertices.
+   $H$ is a proper graph since it has no irreducible triangles in its interior (because $\ext G$ had none) and it admits a corner assignment $\ext H$ without separating triangles by connecting the new poles as in Table \ref{tab:scaffold}. $\ext H$ is shown in Figure \ref{fig:scafold}. $G$ is displayed in thick lines and with closed vertices. An arbitrary corner assignment $\ext G =H$ is then drawn with thin lines and open vertices. A corner assignment of $H$ is then drawn with dashed edges and open vertices.
 
   \begin{figure}[h!]
   \centering
@@ -62,7 +62,7 @@
   \end{figure}
 
 
-  The graph $H$ can have more then one corner assignment but they all contain the separating $4$-cycle $\C= NESW$. Thus by Lemma \ref{lm:fix:fourCycleInteriorColor} we see that, without loss of generality, the interior edges of $\C$ incident to $N$ are colored incoming red, those incident to $E$ are colored incoming blue, those incident to $s$ are colored outgoing red and those incident to $W$ are colored outgoing blue.
+  The graph $H$ can have more than one corner assignment but they all contain the separating $4$-cycle $\C= NESW$. Thus, by Lemma \ref{lm:fix:fourCycleInteriorColor} we see that, without loss of generality, the interior edges of $\C$ incident to $N$ are colored incoming red, those incident to $E$ are colored incoming blue, those incident to $s$ are colored outgoing red and those incident to $W$ are colored outgoing blue.
 
 \begin{proof}[Proof of Theorem \ref{fix:th:family}]
   Now all the preparations are done we can consider the family of graphs $G_k$ with the corner assignment $\ext G_k$ given in Figure \ref{fig:fix:manymany0}. We know we only have to look at this single corner assignment since we can force it with a scaffold. In $G_1$ the dots are replaced by a single vertex, in $G_2$ the dots are replaced by two vertices and so on. Each member has 2 maximal separating $4$-cycles. These are both marked by thick lines in Figure \ref{fig:fix:manymany0}.
@@ -101,8 +101,8 @@
     \label{fig:fix:coloring}
   \end{figure}
 
-  The result is then the graph displayed in Figure \ref{fig:fix:manymany4}. The black edges in this figure are edges that do not have a forced coloring by the above argument\footnote{Altough most of them can be forced by Lemma \ref{lm:fix:fourCycleInteriorColor}.}.
-  We will focus on the centered black edge $e$, $e$ is an interior edges of both the red and blue faces that are drawn with dashed edges in Figure \ref{fig:fix:manymany4}. These faces both have that both their boundary paths are of length larger then $k$ for a member $G_k$. Hence $e$ has to be colored both red and blue to prevent that face corresponding to a $k$-sided segment occurs in the final regular edge labeling. An edge can not be colored red and blue at the same time and hence $G_k$ is not $k$-sided.
+  The result is then the graph displayed in Figure \ref{fig:fix:manymany4}. The black edges in this figure are edges that do not have a forced coloring by the above argument (Altough most of them can be forced by Lemma \ref{lm:fix:fourCycleInteriorColor}).
+  We will focus on the centered black edge $e$, $e$ is an interior edges of both the red and blue faces that are drawn with dashed edges in Figure \ref{fig:fix:manymany4}. These faces both have that both their boundary paths are of length larger than $k$ for a member $G_k$. Hence, $e$ has to be colored both red and blue to prevent that face corresponding to a $k$-sided segment occurs in the final regular edge labeling. An edge can not be colored red and blue at the same time and hence $G_k$ is not $k$-sided.
 
   Since this proof doesn't depend on the value of $k$, the family $G_k$ has graphs that are not $k$-sided for any $k$.
 \end{proof}
