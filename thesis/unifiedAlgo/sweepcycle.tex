@@ -4,7 +4,7 @@
 \thispagestyle{plain}
 \label{ss:sweep}
 The first step of our algorithm is executing a sweepcycle algorithm inspired by the sweepcycle algorithm by Fusy \cite{Fusy2006}. We use $\C$ to indicate the current sweep cycle. We shrink $\C$ by updating it with certain interior paths.
-One of the nicest things about the regular edge labeling we produce is Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther} which will turn out to be useful throughout the rest of the algorithm. This lemma states that most interior paths we can't have the fan handle of a large splitfan after a split vertex on a so-called bottom path. \fxnote{Q: These are all words the reader doesn't know yet. How to explain?}
+One of the nicest things about the regular edge labeling we produce is Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther} which will turn out to be useful throughout the rest of the algorithm. This lemma states that most interior paths we can not have the fan handle of a large splitfan after a split vertex on a so-called bottom path. \fxnote{Q: These are all words the reader does not know yet. How to explain?}
 
 During the algorithm we maintain several invariants on $\C$. The first four are equivalent to those imposed by Fusy. The final invariant is new and allows is us to prove Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther}.
 
@@ -108,7 +108,7 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
     \emph{No separating 2-chord.}
     If there is no separating 2-chord in the interior of $P|_{i, j} \oplus \rev{{C}}$ we do the following. Let $v_k$ be the shared neighbor on $\C$ of $p_{i}$ and $p_{i +1}$ and $v_l$ the shared neighbor on $\C$ of $p_{j -1}$ and $p_{j}$. Then the updating path is the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:chordUpdate}.
 
-    $P'$ is entirely inside a chord containing no more chords and thus can't contain a chord. Moreover, there are no separating $2$-chords on $P$ so $P'$ can not have separating $2$-chords. Any chord or separating $2$-chord with one endpoint in $P'$ and one in $\C$ will have to cross $v_k p_i p_j v_l$ so we can not have a chord. Any 2-chord has to have $p_i$ or $p_j$ as middle vertex. But with this restriction the 2-chord can not be separating.
+    $P'$ is entirely inside a chord containing no more chords and thus can not contain a chord. Moreover, there are no separating $2$-chords on $P$ so $P'$ can not have separating $2$-chords. Any chord or separating $2$-chord with one endpoint in $P'$ and one in $\C$ will have to cross $v_k p_i p_j v_l$ so we can not have a chord. Any 2-chord has to have $p_i$ or $p_j$ as middle vertex. But with this restriction the 2-chord can not be separating.
 
     \begin{figure}[h]
       \centering
@@ -121,7 +121,7 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
       Let $j'$ be end index of the separating 2-chord with the lowest end index in the interior of $P|_{i, j} \oplus \rev{{C}}$. And let $v_k$ be the shared neighbor on the sweepcycle of $p_{i_1}$ $p_{i_1 +1}$ and $v_l$ the shared neighbor on the sweepcycle  of $p_{j' -1}$ and $p_{j'}$.
       Then the updating path $P'$ is the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:2chordInChordUpdate}.
 
-      $P'$ is entirely inside a chord containing no more chords and thus can't contain a chord. Moreover, all separating $2$-chords are evaded since we evaded the ending of the first one ending.  In the same manner as in the above case we can not expect any chord or separating $2$-chord with one endpoint in $P'$ and one in $\C$ any chord or separating 2-chord to connect outside the containing chord.
+      $P'$ is entirely inside a chord containing no more chords and thus can not contain a chord. Moreover, all separating $2$-chords are evaded since we evaded the ending of the first one ending.  In the same manner as in the above case we can not expect any chord or separating $2$-chord with one endpoint in $P'$ and one in $\C$ any chord or separating 2-chord to connect outside the containing chord.
       Suppose that we have a separating $2$-chord then that would have been a chord of the candidate path. This is in contradiction with the fact that the outer chord contained no more chords.
       Suppose that we have a chord not connecting to the second-to-last vertex of the updating path. This chord would violate Invariant \ref{i:uni:no2Chords} of the old sweepcycle. Furthermore the second-to-last vertex of the updating path has no chords since it would break $v_l p_j x p_u$. (see Figure \ref{fig:sweep:2chordInChordUpdate}).
 
@@ -154,7 +154,7 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
       Let $v_l$ be the shared neighbor on the sweepcycle of $p_{j}$ and $p_{j-1}$.
       The updating path is the right neighbor path of $\cpath|_{v_i, v_l}$. See Figure \ref{fig:sweep:free2chord}.
 
-      Any updating path stops before the end of a separating 2-chord and furthermore conatins no chords since $P$ already didn't.
+      Any updating path stops before the end of a separating 2-chord and furthermore conatins no chords since $P$ already did not.
 
       Any chord or $2$-chord with one vertex in the updating path and the other on the old sweepcycle must end to the right of the updating path since the updating path starts at $\pW$.
       Suppose that we have a separating $2$-chord then that would have been a chord of the candidate path. This is in contradiction with the assumption that the candidate path had no chords.
