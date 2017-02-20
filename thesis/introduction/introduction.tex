@@ -94,6 +94,18 @@
     \item Triangulations of the $k$-gon $G$ that have a corner assignment without separating 4-cycles are $d$-sided, where $d$ is the maximal degree of the vertices of $G$. (Theorem \ref{th:dsided})
   \end{enumerate}
 
+
+  \mypar{Paths and Cycles}
+    In the rest of the thesis we will frequently need paths and cycles, hence we will definite them here.
+
+    A path $\P$ is a sequence of vertices such that every two consecutive vertices are connected by an edge. The first and last vertex of the path are its \emph{extreme} vertices while the rest are \emph{interior} vertices of this path. The \emph{length} of a path is the number of edges used to connect the vertices. That, is one less than the number of vertices. In this thesis all paths are \emph{simple}, that is, no vertex occurs twice in the path except possibly the extreme vertices.
+
+    A cycle is a path whose extreme vertices coincide. Because a cycle is a path the start and end vertex are the only vertices that occurs more than once. We call a cycle of length $k$  a \emph{$k$-cycle}. A \emph{triangle} is cycle of length $3$ (i.e. a $3$-cycle). By Jordan's curve theorem a cycle splits the plane into two parts, one bounded and one unbounded. We will call the bounded part the \emph{interior} of this cycle and the unbounded part the \emph{exterior} of this cycle.
+    Furthermore, the cycle of all vertices bordering the outer face is the \emph{outer cycle}.
+    We call a cycle \emph{separating} if there are vertices in both its interior and exterior.
+    An \emph{interior edge} of a cycle is then an edge contained in the interior of the cycle.
+    An \emph{interior path} is a path connecting two distinct vertices off the cycle and whose edges are interior edges.
+
 \mypar{Overview}
   In Section \ref{s:rel} we will introduce the notion of regular edge labellings which we will use in the rest of the thesis.
   In Section \ref{s:fix} we show Theorem \ref{fix:th:family} and in Section \ref{s:algo} we show Theorem \ref{th:dsided}.
