@@ -11,8 +11,7 @@
   The right side of a path is not yet defined. To do so we start this section by introducing the notion of rotations at a vertex. During the proofs in this section we will also need various types of chords so we subsequently introduce these. Then we finally can start discussing right neighbor paths.
 
   \mypar{Rotations}
-    We assume a fixed embedding for $G$. The \emph{rotation} at a vertex $v$ is the clockwise order of the edges incident to $v$. We will identify these edges with their other endpoints.
-    Two vertices $x, y$ are said to be \emph{consecutive} in the rotation at $v$ when the edges $vx$ and $vy$ are consecutive in the rotation.
+    We assume a fixed embedding for $G$. Recall that the \emph{rotation} at a vertex $v$ is the clockwise order of the edges incident to $v$ and that two vertices $x, y$ are said to be \emph{consecutive} in the rotation at $v$ when the edges $vx$ and $vy$ are consecutive in the rotation.
     We sometimes want to denote number of subsequent vertices, which we call an \emph{interval}, in the rotation. We let $[x,y]$ denote all the vertices in the rotation of $v$ from $x$ to $y$ and we let the \emph{exclusive interval} $(x,y)$ denote the same vertices without $x$ and $y$. In Figure \ref{fig:right:rot} for example the interval $[v,p_{i+1}]$ consists of the vertices $v,w,p_{i+1}$ and $(w,u)$ consists of the vertices $p_{i+1}, x$.
 
     Given a path $P$ and an interior vertex $p_i \in P$. A neighbor $v \nin \P$ of $p_i$ lies on the \emph{left} of $P$ if it lies in the interval $(p_{i-1}, p_{i+1})$ in the rotation of $p_{i}$. Otherwise, $v$ lies in the interval $(p_{i+1}, p_{i-1})$ in the rotation of $p_i$. In this case $v$ lies on the \emph{right} of $P$.
