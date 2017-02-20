@@ -6,9 +6,9 @@
   \label{ss:rightNeighbour}
   In the sweepcycle step of the algorithm (Section \ref{ss:sweep}) we will use the \emph{right neighbor path} of a path. In this section we show that for any path $P = p_1 \ldots p_k$ with no interior vertices incident to the outer face and without chords or separating 2-chords on the right of the path, the right side neighbors of $P$ are a path $Q$ (Lemma \ref{lm:right:neighborPath}).
   We even show some additional properties hold for $Q$ (Lemma  \ref{lm:right:neighbourwalkNoInteriorVertex} and \ref{lm:right:neighbourwalkChordFree}).
-  Similar things also hold for the left neighbors of $P$ but we will not need this for the proof of our algorithm.
+  Similar things also hold for the left neighbors of $P$ but we will not need this for our algorithm.
 
-  The right side of a path is not yet defined. To do so we start this section by introducing the notion of rotations at a vertex. During the proofs in this section we will also need various types of chords so we subsequently introduce these. Then we finally can start discussing right neighbor paths.
+  The right side of a path is not yet defined. To do so we start this section by expanding on the notion of rotations. During the proofs in this section we also need various types of chords so we subsequently introduce these. Afterwards, we can finally discuss right neighbor paths.
 
   \mypar{Rotations}
     We assume a fixed embedding for $G$. Recall that the \emph{rotation} at a vertex $v$ is the clockwise order of the edges incident to $v$ and that two vertices $x, y$ are said to be \emph{consecutive} in the rotation at $v$ when the edges $vx$ and $vy$ are consecutive in the rotation.
@@ -17,7 +17,7 @@
     Given a path $P$ and an interior vertex $p_i \in P$. A neighbor $v \nin \P$ of $p_i$ lies on the \emph{left} of $P$ if it lies in the interval $(p_{i-1}, p_{i+1})$ in the rotation of $p_{i}$. Otherwise, $v$ lies in the interval $(p_{i+1}, p_{i-1})$ in the rotation of $p_i$. In this case $v$ lies on the \emph{right} of $P$.
     We will use the same notion of left and right for edges. That is, an edge $e\nin P$ adjacent to $p_i$ lies to left or right if its other end point lies to the left or right, respectively. In Figure \ref{fig:right:rot} $v$ and $p_i v$ lie on the left of $P$ and $u$ and $p_i u$ lie on the right of $P$.
 
-    \begin{figure}[h]
+    \begin{figure}[b]
       \centering
       \includegraphics[scale=1]{unifiedAlgo/img/rightNeighbourwalk/rotation}
       \caption{Rotation at $p_i$.}
@@ -38,7 +38,7 @@
     A ($k$-)chord $Q$ is \emph{separating} if this cycle is separating.
     In Figure \ref{fig:right:chord} there are two $2$-chords, $p_3 u p_5$ and $p_3 v p_5$, but only one of them is separating, namely $p_3 v p_5$.
 
-    \begin{figure}[h]
+    \begin{figure}[t]
       \centering
       \includegraphics[scale=1]{unifiedAlgo/img/rightNeighbourwalk/chords.pdf}
       \caption{A path with a chord and a separating 2-chord.}
@@ -60,7 +60,7 @@
       Suppose that an interior vertex $p_i$ has no neighbor on the right of the path. Then $ \ldots p_{i-1} p_i p_{i+1} \ldots $ is a partial face border. Since $p_i$ is not incident to the outer face $p_i$ must be incident to a face of degree $3$. Thus $p_{i-1} p_i p_{i+1}$ is a face. However, this would imply a chord on the right of $P$ as can be seen in Figure \ref{fig:right:pHasRightNeighbor}. Hence by contradiction $p_i$ must have a neighbor on the right.
     \end{proof}
 
-    \begin{figure}[h]
+    \begin{figure}[b]
       \centering
       \includegraphics[scale=1]{unifiedAlgo/img/rightNeighbourwalk/pHasRightNeighbor.pdf}
       \caption{The hypothetical situation that $p_i$ has no right neighbor.}
@@ -87,8 +87,8 @@
     \begin{proof}
       Let us denote the vertices of $Q$ by $q_1 q_2 \ldots q_\ell$.
       Let $q_i$ and $q_{i+1}$ be two subsequent vertices of $Q'$. We will show they are either connected or the same vertex. We first consider the case where $1 < i < \ell-1$.
-      Now there are two sub-cases. Either $(a)$ $q_i$ and $ q_{i+1}$ are vertices adjacent to the same vertex $p_j$ an thus subsequent in the rotation at $p_j$ or $(b)$ $q_i$ was the last vertex adjacent to $p_j$ and thus $q_{i+1}$ is the first vertex adjacent to $p_{j+1}$ since by Lemma \ref{lm:right:pHasRightNeihgbours} every interior vertex of $P$ has right neighbors.
-      Both cases are depicted in Figure \ref{fig:uni:walkproof}
+      Now there are two sub-cases. Either, $(a)$, $q_i$ and $ q_{i+1}$ are vertices adjacent to the same vertex $p_j$ an thus subsequent in the rotation at $p_j$ or, $(b)$, $q_i$ was the last vertex adjacent to $p_j$ and thus $q_{i+1}$ is the first vertex adjacent to $p_{j+1}$ since by Lemma \ref{lm:right:pHasRightNeihgbours} every interior vertex of $P$ has right neighbors.
+      Both cases are depicted in Figure \ref{fig:uni:walkproof}.
 
       In case $(a)$ we note that since $q_i$ and $q_{i+1}$ are subsequent in the rotation at $p_j$ $q_i q_{i+1}$ is an edge since $p_j$ is not incident to the outer face and every interior face of $G$ is a triangle.
 
@@ -121,9 +121,12 @@
     \begin{proof}
       We already know $Q$ is a path by Lemma \ref{lm:right:neighborWalk}. Hence we only have to show that $Q$ contains no duplicate vertices.
 
-      Suppose that $Q$ has a duplicate vertex $q_i=q_j$ with $i<j$. Then this vertex must have been a neighbor to two different vertices in $P$. Since it can not have been twice while being connected to only one vertex. We denote these vertices $p_\ell$, $p_k$ with $\ell<k$. We are now in the situation of Figure \ref{fig:right:path}.
+      Suppose that $Q$ has a duplicate vertex $q_i=q_j$ with $i<j$.
+      Then this vertex must have been a neighbor to two different vertices in $P$, since it can not have been added twice while being connected to only one vertex.
+      We denote these vertices $p_\ell$, $p_k$ with $\ell<k$.
+      This gives us the situation depicted in Figure \ref{fig:right:path}.
 
-      By the order in which we added vertices to $Q'$, which is preserved by the removal of vertices when we go to $Q$, we know that any vertices in-between $q_i$ and $q_j$ in $Q$ must be one of the following:
+      Due to the order in which we added vertices to $Q'$, which is preserved by the removal of vertices when we go to $Q$, we know that any vertices inbetween $q_i$ and $q_j$ in $Q$ must be one of the following:
       \begin{enumerate}
         \item Adjacent to $p_\ell$ and in the interval $(q_i, p_{\ell+1})$ in $p_\ell$'s rotation.
         \item Adjacent to one of $p_{\ell+1},  p_{\ell+2},\ldots, p_{k-1}$ and to the right of $P$.
@@ -131,10 +134,10 @@
       \end{enumerate}
 
 
-      All three cases describe a vertex that lies in the interior of the cycle $q_i p_i p_{i+1} \ldots p_j$. However, since $P$ has no separating $2$-chords on the right this cycle must be empty. Therefore there are no vertices in-between $q_i$ and $q_j$. But $Q$ is a walk and $G$ is simple  so $Q$ has no subsequent duplicates. Hence $Q$ contains no duplicates at all and is thus a path.
+      All three cases describe a vertex that lies in the interior of the cycle $q_i p_i p_{i+1} \ldots p_j$. However, since $P$ has no separating $2$-chords on the right this cycle must be empty. Therefore, there are no vertices inbetween $q_i$ and $q_j$ and they must be subsequent duplicates. However, $Q$ is a walk and $G$ is simple so $Q$ has no subsequent duplicates. Hence, $Q$ contains no duplicates at all and is thus a path.
     \end{proof}
 
-    \begin{figure}[h]
+    \begin{figure}[b]
       \centering
       \includegraphics[scale=1]{unifiedAlgo/img/rightNeighbourwalk/neighborPathisPath.pdf}
       \caption{A hypothetical duplicate vertex.}
@@ -155,7 +158,9 @@
       Every interior vertex of a right neighbor path $Q$ has a left neighbor.
     \end{lemma}
     \begin{proof}
-      Let $q$ be an interior vertex of $Q$. Consider that $q$ was added as right neighbor of some interior vertex $p$ of $P$. Since $Q$ does not start or end at $p$, $p$ must also be a left neighbor of $q$ in $Q$.
+      Let $q$ be an interior vertex of $Q$.
+      $q$ Was added as right neighbor of some interior vertex $p$ of $P$.
+      Since $Q$ does not start or end at $p$, $p$ must also be a left neighbor of $q$ in $Q$.
     \end{proof}
 
     \begin{lemma}
@@ -164,14 +169,15 @@
       %TODO we could probably simplify this proof using the above lemma, I just do not trust it that much.
     \end{lemma}
     \begin{proof}
-      Suppose that the right neighbor path $Q = q_1 \ldots q_k$  has a chord on the left, say between $q_i$ and $q_j$ with $i< j -1 $. Then $q_i q_j$ is an interior edge of $P \oplus \rev{Q}$.  There is also vertex $p_\ell \in P$ such that $q_{i+1}$ is a right neighbor of $p_\ell$, hence $p_\ell q_{i+1}$ is an interior edge of $P \oplus \rev{Q}$.  But now we must have a crossing between the edges $q_i q_j$ and $p_\ell q_{i+1}$ since both run in the interior of $P \oplus \rev{Q}$.
+      Suppose that the right neighbor path $Q = q_1 \ldots q_k$  has a chord on the left, say between $q_i$ and $q_j$ with $i< j -1 $. Then $q_i q_j$ is an interior edge of $P \oplus \rev{Q}$.  There is a vertex $p_\ell \in P$ such that $q_{i+1}$ is a right neighbor of $p_\ell$, hence $p_\ell q_{i+1}$ is an interior edge of $P \oplus \rev{Q}$.
+      But now we have a crossing between $q_i q_j$ and $p_\ell q_{i+1}$ since both edges run in the interior of $P \oplus \rev{Q}$ and their endpoints occur alternately in $P \oplus \rev{Q}$.
       See figure \ref{fig:uni:neihbourwalkChordFree}.
-      Since we assume $G$ is planar thee can be no chords on the left of the right neighbor path.
+      Since we assume $G$ is planar there can be no chords on the left of the right neighbor path.
 
-      \begin{figure}[h]
+      \begin{figure}[t]
         \centering
         \includegraphics[scale=1]{unifiedAlgo/img/rightNeighbourwalk/neighbourWalkChords}
-        \caption{The construction in the proof of Lemma \ref{lm:right:neighbourwalkChordFree.}}
+        \caption{The construction in the proof of Lemma \ref{lm:right:neighbourwalkChordFree}.}
         \label{fig:uni:neihbourwalkChordFree}
       \end{figure}
     \end{proof}
