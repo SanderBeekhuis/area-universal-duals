@@ -159,7 +159,7 @@
     \label{fig:uni:oppMultiFlip}
   \end{figure}
 
-  When recoloring the edge blue in this flip it might be above another $Z$ and thus create a chain of $2$ $Z$'s. However this chain can grow no further as above this newly blue edge there is a red closing triangle.
+  When recoloring the edge blue in this flsweepcycle had a chord at some point.ip it might be above another $Z$ and thus create a chain of $2$ $Z$'s. However this chain can grow no further as above this newly blue edge there is a red closing triangle.
 
   \fxwarning{TODO this flip in a multi case}
   \fxwarning{TODO Argue why these edges are like they are}
@@ -213,3 +213,15 @@
     \mypar{Remaining $Z$'s}
     The opp flip can place an blue edge above another blue edge. However this chain stops here since above this is a red split vertex. So the longest chain of $Z$'s is now of length two.
   \end{proof}
+  
+  \section{Alternate proof BP of length 1}
+        , hence the interior of this face has no incoming red edges.
+      Which is impossible as can be seen in Figure \ref{fig:sweep:noFaceWithOneBottomEdge}.
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[scale=1]{unifiedAlgo/img/sweep/noFaceWithOneBottomEdge.pdf}
+        \caption{The hypothetical situation of a face with bottom boundary path of length one.}
+        \label{fig:sweep:noFaceWithOneBottomEdge}
+      \end{figure}
+
