@@ -65,12 +65,7 @@
       The blue edges of $G\sm{\pN,\pS}$ form an $st$-planar graph with $s= \pW$ and $t=\pE$. Moreover, the red edges of $G\sm{\pW,\pE}$ form an $st$-planar graph with $s= \pS$ and $t= \pN$.
     \end{lemma}
     \begin{proof}
-      Note that we have no monochromatic directed cycles because such a cycle would for example correspond to a  group of adjacent rectangles that have  no leftmost or topmost one. This is clearly absurd.
-
-      Kant and He propose to add an edge and orient the outer cycle. This is necessary because they require $s$ and $t$ to be adjacent. Moreover, they do not a priori require such a graph to be without directed cycles.
-
-      A trivial adaptation of \cite[pp.179]{Kant1997} then gives us the theorem. We note that we can not get any directed cycles since a regular edge labeling has no monochromatic directed cycles.
-      \fxnote{We write our own proof.}
+      Note that we have no monochromatic directed cycles because such a cycle would for example correspond to a  group of adjacent rectangles that have  no leftmost or topmost one. By the interior vertex condition interior vertices can not be sources or sinks, this leaves the non-removed poles to be the sources and sinks, as required.
     \end{proof}
 
     We refer to these $st$-planar graphs as the \emph{blue graph} and \emph{red graph} of some regular edge labeling and we refer to their faces as \emph{blue faces} and \emph{red faces}. An example of such a colored extended adjacency graph with the blue and red graph can be found in Figure \ref{fig:rect:relSegmentFace}.

@@ -4,12 +4,6 @@
 \addbibresource{../thesis.bib}
 
 
-
-\title{$k$-Sided Rectangular Duals \\ \normalsize Draft 1.2}
-\author{Sander Beekhuis}
-\date{\today} %\today%
-
-
 %
 % These commands need to be defined in order to produce a correct and personalized document
 %
@@ -19,7 +13,7 @@
 
 \newcommand{\me}{Sander Beekhuis}
 \newcommand{\keywords}{keyword1, keyword2, keyword3}
-\newcommand{\version}{Version Draft 1.4}
+\newcommand{\version}{Version Draft 1.5}
 \newcommand{\monthYear}{Feb 2017}
 
 %Be sure to use all the titles for your committee members!!! (their names show up on the very first page!)
@@ -40,45 +34,40 @@
     pdfkeywords={\keywords}
 }
 
+\pagenumbering{roman}
+
 
 \begin{document}
-\pagenumbering{roman}
 
 
 
 \include{titlepage}
 \normalsize
 
-%todos
-\newpage
-\fxinnote{Align figures and tables}
+%TODO
+%\newpage
+%\fxinnote{Q: What is the right order of my committee members? I can not recall what order we decided.}
 
-\fxinnote{Q: What is the right order of my committee members? I can not recall what order we decided.}
+%\fxinnote{Q: Think about title and subtitle}
 
-\fxinnote{Q: Think about title and subtitle}
+%\fxinnote{TODO Do something with keywords or drop them}
 
-\fxinnote{Do something with keywords or drop them}
+%\fxinnote{Q: I should/could do running time analysis.}
 
-\fxinnote{Q: I should/could do running time analysis.}
+%\fxinnote{Q: How do I organize all subsubsection for the sweepcycle subsection? }
 
-\fxinnote{Q: How do I organize all subsubsection for the sweepcycle subsection? }
-
-\fxinnote{Q: What is a preface? What should be in there? Should I have one? }
+%\fxinnote{Q: What is a preface? What should be in there? Should I have one? }
 
 
 %ABSTRACT
-\newpage
 \include{abstract/abstract}
 
 %PREFACE
-\newpage
 \thispagestyle{plain}
-
 \tableofcontents
 
 \newpage
 \thispagestyle{plain}
-
 \listoffigures
 
 \newpage
@@ -121,7 +110,7 @@
 \include{conclusion/conclusion}
 
 
-\listoffixmes
+%\listoffixmes
 
 %\include{unusedTheorems/connectedTriangulations}
 %\include{unusedTheorems/unusedTheorems}
