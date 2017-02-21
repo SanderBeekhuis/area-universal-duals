@@ -15,7 +15,7 @@
 
   \begin{thrm}
   \label{th:dsided}
-  Triangulations of the $k$-gon $G$ that have a corner assignment $\ext G$ without separating 4-cycles are $d$-sided, where $d$ is the maximal degree of the vertices of $G$ in $\ext G$.
+  Triangulations of the $k$-gon $G$ that have a corner assignment $\ext G$ without separating 4-cycles are $d-1$-sided, where $d$ is the maximal degree of the vertices of $G$ in $\ext G$.
   \end{thrm}
 
   To describe this algorithm we introduce the notion of right neighbor paths in Section \ref{ss:rightNeighbour}.  We use these right neighbor paths to find a regular edge labeling with some nice properties in Section \ref{ss:sweep}. Afterwards we unfortunately still have to do three post-processing steps. In Section \ref{ss:flipBlueZ} we make sure our regular edge labeling is \emph{vertically one-sided}, that is, that all vertical segments are one-sided. In Section \ref{ss:fanflip} we will remove most occurrences of something called topfans. Then, in Section \ref{ss:subdiv} we can finally subdivide all blue faces that are too large without creating red faces that are too large. This finishes the algorithm.
