@@ -12,7 +12,7 @@
 
   All members of this family contain separating $4$-cycles.
   If there is no $k$-sided rectangular dual for a certain corner assignment $\ext G$ of $G$. There may still be another corner assignment of $G$ that admits a $k$-sided dual.
-  However, if we view $\ext G_k = H_k$ as a graph in its own right then $G_k$ is the interior of a separating $4$-cycle of $H_k$. We show in Lemma \ref{lm:fix:fourCycleInteriorColor} this implies that $G_k$, as induced subgraph, has to be colored in accordance with the corner assignment $\ext G_k$. We first have to proof some lemmas before we can proof of Theorem \ref{fix:th:family}.
+  However, if we view $\ext G_k = H_k$ as a graph in its own right then $G_k$ is the interior of a separating $4$-cycle of $H_k$. We show in Lemma \ref{lm:fix:fourCycleInteriorColor} this implies that $G_k$, as induced subgraph, has to be colored in accordance with the corner assignment $\ext G_k$. We first have to prove some lemmas before we can prove Theorem \ref{fix:th:family}.
 
   \begin{lemma}
     \label{lm:interiorRectangle}
@@ -21,7 +21,7 @@
   \begin{proof}
     The interior $I$ of $\C$ will be represented by some rectilinear shape in every rectangular dual $\L$ of $\ext G$. Such a shape must have at least $4$ clockwise right turns if we travel along its boundary in a clockwise direction otherwise the shape is not closed.
 
-    Yet, such a clockwise turn can not occur due to a single rectangle. Instead, such a turn can only occur when two rectangles are adjacent to each other. Because a $4$-cyle represents only $4$ pairs of adjacent rectangles the representation of $I$ in $\L$ can only have $4$ clockwise turns. Hence, it must be a rectangle, the only rectilinear shape with just $4$ clockwise turns.
+    Yet, such a clockwise turn can not occur due to a single rectangle. Instead, such a turn can only occur when two rectangles are adjacent to each other. Because a $4$-cyle represents only $4$ pairs of adjacent rectangles, the representation of $I$ in $\L$ can only have $4$ clockwise turns. Hence, it must be a rectangle, the only rectilinear shape with just $4$ clockwise turns.
   \end{proof}
 
   \begin{lemma}
@@ -105,7 +105,7 @@
     \label{fig:fix:coloring}
   \end{figure}
 
-  The result is then the graph displayed in Figure \ref{fig:fix:manymany4}. The black edges in this figure are edges that do not have a forced coloring by the above argument (Altough most of them can be forced by Lemma \ref{lm:fix:fourCycleInteriorColor}).
+  The result is then the graph displayed in Figure \ref{fig:fix:manymany4}. The black edges in this figure are edges that do not have a forced coloring by the above argument (Although most of them can be forced by Lemma \ref{lm:fix:fourCycleInteriorColor}).
   We focus on the centered black edge $e$, $e$ is an interior edges of both the red and blue faces drawn with dashed edges in Figure \ref{fig:fix:manymany4}. Both boundary paths of these faces are of length larger than $k$. Hence, $e$ has to be colored both red and blue to prevent that face corresponding to a $k$-sided segment occurs in the regular edge labeling. An edge can not be colored red and blue at the same time and hence $G_k$ is not $k$-sided.
 
   Since this proof does not depend on the value of $k$, the family $G_k$ has graphs that are not $k$-sided for any $k$.

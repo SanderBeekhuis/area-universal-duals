@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="hevea 2.23">
+<style type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.footnotetext{margin:0ex; padding:0ex;}
+div.footnotetext P{margin:0px; text-indent:1em;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.titlemain{margin:1ex 2ex 2ex 1ex;}
+.titlerest{margin:0ex 2ex;}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+div table{margin-left:inherit;margin-right:inherit;margin-bottom:2px;margin-top:2px}
+td table{margin:auto;}
+table{border-collapse:collapse;}
+td{padding:0;}
+.cellpadding0 tr td{padding:0;}
+.cellpadding1 tr td{padding:1px;}
+pre{text-align:left;margin-left:0ex;margin-right:auto;}
+blockquote{margin-left:4ex;margin-right:4ex;text-align:left;}
+td p{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+.lstlisting{font-family:monospace;white-space:pre;margin-right:auto;margin-left:0pt;text-align:left}
+</style>
+<title>thesis</title>
+</head>
+<body >
+<!--HEVEA command line is: /usr/bin/hevea thesis.tex -->
+<!--CUT STYLE article--><!--CUT DEF section 1 --><div class="center">
+<img src="thesis001.png"><br>
+<span style="font-size:large">Department of Mathematics and Computer Science <br>
+Applied Geometric Algorithms Research Group</span><p><span style="font-size:large"><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</span></p><p><span style="font-size:large">
+
+
+
+
+</span><span style="font-size:large">95</span><span style="font-size:large">(62,89)
+
+</span><span style="font-size:xx-large"><span style="font-weight:bold"><span style="font-style:italic">k</span></span></span><span style="font-size:xx-large"><span style="font-weight:bold">-Sided Rectangular Duals<br>
+</span></span><span style="font-size:xx-large">
+<span style="font-size:x-large"><br>
+
+<br>
+ <br>
+<br>
+<br>
+
+Sander Beekhuis<br>
+</span></span></p><p><span style="font-size:large">Supervisors:<br>
+</span></p><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="text-align:right;white-space:nowrap" ><span style="font-size:large"> Your First Committee Member</span></td></tr>
+<tr><td style="text-align:right;white-space:nowrap" ><span style="font-size:large"> Your Second Committee Member, usually the daily supervisor</span></td></tr>
+<tr><td style="text-align:right;white-space:nowrap" ><span style="font-size:large"> Your Third Committee Member, usually the external member</span></td></tr>
+</table><p><span style="font-size:large">Version Draft 1.5</span></p><p><span style="font-size:large">Eindhoven, Feb 2017<br>
+
+
+</span></p></div><!--TOC section id="sec1" Abstract-->
+<h2 id="sec1" class="section">Abstract</h2><!--SEC END --><p>A <em>rectangular layout</em> (or simply <em>layout</em>) <span style="color:red"><span style="font-style:italic">L</span></span> is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles. Hence, the interior of this rectangle contains vertical and horizontal line segments. We will call any such line segment that is not extended any farther on either side a <em>maximal segment</em>. Such a layout is <em>one-sided</em> if every maximal segment has only one rectangle on one of its sides and <span style="font-style:italic">k</span><em>-sided</em> if every maximal segment has at most <span style="font-style:italic">k</span> rectangle on one of its sides.</p><p>All graphs in this thesis will be <em>triangulations of the </em><span style="font-style:italic">k</span><em>-gon</em>. They have an outer face of degree <span style="font-style:italic">k</span> and interior faces of degree 3.
+Vertices bordering the outer face are <em>outer vertices</em> while all other vertices are <em>interior vertices</em>.</p><p>Two vertices are <em>adjacent</em> when they are connected by an edge. Two rectangles are <em>adjacent</em> when their boundaries overlap. A <em>rectangular dual</em> of <span style="font-style:italic">G</span> is a rectangular layout whose adjacencies are the same as those of <span style="font-style:italic">G</span> for a bijection between vertices and rectangles.</p><p>A <em>corner assignment</em> Ḡ of <span style="font-style:italic">G</span> is an augmentation of <span style="font-style:italic">G</span> with 4 vertices (which we call its <em>poles</em>). Such that every interior face has degree 3, the exterior face has degree 4 and all poles are incident to the outer face</p><p>It is known that a triangulation of the <span style="font-style:italic">k</span>-gon <span style="color:red"><span style="font-style:italic">G</span></span> has a rectangular dual if and only if it has a corner assignment without separating triangles Ḡ
+A graph <span style="font-style:italic">G</span> can have multiple rectangular duals. <span style="font-style:italic">G</span> can even have duals that are not equivalent.</p><p>A graph is <span style="font-style:italic">k</span>-sided when it has a <span style="font-style:italic">k</span>-sided rectangular dual. This thesis presents two results on <span style="font-style:italic">k</span>-sided graphs.</p><ol class="enumerate" type=1><li class="li-enumerate">
+There is a family of graphs <span style="font-style:italic">G</span><sub><span style="font-style:italic">k</span></sub> that for any <span style="font-style:italic">k</span> ∈ ℕ has members that are not <span style="font-style:italic">k</span>-sided (Theorem <a href="#fix%3Ath%3Afamily">??</a>).
+</li><li class="li-enumerate">Graphs <span style="font-style:italic">G</span> that have a corner assignment without separating 4-cycles are <span style="font-style:italic">d</span>−1-sided, where <span style="font-style:italic">d</span> is the maximal degree of the vertices of <span style="font-style:italic">G</span>. (Theorem <a href="#th%3Adsided">??</a>)
+</li></ol><!--TOC section id="sec2" Contents-->
+<h2 id="sec2" class="section">Contents</h2><!--SEC END --><ul class="toc"><li class="li-toc">
+<a href="#sec3">1  Introduction</a>
+</li></ul><p>Q: This looks silly. Drop list of tables?</p>
+<!--TOC section id="sec3" Introduction-->
+<h2 id="sec3" class="section">1  Introduction</h2><!--SEC END --><p><span style="font-weight:bold">Rectangular layout.</span>
+A <em>rectangular layout</em> (or simply <em>layout</em>) <span style="color:red"><span style="font-style:italic">L</span></span> is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles. Hence, the interior of this rectangle contains vertical and horizontal line segments. We will call any such line segment that is not extended any farther on either side a <em>maximal segment</em>. Such a layout is <em>one-sided</em> if every maximal segment has only one rectangle on one of its sides and <span style="font-style:italic">k</span><em>-sided</em> if every maximal segment has at most <span style="font-style:italic">k</span> rectangles on one of its sides.</p><p>We say two layouts are <em>combinatorially equivalent</em> or simply <em>equivalent</em> when their rectangles have the same adjacencies with the same orientation(horizontal or vertical) between their rectangles.</p><p>Consider for example Figure <a href="#fig%3Aintr%3Asegmentdefs">??</a>, the three highlighted lines are all line segments. However, only the red and blue segment are maximal segments. The red segment is one-sided and the blue segment is 2-sided and the whole layout is 2-sided. Furthermore, the layout in Figure <a href="#fig%3Aintr%3Avertonesided">??</a> is 4-sided.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<div class="center">[b]0.45 @percent
+<img src="thesis002.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 1: A rectangular layout.</td></tr>
+</table></div>
+<a id="fig:intr:segmentdefs"></a>
+</div>
+ 
+<div class="center">[b]0.45 @percent
+<img src="thesis003.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 2: Another rectangular layout.</td></tr>
+</table></div>
+<a id="fig:intr:vertonesided"></a>
+</div>
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 3: Rectangular layouts</td></tr>
+</table></div>
+<a id="fig:intr:graphs"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p><span style="font-weight:bold">Graphs.</span>
+A <em>graph</em> <span style="font-style:italic">G</span> is an abstraction of a network. The objects are represented by a set of <em>vertices</em>.
+Connections between objects are represented by a set of <em>edges</em>; Each edge connects two vertices. In all graphs every pair of vertices is connected by at most one edge and there are no edges starting and ending at the same vertex. That is, all graphs in this thesis are <em>simple</em>. An edge is <em>incident</em> to a vertex <span style="font-style:italic">v</span> if that edge connects <span style="font-style:italic">v</span> to another vertex. The <em>degree</em> of a vertex is the number of edges incident to this vertex.
+All graphs in this thesis are <em>planar</em>. That is, they can be embedded in the plane without their edges crossing. A <em>face</em> is connected component of the maximal subset of the plane that is disjoint from the embedded graph. The <em>degree</em> of a face is the number of vertices on its boundary. A face of degree 3 is a <em>triangular</em> face. The <em>outer face</em> is the one and only unbounded face.
+A vertex is <em>incident</em> to a face when it lies on its boundary.</p><p>All graphs in this thesis will be <em>triangulations of the </em><span style="font-style:italic">k</span><em>-gon</em>. A triangulation of the <span style="font-style:italic">k</span>-gon has an outer face of degree <span style="font-style:italic">k</span> and interior faces of degree 3.
+Vertices bordering the outer face are <em>outer vertices</em> while all other vertices are <em>interior vertices</em>.
+Triangulations of the <span style="font-style:italic">k</span>-gon are called <em>(plane) triangulated graphs</em> by some other authors.</p><p><span style="font-weight:bold">Rectangular duals.</span>
+Two vertices are <em>adjacent</em> when they are connected by an edge. Two rectangles are <em>adjacent</em> when their boundaries overlap. A <em>rectangular dual</em> of <span style="font-style:italic">G</span> is a rectangular layout whose adjacencies are the same as those of <span style="font-style:italic">G</span> for a bijection between vertices and rectangles.</p><p><span style="font-weight:bold">Corner assignments.</span>
+If we want to determine which graphs do have a rectangular dual, then we need to introduce the notion of a <em>corner assignment</em>.
+A corner assignment Ḡ of <span style="font-style:italic">G</span> is an augmentation of <span style="font-style:italic">G</span> with 4 vertices (which we call its <em>poles</em>). Such that every interior face has degree 3, the exterior face has degree 4 and all poles are incident to the outer face</p><p>A corner assignment of <span style="font-style:italic">G</span> only exists if <span style="font-style:italic">G</span> is a triangulation of the <span style="font-style:italic">k</span>-gon for some <span style="font-style:italic">k</span>. Otherwise, there is no way of adding poles that makes all the interior faces of degree 3. Because of this, we only consider triangulations of the <span style="font-style:italic">k</span>-gon in this thesis. A corner assignment Ḡ of <span style="font-style:italic">G</span> is an example of a triangulation of the 4-gon. Each corner assignment fixes which rectangles are in the corners of the rectangular dual <span style="color:red"><span style="font-style:italic">L</span></span>, which explains the terminology.</p><p><span style="font-weight:bold">Existence and uniqueness.</span>
+Now we can state which graphs admit a rectangular dual. The following result was shown independently by Kozminski and Kinnen [<a href="#Kozminski1984"></a>] and Ungar [<a href="#Ungar1953"></a>]</p><div class="theorem"><span style="font-weight:bold">Theorem 1</span> <span style="font-weight:bold">(Existence of a rectangular dual)</span>  <em>
+</em><a id="th:rect:exsitenceREctangularDual"></a><em>
+A triangulation of the </em><span style="font-style:italic">k</span><em>-gon </em><span style="color:red"><span style="font-style:italic">G</span></span><em> has a rectangular dual if and only if it has a corner assignment without separating triangles </em>Ḡ<em>
+</em></div><p>A graph <span style="font-style:italic">G</span> can have multiple rectangular duals. <span style="font-style:italic">G</span> can even have duals that are not equivalent. An example is given by the two non-equivalent duals of the same graph given in Figure <a href="#fig%3Aintr%3Agraphs">??</a>.</p><p><span style="font-weight:bold">Rectangular cartograms.</span>
+</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis004.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 4: A cartogram by Raisz made in 1934.</td></tr>
+</table></div>
+<a id="fig:intro:raisz"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>In for example atlases <em>rectangular cartograms</em> are used to display information. A rectangular cartogram is a map where the regions are replaced by rectangles while keeping their adjacencies. An example of such a cartogram for population of the state of the United States of America is given in Figure <a href="#fig%3Aintro%3Araisz">??</a>. The size of each region can change according to the variable or moment in time displayed in the cartogram. A rectangular cartogram is the rectangular dual of the adjacency graph of the map <span style="font-style:italic">G</span>.
+If the areas change it might be that a certain rectangular layout can not fulfill its adjacencies anymore and we have to switch to another non-equivalent rectangular dual of <span style="font-style:italic">G</span>.</p><p>We would like to find a rectangular dual that has adjacencies that hold regardless of the area sizes we assign to each rectangle. We say such a dual is <em>area-universal</em>.
+Eppstein et al. have shown that rectangular duals are area-universal exactly when they are one-sided. [<a href="#Eppstein2012"></a>] Unfortunately not all graphs admit a one-sided dual. One such graph, displayed in Figure <a href="#fig%3Aintro%3Arinsma">??</a>, is given by Rinsma. [<a href="#Rinsma1987"></a>]</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis005.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 5: The graph by Rinsma [<a href="#Rinsma1987"></a>] that is not one-sided.</td></tr>
+</table></div>
+<a id="fig:intro:rinsma"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p><span style="font-weight:bold">Results.</span>
+Unfortunately <span style="font-style:italic">k</span>-sided layouts for <span style="font-style:italic">k</span>&gt;1 are not area-universal but we suspect that for small <span style="font-style:italic">k</span> they are more robust to changes in the areas of their rectangles. This thesis has two results on <span style="font-style:italic">k</span>-sidedness.
+</p><ol class="enumerate" type=1><li class="li-enumerate">
+There is a family of graphs <span style="font-style:italic">G</span><sub><span style="font-style:italic">k</span></sub> that for any <span style="font-style:italic">k</span> ∈ ℕ has members that are not <span style="font-style:italic">k</span>-sided (Theorem <a href="#fix%3Ath%3Afamily">??</a>).
+</li><li class="li-enumerate">Triangulations of the <span style="font-style:italic">k</span>-gon <span style="font-style:italic">G</span> that have a corner assignment without separating 4-cycles are <span style="font-style:italic">d</span>−1-sided, where <span style="font-style:italic">d</span> is the maximal degree of the vertices of <span style="font-style:italic">G</span>. (Theorem <a href="#th%3Adsided">??</a>)
+</li></ol><p><span style="font-weight:bold">Paths and Cycles.</span>
+In the rest of the thesis we will frequently need paths and cycles, hence we will definite them here.</p><p>A path <span style="color:red"><span style="font-style:italic">P</span></span> is a sequence of vertices such that every two consecutive vertices are connected by an edge. The first and last vertex of the path are its <em>extreme</em> vertices while the rest are <em>interior</em> vertices of this path. The <em>length</em> of a path is the number of edges used to connect the vertices. That, is one less than the number of vertices. In this thesis all paths are <em>simple</em>, that is, no vertex occurs twice in the path except possibly the extreme vertices.</p><p>A cycle is a path whose extreme vertices coincide. Because a cycle is a path the start and end vertex are the only vertices that occurs more than once. We call a cycle of length <span style="font-style:italic">k</span> a <span style="font-style:italic">k</span><em>-cycle</em>. A <em>triangle</em> is cycle of length 3 (i.e. a 3-cycle). By Jordan’s curve theorem a cycle splits the plane into two parts, one bounded and one unbounded. We will call the bounded part the <em>interior</em> of this cycle and the unbounded part the <em>exterior</em> of this cycle.
+Furthermore, the cycle of all vertices bordering the outer face is the <em>outer cycle</em>.
+We call a cycle <em>separating</em> if there are vertices in both its interior and exterior.
+An <em>interior edge</em> of a cycle is then an edge contained in the interior of the cycle.
+An <em>interior path</em> is a path connecting two distinct vertices off the cycle and whose edges are interior edges.</p><p><span style="font-weight:bold">Overview.</span>
+In Section <a href="#s%3Arel">??</a> we will introduce the notion of regular edge labellings which we will use in the rest of the thesis.
+In Section <a href="#s%3Afix">??</a> we show Theorem <a href="#fix%3Ath%3Afamily">??</a> and in Section <a href="#s%3Aalgo">??</a> we show Theorem <a href="#th%3Adsided">??</a>.
+
+</p>
+<!--TOC section id="sec4" Regular edge labellings-->
+<h2 id="sec4" class="section">2  Regular edge labellings</h2><!--SEC END --><p>
+<a id="s:rel"></a>
+
+Given a layout <span style="color:red"><span style="font-style:italic">L</span></span> we can easily find its adjacency graph and thus for which graph <span style="font-style:italic">G</span> it is a rectangular dual. However, finding a rectangular dual of a graph <span style="font-style:italic">G</span> is more involved. Due to the algorithm by He [<a href="#He1993"></a>] it is sufficient to find a <em>regular edge labeling</em> on a corner assignment of <span style="font-style:italic">G</span>. In this section we will introduce regular edge labellings.</p><p><span style="font-weight:bold">Adjacency graphs of layouts.</span>
+The <em> adjacency graph</em> <span style="color:red"><span style="font-style:italic">G</span></span>(<span style="color:red"><span style="font-style:italic">L</span></span>) of a layout <span style="color:red"><span style="font-style:italic">L</span></span> each rectangle is represented by a vertex and we connect two vertices by an edge exactly when their rectangles are adjacent. In the <em>extended adjacency graph</em> <span style="color:red"><span style="font-style:italic">G</span></span><sub><span style="color:red"><span style="font-style:italic">E</span></span></sub>(<span style="color:red"><span style="font-style:italic">L</span></span>) we also add 4 vertices <span style="font-style:italic">N</span>, <span style="font-style:italic">E</span>, <span style="font-style:italic">S</span>, <span style="font-style:italic">W</span> (so-called <em>poles</em>) in the outer face, one associated to the north, east, south, west boundary segment of the outer rectangle, respectively. Two vertices are then connected if their rectangles or boundary segments intersect.
+If we take the <em>extended adjacency graph</em> of a layout and remove the 4 vertices corresponding to the outer face we end up with the regular <em>adjacency graph</em> of that layout.
+In this setting a layout <span style="color:red"><span style="font-style:italic">L</span></span> is a <em>rectangular dual</em> of a graph <span style="font-style:italic">G</span> if we have that <span style="font-style:italic">G</span> = <span style="color:red"><span style="font-style:italic">G</span></span>(<span style="color:red"><span style="font-style:italic">L</span></span>).</p><p><span style="font-weight:bold">Regular edge labellings.</span>
+Regular edge labellings were first introduced by Kant and He [<a href="#Kant1997"></a>] and were also used in [<a href="#Eppstein2012"></a>]. Fusy also studied these structures [<a href="#Fusy2006"></a>, <a href="#Fusy2009"></a>] under the name of <em>transversal structures</em>.
+A <em>regular edge labeling</em> is a coloring and orientation of the edges of the extended adjacency graph <span style="color:red"><span style="font-style:italic">G</span></span><sub><span style="color:red"><span style="font-style:italic">E</span></span></sub>(<span style="color:red"><span style="font-style:italic">L</span></span>). This coloring and orientation is given by the following procedure. For every edge <span style="font-style:italic">vw</span> in <span style="color:red"><span style="font-style:italic">G</span></span><sub><span style="color:red"><span style="font-style:italic">E</span></span></sub>(<span style="color:red"><span style="font-style:italic">L</span></span>) we consider whether the shared boundary of the rectangles is vertical or horizontal we then color the edge blue or red respectively. In the first case we orient the edge from the leftmost rectangle to the rightmost rectangle and in the second case we orient from bottom to top. We neither color nor orient the edges between the poles.</p><p>From the nature of the adjacencies in a rectangular layout we can deduce the following two rules for a regular edge labeling.
+</p><ol class="enumerate" type=1><li class="li-enumerate">
+(Interior vertex) In the rotation around every interior vertex we have the following subsequent non-empty sets: Incoming red edges, incoming blue edges, outgoing red edges and outgoing blue edges and only these sets.
+</li><li class="li-enumerate">(Pole) <span style="font-style:italic">N</span> has only incoming red edges, <span style="font-style:italic">E</span> has only incoming blue edges, <span style="font-style:italic">S</span> has only outgoing red edges and <span style="font-style:italic">W</span> has only outgoing blue edges ,except for the uncolored edges between the poles.
+</li></ol><p>
+Both rules are illustrated in <a href="#fig%3Arel%3Aconditions">??</a>.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+[b]0.2 @percent
+<img src="thesis006.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 6: Interior vertex condition</td></tr>
+</table></div>
+
+ 
+[b]0.7 @percent
+<img src="thesis007.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 7: Pole condition</td></tr>
+</table></div>
+
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 8: Regular edge labeling conditions</td></tr>
+</table></div>
+<a id="fig:rel:conditions"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>In [<a href="#He1993"></a>] He showed that given a regular edge labeling of a corner assignment we can reconstruct a rectangular layout represented by this regular edge labeling.
+A regular edge labeling of Ḡ corresponds to an equivalence class of rectangular layouts <span style="color:red"><span style="font-style:italic">L</span></span> that are a rectangular dual of <span style="font-style:italic">G</span>.</p>
+<!--TOC paragraph id="sec5" Properties-->
+<h4 id="sec5" class="paragraph">Properties</h4><!--SEC END --><p>
+Since we use regular edge labellings a lot in this thesis we will show some properties for them. We show that a regular edge labeling has no mono-colored triangles and that the red and blue subgraph of a regular edge labeling both form a <span style="font-style:italic">st</span>-planar graph. Before we can show this, we need to introduce the rotation at a vertex.
+For a fixed embedding for <span style="font-style:italic">G</span> the <em>rotation</em> at a vertex <span style="font-style:italic">v</span> is the clockwise order of the edges incident to <span style="font-style:italic">v</span>. We will identify these edges with their other endpoints.
+Two vertices <span style="font-style:italic">x</span>, <span style="font-style:italic">y</span> are said to be <em>consecutive</em> in the rotation at <span style="font-style:italic">v</span> when the edges <span style="font-style:italic">vx</span> and <span style="font-style:italic">vy</span> are consecutive in the rotation.</p><div class="theorem"><span style="font-weight:bold">Lemma 2</span>  <em>
+</em><a id="lm:rel:noMonoColoredTriangles"></a><em>
+A regular edge labeling has no monochromatic triangles even when ignoring orientation
+</em></div><p><span style="font-weight:bold">Proof.</span>
+Suppose we have a monochromatic triangle. Without loss of generality we suppose this triangle is blue. Then at least one of the vertices has an incoming blue edge followed directly by an outgoing blue edge or an outgoing blue edge followed directly by an incoming blue edge in its rotation. Thus, this vertex has either an empty set of outgoing or incoming red edges and hence violates the interior vertex condition of a regular edge labeling.
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-style:italic">st</span></span><span style="font-weight:bold">-planar graphs.</span>
+In this thesis we repeatedly use regular edge labellings, so it is a good idea to investigate their structure.
+Kant and He [<a href="#Kant1997"></a>] show that a regular edge labeling is closely linked to a pair of <span style="font-style:italic">st</span>-planar graphs. We repeat this in a different form in Lemma <a href="#lm%3Arel%3AstPlanarGraphs">??</a> below. The difference is that they orient the edges between poles while we remove the non-relevant poles altogether.</p><p>An <span style="font-style:italic">st</span>-planar graph is an oriented planar graph with one source (in-degree 0) <span style="font-style:italic">s</span> and one sink (out-degree 0) <span style="font-style:italic">t</span>. Both <span style="font-style:italic">s</span> and <span style="font-style:italic">t</span> lie on the outer face. Moreover, such an <span style="font-style:italic">st</span>-planar graph has no directed cycles.</p><div class="theorem"><span style="font-weight:bold">Lemma 3</span>  <em>
+</em><a id="lm:rel:stPlanarGraphs"></a><em>
+The blue edges of </em><span style="font-style:italic">G</span>∖ <span style="font-style:italic">N</span>,<span style="font-style:italic">S</span>  <em> form an </em><span style="font-style:italic">st</span><em>-planar graph with </em><span style="font-style:italic">s</span>= <span style="font-style:italic">W</span><em> and </em><span style="font-style:italic">t</span>=<span style="font-style:italic">E</span><em>. Moreover, the red edges of </em><span style="font-style:italic">G</span>∖ <span style="font-style:italic">W</span>,<span style="font-style:italic">E</span>  <em> form an </em><span style="font-style:italic">st</span><em>-planar graph with </em><span style="font-style:italic">s</span>= <span style="font-style:italic">S</span><em> and </em><span style="font-style:italic">t</span>= <span style="font-style:italic">N</span><em>.
+</em></div><p><span style="font-weight:bold">Proof.</span>
+Note that we have no monochromatic directed cycles because such a cycle would for example correspond to a group of adjacent rectangles that have no leftmost or topmost one. By the interior vertex condition interior vertices can not be sources or sinks, this leaves the non-removed poles to be the sources and sinks, as required.
+</p><p><br>
+</p><p>We refer to these <span style="font-style:italic">st</span>-planar graphs as the <em>blue graph</em> and <em>red graph</em> of some regular edge labeling and we refer to their faces as <em>blue faces</em> and <em>red faces</em>. An example of such a colored extended adjacency graph with the blue and red graph can be found in Figure <a href="#fig%3Arect%3ArelSegmentFace">??</a>.</p><p>Every face <span style="font-style:italic">F</span> in an <span style="font-style:italic">st</span>-planar graph has the same structure. The boundary of <span style="font-style:italic">F</span> consists of two directed paths, so-called <em>boundary paths</em>, with common start vertex <span style="font-style:italic">v</span> and end vertex <span style="font-style:italic">w</span>. We say <span style="font-style:italic">v</span> is the <em>split</em> vertex of <span style="font-style:italic">F</span> and <span style="font-style:italic">w</span> is the <em>merge</em> vertex of <span style="font-style:italic">F</span>.
+These boundary paths are subsequent in the clockwise rotation at <span style="font-style:italic">v</span>. We say the first path in the rotation, starting at the beginning of the adjacent pair, is the <em>top boundary path</em> (blue graph) or <em>left boundary path</em> (red graph) of <span style="font-style:italic">F</span> and the second one is the <em>bottom boundary path</em> (blue graph) or <em>right boundary path</em> (red graph).</p><p><span style="font-weight:bold">Maximal segments.</span>
+Due to the way we color a regular edge labeling of <span style="color:red"><span style="font-style:italic">G</span></span><sub><span style="color:red"><span style="font-style:italic">E</span></span></sub>(<span style="color:red"><span style="font-style:italic">L</span></span>) given a layout <span style="color:red"><span style="font-style:italic">L</span></span> a horizontal maximal segment corresponds to a blue face and a vertical maximal segment corresponds to a red face; as one can see in Figure <a href="#fig%3Arect%3ArelSegmentFace">??</a>.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis008.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 9: An example regular edge labeling with corresponding rectangular dual.</td></tr>
+</table></div>
+<a id="fig:rect:relSegmentFace"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>Consider a face corresponding to a maximal segment.
+The number of interior vertices of both boundary paths without counting the split and merge vertices is the number of rectangles on the respective sides of the maximal segment.
+Hence, a one-sided maximal segment corresponds to a face with one boundary path of length 2 and a <span style="font-style:italic">k</span>-sided maximal segment to face with a shortest boundary path of length at most <span style="font-style:italic">k</span>+1.
+We can’t have faces with a boundary path of length 1 since such a face can’t enclose a valid segment.</p><div class="theorem"><span style="font-weight:bold">Lemma 4</span>  <em>
+</em><a id="lm:rel:noBpOfLength1"></a><em>
+No face can have a boundary path of length </em>1<em>
+</em></div><p><span style="font-weight:bold">Proof.</span>
+A boundary path can not have length 1 since by construction of a regular edge labeling a red or blue face encloses a maximal segment and thus has to go trough at least one intermediate rectangle/vertex.
+</p><p><br>
+
+</p>
+<!--TOC section id="sec6" Family of graphs not <span style="font-weight:bold"><span style="font-style:italic">k</span></span>-sided for any <span style="font-weight:bold"><span style="font-style:italic">k</span></span>-->
+<h2 id="sec6" class="section">3  Family of graphs not <span style="font-weight:bold"><span style="font-style:italic">k</span></span>-sided for any <span style="font-weight:bold"><span style="font-style:italic">k</span></span></h2><!--SEC END --><p>
+
+<a id="s:fix"></a>
+In this section we will show the following theorem.</p><div class="theorem"><span style="font-weight:bold">Theorem 5</span>  <em>
+</em><a id="fix:th:family"></a><em>
+There is a family of graphs </em><span style="font-style:italic">G</span><sub><span style="font-style:italic">k</span></sub><em> that, for any </em><span style="font-style:italic">k</span> ∈ ℕ<em>, has members that are not </em><span style="font-style:italic">k</span><em>-sided.
+</em></div><p>All members of this family contain separating 4-cycles.
+If there is no <span style="font-style:italic">k</span>-sided rectangular dual for a certain corner assignment Ḡ of <span style="font-style:italic">G</span>. There may still be another corner assignment of <span style="font-style:italic">G</span> that admits a <span style="font-style:italic">k</span>-sided dual.
+However, if we view Ḡ<sub><span style="font-style:italic">k</span></sub> = <span style="font-style:italic">H</span><sub><span style="font-style:italic">k</span></sub> as a graph in its own right then <span style="font-style:italic">G</span><sub><span style="font-style:italic">k</span></sub> is the interior of a separating 4-cycle of <span style="font-style:italic">H</span><sub><span style="font-style:italic">k</span></sub>. We show in Lemma <a href="#lm%3Afix%3AfourCycleInteriorColor">??</a> this implies that <span style="font-style:italic">G</span><sub><span style="font-style:italic">k</span></sub>, as induced subgraph, has to be colored in accordance with the corner assignment Ḡ<sub><span style="font-style:italic">k</span></sub>. We first have to prove some lemmas before we can prove Theorem <a href="#fix%3Ath%3Afamily">??</a>.</p><div class="theorem"><span style="font-weight:bold">Lemma 6</span>  <em>
+</em><a id="lm:interiorRectangle"></a><em>
+Let </em><span style="color:red"><span style="font-style:italic">C</span></span><em> be a separating </em>4<em>-cycle of a corner assignment </em>Ḡ<em>. Then, in any rectangular dual the region enclosed by the rectangles dual to the vertices in </em><span style="color:red"><span style="font-style:italic">C</span></span><em> is a rectangle.
+</em></div><p><span style="font-weight:bold">Proof.</span>
+The interior <span style="font-style:italic">I</span> of <span style="color:red"><span style="font-style:italic">C</span></span> will be represented by some rectilinear shape in every rectangular dual <span style="color:red"><span style="font-style:italic">L</span></span> of Ḡ. Such a shape must have at least 4 clockwise right turns if we travel along its boundary in a clockwise direction otherwise the shape is not closed.</p><p>Yet, such a clockwise turn can not occur due to a single rectangle. Instead, such a turn can only occur when two rectangles are adjacent to each other. Because a 4-cyle represents only 4 pairs of adjacent rectangles, the representation of <span style="font-style:italic">I</span> in <span style="color:red"><span style="font-style:italic">L</span></span> can only have 4 clockwise turns. Hence, it must be a rectangle, the only rectilinear shape with just 4 clockwise turns.
+</p><p><br>
+</p><div class="theorem"><span style="font-weight:bold">Lemma 7</span>  <em>
+</em><a id="lm:fix:fourCycleInteriorColor"></a><em>
+Let </em><span style="color:red"><span style="font-style:italic">C</span></span><em> be a separating </em>4<em>-cycle of </em>Ḡ<em> with interior </em><span style="font-style:italic">I</span><em>. We can label the vertices of </em><span style="font-style:italic">I</span><em> by </em><span style="font-style:italic">a</span><em>, </em><span style="font-style:italic">b</span><em>, </em><span style="font-style:italic">c</span><em> and </em><span style="font-style:italic">d</span><em> in clockwise order such that all interior edges incident to </em><span style="font-style:italic">a</span>, <span style="font-style:italic">b</span>, <span style="font-style:italic">c</span><em> and </em><span style="font-style:italic">d</span><em> are incoming red, incoming blue, outgoing red and outgoing blue, respectively.
+</em></div><p><span style="font-weight:bold">Proof.</span>
+By Lemma <a href="#lm%3AinteriorRectangle">??</a> the interior <span style="font-style:italic">I</span> of <span style="color:red"><span style="font-style:italic">C</span></span> will be represented by a rectangle <span style="color:red"><span style="font-style:italic">I</span></span> in any rectangular dual. Since two disjoint rectangles can only be adjacent to each other at one side, <span style="color:red"><span style="font-style:italic">I</span></span> has four sides that need to be covered and <span style="color:red"><span style="font-style:italic">I</span></span> is adjacent to only four rectangles we know that every side of the rectangle <span style="color:red"><span style="font-style:italic">I</span></span> is adjacent to a single rectangle. We then denote by <span style="font-style:italic">a</span> the vertex corresponding to the rectangle above <span style="color:red"><span style="font-style:italic">I</span></span>, <span style="font-style:italic">b</span> the rectangle left of <span style="color:red"><span style="font-style:italic">I</span></span>, <span style="font-style:italic">c</span> the rectangle below <span style="color:red"><span style="font-style:italic">I</span></span> and <span style="font-style:italic">d</span> the rectangle right of <span style="color:red"><span style="font-style:italic">I</span></span>.</p><p>Then the required coloring follows from how a regular edge labeling is linked to an equivalence class of layouts.</p><p><br>
+</p><p>r6cm
+</p><table border=1  style="border-spacing:0;" class="cellpadding1"><tr><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">NE</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" ><span style="font-style:italic">N</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">E</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">SE</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">NW</span> </td></tr>
+<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">SE</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" ><span style="font-style:italic">S</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">E</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">NE</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">SW</span></td></tr>
+<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">SW</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" ><span style="font-style:italic">S</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">W</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">SE</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">NW</span></td></tr>
+<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">NW</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" ><span style="font-style:italic">N</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">W</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">NE</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">SW</span></td></tr>
+</table><p>
+The neighbors of the new poles.
+<a id="tab:scaffold"></a>
+</p><p>Hence, if we know the color and orientation of one interior edge incident to a vertex of a separating 4-cycle <span style="color:red"><span style="font-style:italic">C</span></span> we know the color and orientation of all interior edges of <span style="color:red"><span style="font-style:italic">C</span></span> incident to <span style="color:red"><span style="font-style:italic">C</span></span>.</p><p>Lemma <a href="#lm%3Afix%3AfourCycleInteriorColor">??</a> is useful because it allows us to consider a single corner assignment Ḡ of <span style="font-style:italic">G</span> by building a <em>scaffold</em>. Suppose we want to investigate some specific corner assignment Ḡ of <span style="font-style:italic">G</span> with poles <span style="font-style:italic">N</span>, <span style="font-style:italic">E</span>, <span style="font-style:italic">S</span> and <span style="font-style:italic">W</span> then we can consider the graph Ḡ = <span style="font-style:italic">H</span> as a graph in its own right.
+<span style="font-style:italic">H</span> admits a corner assignment <span style="text-decoration:overline">H</span> without separating triangles by connecting the new poles as indicated in Table <a href="#tab%3Ascaffold">??</a>.
+<span style="text-decoration:overline">H</span> is shown in Figure <a href="#fig%3Ascafold">??</a>.
+<span style="font-style:italic">G</span> is displayed in thick lines and with closed vertices.
+An arbitrary corner assignment Ḡ =<span style="font-style:italic">H</span> is then drawn with thin lines and open vertices.
+A corner assignment of <span style="font-style:italic">H</span> is then drawn with dashed edges and open vertices.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis009.png"><div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 10: The construction of a scaffold.
+<a id="fig:scafold"></a></td></tr>
+</table></div><div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>The graph <span style="font-style:italic">H</span> can have more than one corner assignment but they all contain the separating 4-cycle <span style="color:red"><span style="font-style:italic">C</span></span>= <span style="font-style:italic">NESW</span>. Thus, by Lemma <a href="#lm%3Afix%3AfourCycleInteriorColor">??</a> we see that, without loss of generality, the interior edges of <span style="color:red"><span style="font-style:italic">C</span></span> incident to <span style="font-style:italic">N</span> are colored incoming red, those incident to <span style="font-style:italic">E</span> are colored incoming blue, those incident to <span style="font-style:italic">s</span> are colored outgoing red and those incident to <span style="font-style:italic">W</span> are colored outgoing blue.</p><p><span style="font-weight:bold">Proof.</span>[Proof of Theorem <a href="#fix%3Ath%3Afamily">??</a>]
+Now all the preparations are done we can consider the family of graphs <span style="font-style:italic">G</span><sub><span style="font-style:italic">k</span></sub> with the corner assignment Ḡ<sub><span style="font-style:italic">k</span></sub> given in Figure <a href="#fig%3Afix%3Amanymany0">??</a>. We know we only have to look at this corner assignment since we can force it using a scaffold and Lemma <a href="#lm%3Afix%3AfourCycleInteriorColor">??</a>. In <span style="font-style:italic">G</span><sub>1</sub> the dots are replaced by a single vertex, in <span style="font-style:italic">G</span><sub>2</sub> the dots are replaced by two vertices and so on. Each member has 2 maximal separating 4-cycles. These are both marked by thick lines in Figure <a href="#fig%3Afix%3Amanymany0">??</a>.
+Many of the edges in this graph have only one possible color and orientation that does not violate the constraints of a regular edge labeling. Firstly, we can color the edges incident with the poles in accordance with the exterior vertex condition. Subsequently, we can use Lemma <a href="#lm%3Afix%3AfourCycleInteriorColor">??</a> on both maximal separating 4-cyles in accordance to color even more edges and finally we can color the edges in triangles of which the other two edges have the same color using Lemma <a href="#lm%3Arel%3AnoMonoColoredTriangles">??</a>. These forced colorings are performed in Figure <a href="#fig%3Afix%3Acoloring">??</a>.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis010.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 11: A family of graphs not <span style="font-style:italic">k</span>-sided for any <span style="font-style:italic">k</span></td></tr>
+</table></div>
+<a id="fig:fix:manymany0"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+[t]0.3@percent
+<img src="thesis011.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 12: Coloring the edges adjacent to the poles.</td></tr>
+</table></div>
+<a id="fig:fix:manymany1"></a>
+
+  [t]0.3@percent
+<img src="thesis012.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 13: Propagate trough the 4-cycle.</td></tr>
+</table></div>
+<a id="fig:fix:manymany2"></a>
+
+  [t]0.3@percent
+<img src="thesis013.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 14: Color such that there are no monochromatic triangles.</td></tr>
+</table></div>
+<a id="fig:fix:manymany3"></a>
+
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 15: Coloring the graph.</td></tr>
+</table></div>
+<a id="fig:fix:coloring"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>The result is then the graph displayed in Figure <a href="#fig%3Afix%3Amanymany4">??</a>. The black edges in this figure are edges that do not have a forced coloring by the above argument (Although most of them can be forced by Lemma <a href="#lm%3Afix%3AfourCycleInteriorColor">??</a>).
+We focus on the centered black edge <span style="font-style:italic">e</span>, <span style="font-style:italic">e</span> is an interior edges of both the red and blue faces drawn with dashed edges in Figure <a href="#fig%3Afix%3Amanymany4">??</a>. Both boundary paths of these faces are of length larger than <span style="font-style:italic">k</span>. Hence, <span style="font-style:italic">e</span> has to be colored both red and blue to prevent that face corresponding to a <span style="font-style:italic">k</span>-sided segment occurs in the regular edge labeling. An edge can not be colored red and blue at the same time and hence <span style="font-style:italic">G</span><sub><span style="font-style:italic">k</span></sub> is not <span style="font-style:italic">k</span>-sided.</p><p>Since this proof does not depend on the value of <span style="font-style:italic">k</span>, the family <span style="font-style:italic">G</span><sub><span style="font-style:italic">k</span></sub> has graphs that are not <span style="font-style:italic">k</span>-sided for any <span style="font-style:italic">k</span>.
+</p><p><br>
+</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis014.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 16: The graph after all coloring steps</td></tr>
+</table></div>
+<a id="fig:fix:manymany4"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote>
+<!--TOC section id="sec7" Algorithm-->
+<h2 id="sec7" class="section">4  Algorithm</h2><!--SEC END --><p>
+
+<a id="s:algo"></a></p><p><span style="font-weight:bold">Algorithms for regular edge labellings.</span>
+Kant and He [<a href="#Kant1997"></a>] were the first to design algorithms that determine a regular edge labeling given a graph <span style="font-style:italic">G</span>. Fusy [<a href="#Fusy2006"></a>] recently developed a different algorithm computing a specific regular edge labeling using a method which shrinks a cycle while coloring the exterior of this cycle in accordance with a regular edge labeling. He refers to such a cycle as a <em>sweepcycle</em>. Unfortunately his proof of this algorithm is rather concise.</p><p>In this algorithm Fusy starts by denoting the outer cycle of Ḡ ∖ <span style="font-style:italic">N</span>   as the sweepcycle <span style="color:red"><span style="font-style:italic">C</span></span>. He then shrinks this sweepcycle by updating it with interior paths of <span style="color:red"><span style="font-style:italic">C</span></span>. During this update he maintains invariants on the structure of both the cycle and its exterior.
+After doing a finite amount of updates, the sweepcycle has no more interior vertices. At this point he completes the algorithm and obtains a regular edge labeling.</p><p><span style="font-weight:bold">Our algorithm.</span>
+In this section we will present an algorithm providing a <span style="font-style:italic">d</span>-sided rectangular dual for any corner assignment Ḡ without separating 4-cycles, where <span style="font-style:italic">d</span> is the highest degree among vertices of <span style="font-style:italic">G</span> in Ḡ. Hence, we will prove the following theorem.</p><div class="theorem"><span style="font-weight:bold">Theorem 8</span>  <em>
+</em><a id="th:dsided"></a><em>
+Triangulations of the </em><span style="font-style:italic">k</span><em>-gon </em><span style="font-style:italic">G</span><em> that have a corner assignment </em>Ḡ<em> without separating 4-cycles are </em><span style="font-style:italic">d</span>−1<em>-sided, where </em><span style="font-style:italic">d</span><em> is the maximal degree of the vertices of </em><span style="font-style:italic">G</span><em> in </em>Ḡ<em>.
+</em></div><p>To describe this algorithm we introduce the notion of right neighbor paths in Section <a href="#ss%3ArightNeighbour">??</a>. We use these right neighbor paths to find a regular edge labeling with some nice properties in Section <a href="#ss%3Asweep">??</a>. Afterwards we unfortunately still have to do three post-processing steps. In Section <a href="#ss%3AflipBlueZ">??</a> we make sure our regular edge labeling is <em>vertically one-sided</em>, that is, that all vertical segments are one-sided. In Section <a href="#ss%3Afanflip">??</a> we will remove most occurrences of something called topfans. Then, in Section <a href="#ss%3Asubdiv">??</a> we can finally subdivide all blue faces that are too large without creating red faces that are too large. This finishes the algorithm.
+</p>
+<!--TOC subsection id="sec8" The right neighbor path of a path-->
+<h3 id="sec8" class="subsection">4.1  The right neighbor path of a path</h3><!--SEC END --><p>
+[inline, nomargin]Q: It might be useful to coin a common name for chords and separating 2-chords.
+
+<a id="ss:rightNeighbour"></a>
+In the sweepcycle step of the algorithm (Section <a href="#ss%3Asweep">??</a>) we will use the <em>right neighbor path</em> of a path. In this section we show that for any path <span style="font-style:italic">P</span> = <span style="font-style:italic">p</span><sub>1</sub> … <span style="font-style:italic">p</span><sub><span style="font-style:italic">k</span></sub> with no interior vertices incident to the outer face and without chords or separating 2-chords on the right of the path, the right side neighbors of <span style="font-style:italic">P</span> are a path <span style="font-style:italic">Q</span> (Lemma <a href="#lm%3Aright%3AneighborPath">??</a>).
+We even show some additional properties hold for <span style="font-style:italic">Q</span> (Lemma <a href="#lm%3Aright%3AneighbourwalkNoInteriorVertex">??</a> and <a href="#lm%3Aright%3AneighbourwalkChordFree">??</a>).
+Similar things also hold for the left neighbors of <span style="font-style:italic">P</span> but we will not need this for our algorithm.</p><p>The right side of a path is not yet defined. To do so we start this section by expanding on the notion of rotations. During the proofs in this section we also need various types of chords so we subsequently introduce these. Afterwards, we can finally discuss right neighbor paths.</p><p><span style="font-weight:bold">Rotations.</span>
+We assume a fixed embedding for <span style="font-style:italic">G</span>. Recall that the <em>rotation</em> at a vertex <span style="font-style:italic">v</span> is the clockwise order of the edges incident to <span style="font-style:italic">v</span> and that two vertices <span style="font-style:italic">x</span>, <span style="font-style:italic">y</span> are said to be <em>consecutive</em> in the rotation at <span style="font-style:italic">v</span> when the edges <span style="font-style:italic">vx</span> and <span style="font-style:italic">vy</span> are consecutive in the rotation.
+Sometimes, we want to denote number of subsequent vertices, which we call an <em>interval</em>, in the rotation. We let [<span style="font-style:italic">x</span>,<span style="font-style:italic">y</span>] denote all the vertices in the rotation of <span style="font-style:italic">v</span> from <span style="font-style:italic">x</span> to <span style="font-style:italic">y</span> and we let the <em>exclusive interval</em> (<span style="font-style:italic">x</span>,<span style="font-style:italic">y</span>) denote the same vertices without <span style="font-style:italic">x</span> and <span style="font-style:italic">y</span>. In Figure <a href="#fig%3Aright%3Arot">??</a> for example the interval [<span style="font-style:italic">v</span>,<span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span>+1</sub>] consists of the vertices <span style="font-style:italic">v</span>,<span style="font-style:italic">w</span>,<span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span>+1</sub> and (<span style="font-style:italic">w</span>,<span style="font-style:italic">u</span>) consists of the vertices <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span>+1</sub>, <span style="font-style:italic">x</span>.</p><p>Given a path <span style="font-style:italic">P</span> and an interior vertex <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> ∈ <span style="font-style:italic">P</span>. A neighbor <span style="font-style:italic">v</span> ∉ <span style="color:red"><span style="font-style:italic">P</span></span> of <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> lies on the <em>left</em> of <span style="font-style:italic">P</span> if it lies in the interval (<span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span>−1</sub>, <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span>+1</sub>) in the rotation of <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub>. Otherwise, <span style="font-style:italic">v</span> lies in the interval (<span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span>+1</sub>, <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span>−1</sub>) in the rotation of <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub>. In this case <span style="font-style:italic">v</span> lies on the <em>right</em> of <span style="font-style:italic">P</span>.
+We will use the same notion of left and right for edges. That is, an edge <span style="font-style:italic">e</span>∉ <span style="font-style:italic">P</span> adjacent to <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> lies to left or right if its other end point lies to the left or right, respectively. In Figure <a href="#fig%3Aright%3Arot">??</a> <span style="font-style:italic">v</span> and <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> <span style="font-style:italic">v</span> lie on the left of <span style="font-style:italic">P</span> and <span style="font-style:italic">u</span> and <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> <span style="font-style:italic">u</span> lie on the right of <span style="font-style:italic">P</span>.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis015.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 17: Rotation at <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub>.</td></tr>
+</table></div>
+<a id="fig:right:rot"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p><span style="font-weight:bold">Path manipulations.</span>
+With ↼<span style="font-style:italic">P</span> we denote the <em>reversed path</em> <span style="font-style:italic">p</span><sub><span style="font-style:italic">k</span></sub> … <span style="font-style:italic">p</span><sub>1</sub>. We use ⊕ to denote the <em>concatenation</em> of paths.
+That is, given a second path <span style="font-style:italic">Q</span> with vertices <span style="font-style:italic">q</span><sub>1</sub> … <span style="font-style:italic">q</span><sub>ℓ</sub> and <span style="font-style:italic">p</span><sub><span style="font-style:italic">k</span></sub> = <span style="font-style:italic">q</span><sub>1</sub> the path <span style="font-style:italic">P</span> ⊕ <span style="font-style:italic">Q</span> consists of <span style="font-style:italic">p</span><sub>1</sub> … <span style="font-style:italic">p</span><sub><span style="font-style:italic">k</span>−1</sub> <span style="font-style:italic">q</span><sub>1</sub> <span style="font-style:italic">q</span><sub>2</sub> … <span style="font-style:italic">q</span><sub>ℓ</sub>.
+Recall that a cycle is simply a path starting and ending at the same vertex.
+Hence, if we have two internally disjoint paths <span style="font-style:italic">P</span>, <span style="font-style:italic">Q</span> from <span style="font-style:italic">s</span> to <span style="font-style:italic">t</span> then <span style="font-style:italic">P</span> ⊕ ↼<span style="font-style:italic">Q</span> is a cycle.
+Furthermore, we use a vertical bar to denote the <em>restriction</em> of a path to a certain set of vertices. So <span style="font-style:italic">P</span>|<sub><span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub>, <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub></sub> with <span style="font-style:italic">i</span>&lt;<span style="font-style:italic">j</span> is the subpath of <span style="font-style:italic">P</span> with vertices <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> … <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub>.</p><p><span style="font-weight:bold">Chords.</span>
+A <em>chord</em> of a path is an edge that connects two non-subsequent vertices. A path without chords is <em>chordfree</em>. The path <span style="font-style:italic">P</span> in Figure <a href="#fig%3Aright%3Achord">??</a> has the chord <span style="font-style:italic">p</span><sub>1</sub> <span style="font-style:italic">p</span><sub>3</sub>.
+A <em>k-chord</em> is a path <span style="font-style:italic">Q</span> of length <span style="font-style:italic">k</span> that connects two non-subsequent vertices <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub>, <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub> of <span style="font-style:italic">P</span> such that <span style="font-style:italic">P</span> ∩ <span style="font-style:italic">Q</span> = <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub>, <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub> .
+Note that <span style="font-style:italic">P</span>|<sub><span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub>, <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub></sub> ⊕ ↼<span style="font-style:italic">Q</span> is a cycle.
+A (<span style="font-style:italic">k</span>-)chord <span style="font-style:italic">Q</span> is <em>separating</em> if this cycle is separating.
+In Figure <a href="#fig%3Aright%3Achord">??</a> there are two 2-chords, <span style="font-style:italic">p</span><sub>3</sub> <span style="font-style:italic">u</span> <span style="font-style:italic">p</span><sub>5</sub> and <span style="font-style:italic">p</span><sub>3</sub> <span style="font-style:italic">v</span> <span style="font-style:italic">p</span><sub>5</sub>, but only one of them is separating, namely <span style="font-style:italic">p</span><sub>3</sub> <span style="font-style:italic">v</span> <span style="font-style:italic">p</span><sub>5</sub>.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis016.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 18: A path with a chord and a separating 2-chord.</td></tr>
+</table></div>
+<a id="fig:right:chord"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p><span style="font-weight:bold">Right neighbor paths.</span>
+We already mentioned that in the sweepcycle step we use the right neighbor path of a path <span style="font-style:italic">P</span>. Recall that we assumed <span style="font-style:italic">P</span> has no interior vertices incident to the outer face and no chords or separating 2-chords on the right.
+We first show that every vertex has right neighbors.
+Then we give the procedure for finding the right neighbor path.
+Afterwards we show that the right neighbor path is indeed a path (Lemma <a href="#lm%3Aright%3AneighborPath">??</a>) and some additional properties in Lemmas <a href="#lm%3Aright%3AneighbourwalkNoInteriorVertex">??</a> and <a href="#lm%3Aright%3AneighbourwalkChordFree">??</a>.</p><div class="theorem"><span style="font-weight:bold">Lemma 9</span>  <em>
+</em><a id="lm:right:pHasRightNeihgbours"></a><em>
+Every interior vertex of </em><span style="font-style:italic">P</span><em> has at least one neighboring vertex on the right.
+</em></div><p><span style="font-weight:bold">Proof.</span>
+Suppose that an interior vertex <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> has no neighbor on the right of the path. Then  … <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span>−1</sub> <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span>+1</sub> …  is a partial face border. Since <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> is not incident to the outer face, <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> must be incident to a face of degree 3. Thus, <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span>−1</sub> <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span>+1</sub> is a face. However, this would imply a chord on the right of <span style="font-style:italic">P</span> as can be seen in Figure <a href="#fig%3Aright%3ApHasRightNeighbor">??</a>. Hence, by contradiction <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> must have a neighbor on the right.
+</p><p><br>
+</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis017.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 19: The hypothetical situation that <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> has no right neighbor.</td></tr>
+</table></div>
+<a id="fig:right:pHasRightNeighbor"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>The right neighbors of the interior vertices of <span style="font-style:italic">P</span> will form the <em>right neighbor path</em> <span style="font-style:italic">Q</span> of <span style="font-style:italic">P</span>.
+Let us first define a larger list of vertices <span style="font-style:italic">Q</span>′ from which we later remove vertices to get <span style="font-style:italic">Q</span>. <span style="font-style:italic">Q</span>′ will consist of <span style="font-style:italic">p</span><sub>1</sub> and those vertices adjacent to <span style="font-style:italic">p</span><sub>2</sub> that are in the interval (<span style="font-style:italic">p</span><sub>1</sub>, <span style="font-style:italic">p</span><sub>3</sub>) of the clockwise rotation at <span style="font-style:italic">p</span><sub>2</sub>. Followed by the vertices in the interval (<span style="font-style:italic">p</span><sub>2</sub>, <span style="font-style:italic">p</span><sub>4</sub>) of the rotation at <span style="font-style:italic">p</span><sub>3</sub>. We continue this up to the vertices in the interval (<span style="font-style:italic">p</span><sub><span style="font-style:italic">k</span>−2</sub>, <span style="font-style:italic">p</span><sub><span style="font-style:italic">k</span></sub>) of the rotation at <span style="font-style:italic">p</span><sub><span style="font-style:italic">k</span>−1</sub> and finally <span style="font-style:italic">p</span><sub><span style="font-style:italic">k</span></sub>.
+We get <span style="font-style:italic">Q</span> from <span style="font-style:italic">Q</span>′ by removing all subsequent duplicates from <span style="font-style:italic">Q</span>.
+In Figure <a href="#fig%3Aright%3AneighborPath">??</a> an example of a right neighbor path is given.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis018.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 20: A right neighbor path.</td></tr>
+</table></div>
+<a id="fig:right:neighborPath"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>To break the proof that <span style="font-style:italic">Q</span> is a path into two parts we define a <em>walk</em> as a path without the constraint that the same vertex does not occur twice. Hence, a walk is a sequence of vertices that are connected to each other but vertices may repeatedly occur.</p><div class="theorem"><span style="font-weight:bold">Lemma 10</span>  <em>
+</em><a id="lm:right:neighborWalk"></a><em>
+The right neighbor path </em><span style="font-style:italic">Q</span><em> is a walk.
+</em></div><p><span style="font-weight:bold">Proof.</span>
+Let us denote the vertices of <span style="font-style:italic">Q</span> by <span style="font-style:italic">q</span><sub>1</sub> <span style="font-style:italic">q</span><sub>2</sub> … <span style="font-style:italic">q</span><sub>ℓ</sub>.
+Let <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span></sub> and <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span>+1</sub> be two subsequent vertices of <span style="font-style:italic">Q</span>′. We will show they are either connected or the same vertex. We first consider the case where 1 &lt; <span style="font-style:italic">i</span> &lt; ℓ−1.
+Now there are two sub-cases. Either, (<span style="font-style:italic">a</span>), <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span></sub> and  <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span>+1</sub> are vertices adjacent to the same vertex <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub> and thus subsequent in the rotation at <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub> or, (<span style="font-style:italic">b</span>), <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span></sub> was the last vertex adjacent to <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub> and thus <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span>+1</sub> is the first vertex adjacent to <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span>+1</sub> since by Lemma <a href="#lm%3Aright%3ApHasRightNeihgbours">??</a> every interior vertex of <span style="font-style:italic">P</span> has right neighbors.
+Both cases are depicted in Figure <a href="#fig%3Auni%3Awalkproof">??</a>.</p><p>In case (<span style="font-style:italic">a</span>) we note that since <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span></sub> and <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span>+1</sub> are subsequent in the rotation at <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub> <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span></sub> <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span>+1</sub> is an edge since <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub> is not incident to the outer face and every interior face of <span style="font-style:italic">G</span> is a triangle.</p><p>In case (<span style="font-style:italic">b</span>) we note that <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span></sub> and <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span>+1</sub> are edges subsequent in clockwise order, hence <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span></sub> <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span>+1</sub> is also an edge. Hence, <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span></sub> is the first vertex adjacent to <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span>+1</sub> subsequent to <span style="font-style:italic">v</span><sub><span style="font-style:italic">i</span></sub> in the clockwise rotation. Thus, <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span></sub> = <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span>+1</sub>, that is <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span></sub> and <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span>+1</sub> are duplicates.</p><p>Now for the cases <span style="font-style:italic">i</span>=1 and <span style="font-style:italic">i</span>=<span style="font-style:italic">k</span>−1. <span style="font-style:italic">q</span><sub>1</sub> and <span style="font-style:italic">q</span><sub>2</sub> are vertices adjacent to <span style="font-style:italic">p</span><sub>2</sub> subsequent in the clockwise rotation of <span style="font-style:italic">p</span><sub>2</sub> and hence connected since every interior face is a triangle. In the same way <span style="font-style:italic">q</span><sub><span style="font-style:italic">k</span>−1</sub> and <span style="font-style:italic">q</span><sub><span style="font-style:italic">k</span></sub> are subsequent vertices in the rotation at <span style="font-style:italic">q</span><sub><span style="font-style:italic">k</span>−1</sub> and hence connected. This can also be seen in Figure <a href="#fig%3Aright%3AneighborPath">??</a>.</p><p>Since all pairs of subsequent vertices in <span style="font-style:italic">Q</span>′ are connected or duplicates the step removing all duplicates from <span style="font-style:italic">Q</span>′ ensures <span style="font-style:italic">Q</span> is a walk.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+[b]0.5@percent
+<img src="thesis019.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 21:  </td></tr>
+</table></div>
+[b]0.5@percent
+<img src="thesis020.png">
+<br>
+<br>
+<br>
+
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 22:  </td></tr>
+</table></div>
+
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 23: The two main cases of the proof showing that <span style="font-style:italic">W</span> is a walk.</td></tr>
+</table></div>
+<a id="fig:uni:walkproof"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p><br>
+</p><div class="theorem"><span style="font-weight:bold">Lemma 11</span>  <em>
+</em><a id="lm:right:neighborPath"></a><em>
+The right neighbor path </em><span style="font-style:italic">Q</span><em> is a path
+</em></div><p><span style="font-weight:bold">Proof.</span>
+We already know <span style="font-style:italic">Q</span> is a path by Lemma <a href="#lm%3Aright%3AneighborWalk">??</a>. Hence, we only have to show that <span style="font-style:italic">Q</span> contains no duplicate vertices.</p><p>Suppose that <span style="font-style:italic">Q</span> has a duplicate vertex <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span></sub>=<span style="font-style:italic">q</span><sub><span style="font-style:italic">j</span></sub> with <span style="font-style:italic">i</span>&lt;<span style="font-style:italic">j</span>.
+Then this vertex must have been a neighbor to two different vertices in <span style="font-style:italic">P</span>, since it can not have been added twice while being connected to only one vertex.
+We denote these vertices <span style="font-style:italic">p</span><sub>ℓ</sub>, <span style="font-style:italic">p</span><sub><span style="font-style:italic">k</span></sub> with ℓ&lt;<span style="font-style:italic">k</span>.
+This gives us the situation depicted in Figure <a href="#fig%3Aright%3Apath">??</a>.</p><p>Due to the order in which we added vertices to <span style="font-style:italic">Q</span>′, which is preserved by the removal of vertices when we go to <span style="font-style:italic">Q</span>, we know that any vertices in between <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span></sub> and <span style="font-style:italic">q</span><sub><span style="font-style:italic">j</span></sub> in <span style="font-style:italic">Q</span> must be one of the following:
+</p><ol class="enumerate" type=1><li class="li-enumerate">
+Adjacent to <span style="font-style:italic">p</span><sub>ℓ</sub> and in the interval (<span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span></sub>, <span style="font-style:italic">p</span><sub>ℓ+1</sub>) in <span style="font-style:italic">p</span><sub>ℓ</sub>’s rotation.
+</li><li class="li-enumerate">Adjacent to one of <span style="font-style:italic">p</span><sub>ℓ+1</sub>, <span style="font-style:italic">p</span><sub>ℓ+2</sub>,…, <span style="font-style:italic">p</span><sub><span style="font-style:italic">k</span>−1</sub> and to the right of <span style="font-style:italic">P</span>.
+</li><li class="li-enumerate">Adjacent to <span style="font-style:italic">p</span><sub><span style="font-style:italic">k</span></sub> and in the interval (<span style="font-style:italic">p</span><sub><span style="font-style:italic">k</span>−1</sub>, <span style="font-style:italic">q</span><sub><span style="font-style:italic">j</span></sub>) in <span style="font-style:italic">p</span><sub><span style="font-style:italic">k</span></sub>’s rotation.
+</li></ol><p>All three cases describe a vertex that lies in the interior of the cycle <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span></sub> <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span>+1</sub> … <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub>. However, since <span style="font-style:italic">P</span> has no separating 2-chords on the right this cycle must be empty. Therefore, there are no vertices in between <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span></sub> and <span style="font-style:italic">q</span><sub><span style="font-style:italic">j</span></sub> and they must be subsequent duplicates. However, <span style="font-style:italic">Q</span> is a walk and <span style="font-style:italic">G</span> is simple so <span style="font-style:italic">Q</span> has no subsequent duplicates. Hence, <span style="font-style:italic">Q</span> contains no duplicates at all and is thus a path.
+</p><p><br>
+</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis021.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 24: A hypothetical duplicate vertex.</td></tr>
+</table></div>
+<a id="fig:right:path"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><div class="theorem"><span style="font-weight:bold">Lemma 12</span>  <em>
+</em><a id="lm:right:neighbourwalkNoInteriorVertex"></a><em>
+The cycle </em><span style="font-style:italic">P</span> ⊕ ↼<span style="font-style:italic">Q</span><em> has no interior vertices.
+</em></div><p><span style="font-weight:bold">Proof.</span>
+In the construction of the right neighbor path both cases in Figure <a href="#fig%3Auni%3Awalkproof">??</a> add a triangle to the interior with all vertices of the triangle in <span style="font-style:italic">P</span> ⊕ ↼<span style="font-style:italic">Q</span>. Hence, the interior of <span style="font-style:italic">P</span> ⊕ ↼<span style="font-style:italic">Q</span> can be subdivided in a number triangles.
+Suppose there is an interior vertex in the cycle <span style="font-style:italic">P</span> ⊕ ↼<span style="font-style:italic">Q</span>. Then the triangle containing this vertex is a separating triangle. Hence, <span style="font-style:italic">P</span> ⊕ ↼<span style="font-style:italic">Q</span> has no interior vertices.
+</p><p><br>
+</p><div class="theorem"><span style="font-weight:bold">Lemma 13</span>  <em>
+</em><a id="lm:right:leftNeighborsOfTheRightNeighborPath"></a><em>
+Every interior vertex of a right neighbor path </em><span style="font-style:italic">Q</span><em> has a left neighbor.
+</em></div><p><span style="font-weight:bold">Proof.</span>
+Let <span style="font-style:italic">q</span> be an interior vertex of <span style="font-style:italic">Q</span>.
+<span style="font-style:italic">q</span> Was added as right neighbor of some interior vertex <span style="font-style:italic">p</span> of <span style="font-style:italic">P</span>.
+Since <span style="font-style:italic">Q</span> does not start or end at <span style="font-style:italic">p</span>, <span style="font-style:italic">p</span> must also be a left neighbor of <span style="font-style:italic">q</span> in <span style="font-style:italic">Q</span>.
+</p><p><br>
+</p><div class="theorem"><span style="font-weight:bold">Lemma 14</span>  <em>
+</em><a id="lm:right:neighbourwalkChordFree"></a><em>
+The left of a right neighbor path is chordfree.
+</em></div><p><span style="font-weight:bold">Proof.</span>
+Suppose that the right neighbor path <span style="font-style:italic">Q</span> = <span style="font-style:italic">q</span><sub>1</sub> … <span style="font-style:italic">q</span><sub><span style="font-style:italic">k</span></sub> has a chord on the left, say between <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span></sub> and <span style="font-style:italic">q</span><sub><span style="font-style:italic">j</span></sub> with <span style="font-style:italic">i</span>&lt; <span style="font-style:italic">j</span> −1 . Then <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span></sub> <span style="font-style:italic">q</span><sub><span style="font-style:italic">j</span></sub> is an interior edge of <span style="font-style:italic">P</span> ⊕ ↼<span style="font-style:italic">Q</span>. There is a vertex <span style="font-style:italic">p</span><sub>ℓ</sub>∈ <span style="font-style:italic">P</span> such that <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span>+1</sub> is a right neighbor of <span style="font-style:italic">p</span><sub>ℓ</sub>, hence <span style="font-style:italic">p</span><sub>ℓ</sub><span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span>+1</sub> is an interior edge of <span style="font-style:italic">P</span> ⊕ ↼<span style="font-style:italic">Q</span>.
+But now we have a crossing between <span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span></sub> <span style="font-style:italic">q</span><sub><span style="font-style:italic">j</span></sub> and <span style="font-style:italic">p</span><sub>ℓ</sub><span style="font-style:italic">q</span><sub><span style="font-style:italic">i</span>+1</sub> since both edges run in the interior of <span style="font-style:italic">P</span> ⊕ ↼<span style="font-style:italic">Q</span> and their endpoints occur alternately in <span style="font-style:italic">P</span> ⊕ ↼<span style="font-style:italic">Q</span>.
+See figure <a href="#fig%3Auni%3AneihbourwalkChordFree">??</a>.
+Since we assume <span style="font-style:italic">G</span> is planar, there can be no chords on the left of the right neighbor path.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis022.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 25: The construction in the proof of Lemma <a href="#lm%3Aright%3AneighbourwalkChordFree">??</a>.</td></tr>
+</table></div>
+<a id="fig:uni:neihbourwalkChordFree"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p><br>
+
+</p>
+<!--TOC subsection id="sec9" Sweepcycle algorithm-->
+<h3 id="sec9" class="subsection">4.2  Sweepcycle algorithm</h3><!--SEC END --><p>
+
+<a id="ss:sweep"></a>
+The first step of our algorithm is executing a sweepcycle algorithm inspired by the sweepcycle algorithm by Fusy [<a href="#Fusy2006"></a>]. We use <span style="color:red"><span style="font-style:italic">C</span></span> to indicate the current sweep cycle. We shrink <span style="color:red"><span style="font-style:italic">C</span></span> by updating it with interior paths.
+The algorithm finishes when <span style="color:red"><span style="font-style:italic">C</span></span> has no more interior vertices. When the algorithm finishes, it has produced a regular edge labeling.
+One of the nicest things about the regular edge labeling is Lemma <a href="#lm%3Asweep%3ANoTwoSplitsAboveEachOther">??</a>.
+Q: These are all words the reader does not know yet. How to explain? Should I explain here?This lemma states that we can not have the fan handle of a large topfan after a split vertex on a so-called bottom path.</p><p>During the algorithm we maintain several invariants on <span style="color:red"><span style="font-style:italic">C</span></span>. The first four are equivalent to those imposed by Fusy. The final invariant is new and allows us to prove Lemma <a href="#lm%3Asweep%3ANoTwoSplitsAboveEachOther">??</a>.</p>
+<!--TOC paragraph id="sec10" Invariants -->
+<h4 id="sec10" class="paragraph">Invariants </h4><!--SEC END --><ol class="enumerate" type=1><li class="li-enumerate">
+=-4pt
+<a id="i:uni:SWandSE"></a> The cycle <span style="color:red"><span style="font-style:italic">C</span></span> contains the two edges <span style="font-style:italic">S</span> <span style="font-style:italic">W</span> and <span style="font-style:italic">S</span> <span style="font-style:italic">E</span>.
+</li><li class="li-enumerate"><a id="i:uni:noChords"></a> <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span>  has no chords.
+</li><li class="li-enumerate"><a id="i:uni:intVertCond"></a> The inner vertex condition holds for all vertices in the exterior of <span style="font-style:italic">C</span>.
+</li><li class="li-enumerate"><a id="i:uni:redOutgoing"></a> Every non-pole vertex on the sweepcycle has a red outgoing edge.
+</li><li class="li-enumerate"><a id="i:uni:no2Chords"></a> <span style="color:red"><span style="font-style:italic">C</span></span>∖ <span style="font-style:italic">S</span>   has no separating 2-chords that do not use <span style="font-style:italic">S</span>.
+</li></ol><p>We initialize the sweepcycle <span style="color:red"><span style="font-style:italic">C</span></span> with the outer cycle of Ḡ.
+We denote the vertices of the sweepcycle <span style="color:red"><span style="font-style:italic">C</span></span> by <span style="font-style:italic">S</span>, <span style="font-style:italic">v</span><sub>1</sub> = <span style="font-style:italic">W</span>, <span style="font-style:italic">v</span><sub>2</sub>, … <span style="font-style:italic">v</span><sub><span style="font-style:italic">n</span>−1</sub>, <span style="font-style:italic">v</span><sub><span style="font-style:italic">n</span></sub> = <span style="font-style:italic">E</span>, <span style="font-style:italic">S</span>.
+We repeatedly consider the path <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span> .
+In which case we will always order it from <span style="font-style:italic">W</span> to <span style="font-style:italic">E</span>. That the edges <span style="font-style:italic">S</span> <span style="font-style:italic">W</span> and <span style="font-style:italic">S</span> <span style="font-style:italic">E</span> are always in <span style="color:red"><span style="font-style:italic">C</span></span> is a result of Invariant <a href="#i%3Auni%3ASWandSE">??</a>.</p><p>Each update of the sweepcycle consists of the following three steps
+</p><ol class="enumerate" type=1><li class="li-enumerate">
+=-4pt
+Take the right neighbor walk of a subpath of <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span>  to get the <em>candidate path</em> <span style="font-style:italic">P</span>.
+</li><li class="li-enumerate">Evade chords and separating 2-chords on <span style="font-style:italic">P</span> to get the <em>updating path</em> <span style="font-style:italic">P</span>′.
+</li><li class="li-enumerate">Update the sweepcycle with <span style="font-style:italic">P</span>′.
+</li></ol><p>We repeat these steps until the sweepcycle does not contain anymore interior vertices. At which point we can terminate the algorithm by coloring the edges of the cycle <span style="color:red"><span style="font-style:italic">C</span></span> blue and its interior edges red.</p>
+<!--TOC subsubsection id="sec11" Find the right neighbor path-->
+<h4 id="sec11" class="subsubsection">4.2.1  Find the right neighbor path</h4><!--SEC END --><p>
+Recall we denote all the vertices of <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span>  by <span style="font-style:italic">W</span> = <span style="font-style:italic">v</span><sub>1</sub> <span style="font-style:italic">v</span><sub>2</sub> … <span style="font-style:italic">v</span><sub><span style="font-style:italic">n</span>−1</sub> <span style="font-style:italic">v</span><sub><span style="font-style:italic">n</span></sub> = <span style="font-style:italic">E</span>.</p><p>Suppose they are all adjacent to <span style="font-style:italic">S</span>, then any vertex still in the interior of <span style="color:red"><span style="font-style:italic">C</span></span> would lie in a separating triangle of <span style="font-style:italic">G</span>. So we have no interior vertices and hence we can terminate the algorithm as described in Section <a href="#sss%3Aterminating">??</a>.
+In the remainder we assume some vertices from <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span>  will not be adjacent to <span style="font-style:italic">S</span>.</p><p>Since <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span>  has some vertices incident to <span style="font-style:italic">S</span> (<span style="font-style:italic">W</span> , <span style="font-style:italic">E</span>) and some that are not, we can consider maximal subpaths of <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span>  consisting of vertices adjacent to <span style="font-style:italic">S</span>.
+We denote by <span style="font-style:italic">v</span><sub><span style="font-style:italic">i</span></sub> the last vertex of first maximal subpath of vertices adjacent to <span style="font-style:italic">S</span> and by <span style="font-style:italic">v</span><sub><span style="font-style:italic">j</span></sub> the first vertex of the second maximal subpath.
+As candidate path <span style="font-style:italic">P</span> we take the right neighbor path of <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span> |<sub><span style="font-style:italic">v</span><sub><span style="font-style:italic">i</span></sub>, <span style="font-style:italic">v</span><sub><span style="font-style:italic">j</span></sub></sub>. This right neighbor path does indeed exist since all interior vertices of <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span> |<sub><span style="font-style:italic">v</span><sub><span style="font-style:italic">i</span></sub>, <span style="font-style:italic">v</span><sub><span style="font-style:italic">j</span></sub></sub> are interior vertices of <span style="font-style:italic">G</span> and <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span>  has no cycles or separating 2-chords by Invariants <a href="#i%3Auni%3AnoChords">??</a> and <a href="#i%3Auni%3Ano2Chords">??</a>.
+This situation is depicted in Figure <a href="#fig%3Asweep%3AnoIrregularity">??</a>.</p>
+<!--TOC subsubsection id="sec12" Evade chords and separating 2-chords-->
+<h4 id="sec12" class="subsubsection">4.2.2  Evade chords and separating 2-chords</h4><!--SEC END --><p>
+The candidate path <span style="font-style:italic">P</span> we found can have two structures we want to avoid
+namely
+</p><ol class="enumerate" type=1><li class="li-enumerate">
+=-4pt
+Chords
+</li><li class="li-enumerate">Separating 2-chords
+</li></ol><p>By <em>irregularities</em>, we will mean these two classes of structures together and the <em>middle</em> vertex of a 2-chord is the only interior vertex of that 2-chord.
+All irregularities are on the right of the candidate path due to Lemma <a href="#lm%3Aright%3AneighbourwalkChordFree">??</a> (no chords on the left) and Lemma <a href="#lm%3Aright%3AneighbourwalkNoInteriorVertex">??</a> (no separating 2-chords on the left).</p><p>Before we can show how to evade these structures, we first introduce more notation. We orient <span style="font-style:italic">P</span> from <span style="font-style:italic">v</span><sub><span style="font-style:italic">i</span></sub> ∈ <span style="color:red"><span style="font-style:italic">C</span></span> (the vertex closest to <span style="font-style:italic">W</span>)to <span style="font-style:italic">v</span><sub><span style="font-style:italic">j</span></sub> ∈ <span style="color:red"><span style="font-style:italic">C</span></span> (the vertex closest to <span style="font-style:italic">E</span>) and denote its vertices by <span style="font-style:italic">p</span><sub>1</sub> … <span style="font-style:italic">p</span><sub><span style="font-style:italic">k</span></sub>.
+The <em>index</em> of a vertex <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> ∈ <span style="font-style:italic">P</span> is its position in the path, that is, the index of <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> is <span style="font-style:italic">i</span>.
+The <em>start index</em> of an irregularity <span style="font-style:italic">I</span> is the index of the first vertex in <span style="font-style:italic">P</span> that is also in <span style="font-style:italic">I</span>. Similarly, the <em>end index</em> is the index of the last vertex in <span style="font-style:italic">P</span> that is also in <span style="font-style:italic">I</span>.
+The <em>range</em> of an irregularity will be given by its start and end index. Depending on what irregularities we find on the candidate path <span style="font-style:italic">P</span> we will update the sweepcycle with an <em>update path</em> <span style="font-style:italic">P</span>′. This update is described in Section <a href="#sss%3Asweep%3Aupdate">??</a>.</p><p>While describing the steps we will also show that the following two lemmas hold for every case.</p><div class="theorem"><span style="font-weight:bold">Lemma 16</span>  <em>
+The updating paths has no chords or separating </em>2<em>-chords
+</em><a id="lm:sweep:augNoIregularity"></a><em>
+</em></div><div class="theorem"><span style="font-weight:bold">Lemma 17</span>  <em>
+</em><a id="lm:sweep:noConnectingIregularity"></a><em>
+There are no chords or separating </em>2<em>-chords not containing </em><span style="font-style:italic">S</span><em> with one endpoint on the old sweepcycle and one endpoint on the updating path </em><span style="font-style:italic">P</span>′<em>.
+</em></div><p><span style="font-weight:bold">We have no irregularity.</span>
+When there are no irregularities, we update the sweepcycle with the entire candidate path <span style="font-style:italic">P</span>.
+In this case the update path <span style="font-style:italic">P</span>′ is equal to <span style="font-style:italic">P</span>.</p><p><span style="font-style:italic">P</span>′ has no irregularity by the definition of this case. Moreover, there are no irregularities with one opinionated on <span style="font-style:italic">P</span>′ and one endpoint on <span style="color:red"><span style="font-style:italic">C</span></span> since <span style="font-style:italic">v</span><sub><span style="font-style:italic">i</span></sub> and <span style="font-style:italic">v</span><sub><span style="font-style:italic">j</span></sub> are both adjacent to <span style="font-style:italic">S</span> we can not have any chords and any 2-chords must have <span style="font-style:italic">S</span> as middle vertex.
+</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis023.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 26: Updating path when <span style="font-style:italic">P</span> contains no irregularity.</td></tr>
+</table></div>
+<a id="fig:sweep:noIrregularity"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p><span style="font-weight:bold">We have a chord on </span><span style="font-weight:bold"><span style="font-style:italic">P</span></span><span style="font-weight:bold">.</span>
+Note that we can not have a chord incident to one of the exterior vertices of the candidate path <span style="font-style:italic">P</span> since any such chord would violate Invariant <a href="#i%3Auni%3Ano2Chords">??</a> of <span style="color:red"><span style="font-style:italic">C</span></span> as can be seen in Figure <a href="#fig%3Asweep%3AnoChordOnExteriorVertex">??</a>.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis024.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 27: Hypothetical situation where <span style="font-style:italic">P</span> would have a chord on an exterior vertex.</td></tr>
+</table></div>
+<a id="fig:sweep:noChordOnExteriorVertex"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>We identify the chords by their ranges. Of the chords with the smallest end index <span style="font-style:italic">j</span> we will consider the one with the largest start index <span style="font-style:italic">i</span>. We denote this chord by <span style="font-style:italic">C</span>.
+Note that this chord can not contain any other chords since such a chord would have either a large start index or a smaller end index.
+The way in which we find <span style="font-style:italic">C</span> is illustrated in Figure <a href="#fig%3Asweep%3AchordsOnCandidatePath">??</a>.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis025.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 28: Finding the chord <span style="font-style:italic">C</span>.</td></tr>
+</table></div>
+<a id="fig:sweep:chordsOnCandidatePath"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>What we do now depends on whether a 2-chord shows up in the interior of the chord concatenated to the candidate path <span style="font-style:italic">P</span>|<sub><span style="font-style:italic">i</span>, <span style="font-style:italic">j</span></sub> ⊕ ↼<span style="font-style:italic">C</span>.</p><p><em>No separating 2-chord.</em>
+If there is no separating 2-chord in the interior of <span style="font-style:italic">P</span>|<sub><span style="font-style:italic">i</span>, <span style="font-style:italic">j</span></sub> ⊕ ↼<span style="font-style:italic">C</span> we let <span style="font-style:italic">v</span><sub><span style="font-style:italic">k</span></sub> be the shared neighbor in <span style="color:red"><span style="font-style:italic">C</span></span> of <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> and <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span> +1</sub> and we let <span style="font-style:italic">v</span><sub><span style="font-style:italic">l</span></sub> the shared neighbor in <span style="color:red"><span style="font-style:italic">C</span></span> of <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span> −1</sub> and <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub>. The updating path <span style="font-style:italic">P</span>′ is the right neighbor path of <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span> |<sub><span style="font-style:italic">v</span><sub><span style="font-style:italic">k</span></sub>, <span style="font-style:italic">v</span><sub><span style="font-style:italic">l</span></sub></sub>. See Figure <a href="#fig%3Asweep%3AchordUpdate">??</a>.</p><p><span style="font-style:italic">P</span>′ is entirely inside a chord containing no more chords and thus can not contain a chord. Moreover, there are no separating 2-chords on <span style="font-style:italic">P</span>|<sub><span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub>, <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub></sub> so <span style="font-style:italic">P</span>′ can not have separating 2-chords. Any irregularity with one endpoint in <span style="font-style:italic">P</span>′ and one in <span style="color:red"><span style="font-style:italic">C</span></span> will have to cross <span style="font-style:italic">v</span><sub><span style="font-style:italic">k</span></sub> <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub> <span style="font-style:italic">v</span><sub><span style="font-style:italic">l</span></sub> so we can not have a chord and any 2-chord has <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> or <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub> as middle vertex. But, with this restriction such a 2-chord can not be separating.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis026.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 29: Updating path when <span style="font-style:italic">P</span> has a chord not containing a separating 2-chord.</td></tr>
+</table></div>
+<a id="fig:sweep:chordUpdate"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p><em>At least one separating 2-chord.</em>
+Let <span style="font-style:italic">j</span>′ be end index of the separating 2-chord with the lowest end index in the interior of <span style="font-style:italic">P</span>|<sub><span style="font-style:italic">i</span>, <span style="font-style:italic">j</span></sub> ⊕ ↼<span style="font-style:italic">C</span>. And let <span style="font-style:italic">v</span><sub><span style="font-style:italic">k</span></sub> be the shared neighbor on the sweepcycle of <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> and <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span> +1</sub> and let <span style="font-style:italic">v</span><sub><span style="font-style:italic">l</span></sub> be the shared neighbor on the sweepcycle of <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span>′ −1</sub> and <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span>′</sub>.
+Then the updating path <span style="font-style:italic">P</span>′ is the right neighbor path of <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span> |<sub><span style="font-style:italic">v</span><sub><span style="font-style:italic">k</span></sub>, <span style="font-style:italic">v</span><sub><span style="font-style:italic">l</span></sub></sub>. See Figure <a href="#fig%3Asweep%3A2chordInChordUpdate">??</a>.</p><p><span style="font-style:italic">P</span>′ is entirely inside a chord containing no more chords and thus can not contain a chord. Moreover, all separating 2-chords are evaded since we evaded the end of the first one ending. Just as in the above case we can not have any chord or separating 2-chord with one endpoint in <span style="font-style:italic">P</span>′ and one in <span style="color:red"><span style="font-style:italic">C</span></span> any chord or separating 2-chord to connect outside the containing chord <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub>.
+That leaves irregularities within the second endpoint inside containing chord <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub>. Suppose that we have a separating 2-chord, then this would have been a chord of <span style="font-style:italic">P</span>. This is in contradiction with <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub> being a minimal chord.
+We also can not have a chord since this would break <span style="font-style:italic">P</span>|<sub><span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub>, <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub></sub> ⊕ <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub> <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> .</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis027.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 30: Updating path when <span style="font-style:italic">P</span> has a chord containing at least one separating 2-chord.</td></tr>
+</table></div>
+<a id="fig:sweep:2chordInChordUpdate"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p><span style="font-weight:bold">Only separating 2-chords.</span>
+In this case the candidate path <span style="font-style:italic">P</span> has no chords since we would otherwise be in the above case.</p><p><em>Any separating 2-chords with </em><span style="font-style:italic">v</span><sub><span style="font-style:italic">j</span></sub><em> as end vertex.</em>
+We find the smallest separating 2-chord with <span style="font-style:italic">v</span><sub><span style="font-style:italic">j</span></sub> as end vertex (i.e. the one with the highest start index). Say this separating 2-chord has start index <span style="font-style:italic">i</span>.
+Let <span style="font-style:italic">v</span><sub><span style="font-style:italic">k</span></sub> be the shared neighbor on the sweepcycle of <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> and <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span> +1</sub>. The updating path is the right neighbor path of <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span> |<sub><span style="font-style:italic">v</span><sub><span style="font-style:italic">k</span></sub>, <span style="font-style:italic">v</span><sub><span style="font-style:italic">j</span></sub></sub>. See Figure <a href="#fig%3Asweep%3ApEBound">??</a>.</p><p><span style="font-style:italic">P</span>′ starts inside the smallest separating 2-chord hence it has no 2-chords, and furthermore has no chords since <span style="font-style:italic">P</span> already had none.</p><p>We have no chords with one endpoint in <span style="font-style:italic">P</span>′ and one in <span style="color:red"><span style="font-style:italic">C</span></span> since these would have to break <span style="font-style:italic">v</span><sub><span style="font-style:italic">j</span></sub> <span style="font-style:italic">x</span> <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> <span style="font-style:italic">v</span><sub><span style="font-style:italic">k</span></sub> ⊕ ↼<span style="font-style:italic">P</span>′ or be adjacent to <span style="font-style:italic">v</span><sub><span style="font-style:italic">j</span></sub>, which is in violation of Invariant <a href="#i%3Auni%3Ano2Chords">??</a>.
+Any 2-chords with one endpoint in <span style="font-style:italic">P</span>′ and one in <span style="color:red"><span style="font-style:italic">C</span></span> would have <span style="font-style:italic">x</span> or <span style="font-style:italic">p</span><sub><span style="font-style:italic">i</span></sub> as middle vertex.
+However, the first yields a 2-chord of the candidate path with a higher start range, this is a contradiction.
+And the second can not yield a separating 2-chord. </p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis028.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 31: Updating path when <span style="font-style:italic">P</span> has a separating 2-chord with <span style="font-style:italic">v</span><sub><span style="font-style:italic">j</span></sub> as end vertex.</td></tr>
+</table></div>
+<a id="fig:sweep:pEBound"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p><em>Only other separating 2-chords</em>
+Find the 2-chord with the lowest end index, say that this is <span style="font-style:italic">j</span>.
+Let <span style="font-style:italic">v</span><sub><span style="font-style:italic">l</span></sub> be the shared neighbor on the sweepcycle of <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub> and <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span>−1</sub>.
+The updating path is the right neighbor path of <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span> |<sub><span style="font-style:italic">v</span><sub><span style="font-style:italic">i</span></sub>, <span style="font-style:italic">v</span><sub><span style="font-style:italic">l</span></sub></sub>. See Figure <a href="#fig%3Asweep%3Afree2chord">??</a>.</p><p>Any updating path stops before the end of a separating 2-chord and furthermore contains no chords since <span style="font-style:italic">P</span> already did not.</p><p>Any chord or 2-chord with one vertex in the updating path and the other on the old sweepcycle must end to the right of the updating path since the updating path starts at <span style="font-style:italic">v</span><sub><span style="font-style:italic">i</span></sub>, a vertex adjacent to <span style="font-style:italic">S</span>.
+Suppose that we have a separating 2-chord then that would have been a chord of the candidate path. This is in contradiction with the assumption that the candidate path had no chords.
+We also have no chord since such a chord would violate Invariant <a href="#i%3Auni%3Ano2Chords">??</a> of the old sweepcycle. Furthermore, the second-to-last vertex of the updating path has no chords since it would break <span style="font-style:italic">v</span><sub><span style="font-style:italic">l</span></sub> <span style="font-style:italic">p</span><sub><span style="font-style:italic">j</span></sub> <span style="font-style:italic">x</span> <span style="font-style:italic">p</span><sub><span style="font-style:italic">u</span></sub>. (see Figure <a href="#fig%3Asweep%3Afree2chord">??</a>).</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis029.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 32: Updating path when <span style="font-style:italic">P</span> has separating 2-chords none of which have <span style="font-style:italic">v</span><sub><span style="font-style:italic">j</span></sub> as end vertex.</td></tr>
+</table></div>
+<a id="fig:sweep:free2chord"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote>
+<!--TOC subsubsection id="sec13" Updating-->
+<h4 id="sec13" class="subsubsection">4.2.3  Updating</h4><!--SEC END --><p>
+<a id="sss:sweep:update"></a>
+Once we found the updating path <span style="font-style:italic">P</span>′, we can update the sweepcycle with this path. Let <span style="font-style:italic">p</span><sub><span style="font-style:italic">a</span></sub> and <span style="font-style:italic">p</span><sub><span style="font-style:italic">b</span></sub> indicate the two unique vertices of <span style="font-style:italic">P</span>′ that are also part of <span style="color:red"><span style="font-style:italic">C</span></span>. We will then let <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span> |<sub><span style="font-style:italic">P</span>′</sub> denote the path <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span> |<sub><span style="font-style:italic">p</span><sub><span style="font-style:italic">a</span></sub>, <span style="font-style:italic">p</span><sub><span style="font-style:italic">b</span></sub></sub>.
+In this section we describe how to update the sweepcycle with an updating path and we show that the update maintains all sweepcycle invariants (Lemma <a href="#lm%3Asweep%3AupdateMaintainsInvariants">??</a>).
+To execute the update we color all interior edge of <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span> |<sub><span style="font-style:italic">P</span>′</sub> ⊕ ↼<span style="font-style:italic">P</span>′ red and orient them towards <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span> <sub>|</sub><span style="font-style:italic">P</span>′.
+We also color all edges of <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span> |<sub><span style="font-style:italic">P</span>′</sub> blue and orient them from lower to higher induces.
+We then update the sweepcycle to <span style="color:red"><span style="font-style:italic">C</span></span>′ by replacing <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span> |<sub><span style="font-style:italic">P</span>′</sub> by <span style="font-style:italic">P</span>′ in <span style="color:red"><span style="font-style:italic">C</span></span>.
+An example of the whole update for an updating path <span style="font-style:italic">P</span>′ can be seen in Figure <a href="#fig%3Asweep%3Aupdate">??</a>.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+[b]0.45 @percent
+<img src="thesis030.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 33: Before.</td></tr>
+</table></div>
+
+ 
+[b]0.45 @percent
+<img src="thesis031.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 34: After.</td></tr>
+</table></div>
+
+	<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 35: The update.</td></tr>
+</table></div>
+<a id="fig:sweep:update"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><div class="theorem"><span style="font-weight:bold">Lemma 18</span>  <em>
+</em><a id="lm:sweep:updateMaintainsInvariants"></a><em>
+Updating with a path </em><span style="font-style:italic">P</span>′<em> maintains all sweepcycle invariants
+</em></div><p><span style="font-weight:bold">Proof.</span>
+We will prove that the new sweepcycle <span style="color:red"><span style="font-style:italic">C</span></span>′ obtained by updating <span style="color:red"><span style="font-style:italic">C</span></span> is again a valid sweepcycle. Invariant <a href="#i%3Auni%3ASWandSE">??</a> remains true. Invariant <a href="#i%3Auni%3AintVertCond">??</a> holds due to the way we colored the edges around the new interior vertices as can be seen in Figure <a href="#fig%3Asweep%3Aupdate">??</a>.
+Furthermore, Invariant <a href="#i%3Auni%3AredOutgoing">??</a> holds because every interior vertex of <span style="font-style:italic">P</span>′ has a left neighbor by Lemma <a href="#lm%3Aright%3AleftNeighborsOfTheRightNeighborPath">??</a>.</p><p>To see that Invariants <a href="#i%3Auni%3AnoChords">??</a> and <a href="#i%3Auni%3Ano2Chords">??</a> hold, note that there can be no chords or 2-chords with both endpoints in the overlap of the old and new sweepcycle <span style="color:red"><span style="font-style:italic">C</span></span> ∩ <span style="color:red"><span style="font-style:italic">C</span></span>′ by Invariants <a href="#i%3Auni%3AnoChords">??</a> and <a href="#i%3Auni%3Ano2Chords">??</a>.
+Since the updating path itself also has no irregularities (Lemma <a href="#lm%3Asweep%3AaugNoIregularity">??</a>),
+we know any chord or separating 2-chord <span style="font-style:italic">C</span> has to have one vertex on <span style="color:red"><span style="font-style:italic">P</span></span> and one vertex on the unchanged part of old sweepcycle <span style="color:red"><span style="font-style:italic">C</span></span> ∩ <span style="color:red"><span style="font-style:italic">C</span></span>′.
+However, these potential chords can not exist by Lemma <a href="#lm%3Asweep%3AnoConnectingIregularity">??</a>.
+Hence, <span style="color:red"><span style="font-style:italic">C</span></span>′ is a valid new sweepcycle.
+</p><p><br>
+</p><p>If after the update the new sweepcycle <span style="color:red"><span style="font-style:italic">C</span></span>′ has no interior vertices we terminate the algorithm as will be described in Section <a href="#sss%3Aterminating">??</a>.
+Otherwise, we start the update loop again by finding a new candidate path.</p>
+<!--TOC subsubsection id="sec14" Terminating the algorithm-->
+<h4 id="sec14" class="subsubsection">4.2.4  Terminating the algorithm</h4><!--SEC END --><p>
+<a id="sss:terminating"></a>
+When the sweepcycle has no more interior vertices, we can not update it anymore.
+However, at this point it is easy to color the remainder of the graph.
+All vertices in <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span>  must be adjacent to <span style="font-style:italic">S</span> since <span style="font-style:italic">S</span> <span style="font-style:italic">W</span> and <span style="font-style:italic">S</span> <span style="font-style:italic">E</span> are part of <span style="color:red"><span style="font-style:italic">C</span></span> by Invariant <a href="#i%3Auni%3ASWandSE">??</a>, <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span>  has no chords by Invariant <a href="#i%3Auni%3AnoChords">??</a> and <span style="color:red"><span style="font-style:italic">C</span></span> does not contain any interior vertices.
+All sweepcycle interior edges are adjacent to <span style="font-style:italic">S</span>, since otherwise we would have a chord in <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span>  (violating Invariant <a href="#i%3Auni%3AnoChords">??</a>).</p><p>We color all interior edges of <span style="color:red"><span style="font-style:italic">C</span></span> red and orient them towards <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span>  and the edges in <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">S</span>  are colored blue and oriented towards <span style="font-style:italic">E</span>. The termination step can be seen in Figure <a href="#fig%3Asweep%3Aterminate">??</a>. This last move completes the interior vertex condition for vertices in <span style="color:red"><span style="font-style:italic">C</span></span> ∖ <span style="font-style:italic">W</span>, <span style="font-style:italic">S</span>, <span style="font-style:italic">E</span>   and also correctly completes the exterior vertex condition.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+[b]0.45 @percent
+<img src="thesis032.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 36: Before.</td></tr>
+</table></div>
+
+ 
+[b]0.45 @percent
+<img src="thesis033.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 37: After.</td></tr>
+</table></div>
+
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 38: The termination step.</td></tr>
+</table></div>
+<a id="fig:sweep:terminate"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><div class="theorem"><span style="font-weight:bold">Lemma 19</span>  <em>
+</em><a id="lm:sweep:REL"></a><em>
+The resulting structure is a regular edge labeling
+</em></div><p><span style="font-weight:bold">Proof.</span>
+After running the whole algorithm the interior vertex condition holds for all vertices in the graph by Invariant <a href="#i%3Auni%3AintVertCond">??</a>. Furthermore, the poles are also colored correctly due to Invariant <a href="#i%3Auni%3ASWandSE">??</a>.
+</p><p><br>
+</p>
+<!--TOC subsubsection id="sec15" A useful property of this regular edge labelling-->
+<h4 id="sec15" class="subsubsection">4.2.5  A useful property of this regular edge labelling</h4><!--SEC END --><p>
+There still is a useful property of this regular edge labeling left to discuss (Lemma <a href="#lm%3Asweep%3ANoTwoSplitsAboveEachOther">??</a>). Before we can state this property, we first need to introduce fans.</p><p><span style="font-weight:bold">Fans.</span>
+We want to better describe the interior of blue (or red) faces. Every interior edge of such face goes from one boundary path to the other (otherwise its start or end vertex would violate the interior vertex condition or create a face with a boundary path of length one violating Lemma <a href="#lm%3Arel%3AnoBpOfLength1">??</a>). We will describe the edges from the split to the merge vertex of <span style="font-style:italic">F</span>.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis034.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 39: An example face with fans.</td></tr>
+</table></div>
+<a id="fig:uni:fans"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis035.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 40: A number of fan-related terms.</td></tr>
+</table></div>
+<a id="fig:rect:fanTerms"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>Let <span style="font-style:italic">u</span><sub>0</sub> , <span style="font-style:italic">u</span><sub>1</sub>, … <span style="font-style:italic">u</span><sub><span style="font-style:italic">n</span></sub> be the vertices of the top boundary path of <span style="font-style:italic">F</span> and <span style="font-style:italic">v</span><sub>0</sub>, <span style="font-style:italic">v</span><sub>1</sub>, …, <span style="font-style:italic">v</span><sub><span style="font-style:italic">m</span></sub> the vertices of the bottom boundary path.
+That is <span style="font-style:italic">u</span><sub>0</sub>=<span style="font-style:italic">v</span><sub>0</sub> is the split vertex and <span style="font-style:italic">u</span><sub><span style="font-style:italic">n</span></sub> = <span style="font-style:italic">v</span><sub><span style="font-style:italic">m</span></sub> is the merge vertex.
+Since our graph is a triangulation, <span style="font-style:italic">u</span><sub>1</sub><span style="font-style:italic">v</span><sub>1</sub> must be an edge.
+For the second edge in the face we have two options, either <span style="font-style:italic">u</span><sub>1</sub><span style="font-style:italic">v</span><sub>2</sub> or <span style="font-style:italic">u</span><sub>2</sub><span style="font-style:italic">v</span><sub>1</sub>, otherwise this edge and the previous one would not form a triangle.
+This argument holds for every subsequent edge, we can either increase the index of the top boundary path or the index of the bottom boundary path.
+Hence, this face is, for the readers that know this term, a <em>triangle strip</em>.</p><p>We call a maximal sequence of at least two edges increasing the index on the top boundary path (and thus keeping the index on the upper path fixed) a <em>bottomfan</em> or simply <em>B-fan</em> and a maximal sequence of at least two edges increasing the index on the bottom boundary path is called a <em>topfan</em> or just <em>T-fan</em>.
+The <em>size</em> of such a fan is the number of edges contained in the sequence. By the definition of a fan it has size of at least 2.
+We use <em>fans</em> to refer to both these <em>types</em> of fans (i.e. T- and B-fans).
+We call a fan of size 3 or larger a <em>large fan</em> and a fan of size 2 a <em>small fan</em>.</p><p>In a face we alternately encounter B- and T-fans. If we would have two adjacent fans of the same type, we would just have a single larger fan of that type.
+In Figure <a href="#fig%3Auni%3Afans">??</a> we see a blue face consisting of subsequently a B-fan of size 3, a T-fan of size 2, a B-fan of size 2, a T-fan of size 6, a B-fan of size 3 and a T-fan of size 3.</p><p>We introduce some more terminology for fans: <em>outer edges</em>, <em>fan handles</em> and the <em>rim</em> as can be seen in Figure <a href="#fig%3Arect%3AfanTerms">??</a>. The <em>fan handle</em> <span style="font-style:italic">v</span> is the vertex shared by all edges in the fan. Let <span style="font-style:italic">H</span> be the induced subgraph of vertices incident to the edges in the fan. <span style="font-style:italic">H</span> contains no edges not belonging to <span style="font-style:italic">F</span> since these would lead to separating 3-cycles. The <em>rim</em> is the path given by <span style="font-style:italic">F</span>∖ <span style="font-style:italic">v</span>  .
+Q is this definition of Rim more clear or still unclear?
+The <em>outer rim</em> are the two extreme edges of this path and the <em>outer edges</em> are the edges between the fan handles and the extreme vertices of the <em>rim</em>.</p><p>A similar discussion can be given for red faces. However then we have <em>right fans</em> and <em>left fans</em> instead of bottom and top fans</p><p><span style="font-weight:bold">The property.</span></p><p>r5cm
+<img src="thesis036.png">
+The bottom path of this splitvertex is given in bold.
+<a id="fig:sweep:bottomPath"></a>
+</p><p>Before finally discussing the property, we will introduce two more definitions.
+A <em>splitvertex</em> is a vertex with more than one outgoing blue edge.
+Given a splitvertex <span style="font-style:italic">v</span> we will by <em>bottom</em> path mean the path that comes in trough the first edge in the interval of incoming blue edges in the rotation at <span style="font-style:italic">v</span> and leaves through the last edge in the interval of outgoing blue edge in the rotation at <span style="font-style:italic">v</span>.
+See Figure <a href="#fig%3Asweep%3AbottomPath">??</a>.</p><div class="theorem"><span style="font-weight:bold">Lemma 20</span>  <em>
+</em><a id="lm:sweep:NoTwoSplitsAboveEachOther"></a><em>
+Let </em><span style="font-style:italic">v</span><em> be any splitvertex. Then the subsequent vertex on the bottom path </em><span style="font-style:italic">w</span><em> can not be the handle of a large topfan.
+</em></div><p><span style="font-weight:bold">Proof.</span>
+There are two possible causes of <span style="font-style:italic">v</span> being a splitvertex, <span style="font-style:italic">v</span> is either adjacent to <span style="font-style:italic">S</span> or <span style="font-style:italic">v</span> is a splitvertex due to a chord.</p><p>If <span style="font-style:italic">v</span> is a splitvertex because it is adjacent to <span style="font-style:italic">S</span> then since <span style="font-style:italic">w</span> is on the bottom path it also has to be adjacent to <span style="font-style:italic">S</span> by the definition of the bottom path.
+Hence, <span style="font-style:italic">w</span> is not the handle of a large topfan.</p><p>If <span style="font-style:italic">v</span> is a splitvertex due to a chord <span style="font-style:italic">v</span> <span style="font-style:italic">a</span> <span style="font-style:italic">b</span> <span style="font-style:italic">x</span> we can continue the bottom path past <span style="font-style:italic">w</span> as a bottom path that will eventually go to <span style="font-style:italic">x</span> since every chord is evaded by a single path from <span style="font-style:italic">v</span><sub><span style="font-style:italic">k</span></sub> to <span style="font-style:italic">v</span><sub>ℓ</sub> in the algorithm.
+We will denote this extended bottom path by <span style="color:red"><span style="font-style:italic">P</span></span>.
+The situation is depicted in Figure <a href="#fig%3Asweep%3AbotomPathChord">??</a>.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis037.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 41: The situation in the proof of Lemma <a href="#lm%3Asweep%3ANoTwoSplitsAboveEachOther">??</a></td></tr>
+</table></div>
+<a id="fig:sweep:botomPathChord"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>The interior of <span style="font-style:italic">vabx</span> ⊕ ↼<span style="color:red"><span style="font-style:italic">P</span></span> has no vertices. Suppose there would be such a vertex . Then, since <span style="color:red"><span style="font-style:italic">P</span></span> is a bottom path the blue path going trough this vertex has to start at <span style="font-style:italic">a</span> and end at <span style="font-style:italic">b</span>. But this gives a blue face with only one edge on its bottom boundary path violating Lemma <a href="#lm%3Arel%3AnoBpOfLength1">??</a>. Since our graph is a regular edge labeling, <span style="font-style:italic">vabx</span> ⊕ ↼<span style="color:red"><span style="font-style:italic">P</span></span> has no interior vertices.</p><p>This also implies all interior edges are red (by the definition of bottom path) and thus that <span style="font-style:italic">ab</span> is blue otherwise we would get a monochromatic triangle.</p><p>Now <span style="font-style:italic">w</span> can not be connected to any vertex in <span style="color:red"><span style="font-style:italic">P</span></span> since that would again give a face with a boundary path of length 1 (Lemma <a href="#lm%3Arel%3AnoBpOfLength1">??</a>).
+So <span style="font-style:italic">w</span> can only be connected to <span style="font-style:italic">a</span> and <span style="font-style:italic">b</span> and is thus a topfan of size at most 2.
+(If it is a topfan at all, since we do not consider topfans of size 1 as topfans.)
+</p><p><br>
+
+</p>
+<!--TOC subsection id="sec16" Flipping Blue <span style="font-weight:bold"><span style="font-style:italic">Z</span></span>’s-->
+<h3 id="sec16" class="subsection">4.3  Flipping Blue <span style="font-weight:bold"><span style="font-style:italic">Z</span></span>’s</h3><!--SEC END --><p>
+
+<a id="ss:flipBlueZ"></a></p><p>The regular edge labeling provided by the sweepcycle algorithm of Section <a href="#ss%3Asweep">??</a> is often vertically one-sided but I have not succeeded in proving that this is always the case.
+We would prefer to get a vertically one-sided regular edge labeling since if we then recolor edges to subdivide large blue faces it is harder to accidentally create many-sided vertical segments.
+In this section we modify the current regular edge labeling to make it vertically one-sided while maintaining the property of Lemma <a href="#lm%3Asweep%3ANoTwoSplitsAboveEachOther">??</a>.</p><p>A <em>blue </em><span style="font-style:italic">Z</span> is a path of three blue edges all in the same red face. A <span style="font-style:italic">Z</span> has a <em>middle</em> edge, this is the second edge in this path.
+If the current regular edge labeling is not one-sided there must be a blue <span style="font-style:italic">Z</span> as is shown in Lemma <a href="#lm%3Azflip%3AblueZNorVertOneSided">??</a>.
+</p><div class="theorem"><span style="font-weight:bold">Lemma 21</span>  <em>
+</em><a id="lm:zflip:blueZNorVertOneSided"></a><em>
+A regular edge labeling is not one sided if and only if it contains a blue </em><span style="font-style:italic">Z</span><em>
+</em></div><p><span style="font-weight:bold">Proof.</span>
+Consider a regular edge labeling that is not one-sided, then it contains a red face of which both boundary paths are of length at least 3.
+However, since the interior faces of <span style="font-style:italic">G</span> are triangles there must then be a blue <span style="font-style:italic">Z</span> in this face.</p><p>If a face contains a blue <span style="font-style:italic">Z</span>, it can not be one-sided. Since path of length 3 inside a red face must have at least 2 vertices on both boundary paths.
+</p><p><br>
+</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis038.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 42: The two possible blue <span style="font-style:italic">Z</span>’s.</td></tr>
+</table></div>
+<a id="fig:zflip:blueZ"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>As long as the regular edge labeling is not vertically one-sided we find such a blue <span style="font-style:italic">Z</span> and recolor its middle edge as in Figure <a href="#fig%3Azflip%3Aflip">??</a>. We call this a <em>flip</em> and we will say that this edge is <em>flipped</em>.
+Note that both flips transfer a valid regular edge labeling to another valid regular edge labeling. If the interior vertex condition was fulfilled in Figure <a href="#fig%3Azflip%3AblueZ">??</a> then it is also fulfilled in Figure <a href="#fig%3Azflip%3Aflip">??</a>.</p><p>We repeat these flips until the regular edge labeling is vertically one-sided.
+Since every flip reduces the number of blue edges by one, this is a finite procedure.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis039.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 43: The flip.</td></tr>
+</table></div>
+<a id="fig:zflip:flip"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><div class="theorem"><span style="font-weight:bold">Lemma 22</span>  <em>
+</em><a id="lm:sweep:vertOnsided"></a><em>
+The result is a vertically one-sided rectangular edge labeling
+</em></div><p><span style="font-weight:bold">Proof.</span>
+We still have a regular edge labeling since the flips maintain a regular edge labeling.
+By construction, we flip all blue <span style="font-style:italic">Z</span>’s. If we do not have anymore <span style="font-style:italic">Z</span>’s then the remaining regular edge labeling is vertically one-sided by Lemma <a href="#lm%3Azflip%3AblueZNorVertOneSided">??</a>.
+</p><p><br>
+</p><div class="theorem"><span style="font-weight:bold">Lemma 23</span>  <em>
+</em><a id="lm:zflip:NoTwoSplitsAboveEachOtherVertOnesided"></a><em>
+Let </em><span style="font-style:italic">v</span><em> be any splitvertex. Then the subsequent vertex on the bottom path </em><span style="font-style:italic">w</span><em> can not be the handle of a large topfan.
+</em></div><p><span style="font-weight:bold">Proof.</span>
+Note that this is the same statement as in Lemma <a href="#lm%3Asweep%3ANoTwoSplitsAboveEachOther">??</a>. We will show that the operation of flipping <span style="font-style:italic">Z</span>’s does not compromise the validity of this statement.</p><p>Note that the flips can only reduce the number of split vertices.
+Hence it suffices, to show that the statement still holds for all previously existing split vertices.</p><p>For a split vertex <span style="font-style:italic">v</span> adjacent to <span style="font-style:italic">S</span> we can note that the edge <span style="font-style:italic">vw</span> will not be flipped because it can not be a middle edge.
+Hence, <span style="font-style:italic">w</span> is still on the bottom path and still not the handle of a big topfan.</p><p>If <span style="font-style:italic">v</span> is a split vertex due to a chord, let us note the following.
+The edges of <span style="color:red"><span style="font-style:italic">P</span></span> and <span style="font-style:italic">ab</span> in Figure <a href="#fig%3Asweep%3AbotomPathChord">??</a> can not have been flipped since then we would find a monochromatic red triangle while a flip leads to another valid regular edge labeling.
+Hence, <span style="font-style:italic">w</span> is still on the bottom path trough <span style="font-style:italic">v</span> and still can not be the handle of a large topfan.
+</p><p><br>
+
+</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+[b]0.8 @percent
+<img src="thesis040.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 44: The regular topfan flip.</td></tr>
+</table></div>
+<a id="fig:fanflip:regular"></a>
+
+ 
+[b]0.45 @percent
+<img src="thesis041.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 45: Topfan flip above a merge.</td></tr>
+</table></div>
+<a id="fig:fanflip:merge"></a>
+
+ 
+[b]0.45 @percent
+<img src="thesis042.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 46: Topfan flip next to merge. Note the additional red edge.</td></tr>
+</table></div>
+<a id="fig:fanflip:mergeLastVertex"></a>
+
+[b]0.45 @percent
+<img src="thesis043.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 47: Before a split we stop.</td></tr>
+</table></div>
+<a id="fig:fanflip:split"></a>
+
+ 
+[b]0.45 @percent
+<img src="thesis044.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 48: If the split is on the first vertex we do not flip at all.</td></tr>
+</table></div>
+<a id="fig:fanflip:splitFirstVertex"></a>
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 49: Topfan Flips.</td></tr>
+</table></div><p>
+<a id="fig:fanflip:fanflips"></a>
+</p><div class="center"><hr style="width:80%;height:2"></div></div></blockquote>
+<!--TOC subsection id="sec17" Topfan flips-->
+<h3 id="sec17" class="subsection">4.4  Topfan flips</h3><!--SEC END --><p>
+
+<a id="ss:fanflip"></a></p><p>In Section <a href="#ss%3AflipBlueZ">??</a>, we obtained a vertically one-sided regular edge labeling (Lemma <a href="#lm%3Asweep%3AvertOnsided">??</a>), moreover, this regular edge labeling never has a split next to a topfan handle along a bottom path (Lemma <a href="#lm%3Azflip%3ANoTwoSplitsAboveEachOtherVertOnesided">??</a>).
+Using local recoloring (<em>flips</em>) on the topfans we will maintain a one-sided regular edge labeling (Lemma <a href="#lm%3Atopfan%3AoneSidedREL">??</a>) and make sure that large topfans only occur in very specific situations (Lemma <a href="#lm%3Atopfan%3AremainingTopfans">??</a>). It will turn out that we can deal with these specific situations in the final step of the algorithm described in Section <a href="#ss%3Asubdiv">??</a>.
+Our flips differ depending on whether we encounter a split and or merge in the bottom boundary path.
+Refer to Figure <a href="#fig%3Afanflip%3Afanflips">??</a> for a first glance at the different kinds of topfan flips.</p><p><span style="font-weight:bold">In what order do we flip topfans.</span>
+We consider all faces in reverse order from last created face to first created face. Since a topfan flip only affects the current face and faces below it we never have to flip in a face that is affected by the results of a topfan flip.
+We do not flip topfans whose fanhandle is adjacent to the merge of the face. </p><p><span style="font-weight:bold">How to flip a topfan.</span>
+A topfan is above a number of edges of the bottom boundary path of the blue face containing the topfan. These edges are the rim of the fan. We will call a vertex <span style="font-style:italic">S</span><em>-adjacent</em> if it adjacent to <span style="font-style:italic">S</span>.</p><p>We flip the edges of the topfan along the rim starting at the first vertex and ending at the vertex <span style="font-weight:bold">before</span> the first splitvertex or <span style="font-style:italic">S</span>-adjacent vertex or the vertex <span style="font-weight:bold">before</span> the last vertex. This can imply that we do not flip any edges (in the case that the first vertex is a split vertex or <span style="font-style:italic">S</span>-adjacent ).</p><p>We will use the notation introduced in figure <a href="#fig%3Afanflip%3Aregular">??</a>.
+For the first vertex <span style="font-style:italic">v</span><sub>1</sub> we recolor the adjacent outer edge of the topfan. For subsequent vertices <span style="font-style:italic">v</span><sub><span style="font-style:italic">i</span></sub> we recolor the rim edge between this vertex and the previous vertex <span style="font-style:italic">v</span><sub><span style="font-style:italic">i</span>−1</sub> red and we recolor the both edges directly adjacent to this edge in the rotation at <span style="font-style:italic">v</span><sub><span style="font-style:italic">i</span></sub> blue (if they were not already blue).
+If we stop flipping before a merge vertex <span style="font-style:italic">v</span><sub><span style="font-style:italic">i</span>+1</sub> we flip an additional edge <span style="font-style:italic">v</span><sub><span style="font-style:italic">i</span></sub> <span style="font-style:italic">v</span><sub><span style="font-style:italic">i</span>+1</sub> along the rim, in order to prevent a blue <span style="font-style:italic">Z</span> from forming.</p><p><span style="font-weight:bold">Examples.</span>
+Let us show a few examples of this procedure to improve clarity.
+If the rim has no merges or splits we execute the topfan flip depicted in Figure <a href="#fig%3Afanflip%3Aregular">??</a>.
+We color all but the rightmost fan edge blue, color all but the rightmost rim edge red and color the left outer edges of all topfans below this topfan in the face below the current face blue.
+</p><p>If the rim consists of only merges we easily adept a topfan flip to this situation. We simply do not flip the edge merging in as depicted in Figure <a href="#fig%3Afanflip%3Amerge">??</a>.</p><p>A special case is given by a merge on the last vertex on the bottom edges of the topfan. In that case we flip all rim edges (even the last one) to prevent a blue <span style="font-style:italic">Z</span> from forming. See figure <a href="#fig%3Afanflip%3AmergeLastVertex">??</a>.</p><p>Splits are more difficult to handle. We are unfortunately unable to keep flipping once we hit a split hence we stop before we get that far. See Figure <a href="#fig%3Afanflip%3Asplit">??</a>. It this happens on the first vertex we do not flip at all, see Figure <a href="#fig%3Afanflip%3AsplitFirstVertex">??</a>.</p><p><span style="font-weight:bold">The result.</span>
+Before the topfanflips we had a vertically one-sided regular edge labeling. Afterwards we still have a vertically one-sided regular edge labeling, as we will prove in Lemma <a href="#lm%3Atopfan%3AoneSidedREL">??</a>. Moreover, we have no large top-fans except for some controlled cases (Lemma <a href="#lm%3Atopfan%3AremainingTopfans">??</a>).</p><div class="theorem"><span style="font-weight:bold">Lemma 24</span>  <em>
+</em><a id="lm:topfan:oneSidedREL"></a><em>
+The regular edge labeling is still vertically one-sided after a topfan flip
+</em></div><p><span style="font-weight:bold">Proof.</span>
+We take another look at Figure <a href="#fig%3Afanflip%3Afanflips">??</a>. Note that due to Lemma <a href="#lm%3Azflip%3AblueZNorVertOneSided">??</a> a regular edge labeling is vertically one-sided as long as there is no blue <span style="font-style:italic">Z</span>. Since the graph was one-sided we can assume that we had no blue <span style="font-style:italic">Z</span>’s.
+Let us first consider the regular case. Since the edge <span style="font-style:italic">v</span><sub><span style="font-style:italic">n</span></sub> <span style="font-style:italic">w</span><sub><span style="font-style:italic">m</span></sub> is red (otherwise we would have a merge) this change does not produce any blue <span style="font-style:italic">Z</span>’s.</p><p>The merge case, due to the clever recoloring, also does not lead to a blue <span style="font-style:italic">Z</span>.
+It is clear the split cases do not produce a blue <span style="font-style:italic">Z</span> either.
+Since any <span style="font-style:italic">S</span>-adjacent fan is treated like a split fan we also do not create <span style="font-style:italic">Z</span>’s in these cases.
+</p><p><br>
+</p><div class="theorem"><span style="font-weight:bold">Lemma 25</span>  <em>
+</em><a id="lm:topfan:remainingTopfans"></a><em>
+In the remaining faces every large topfan is in one of the following two situations.
+</em><ol class="enumerate" type=1><li class="li-enumerate"><em>
+</em><em>This topfan is at the start of the face
+</em></li><li class="li-enumerate"><em>The left outer rim vertex is a splitvertex.
+</em></li></ol><em>
+</em></div><p><span style="font-weight:bold">Proof.</span>
+All topfans are manipulated in such a way that they start a new face, or are colored blue entirely, unless the left outer rim vertex is a split. Since in that case we do not flip at all, but then the left outer rim vertex is indeed a split.
+</p><p><br>
+
+</p>
+<!--TOC subsection id="sec18" Blue face subdivision-->
+<h3 id="sec18" class="subsection">4.5  Blue face subdivision</h3><!--SEC END --><p>
+
+<a id="ss:subdiv"></a>
+At this point we have a vertically one-sided graph (due to Lemma <a href="#lm%3Atopfan%3AoneSidedREL">??</a>) without large topfans except for the locations provided in Lemma <a href="#lm%3Atopfan%3AremainingTopfans">??</a>.
+In this section we are going to recolor edges in blue faces to make all of them <span style="font-style:italic">d</span>−1-sided. While at the same time not recoloring so many edges above each other that we create a large red face.</p><p>We would like to start at the bottommost face <span style="font-style:italic">F</span>. We can unfortunately no longer use the creation order since the topfan flips may have changed which faces lie above which other faces, the topfan flips may even have introduced new faces. Hence we will have to show that there always is a face <span style="font-style:italic">F</span> that lies bellow all untreated faces. That is, the whole top boundary path of <span style="font-style:italic">F</span> borders faces that are not treated while no part of the bottom boundary path borders such faces.</p><div class="theorem"><span style="font-weight:bold">Lemma 26</span>  <em>
+</em><a id="lm:"></a><em>
+There is a face </em><span style="font-style:italic">F</span><em> such that the whole top boundary path of </em><span style="font-style:italic">F</span><em> borders faces that are not treated. While the bottom boundary path does not border such faces
+</em></div><p><span style="font-weight:bold">Proof.</span>
+Let us first remove all treated faces from Ḡ by removing their blue edges and connecting their red edges with <span style="font-style:italic">S</span>.</p><p>Unless there are no faces remaining, and in that case we are finished, there is at least one <em>splitvertex</em> (vertex with at least two outgoing blue edges) and one <em>mergevertex</em> (vertex with at least two blue incoming edge) along the directed path formed by the vertices adjacent to <span style="font-style:italic">S</span>.
+There can be no merges before the first split, nor splits after the last merge. Hence somewhere along the path there is a split followed by a merge. This face has a bottom boundary path that is entirely adjacent to <span style="font-style:italic">S</span> after removing treated faces. The top boundary path borders untreated faces.
+</p><p><br>
+</p><p>We will recolor some of <span style="font-style:italic">F</span>’s edges if it is too large.
+We then mark the edges on the top boundary path of this face above the recolored edges as <em>loaded</em>. This means that we will try to not flip above these edges in future iterations of the algorithm.
+Then we continue with the next face in the creation order.</p><p><span style="font-weight:bold">Loads.</span>
+As is mentioned above we will mark some edges with so-called <em>loads</em>, we will in the rest of the section refer to these edges as <em>loaded</em>.
+The exact use of these loaded edges will become clear in the rest of this section.</p><p>It is important to note that if we load any blue edge we regard any other blue edge sharing at least one vertex with this edge to be loaded as well. The occurrence of this phenomenon will be called <em>putting trough a load</em>. An example can be seen in Figure <a href="#fig%3Asubdiv%3AputTrougLoad">??</a> where we flipped the thick edge. Hence we mark <span style="font-style:italic">uv</span> as loaded and because of putting trough load <span style="font-style:italic">uw</span> also becomes loaded.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis045.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 50: Putting trough load.</td></tr>
+</table></div>
+<a id="fig:subdiv:putTrougLoad"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p><span style="font-weight:bold">Step requirements.</span>
+We flip edges in each face, taking into account loads on the bottom boundary path. Such that</p><ol class="enumerate" type=1><li class="li-enumerate">
+We never load the two edges next to a split or merge vertex on the top boundary path.
+</li><li class="li-enumerate">We never load two adjacent edges on the top boundary path.
+</li></ol><p>If we flip edges in line with the step requirements for every face then the following lemma holds for the bottom boundary path for yet untreated faces.</p><div class="theorem"><span style="font-weight:bold">Lemma 27</span>  <em>
+</em><a id="lm:"></a><em>
+On the bottom boundary path of a face we never find two subsequent loaded edges. Even when we put trough loads on splits and merges.
+</em></div><p><span style="font-weight:bold">Proof.</span>
+A single face would never load two subsequent edges. Hence, the only way to get two subsequent loaded edges is using different faces and thus splits and merges.
+However due to never flipping the two edges next to a split or merge we neither get subsequent loaded edges in such a case.
+</p><p><br>
+</p>
+<!--TOC subsubsection id="sec19" Faces without large topfans in the midlle-->
+<h4 id="sec19" class="subsubsection">4.5.1  Faces without large topfans in the midlle</h4><!--SEC END --><div class="theorem"><span style="font-weight:bold">Lemma 28</span>  <em>
+</em><a id="lm:subdiv:withoutTopfan"></a><em>
+We can subdivide any blue face without large topfans into </em><span style="font-style:italic">d</span>−1<em>-sided chunks while obeying the load rules above.
+</em></div><p><span style="font-weight:bold">Proof.</span>
+A worst case example is given in Figure <a href="#fig%3Asubdiv%3AworstCaseWithTopFan">??</a>.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis046.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 51: A worst case blue face. We do not flip any edge in this face.</td></tr>
+</table></div>
+<a id="fig:subdiv:worstCaseWithTopFan"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>Note that we can flip to the right above each edge in the bottom boundary path except if we would end up next to the merge.</p><p>We will look at the vertex on the bottom fence that is incident to the freshly flipped edge, or if we have not flipped an edge yet the vertex next to the split (and we denote it by <span style="font-style:italic">v</span>). The following are then the rules for flipping above the edges following <span style="font-style:italic">v</span>.
+</p><ol class="enumerate" type=1><li class="li-enumerate">
+We do not flip above the edges of the first topfan.
+</li><li class="li-enumerate">We flip above the second edge if it is unloaded.
+</li><li class="li-enumerate">Otherwise, we flip above the third edge.
+</li><li class="li-enumerate">We never flip next to the merge.
+</li></ol><p>When flipping above an edge we always flip the right edge above that edge. Unless we are on the edge next to the merge. Then we flip the left edge above the edge.</p><p>The first edge give us the required separation of loaded edges along the top boundary path. The other items make sure we obey the other rules.</p><p>The worst case is given by a large topfan at the start and a combination of the last two items. We would in that case want to flip above the second-to-last edge of the bottom boundary path. But we do not because the next edge is incident to the merge vertex. This gives at worst a topfan and two more edges along the bottom boundary path and hence a  <span style="font-style:italic">d</span> − 3 +2 = <span style="font-style:italic">d</span> −1-sided face.
+</p><p><br>
+</p><p>See Figure <a href="#fig%3Asubdiv%3AsampleExecution">??</a> for a sample execution of the algorithm described in Lemma <a href="#lm%3Asubdiv%3AwithoutTopfan">??</a>.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis047.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 52: Sample execution of the algorithm.</td></tr>
+</table></div>
+<a id="fig:subdiv:sampleExecution"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote>
+<!--TOC subsubsection id="sec20" Face encountering a larger topfan-->
+<h4 id="sec20" class="subsubsection">4.5.2  Face encountering a larger topfan</h4><!--SEC END --><p>
+If we have a large topfan in the middle of the face then above the left outer edge of this topfan we can not, as we will see, have another topfan that failed to flip its left outer edges by Lemma <a href="#lm%3Asweep%3ANoTwoSplitsAboveEachOther">??</a>.
+This means we can use the following rule: we flip the first edge of a topfan even above a loaded edge.
+We call such an edge a <em>forced</em> flip.</p><p>We can not have two such forced flips above each other because that would give a situation as in Figure <a href="#fig%3Asubdiv%3AforcedFlips">??</a>.
+However that would mean the fan with fanhandle <span style="font-style:italic">u</span> must be the handle of a topfan that failed its flip and hence <span style="font-style:italic">v</span> must have been a split vertex. But then by lemma <a href="#lm%3Azflip%3ANoTwoSplitsAboveEachOtherVertOnesided">??</a> <span style="font-style:italic">w</span> can not be the handle of a large topfan.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="thesis048.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 53: Two forced flips above each other.</td></tr>
+</table></div>
+<a id="fig:subdiv:forcedFlips"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>Since we do not allow a flip above a load (whether it was forced or not) this means that the worst thing that can happen is an ordinary flip followed by a <em>forced</em> flip. These two flips can not be followed by any other flip. Hence, the worst case only makes chains of at most 2 blue <span style="font-style:italic">Z</span>’s, that is, a blue path of length 5.</p>
+<!--TOC subsubsection id="sec21" Conclusion-->
+<h4 id="sec21" class="subsubsection">4.5.3  Conclusion</h4><!--SEC END --><p>
+This concludes the last step in the algorithm.
+Now all the steps in the algorithm are done all that is left is to show that we indeed generated a <span style="font-style:italic">d</span>−1-sided regular edge labeling.
+</p><div class="theorem"><span style="font-weight:bold">Lemma 29</span>  <em>
+</em><a id="lm:subdiv:2chaindedZ"></a><em>
+Two chained </em><span style="font-style:italic">Z</span><em>’s give at worst a red </em><span style="font-style:italic">d</span>−1<em>-sided face
+</em></div><p><span style="font-weight:bold">Proof.</span>
+The two chained <span style="font-style:italic">Z</span>’s give a blue path <span style="color:red"><span style="font-style:italic">P</span></span> of length 5 inside a red face.</p><p>Before creating the <span style="font-style:italic">Z</span>’s in this section the regular edge labeling was vertically one-sided. That is, before recoloring the two edges in this section there were no paths of length 3 inside the face. This also implies that any <span style="font-style:italic">Z</span> we now create can have at most one blue fan on the top and one blue fan on the bottom, otherwise we would already have had a 3-path.</p><p>So for two <span style="font-style:italic">Z</span>’s we have at most three blue fans. Hence on one side we have at most one of these. Then the boundary path at this side of the face has at most <span style="font-style:italic">d</span>−3 + 1 +1 =<span style="font-style:italic">d</span>−1 vertices not counting the split and merge vertex of the red face.
+</p><p><br>
+</p><p>Then we can now proof Theorem <a href="#th%3Adsided">??</a>.</p><p><span style="font-weight:bold">Proof.</span>[of Theorem <a href="#th%3Adsided">??</a> ]
+By construction all blue faces are <span style="font-style:italic">d</span>−1-sided. We have chained at most two <span style="font-style:italic">Z</span>′<span style="font-style:italic">s</span> so all red face contain at most two blue <span style="font-style:italic">Z</span>. So red faces are <span style="font-style:italic">d</span>−1-sided by Lemma <a href="#lm%3Asubdiv%3A2chaindedZ">??</a>. Hence, we have a <span style="font-style:italic">d</span>−1-sided rectangular edge labeling of Ḡ corresponding to a <span style="font-style:italic">d</span>-sided rectangular dual of Ḡ
+</p><p><br>
+
+</p>
+<!--TOC section id="sec22"  Conclusions and future work -->
+<h2 id="sec22" class="section">5   Conclusions and future work </h2><!--SEC END --><p>In this thesis we proved the following two theorems</p><ol class="enumerate" type=1><li class="li-enumerate">
+There is a family of graphs <span style="font-style:italic">G</span><sub><span style="font-style:italic">k</span></sub> that for any <span style="font-style:italic">k</span> ∈ ℕ has members that are not <span style="font-style:italic">k</span>-sided (Theorem <a href="#fix%3Ath%3Afamily">??</a>).
+</li><li class="li-enumerate">Triangulations of the <span style="font-style:italic">k</span>-gon <span style="font-style:italic">G</span> that have a corner assignment without separating 4-cycles are <span style="font-style:italic">d</span>−1-sided, where <span style="font-style:italic">d</span> is the maximal degree of the vertices of <span style="font-style:italic">G</span>. (Theorem <a href="#th%3Adsided">??</a>)
+</li></ol><p>There are still many open questions in this research area. For example, one might hope show that all corner assignments without separating 4-cycles are actually 2-sided.
+There also might be an algorithm that gives <span style="font-style:italic">d</span>-sided layouts for graphs with a separating 4-cycle as this is not precluded by Theorem <a href="#fix%3Ath%3Afamily">??</a>.</p><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<hr style="height:2"><blockquote class="quote"><em>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</em><a href="http://hevea.inria.fr/index.html"><em>H</em><em><span style="font-size:small"><sup>E</sup></span></em><em>V</em><em><span style="font-size:small"><sup>E</sup></span></em><em>A</em></a><em>.</em></blockquote></body>
+</html>

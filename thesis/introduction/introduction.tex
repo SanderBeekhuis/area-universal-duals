@@ -43,13 +43,13 @@
   Two vertices are \emph{adjacent} when they are connected by an edge. Two rectangles are \emph{adjacent} when their boundaries overlap. A \emph{rectangular dual} of $G$ is a rectangular layout whose adjacencies are the same as those of $G$ for a bijection between vertices and rectangles.
 
 \mypar{Corner assignments}
-  If we want to determine which graphs do have a rectangular dual then we need to introduce the notion of a \emph{corner assignment}.
+  If we want to determine which graphs do have a rectangular dual, then we need to introduce the notion of a \emph{corner assignment}.
   A corner assignment $\ext G$ of $G$ is an augmentation of $G$ with $4$ vertices (which we call its \emph{poles}). Such that every interior face has degree $3$, the exterior face has degree $4$ and all poles are incident to the outer face
 
-  A corner assignment of $G$ only exists if $G$ is a triangulation of the $k$-gon for some $k$. Otherwise, there is no way of adding poles that makes all the interior faces of degree $3$. Because of this we only consider triangulations of the $k$-gon in this thesis. A corner assignment $\ext G$ of $G$ is an example of a triangulation of the $4$-gon. Each corner assignment fixes which rectangles are in the corners of the rectangular dual $\L$, which explains the terminology.
+  A corner assignment of $G$ only exists if $G$ is a triangulation of the $k$-gon for some $k$. Otherwise, there is no way of adding poles that makes all the interior faces of degree $3$. Because of this, we only consider triangulations of the $k$-gon in this thesis. A corner assignment $\ext G$ of $G$ is an example of a triangulation of the $4$-gon. Each corner assignment fixes which rectangles are in the corners of the rectangular dual $\L$, which explains the terminology.
 
 
-\mypar{Existance and uniqueness}
+\mypar{Existence and uniqueness}
   Now we can state which graphs admit a rectangular dual. The following result was shown independently by Kozminski and Kinnen \cite{Kozminski1984} and Ungar \cite{Ungar1953}
 
   \begin{thrm}[Existence of a rectangular dual]
@@ -81,11 +81,6 @@
     \label{fig:intro:rinsma}
   \end{figure}
 
-
-
-
-
-
 \mypar{Results}
   Unfortunately $k$-sided layouts for $k>1$ are not area-universal but we suspect that for small $k$ they are more robust to changes in the areas of their rectangles. This thesis has two results on $k$-sidedness.
   %TODO \fxwarning{TODO Make this robust to changes notion more quative?  Explain why many sides are bad e.g. suing figure of many sided layout}
@@ -95,16 +90,16 @@
   \end{enumerate}
 
 
-  \mypar{Paths and Cycles}
-    In the rest of the thesis we will frequently need paths and cycles, hence we will definite them here.
+\mypar{Paths and Cycles}
+  In the rest of the thesis we will frequently need paths and cycles, hence we will definite them here.
 
-    A path $\P$ is a sequence of vertices such that every two consecutive vertices are connected by an edge. The first and last vertex of the path are its \emph{extreme} vertices while the rest are \emph{interior} vertices of this path. The \emph{length} of a path is the number of edges used to connect the vertices. That, is one less than the number of vertices. In this thesis all paths are \emph{simple}, that is, no vertex occurs twice in the path except possibly the extreme vertices.
+  A path $\P$ is a sequence of vertices such that every two consecutive vertices are connected by an edge. The first and last vertex of the path are its \emph{extreme} vertices while the rest are \emph{interior} vertices of this path. The \emph{length} of a path is the number of edges used to connect the vertices. That, is one less than the number of vertices. In this thesis all paths are \emph{simple}, that is, no vertex occurs twice in the path except possibly the extreme vertices.
 
-    A cycle is a path whose extreme vertices coincide. Because a cycle is a path the start and end vertex are the only vertices that occurs more than once. We call a cycle of length $k$  a \emph{$k$-cycle}. A \emph{triangle} is cycle of length $3$ (i.e. a $3$-cycle). By Jordan's curve theorem a cycle splits the plane into two parts, one bounded and one unbounded. We will call the bounded part the \emph{interior} of this cycle and the unbounded part the \emph{exterior} of this cycle.
-    Furthermore, the cycle of all vertices bordering the outer face is the \emph{outer cycle}.
-    We call a cycle \emph{separating} if there are vertices in both its interior and exterior.
-    An \emph{interior edge} of a cycle is then an edge contained in the interior of the cycle.
-    An \emph{interior path} is a path connecting two distinct vertices off the cycle and whose edges are interior edges.
+  A cycle is a path whose extreme vertices coincide. Because a cycle is a path the start and end vertex are the only vertices that occurs more than once. We call a cycle of length $k$  a \emph{$k$-cycle}. A \emph{triangle} is cycle of length $3$ (i.e. a $3$-cycle). By Jordan's curve theorem a cycle splits the plane into two parts, one bounded and one unbounded. We will call the bounded part the \emph{interior} of this cycle and the unbounded part the \emph{exterior} of this cycle.
+  Furthermore, the cycle of all vertices bordering the outer face is the \emph{outer cycle}.
+  We call a cycle \emph{separating} if there are vertices in both its interior and exterior.
+  An \emph{interior edge} of a cycle is then an edge contained in the interior of the cycle.
+  An \emph{interior path} is a path connecting two distinct vertices off the cycle and whose edges are interior edges.
 
 \mypar{Overview}
   In Section \ref{s:rel} we will introduce the notion of regular edge labellings which we will use in the rest of the thesis.

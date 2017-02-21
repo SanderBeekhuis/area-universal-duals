@@ -5,20 +5,20 @@
     \centering
     \begin{subfigure}[b]{0.8 \textwidth}
         \includegraphics[width = \textwidth]{topFanFlips/img/regular}
-        \caption{The regular topfanflip.}
+        \caption{The regular topfan flip.}
         \label{fig:fanflip:regular}
     \end{subfigure}
     ~
     \centering
     \begin{subfigure}[b]{0.45 \textwidth}
         \includegraphics[width = \textwidth]{topFanFlips/img/merge}
-        \caption{Topfanflip above a merge.}
+        \caption{Topfan flip above a merge.}
         \label{fig:fanflip:merge}
     \end{subfigure}
     ~
     \begin{subfigure}[b]{0.45 \textwidth}
         \includegraphics[width =\textwidth]{topFanFlips/img/mergeend}
-        \caption{Topfanflip next to merge. Note the additional red edge.}
+        \caption{Topfan flip next to merge. Note the additional red edge.}
         \label{fig:fanflip:mergeLastVertex}
     \end{subfigure}
     \centering
@@ -35,7 +35,7 @@
     \end{subfigure}
 
     \caption{Topfan Flips.}
-    \label{fig:fanflip:fanflips}tomobilisten dachten slim te zijn en gaven een verkeerd kenteken op. Zo konden ze met een twee
+    \label{fig:fanflip:fanflips}
 \end{figure}
 
 \subsection{Topfan flips}
@@ -56,7 +56,7 @@ Refer to Figure \ref{fig:fanflip:fanflips} for a first glance at the different k
 \mypar{How to flip a topfan}
   A topfan is above a number of edges of the bottom boundary path of the blue face containing the topfan. These edges are the rim of the fan. We will call a vertex \emph{$\pS$-adjacent} if it adjacent to $\pS$.
 
-  We flip the edges of the topfan along the rim starting at the first vertex and ending at the vertex \textbf{before} the first splitvertex or $\pS$-adjacent vertex or the vertex \textbf{before} the last vertex. This can imply that we do not flip any edges (in the case that the first vertex is a split vertex or $\pS$-adjecent).
+  We flip the edges of the topfan along the rim starting at the first vertex and ending at the vertex \textbf{before} the first splitvertex or $\pS$-adjacent vertex or the vertex \textbf{before} the last vertex. This can imply that we do not flip any edges (in the case that the first vertex is a split vertex or $\pS$-adjacent ).
 
   We will use the notation introduced in figure \ref{fig:fanflip:regular}.
   For the first vertex $v_1$ we recolor the adjacent outer edge of the topfan. For subsequent vertices $v_i$ we recolor the rim edge between this vertex and the previous vertex $v_{i-1}$ red and we recolor the both edges directly adjacent to this edge in the rotation at $v_i$ blue (if they were not already blue).
@@ -65,30 +65,30 @@ Refer to Figure \ref{fig:fanflip:fanflips} for a first glance at the different k
 
 \mypar{Examples}
   Let us show a few examples of this procedure to improve clarity.
-  If the rim has no merges or splits we execute the topfanflip depicted in Figure \ref{fig:fanflip:regular}.
+  If the rim has no merges or splits, we execute the topfan flip depicted in Figure \ref{fig:fanflip:regular}.
   We color all but the rightmost fan edge blue, color all but the rightmost rim edge red and color the left outer edges of all topfans below this topfan in the face below the current face blue.
   %\fxwarning{TODO neatly define what is the left outer edge of a topfan (i.e. what are top and bottom)}
 
-  If the rim consists of only merges we easily adept a topfanflip to this situation. We simply do not flip the edge merging in as depicted in Figure \ref{fig:fanflip:merge}.
+  If the rim consists of only merges, we easily adept a topfan flip to this situation. We simply do not flip the edge merging in as depicted in Figure \ref{fig:fanflip:merge}.
 
   A special case is given by a merge on the last vertex on the bottom edges of the topfan. In that case we flip all rim edges (even the last one) to prevent a blue $Z$ from forming. See figure \ref{fig:fanflip:mergeLastVertex}.
 
   Splits are more difficult to handle. We are unfortunately unable to keep flipping once we hit a split hence we stop before we get that far. See Figure \ref{fig:fanflip:split}. It this happens on the first vertex we do not flip at all, see Figure \ref{fig:fanflip:splitFirstVertex}.
 
 \mypar{The result}
-Before the topfanflips we had a vertically one-sided regular edge labeling. Afterwards we still have a vertically one-sided regular edge labeling, as we will prove in Lemma \ref{lm:topfan:oneSidedREL}. Moreover, we have no large top-fans except for some controlled cases (Lemma \ref{lm:topfan:remainingTopfans}).
+Before the topfanflips, we had a vertically one-sided regular edge labeling. Afterwards we still have a vertically one-sided regular edge labeling, as we will prove in Lemma \ref{lm:topfan:oneSidedREL}. Moreover, we have no large top-fans except for some controlled cases (Lemma \ref{lm:topfan:remainingTopfans}).
 
 \begin{lemma}
   \label{lm:topfan:oneSidedREL}
-  The regular edge labeling is still vertically one-sided after a topfanflip
+  The regular edge labeling is still vertically one-sided after a topfan flip
 \end{lemma}
 \begin{proof}
   We take another look at Figure \ref{fig:fanflip:fanflips}. Note that due to Lemma \ref{lm:zflip:blueZNorVertOneSided} a regular edge labeling is vertically one-sided as long as there is no blue $Z$.  Since the graph was one-sided we can assume that we had no blue $Z$'s.
-  Let us first consider the regular case. Since the edge  $v_n w_m$ is red (otherwise we would have a merge) this change does not produce any blue $Z$'s.
+  Let us first consider the regular case. Since the edge  $v_n w_m$ is red, (otherwise we would have a merge) this change does not produce any blue $Z$'s.
 
   The merge case, due to the clever recoloring, also does not lead to a blue $Z$.
   It is clear the split cases do not produce a blue $Z$ either.
-  Since any $\pS$-adjacent fan is treated like a split fan we also do not create $Z$'s in these cases.
+  Since any $\pS$-adjacent fan is treated like a split fan, we also do not create $Z$'s in these cases.
 \end{proof}
 
 

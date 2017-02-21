@@ -4,19 +4,24 @@
 \thispagestyle{plain}
 \label{ss:subdiv}
   At this point we have a vertically one-sided graph (due to Lemma \ref{lm:topfan:oneSidedREL}) without large topfans except for the locations provided in Lemma \ref{lm:topfan:remainingTopfans}.
-  In this section we are going to recolor edges in blue faces to make all of them $d-1$-sided. While at the same time not recoloring so many edges above each other that we create a large red face.
+  In this section we are going to recolor edges in blue faces to make all of them $d-1$-sided.
+  While at the same time not recoloring so many edges above each other that we create a large red face.
 
-  We would like to start at the bottommost face $F$. We can unfortunately no longer use the creation order since the topfan flips may have changed which faces lie above which other faces, the topfan flips may even have introduced new faces. Hence we will have to show that there always is a face $F$  that lies bellow all untreated faces. That is, the whole top boundary path of $F$ borders faces that are not treated while no part of the bottom boundary path borders such faces.
+  We would like to start at the bottom most face $F$. We can unfortunately no longer use the creation order since the topfan flips may have changed which faces lie above which other faces, the topfan flips may even have introduced new faces.
+  Hence, we will have to show that there always is a face $F$  that lies below all untreated faces. That is, the whole top boundary path of $F$ borders faces that are not treated while no part of the bottom boundary path borders such faces.
 
   \begin{lemma}
     \label{lm:}
-    There is a face $F$ such that the whole top boundary path of $F$ borders faces that are not treated. While the bottom boundary path does not border such faces
+    There is a face $F$ such that the whole top boundary path of $F$ borders faces that are not treated while the bottom boundary path does not border such faces.
   \end{lemma}
   \begin{proof}
     Let us first remove all treated faces from $\ext G$ by removing their blue edges and connecting their red edges with $S$.
 
     Unless there are no faces remaining, and in that case we are finished, there is at least one \emph{splitvertex} (vertex with at least two outgoing blue edges) and one \emph{mergevertex} (vertex with at least two blue incoming edge) along the directed path formed by the vertices adjacent to $\pS$.
-    There can be no merges before the first split, nor splits after the last merge.  Hence somewhere along the path there is a split followed by a merge. This face has a bottom boundary path that is entirely adjecent to $\pS$ after removing treated faces. The top boundary path borders untreated faces.
+    There can be no merges before the first split, nor splits after the last merge.
+    Hence, somewhere along the path there is a split followed by a merge.
+    This face has a bottom boundary path that is entirely adjacent to $\pS$ after removing treated faces.
+    The top boundary path borders untreated faces.
   \end{proof}
 
 
@@ -24,11 +29,14 @@
   We then mark the edges on the top boundary path of this face above the recolored edges as \emph{loaded}. This means that we will try to not flip above these edges in future iterations of the algorithm.
   Then we continue with the next face in the creation order.
 
-  \mypar{Loads}
+\mypar{Loads}
   As is mentioned above we will mark some edges with so-called \emph{loads}, we will in the rest of the section refer to these edges as \emph{loaded}.
   The exact use of these loaded edges will become clear in the rest of this section.
 
-  It is important to note that if we load any blue edge we regard any other blue edge sharing at least one vertex with this edge to be loaded as well. The occurrence of this phenomenon will be called \emph{putting trough a load}. An example can be seen in Figure \ref{fig:subdiv:putTrougLoad} where we flipped the thick edge. Hence we mark $uv$ as loaded and because of putting trough load $uw$ also becomes loaded.
+  It is important to note that if we load any blue edge we regard any other blue edge sharing at least one vertex with this edge to be loaded as well.
+  The occurrence of this phenomenon will be called \emph{putting trough a load}.
+  An example can be seen in Figure \ref{fig:subdiv:putTrougLoad} where we flipped the thick edge.
+  Hence, we mark $uv$ as loaded and because of putting trough load $uw$ also becomes loaded.
 
   \begin{figure}[h]
     \centering
@@ -58,7 +66,7 @@
   \end{proof}
 
 
-\subsubsection{Faces without large topfans in the midlle}
+\subsubsection{Faces without large topfans in the middle}
   \begin{lemma}
     \label{lm:subdiv:withoutTopfan}
     We can subdivide any blue face without large topfans into $d-1$-sided chunks while obeying the load rules above.
@@ -84,7 +92,7 @@
     \item We never flip next to the merge.
   \end{enumerate}
 
-  When flipping above an edge we always flip the right edge above that edge. Unless we are on the edge next to the merge. Then we flip the left edge above the edge.
+  When flipping above an edge, we always flip the right edge above that edge. Unless we are on the edge next to the merge, because then we flip the left edge above that edge.
 
   The first edge give us the required separation of loaded edges along the top boundary path. The other items make sure we obey the other rules.
 
@@ -106,7 +114,7 @@
   We call such an edge a \emph{forced} flip.
 
   We can not have two such forced flips above each other because that would give a situation as in Figure \ref{fig:subdiv:forcedFlips}.
-  However that would mean the fan with fanhandle $u$ must be the handle of a topfan that failed its flip and hence $v$ must have been a split vertex. But then by lemma \ref{lm:zflip:NoTwoSplitsAboveEachOtherVertOnesided} $w$ can not be the handle of a large topfan.
+  However, that would mean the fan with fanhandle $u$ must be the handle of a topfan that failed its flip and hence $v$ must have been a split vertex. But then by lemma \ref{lm:zflip:NoTwoSplitsAboveEachOtherVertOnesided} $w$ can not be the handle of a large topfan.
 
   \begin{figure}[t]
     \centering
@@ -129,12 +137,16 @@
     %\fxwarning{TODO calrify, what are blue fans?}
     The two chained $Z$'s give a blue path $\P$ of length $5$ inside a red face.
 
-    Before creating the $Z$'s in this section the regular edge labeling was vertically one-sided. That is, before recoloring the two edges in this section there were no paths of length $3$ inside the face. This also implies that any $Z$ we now create can have at most one blue fan on the top and one blue fan on the bottom, otherwise we would already have had a $3$-path.
+    Before creating the $Z$'s in this section, the regular edge labeling was vertically one-sided.
+    That is, before recoloring the two edges in this section there were no paths of length $3$ inside the face.
+    This also implies that any $Z$ we now create can have at most one blue fan on the top and one blue fan on the bottom, otherwise we would already have had a $3$-path.
 
-    So for two $Z$'s we have at most three blue fans. Hence on one side we have at most one of these. Then the boundary path at this side of the face has at most $d-3 + 1 +1 =d-1$ vertices not counting the split and merge vertex of the red face.
+    So for two $Z$'s we have at most three blue fans.
+    Hence, on one side we have at most one of these.
+    Then the boundary path at this side of the face has at most $d-3 + 1 +1 =d-1$ vertices not counting the split and merge vertex of the red face.
   \end{proof}
 
-    Then we can now proof Theorem \ref{th:dsided}.
+    Then we can now prove Theorem \ref{th:dsided}.
 
   \begin{proof}[of Theorem \ref{th:dsided} ]
     By construction all blue faces are $d-1$-sided. We have chained at most two $Z's$ so all red face contain at most two blue $Z$. So red faces are $d-1$-sided by Lemma \ref{lm:subdiv:2chaindedZ}. Hence, we have a $d-1$-sided rectangular edge labeling of $\ext G$ corresponding to a $d$-sided rectangular dual of $\ext G$
