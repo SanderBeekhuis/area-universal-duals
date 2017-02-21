@@ -43,7 +43,7 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
 
   Since $\cpath$ has some vertices incident to $\pS$ ($\pW , \pE$) and some that are not, we can consider maximal subpaths of $\cpath$ consisting of vertices adjacent to $\pS$.
   We denote by $v_i$ the last vertex of first maximal subpath of vertices adjacent to $\pS$ and by $v_j$ the first vertex of the second maximal subpath.
-  As candidate path $P$ we take the right neighbor path of $\cpath|_{v_i, v_j}$. This right neighbor path does indeed exist since all interior vertices of $\cpath|_{v_i, v_j}$ are interior vertices of $G$ and $\cpath$ has no cycles or separating 2-chords by Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords}.
+  As candidate path $P$ we take the right neighbor path of $\cpath|_{v_i, v_j}$. This right neighbor path does indeed exist since all internal vertices of $\cpath|_{v_i, v_j}$ are interior vertices of $G$ and $\cpath$ has no cycles or separating 2-chords by Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords}.
   This situation is depicted in Figure \ref{fig:sweep:noIrregularity}.
 
 \subsubsection{Evade chords and separating 2-chords}
@@ -55,7 +55,7 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
     \item Separating 2-chords
   \end{enumerate}
 
-  By \emph{irregularities}, we will mean these two classes of structures together and the \emph{middle} vertex of a $2$-chord is the only interior vertex of that $2$-chord.
+  By \emph{irregularities}, we will mean these two classes of structures together and the \emph{middle} vertex of a $2$-chord is the only internal vertex of that $2$-chord.
   All irregularities are on the right of the candidate path due to Lemma \ref{lm:right:neighbourwalkChordFree} (no chords on the left) and Lemma \ref{lm:right:neighbourwalkNoInteriorVertex} (no separating 2-chords on the left).
 
   Before we can show how to evade these structures, we first introduce more notation. We orient $P$ from $v_i \in \C$ (the vertex closest to $\pW$)to $v_j \in \C$ (the vertex closest to $\pE$) and denote its vertices by $p_1 \ldots p_k$.
@@ -208,7 +208,7 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
   \end{lemma}
   \begin{proof}
     We will prove that the new sweepcycle $\C'$ obtained by updating $\C$ is again a valid sweepcycle. Invariant \ref{i:uni:SWandSE} remains true. Invariant \ref{i:uni:intVertCond} holds due to the way we colored the edges around the new interior vertices as can be seen in Figure \ref{fig:sweep:update}.
-    Furthermore, Invariant \ref{i:uni:redOutgoing} holds because every interior vertex of $P'$ has a left neighbor by Lemma \ref{lm:right:leftNeighborsOfTheRightNeighborPath}.
+    Furthermore, Invariant \ref{i:uni:redOutgoing} holds because every internal vertex of $P'$ has a left neighbor by Lemma \ref{lm:right:leftNeighborsOfTheRightNeighborPath}.
 
     To see that Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords} hold, note that there can be no chords or $2$-chords with both endpoints in the overlap of the old and new sweepcycle $\C \cap \C'$ by Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords}.
      Since the updating path itself also has no irregularities (Lemma \ref{lm:sweep:augNoIregularity}),
