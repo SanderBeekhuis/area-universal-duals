@@ -127,7 +127,7 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
       Then the updating path $P'$ is the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:2chordInChordUpdate}.
 
       $P'$ is entirely inside a chord containing no more chords and thus can not contain a chord. Moreover, all separating $2$-chords are evaded since we evaded the end of the first one ending.  Just as in the above case we can not have any chord or separating $2$-chord with one endpoint in $P'$ and one in $\C$ any chord or separating 2-chord to connect outside the containing chord $p_i p_j$.
-      That leaves irregularities within the second endpoint inside containing chord $p_i p_j$. %\fxnote{TODO make this a complete cycle}
+      That leaves irregularities within the second endpoint inside containing chord $p_i p_j$. \fxnote{TODO make this a complete cycle}
       Suppose that we have a separating $2$-chord, then this would have been a chord of $P$. This is in contradiction with $p_i p_j$ being a minimal chord.
       We also can not have a chord since this would break $P|_{p_i, p_j} \oplus p_j p_i$ .
 
@@ -150,7 +150,7 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
       We have no chords with one endpoint in $P'$ and one in $\C$ since these would have to break $v_j x p_i v_k \oplus \rev{P'}$ or be adjacent to $v_j$, which is in violation of Invariant \ref{i:uni:no2Chords}.
       Any $2$-chords with one endpoint in $P'$ and one in $\C$ would have $x$ or $p_i$ as middle vertex.
       However, the first yields a $2$-chord of the candidate path with a higher start range, this is a contradiction.
-      And the second can not yield a separating $2$-chord. %\fxwarning{TODO or it is just contained, this can happen see back of draft 1.4}
+      And the second can not yield a separating $2$-chord. \fxwarning{TODO or it is just contained, this can happen see back of draft 1.4}
 
     \begin{figure}[h]
       \centering
