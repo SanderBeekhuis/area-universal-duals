@@ -4,7 +4,10 @@
 \thispagestyle{plain}
 
 \mypar{Rectangular layout}
-  A  \emph{rectangular layout} (or simply \emph{layout}) $\L$ is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles. Hence, the interior of this rectangle contains vertical and horizontal line segments. We will call any such line segment that is not extended any farther on either side a \emph{maximal segment}. Such a layout is \emph{one-sided} if every maximal segment has only one rectangle on one of its sides and \emph{$k$-sided} if every maximal segment has at most $k$ rectangles on one of its sides.
+  A  \emph{rectangular layout} (or simply \emph{layout}) $\L$ is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles.
+  Hence, the interior of this rectangle contains vertical and horizontal line segments.
+  We will call any such line segment that is not extended any farther on either side a \emph{maximal segment}.
+  Such a layout is \emph{one-sided} if every maximal segment has only one rectangle on one of its sides and \emph{$k$-sided} if every maximal segment has at most $k$ rectangles on one of its sides. $k$-sidedness is a generalization of one-sidedness.
 
   We say two layouts are  \emph{combinatorially equivalent} or simply \emph{equivalent} when their rectangles have the same adjacencies with the same orientation(horizontal or vertical) between their rectangles.
 
@@ -73,7 +76,6 @@
   We would like to find a rectangular dual that has adjacencies that hold regardless of the area sizes we assign to each rectangle. We say such a dual is \emph{area-universal}.
   Eppstein et al. have shown that rectangular duals are area-universal exactly when they are one-sided.~\cite{Eppstein2012} Unfortunately not all graphs admit a one-sided dual. One such graph, displayed in Figure \ref{fig:intro:rinsma},  is given by Rinsma.~\cite{Rinsma1987}
 
-
   \begin{figure}[!t]
     \centering
     \includegraphics[scale=.15]{introduction/img/rinsma.png}
@@ -82,8 +84,50 @@
   \end{figure}
 
 \mypar{Results}
-  Unfortunately $k$-sided layouts for $k>1$ are not area-universal but we suspect that for small $k$ they are more robust to changes in the areas of their rectangles. This thesis has two results on $k$-sidedness.
-  \fxwarning{TODO Make this robust to changes notion more quative?  Explain why many sides are bad e.g. suing figure of many sided layout}
+  Unfortunately $k$-sided layouts for $k>1$ are not area-universal but we suspect that for small $k$ they are more robust to changes in the areas of their rectangles.
+  We can imagine this in the following way, we will compare a $2$-sided and a $10$-sided segment. Let us first consider the an example of a $2$-sided segment in Figure \ref{fig:intro:2sidedBefore},  if we double the size of $a$ only two adjacencies change, namely $dA$ and $cB$, as can been seen in Figure \ref{fig:intro:2sidedAfter}.
+  While in an example of a $10$-sided segment such a doubling of the size of a single rectangle leads to $15$ changed adjacencies, namely $aC\ aD\ bB\ bC\ bD\ bE\ cC\ cD\ cE\ cF\ dE\ dG\ eF\ eH\ fG$, as can been seen in Figure \ref{fig:intro:10sided}. Hence we are interested in $k$-sided layouts for a small $k$.
+
+  \begin{figure}[b]
+    \centering
+    \begin{subfigure}[b]{0.45 \textwidth}
+      \centering
+      \includegraphics{introduction/img/2sidedBefore.pdf}
+      \caption{Before resizing $a$}
+      \label{fig:intro:2sidedBefore}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.45 \textwidth}
+      \centering
+      \includegraphics{introduction/img/2sidedAfter.pdf}
+      \caption{After resizing $a$}
+      \label{fig:intro:2sidedAfter}
+    \end{subfigure}
+    \caption{A 2-sided segment}
+    \label{fig:intor:2sided}
+  \end{figure}
+
+  \begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.45 \textwidth}
+      \centering
+      \includegraphics{introduction/img/10sidedBefore.pdf}
+      \caption{Before resizing $a$}
+      \label{fig:intro:10sidedBefore}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.45 \textwidth}
+      \centering
+      \includegraphics{introduction/img/10sidedAfter.pdf}
+      \caption{After resizing $a$}
+      \label{fig:intro:10sidedAfter}
+    \end{subfigure}
+    \caption{A 10-sided segment}
+    \label{fig:intro:10sided}
+  \end{figure}
+
+
+  This thesis has two results on $k$-sidedness.
   \begin{enumerate}
     \item There is a family of graphs $G_k$ that for any $k \in \N$ has members that are not $k$-sided (Theorem \ref{fix:th:family}).
     \item Triangulations of the $k$-gon $G$ that have a corner assignment without separating 4-cycles are $d-1$-sided, where $d$ is the maximal degree of the vertices of $G$. (Theorem \ref{th:dsided})
