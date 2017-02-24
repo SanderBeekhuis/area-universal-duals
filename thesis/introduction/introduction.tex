@@ -6,7 +6,7 @@
 \mypar{Rectangular layout}
   A  \emph{rectangular layout} (or simply \emph{layout}) $\L$ is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles.
   Hence, the interior of this rectangle contains vertical and horizontal line segments.
-  We will call any such line segment that is not extended any farther on either side a \emph{maximal segment}.
+  Any line segment that is not extended farther on either side is a \emph{maximal segment}.
   Such a layout is \emph{one-sided} if every maximal segment has only one rectangle on one of its sides and \emph{$k$-sided} if every maximal segment has at most $k$ rectangles on one of its sides. $k$-sidedness is a generalization of one-sidedness.
 
   We say two layouts are  \emph{combinatorially equivalent} or simply \emph{equivalent} when their rectangles have the same adjacencies with the same orientation(horizontal or vertical) between their rectangles.
@@ -34,11 +34,16 @@
 
 \mypar{Graphs}
   A \emph{graph} $G$ is an abstraction of a network. The objects are represented by a set of \emph{vertices}.
-  Connections between objects are represented by a set of \emph{edges}; Each edge connects two vertices. In all graphs every pair of vertices is connected by at most one edge and there are no edges starting and ending at the same vertex. That is, all graphs in this thesis are \emph{simple}. An edge is \emph{incident} to a vertex $v$ if that edge connects $v$ to another vertex. The \emph{degree} of a vertex is the number of edges incident to this vertex.
-  All graphs in this thesis are \emph{planar}. That is, they can be embedded in the plane without their edges crossing. A \emph{face} is connected component of the maximal subset of the plane that is disjoint from the embedded graph. The \emph{degree} of a face is the number of vertices on its boundary. A face of degree $3$ is a \emph{triangular} face. The \emph{outer face} is the one and only unbounded face.
+  Connections between objects are represented by a set of \emph{edges}; Each edge connects two vertices.
+  Two distinct edges do not have the same vertices and no edge starts and ends at the same vertex.
+  That is, graphs in this thesis are \emph{simple}. An edge is \emph{incident} to a vertex $v$ if that edge connects $v$ to another vertex.
+  The \emph{degree} of a vertex is the number of edges incident to this vertex.
+  All graphs in this thesis are \emph{planar}.
+  That is, they can be embedded in the plane without their edges crossing. A \emph{face} is connected component of the maximal subset of the plane that is disjoint from the embedded graph. The \emph{degree} of a face is the number of vertices on its boundary.
+  A face of degree $3$ is a \emph{triangular} face. The \emph{outer face} is the one and only unbounded face.
   A vertex is \emph{incident} to a face when it lies on its boundary.
 
-  All graphs in this thesis will be \emph{triangulations of the $k$-gon}. A triangulation of the $k$-gon has an outer face of degree $k$ and interior faces of degree $3$.
+  All graphs in this thesis are \emph{triangulations of the $k$-gon}. A triangulation of the $k$-gon has an outer face of degree $k$ and interior faces of degree $3$.
   Vertices bordering the outer face are \emph{outer vertices} while all other vertices are \emph{interior vertices}.
   Triangulations of the $k$-gon are called \emph{(plane) triangulated graphs} by some other authors.
 
@@ -69,7 +74,6 @@
     \caption{A cartogram by Raisz made in 1934.}
     \label{fig:intro:raisz}
   \end{figure}
-
   In for example atlases \emph{rectangular cartograms} are used to display information. A rectangular cartogram is a map where the regions are replaced by rectangles while keeping their adjacencies. An example of such a cartogram for population of the state of the United States of America is given in Figure \ref{fig:intro:raisz}. The size of each region can change according to the variable or moment in time displayed in the cartogram.  A rectangular cartogram is the rectangular dual of the adjacency graph of the map $G$.
   If the areas change it might be that a certain rectangular layout can not fulfill its adjacencies anymore and we have to switch to another non-equivalent rectangular dual of $G$.
 
@@ -85,7 +89,7 @@
 
 \mypar{Results}
   Unfortunately $k$-sided layouts for $k>1$ are not area-universal but we suspect that for small $k$ they are more robust to changes in the areas of their rectangles.
-  We can imagine this in the following way, we will compare a $2$-sided and a $10$-sided segment. Let us first consider the an example of a $2$-sided segment in Figure \ref{fig:intro:2sidedBefore},  if we double the size of $a$ only two adjacencies change, namely $dA$ and $cB$, as can been seen in Figure \ref{fig:intro:2sidedAfter}.
+  We can imagine this by comparing a $2$-sided and a $10$-sided segment. Let us first consider the an example of a $2$-sided segment in Figure \ref{fig:intro:2sidedBefore},  if we double the size of $a$ only two adjacencies change, namely $dA$ and $cB$, as can been seen in Figure \ref{fig:intro:2sidedAfter}.
   While in an example of a $10$-sided segment such a doubling of the size of a single rectangle leads to $15$ changed adjacencies, namely $aC\ aD\ bB\ bC\ bD\ bE\ cC\ cD\ cE\ cF\ dE\ dG\ eF\ eH\ fG$, as can been seen in Figure \ref{fig:intro:10sided}. Hence we are interested in $k$-sided layouts for a small $k$.
 
   \begin{figure}[b]
@@ -133,18 +137,19 @@
     \item Triangulations of the $k$-gon $G$ that have a corner assignment without separating 4-cycles are $d-1$-sided, where $d$ is the maximal degree of the vertices of $G$. (Theorem \ref{th:dsided})
   \end{enumerate}
 
+\mypar{Overview}
+  The rest of this thesis is focused on obtaining these results.
+  In order to do this we treat paths and cycles in the remainder of this section. In Section \ref{s:rel} we introduce the notion of regular edge labellings which we use in the rest of the thesis. A regular edge labbeling is a way of coloring and orienting the edges of a graph that corresponds to a rectangular dual of that graph.
+  Once we have the preliminaries out of the way we show Theorem \ref{fix:th:family} in Section \ref{s:fix} and Theorem \ref{th:dsided} in Section \ref{s:algo}. The proof of Theorem \ref{fix:th:family} is by counterexample while the proof of Theorem \ref{th:dsided} is provided by giving a constructive algorithm.
+
 
 \mypar{Paths and Cycles}
-  In the rest of the thesis we will frequently need paths and cycles, hence we will definite them here.
+  In the rest of the thesis we frequently need paths and cycles, hence we define them here.
 
   A path $\P$ is a sequence of vertices such that every two consecutive vertices are connected by an edge. The first and last vertex of the path are its \emph{extreme} vertices while the rest are \emph{internal} vertices of this path. The \emph{length} of a path is the number of edges used to connect the vertices. That, is one less than the number of vertices. In this thesis all paths are \emph{simple}, that is, no vertex occurs twice in the path except possibly the extreme vertices.
 
-  A cycle is a path whose extreme vertices coincide. Because a cycle is a path the start and end vertex are the only vertices that occurs more than once. We call a cycle of length $k$  a \emph{$k$-cycle}. A \emph{triangle} is cycle of length $3$ (i.e. a $3$-cycle). By Jordan's curve theorem a cycle splits the plane into two parts, one bounded and one unbounded. We will call the bounded part the \emph{interior} of this cycle and the unbounded part the \emph{exterior} of this cycle.
+  A cycle is a path whose extreme vertices coincide. Because a cycle is a path the start and end vertex are the only vertices that occurs more than once. We call a cycle of length $k$  a \emph{$k$-cycle}. A \emph{triangle} is cycle of length $3$ (i.e. a $3$-cycle). By Jordan's curve theorem a cycle splits the plane into two parts, one bounded and one unbounded. We call the bounded part the \emph{interior} of this cycle and the unbounded part the \emph{exterior} of this cycle.
   Furthermore, the cycle of all vertices bordering the outer face is the \emph{outer cycle}.
   We call a cycle \emph{separating} if there are vertices in both its interior and exterior.
   An \emph{interior edge} of a cycle is then an edge contained in the interior of the cycle.
   An \emph{interior path} is a path connecting two distinct vertices off the cycle and whose edges are interior edges.
-
-\mypar{Overview}
-  In Section \ref{s:rel} we will introduce the notion of regular edge labellings which we will use in the rest of the thesis.
-  In Section \ref{s:fix} we show Theorem \ref{fix:th:family} and in Section \ref{s:algo} we show Theorem \ref{th:dsided}.
