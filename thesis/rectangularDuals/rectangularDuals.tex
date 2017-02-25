@@ -3,24 +3,30 @@
 \section{Regular edge labellings}
 \label{s:rel}
 \thispagestyle{plain}
-  Given a layout $\L$ we can easily find its adjacency graph and thus for which graph $G$ it is a rectangular dual. However, finding a rectangular dual of a graph $G$ is more involved. Due to the algorithm by He \cite{He1993} it is sufficient to find a \emph{regular edge labeling} on a corner assignment of $G$. In this section we introduce regular edge labellings.
-
 \mypar{Adjacency graphs of layouts}
   The \emph{ adjacency graph} $\dualgraph{\L}$ of a layout $\L$ each rectangle is represented by a vertex and we connect two vertices by an edge exactly when their rectangles are adjacent. In the \emph{extended adjacency graph} $\extdualgraph{\L}$ we also add $4$ vertices $\pN, \pE, \pS, \pW$ (so-called \emph{poles}) in the outer face, one associated to the north, east, south, west boundary segment of the outer rectangle, respectively. Two vertices are then connected if their rectangles or boundary segments intersect.
   If we take the \emph{extended adjacency graph} of a layout and remove the $4$ vertices corresponding to the outer face we end up with the regular \emph{adjacency graph} of that layout.
   In this setting a layout $\L$ is a \emph{rectangular dual} of a graph $G$ if we have that $G = \dualgraph{\L}$.
 
 
+
 \mypar{Regular edge labellings}
-  Regular edge labellings were first introduced by Kant and He \cite{Kant1997} and were also used in \cite{Eppstein2012}. Fusy also studied these structures \cite{Fusy2006,Fusy2009} under the name of \emph{transversal structures}.
-  A \emph{regular edge labeling} is a coloring and orientation of the edges of the extended adjacency graph $\extdualgraph{\L}$. This coloring and orientation is given by the following procedure. For every edge $vw$ in $\extdualgraph{\L}$ we consider whether the shared boundary of the rectangles is vertical or horizontal we then color the edge blue or red respectively. In the first case we orient the edge from the leftmost rectangle to the rightmost rectangle and in the second case we orient from bottom to top. We neither color nor orient the edges between the poles.
+  Given a layout $\L$ we can easily find its adjacency graph and thus for which graph $G$ it is a rectangular dual. However, finding a rectangular dual of a graph $G$ is more involved. Due to the algorithm by He \cite{He1993} it is sufficient to find a \emph{regular edge labeling} on a corner assignment of $G$. In this section we introduce regular edge labellings.
+
+  Regular edge labellings were first introduced by Kant and He \cite{Kant1997}.
+  Fusy also studied these structures \cite{Fusy2009, Fusy2006} under the name of \emph{transversal structures}.
+  A \emph{regular edge labeling} is a coloring and orientation of the edges of the extended adjacency graph $\extdualgraph{\L}$.
+  This coloring and orientation is given by the following procedure.
+  For every edge $vw$ in $\extdualgraph{\L}$ we consider whether the shared boundary of the rectangles is vertical or horizontal and we color the corresponding edge blue or red, respectively.
+  If we color the edge blue we orient it from the leftmost rectangle to the rightmost rectangle and if we color it red we orient from bottom to top.
+  We neither color nor orient the edges between the poles.
 
   From the nature of the adjacencies in a rectangular layout we can deduce the following two rules for a regular edge labeling.
   \begin{enumerate}
     \item (Interior vertex) In the rotation around every interior vertex we have the following subsequent non-empty sets: Incoming red edges, incoming blue edges, outgoing red edges and outgoing blue edges and only these sets.
     \item (Pole) $\pN$ has only incoming red edges, $\pE$ has only incoming blue edges, $\pS$ has only outgoing red edges and $\pW$ has only outgoing blue edges ,except for the uncolored edges between the poles.
   \end{enumerate}
-  Both rules are illustrated in \ref{fig:rel:conditions}.
+  Both rules are illustrated in Figure \ref{fig:rel:conditions}.
 
   \begin{figure}
       \centering
@@ -40,12 +46,13 @@
   In \cite{He1993} He showed that given a regular edge labeling of a corner assignment we can reconstruct a rectangular layout represented by this regular edge labeling.
   A regular edge labeling  of $\ext G$ corresponds to an equivalence class of rectangular layouts $\L$ that are a rectangular dual of $G$.
 
-  \paragraph{Properties}
-  Since we use regular edge labellings a lot in this thesis we now show some properties for them. We show that a regular edge labeling has no mono-colored triangles and that the red and blue subgraph of a regular edge labeling both form a $st$-planar graph. Before we can show this, we need to introduce the rotation at a vertex.
+  \mypar{Properties}
+  Since we often use regular edge labellings in this thesis we prove some properties we can reuse later for them. We show that a regular edge labeling has no mono-colored triangles and that the red and blue subgraph of a regular edge labeling both form a $st$-planar graph. Before we can show this, we need to introduce the rotation at a vertex.
   For a fixed embedding for $G$ the \emph{rotation} at a vertex $v$ is the clockwise order of the edges incident to $v$. We identify these edges with their other endpoints.
   Two vertices $x, y$ are said to be \emph{consecutive} in the rotation at $v$ when the edges $vx$ and $vy$ are consecutive in the rotation.
 
   \begin{lemma}
+    \fxnote{This is known, give reference, more an observation}
     \label{lm:rel:noMonoColoredTriangles}
     A regular edge labeling has no monochromatic triangles even when ignoring orientation
   \end{lemma}
@@ -56,7 +63,7 @@
 
   \mypar{$\mathbf{st}$-planar graphs}
     In this thesis we repeatedly use regular edge labellings, so it is a good idea to investigate their structure.
-    Kant and He \cite{Kant1997} show that a regular edge labeling is closely linked to a pair of $st$-planar graphs. We repeat this in a different form in Lemma \ref{lm:rel:stPlanarGraphs} below. The difference is that they orient the edges between poles while we remove the non-relevant poles altogether.
+    Kant and He \cite{Kant1997} show that a regular edge labeling is closely linked to a pair of $st$-planar graphs. We repeat this in a different form in Lemma \ref{lm:rel:stPlanarGraphs} below. The difference is that they orient the edges between poles while we remove the non-relevant poles altogether. \fxnote{unclear to Bettina}
 
     An $st$-planar graph is an oriented planar graph with one source (in-degree 0) $s$ and one sink (out-degree 0) $t$. Both $s$ and $t$ lie on the outer face. Moreover, such an $st$-planar graph has no directed cycles.
 
@@ -86,13 +93,14 @@
 
     Consider a face corresponding to a maximal segment.
     The number of internal vertices of both boundary paths without counting the split and merge vertices is the number of rectangles on the respective sides of the maximal segment.
-    Hence, a one-sided maximal segment corresponds to a face with one boundary path of length $2$  and a $k$-sided maximal segment to face with a shortest boundary path of length at most $k+1$.
-    We can't have faces with a boundary path of length $1$ since such a face can't enclose a valid segment.
+    Hence, a one-sided maximal segment corresponds to a face with one boundary path of length $2$  and a $k$-sided maximal segment to a face with a shortest boundary path of length at most $k+1$.
+    We can not have faces with a boundary path of length $1$ since such a face can not enclose a valid segment.
 
     \begin{lemma}
       \label{lm:rel:noBpOfLength1}
       No face can have a boundary path of length $1$
     \end{lemma}
+    \fxnote{Very comparable to no ones sided traingle, stronger tough. Still an observation.}
     \begin{proof}
       A boundary path can not have length $1$ since by construction of a regular edge labeling a red or blue face encloses a maximal segment and thus has to go trough at least one intermediate rectangle/vertex.
     \end{proof}

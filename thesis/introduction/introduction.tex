@@ -6,10 +6,10 @@
 \mypar{Rectangular layout}
   A  \emph{rectangular layout} (or simply \emph{layout}) $\L$ is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles.
   Hence, the interior of this rectangle contains vertical and horizontal line segments.
-  Any line segment that is not extended farther on either side is a \emph{maximal segment}.
+  Any line segment that can not extended farther on either side is a \emph{maximal segment}.
   Such a layout is \emph{one-sided} if every maximal segment has only one rectangle on one of its sides and \emph{$k$-sided} if every maximal segment has at most $k$ rectangles on one of its sides. $k$-sidedness is a generalization of one-sidedness.
 
-  We say two layouts are  \emph{combinatorially equivalent} or simply \emph{equivalent} when their rectangles have the same adjacencies with the same orientation(horizontal or vertical) between their rectangles.
+  We say two layouts are  \emph{combinatorially equivalent} or simply \emph{equivalent} when their rectangles have the same adjacencies with the same orientation(horizontal or vertical) between their rectangles. \fxwarning{Look at definiton by speckmann}
 
   Consider for example Figure \ref{fig:intr:segmentdefs}, the three highlighted lines are all line segments. However, only the red and blue segment are maximal segments. The red segment is one-sided and the blue segment is $2$-sided and the whole layout is $2$-sided. Furthermore, the layout in Figure \ref{fig:intr:vertonesided} is $4$-sided.
 
@@ -34,7 +34,7 @@
 
 \mypar{Graphs}
   A \emph{graph} $G$ is an abstraction of a network. The objects are represented by a set of \emph{vertices}.
-  Connections between objects are represented by a set of \emph{edges}; Each edge connects two vertices.
+  Connections between objects are represented by a set of \emph{edges}; each edge connects two vertices.
   Two distinct edges do not have the same vertices and no edge starts and ends at the same vertex.
   That is, graphs in this thesis are \emph{simple}. An edge is \emph{incident} to a vertex $v$ if that edge connects $v$ to another vertex.
   The \emph{degree} of a vertex is the number of edges incident to this vertex.
@@ -52,26 +52,29 @@
 
 \mypar{Corner assignments}
   If we want to determine which graphs do have a rectangular dual, then we need to introduce the notion of a \emph{corner assignment}.
-  A corner assignment $\ext G$ of $G$ is an augmentation of $G$ with $4$ vertices (which we call its \emph{poles}). Such that every interior face has degree $3$, the exterior face has degree $4$ and all poles are incident to the outer face
+  A corner assignment $\ext G$ of $G$ is an augmentation of $G$ with $4$ vertices (which we call its \emph{poles}), such that every interior face has degree $3$, the exterior face has degree $4$ and all poles are incident to the outer face
 
+  \fxwarning{Take definition from paper}
   A corner assignment of $G$ only exists if $G$ is a triangulation of the $k$-gon for some $k$. Otherwise, there is no way of adding poles that makes all the interior faces of degree $3$. Because of this, we only consider triangulations of the $k$-gon in this thesis. A corner assignment $\ext G$ of $G$ is an example of a triangulation of the $4$-gon. Each corner assignment fixes which rectangles are in the corners of the rectangular dual $\L$, which explains the terminology.
 
 
 \mypar{Existence and uniqueness}
-  Now we can state which graphs admit a rectangular dual. The following result was shown independently by Kozminski and Kinnen \cite{Kozminski1984} and Ungar \cite{Ungar1953}
+  Now we can state which graphs admit a rectangular dual. The following result was shown independently by Kozminski and Kinnen \cite{Kozminski1984} and Ungar \cite{Ungar1953}.
 
   \begin{thrm}[Existence of a rectangular dual]
     \label{th:rect:exsitenceREctangularDual}
-    A triangulation of the $k$-gon $\G$ has a rectangular dual if and only if it has a corner assignment without separating triangles $\ext \G$
+    A triangulation of the $k$-gon $\G$ has a rectangular dual if and only if it has a corner assignment without separating triangles $\ext \G$.
   \end{thrm}
 
   A graph $G$ can have multiple rectangular duals. $G$ can even have duals that are not equivalent. An example is given by the two non-equivalent duals of the same graph given in Figure \ref{fig:intr:graphs}.
+  \fxwarning{Add wrapfig this other figure is too big}
 
 \mypar{Rectangular cartograms}
   \begin{figure}[!t]
     \centering
     \includegraphics[scale=.5]{introduction/img/cartogram.png}
     \caption{A cartogram by Raisz made in 1934.}
+    \fxnote{CITE see paper}
     \label{fig:intro:raisz}
   \end{figure}
   In for example atlases \emph{rectangular cartograms} are used to display information. A rectangular cartogram is a map where the regions are replaced by rectangles while keeping their adjacencies. An example of such a cartogram for population of the state of the United States of America is given in Figure \ref{fig:intro:raisz}. The size of each region can change according to the variable or moment in time displayed in the cartogram.  A rectangular cartogram is the rectangular dual of the adjacency graph of the map $G$.
@@ -140,7 +143,7 @@
 \mypar{Overview}
   The rest of this thesis is focused on obtaining these results.
   In order to do this we treat paths and cycles in the remainder of this section. In Section \ref{s:rel} we introduce the notion of regular edge labellings which we use in the rest of the thesis. A regular edge labbeling is a way of coloring and orienting the edges of a graph that corresponds to a rectangular dual of that graph.
-  Once we have the preliminaries out of the way we show Theorem \ref{fix:th:family} in Section \ref{s:fix} and Theorem \ref{th:dsided} in Section \ref{s:algo}. The proof of Theorem \ref{fix:th:family} is by counterexample while the proof of Theorem \ref{th:dsided} is provided by giving a constructive algorithm.
+  Once we have the preliminaries out of the way we prove Theorem \ref{fix:th:family} in Section \ref{s:fix} and Theorem \ref{th:dsided} in Section \ref{s:algo}. The proof of Theorem \ref{fix:th:family} is by counterexample while the proof of Theorem \ref{th:dsided} is provided by giving a constructive algorithm.
 
 
 \mypar{Paths and Cycles}

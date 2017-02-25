@@ -2,8 +2,10 @@
 
 \section{Family of graphs not $\mathbf{k}$-sided for any $\mathbf{k}$}
 \thispagestyle{plain}
+  \fxnote{SIMPLIFY Graph}
+  \fxnote{Discuss vertex degree in the light of section $4$}
   \label{s:fix}
-  In this section we show the following theorem.
+  In this section we prove the following theorem.
 
   \begin{thrm}
     \label{fix:th:family}
@@ -12,8 +14,13 @@
 
   All members of this family contain separating $4$-cycles.
   If there is no $k$-sided rectangular dual for a certain corner assignment $\ext G$ of $G$. There may still be another corner assignment of $G$ that admits a $k$-sided dual.
-  However, if we view $\ext G_k = H_k$ as a graph in its own right then $G_k$ is the interior of a separating $4$-cycle of $H_k$. We show in Lemma \ref{lm:fix:fourCycleInteriorColor} this implies that $G_k$, as induced subgraph, has to be colored in accordance with the corner assignment $\ext G_k$. We first have to prove some lemmas before we can prove Theorem \ref{fix:th:family}.
+  \fxnote*{Not clear}{
+  However, if we view $\ext G_k = H_k$ as a graph in its own right then $G_k$ is the interior of a separating $4$-cycle of $H_k$.
+  We prove in Lemma \ref{lm:fix:fourCycleInteriorColor} this implies that $G_k$, as induced subgraph, has to be colored in accordance with the corner assignment $\ext G_k$.
+  We first have to prove some lemmas before we can prove Theorem \ref{fix:th:family}.
+  }
 
+  \fxnote{Illustrate these two lemmas}
   \begin{lemma}
     \label{lm:interiorRectangle}
     Let $\C$ be a separating $4$-cycle of a corner assignment $\ext G$. Then, in any rectangular dual the region enclosed by the rectangles dual to the vertices in $\C$ is a rectangle.
@@ -53,9 +60,9 @@
   Lemma \ref{lm:fix:fourCycleInteriorColor} is useful because it allows us to consider a single corner assignment $\ext G$ of $G$ by building a \emph{scaffold}. Suppose we want to investigate some specific corner assignment $\ext G$ of $G$ with poles $N$, $E$, $S$ and $W$ then we can consider the graph $\ext G = H$ as a graph in its own right.
   $H$ admits a corner assignment $\ext H$ without separating triangles by connecting the new poles as indicated in Table \ref{tab:scaffold}.
   $\ext H$ is shown in Figure \ref{fig:scafold}.
-  $G$ is displayed in thick lines and with closed vertices.
-  An arbitrary corner assignment $\ext G =H$ is then drawn with thin lines and open vertices.
-  A corner assignment of $H$ is then drawn with dashed edges and open vertices.
+  $G$ is displayed in thick lines and with filled vertices.
+  An arbitrary corner assignment $\ext G =H$ is then drawn with thin lines and hollow vertices.
+  A corner assignment of $H$ is then drawn with dashed edges and hollow vertices.
 
   \begin{figure}[t]
   \centering
