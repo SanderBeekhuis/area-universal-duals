@@ -8,24 +8,43 @@
   \begin{figure}[!t]
     \centering
     \includegraphics[scale=.5]{introduction/img/cartogram.png}
-    \caption{A cartogram by Raisz \cite{Raisz1934} made in 1934.}
+    \caption{A cartogram by Raisz~\cite{Raisz1934} made in 1934.}
     \label{fig:intro:raisz}
   \end{figure}
-  In for example atlases \emph{rectangular cartograms} are used to display information, such as population or economic strength, in a spatial manner. Raisz~\cite{Raisz1934} introduced these cartograms and gave examples of, for instance, land area, population (see Figure  \ref{fig:intro:raisz}) and wealth of the United States of America.
+  In for example atlases \emph{rectangular cartograms} are used to display information, such as population or economic strength, in a spatial manner.
+  In a rectangular cartogram  the geographic regions of an ordinary map are replaced by rectangles; we let these rectangles maintain adjacencies with each other to suggest geographic location and scale them proportional to the quantity they represent.
+  Raisz~\cite{Raisz1934} introduced these cartograms and gave examples of, for instance, land area, population (see Figure  \ref{fig:intro:raisz}) and wealth of the United States of America.
   In a rectangular cartogram it is preferable to maintain the adjacencies of the regions that are replaced by rectangles, this in order to keep the representation recognizable.
-  The value of the displayed quantity can change over time.
-  Hence, when drawing several cartograms of a quantity the size of each region will change according to the moment in time.
-  However, even in this case it is desirable that the nature of the orientations, that is whether it is horizontal or vertical, does not change over time.
+  However, this is only possible under some conditions.
 
-  %TODO Introduce adjeceny graph here?
-  This raises the following questions: "Which adjacency graphs can be faithfully represented by a rectangular cartogram?" and, "Which adjacency graphs admit a cartogram that has orientations that remain the same for all assigned areas?"
-  \fxnote{Expand on this}
+  The value of the displayed quantity changes over time.
+  But when we draw a set of cartograms displaying a quantity at different moments in time, then it is best if the adjacencies between these rectangles remain the same, no matter the moment in time.
+  Morever, it would be even better if the nature of these adjacencies, that is do the rectangles border in a vertical or horizontal manner, does not change.
+  This raises the question: When is this possible?
+
+%  Since the size of each region will change according to the moment in time, we need to find a %rectangular cartogram that allows all area assignments.
+%  \fxwarning{TODO define area addignment or change this}
+%  However, even in this case it is desirable that the nature of the orientations, that is whether %it is horizontal or vertical, does not change over time.
+%
+%  %TODO Introduce adjeceny graph here?
+%  This raises the following questions: "Which adjacency graphs can be faithfully represented by a %rectangular cartogram?" and, "Which adjacency graphs admit a cartogram that has orientations that %remain the same for all assigned areas?"
+%  \fxnote{Expand on this}
 
 \mypar{Rectangular layout}
-  A  \emph{rectangular layout} (or simply \emph{layout}) $\L$ is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles.
-  Hence, the interior of this rectangle contains vertical and horizontal line segments.
+  Mathematically, a rectangular cartogram is a  \emph{rectangular layout} (or simply \emph{layout}). $\L$ is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles.
+  A rectangular layout that has the same adjacencies, and of the same nature, regardless the area sizes we assign to each rectangle is \emph{area-universal}.
+  Then the question above becomes: for which maps can we create a area-universal layout?
+
+  The interior of a rectangular layout contains vertical and horizontal line segments.
   Any line segment that can not extended farther on either side is a \emph{maximal segment}.
-  Such a layout is \emph{one-sided} if every maximal segment has only one rectangle on one of its sides and \emph{$k$-sided} if every maximal segment has at most $k$ rectangles on one of its sides. $k$-sidedness is a generalization of one-sidedness.
+  Such a layout is \emph{one-sided} if every maximal segment has only one rectangle on one of its sides.
+  Eppstein et al.~\cite{Eppstein2012} have shown that rectangular layouts are area-universal exactly when they are one-sided.
+  % and \emph{$k$-sided} if every maximal segment has at most $k$ rectangles on one of its sides. $k$-sidedness is a generalization of one-sidedness.
+
+  We represent the adjacencies of map regions by an \emph{ adjacency graph} $G$ each region is represented by a vertex and we connect two vertices by an edge exactly when their regions are adjacent.
+  Similarly, in the \emph{ adjacency graph} $\dualgraph{\L}$ of a rectangular layout $\L$ each rectangle is represented by a vertex and we connect two vertices by an edge exactly when their rectangles are adjacent.
+  A layout $\L$ is a \emph{rectangular dual} of a graph $G$ if we have that $G = \dualgraph{\L}$.
+  In other words,
 
   We say two layouts are  \emph{combinatorially equivalent} or simply \emph{equivalent} when their rectangles have the same adjacencies with the same orientation(horizontal or vertical) between their rectangles. \fxwarning{Look at definition by speckmann}
 

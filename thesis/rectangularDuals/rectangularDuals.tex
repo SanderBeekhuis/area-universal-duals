@@ -4,7 +4,9 @@
 \label{s:rel}
 \thispagestyle{plain}
 \mypar{Adjacency graphs of layouts}
-  The \emph{ adjacency graph} $\dualgraph{\L}$ of a layout $\L$ each rectangle is represented by a vertex and we connect two vertices by an edge exactly when their rectangles are adjacent. In the \emph{extended adjacency graph} $\extdualgraph{\L}$ we also add $4$ vertices $\pN, \pE, \pS, \pW$ (so-called \emph{poles}) in the outer face, one associated to the north, east, south, west boundary segment of the outer rectangle, respectively. Two vertices are then connected if their rectangles or boundary segments intersect.
+  The \emph{ adjacency graph} $\dualgraph{\L}$ of a layout $\L$ each rectangle is represented by a vertex and we connect two vertices by an edge exactly when their rectangles are adjacent.
+  In the \emph{extended adjacency graph} $\extdualgraph{\L}$ we also add $4$ vertices $\pN, \pE, \pS, \pW$ (so-called \emph{poles}) in the outer face, one associated to the north, east, south, west boundary segment of the outer rectangle, respectively.
+  Two vertices are then connected if their rectangles or boundary segments intersect.
   If we take the \emph{extended adjacency graph} of a layout and remove the $4$ vertices corresponding to the outer face we end up with the regular \emph{adjacency graph} of that layout.
   In this setting a layout $\L$ is a \emph{rectangular dual} of a graph $G$ if we have that $G = \dualgraph{\L}$.
 

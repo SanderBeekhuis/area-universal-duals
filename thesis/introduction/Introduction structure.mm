@@ -49,7 +49,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="8"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="9"/>
 <node TEXT="Cartograms" POSITION="right" ID="ID_1244266734" CREATED="1488036406084" MODIFIED="1488036412285">
 <edge COLOR="#ff0000"/>
 <node TEXT="What are they?" ID="ID_469385846" CREATED="1488036415731" MODIFIED="1488036419266"/>
@@ -84,6 +84,9 @@
 <node TEXT="The algorithm vs the counterexample" ID="ID_1174846501" CREATED="1488036934750" MODIFIED="1488036949399">
 <node TEXT="That is the counter" ID="ID_833490964" CREATED="1488036953774" MODIFIED="1488037033908"/>
 </node>
+</node>
+<node TEXT="More prelim stuff (or in a different chapter)" POSITION="right" ID="ID_1466000066" CREATED="1488102613122" MODIFIED="1488102625941">
+<edge COLOR="#007c00"/>
 </node>
 <node TEXT="Nice phrases" POSITION="left" ID="ID_513994857" CREATED="1488038320282" MODIFIED="1488038326372">
 <edge COLOR="#00007c"/>
