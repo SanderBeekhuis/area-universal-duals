@@ -4,9 +4,9 @@
 \label{s:rel}
 \thispagestyle{plain}
 \mypar{Adjacency graphs of layouts}
-  The \emph{ adjacency graph} $\dualgraph{\L}$ of a layout $\L$ each rectangle is represented by a vertex and we connect two vertices by an edge exactly when their rectangles are adjacent.
+  The \emph{adjacency graph} $\dualgraph{\L}$ of a layout $\L$ each rectangle is represented by a vertex. In an adjacency graph we connect two vertices by an edge exactly when their rectangles are adjacent.
   In the \emph{extended adjacency graph} $\extdualgraph{\L}$ we also add $4$ vertices $\pN, \pE, \pS, \pW$ (so-called \emph{poles}) in the outer face, one associated to the north, east, south, west boundary segment of the outer rectangle, respectively.
-  Two vertices are then connected if their rectangles or boundary segments intersect.
+  In this graph two vertices are connected if their rectangles or boundary segments intersect.
   If we take the \emph{extended adjacency graph} of a layout and remove the $4$ vertices corresponding to the outer face we end up with the regular \emph{adjacency graph} of that layout.
   In this setting a layout $\L$ is a \emph{rectangular dual} of a graph $G$ if we have that $G = \dualgraph{\L}$.
 
@@ -25,7 +25,7 @@
 
   From the nature of the adjacencies in a rectangular layout we can deduce the following two rules for a regular edge labeling.
   \begin{enumerate}
-    \item (Interior vertex) In the rotation around every interior vertex we have the following subsequent non-empty sets: Incoming red edges, incoming blue edges, outgoing red edges and outgoing blue edges and only these sets.
+    \item (Interior vertex) In the rotation around every interior vertex we have the following subsequent non-empty sets: Incoming red edges, incoming blue edges, outgoing red edges and outgoing blue edges and these are the only sets that exist.
     \item (Pole) $\pN$ has only incoming red edges, $\pE$ has only incoming blue edges, $\pS$ has only outgoing red edges and $\pW$ has only outgoing blue edges ,except for the uncolored edges between the poles.
   \end{enumerate}
   Both rules are illustrated in Figure \ref{fig:rel:conditions}.

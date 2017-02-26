@@ -7,7 +7,7 @@
 \mypar{Algorithms for regular edge labellings}
   Kant and He \cite{Kant1997} were the first to design algorithms that determine a regular edge labeling given a graph $G$. Fusy \cite{Fusy2006} developed a different algorithm computing a specific regular edge labeling using a method which shrinks a cycle while coloring the exterior of this cycle in accordance with a regular edge labeling.
   He refers to such a cycle as a \emph{sweepcycle}.
-  Unfortunately his proof of this algorithm is rather concise.
+  Unfortunately his proof of this algorithm is rather concise, leaving rather much room for the reader to fill in the details.
 
   In this algorithm Fusy starts by denoting the outer cycle of $\ext G \sm{\pN}$ as the sweepcycle $\C$. He then shrinks this sweepcycle by updating it with interior paths of $\C$. During this update he maintains invariants on the structure of both the cycle and its exterior.
   After doing a finite amount of updates, the sweepcycle has no more interior vertices. At this point he completes the algorithm and obtains a regular edge labeling.
@@ -20,4 +20,4 @@
   Triangulations of the $k$-gon $G$ that have a corner assignment $\ext G$ without separating 4-cycles are $d-1$-sided, where $d$ is the maximal degree of the vertices of $G$ in $\ext G$.
   \end{thrm}
 
-  To describe this algorithm we introduce the notion of right neighbor paths in Section \ref{ss:rightNeighbour}.  We use these right neighbor paths to find a regular edge labeling with some nice properties in Section \ref{ss:sweep}. Afterwards we unfortunately still have to do three post-processing steps. In Section \ref{ss:flipBlueZ} we make sure our regular edge labeling is \emph{vertically one-sided}, that is, that all vertical segments are one-sided. In Section \ref{ss:fanflip} we will remove most occurrences of something called topfans. Then, in Section \ref{ss:subdiv} we can finally subdivide all blue faces that are too large without creating red faces that are too large. This finishes the algorithm.
+  To describe this algorithm we introduce some new concepts in the remainder of this section. Firstly, the notion of right neighbor paths in Section \ref{ss:rightNeighbour}.  We use these right neighbor paths to find a regular edge labeling with some nice properties in Section \ref{ss:sweep}. Afterwards we unfortunately still have to do three post-processing steps. In Section \ref{ss:flipBlueZ} we make sure our regular edge labeling is \emph{vertically one-sided}, that is, that all vertical segments are one-sided. In Section \ref{ss:fanflip} we will remove most occurrences of something called topfans. Then, in Section \ref{ss:subdiv} we can finally subdivide all blue faces that are too large without creating red faces that are too large. This finishes the algorithm.
