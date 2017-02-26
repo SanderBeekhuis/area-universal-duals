@@ -3,6 +3,7 @@
 \thispagestyle{plain}
 \section{Conclusions and future work}
 
+\mypar{Results}
 In this thesis we proved the following two theorems
 
 \begin{enumerate}
@@ -10,13 +11,26 @@ In this thesis we proved the following two theorems
   \item Triangulations of the $k$-gon $G$ that have a corner assignment without separating 4-cycles are $d-1$-sided, where $d$ is the maximal degree of the vertices of $G$. (Theorem \ref{th:dsided})
 \end{enumerate}
 
-There are still many open questions in this research area. For example, one might hope to show that all corner assignments without separating $4$-cycles are actually $2$-sided.
-There also might be an algorithm that gives $d$-sided layouts for graphs with a separating $4$-cycle as this is not precluded by Theorem \ref{fix:th:family}.
+\mypar{Open Questions}
+One might hope to show that all corner assignments without separating $4$-cycles admit a $2$-sided rectangular layout. Failing this, a proof these corner assignments, or their underlying graphs, have a $c$-sided layout for any constant $c\in \N$ would also be nice.
 
-We also wonder whether the second step in the algorithm, Flipping blue $Z$'s, is necessary.
-We suspect that result of the sweepcycle algorithm is vertically one-sided.
+Another challenging problem is to find an algorithm that has some traction on graphs containing (nested) separating 4-cycles.
+For these graphs there might be an algorithm that gives $d$-sided layouts since the family of graphs provided in the proof of Theorem \ref{fix:th:family} has unbounded maximal degree.
+However, Theorem \ref{fix:th:family} prevent us from finding an algorithm generating a $c$-sided layout for all graphs admitting a rectangular layout, for all possible constants $c$.
 
-\fxnote{Might expand, but with what?}
+I also wonder whether the second step in the algorithm, Flipping blue $Z$'s, is necessary.
+Since I suspect that result of the sweepcycle algorithm is vertically one-sided.
+
+\mypar{Sweepcycle algorithms}
+I feel the full potential of sweepcycle algorithms is not yet unlocked in this work and the work by Fusy \cite{Fusy2006}.
+Since the current algorithm needs many steps to be able to repair those blue faces that are to large, it might be beneficial to concentrate more on the shape of the blue faces, horizontal segments in the rectangular dual, in the initial sweepcycle algorithm.
+One might try to build a better sweepcycle algorithm by directly finding blue faces with short enough boundary paths, hopefully without creating large red faces during its execution by choosing the right invariants.
+To obtain these invariants one could try to first find an sweepcycle algorithm that provides an regular edge labeling that is vertically, instead of horizontally, one-sided.
+This way an algorithm obtaining a $c$-sided layout, for some constant $c \in \N$, for any corner assignment without separating $4$-cycles may be possible.
+
+Another approach would be one where we do not update the sweepcyle with paths that are entirely blue (horizontal segments in an dual), but with paths that are partially blue and partially red (corners in an rectangular dual).
+
+\fxnote{Check againts wirtings in chapters 4 and 1 when im done}
 
 \newpage
 \thispagestyle{plain}
