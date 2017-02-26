@@ -174,7 +174,7 @@ stringstyle=\color[rgb]{0.627,0.126,0.941},  %
 \newcommand{\extdualgraph}[1]{\G_{\scr E}(#1)}
 
 \newcommand{\mypar}[1]{\medskip \noindent {\bfseries #1.}}
-\renewcommand{\paragraph}{\stop}
+\renewcommand{\paragraph}{\mypar}
 \newcommand{\rev}[1]{\accentset{\leftharpoonup}{#1}}
 
 
@@ -203,7 +203,7 @@ stringstyle=\color[rgb]{0.627,0.126,0.941},  %
 %invariant environment
 \newenvironment{invariants}{%
   \refstepcounter{thrm}%
-  \paragraph{Invariants~\theprop}%
+  {\bfseries Invariants~\theprop}%
   \renewcommand*{\theenumi}{\theprop\,(I\arabic{enumi})}%
   \renewcommand*{\labelenumi}{(I\arabic{enumi})}%
   \enumerate
