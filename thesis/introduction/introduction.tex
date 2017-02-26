@@ -12,14 +12,15 @@
     \label{fig:intro:raisz}
   \end{figure}
   In for example atlases \emph{rectangular cartograms} are used to display information, such as population or economic strength, in a spatial manner.
-  In a rectangular cartogram  the geographic regions of an ordinary map are replaced by rectangles; we let these rectangles maintain adjacencies with each other to suggest geographic location and scale them proportional to the quantity they represent.
-  Raisz~\cite{Raisz1934} introduced these cartograms and gave examples of, for instance, land area, population (see Figure  \ref{fig:intro:raisz}) and wealth of the United States of America.
+  In a rectangular cartogram  the geographic regions of an ordinary map are replaced by rectangles; we let these rectangles maintain adjacencies with each other to suggest geographic location and scale them proportionally to the quantities they represent.
+  Raisz~\cite{Raisz1934} introduced these cartograms and provided cartograms of, for instance, land area, population (see Figure  \ref{fig:intro:raisz}) and wealth of the United States of America.
   In a rectangular cartogram it is preferable to maintain the adjacencies of the regions that are replaced by rectangles, this in order to keep the representation recognizable.
-  However, this is only possible under some conditions.
+  However, this is only possible under some conditions as can be seen in Theorhem \ref{th:rect:exsitenceREctangularDual}.
+  Note that the cartograms made by Raisz do not keep all adjacenies, for example, in Figure \ref{fig:intro:raisz} Florida and Alabama are not adjacent while they are in reality.
 
-  The value of the displayed quantity changes over time.
-  But when we draw a set of cartograms displaying a quantity at different moments in time, then it is best if the adjacencies between these rectangles remain the same, no matter the moment in time.
-  Morever, it would be even better if the nature of these adjacencies, that is do the rectangles border in a vertical or horizontal manner, does not change.
+  The value of the displayed quantities, like population or wealth, often changes over time.
+  When we draw a set of cartograms displaying a quantity at different moments in time, it is desirable if the adjacencies between these rectangles remain the same, no matter the moment in time.
+  Moreover, it would be even better if the nature of these adjacencies, that is whether the rectangles border in a vertical or horizontal manner, does not change.
   This raises the question: When is this possible?
 
 %  Since the size of each region will change according to the moment in time, we need to find a %rectangular cartogram that allows all area assignments.
@@ -31,21 +32,93 @@
 %  \fxnote{Expand on this}
 
 \mypar{Rectangular layout}
-  Mathematically, a rectangular cartogram is a  \emph{rectangular layout} (or simply \emph{layout}). $\L$ is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles.
-  A rectangular layout that has the same adjacencies, and of the same nature, regardless the area sizes we assign to each rectangle is \emph{area-universal}.
-  Then the question above becomes: for which maps can we create a area-universal layout?
+  Mathematically, a rectangular cartogram is a  \emph{rectangular layout} (or simply \emph{layout}).
+  A layout $\L$ is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles.
+  A rectangular layout that has an combinatorially equivalent layout, regardless the area sizes we assign to each rectangle is \emph{area-universal}.
+  \fxnote{Figure of area-universal layouts}
+  The question above then becomes: For which maps can we create a area-universal layout?
+  It is clear that we must leave out those maps that do not have any layouts with the same adjacencies, but this will not be enough.
 
-  The interior of a rectangular layout contains vertical and horizontal line segments.
+\mypar{Adjacency graphs}
+  We can represent the adjacencies of map regions by an \emph{adjacency graph} $G$ where each region is represented by a vertex and two vertices are connected by an edge exactly when their regions are adjacent.
+  Similarly, in the \emph{adjacency graph} $\dualgraph{\L}$ of a rectangular layout $\L$ each rectangle is represented by a vertex and two vertices are connected by an edge exactly when their rectangles are adjacent.
+  A layout $\L$ is a \emph{rectangular dual} of a graph $G$ if we have that $G = \dualgraph{\L}$.
+  Rinsma found a graph $G$ in~\cite{Rinsma1987} that has no area-universal rectangular duals.
+  That is, all rectangular layouts with $G$ as adjacency graph are not area-universal.
+
+\mypar{One-sided layouts}
+  So, unfortunately not all adjacency graphs of map regions admit area-universal duals.
+  Then we would like to know which graphs do.
+  For this we need to define what a one-sided layouts is.
+  Note that the interior of a rectangular layout contains vertical and horizontal line segments.
   Any line segment that can not extended farther on either side is a \emph{maximal segment}.
   Such a layout is \emph{one-sided} if every maximal segment has only one rectangle on one of its sides.
-  Eppstein et al.~\cite{Eppstein2012} have shown that rectangular layouts are area-universal exactly when they are one-sided.
-  % and \emph{$k$-sided} if every maximal segment has at most $k$ rectangles on one of its sides. $k$-sidedness is a generalization of one-sidedness.
+  \fxnote{Figure}
+  In~\cite{Eppstein2012} Eppstein et al. show that rectangular layouts are area-universal exactly when they are one-sided.
+  So, Rinsma's result also implies that not all maps can be represented by an one-sided layout.
 
-  We represent the adjacencies of map regions by an \emph{ adjacency graph} $G$ each region is represented by a vertex and we connect two vertices by an edge exactly when their regions are adjacent.
-  Similarly, in the \emph{ adjacency graph} $\dualgraph{\L}$ of a rectangular layout $\L$ each rectangle is represented by a vertex and we connect two vertices by an edge exactly when their rectangles are adjacent.
-  A layout $\L$ is a \emph{rectangular dual} of a graph $G$ if we have that $G = \dualgraph{\L}$.
-  In other words,
 
+\mypar{$\mathbf{k}$-sided layouts}
+  For the graphs that do not admit a one-sided, and thus area-universal, layout we still want to find layouts in which the number of adjacencies changes when areas change is as few as possible. This is beneficial for, for example, applications displaying cartograms along a continuous timescale.
+  Since every time the adjacencies of the layout change, we have to compute a new rectangular layout with the right adjacencies, providing a rougher viewing experience.
+
+  We call a layout \emph{$k$-sided} if $k$ is the smallest integer such that every maximal segment has at most $k$ rectangles on one of its sides. This is a direct generalization of one-sidedness.
+  This generalization is useful because, when changing the areas of rectangles in a $k$-sided layout way more adjacencies change, in general, if $k$ is large then if $k$ is small.
+
+  We illustrate this by comparing a typical $2$-sided and a typical $10$-sided segment.
+  Let us first consider the $2$-sided segment in Figure \ref{fig:intro:2sidedBefore}, if the size of $a$ doubles only two adjacencies change, namely $dA$ and $cB$, as can been seen in Figure \ref{fig:intro:2sidedAfter}.
+  While for an example of a $10$-sided segment doubling the size of a single rectangle leads to $15$ changed adjacencies, namely $aC\ aD\ bB\ bC\ bD\ bE\ cC\ cD\ cE\ cF\ dE\ dG\ eF\ eH\ fG$, as can been seen in Figure \ref{fig:intro:10sided}.
+
+  \begin{figure}[t]
+    \centering
+    \begin{subfigure}[b]{0.45 \textwidth}
+      \centering
+      \includegraphics{introduction/img/2sidedBefore.pdf}
+      \caption{Before resizing $a$}
+      \label{fig:intro:2sidedBefore}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.45 \textwidth}
+      \centering
+      \includegraphics{introduction/img/2sidedAfter.pdf}
+      \caption{After resizing $a$}
+      \label{fig:intro:2sidedAfter}
+    \end{subfigure}
+    \caption{A 2-sided segment}
+    \label{fig:intor:2sided}
+  \end{figure}
+
+  \begin{figure}[b]
+    \centering
+    \begin{subfigure}[b]{0.45 \textwidth}
+      \centering
+      \includegraphics{introduction/img/10sidedBefore.pdf}
+      \caption{Before resizing $a$}
+      \label{fig:intro:10sidedBefore}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.45 \textwidth}
+      \centering
+      \includegraphics{introduction/img/10sidedAfter.pdf}
+      \caption{After resizing $a$}
+      \label{fig:intro:10sidedAfter}
+    \end{subfigure}
+    \caption{A 10-sided segment}
+    \label{fig:intro:10sided}
+  \end{figure}
+
+
+\mypar{Results}
+  In this thesis we provide two results on $k$-sidedness.
+  \begin{enumerate}
+    \item There is a family of graphs $G_k$ that for any $k \in \N$ has members that are not $k$-sided (Theorem \ref{fix:th:family}).
+    \item Triangulations of the $k$-gon $G$ that have a corner assignment without separating 4-cycles are $d-1$-sided, where $d$ is the maximal degree of the vertices of $G$. (Theorem \ref{th:dsided})
+  \end{enumerate}
+
+  \fxnote{Context}
+
+
+\mypar{Combinatorially equivalent}
   We say two layouts are  \emph{combinatorially equivalent} or simply \emph{equivalent} when their rectangles have the same adjacencies with the same orientation(horizontal or vertical) between their rectangles. \fxwarning{Look at definition by speckmann}
 
   Consider for example Figure \ref{fig:intr:segmentdefs}, the three highlighted lines are all line segments. However, only the red and blue segment are maximal segments. The red segment is one-sided and the blue segment is $2$-sided and the whole layout is $2$-sided. Furthermore, the layout in Figure \ref{fig:intr:vertonesided} is $4$-sided.
@@ -118,56 +191,6 @@
     \caption{The graph by Rinsma~\cite{Rinsma1987} that is not one-sided.}
     \label{fig:intro:rinsma}
   \end{figure}
-
-\mypar{Results}
-  Unfortunately $k$-sided layouts for $k>1$ are not area-universal but we suspect that for small $k$ they are more robust to changes in the areas of their rectangles.
-  We can imagine this by comparing a $2$-sided and a $10$-sided segment. Let us first consider the an example of a $2$-sided segment in Figure \ref{fig:intro:2sidedBefore},  if we double the size of $a$ only two adjacencies change, namely $dA$ and $cB$, as can been seen in Figure \ref{fig:intro:2sidedAfter}.
-  While in an example of a $10$-sided segment such a doubling of the size of a single rectangle leads to $15$ changed adjacencies, namely $aC\ aD\ bB\ bC\ bD\ bE\ cC\ cD\ cE\ cF\ dE\ dG\ eF\ eH\ fG$, as can been seen in Figure \ref{fig:intro:10sided}. Hence we are interested in $k$-sided layouts for a small $k$.
-
-  \begin{figure}[b]
-    \centering
-    \begin{subfigure}[b]{0.45 \textwidth}
-      \centering
-      \includegraphics{introduction/img/2sidedBefore.pdf}
-      \caption{Before resizing $a$}
-      \label{fig:intro:2sidedBefore}
-    \end{subfigure}
-
-    \begin{subfigure}[b]{0.45 \textwidth}
-      \centering
-      \includegraphics{introduction/img/2sidedAfter.pdf}
-      \caption{After resizing $a$}
-      \label{fig:intro:2sidedAfter}
-    \end{subfigure}
-    \caption{A 2-sided segment}
-    \label{fig:intor:2sided}
-  \end{figure}
-
-  \begin{figure}
-    \centering
-    \begin{subfigure}[b]{0.45 \textwidth}
-      \centering
-      \includegraphics{introduction/img/10sidedBefore.pdf}
-      \caption{Before resizing $a$}
-      \label{fig:intro:10sidedBefore}
-    \end{subfigure}
-
-    \begin{subfigure}[b]{0.45 \textwidth}
-      \centering
-      \includegraphics{introduction/img/10sidedAfter.pdf}
-      \caption{After resizing $a$}
-      \label{fig:intro:10sidedAfter}
-    \end{subfigure}
-    \caption{A 10-sided segment}
-    \label{fig:intro:10sided}
-  \end{figure}
-
-
-  This thesis has two results on $k$-sidedness.
-  \begin{enumerate}
-    \item There is a family of graphs $G_k$ that for any $k \in \N$ has members that are not $k$-sided (Theorem \ref{fix:th:family}).
-    \item Triangulations of the $k$-gon $G$ that have a corner assignment without separating 4-cycles are $d-1$-sided, where $d$ is the maximal degree of the vertices of $G$. (Theorem \ref{th:dsided})
-  \end{enumerate}
 
 \mypar{Overview}
   The rest of this thesis is focused on obtaining these results.
