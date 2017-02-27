@@ -55,19 +55,24 @@
   Such a layout is \emph{one-sided} if every maximal segment has only one rectangle on one of its sides.
   \fxnote{Figure}
   In~\cite{Eppstein2012} Eppstein et al. show that rectangular layouts are area-universal exactly when they are one-sided.
-  So, Rinsma's result also implies that not all maps can be represented by an one-sided layout.
+  So, Rinsma's result also implies that not all adjacency graphs of maps can be represented by an one-sided layout.
 
 
 \mypar{$\mathbf{k}$-sided layouts}
-  For the graphs that do not admit a one-sided, and thus area-universal, layout we still want to find layouts in which the number of adjacencies changes when areas change is as few as possible. This is beneficial for, for example, applications displaying cartograms along a continuous timescale.
+  Let us consider those graphs that do not admit a one-sided, and thus area-universal, layout.
+  Since any layout for such a graph is not area-universal, it is inevitable that adjacencies between regions in this layout change when we are resizing them.
+  For these graphs we want to find layouts that have the least number of adjacency changes when area sizes change.
+  This is beneficial for, for example, applications displaying cartograms on a continuous timescale.
   Since every time the adjacencies of the layout change, we have to compute a new rectangular layout with the right adjacencies, providing a rougher viewing experience.
 
   We call a layout \emph{$k$-sided} if $k$ is the smallest integer such that every maximal segment has at most $k$ rectangles on one of its sides. This is a direct generalization of one-sidedness.
-  This generalization is useful because, when changing the areas of rectangles in a $k$-sided layout way more adjacencies change, in general, if $k$ is large then if $k$ is small.
+  This generalization is useful because, when changing the areas of rectangles in a $k$-sided layout fewer adjacencies change, in general, if $k$ is small then if $k$ is large.
 
   We illustrate this by comparing a typical $2$-sided and a typical $10$-sided segment.
   Let us first consider the $2$-sided segment in Figure \ref{fig:intro:2sidedBefore}, if the size of $a$ doubles only two adjacencies change, namely $dA$ and $cB$, as can been seen in Figure \ref{fig:intro:2sidedAfter}.
   While for an example of a $10$-sided segment doubling the size of a single rectangle leads to $15$ changed adjacencies, namely $aC\ aD\ bB\ bC\ bD\ bE\ cC\ cD\ cE\ cF\ dE\ dG\ eF\ eH\ fG$, as can been seen in Figure \ref{fig:intro:10sided}.
+
+  Hence we would like to find $k$-sided layouts for all graphs with $k$ as small as possible.
 
   \begin{figure}[t]
     \centering
@@ -108,15 +113,31 @@
   \end{figure}
 
 
-\mypar{Results}
-  In this thesis we provide two results on $k$-sidedness.
-  \begin{enumerate}
-    \item There is a family of graphs $G_k$ that for any $k \in \N$ has members that are not $k$-sided (Theorem \ref{fix:th:family}).
-    \item Triangulations of the $k$-gon $G$ that have a corner assignment without separating 4-cycles are $d-1$-sided, where $d$ is the maximal degree of the vertices of $G$. (Theorem \ref{th:dsided})
-  \end{enumerate}
+\mypar{Counterexample}
+  In this thesis we provide two results on $k$-sidedness. The first result is that there is a family of graphs $G_k$ that for any constant $k \in \N$ has members that are not $k$-sided (Theorem \ref{fix:th:family}). The family of graphs in this result is characterized by the occurrence of nested separating $4$-cycles.
+  A \emph{$4$-cycle} is a cycle of length $4$.
+  Such a cycle is separating if there are vertices in both its interior and exterior.
+  Separating $4$-cyles are \emph{nested} if one is contained in the other, but some of their vertices overlap.
+  \fxnote{Some example fig of these cycles}
+  $4$-cycles in general are difficult to treat but examples indicate that nested $4$-cycles are the most difficult to treat when trying to create a $k$-sided layout.
 
-  \fxnote{Context}
 
+  \fxnote{BLABLA on 4-cyles in other problems}
+
+\mypar{Corner assignments}
+  Before we can state our second result we will have to briefly introduce the concepts of corner assignments.
+  A corner assignment $\ext G$ of a graph $G$ is an augmentation of $G$ with $4$ external vertices, which we call its \emph{poles}, with the following three properties (i) every interior face has degree $3$, (ii) the exterior face has degree $4$ and (iii) $\ext G$ has no separating triangles.
+  A corner assignment fixes which rectangles are in the corners of the rectangular dual $\L$, namely those adjacent to two poles, which explains the terminology.
+
+\mypar{Algorithm}
+  Following the counterexample we found, we focused our efforts on obtaining an algorithm that would provide a $k$-sided layout for corner assignments without a separating $4$-cycle, for some constant $k \in \N$.
+  Unfortunately, we fell short of this goal and only found an algorithm that provides a $d-1$-sided layout, where $d$ is the maximal degree of the vertices of $G$ in $\ext G$ (Theorem \ref{th:dsided}).
+
+  That being said, we never found any graph without separating $4$-cycles that did not admit any $2$-sided layouts during our research.
+  This raises the conjecture that these graphs in fact do admit a $2$-sided layout and it is just the algorithm for finding them that eludes us.
+  \fxnote{show that for example rinsma also satifies this, Figure}
+
+  Its worthy of note, that bound obtained by the algorithm is not stronger then the bound provided by the counterexample. That is, there might be an algorithm providing $O(d)$-sided layouts for all graphs $G$.
 
 \mypar{Combinatorially equivalent}
   We say two layouts are  \emph{combinatorially equivalent} or simply \emph{equivalent} when their rectangles have the same adjacencies with the same orientation(horizontal or vertical) between their rectangles. \fxwarning{Look at definition by speckmann}
@@ -162,10 +183,10 @@
 
 \mypar{Corner assignments}
   If we want to determine which graphs do have a rectangular dual, then we need to introduce the notion of a \emph{corner assignment}.
-  A corner assignment $\ext G$ of $G$ is an augmentation of $G$ with $4$ vertices (which we call its \emph{poles}), such that every interior face has degree $3$, the exterior face has degree $4$ and all poles are incident to the outer face.
+  A corner assignment $\ext G$ of $G$ is an augmentation of $G$ with $4$ external vertices ,which we call its \emph{poles}, with the following 3 properties (i) every interior face has degree $3$, (ii) the exterior face has degree $4$ and (iii) $\ext G$ has no separating triangles.
+  A corner assignment fixes which rectangles are in the corners of the rectangular dual $\L$, which explains the terminology.
 
-  \fxwarning{Take definition from paper}
-  A corner assignment of $G$ only exists if $G$ is a triangulation of the $k$-gon for some $k$. Otherwise, there is no way of adding poles that makes all the interior faces of degree $3$. Because of this, we only consider triangulations of the $k$-gon in this thesis. A corner assignment $\ext G$ of $G$ is an example of a triangulation of the $4$-gon. Each corner assignment fixes which rectangles are in the corners of the rectangular dual $\L$, which explains the terminology.
+  A corner assignment of $G$ only exists if $G$ is a triangulation of the $k$-gon for some $k$. Otherwise, there is no way of adding poles that makes all the interior faces of degree $3$. Because of this, we only consider triangulations of the $k$-gon in this thesis. A corner assignment $\ext G$ of $G$ is an example of a triangulation of the $4$-gon. A corner assignment fixes which rectangles are in the corners of the rectangular dual $\L$, which explains the terminology.
 
 \mypar{Existence and uniqueness}
   Now we can state which graphs admit a rectangular dual. The following result was shown independently by Kozminski and Kinnen \cite{Kozminski1984} and Ungar \cite{Ungar1953}.
