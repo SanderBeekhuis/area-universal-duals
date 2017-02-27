@@ -2,21 +2,52 @@
 
 \section{Preliminaries}
 \thispagestyle{plain}
-\fxinnote{Lead in paragraph}
-\fxinnote{define notations and concepts in one go}
-\fxinnote{state results at and of this section}
+\label{s:prelim}
 
-\mypar{Adjacent vertices and chords}
-  \fxnote{introduce where this gets relevant}
-  We call a vertex \emph{$\pS$-adjacent} when it is adjacent to $\pS$ in the current corner assignment. In the same way we call a chord or $2$-chord \emph{$\pE$-bound}, \emph{$\pW$-bound} or \emph{polebound} when it is adjacent to $\pE$, $\pW$ or any pole,  respectively.
+Before we continue with the rest of thesis we will first define some basic definitions for graphs, paths and cycles in this section.
+
+\mypar{Graphs}
+  A \emph{graph} $G$ is an abstraction of a network. The objects are represented by a set of \emph{vertices}.
+  Connections between objects are represented by a set of \emph{edges}; each edge connects two vertices.
+  Two distinct edges do not have the same vertices and no edge starts and ends at the same vertex.
+  That is, all graphs in this thesis are \emph{simple}.
+  An edge is \emph{incident} to a vertex $v$ if that edge connects $v$ to another vertex.
+  The \emph{degree} of a vertex is the number of edges incident to this vertex.
+  All graphs in this thesis are \emph{planar}.
+  That is, they can be embedded in the plane without their edges crossing. A \emph{face} is connected component of the maximal subset of the plane that is disjoint from the embedded graph. The \emph{degree} of a face is the number of vertices on its boundary.
+  A face of degree $3$ is a \emph{triangular} face. The \emph{outer face} is the one and only unbounded face.
+  A vertex is \emph{incident} to a face when it lies on its boundary.
+
+  All graphs in this thesis are \emph{triangulations of the $k$-gon}. A triangulation of the $k$-gon has an outer face of degree $k$ and interior faces of degree $3$. Note that every corner assignment is a triangulation of the $4$-gon.
+  Vertices bordering the outer face are \emph{outer vertices} while all other vertices are \emph{interior vertices}.
+  Triangulations of the $k$-gon are called \emph{(plane) triangulated graphs} by some other authors.
 
 
- \subsection{Different kinds of rectangular layouts}
+\mypar{Paths}
+  A path $\P$ is a sequence of vertices such that every two consecutive vertices are connected by an edge. The first and last vertex of the path are its \emph{extreme} vertices while the rest are \emph{internal} vertices of this path. The \emph{length} of a path is the number of edges used to connect the vertices. That, is one less than the number of vertices. In this thesis all paths are \emph{simple}, that is, no vertex occurs twice in the path except possibly the extreme vertices.
+
+\mypar{Cycles}
+  A cycle is a path whose extreme vertices coincide. Because a cycle is a path the start and end vertex are the only vertices that occurs more than once. We call a cycle of length $k$  a \emph{$k$-cycle}. A \emph{triangle} is cycle of length $3$ (i.e. a $3$-cycle). By Jordan's curve theorem a cycle splits the plane into two parts, one bounded and one unbounded. We call the bounded part the \emph{interior} of this cycle and the unbounded part the \emph{exterior} of this cycle.
+  Furthermore, the cycle of all vertices bordering the outer face is the \emph{outer cycle}.
+  We call a cycle \emph{separating} if there are vertices in both its interior and exterior.
+  An \emph{interior edge} of a cycle is then an edge contained in the interior of the cycle.
+  An \emph{interior path} is a path connecting two distinct vertices off the cycle and whose edges are interior edges.
+
+
+\fxnote{Unclear what the purpose of this pargraph is}
+ \mypar{Different kinds of rectangular layouts}
    A rectangular layout $\L$ can have different properties.
    Recall that $\L$ is area-universal if, no matter the areas we assign to the rectangles of $\L$, some combinatorially equivalent layout $\L'$ has rectangle of the assigned areas.
    Recall also that a \emph{maximal line segments} (or simply \emph{maximal segments}) of $\L$ is a line segment not contained in any other line segment. That is, it can not be extended any further. In this definition a \emph{line segment} (or simply \emph{segment}) of $\L$ is a sequence of consecutive inner boundary segments forming a line.
    A segment is \emph{one-sided} if it is on the boundary of a single rectangle. We call it \emph{$k$-sided} if on one of the sides it is the boundary of at most $k$ rectangles.
 
-
    We say a layout \emph{one-sided} if all maximal segments are one-sided.
    Furthermore,  we say it is \emph{vertically one-sided} or \emph{horizontally one-sided} if all vertical or horizontal maximal segments are one-sided, respectively. Finally, a layout is \emph{$k$-sided} if all maximal line segments are $k$-sided.
+
+\fxnote{Unclear what the purpose of this pargraph is}
+\mypar{Corner assignments}
+  If we want to determine which graphs do have a rectangular dual, then we need to introduce the notion of a \emph{corner assignment}.
+  A corner assignment $\ext G$ of $G$ is an augmentation of $G$ with $4$ external vertices ,which we call its \emph{poles}, with the following 3 properties (i) every interior face has degree $3$, (ii) the exterior face has degree $4$ and (iii) $\ext G$ has no separating triangles.
+  A corner assignment fixes which rectangles are in the corners of the rectangular dual $\L$, which explains the terminology.
+
+  A corner assignment of $G$ only exists if $G$ is a triangulation of the $k$-gon for some $k$. Otherwise, there is no way of adding poles that makes all the interior faces of degree $3$. Because of this, we only consider triangulations of the $k$-gon in this thesis. A corner assignment $\ext G$ of $G$ is an example of a triangulation of the $4$-gon. A corner assignment fixes which rectangles are in the corners of the rectangular dual $\L$, which explains the terminology.

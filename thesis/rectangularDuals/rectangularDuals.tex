@@ -44,14 +44,15 @@
       \caption{Regular edge labeling conditions}
   \label{fig:rel:conditions}
   \end{figure}
-
   In \cite{He1993} He showed that given a regular edge labeling of a corner assignment we can reconstruct a rectangular layout represented by this regular edge labeling.
-  A regular edge labeling  of $\ext G$ corresponds to an equivalence class of rectangular layouts $\L$ that are a rectangular dual of $G$.
+
+  \mypar{Combinatorially equivalent}
+    We say two layouts are  \emph{combinatorially equivalent} or simply \emph{equivalent} when they give raise to the same regular edge labelling. That is, their rectangles have the same adjacencies with the same orientation (horizontal or vertical).
 
   \mypar{Properties}
-  Since we often use regular edge labellings in this thesis we prove some properties we can reuse later for them. We show that a regular edge labeling has no mono-colored triangles and that the red and blue subgraph of a regular edge labeling both form a $st$-planar graph. Before we can show this, we need to introduce the rotation at a vertex.
-  For a fixed embedding for $G$ the \emph{rotation} at a vertex $v$ is the clockwise order of the edges incident to $v$. We identify these edges with their other endpoints.
-  Two vertices $x, y$ are said to be \emph{consecutive} in the rotation at $v$ when the edges $vx$ and $vy$ are consecutive in the rotation.
+    Since we often use regular edge labellings in this thesis we prove some properties we can reuse later for them. We show that a regular edge labeling has no mono-colored triangles and that the red and blue subgraph of a regular edge labeling both form a $st$-planar graph. Before we can show this, we need to introduce the rotation at a vertex.
+    For a fixed embedding for $G$ the \emph{rotation} at a vertex $v$ is the clockwise order of the edges incident to $v$. We identify these edges with their other endpoints.
+    Two vertices $x, y$ are said to be \emph{consecutive} in the rotation at $v$ when the edges $vx$ and $vy$ are consecutive in the rotation.
 
   \begin{lemma}
     \fxnote{This is known, give reference, more an observation}
