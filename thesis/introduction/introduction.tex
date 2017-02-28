@@ -195,9 +195,16 @@
   After finding the counterexample, we focused our efforts on obtaining an algorithm that would provide a $k$-sided layout for corner assignments without a separating $4$-cycle, for some constant $k \in \N$.
   Unfortunately, we fell short of this goal and only found an algorithm that provides a $d-1$-sided layout, where $d$ is the maximal degree of the vertices of $G$ in $\ext G$ (Theorem \ref{th:dsided}).
 
-  That being said, we never found any graph without separating $4$-cycles that did not admit any $2$-sided layouts during our research.
+  \begin{wrapfigure}[14]{r}{5cm}
+    \centering
+    \includegraphics[]{introduction/img/rinsma2Sided.pdf}
+    \caption{A 2-sided dual of the Rinsma graph in Figure \ref{fig:intro:rinsma}.}
+    \label{fig:intro:rinsma2Sided}
+  \end{wrapfigure}
+
+  That being said, we never found any graph without separating $4$-cycles that did not admit any $2$-sided layouts during our research. For example, the graph without one-sided duals by Rinsma does have a $2$-sided dual, as can been seen in Figure \ref{fig:intro:rinsma2Sided}.
+
   This raises the conjecture that these graphs in fact do admit a $2$-sided layout and it is just the algorithm for finding them that eludes us.
-  \fxnote{show that for example rinsma also satifies this, Figure}
 
   Its worthy of note, that bound obtained by the algorithm is not stronger then the bound provided by the counterexample. That is, there might be an algorithm providing $O(d)$-sided layouts for all graphs $G$.
 
