@@ -143,6 +143,33 @@
     \label{fig:intro:4cycle}
   \end{wrapfigure}
 
+
+  $4$-cycles in general are difficult to treat but examples indicate that nested $4$-cycles are the most difficult to treat when trying to create a $k$-sided layout.
+  Finding a $k$-sided rectangular duals is not the only problem on rectangular duals that has difficulty with separating $4$-cycles.
+
+  Yeap and Sarrafzadeh~\cite{Yeap1995} investigated the problem of finding a \emph{sliceable} dual for a graph. A rectangular layout is sliceable when it is either a single rectangle or when it has a single maximal segment which splits it into two sliceable layout.
+  Yeap and Sarrafzadeh were able to show that graphs without a separating $4$-cycle have a sliceable rectangular dual. They were unable to get traction on graphs with a separating $4$-cycle (in their words this is a complex cycle of length 4).
+
+  \begin{wrapfigure}[10]{r}{7cm}
+    \centering
+      \begin{subfigure}[b]{3cm}
+        \centering
+        \includegraphics[scale=1]{introduction/img/areaunivGraph.pdf}
+        \caption{Graph with separating 4-cycle.}
+      \end{subfigure}
+      ~
+      \begin{subfigure}[b]{3cm}
+        \centering
+        \includegraphics[scale=1]{introduction/img/areaunivDual.pdf}
+        \caption{Corresponding area-universal dual.}
+      \end{subfigure}
+    \caption{}
+    \label{fig:intro:areauniv}
+  \end{wrapfigure}
+
+  Nevertheless, not every problem is intractable on graphs with a separating $4$-cycle. The problem of finding an area-universal rectangular dual of a graph, already mmentioned above, was investigated by Eppstein et al. in~\cite{Eppstein2012}. They managed to find such a rectangular dual, when it exists, for any graph $G$. This result is non-trival for graphs containing separating $4$-cycles, as can been seen in Figure \ref{fig:intro:areauniv}, since there such graphs that admit an area-universal dual.
+
+
 \mypar{Corner assignments}
   Before we can state our second result we will have to briefly introduce the concepts of corner assignments.
   A corner assignment $\ext G$ of a graph $G$ is an augmentation of $G$ with $4$ external vertices, which we call its \emph{poles}, with the following three properties (i) every interior face has degree $3$, (ii) the exterior face has degree $4$ and (iii) $\ext G$ has no separating triangles.
