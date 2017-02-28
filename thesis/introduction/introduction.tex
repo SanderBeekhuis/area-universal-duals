@@ -134,8 +134,6 @@
   Such a cycle is separating if there are vertices in both its interior and exterior.
   Separating $4$-cyles are \emph{nested} if one is contained in the other, but some of their vertices overlap. These different types of $4$-cycles are demonstrated in Figure \ref{fig:intro:4cycle}.
 
-  \newpage
-
   \begin{wrapfigure}{r}{7cm}
       \centering
       \begin{subfigure}[t]{2cm}
@@ -195,7 +193,8 @@
   After finding the counterexample, we focused our efforts on obtaining an algorithm that would provide a $k$-sided layout for corner assignments without a separating $4$-cycle, for some constant $k \in \N$.
   Unfortunately, we fell short of this goal and only found an algorithm that provides a $d-1$-sided layout, where $d$ is the maximal degree of the vertices of $G$ in $\ext G$ (Theorem \ref{th:dsided}).
 
-  \begin{wrapfigure}[14]{r}{5cm}
+  \newpage
+  \begin{wrapfigure}[13]{r}{5cm}
     \centering
     \includegraphics[]{introduction/img/rinsma2Sided.pdf}
     \caption{A 2-sided dual of the Rinsma graph in Figure \ref{fig:intro:rinsma}.}
@@ -212,7 +211,16 @@
 \mypar{k-sided segments}
   Consider for example Figure \ref{fig:intr:segmentdefs}, the three highlighted lines are all line segments. However, only the red and blue segment are maximal segments. The red segment is one-sided and the blue segment is $2$-sided and the whole layout is $2$-sided. Furthermore, the layout in Figure \ref{fig:intr:vertonesided} is $4$-sided.
 
-  \begin{figure}[b]
+\fxnote{expand? I think this is okay}
+\mypar{Overview}
+  The rest of this thesis is focused on obtaining these two results.
+  In order to do this we give extensive definitions on graphs, paths and cycles in Section \ref{s:prelim}. In Section \ref{s:rel} we introduce the notion of regular edge labellings.  A regular edge labeling is a way of coloring and orienting the edges of a graph that corresponds to a rectangular dual of that graph.
+  We frequently use this notion in the rest of the thesis.
+  Once we have these preliminaries out of the way, we prove Theorem \ref{fix:th:family} in Section \ref{s:fix} and Theorem \ref{th:dsided} in Section \ref{s:algo}. We prove Theorem \ref{fix:th:family} by counterexample and Theorem \ref{th:dsided} by giving a constructive algorithm.
+
+  \bigskip
+  \bigskip
+  \begin{figure}[h]
       \centering
       \begin{subfigure}[b]{0.45 \textwidth}
         \centering
@@ -230,10 +238,3 @@
       \caption{Rectangular layouts}
       \label{fig:intr:graphs}
   \end{figure}
-
-\fxnote{expand? I think this is okay}
-\mypar{Overview}
-  The rest of this thesis is focused on obtaining these two results.
-  In order to do this we give extensive definitions on graphs, paths and cycles in Section \ref{s:prelim}. In Section \ref{s:rel} we introduce the notion of regular edge labellings.  A regular edge labeling is a way of coloring and orienting the edges of a graph that corresponds to a rectangular dual of that graph.
-  We frequently use this notion in the rest of the thesis.
-  Once we have these preliminaries out of the way, we prove Theorem \ref{fix:th:family} in Section \ref{s:fix} and Theorem \ref{th:dsided} in Section \ref{s:algo}. We prove Theorem \ref{fix:th:family} by counterexample and Theorem \ref{th:dsided} by giving a constructive algorithm.
