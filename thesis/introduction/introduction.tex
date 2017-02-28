@@ -207,34 +207,9 @@
 
   Its worthy of note, that bound obtained by the algorithm is not stronger then the bound provided by the counterexample. That is, there might be an algorithm providing $O(d)$-sided layouts for all graphs $G$.
 
-\fxnote{Move somewhere}
-\mypar{k-sided segments}
-  Consider for example Figure \ref{fig:intr:segmentdefs}, the three highlighted lines are all line segments. However, only the red and blue segment are maximal segments. The red segment is one-sided and the blue segment is $2$-sided and the whole layout is $2$-sided. Furthermore, the layout in Figure \ref{fig:intr:vertonesided} is $4$-sided.
-
 \fxnote{expand? I think this is okay}
 \mypar{Overview}
   The rest of this thesis is focused on obtaining these two results.
   In order to do this we give extensive definitions on graphs, paths and cycles in Section \ref{s:prelim}. In Section \ref{s:rel} we introduce the notion of regular edge labellings.  A regular edge labeling is a way of coloring and orienting the edges of a graph that corresponds to a rectangular dual of that graph.
   We frequently use this notion in the rest of the thesis.
   Once we have these preliminaries out of the way, we prove Theorem \ref{fix:th:family} in Section \ref{s:fix} and Theorem \ref{th:dsided} in Section \ref{s:algo}. We prove Theorem \ref{fix:th:family} by counterexample and Theorem \ref{th:dsided} by giving a constructive algorithm.
-
-  \bigskip
-  \bigskip
-  \begin{figure}[h]
-      \centering
-      \begin{subfigure}[b]{0.45 \textwidth}
-        \centering
-        \includegraphics[scale=1]{rectangularDuals/img/segmentdefs}
-        \caption{A rectangular layout.}
-        \label{fig:intr:segmentdefs}
-      \end{subfigure}
-      ~
-      \begin{subfigure}[b]{0.45 \textwidth}
-        \centering
-        \includegraphics[scale=1]{rectangularDuals/img/vertonesided}
-        \caption{Another rectangular layout.}
-        \label{fig:intr:vertonesided}
-      \end{subfigure}
-      \caption{Rectangular layouts}
-      \label{fig:intr:graphs}
-  \end{figure}
