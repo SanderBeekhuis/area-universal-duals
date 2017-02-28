@@ -29,7 +29,7 @@
   A rectangular layout that has an \emph{combinatorially equivalent} layout, regardless the area sizes we assign to each rectangle is \emph{area-universal}. An example of an area-universal layout is given by the three combinatorially equivalent layouts in Figure \ref{fig:intro:areaunivLayout}.
 
 
-  \begin{wrapfigure}{r}{7cm}
+  \begin{wrapfigure}[6]{r}{7cm}
     \centering
     \includegraphics[width = 6cm]{introduction/img/areaunivLayout.pdf}
     \caption{Three area-universal layouts.}
@@ -43,16 +43,23 @@
   We can represent the adjacencies of map regions by an \emph{adjacency graph} $G$ where each region is represented by a vertex and two vertices are connected by an edge exactly when their regions are adjacent.
   Similarly, in the \emph{adjacency graph} $\dualgraph{\L}$ of a rectangular layout $\L$ each rectangle is represented by a vertex and two vertices are connected by an edge exactly when their rectangles are adjacent.
   A layout $\L$ is a \emph{rectangular dual} of a graph $G$ if we have that $G = \dualgraph{\L}$.
+  In general a single graph can have mutiple non-equivalent rectangular duals, an example is given in Figure \ref{fig:intro:nonuniqueRectDual}.
+
+  \begin{wrapfigure}[8]{r}{7cm}
+    \centering
+    \includegraphics[width=6cm]{introduction/img/nonuniqueRectDual.pdf}
+    \caption{A graph with two non-equivalent duals.}
+    \label{fig:intro:nonuniqueRectDual}
+  \end{wrapfigure}
+
   Rinsma found a graph $G$ in~\cite{Rinsma1987}, displayed in Figure \ref{fig:intro:rinsma}, that has no area-universal rectangular duals.
-  \fxnote{Show nonuniqueness}
   That is, all rectangular layouts with $G$ as adjacency graph are not area-universal.
 
-  \begin{wrapfigure}[13]{r}{5cm}
+  \begin{wrapfigure}{r}{5cm}  %[13]
     \includegraphics[scale=.15]{introduction/img/rinsma.png}
     \caption{The graph by Rinsma~\cite{Rinsma1987} that is not one-sided.}
     \label{fig:intro:rinsma}
   \end{wrapfigure}
-
 
 \mypar{One-sided layouts}
   So, unfortunately not all adjacency graphs of map regions admit area-universal duals.
