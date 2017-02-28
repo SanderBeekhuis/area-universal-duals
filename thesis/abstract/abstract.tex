@@ -3,28 +3,20 @@
 \section*{Abstract}
 \thispagestyle{plain}
 
-  A  \emph{rectangular layout} (or simply \emph{layout}) $\L$ is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles. Hence, the interior of this rectangle contains vertical and horizontal line segments. Any line segment that can not extended farther on either side is a \emph{maximal segment}. A rectangular layout is \emph{one-sided} if every maximal segment has only one rectangle on one of its sides and \emph{$k$-sided} if every maximal segment has at most $k$ rectangles on one of its sides.
+  A  \emph{rectangular layout} (or simply \emph{layout}) $\L$ is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles. Rectangular layouts have many applications, not only as rectangular cartograms in cartography, but also in for example chip design and architecture. The interior of a rectangular layout contains vertical and horizontal line segments.
 
-  All graphs in this thesis will be \emph{triangulations of the $k$-gon}. They have an outer face of degree $k$ and interior faces of degree $3$.
-  Vertices bordering the outer face are \emph{outer vertices} while all other vertices are \emph{interior vertices}.
+  In particular in the rectangular cartogram application it is desirable to find a layout that has the same adjacencies of the interior rectangles when their size changes, for example when displaying a cartogram of a quantity at different points in time. Such layouts are \emph{area-universal}.
 
-  Two vertices are \emph{adjacent} when they are connected by an edge. Two rectangles are \emph{adjacent} when their boundaries overlap. A \emph{rectangular dual} of $G$ is a rectangular layout whose adjacencies are the same as those of $G$ for a bijection between vertices and rectangles.
+  Any line segment that can not extend farther on either side is a \emph{maximal segment}.
+  A rectangular layout is \emph{$k$-sided} if every maximal segment has at most $k$ rectangles on one of its sides.
+  A \emph{rectangular dual} of a graph $G$ is a rectangular layout whose adjacencies are the same as those of $G$ for a bijection between vertices and rectangles.
+  A necessary and sufficient condition for a layout to be area-universal is that it is one-sided.
+  Unfortunately, not all graphs with a rectangular dual have an one-sided dual.
 
-  A \emph{corner assignment} $\ext G$ of $G$ is an augmentation of $G$ with $4$ vertices ,which we call its \emph{poles}, such that every interior face has degree $3$, the exterior face has degree $4$ and all poles are incident to the outer face.
+  For graphs without an one-sided dual a $k$-sided dual for as low as possible $k$ is often a dual that has the smallest risk of adjacencies changing when the size of the interior rectangles changes.
 
-
-  It is known that a triangulation of the $k$-gon $\G$ has a rectangular dual if and only if it has a corner assignment without separating triangles $\ext \G$. \fxnote{Suddenly sepearting triangle and equivalent}
-  A graph $G$ can have multiple rectangular duals. $G$ can even have duals that are not equivalent.
-
-  %In for example atlases \emph{rectangular cartograms} are used to display information. A rectangular cartogram is a map where the regions are replaced by rectangles while keeping their adjacencies. The size of each region changes according to the variable displayed in the cartogram.  A rectangular cartogram is the rectangular dual of the adjacency graph of the map $G$.
-  %If the areas change it might be that a certain rectangular layout can not fulfill its adjacencies anymore and we have to switch to another non-equivalent rectangular dual of $G$.
-
-  %We would like to find a rectangular dual that has adjacencies that hold regardless of the area sizes we assign to each rectangle. We say such a dual is \emph{area-universal}.
-  %Eppstein et al. have shown that rectangular duals are area-universal exactly when they are one-sided.~\cite{Eppstein2012} Unfortunately not all graphs admit a one-sided dual. One such graph is given by Rinsma.~\cite{Rinsma1987} \fxwarning{TODO figure of this graph with ciation}
-
-  %Unfortunately $k$-sided layouts for $k>1$ are not area-universal but we suspect that for small $k$ they are more robust to changes in the areas of their rectangles.
-  A graph is $k$-sided when it has a $k$-sided rectangular dual. This thesis presents two results on $k$-sided graphs.
-
+  In this thesis we find that, for any constant $k$, we can not hope to find a $k$-sided rectangular dual for all graphs admitting a rectangular dual.
+  For certain graphs, those without separating $4$-cycles, this might be possible. However, we present an algorithm giving a $d-1$-sided dual, where $d$ is the maximal degree of the vertices of $G$ in $\ext G$, a so-called corner assignment.
   \begin{enumerate}
     \item There is a family of graphs $G_k$ that for any $k \in \N$ has members that are not $k$-sided (Theorem \ref{fix:th:family}).
     \item Graphs $G$ that have a corner assignment without separating 4-cycles are $d-1$-sided, where $d$ is the maximal degree of the vertices of $G$ (Theorem \ref{th:dsided}).
