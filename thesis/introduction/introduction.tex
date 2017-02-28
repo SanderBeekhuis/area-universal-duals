@@ -116,12 +116,32 @@
   In this thesis we provide two results on $k$-sidedness. The first result is the existence of a family of graphs $G_k$ that, for any constant $k \in \N$, has members that are not $k$-sided (Theorem \ref{fix:th:family}). The family of graphs in this result is characterized by the occurrence of nested separating $4$-cycles.
   A \emph{$4$-cycle} is a cycle of length $4$.
   Such a cycle is separating if there are vertices in both its interior and exterior.
-  Separating $4$-cyles are \emph{nested} if one is contained in the other, but some of their vertices overlap.
-  \fxnote{Some example fig of these cycles}
+  Separating $4$-cyles are \emph{nested} if one is contained in the other, but some of their vertices overlap. These different types of $4$-cycles are demonstrated in Figure \ref{fig:intro:4cycle}
+
   $4$-cycles in general are difficult to treat but examples indicate that nested $4$-cycles are the most difficult to treat when trying to create a $k$-sided layout.
 
 
   \fxnote{BLABLA on 4-cyles in other problems}
+
+  \begin{wrapfigure}{r}{8cm}
+      \centering
+      \begin{subfigure}[b]{0.1 \textwidth}
+          \includegraphics[width = \textwidth]{introduction/img/4cycle.pdf}
+          \caption{A $4$-cycle.}
+      \end{subfigure}
+      ~
+      \begin{subfigure}[b]{0.1 \textwidth}
+          \includegraphics[width = \textwidth]{introduction/img/sep4cycle.pdf}
+          \caption{A separating $4$-cycle.}
+      \end{subfigure}
+      ~
+      \begin{subfigure}[b]{0.1 \textwidth}
+          \includegraphics[width =\textwidth]{introduction/img/nest4cycle.pdf}
+          \caption{A nested separating 4-cycle.}
+      \end{subfigure}
+    \caption{}
+    \label{fig:intro:4cycle}
+  \end{wrapfigure}
 
 \mypar{Corner assignments}
   Before we can state our second result we will have to briefly introduce the concepts of corner assignments.
