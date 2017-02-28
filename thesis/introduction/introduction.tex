@@ -116,7 +116,7 @@
   Since any layout for such a graph is not area-universal, it is inevitable that adjacencies between regions in this layout change when we are resizing them.
   For these graphs we want to find layouts that have the least number of adjacency changes when area sizes change.
   This is beneficial for, for example, applications displaying cartograms on a continuous timescale.
-  Since every time the adjacencies of the layout change, we have to compute a new rectangular layout with the right adjacencies, providing a rougher viewing experience.
+  Since every time the adjacencies of the layout change, we have to compute a different rectangular layout with the right adjacencies, providing a rougher viewing experience.
 
   We call a layout \emph{$k$-sided} if $k$ is the smallest integer such that every maximal segment has at most $k$ rectangles on one of its sides. This is a direct generalization of one-sidedness.
   This generalization is useful because, when changing the areas of rectangles in a $k$-sided layout fewer adjacencies change, in general, if $k$ is small then if $k$ is large.
