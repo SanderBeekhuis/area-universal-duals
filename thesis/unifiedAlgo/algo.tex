@@ -1,6 +1,6 @@
 %!TEX root = ../thesis.tex
 
-\section{Algorithm}
+\section{The algorithm}
 \thispagestyle{plain}
 \label{s:algo}
 
@@ -12,6 +12,13 @@
   In this algorithm Fusy starts by denoting the outer cycle of $\ext G \sm{\pN}$ as the sweepcycle $\C$. He then shrinks this sweepcycle by updating it with interior paths of $\C$. During this update he maintains invariants on the structure of both the cycle and its exterior.
   After doing a finite amount of updates, the sweepcycle has no more interior vertices. At this point he completes the algorithm and obtains a regular edge labeling.
 
+  \begin{wrapfigure}[33]{r}{8.2cm}
+    \hfill
+    \includegraphics[scale=.37]{unifiedAlgo/img/algoflowext2.pdf}
+    \caption{The flow of the algorithm.}
+    \label{fig:algo:algoflow}
+  \end{wrapfigure}
+
 \mypar{Our algorithm}
   In this section we will present an algorithm providing a $d$-sided rectangular dual for any corner assignment $\ext G$ without separating $4$-cycles, where $d$ is the highest degree among vertices of $G$ in $\ext G$.  Hence, we will prove the following theorem.
 
@@ -20,15 +27,7 @@
   Graphs $G$ that have a corner assignment $\ext G$ without separating 4-cycles are $d-1$-sided, where $d$ is the maximal degree of the vertices of $G$ in $\ext G$.
   \end{thrm}
 
-  \begin{wrapfigure}[34]{r}{8.2cm}
-    \hfill
-    \includegraphics[scale=.37]{unifiedAlgo/img/algoflowext2.pdf}
-    \caption{The flow of the algorithm}
-    \label{fig:algo:algoflow}
-  \end{wrapfigure}
-
   Our algorithm will need a number of steps to get to the stated result. In Figure~\ref{fig:algo:algoflow} we can see the four main step we need for finding an $d-1$ sided layout. In every step we ensure new restrictions while maintaining the old ones. In the last step, "Blue Face Subdivision", we can than use these accumulated restrictions to build a $d-1$ sided layout.
-  \fxnote{Might define topfan to make talking easier}
 
   The first step is finding a regular edge labeling with a certain restriction on \emph{splitvertices}, vertices having more than one blue outgoing edge.
   We show that these splitvertices can not be next to something we call the handle of a large topfan, that is, a vertex that has more then two incoming red edges.
@@ -37,10 +36,18 @@
   We can translate this to a condition on the red faces of $L$, and this condition can then be translated to the existence of a structure we call a \emph{blue $Z$}. In this step we resolve all occurrences of such blue $Z$'s.
   We suspect that this step is not necessary because the regular edge labeling provided by the sweepcycle algorithm is already vertically one-sided. However, we were unable to proof this.
 
-  The third step then consists of handling most topfans in the regular edge labeling by "Flipping" them. This is the most difficult for those topfans that are adjacent to a splitvertex and hence we have to ignore some of these. If we would have been able to handle all topfans finding a $k$-sided layout would have been easier.
+  \begin{wrapfigure}{r}{6cm} %[34]
+    \centering
+    \includegraphics[]{unifiedAlgo/img/topfanExample.pdf}
+    \caption{The thick edges are a topfan.}
+    \label{fig:algo:topfanExample}
+  \end{wrapfigure}
+
+  The third step then consists of handling most topfans in the regular edge labeling by "Flipping" them.
+  A \emph{topfan} is a several red edges going to the same vertex in a triangle strip that is formed by a blue face. Such a topfan is \emph{large} when this has at least three incoming red edges. In Figure~\ref{fig:algo:topfanExample} an example of a large topfan is given by the thick edges.
+  This is the most difficult for those topfans that are adjacent to a splitvertex and hence we have to ignore some of these. If we would have been able to handle all topfans finding a $k$-sided layout would have been easier.
 
   However, due to the restriction on split vertices we have maintained during the algorithm and the fact that all remaining topfans are adjacent to such splitvertices we are still able to produce an $d-1$ sided layout in the last step.
 
-\fxnote{Is this pargraph still necessary, if yes in what form?}
 \mypar{Overview}
-  To describe this algorithm we introduce the notion of right neighbor paths in Section \ref{ss:rightNeighbour}.  We use these right neighbor paths to find a regular edge labeling with some nice properties in Section \ref{ss:sweep}. Afterwards we unfortunately still have to do three post-processing steps. In Section \ref{ss:flipBlueZ} we make sure our regular edge labeling is \emph{vertically one-sided}, that is, that all vertical segments are one-sided. In Section \ref{ss:fanflip} we will remove most occurrences of something called topfans. Then, in Section \ref{ss:subdiv} we can finally subdivide all blue faces that are too large without creating red faces that are too large. This finishes the algorithm.
+  To describe our algorithm we introduce the notion of right neighbor paths in Section~\ref{ss:rightNeighbour}. This notion will be heavily used in the sweepcycle algorithm is Section~\ref{ss:sweep}. In the rest of the section we describe the rest of the algorithm, please refer to Figure~\ref{fig:algo:algoflow} to see which steps are describe in what section.
