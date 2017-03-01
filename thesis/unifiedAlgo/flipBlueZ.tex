@@ -22,11 +22,14 @@
     If a face contains a blue $Z$, it can not be one-sided. Since path of length $3$ inside a red face must have at least $2$ vertices on both boundary paths.
   \end{proof}
 
-  \begin{figure}[b]
+  \begin{figure}[!b]
     \centering
     \includegraphics[scale=1]{unifiedAlgo/img/zflip/blueZ.pdf}
     \caption{The two possible blue $Z$'s.}
     \label{fig:zflip:blueZ}
+    \includegraphics[scale=1]{unifiedAlgo/img/zflip/flip.pdf}
+    \caption{The flip.}
+    \label{fig:zflip:flip}
   \end{figure}
 
   As long as the regular edge labeling is not vertically one-sided we find such a blue $Z$ and recolor its middle edge as in Figure \ref{fig:zflip:flip}. We call this a \emph{flip} and we will say that this edge is \emph{flipped}.
@@ -35,12 +38,6 @@
   We repeat these flips until the regular edge labeling is vertically one-sided.
   Since every flip reduces the number of blue edges by one, this is a finite procedure.
 
-  \begin{figure}[h]
-    \centering
-    \includegraphics[scale=1]{unifiedAlgo/img/zflip/flip.pdf}
-    \caption{The flip.}
-    \label{fig:zflip:flip}
-  \end{figure}
 
   \begin{lemma}
     \label{lm:sweep:vertOnsided}
