@@ -6,7 +6,7 @@
 The first step of our algorithm is executing a sweepcycle algorithm inspired by the sweepcycle algorithm by Fusy \cite{Fusy2006}. We use $\C$ to indicate the current sweep cycle. We shrink $\C$ by updating it with interior paths.
 The algorithm finishes when $\C$ has no more interior vertices. When the algorithm finishes, it has produced a regular edge labeling.
 One of the nicest things about the regular edge labeling is Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther}.
- \fxnote*{Q: These are all words the reader does not know yet. How to explain? Should I explain here?}{This lemma states that we can not have the fan handle of a large topfan after a split vertex on a so-called bottom path.}
+This lemma states that we can not have the fan handle of a large topfan after a split vertex on a so-called bottom path.
 
 During the algorithm we maintain several invariants on $\C$. The first four are equivalent to those imposed by Fusy. The final invariant is new and allows us to prove Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther}.
 
@@ -79,7 +79,7 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
     In this case the update path $P'$ is equal to $P$.
 
     $P'$ has no violating chord by the definition of this case. Moreover, there are no violating chords with one endpoint on $P'$ and one endpoint on $\C$ since $v_i$ and $v_j$ are both adjacent to $\pS$ we can not have any chords and any $2$-chords must have $\pS$ as middle vertex.
-    \begin{figure}[b]
+    \begin{figure}[t]
       \centering
       \includegraphics[scale=1]{unifiedAlgo/img/sweep/cases/noIrregularity}
       \caption{Updating path when $P$ contains no violating chord.}
@@ -89,7 +89,7 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
   \mypar{We have a chord on $\mathbf{P}$}
     Note that we can not have a chord incident to one of the exterior vertices of the candidate path $P$ since any such chord would violate Invariant \ref{i:uni:no2Chords} of $\C$ as can be seen in Figure~\ref{fig:sweep:noChordOnExteriorVertex}.
 
-    \begin{figure}[h]
+    \begin{figure}[b]
       \centering
       \includegraphics[scale=1]{unifiedAlgo/img/sweep/noChordOnExtriorVertex.pdf}
       \caption{Hypothetical situation where $P$ would have a chord on an exterior vertex.}
@@ -100,7 +100,7 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
     Note that this chord can not contain any other chords since such a chord would have either a large start index or a smaller end index.
     The way in which we find $C$ is illustrated in Figure~\ref{fig:sweep:chordsOnCandidatePath}.
 
-    \begin{figure}[b]
+    \begin{figure}[t]
       \centering
       \includegraphics[scale=1]{unifiedalgo/img/sweep/chordsOnCandidatePath}
       \caption{Finding the chord $C$.}
@@ -114,11 +114,14 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
 
       $P'$ is entirely inside a chord containing no more chords and thus can not contain a chord. Moreover, there are no separating $2$-chords on $P|_{p_i, p_j}$ so $P'$ can not have separating $2$-chords. Any violating chord with one endpoint in $P'$ and one in $\C$ has to cross $v_k p_i p_j v_l$ so we can not have a chord and any 2-chord has $p_i$ or $p_j$ as middle vertex. But, with this restriction such a 2-chord can not be separating.
 
-      \begin{figure}[h]
+      \begin{figure}[!b]
         \centering
         \includegraphics[scale=1]{unifiedAlgo/img/sweep/cases/chordUpdate}
         \caption{Updating path when $P$ has a chord not containing a separating 2-chord.}
         \label{fig:sweep:chordUpdate}
+        \includegraphics[scale=1]{unifiedAlgo/img/sweep/cases/2chordInChordUpdate}
+        \caption{Updating path when $P$ has a chord containing at least one separating 2-chord.}
+        \label{fig:sweep:2chordInChordUpdate}
       \end{figure}
 
     \emph{At least one separating 2-chord.}
@@ -129,13 +132,6 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
       That leaves violating chords within the second endpoint inside containing chord $p_i p_j$. \fxnote{TODO make this a complete cycle}
       Suppose that we have a separating $2$-chord, then this would have been a chord of $P$. This is in contradiction with $p_i p_j$ being a minimal chord.
       We also can not have a chord since this would break $P|_{p_i, p_j} \oplus p_j p_i$ .
-
-      \begin{figure}[h]
-        \centering
-        \includegraphics[scale=1]{unifiedAlgo/img/sweep/cases/2chordInChordUpdate}
-        \caption{Updating path when $P$ has a chord containing at least one separating 2-chord.}
-        \label{fig:sweep:2chordInChordUpdate}
-      \end{figure}
 
   \mypar{Only separating 2-chords}
     In this case the candidate path $P$ has no chords since we would otherwise be in the above case.
@@ -151,11 +147,14 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
       However, the first yields a $2$-chord of the candidate path with a higher start range, this is a contradiction.
       And the second can not yield a separating $2$-chord. \fxwarning{TODO or it is just contained, this can happen see back of draft 1.4}
 
-    \begin{figure}[h]
+    \begin{figure}[t]
       \centering
       \includegraphics[scale=1]{unifiedAlgo/img/sweep/cases/pEBound}
       \caption{Updating path when $P$ has a separating 2-chord with $v_j$ as end vertex.}
       \label{fig:sweep:pEBound}
+      \includegraphics[scale=1]{unifiedAlgo/img/sweep/cases/free2chord}
+      \caption{Updating path when $P$ has separating 2-chords none of which have $v_j$ as end vertex.}
+      \label{fig:sweep:free2chord}
     \end{figure}
 
     \emph{Only other separating 2-chords}
@@ -169,13 +168,6 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
       Suppose that we have a separating $2$-chord then that would have been a chord of the candidate path. This is in contradiction with the assumption that the candidate path had no chords.
       We also have no chord since such a chord would violate Invariant \ref{i:uni:no2Chords} of the old sweepcycle. Furthermore, the second-to-last vertex of the updating path has no chords since it would break $v_l p_j x p_u$. (see Figure~\ref{fig:sweep:free2chord}).
 
-      \begin{figure}[b]
-        \centering
-        \includegraphics[scale=1]{unifiedAlgo/img/sweep/cases/free2chord}
-        \caption{Updating path when $P$ has separating 2-chords none of which have $v_j$ as end vertex.}
-        \label{fig:sweep:free2chord}
-      \end{figure}
-
 \subsubsection{Updating}
   \label{sss:sweep:update}
   Once we found the updating path $P'$, we can update the sweepcycle with this path.  Let $p_a$ and $p_b$ indicate the two unique vertices of $P'$ that are also part of $\C$. We then let $\cpath|_{P'}$ denote the path $\cpath|_{p_a, p_b}$.
@@ -185,7 +177,7 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
   We then update the sweepcycle to $\C'$ by replacing $\cpath|_{P'}$ by $P'$ in $\C$.
   An example of the whole update for an updating path $P'$ can be seen in Figure~\ref{fig:sweep:update}.
 
-  \begin{figure}
+  \begin{figure}[t]
       \centering
       \begin{subfigure}[b]{0.45 \textwidth}
           \includegraphics[width = \textwidth]{unifiedAlgo/img/sweep/updateBefore.pdf}
@@ -229,7 +221,7 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
   We color all interior edges of $\C$ red and orient them towards $\cpath$ and the edges in $\cpath$ are colored blue and oriented towards $\pE$. The termination step can be seen in Figure~\ref{fig:sweep:terminate}. This last move completes the interior vertex condition for vertices in $\C \sm {\pW, \pS, \pE}$ and also correctly completes the exterior vertex condition.
 
 
-  \begin{figure}[h]
+  \begin{figure}[b]
     \centering
     \begin{subfigure}[b]{0.45 \textwidth}
         \includegraphics[width = \textwidth]{unifiedAlgo/img/sweep/terminateBefore.pdf}
@@ -266,13 +258,6 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
       \label{fig:uni:fans}
     \end{figure}
 
-    \begin{figure}[b]
-      \centering
-      \includegraphics[scale=1]{rectangularDuals/img/fanterms}
-      \caption{A number of fan-related terms.}
-      \label{fig:rect:fanTerms}
-    \end{figure}
-
     Let $u_0 , u_1, \ldots u_n$ be the vertices of the top boundary path of $F$ and $v_0, v_1, \ldots, v_m$ the vertices of the bottom boundary path.
     That is $u_0=v_0$ is the split vertex and $u_n = v_m$ is the merge vertex.
     Since our graph is a triangulation, $u_1v_1$ must be an edge.
@@ -288,6 +273,12 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
     In a face we alternately encounter B- and T-fans. If we would have two adjacent fans of the same type, we would just have a single larger fan of that type.
     In Figure~\ref{fig:uni:fans} we see a blue face consisting of subsequently a B-fan of size $3$, a T-fan of size 2, a B-fan of size $2$, a T-fan of size $6$, a B-fan of size $3$ and a T-fan of size $3$.
 
+    \begin{wrapfigure}{r}{7cm}
+      \centering
+      \includegraphics[scale=1]{rectangularDuals/img/fanterms}
+      \caption{A number of fan-related terms.}
+      \label{fig:rect:fanTerms}
+    \end{wrapfigure}
 
    We introduce some more terminology for fans: \emph{outer edges}, \emph{fan handles} and the \emph{rim} as can be seen in Figure~\ref{fig:rect:fanTerms}. The \emph{fan handle} $v$ is the vertex shared by all edges in the fan. Let $H$ be the induced subgraph of vertices incident to the edges in the fan. $H$ contains no edges not belonging to $F$ since these would lead to separating 3-cycles. The \emph{rim} is the path given by $F\sm{v}$.
    \fxnote{Q is this definition of Rim more clear or still unclear?}
