@@ -50,11 +50,10 @@
   \mypar{Properties}
     Since we often use regular edge labellings in this thesis we prove some properties we can reuse later for them. We show that a regular edge labeling has no mono-colored triangles and that the red and blue subgraph of a regular edge labeling both form a $st$-planar graph.
 
-  \begin{lemma}
-    \fxnote{This is known, give reference, more an observation}
-    \label{lm:rel:noMonoColoredTriangles}
+  \begin{observation}[Fusy, \cite{Fusy2009}]
+    \label{obs:rel:noMonoColoredTriangles}
     A regular edge labeling has no monochromatic triangles even when ignoring orientation.
-  \end{lemma}
+  \end{observation}
 
   \begin{proof}
     Suppose we have a monochromatic triangle. Without loss of generality we suppose this triangle is blue. Then at least one of the vertices has an incoming blue edge followed directly by an outgoing blue edge or an outgoing blue edge followed directly by an incoming blue edge in its angular order. Thus, this vertex has either an empty set of outgoing or incoming red edges and hence violates the interior vertex condition of a regular edge labeling.
@@ -62,14 +61,13 @@
 
   \mypar{$\mathbf{st}$-planar graphs}
     In this thesis we repeatedly use regular edge labellings, so it is a good idea to investigate their structure.
-    Kant and He \cite{Kant1997} show that a regular edge labeling is closely linked to a pair of $st$-planar graphs. We repeat this in a different form in Lemma \ref{lm:rel:stPlanarGraphs} below. The difference is that they orient the edges between poles while we remove the non-relevant poles altogether. \fxnote{unclear to Bettina}
-
+    Kant and He \cite{Kant1997} and Fusy \cite{Fusy2009} both note that a regular edge labeling is closely linked to a pair of \emph{$st$-planar graphs}. $st$-planar graphs are also known under the name of  We state this observation in the same way it is stated by Fusy, which is slightly different from the way Kant and He state it.
     An $st$-planar graph is an oriented planar graph with one source (in-degree 0) $s$ and one sink (out-degree 0) $t$. Both $s$ and $t$ lie on the outer face. Moreover, such an $st$-planar graph has no directed cycles.
 
-    \begin{lemma}
-      \label{lm:rel:stPlanarGraphs}
+    \begin{observation}[Fusy, \cite{Fusy2009}]
+      \label{obs:rel:stPlanarGraphs}
       The blue edges of $G\sm{\pN,\pS}$ form an $st$-planar graph with $s= \pW$ and $t=\pE$. Moreover, the red edges of $G\sm{\pW,\pE}$ form an $st$-planar graph with $s= \pS$ and $t= \pN$.
-    \end{lemma}
+    \end{observation}
     \begin{proof}
       Note that we have no monochromatic directed cycles because such a cycle would for example correspond to a  group of adjacent rectangles that have  no leftmost or topmost one. By the interior vertex condition interior vertices can not be sources or sinks, this leaves the non-removed poles to be the sources and sinks, as required.
     \end{proof}
@@ -95,11 +93,12 @@
     Hence, a one-sided maximal segment corresponds to a face with one boundary path of length $2$  and a $k$-sided maximal segment to a face with a shortest boundary path of length at most $k+1$.
     We can not have faces with a boundary path of length $1$ since such a face can not enclose a valid segment.
 
-    \begin{lemma}
-      \label{lm:rel:noBpOfLength1}
+    \begin{observation}
+      \label{obs:rel:noBpOfLength1}
       No face can have a boundary path of length $1$.
-    \end{lemma}
-    \fxnote{Very comparable to no ones sided traingle, stronger tough. Still an observation.}
+    \end{observation}
     \begin{proof}
-      A boundary path can not have length $1$ since by construction of a regular edge labeling a red or blue face encloses a maximal segment and thus has to go trough at least one intermediate rectangle/vertex.
+      A boundary path can not have length $1$ since by construction of a regular edge labeling a red or blue face encloses a maximal segment and thus has to go trough at least one intermediate rectangle,and thus trough at least one intermediate vertex.
     \end{proof}
+
+    This observation generalizes the observation that we can not have monochromatic triangles.

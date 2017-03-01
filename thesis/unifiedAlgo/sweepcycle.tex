@@ -257,7 +257,7 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
   There still is a useful property of this regular edge labeling left to discuss (Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther}). Before we can state this property, we first need to introduce fans.
 
   \mypar{Fans}
-    We want to better describe the interior of blue (or red) faces. Every interior edge of such face goes from one boundary path to the other (otherwise its start or end vertex would violate the interior vertex condition or create a face with a boundary path of length one violating Lemma \ref{lm:rel:noBpOfLength1}). We now describe the edges from the split to the merge vertex of $F$.
+    We want to better describe the interior of blue (or red) faces. Every interior edge of such face goes from one boundary path to the other (otherwise its start or end vertex would violate the interior vertex condition or create a face with a boundary path of length one violating Observation \ref{obs:rel:noBpOfLength1}). We now describe the edges from the split to the merge vertex of $F$.
 
     \begin{figure}[t]
       \centering
@@ -331,11 +331,11 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
         \label{fig:sweep:botomPathChord}
       \end{figure}
 
-      The interior of  $vabx \oplus \rev \P$ has no vertices. Suppose there would be such a vertex . Then, since $\P$ is a bottom path the blue path going trough this vertex has to start at $a$ and end at $b$. But this gives a blue face with only one edge on its bottom boundary path violating Lemma \ref{lm:rel:noBpOfLength1}. Since our graph is a regular edge labeling, $vabx \oplus \rev \P$ has no interior vertices.
+      The interior of  $vabx \oplus \rev \P$ has no vertices. Suppose there would be such a vertex . Then, since $\P$ is a bottom path the blue path going trough this vertex has to start at $a$ and end at $b$. But this gives a blue face with only one edge on its bottom boundary path violating Observation \ref{obs:rel:noBpOfLength1}. Since our graph is a regular edge labeling, $vabx \oplus \rev \P$ has no interior vertices.
 
       This also implies all interior edges are red (by the definition of bottom path) and thus that $ab$ is blue otherwise we would get a monochromatic triangle.
 
-      Now $w$ can not be connected to any vertex in $\P$ since that would again give a face with a boundary path of length 1 (Lemma \ref{lm:rel:noBpOfLength1}).
+      Now $w$ can not be connected to any vertex in $\P$ since that would again give a face with a boundary path of length 1 (Observation \ref{obs:rel:noBpOfLength1}).
       So $w$ can only be connected to $a$ and $b$ and is thus a topfan of size at most $2$.
       (If it is a topfan at all, since we do not consider topfans of size 1 as topfans.)
     \end{proof}

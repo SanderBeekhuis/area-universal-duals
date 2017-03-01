@@ -189,17 +189,10 @@
 \newfont{\chapterNumber}{wncysc10 scaled 7000}
 
 \titleformat{\section}[display]%
-{\relax}{\mbox{}\marginpar{\vspace*{-\baselineskip}\color{lightgray}\chapterNumber\thesection}}{0pt}%
+{\relax}{\mbox{}\hspace*{13.5cm}\vspace*{-2\baselineskip}\color{lightgray}\chapterNumber\thesection}{0pt}%
 	{\LARGE\itshape}[\normalsize\vspace*{.8\baselineskip}\titlerule]%
 
 \titlespacing*{\section}{0pt}{0cm}{1cm}
-
-
-%\titleformat{\subsection}[hang]
-%  {\fontsize{12}{15}\bfseries\sffamily}
-%  {\thesubsection}
-%  {1em}
-%  {}
 
 \titleformat{\subsection}{\Large}{}{0em}{\makebox[0cm][r]{\thesubsection\hspace{1em}}\scshape\lowercase}[\titlerule]
 \titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}

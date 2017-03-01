@@ -27,15 +27,15 @@
 \newlabel{fig:rel:conditions}{{8}{X}}
 \@deflabeltype{fig:rel:conditions}{figure}
 \citation{He1993}
-\newlabel{lm:rel:noMonoColoredTriangles}{{2}{X}}
-<em>\@deflabeltype{lm:rel:noMonoColoredTriangles}{thrm}
+\newlabel{obs:rel:noMonoColoredTriangles}{{2}{X}}
+<em>\@deflabeltype{obs:rel:noMonoColoredTriangles}{thrm}
 </em>\citation{Kant1997}
-\newlabel{lm:rel:stPlanarGraphs}{{3}{X}}
-<em>\@deflabeltype{lm:rel:stPlanarGraphs}{thrm}
+\newlabel{obs:rel:stPlanarGraphs}{{3}{X}}
+<em>\@deflabeltype{obs:rel:stPlanarGraphs}{thrm}
 </em>\newlabel{fig:rect:relSegmentFace}{{9}{X}}
 \@deflabeltype{fig:rect:relSegmentFace}{figure}
-\newlabel{lm:rel:noBpOfLength1}{{4}{X}}
-<em>\@deflabeltype{lm:rel:noBpOfLength1}{thrm}
+\newlabel{obs:rel:noBpOfLength1}{{4}{X}}
+<em>\@deflabeltype{obs:rel:noBpOfLength1}{thrm}
 </em>\@@addtocsec{htoc}{sec6}{0}{\@print{3}\quad{}Family of graphs not $\mathbf{k}$-sided for any $\mathbf{k}${}}
 \newlabel{s:fix}{{3}{X}}
 \@deflabeltype{s:fix}{section}
