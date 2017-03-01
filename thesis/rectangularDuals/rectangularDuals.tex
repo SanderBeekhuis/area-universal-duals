@@ -10,8 +10,6 @@
   If we take the \emph{extended adjacency graph} of a layout and remove the $4$ vertices corresponding to the outer face we end up with the regular \emph{adjacency graph} of that layout.
   In this setting a layout $\L$ is a \emph{rectangular dual} of a graph $G$ if we have that $G = \dualgraph{\L}$.
 
-
-
 \mypar{Regular edge labellings}
   Given a layout $\L$ we can easily find its adjacency graph and thus for which graph $G$ it is a rectangular dual. However, finding a rectangular dual of a graph $G$ is more involved. Due to the algorithm by He \cite{He1993} it is sufficient to find a \emph{regular edge labeling} on a corner assignment of $G$. In this section we introduce regular edge labellings.
 
@@ -25,7 +23,7 @@
 
   From the nature of the adjacencies in a rectangular layout we can deduce the following two rules for a regular edge labeling.
   \begin{enumerate}
-    \item (Interior vertex) In the rotation around every interior vertex we have the following subsequent non-empty sets: Incoming red edges, incoming blue edges, outgoing red edges and outgoing blue edges and these are the only sets that exist.
+    \item (Interior vertex) In the angular order of every interior vertex we have the following subsequent non-empty sets: Incoming red edges, incoming blue edges, outgoing red edges and outgoing blue edges and these are the only sets that exist.
     \item (Pole) $\pN$ has only incoming red edges, $\pE$ has only incoming blue edges, $\pS$ has only outgoing red edges and $\pW$ has only outgoing blue edges ,except for the uncolored edges between the poles.
   \end{enumerate}
   Both rules are illustrated in Figure \ref{fig:rel:conditions}.
@@ -50,9 +48,7 @@
     We say two layouts are  \emph{combinatorially equivalent} or simply \emph{equivalent} when they give raise to the same regular edge labelling. That is, their rectangles have the same adjacencies with the same orientation (horizontal or vertical).
 
   \mypar{Properties}
-    Since we often use regular edge labellings in this thesis we prove some properties we can reuse later for them. We show that a regular edge labeling has no mono-colored triangles and that the red and blue subgraph of a regular edge labeling both form a $st$-planar graph. Before we can show this, we need to introduce the rotation at a vertex.
-    For a fixed embedding for $G$ the \emph{rotation} at a vertex $v$ is the clockwise order of the edges incident to $v$. We identify these edges with their other endpoints.
-    Two vertices $x, y$ are said to be \emph{consecutive} in the rotation at $v$ when the edges $vx$ and $vy$ are consecutive in the rotation.
+    Since we often use regular edge labellings in this thesis we prove some properties we can reuse later for them. We show that a regular edge labeling has no mono-colored triangles and that the red and blue subgraph of a regular edge labeling both form a $st$-planar graph.
 
   \begin{lemma}
     \fxnote{This is known, give reference, more an observation}
@@ -61,7 +57,7 @@
   \end{lemma}
 
   \begin{proof}
-    Suppose we have a monochromatic triangle. Without loss of generality we suppose this triangle is blue. Then at least one of the vertices has an incoming blue edge followed directly by an outgoing blue edge or an outgoing blue edge followed directly by an incoming blue edge in its rotation. Thus, this vertex has either an empty set of outgoing or incoming red edges and hence violates the interior vertex condition of a regular edge labeling.
+    Suppose we have a monochromatic triangle. Without loss of generality we suppose this triangle is blue. Then at least one of the vertices has an incoming blue edge followed directly by an outgoing blue edge or an outgoing blue edge followed directly by an incoming blue edge in its angular order. Thus, this vertex has either an empty set of outgoing or incoming red edges and hence violates the interior vertex condition of a regular edge labeling.
   \end{proof}
 
   \mypar{$\mathbf{st}$-planar graphs}
@@ -81,7 +77,7 @@
     We refer to these $st$-planar graphs as the \emph{blue graph} and \emph{red graph} of some regular edge labeling and we refer to their faces as \emph{blue faces} and \emph{red faces}. An example of such a colored extended adjacency graph with the blue and red graph can be found in Figure \ref{fig:rect:relSegmentFace}.
 
     Every face $F$ in an $st$-planar graph has the same structure. The boundary of $F$ consists of two directed paths, so-called \emph{boundary paths}, with common start vertex $v$ and end vertex $w$. We say $v$ is the \emph{split} vertex of $F$ and $w$ is the \emph{merge} vertex of $F$.
-    These boundary paths are subsequent in the clockwise rotation at $v$. We say the first path in the rotation, starting at the beginning of the adjacent pair, is the \emph{top boundary path} (blue graph) or \emph{left boundary path} (red graph) of $F$ and the second one is the \emph{bottom boundary path} (blue graph) or \emph{right boundary path} (red graph).
+    These boundary paths are subsequent in the clockwise angular order at $v$. We say the first path in the angular order, starting at the beginning of the adjacent pair, is the \emph{top boundary path} (blue graph) or \emph{left boundary path} (red graph) of $F$ and the second one is the \emph{bottom boundary path} (blue graph) or \emph{right boundary path} (red graph).
 
 
     \mypar{Maximal segments}
