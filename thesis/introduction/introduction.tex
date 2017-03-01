@@ -30,7 +30,7 @@
     \caption{A cartogram by Raisz~\cite{Raisz1934} made in 1934.}
     \label{fig:intro:raisz}
   \end{figure}
-  
+
 \mypar{Rectangular layout}
   Mathematically, a rectangular cartogram is a  \emph{rectangular layout} (or simply \emph{layout}).
   A layout $\L$ is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles.
@@ -163,15 +163,15 @@
   Yeap and Sarrafzadeh were able to show that all graphs without a separating $4$-cycle have a sliceable rectangular dual.
   They were unable to gain traction on graphs with a separating $4$-cycle (in their words this is a complex cycle of length 4).
 
-  \begin{wrapfigure}[10]{r}{7cm}
+  \begin{wrapfigure}[12]{r}{7cm}
     \centering
-      \begin{subfigure}[b]{3cm}
+      \begin{subfigure}[t]{3cm}
         \centering
         \includegraphics[scale=1]{introduction/img/areaunivGraph.pdf}
         \caption{Graph with separating 4-cycle.}
       \end{subfigure}
       ~
-      \begin{subfigure}[b]{3cm}
+      \begin{subfigure}[t]{3cm}
         \centering
         \includegraphics[scale=1]{introduction/img/areaunivDual.pdf}
         \caption{Corresponding area-universal dual.}
@@ -182,10 +182,32 @@
 
   Nevertheless, not all problems are intractable on graphs with a separating $4$-cycle. The problem of finding an area-universal rectangular dual of a graph, already mentioned above, was investigated by Eppstein et al. in~\cite{Eppstein2012}. They managed to find such a rectangular dual, when it exists, for any graph $G$. This result does affect graphs containing separating $4$-cycles, as can been seen in Figure \ref{fig:intro:areauniv}, since there are such graphs that admit area-universal duals.
 
+
+  \begin{wrapfigure}[]{r}{8cm}
+    \centering
+      \begin{subfigure}[t]{1.3cm}
+        \centering
+        \includegraphics[scale=.3]{introduction/img/caGraph.pdf}
+        \caption{A graph $G$.}
+      \end{subfigure}~
+      \begin{subfigure}[t]{3cm}
+        \centering
+        \includegraphics[scale=.3]{introduction/img/caCa.pdf}
+        \caption{A corner assignment of $G$.}
+      \end{subfigure}~
+      \begin{subfigure}[t]{3cm}
+        \centering
+        \includegraphics[scale=.3]{introduction/img/caDual.pdf}
+        \caption{A rectangular dual corresponding to this corner assignment.}
+      \end{subfigure}
+    \caption{}
+    \label{fig:intro:cornerAssign}
+  \end{wrapfigure}
+
 \mypar{Corner assignments}
-  Before we can state the second result of this thesi, we first briefly introduce the concept of corner assignments.
+  Before we can state the second result of this thesis, we first briefly introduce the concept of corner assignments.
   A corner assignment $\ext G$ of a graph $G$ is an augmentation of $G$ with $4$ external vertices, which we call its \emph{poles}, with the following three properties (i) every interior face has degree $3$, (ii) the exterior face has degree $4$ and (iii) $\ext G$ has no separating triangles.
-  A corner assignment fixes which rectangles are in the corners of the rectangular dual $\L$, namely those adjacent to two poles, which explains the terminology.
+  A corner assignment fixes which rectangles are in the corners of the rectangular dual $\L$, namely those adjacent to two poles, which explains the terminology. In Figure \ref{fig:intro:cornerAssign} we see a graph, a possible corner assignment of this graph, and a possible rectangular dual (in this case, up to equivalence, the only possible dual) of this corner assignment.
 
 \mypar{Existence of rectangular duals}
   Now we have formulated corner assignments we can also state which graphs admit rectangular duals.
