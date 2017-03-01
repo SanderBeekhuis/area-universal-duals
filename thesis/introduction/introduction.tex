@@ -5,13 +5,7 @@
 
 
 \mypar{Motivation}
-  \begin{figure}[!t]
-    \centering
-    \includegraphics[scale=.5]{introduction/img/cartogram.png}
-    \caption{A cartogram by Raisz~\cite{Raisz1934} made in 1934.}
-    \label{fig:intro:raisz}
-  \end{figure}
-  In for example atlases \emph{rectangular cartograms} are used to display information, such as population or economic strength, in a spatial manner.
+  In for example atlases, \emph{rectangular cartograms} are used to display information, such as population or economic strength, in a spatial manner.
   In a rectangular cartogram  the geographic regions of an ordinary map are replaced by rectangles; we let these rectangles maintain adjacencies with each other to suggest geographic location and scale them proportionally to the quantities they represent.
   Raisz~\cite{Raisz1934} introduced these cartograms and provided cartograms of, for instance, land area, population (see Figure  \ref{fig:intro:raisz}) and wealth of the United States of America.
   In a rectangular cartogram it is preferable to maintain the adjacencies of the regions that are replaced by rectangles, this in order to keep the representation recognizable.
@@ -19,31 +13,38 @@
   Note that the cartograms made by Raisz do not keep all adjacencies, for example, in Figure \ref{fig:intro:raisz} Florida and Alabama are not adjacent while they are in reality.
 
   The value of the displayed quantities, like population or wealth, often changes over time.
-  When we draw a set of cartograms displaying a quantity at different moments in time, it is desirable if the adjacencies between these rectangles remain the same, no matter the moment in time.
+  When we draw a set of cartograms displaying a single quantity at different moments in time, it is desirable that the adjacencies between the rectangles in these cartograms remain the same, no matter the moment in time.
   Moreover, it would be even better if the nature of these adjacencies, that is whether the rectangles border in a vertical or horizontal manner, does not change.
   This raises the question: When is this possible?
 
-\mypar{Rectangular layout}
-  Mathematically, a rectangular cartogram is a  \emph{rectangular layout} (or simply \emph{layout}).
-  A layout $\L$ is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles.
-  Roughly speaking we say that two rectangular layouts are \emph{combinatorially equivalent}, or simply \emph{equivalent}, when they have the same adjacencies and these adjacencies are in the same manner, that is horizontal or vertical. We will later, in Section \ref{s:rel}, define this more thoroughly.
-  A rectangular layout that has an combinatorially equivalent layout, regardless the area sizes we assign to each rectangle is \emph{area-universal}. An example of an area-universal layout is given by the three combinatorially equivalent layouts in Figure \ref{fig:intro:areaunivLayout}.
-
-  \begin{wrapfigure}[6]{r}{7cm}
+  \begin{wrapfigure}{r}{7cm} %[6]
     \centering
     \includegraphics[width = 6cm]{introduction/img/areaunivLayout.pdf}
     \caption{Three area-universal layouts.}
     \label{fig:intro:areaunivLayout}
   \end{wrapfigure}
 
-  The question above then becomes: For which maps can we create a area-universal layout?
-  It is clear that we must leave out those maps that do not have any layouts with the same adjacencies, but this will not be enough.
+  \begin{figure}[!b]
+    \centering
+    \includegraphics[scale=.7]{introduction/img/cartogram.png}
+    \caption{A cartogram by Raisz~\cite{Raisz1934} made in 1934.}
+    \label{fig:intro:raisz}
+  \end{figure}
+  
+\mypar{Rectangular layout}
+  Mathematically, a rectangular cartogram is a  \emph{rectangular layout} (or simply \emph{layout}).
+  A layout $\L$ is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles.
+  Roughly speaking, we say that two rectangular layouts are \emph{combinatorially equivalent} (or simply \emph{equivalent}) when they have the same adjacencies and these adjacencies are in the same manner, that is horizontal or vertical. We will later, in Section \ref{s:rel}, define this more thoroughly.
+  A rectangular layout that has an combinatorially equivalent layout, regardless the area sizes we assign to each rectangle, is \emph{area-universal}. Three area-universal layouts are given by the  combinatorially equivalent layouts in Figure \ref{fig:intro:areaunivLayout}.
+
+  The question above then becomes: For which maps can we create area-universal layouts?
+  Clearly not those maps that that do not have any corresponding layouts with the same adjacencies. However, it will turn out there are more maps without a corresponding area-universal layout.
 
 \mypar{Adjacency graphs}
   We can represent the adjacencies of map regions by an \emph{adjacency graph} $G$ where each region is represented by a vertex and two vertices are connected by an edge exactly when their regions are adjacent.
   Similarly, in the \emph{adjacency graph} $\dualgraph{\L}$ of a rectangular layout $\L$ each rectangle is represented by a vertex and two vertices are connected by an edge exactly when their rectangles are adjacent.
   A layout $\L$ is a \emph{rectangular dual} of a graph $G$ if we have that $G = \dualgraph{\L}$.
-  In general a single graph can have mutiple non-equivalent rectangular duals, an example is given in Figure \ref{fig:intro:nonuniqueRectDual}.
+  In general, a single graph can have mutiple non-equivalent rectangular duals. An example of this is the graph in Figure \ref{fig:intro:nonuniqueRectDual}.
 
   \begin{wrapfigure}[8]{r}{7cm}
     \centering
@@ -52,8 +53,8 @@
     \label{fig:intro:nonuniqueRectDual}
   \end{wrapfigure}
 
-  Rinsma found a graph $G$ in~\cite{Rinsma1987}, displayed in Figure \ref{fig:intro:rinsma}, that has no area-universal rectangular duals.
-  That is, all rectangular layouts with $G$ as adjacency graph are not area-universal.
+  Rinsma found a graph in~\cite{Rinsma1987}, displayed in Figure \ref{fig:intro:rinsma}, that has no area-universal rectangular duals.
+  That is, all rectangular layouts with this graph as adjacency graph are not area-universal.
 
   \begin{wrapfigure}{r}{5cm}  %[13]
     \includegraphics[scale=.15]{introduction/img/rinsma.png}
@@ -62,16 +63,16 @@
   \end{wrapfigure}
 
 \mypar{One-sided layouts}
-  So, unfortunately not all adjacency graphs of map regions admit area-universal duals.
-  Then we would like to know which graphs do.
-  Before we can do this we need to define what a one-sided layouts is.
+  So, unfortunately not all graphs admit area-universal duals.
+  We would like to know which graphs do.
+  Before we can state this we need to define one-sided layouts.
   Note that the interior of a rectangular layout contains vertical and horizontal line segments.
-  Any line segment that can not extended farther on either side is a \emph{maximal segment}.
+  Any line segment that can not extend any farther on either side is a \emph{maximal segment}.
   A rectangular layout is \emph{one-sided} if every maximal segment has only one rectangle on one of its sides.
-  The layouts in Figure \ref{fig:intro:areaunivLayout} are all one-sided.
+  The layouts in Figure \ref{fig:intro:areaunivLayout} and  \ref{fig:intro:nonuniqueRectDual} are all one-sided.
 
   In~\cite{Eppstein2012} Eppstein et al. show that rectangular layouts are area-universal exactly when they are one-sided.
-  So, Rinsma's result also implies that not all adjacency graphs of maps can be represented by an one-sided layouts.
+  So, Rinsma's result also implies that not all adjacency graphs of maps can be represented by one-sided layouts.
 
 
 \mypar{$\mathbf{k}$-sided layouts}
@@ -112,8 +113,8 @@
     \caption{A 10-sided segment}
     \label{fig:intro:10sided}
   \end{figure}
-  Let us consider those graphs that do not admit a one-sided, and thus area-universal, layout.
-  Since any layout for such a graph is not area-universal, it is inevitable that adjacencies between regions in this layout change when we are resizing them.
+  Let us consider those graphs that do not admit any one-sided, and thus area-universal, dual as rectangular dual.
+  Since any dual for such a graph is not area-universal, it is inevitable that adjacencies between rectangles in this dual change when we resize them.
   For these graphs we want to find layouts that have the least number of adjacency changes when area sizes change.
   This is beneficial for, for example, applications displaying cartograms on a continuous timescale.
   Since every time the adjacencies of the layout change, we have to compute a different rectangular layout with the right adjacencies, providing a rougher viewing experience.
@@ -122,9 +123,8 @@
   This generalization is useful because, when changing the areas of rectangles in a $k$-sided layout fewer adjacencies change, in general, if $k$ is small then if $k$ is large.
 
   We illustrate this by comparing a typical $2$-sided and a typical $10$-sided segment.
-  Let us first consider the $2$-sided segment in Figure \ref{fig:intro:2sidedBefore}, if the size of $a$ doubles only two adjacencies change, namely $dA$ and $cB$, as can been seen in Figure \ref{fig:intro:2sidedAfter}.
-  While for an example of a $10$-sided segment doubling the size of a single rectangle leads to $15$ changed adjacencies, namely $aC\ aD\ bB\ bC\ bD\ bE\ cC\ cD\ cE\ cF\ dE\ dG\ eF\ eH\ fG$, as can been seen in Figure \ref{fig:intro:10sided}.
-
+  Let us first consider the $2$-sided segment in Figure \ref{fig:intro:2sidedBefore}, if the size of $a$ doubles only two adjacencies change, namely $dA$ disappears and $cB$ appears, as can been seen in Figure \ref{fig:intro:2sidedAfter}.
+  While for a typical $10$-sided segment doubling the size of $a$ leads to $15$ changed adjacencies, namely $aC\ aD\ bB\ bC\ bD\ bE\ cC\ cD\ cE\ cF\ dE\ dG\ eF\ eH\ fG$, as can been seen in Figure \ref{fig:intro:10sided}.
   Hence we would like to find $k$-sided layouts for all graphs with $k$ as small as possible.
 
 
@@ -155,11 +155,13 @@
   \end{wrapfigure}
 
 
-  $4$-cycles in general are difficult to treat but examples indicate that nested $4$-cycles are the most difficult to treat when trying to create a $k$-sided layout.
-  Finding a $k$-sided rectangular duals is not the only problem on rectangular duals that has difficulty with separating $4$-cycles.
+  Separating $4$-cycles in general are difficult to treat when trying to create a $k$-sided layout.
+  But examples found during our research seem to indicate that, in particular, nested $4$-cycles are the most difficult to treat.
+  Finding $k$-sided rectangular duals is not the only problem that has difficulty with separating $4$-cycles.
 
-  Yeap and Sarrafzadeh~\cite{Yeap1995} investigated the problem of finding a \emph{sliceable} dual for a graph. A rectangular layout is sliceable when it is either a single rectangle or when it has a single maximal segment which splits it into two sliceable layout.
-  Yeap and Sarrafzadeh were able to show that graphs without a separating $4$-cycle have a sliceable rectangular dual. They were unable to get traction on graphs with a separating $4$-cycle (in their words this is a complex cycle of length 4).
+  Yeap and Sarrafzadeh~\cite{Yeap1995} investigated the problem of finding a \emph{sliceable} dual for a graph. A rectangular layout is sliceable when it is either a single rectangle or when it has a single maximal segment which splits it into two sliceable layouts.
+  Yeap and Sarrafzadeh were able to show that all graphs without a separating $4$-cycle have a sliceable rectangular dual.
+  They were unable to gain traction on graphs with a separating $4$-cycle (in their words this is a complex cycle of length 4).
 
   \begin{wrapfigure}[10]{r}{7cm}
     \centering
@@ -178,38 +180,38 @@
     \label{fig:intro:areauniv}
   \end{wrapfigure}
 
-  Nevertheless, not every problem is intractable on graphs with a separating $4$-cycle. The problem of finding an area-universal rectangular dual of a graph, already mmentioned above, was investigated by Eppstein et al. in~\cite{Eppstein2012}. They managed to find such a rectangular dual, when it exists, for any graph $G$. This result is non-trival for graphs containing separating $4$-cycles, as can been seen in Figure \ref{fig:intro:areauniv}, since there such graphs that admit an area-universal dual.
-
+  Nevertheless, not all problems are intractable on graphs with a separating $4$-cycle. The problem of finding an area-universal rectangular dual of a graph, already mentioned above, was investigated by Eppstein et al. in~\cite{Eppstein2012}. They managed to find such a rectangular dual, when it exists, for any graph $G$. This result does affect graphs containing separating $4$-cycles, as can been seen in Figure \ref{fig:intro:areauniv}, since there are such graphs that admit area-universal duals.
 
 \mypar{Corner assignments}
-  Before we can state our second result we will have to briefly introduce the concepts of corner assignments.
+  Before we can state the second result of this thesi, we first briefly introduce the concept of corner assignments.
   A corner assignment $\ext G$ of a graph $G$ is an augmentation of $G$ with $4$ external vertices, which we call its \emph{poles}, with the following three properties (i) every interior face has degree $3$, (ii) the exterior face has degree $4$ and (iii) $\ext G$ has no separating triangles.
   A corner assignment fixes which rectangles are in the corners of the rectangular dual $\L$, namely those adjacent to two poles, which explains the terminology.
 
 \mypar{Existence of rectangular duals}
-  Now we have formulated corner assignments we can also quickly answer the question which maps allow rectangular duals. It was shown independently by Kozminski and Kinnen \cite{Kozminski1984} and Ungar \cite{Ungar1953}, that a adjacency graph of a map admits a rectangular dual if and only if it admits a corner assignment.
+  Now we have formulated corner assignments we can also state which graphs admit rectangular duals.
+  A graph admits a rectangular dual if and only if it admits a corner assignment.
+  This was shown independently by Kozminski and Kinnen \cite{Kozminski1984} and Ungar \cite{Ungar1953}.
 
 \mypar{Algorithm}
   After finding the counterexample, we focused our efforts on obtaining an algorithm that would provide a $k$-sided layout for corner assignments without a separating $4$-cycle, for some constant $k \in \N$.
   Unfortunately, we fell short of this goal and only found an algorithm that provides a $d-1$-sided layout, where $d$ is the maximal degree of the vertices of $G$ in $\ext G$ (Theorem \ref{th:dsided}).
 
-  \newpage
-  \begin{wrapfigure}[13]{r}{5cm}
+  \begin{wrapfigure}[14]{r}{4.6cm} %[13]
     \centering
     \includegraphics[]{introduction/img/rinsma2Sided.pdf}
     \caption{A 2-sided dual of the Rinsma graph in Figure \ref{fig:intro:rinsma}.}
     \label{fig:intro:rinsma2Sided}
   \end{wrapfigure}
 
-  That being said, we never found any graph without separating $4$-cycles that did not admit any $2$-sided layouts during our research. For example, the graph without one-sided duals by Rinsma does have a $2$-sided dual, as can been seen in Figure \ref{fig:intro:rinsma2Sided}.
+  That being said, during our research we did not find any graphs without separating $4$-cycles that did not admit any $2$-sided layouts.
+  For example, the graph, by Rinsma, without one-sided dual does have a $2$-sided dual, as can been seen in Figure \ref{fig:intro:rinsma2Sided}.
 
   This raises the conjecture that these graphs in fact do admit a $2$-sided layout and it is just the algorithm for finding them that eludes us.
 
-  Its worthy of note, that bound obtained by the algorithm is not stronger then the bound provided by the counterexample. That is, there might be an algorithm providing $O(d)$-sided layouts for all graphs $G$.
+  Its worthy of note, that the bound obtained by the algorithm is not stronger then the bound provided by the counterexample. That is, there might be an algorithm providing $O(d)$-sided layouts for all graphs $G$.
 
-\fxnote{expand? I think this is okay}
 \mypar{Overview}
   The rest of this thesis is focused on obtaining these two results.
   In order to do this we give extensive definitions on graphs, paths and cycles in Section \ref{s:prelim}. In Section \ref{s:rel} we introduce the notion of regular edge labellings.  A regular edge labeling is a way of coloring and orienting the edges of a graph that corresponds to a rectangular dual of that graph.
-  We frequently use this notion in the rest of the thesis.
+  We frequently use this notion in the rest of this thesis.
   Once we have these preliminaries out of the way, we prove Theorem \ref{fix:th:family} in Section \ref{s:fix} and Theorem \ref{th:dsided} in Section \ref{s:algo}. We prove Theorem \ref{fix:th:family} by counterexample and Theorem \ref{th:dsided} by giving a constructive algorithm.

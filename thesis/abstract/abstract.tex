@@ -3,21 +3,18 @@
 \section*{Abstract}
 \thispagestyle{plain}
 
-  A  \emph{rectangular layout} (or simply \emph{layout}) $\L$ is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles. Rectangular layouts have many applications, not only as rectangular cartograms in cartography, but also in for example chip design and architecture. The interior of a rectangular layout contains vertical and horizontal line segments.
+  A  \emph{rectangular layout} (or simply \emph{layout}) $\L$ is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles. Rectangular layouts have many applications, for example as rectangular cartograms in cartography, chip designs and floorplans in architecture.
 
-  In particular in the rectangular cartogram application it is desirable to find a layout that has the same adjacencies of the interior rectangles when their size changes, for example when displaying a cartogram of a quantity at different points in time. Such layouts are \emph{area-universal}.
+  In the rectangular cartogram application it is desirable to find a layout that always keeps the same adjacencies between the interior rectangles when their sizes change. For example, when displaying a cartogram of a single quantity at different points in time, we prefer to do this using layouts with the same adjacencies. Such layouts are \emph{area-universal}.
 
+  The interior of a rectangular layout contains vertical and horizontal line segments.
   Any line segment that can not extend farther on either side is a \emph{maximal segment}.
   A rectangular layout is \emph{$k$-sided} if every maximal segment has at most $k$ rectangles on one of its sides.
-  A \emph{rectangular dual} of a graph $G$ is a rectangular layout whose adjacencies are the same as those of $G$ for a bijection between vertices and rectangles.
-  A necessary and sufficient condition for a layout to be area-universal is that it is one-sided.
+  A \emph{rectangular dual} of a graph $G$ is a rectangular layout whose adjacencies are the same as those of $G$.
+  A necessary and sufficient condition for a layout to be area-universal is that it is \emph{one-sided}, that is $k$-sided with $k=1$.
   Unfortunately, not all graphs with a rectangular dual have an one-sided dual.
 
-  For graphs without an one-sided dual a $k$-sided dual for as low as possible $k$ is often a dual that has the smallest risk of adjacencies changing when the size of the interior rectangles changes.
+  For graphs without an one-sided dual a $k$-sided dual with $k$ as small as possible is often a dual that has the smallest risk of adjacencies changing when the size of the interior rectangles changes.
 
-  In this thesis we find that, for any constant $k$, we can not hope to find a $k$-sided rectangular dual for all graphs admitting a rectangular dual.
-  For certain graphs, those without separating $4$-cycles, this might be possible. However, we present an algorithm giving a $d-1$-sided dual, where $d$ is the maximal degree of the vertices of $G$ in $\ext G$, a so-called corner assignment.
-  \begin{enumerate}
-    \item There is a family of graphs $G_k$ that for any $k \in \N$ has members that are not $k$-sided (Theorem \ref{fix:th:family}).
-    \item Graphs $G$ that have a corner assignment without separating 4-cycles are $d-1$-sided, where $d$ is the maximal degree of the vertices of $G$ (Theorem \ref{th:dsided}).
-  \end{enumerate}
+  In this thesis we find that we can not hope to find a $k$-sided rectangular dual for all graphs admitting a rectangular dual, no matter the constant $k$.
+  For certain graphs, namely those without separating $4$-cycles, this might be possible. However, we do not quite obtain this result. Instead we present an algorithm giving a $d-1$-sided dual, with $d$ the maximal degree of the vertices of $G$ in $\ext G$, a so-called corner assignment.
