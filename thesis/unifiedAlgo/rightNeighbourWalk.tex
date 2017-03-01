@@ -1,10 +1,9 @@
 %!TEX root = ../thesis.tex
 
 \subsection{The right neighbor path of a path}
-\fxinnote{Q: It might be useful to coin a common name for chords and separating 2-chords. TODO it is violating chord}
 \thispagestyle{plain}
   \label{ss:rightNeighbour}
-  In the sweepcycle step of the algorithm (Section \ref{ss:sweep}) we use the \emph{right neighbor path} of a path. In this section we show that for any path $P = p_1 \ldots p_k$ with no internal vertices incident to the outer face and without chords or separating 2-chords on the right of the path, the right side neighbors of $P$ are a path $Q$ (Lemma \ref{lm:right:neighborPath}).
+  In the sweepcycle step of the algorithm (Section \ref{ss:sweep}) we use the \emph{right neighbor path} of a path. In this section we show that for any path $P = p_1 \ldots p_k$ with no internal vertices incident to the outer face and without violating chords, which we will introduce shortly, on the right of the path, the right side neighbors of $P$ are again a path $Q$ (Lemma \ref{lm:right:neighborPath}).
   We even show some additional properties hold for $Q$ (Lemma  \ref{lm:right:neighbourwalkNoInteriorVertex} and \ref{lm:right:neighbourwalkChordFree}).
   Similar things also hold for the left neighbors of $P$ but we do not need this for our algorithm.
 
@@ -31,12 +30,13 @@
     Hence, if we have two internally disjoint paths $P, Q$ from $s$ to $t$ then $P \oplus \rev{Q}$ is a cycle.
     Furthermore, we use a vertical bar to denote the \emph{restriction} of a path to a certain set of vertices. So $P|_{p_i, p_j}$ with $i<j$ is the subpath of $P$ with vertices $p_i \ldots p_j$.
 
-  \mypar{Chords}
+  \mypar{Violating chords}
     A \emph{chord} of a path is an edge that connects two non-subsequent vertices. A path without chords is \emph{chordfree}. The path $P$ in Figure \ref{fig:right:chord} has the chord $p_1 p_3$.
-    A \emph{k-chord} is a path $Q$ of length $k$ that connects two non-subsequent vertices $p_i, p_j$ of $P$ such that $P \cap Q = \braces{p_i, p_j}$.
-    Note that $P|_{p_i, p_j} \oplus \rev{Q}$ is a cycle.
-    A ($k$-)chord $Q$ is \emph{separating} if this cycle is separating.
+    A \emph{k-chord} is a path $C$ of length $k$ that connects two non-subsequent vertices $p_i, p_j$ of $P$ such that $P \cap C = \braces{p_i, p_j}$.
+    Note that $P|_{p_i, p_j} \oplus \rev{C}$ is a cycle.
+    A ($k$-)chord $C$ is \emph{separating} if this cycle is separating.
     In Figure \ref{fig:right:chord} there are two $2$-chords, $p_3 u p_5$ and $p_3 v p_5$, but only one of them is separating, namely $p_3 v p_5$.
+    The \emph{violating chords} are all chords and separating 2-chords together, since we can not find a right neighbor path when we have such violating chords. In Figure \ref{fig:right:chord} $p_1p_3$ and $p_3 v p_5$ are violating chords.
 
     \begin{figure}[t]
       \centering
