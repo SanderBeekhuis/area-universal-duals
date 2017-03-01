@@ -265,14 +265,6 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
     This argument holds for every subsequent edge, we can either increase the index of the top boundary path or the index of the bottom boundary path.
     Hence, this face is, for the readers that know this term, a \emph{triangle strip}.
 
-    We call a maximal sequence of at least two edges increasing the index on the top boundary path (and thus keeping the index on the upper path fixed) a \emph{bottomfan} or simply \emph{B-fan} and a maximal sequence of at least two edges increasing the index on the bottom boundary path is called a \emph{topfan} or just \emph{T-fan}.
-    The \emph{size} of such a fan is the number of edges contained in the sequence. By the definition of a fan it has size of at least $2$.
-    We use \emph{fans} to refer to both these \emph{types} of fans (i.e. T- and B-fans).
-    We call a fan of size $3$ or larger a \emph{large fan} and a fan of size $2$ a \emph{small fan}.
-
-    In a face we alternately encounter B- and T-fans. If we would have two adjacent fans of the same type, we would just have a single larger fan of that type.
-    In Figure~\ref{fig:uni:fans} we see a blue face consisting of subsequently a B-fan of size $3$, a T-fan of size 2, a B-fan of size $2$, a T-fan of size $6$, a B-fan of size $3$ and a T-fan of size $3$.
-
     \begin{wrapfigure}{r}{7cm}
       \centering
       \includegraphics[scale=1]{rectangularDuals/img/fanterms}
@@ -280,15 +272,23 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
       \label{fig:rect:fanTerms}
     \end{wrapfigure}
 
+    We call a maximal sequence of at least two edges increasing the index on the top boundary path (and thus keeping the index on the upper path fixed) a \emph{bottomfan} and a maximal sequence of at least two edges increasing the index on the bottom boundary path is called a \emph{topfan}.
+    The \emph{size} of such a fan is the number of edges contained in the sequence. By the definition of a fan it has size of at least $2$.
+    We use \emph{fans} to refer to both these \emph{types} of fans (i.e. topfans and bottomfans).
+    We call a fan of size $3$ or larger a \emph{large fan} and a fan of size $2$ a \emph{small fan}.
+
+    In a face we alternately encounter bottomfans and topfans. If we would have two adjacent fans of the same type, we would just have a single larger fan of that type.
+    In Figure~\ref{fig:uni:fans} we see a blue face consisting of subsequently a bottomfan of size $3$, a topfan of size 2, a bottomfan of size $2$, a topfan of size $6$, a bottomfan of size $3$ and a topfan of size $3$.
+
    We introduce some more terminology for fans: \emph{outer edges}, \emph{fan handles} and the \emph{rim} as can be seen in Figure~\ref{fig:rect:fanTerms}. The \emph{fan handle} $v$ is the vertex shared by all edges in the fan. Let $H$ be the induced subgraph of vertices incident to the edges in the fan. $H$ contains no edges not belonging to $F$ since these would lead to separating 3-cycles. The \emph{rim} is the path given by $F\sm{v}$.
-   \fxnote{Q is this definition of Rim more clear or still unclear?}
    The \emph{outer rim} are the two extreme edges of this path and the \emph{outer edges} are the edges between the fan handles and the extreme vertices of the \emph{rim}.
 
    A similar discussion can be given for red faces. However then we have \emph{right fans} and \emph{left fans} instead of bottom and top fans.
 
+\newpage\fxerror{check this new page}
   \mypar{The property}
 
-    \begin{wrapfigure}{r}{5cm}
+    \begin{wrapfigure}{!r}{5cm}
       \centering
       \includegraphics[scale=.9]{unifiedAlgo/img/sweep/bottompath.pdf}
       \caption{The bottom path of this splitvertex is given in bold.}
@@ -315,13 +315,6 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
       We denote this extended bottom path by $\P$.
       The situation is depicted in Figure~\ref{fig:sweep:botomPathChord}.
 
-      \begin{figure}[b]
-        \centering
-        \includegraphics[scale=1]{unifiedAlgo/img/sweep/bottompathChord.pdf}
-        \caption{The situation in the proof of Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther}}
-        \label{fig:sweep:botomPathChord}
-      \end{figure}
-
       The interior of  $vabx \oplus \rev \P$ has no vertices. Suppose there would be such a vertex . Then, since $\P$ is a bottom path the blue path going trough this vertex has to start at $a$ and end at $b$. But this gives a blue face with only one edge on its bottom boundary path violating Observation \ref{obs:rel:noBpOfLength1}. Since our graph is a regular edge labeling, $vabx \oplus \rev \P$ has no interior vertices.
 
       This also implies all interior edges are red (by the definition of bottom path) and thus that $ab$ is blue otherwise we would get a monochromatic triangle.
@@ -330,3 +323,12 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
       So $w$ can only be connected to $a$ and $b$ and is thus a topfan of size at most $2$.
       (If it is a topfan at all, since we do not consider topfans of size 1 as topfans.)
     \end{proof}
+
+    \quad
+    \quad
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=1]{unifiedAlgo/img/sweep/bottompathChord.pdf}
+      \caption{The situation in the proof of Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther}.}
+      \label{fig:sweep:botomPathChord}
+    \end{figure}
