@@ -12,11 +12,11 @@ In this thesis we proved the following two theorems
 \end{enumerate}
 
 \mypar{Open Questions}
-One might hope to show that all corner assignments without separating $4$-cycles admit a $2$-sided rectangular layout. Failing this, a proof these corner assignments, or their underlying graphs, have a $c$-sided layout for any constant $c\in \N$ would also be nice.
+One might hope to show that all corner assignments without separating $4$-cycles admit a $2$-sided rectangular layout. Failing this, a proof these corner assignments, or their underlying graphs, have a $k$-sided layout for any constant $k\in \N$ would also be nice.
 
 Another challenging problem is to find an algorithm that has some traction on graphs containing (nested) separating 4-cycles.
 For these graphs there might be an algorithm that gives $d$-sided layouts since the family of graphs provided in the proof of Theorem \ref{fix:th:family} has unbounded maximal degree.
-However, Theorem \ref{fix:th:family} prevent us from finding an algorithm generating a $c$-sided layout for all graphs admitting a rectangular layout, for all possible constants $c$.
+However, Theorem \ref{fix:th:family} prevent us from finding an algorithm generating a $k$-sided layout for all graphs admitting a rectangular layout, for all possible constants $k$.
 
 I also wonder whether the second step in the algorithm, Flipping blue $Z$'s, is necessary.
 Since I suspect that result of the sweepcycle algorithm is vertically one-sided.
@@ -26,7 +26,7 @@ I feel the full potential of sweepcycle algorithms is not yet unlocked in this w
 Since the current algorithm needs many steps to be able to repair those blue faces that are to large, it might be beneficial to concentrate more on the shape of the blue faces, horizontal segments in the rectangular dual, in the initial sweepcycle algorithm.
 One might try to build a better sweepcycle algorithm by directly finding blue faces with short enough boundary paths, hopefully without creating large red faces during its execution by choosing the right invariants.
 To obtain these invariants one could try to first find an sweepcycle algorithm that provides an regular edge labeling that is vertically, instead of horizontally, one-sided.
-This way an algorithm obtaining a $c$-sided layout, for some constant $c \in \N$, for any corner assignment without separating $4$-cycles may be possible.
+This way an algorithm obtaining a $k$-sided layout, for some constant $k \in \N$, for any corner assignment without separating $4$-cycles may be possible.
 
 Another approach would be one where we do not update the sweepcyle with paths that are entirely blue (horizontal segments in an dual), but with paths that are partially blue and partially red (corners in an rectangular dual).
 
