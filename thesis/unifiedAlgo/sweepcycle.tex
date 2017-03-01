@@ -54,15 +54,15 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
     \item Separating 2-chords
   \end{enumerate}
 
-  By \emph{irregularities}, we mean these two classes of structures together and the \emph{middle} vertex of a $2$-chord is the only internal vertex of that $2$-chord.
-  All irregularities are on the right of the candidate path due to Lemma \ref{lm:right:neighbourwalkChordFree} (no chords on the left) and Lemma \ref{lm:right:neighbourwalkNoInteriorVertex} (no separating 2-chords on the left).
+  By \emph{violating chords}, we mean these two classes of structures together and the \emph{middle} vertex of a $2$-chord is the only internal vertex of that $2$-chord.
+  All violating chords are on the right of the candidate path due to Lemma \ref{lm:right:neighbourwalkChordFree} (no chords on the left) and Lemma \ref{lm:right:neighbourwalkNoInteriorVertex} (no separating 2-chords on the left).
 
   Before we can show how to evade these structures, we first introduce more notation. We orient $P$ from $v_i \in \C$ (the vertex closest to $\pW$)to $v_j \in \C$ (the vertex closest to $\pE$) and denote its vertices by $p_1 \ldots p_k$.
   The \emph{index} of a vertex $p_i \in P$ is its position in the path, that is, the index of $p_i$ is $i$.
-  The \emph{start index} of an irregularity $I$ is the index of the first vertex in $P$ that is also in $I$. Similarly, the \emph{end index} is the index of the last vertex in $P$ that is also in $I$.
-  The \emph{range} of an irregularity is given by its start and end index. We update the sweepcycle with some \emph{update path} $P'$, depending on the irregularities we find on the candidate path $P$. This update is described in Section \ref{sss:sweep:update}.
+  The \emph{start index} of an violating chord $C$ is the index of the first vertex in $P$ that is also in $C$. Similarly, the \emph{end index} is the index of the last vertex in $P$ that is also in $C$.
+  The \emph{range} of an violating chord is given by its start and end index. We update the sweepcycle with some \emph{update path} $P'$, depending on the violating chords we find on the candidate path $P$. This update is described in Section \ref{sss:sweep:update}.
 
-  While describing the our updating paths depending the irregularities of $P$ we show that the following two lemmas hold in every case.
+  While describing how the updating paths depend on the violating chords of $P$ we show that the following two lemmas hold in every case.
 
   \begin{lemma}
     The updating paths has no chords or separating $2$-chords
@@ -74,15 +74,15 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
     There are no chords or separating $2$-chords not containing $\pS$ with one endpoint on the old sweepcycle and one endpoint on the updating path $P'$.
   \end{lemma}
 
-  \mypar{We have no irregularity}
-    When there are no irregularities, we update the sweepcycle with the entire candidate path $P$.
+  \mypar{We have no violating chord}
+    When there are no violating chords, we update the sweepcycle with the entire candidate path $P$.
     In this case the update path $P'$ is equal to $P$.
 
-    $P'$ has no irregularity by the definition of this case. Moreover, there are no irregularities with one opinionated on $P'$ and one endpoint on $\C$ since $v_i$ and $v_j$ are both adjacent to $\pS$ we can not have any chords and any $2$-chords must have $\pS$ as middle vertex.
+    $P'$ has no violating chord by the definition of this case. Moreover, there are no violating chords with one endpoint on $P'$ and one endpoint on $\C$ since $v_i$ and $v_j$ are both adjacent to $\pS$ we can not have any chords and any $2$-chords must have $\pS$ as middle vertex.
     \begin{figure}[b]
       \centering
       \includegraphics[scale=1]{unifiedAlgo/img/sweep/cases/noIrregularity}
-      \caption{Updating path when $P$ contains no irregularity.}
+      \caption{Updating path when $P$ contains no violating chord.}
       \label{fig:sweep:noIrregularity}
     \end{figure}
 
@@ -112,7 +112,7 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
     \emph{No separating 2-chord.}
       If there is no separating 2-chord in the interior of $P|_{i, j} \oplus \rev{{C}}$ we let $v_k$ be the shared neighbor in $\C$ of $p_{i}$ and $p_{i +1}$ and we let $v_l$ the shared neighbor in $\C$ of $p_{j -1}$ and $p_{j}$. The updating path $P'$ is the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:chordUpdate}.
 
-      $P'$ is entirely inside a chord containing no more chords and thus can not contain a chord. Moreover, there are no separating $2$-chords on $P|_{p_i, p_j}$ so $P'$ can not have separating $2$-chords. Any irregularity with one endpoint in $P'$ and one in $\C$ has to cross $v_k p_i p_j v_l$ so we can not have a chord and any 2-chord has $p_i$ or $p_j$ as middle vertex. But, with this restriction such a 2-chord can not be separating.
+      $P'$ is entirely inside a chord containing no more chords and thus can not contain a chord. Moreover, there are no separating $2$-chords on $P|_{p_i, p_j}$ so $P'$ can not have separating $2$-chords. Any violating chord with one endpoint in $P'$ and one in $\C$ has to cross $v_k p_i p_j v_l$ so we can not have a chord and any 2-chord has $p_i$ or $p_j$ as middle vertex. But, with this restriction such a 2-chord can not be separating.
 
       \begin{figure}[h]
         \centering
@@ -126,7 +126,7 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
       Then the updating path $P'$ is the right neighbor path of $\cpath|_{v_k, v_l}$. See Figure \ref{fig:sweep:2chordInChordUpdate}.
 
       $P'$ is entirely inside a chord containing no more chords and thus can not contain a chord. Moreover, all separating $2$-chords are evaded since we evaded the end of the first one ending.  Just as in the above case we can not have any chord or separating $2$-chord with one endpoint in $P'$ and one in $\C$ any chord or separating 2-chord to connect outside the containing chord $p_i p_j$.
-      That leaves irregularities within the second endpoint inside containing chord $p_i p_j$. \fxnote{TODO make this a complete cycle}
+      That leaves violating chords within the second endpoint inside containing chord $p_i p_j$. \fxnote{TODO make this a complete cycle}
       Suppose that we have a separating $2$-chord, then this would have been a chord of $P$. This is in contradiction with $p_i p_j$ being a minimal chord.
       We also can not have a chord since this would break $P|_{p_i, p_j} \oplus p_j p_i$ .
 
@@ -210,7 +210,7 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
     Furthermore, Invariant \ref{i:uni:redOutgoing} holds because every internal vertex of $P'$ has a left neighbor by Lemma \ref{lm:right:leftNeighborsOfTheRightNeighborPath}.
 
     To see that Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords} hold, note that there can be no chords or $2$-chords with both endpoints in the overlap of the old and new sweepcycle $\C \cap \C'$ by Invariants \ref{i:uni:noChords} and \ref{i:uni:no2Chords}.
-     Since the updating path itself also has no irregularities (Lemma \ref{lm:sweep:augNoIregularity}),
+    Since the updating path itself also has no violating chords (Lemma \ref{lm:sweep:augNoIregularity}),
     we know any chord or separating $2$-chord $C$ has to have one vertex on $\P$ and one vertex on the unchanged part of old sweepcycle $\C \cap \C'$.
     However, these potential chords can not exist by Lemma \ref{lm:sweep:noConnectingIregularity}.
     Hence, $\C'$ is a valid new sweepcycle.
