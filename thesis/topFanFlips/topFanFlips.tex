@@ -49,9 +49,25 @@ Refer to Figure~\ref{fig:fanflip:fanflips} for a first glance at the different k
 
 
 \mypar{In what order do we flip topfans}
-  \fxwarning{TODO how to handle merge faces after a blue Z. maybe move part on creation order forward}
-  We consider all faces in reverse order from last created face to first created face. Since a topfan flip only affects the current face and faces below it we never have to flip in a face that is affected by the results of a topfan flip.
-  We do not flip topfans whose fanhandle is adjacent to the merge of the face. \fxwarning{TODO, or split, probably and propagate this decision to the next section}
+  We would like to start at the bottommost face $F$. We can unfortunately no longer use the creation order since the removal of blue $Z$'s may have changed which faces lie above which other faces, they may even have merged faces.
+  Hence, we have to show that there always is a face $F$ whose whole top boundary path borders faces that are not treated while its bottom boundary path borders no such faces.
+
+  \begin{lemma}
+    \label{lm:top:order}
+    There is a face $F$ such that the whole top boundary path of $F$ borders faces that are not treated while the bottom boundary path does not border such faces.
+  \end{lemma}
+  \begin{proof}
+    Let us first remove all treated faces from $\ext G$ by removing their blue edges and connecting their red edges with $S$.
+
+    Unless there are no faces remaining, and in that case we are finished, there is at least one \emph{splitvertex} (vertex with at least two outgoing blue edges) and one \emph{mergevertex} (vertex with at least two blue incoming edge) along the directed path formed by the vertices adjacent to $\pS$.
+    There can be no merges before the first split, nor splits after the last merge. Because there is nowhere for these blue paths to come from or go, respectively.
+    Hence, somewhere along the path there is a split followed by a merge.
+    This face has a bottom boundary path that is entirely adjacent to $\pS$ after removing treated faces.
+    The top boundary path borders untreated faces.
+  \end{proof}
+
+  We keep considering the bottommost untreated face, until ther are no faces left. We know that this face is below only untreated face by Lemma~\ref{lm:top:order}. Since a topfan flip only affects the current face and faces below it we never have to flip in a face that is affected by the results of a topfan flip.
+  We do not flip topfans whose fanhandle is adjacent to the merge of the face.
 
 \mypar{How to flip a topfan}
   A topfan is above a number of edges of the bottom boundary path of the blue face containing the topfan. These edges are the rim of the fan. We will call a vertex \emph{$\pS$-adjacent} if it adjacent to $\pS$.
@@ -61,7 +77,6 @@ Refer to Figure~\ref{fig:fanflip:fanflips} for a first glance at the different k
   We will use the notation introduced in figure \ref{fig:fanflip:regular}.
   For the first vertex $v_1$ we recolor the adjacent outer edge of the topfan. For subsequent vertices $v_i$ we recolor the rim edge between this vertex and the previous vertex $v_{i-1}$ red and we recolor both edges directly adjacent to this edge in the angular order of $v_i$ blue (if they were not already blue).
   If we stop flipping before a merge vertex $v_{i+1}$ we flip an additional edge $v_i v_{i+1}$ along the rim, in order to prevent a blue $Z$ from forming.
-
 
 \mypar{Examples}
   Let us show a few examples of this procedure to improve clarity.
