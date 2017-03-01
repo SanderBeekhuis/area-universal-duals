@@ -42,10 +42,10 @@
 \thispagestyle{plain}
 \label{ss:fanflip}
 
-In Section \ref{ss:flipBlueZ}, we obtained a vertically one-sided regular edge labeling (Lemma \ref{lm:sweep:vertOnsided}), moreover, this regular edge labeling never has a split next to a topfan handle along a bottom path (Lemma \ref{lm:zflip:NoTwoSplitsAboveEachOtherVertOnesided}).
-Using local recoloring (\emph{flips}) on the topfans we will maintain a one-sided regular edge labeling (Lemma \ref{lm:topfan:oneSidedREL}) and make sure that large topfans only occur in very specific situations (Lemma \ref{lm:topfan:remainingTopfans}). It will turn out that we can deal with these specific situations in the final step of the algorithm described in Section \ref{ss:subdiv}.
+In Section~\ref{ss:flipBlueZ}, we obtained a vertically one-sided regular edge labeling (Lemma \ref{lm:sweep:vertOnsided}), moreover, this regular edge labeling never has a split next to a topfan handle along a bottom path (Lemma \ref{lm:zflip:NoTwoSplitsAboveEachOtherVertOnesided}).
+Using local recoloring (\emph{flips}) on the topfans we will maintain a one-sided regular edge labeling (Lemma \ref{lm:topfan:oneSidedREL}) and make sure that large topfans only occur in very specific situations (Lemma \ref{lm:topfan:remainingTopfans}). It will turn out that we can deal with these specific situations in the final step of the algorithm described in Section~\ref{ss:subdiv}.
 Our flips differ depending on whether we encounter a split and or merge in the bottom boundary path.
-Refer to Figure \ref{fig:fanflip:fanflips} for a first glance at the different kinds of topfan flips.
+Refer to Figure~\ref{fig:fanflip:fanflips} for a first glance at the different kinds of topfan flips.
 
 
 \mypar{In what order do we flip topfans}
@@ -65,15 +65,15 @@ Refer to Figure \ref{fig:fanflip:fanflips} for a first glance at the different k
 
 \mypar{Examples}
   Let us show a few examples of this procedure to improve clarity.
-  If the rim has no merges or splits, we execute the topfan flip depicted in Figure \ref{fig:fanflip:regular}.
+  If the rim has no merges or splits, we execute the topfan flip depicted in Figure~\ref{fig:fanflip:regular}.
   We color all but the rightmost fan edge blue, color all but the rightmost rim edge red and color the left outer edges of all topfans below this topfan in the face below the current face blue.
   \fxwarning{TODO neatly define what is the left outer edge of a topfan (i.e. what are top and bottom)}
 
-  If the rim consists of only merges, we easily adept a topfan flip to this situation. We simply do not flip the edge merging in as depicted in Figure \ref{fig:fanflip:merge}.
+  If the rim consists of only merges, we easily adept a topfan flip to this situation. We simply do not flip the edge merging in as depicted in Figure~\ref{fig:fanflip:merge}.
 
   A special case is given by a merge on the last vertex on the bottom edges of the topfan. In that case we flip all rim edges (even the last one) to prevent a blue $Z$ from forming. See figure \ref{fig:fanflip:mergeLastVertex}.
 
-  Splits are more difficult to handle. We are unfortunately unable to keep flipping once we hit a split hence we stop before we get that far. See Figure \ref{fig:fanflip:split}. It this happens on the first vertex we do not flip at all, see Figure \ref{fig:fanflip:splitFirstVertex}.
+  Splits are more difficult to handle. We are unfortunately unable to keep flipping once we hit a split hence we stop before we get that far. See Figure~\ref{fig:fanflip:split}. It this happens on the first vertex we do not flip at all, see Figure~\ref{fig:fanflip:splitFirstVertex}.
 
 \mypar{The result}
 Before the topfanflips, we had a vertically one-sided regular edge labeling. Afterwards we still have a vertically one-sided regular edge labeling, as we will prove in Lemma \ref{lm:topfan:oneSidedREL}. Moreover, we have no large top-fans except for some controlled cases (Lemma \ref{lm:topfan:remainingTopfans}).
@@ -83,7 +83,7 @@ Before the topfanflips, we had a vertically one-sided regular edge labeling. Aft
   The regular edge labeling is still vertically one-sided after a topfan flip.
 \end{lemma}
 \begin{proof}
-  We take another look at Figure \ref{fig:fanflip:fanflips}. Note that due to Lemma \ref{lm:zflip:blueZNorVertOneSided} a regular edge labeling is vertically one-sided as long as there is no blue $Z$.  Since the graph was one-sided we can assume that we had no blue $Z$'s.
+  We take another look at Figure~\ref{fig:fanflip:fanflips}. Note that due to Lemma \ref{lm:zflip:blueZNorVertOneSided} a regular edge labeling is vertically one-sided as long as there is no blue $Z$.  Since the graph was one-sided we can assume that we had no blue $Z$'s.
   Let us first consider the regular case. Since the edge  $v_n w_m$ is red, (otherwise we would have a merge) this change does not produce any blue $Z$'s.
 
   The merge case, due to the clever recoloring, also does not lead to a blue $Z$.

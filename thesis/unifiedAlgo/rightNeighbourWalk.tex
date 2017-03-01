@@ -3,7 +3,7 @@
 \subsection{The right neighbor path of a path}
 \thispagestyle{plain}
   \label{ss:rightNeighbour}
-  In the sweepcycle step of the algorithm (Section \ref{ss:sweep}) we use the \emph{right neighbor path} of a path. In this section we show that for any path $P = p_1 \ldots p_k$ with no internal vertices incident to the outer face and without violating chords, which we will introduce shortly, on the right of the path, the right side neighbors of $P$ are again a path $Q$ (Lemma \ref{lm:right:neighborPath}).
+  In the sweepcycle step of the algorithm (Section~\ref{ss:sweep}) we use the \emph{right neighbor path} of a path. In this section we show that for any path $P = p_1 \ldots p_k$ with no internal vertices incident to the outer face and without violating chords, which we will introduce shortly, on the right of the path, the right side neighbors of $P$ are again a path $Q$ (Lemma \ref{lm:right:neighborPath}).
   We even show some additional properties hold for $Q$ (Lemma  \ref{lm:right:neighbourwalkNoInteriorVertex} and \ref{lm:right:neighbourwalkChordFree}).
   Similar things also hold for the left neighbors of $P$ but we do not need this for our algorithm.
 
@@ -11,10 +11,10 @@
 
   \mypar{Angular orders}
     We assume a fixed embedding for $G$. Recall that the order at a vertex $v$ is the clockwise order of the edges incident to $v$ and that two vertices $x, y$ are said to be \emph{consecutive} in the angular order at $v$ when the edges $vx$ and $vy$ are consecutive in the angular order.
-    Sometimes, we want to denote number of subsequent vertices, which we call an \emph{interval}, in the angular order. We let $[x,y]$ denote all the vertices in the angular order of $v$ from $x$ to $y$ and we let the \emph{exclusive interval} $(x,y)$ denote the same vertices without $x$ and $y$. In Figure \ref{fig:right:rot} for example the interval $[v,p_{i+1}]$ consists of the vertices $v,w,p_{i+1}$ and $(w,u)$ consists of the vertices $p_{i+1}, x$.
+    Sometimes, we want to denote number of subsequent vertices, which we call an \emph{interval}, in the angular order. We let $[x,y]$ denote all the vertices in the angular order of $v$ from $x$ to $y$ and we let the \emph{exclusive interval} $(x,y)$ denote the same vertices without $x$ and $y$. In Figure~\ref{fig:right:rot} for example the interval $[v,p_{i+1}]$ consists of the vertices $v,w,p_{i+1}$ and $(w,u)$ consists of the vertices $p_{i+1}, x$.
 
     Given a path $P$ and an internal vertex $p_i \in P$. A neighbor $v \nin \P$ of $p_i$ lies on the \emph{left} of $P$ if it lies in the interval $(p_{i-1}, p_{i+1})$ in the angular order of $p_{i}$. Otherwise, $v$ lies in the interval $(p_{i+1}, p_{i-1})$ in the angular order of $p_i$. In this case $v$ lies on the \emph{right} of $P$.
-    We use the same notion of left and right for edges. That is, an edge $e\nin P$ adjacent to $p_i$ lies to left or right if its other end point lies to the left or right, respectively. In Figure \ref{fig:right:rot} $v$ and $p_i v$ lie on the left of $P$ and $u$ and $p_i u$ lie on the right of $P$.
+    We use the same notion of left and right for edges. That is, an edge $e\nin P$ adjacent to $p_i$ lies to left or right if its other end point lies to the left or right, respectively. In Figure~\ref{fig:right:rot} $v$ and $p_i v$ lie on the left of $P$ and $u$ and $p_i u$ lie on the right of $P$.
 
     \begin{figure}[b]
       \centering
@@ -31,12 +31,12 @@
     Furthermore, we use a vertical bar to denote the \emph{restriction} of a path to a certain set of vertices. So $P|_{p_i, p_j}$ with $i<j$ is the subpath of $P$ with vertices $p_i \ldots p_j$.
 
   \mypar{Violating chords}
-    A \emph{chord} of a path is an edge that connects two non-subsequent vertices. A path without chords is \emph{chordfree}. The path $P$ in Figure \ref{fig:right:chord} has the chord $p_1 p_3$.
+    A \emph{chord} of a path is an edge that connects two non-subsequent vertices. A path without chords is \emph{chordfree}. The path $P$ in Figure~\ref{fig:right:chord} has the chord $p_1 p_3$.
     A \emph{k-chord} is a path $C$ of length $k$ that connects two non-subsequent vertices $p_i, p_j$ of $P$ such that $P \cap C = \braces{p_i, p_j}$.
     Note that $P|_{p_i, p_j} \oplus \rev{C}$ is a cycle.
     A ($k$-)chord $C$ is \emph{separating} if this cycle is separating.
-    In Figure \ref{fig:right:chord} there are two $2$-chords, $p_3 u p_5$ and $p_3 v p_5$, but only one of them is separating, namely $p_3 v p_5$.
-    The \emph{violating chords} are all chords and separating 2-chords together, since we can not find a right neighbor path when we have such violating chords. In Figure \ref{fig:right:chord} $p_1p_3$ and $p_3 v p_5$ are violating chords.
+    In Figure~\ref{fig:right:chord} there are two $2$-chords, $p_3 u p_5$ and $p_3 v p_5$, but only one of them is separating, namely $p_3 v p_5$.
+    The \emph{violating chords} are all chords and separating 2-chords together, since we can not find a right neighbor path when we have such violating chords. In Figure~\ref{fig:right:chord} $p_1p_3$ and $p_3 v p_5$ are violating chords.
 
     \begin{figure}[t]
       \centering
@@ -57,7 +57,7 @@
     \end{lemma}
 
     \begin{proof}
-      Suppose that an internal vertex $p_i$ has no neighbor on the right of the path. Then $ \ldots p_{i-1} p_i p_{i+1} \ldots $ is a partial face border. Since $p_i$ is not incident to the outer face, $p_i$ must be incident to a face of degree $3$. Thus, $p_{i-1} p_i p_{i+1}$ is a face. However, this would imply a chord on the right of $P$ as can be seen in Figure \ref{fig:right:pHasRightNeighbor}. Hence, by contradiction $p_i$ must have a neighbor on the right.
+      Suppose that an internal vertex $p_i$ has no neighbor on the right of the path. Then $ \ldots p_{i-1} p_i p_{i+1} \ldots $ is a partial face border. Since $p_i$ is not incident to the outer face, $p_i$ must be incident to a face of degree $3$. Thus, $p_{i-1} p_i p_{i+1}$ is a face. However, this would imply a chord on the right of $P$ as can be seen in Figure~\ref{fig:right:pHasRightNeighbor}. Hence, by contradiction $p_i$ must have a neighbor on the right.
     \end{proof}
 
     \begin{figure}[b]
@@ -70,7 +70,7 @@
     The right neighbors of the internal vertices of $P$ form the \emph{right neighbor path} $Q$ of $P$.
     Let us first define a larger list of vertices $Q'$ from which we later remove vertices to get $Q$. $Q'$ consists of $p_1$ and those vertices adjacent to $p_{2}$ that are in the interval $(p_1, p_3)$ of the clockwise angular order of $p_2$. Followed by the vertices in the interval $(p_2, p_4)$ of the angular order of $p_{3}$. We continue this up to the vertices in the interval $(p_{k-2}, p_k)$ of the angular order of $p_{k-1}$ and finally $p_k$.
     We get $Q$ from $Q'$ by removing all subsequent duplicates from $Q$.
-    In Figure \ref{fig:right:neighborPath} an example of a right neighbor path is given.
+    In Figure~\ref{fig:right:neighborPath} an example of a right neighbor path is given.
 
     \begin{figure}[h]
       \centering
@@ -89,13 +89,13 @@
       Let us denote the vertices of $Q$ by $q_1 q_2 \ldots q_\ell$.
       Let $q_i$ and $q_{i+1}$ be two subsequent vertices of $Q'$. We show they are either connected or the same vertex. We first consider the case where $1 < i < \ell-1$.
       Now there are two sub-cases. Either, $(a)$, $q_i$ and $ q_{i+1}$ are vertices adjacent to the same vertex $p_j$ and thus subsequent in the angular order of $p_j$ or, $(b)$, $q_i$ was the last vertex adjacent to $p_j$ and thus $q_{i+1}$ is the first vertex adjacent to $p_{j+1}$ since by Lemma \ref{lm:right:pHasRightNeihgbours} every internal vertex of $P$ has right neighbors.
-      Both cases are depicted in Figure \ref{fig:uni:walkproof}.
+      Both cases are depicted in Figure~\ref{fig:uni:walkproof}.
 
       In case $(a)$ we note that since $q_i$ and $q_{i+1}$ are subsequent in the angular order of $p_j$ $q_i q_{i+1}$ is an edge since $p_j$ is not incident to the outer face and every interior face of $G$ is a triangle.
 
       In case $(b)$ we note that $p_i q_i$ and $p_i p_{i+1}$ are edges subsequent in clockwise order, hence $q_{i} p_{i+1}$ is also an edge. Hence, $q_i$ is the first vertex adjacent to $p_{i+1}$ subsequent to $v_i$ in the clockwise angular order. Thus, $q_{i} = q_{i+1}$, that is $q_i$ and $q_{i+1}$ are duplicates.
 
-      Now for the cases $i=1$ and $i=k-1$. $q_1$ and $q_2$ are vertices adjacent to $p_{2}$ subsequent in the clockwise angular order of ${p_2}$ and hence connected since every interior face is a triangle. In the same way $q_{k-1}$ and $q_k$ are subsequent vertices in the angular order of $q_{k-1}$ and hence connected. This can also be seen in Figure \ref{fig:right:neighborPath}.
+      Now for the cases $i=1$ and $i=k-1$. $q_1$ and $q_2$ are vertices adjacent to $p_{2}$ subsequent in the clockwise angular order of ${p_2}$ and hence connected since every interior face is a triangle. In the same way $q_{k-1}$ and $q_k$ are subsequent vertices in the angular order of $q_{k-1}$ and hence connected. This can also be seen in Figure~\ref{fig:right:neighborPath}.
 
       Since all pairs of subsequent vertices in $Q'$ are connected or duplicates the step removing all duplicates from $Q'$ ensures $Q$ is a walk.
 
@@ -125,7 +125,7 @@
       Suppose that $Q$ has a duplicate vertex $q_i=q_j$ with $i<j$.
       Then this vertex must have been a neighbor to two different vertices in $P$, since it can not have been added twice while being connected to only one vertex.
       We denote these vertices $p_\ell$, $p_k$ with $\ell<k$.
-      This gives us the situation depicted in Figure \ref{fig:right:path}.
+      This gives us the situation depicted in Figure~\ref{fig:right:path}.
 
       Due to the order in which we added vertices to $Q'$, which is preserved by the removal of vertices when we go to $Q$, we know that any vertices in between $q_i$ and $q_j$ in $Q$ must be one of the following:
       \begin{enumerate}
@@ -149,7 +149,7 @@
       The cycle $P \oplus \rev{Q}$ has no interior vertices.
     \end{lemma}
     \begin{proof}
-      In the construction of the right neighbor path both cases in Figure \ref{fig:uni:walkproof} add a triangle to the interior with all vertices of the triangle in $P \oplus \rev{Q}$. Hence, the interior of $P \oplus \rev{Q}$ can be subdivided in a number triangles.
+      In the construction of the right neighbor path both cases in Figure~\ref{fig:uni:walkproof} add a triangle to the interior with all vertices of the triangle in $P \oplus \rev{Q}$. Hence, the interior of $P \oplus \rev{Q}$ can be subdivided in a number triangles.
       Suppose there is an interior vertex in the cycle $P \oplus \rev{Q}$. Then the triangle containing this vertex is a separating triangle. Hence, $P \oplus \rev{Q}$ has no interior vertices.
     \end{proof}
 

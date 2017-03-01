@@ -36,7 +36,7 @@
 
   It is important to note that if we load any blue edge we regard any other blue edge sharing at least one vertex with this edge to be loaded as well.
   The occurrence of this phenomenon is called \emph{putting trough a load}.
-  An example can be seen in Figure \ref{fig:subdiv:putTrougLoad} where we flipped the thick edge.
+  An example can be seen in Figure~\ref{fig:subdiv:putTrougLoad} where we flipped the thick edge.
   Hence, we mark $uv$ as loaded and because of putting trough load $uw$ also becomes loaded.
 
   \begin{figure}[h]
@@ -74,7 +74,7 @@
   \end{lemma}
 
   \begin{proof}
-  A worst case example is given in Figure \ref{fig:subdiv:worstCaseWithTopFan}.
+  A worst case example is given in Figure~\ref{fig:subdiv:worstCaseWithTopFan}.
 
   \begin{figure}[b]
     \centering
@@ -100,7 +100,7 @@
   The worst case is given by a large topfan at the start and  a combination of the last two items. We would in that case want to flip above the second-to-last edge of the bottom boundary path. But we do not because the next edge is incident to the merge vertex. This gives at worst a topfan and  two more edges along the bottom boundary path and hence a $ d - 3 +2 = d -1$-sided face.
   \end{proof}
 
-  See Figure \ref{fig:subdiv:sampleExecution} for a sample execution of the algorithm described in Lemma \ref{lm:subdiv:withoutTopfan}.
+  See Figure~\ref{fig:subdiv:sampleExecution} for a sample execution of the algorithm described in Lemma \ref{lm:subdiv:withoutTopfan}.
 
   \begin{figure}[t]
     \centering
@@ -114,7 +114,7 @@
   This means we can use the following rule: we flip the first edge of a topfan even above a loaded edge.
   We call such an edge a \emph{forced} flip.
 
-  We can not have two such forced flips above each other because that would give a situation as in Figure \ref{fig:subdiv:forcedFlips}.
+  We can not have two such forced flips above each other because that would give a situation as in Figure~\ref{fig:subdiv:forcedFlips}.
   However, that would mean the fan with fanhandle $u$ must be the handle of a topfan that failed its flip and hence $v$ must have been a split vertex. But then by lemma \ref{lm:zflip:NoTwoSplitsAboveEachOtherVertOnesided} $w$ can not be the handle of a large topfan.
 
   \begin{figure}[t]

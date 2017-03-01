@@ -4,7 +4,7 @@
 \thispagestyle{plain}
 \label{ss:flipBlueZ}
 
-  The regular edge labeling provided by the sweepcycle algorithm of Section \ref{ss:sweep} is often vertically one-sided but I have not succeeded in proving that this is always the case.
+  The regular edge labeling provided by the sweepcycle algorithm of Section~\ref{ss:sweep} is often vertically one-sided but I have not succeeded in proving that this is always the case.
   We would prefer to get a vertically one-sided regular edge labeling since if we then recolor edges to subdivide large blue faces it is harder to accidentally create many-sided vertical segments.
   In this section we modify the current regular edge labeling to make it vertically one-sided while maintaining the property of Lemma \ref{lm:sweep:NoTwoSplitsAboveEachOther}.
 
@@ -32,8 +32,8 @@
     \label{fig:zflip:flip}
   \end{figure}
 
-  As long as the regular edge labeling is not vertically one-sided we find such a blue $Z$ and recolor its middle edge as in Figure \ref{fig:zflip:flip}. We call this a \emph{flip} and we will say that this edge is \emph{flipped}.
-  Note that both flips transfer a valid regular edge labeling to another valid regular edge labeling. If the interior vertex condition was fulfilled in Figure \ref{fig:zflip:blueZ} then it is also fulfilled in Figure \ref{fig:zflip:flip}.
+  As long as the regular edge labeling is not vertically one-sided we find such a blue $Z$ and recolor its middle edge as in Figure~\ref{fig:zflip:flip}. We call this a \emph{flip} and we will say that this edge is \emph{flipped}.
+  Note that both flips transfer a valid regular edge labeling to another valid regular edge labeling. If the interior vertex condition was fulfilled in Figure~\ref{fig:zflip:blueZ} then it is also fulfilled in Figure~\ref{fig:zflip:flip}.
 
   We repeat these flips until the regular edge labeling is vertically one-sided.
   Since every flip reduces the number of blue edges by one, this is a finite procedure.
@@ -63,6 +63,6 @@
     Hence, $w$ is still on the bottom path and still not the handle of a big topfan.
 
     If $v$ is a split vertex due to a chord, let us note the following.
-    The edges of $\P$ and $ab$ in Figure \ref{fig:sweep:botomPathChord} can not have been flipped since then we would find a monochromatic red triangle while a flip leads to another valid regular edge labeling.
+    The edges of $\P$ and $ab$ in Figure~\ref{fig:sweep:botomPathChord} can not have been flipped since then we would find a monochromatic red triangle while a flip leads to another valid regular edge labeling.
     Hence, $w$ is still on the bottom path trough $v$ and still can not be the handle of a large topfan.
   \end{proof}

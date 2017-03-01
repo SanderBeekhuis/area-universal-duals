@@ -56,7 +56,7 @@
 
   Lemma \ref{lm:fix:fourCycleInteriorColor} is useful because it allows us to consider a single corner assignment $\ext G$ of $G$ by using is as scaffold. Suppose we want to investigate some specific corner assignment $\ext G$ of $G$ with poles $N$, $E$, $S$ and $W$ then we can consider the graph $\ext G = H$ as a graph in its own right, and inspect the coloring of this graph.
   $H$ admits a corner assignment $\ext H$ without separating triangles by connecting the new poles as indicated in Table \ref{tab:scaffold}.
-  $\ext H$ is shown in Figure \ref{fig:scafold}.
+  $\ext H$ is shown in Figure~\ref{fig:scafold}.
   $G$ is displayed in thick lines and with filled vertices.
   An arbitrary corner assignment $\ext G =H$ is then drawn with thin lines and hollow vertices.
   A corner assignment of $H$ is then drawn with dashed edges and hollow vertices.
@@ -73,15 +73,15 @@
   The graph $H$ can have more than one corner assignment but they all contain the separating $4$-cycle $\C= NESW$. Thus, by Lemma \ref{lm:fix:fourCycleInteriorColor} we see that, without loss of generality, the interior edges of $\C$ incident to $N$ are colored incoming red, those incident to $E$ are colored incoming blue, those incident to $s$ are colored outgoing red and those incident to $W$ are colored outgoing blue.
 
 \begin{proof}[Proof of Theorem \ref{fix:th:family}]
-  Now as all the preparations are done, we can consider the family of graphs $G_k$ with the corner assignment $\ext G_k$ given in Figure \ref{fig:fix:manymany0}.
+  Now as all the preparations are done, we can consider the family of graphs $G_k$ with the corner assignment $\ext G_k$ given in Figure~\ref{fig:fix:manymany0}.
   We know we only have to look at this corner assignment since we can force it using a scaffold and Lemma \ref{lm:fix:fourCycleInteriorColor}.
   In $G_1$ the dots are replaced by a single vertex, in $G_2$ the dots are replaced by two vertices and so on.
   Each member has 2 maximal separating $4$-cycles.
-  These are both marked by thick lines in Figure \ref{fig:fix:manymany0}.
+  These are both marked by thick lines in Figure~\ref{fig:fix:manymany0}.
   Many of the edges in this graph have only one possible color and orientation that does not violate the constraints of a regular edge labeling.
   Firstly, we can color the edges incident with the poles in accordance with the exterior vertex condition.
-  Subsequently, we can use Lemma \ref{lm:fix:fourCycleInteriorColor} on both maximal separating $4$-cyles in accordance to color even more edges and finally we can color the edges in triangles of which the other two edges have  the same color using Observation \ref{obs:rel:noMonoColoredTriangles}.
-  These forced colorings are performed in Figure \ref{fig:fix:coloring}.
+  Subsequently, we can use Lemma \ref{lm:fix:fourCycleInteriorColor} on both maximal separating $4$-cycles in accordance to color even more edges and finally we can color the edges in triangles of which the other two edges have  the same color using Observation \ref{obs:rel:noMonoColoredTriangles}.
+  These forced colorings are performed in Figure~\ref{fig:fix:coloring}.
 
   \begin{figure}[t]
     \centering
@@ -113,8 +113,8 @@
     \label{fig:fix:coloring}
   \end{figure}
 
-  The result is then the graph displayed in Figure \ref{fig:fix:manymany4}. The black edges in this figure are edges that do not have a forced coloring by the above argument (Although most of them can be forced by Lemma \ref{lm:fix:fourCycleInteriorColor}).
-  We focus on the centered black edge $e$, $e$ is an interior edge of both the red and blue faces drawn with dashed edges in Figure \ref{fig:fix:manymany4}. Both boundary paths of these faces are of length larger than $k$. Hence, $e$ has to be colored both red and blue to prevent that face corresponding to a $k$-sided segment occurs in the regular edge labeling. An edge can not be colored red and blue at the same time and hence $G_k$ is not $k$-sided.
+  The result is then the graph displayed in Figure~\ref{fig:fix:manymany4}. The black edges in this figure are edges that do not have a forced coloring by the above argument (Although most of them can be forced by Lemma \ref{lm:fix:fourCycleInteriorColor}).
+  We focus on the centered black edge $e$, $e$ is an interior edge of both the red and blue faces drawn with dashed edges in Figure~\ref{fig:fix:manymany4}. Both boundary paths of these faces are of length larger than $k$. Hence, $e$ has to be colored both red and blue to prevent that face corresponding to a $k$-sided segment occurs in the regular edge labeling. An edge can not be colored red and blue at the same time and hence $G_k$ is not $k$-sided.
 
   Since this proof does not depend on the value of $k$, the family $G_k$ has graphs that are not $k$-sided for any $k$.
 \end{proof}
