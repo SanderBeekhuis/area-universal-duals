@@ -1,125 +1,206 @@
 %!TEX root = ../thesis.tex
 
-\section{Example executions and worst case scenario}
+\section{Example execution} %And worst case scenearios
+\label{s:ex}
 \thispagestyle{plain}
 
-\subsection{A small example}
+%\subsection{A small example}
+On the four next pages we will give an example execution of our algorithm on a fairly simple graph.
+We hope this helps the reader to get some intuition of how the algorithm operates. We consider the graph given in Figure~\ref{fig:ex:simple:1} this graph has as highest degree vertices several vertices of degree 6. Our algorithm should thus give at least a $5$-sided layout, but it actually gives a $2$-sided layout in this case.
 
+The application of the algorithm to the graph is straightforward. Figures \ref{fig:ex:simple:1} to \ref{fig:ex:simple:7} are steps in the sweepline algorithm. This graph does not have any blue $Z$'s or topfans so we can skip these steps of the algorithm.
+Then finally the subdivision of large red faces happen in Figure \ref{fig:ex:simple:8}.
 
-\subsection{A example containing a large red face}
-
-Consider the graph given in Figure~\ref{fig:ex:vert:graph} this graph has as highest degree vertices two vertices of degree 12. We show how the proposed algorithm handles this graph.
-
-The way in which the algorithm handles this graph is far from ideal leading to a 10-sided face. While the provided upperbound would lead to (at worst) a 11-sided \fxnote{11 or 12?} face. Furthermore the approach in this graph is scaleabale as is shown in Figure~\ref{some figure TODO Show where to scale using dashed lines etc..}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\textwidth]{examples/img/vertWorstCase/graph}
-  \caption{}
-  \label{fig:ex:vert:graph}
-\end{figure}
-
-The application of the algorithm to this graph is straightforward. Figures \ref{fig:ex:vert:sweep1} to \ref{fig:ex:vert:sweepfinal} are steps in the sweepline algorithm. This graph does not permit any topfanflips since all large topfans are either incident to a pole or starting above a split vertex. \fxnote{In a sense a pole is a splitvertex}
-Then finally the subdivision of large red faces happen in Figures \ref{fig:ex:vert:subdiv1} and \ref{fig:ex:vert:subdivfinal}.
-
-In the captions of the subfigures of Figure~\ref{fig:ex:vert} more details about each step can be found.
-
+In the captions of the subfigures of Figure~\ref{fig:ex:simple} more details about each step can be found.
 
 \begin{figure}
     \centering
     \begin{subfigure}[b]{.9 \textwidth}
-      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/sweep1}
-      \caption{The initial sweepcycle.}
-      \label{fig:ex:vert:sweep1}
+      \includegraphics[width=\textwidth]{examples/img/smallExample/smallExample-1}
+      \caption{The graph upon which we will execute the algorithm.}
+      \label{fig:ex:simple:1}
     \end{subfigure}
     ~
     \begin{subfigure}[b]{.9 \textwidth}
-      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/sweep2}
-      \caption{Advancing by one update of the sweepcycle.}
-      \label{fig:ex:vert:sweep2}
+      \includegraphics[width=\textwidth]{examples/img/smallExample/smallExample-2}
+      \caption{The initial sweepcycle.}
+      \label{fig:ex:simple:2}
     \end{subfigure}
     \label{fig:ex:vert}
     \caption{The steps of the algorithm.}
 \end{figure}
 
 \begin{figure}
+    \centering
     \ContinuedFloat
     \begin{subfigure}[b]{.9 \textwidth}
-      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/sweep3}
-      \caption{This update the candidate path had a chord leading to this smaller update step.}
-      \label{fig:ex:vert:sweep3}
+      \includegraphics[width=\textwidth]{examples/img/smallExample/smallExample-3}
+      \caption{Advancing by one update of the sweepcycle.}
+      \label{fig:ex:simple:3}
     \end{subfigure}
     ~
     \begin{subfigure}[b]{.9 \textwidth}
-      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/sweep4}
-      \caption{Several similar update steps combined into one figure.}
-      \label{fig:ex:vert:sweep4}
+      \includegraphics[width=\textwidth]{examples/img/smallExample/smallExample-4}
+      \caption{Another update step.}
+      \label{fig:ex:simple:4}
     \end{subfigure}
     \caption{The steps of the algorithm.}
 \end{figure}
 
 \begin{figure}
+    \centering
     \ContinuedFloat
     \begin{subfigure}[b]{.9 \textwidth}
-      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/sweep5}
-      \caption{An update step, this time without violating chords.}
-      \label{fig:ex:vert:sweep5}
+      \includegraphics[width=\textwidth]{examples/img/smallExample/smallExample-5}
+      \caption{This update the candidate path (dashed) had a chord leading to this smaller update.}
+      \label{fig:ex:simple:5}
     \end{subfigure}
     ~
     \begin{subfigure}[b]{.9 \textwidth}
-      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/sweep6}
-      \caption{Another update step. Note that the original candidate path would have a polebound 2-chord with the edge $\pE \pS$.}
-      \label{fig:ex:vert:sweep6}
+      \includegraphics[width=\textwidth]{examples/img/smallExample/smallExample-6}
+      \caption{Another update step. This time again without violating chords.}
+      \label{fig:ex:simple:6}
     \end{subfigure}
     \caption{The steps of the algorithm.}
 \end{figure}
 
 \begin{figure}
+    \centering
     \ContinuedFloat
     \begin{subfigure}[b]{.9 \textwidth}
-      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/sweep7}
-      \caption{}
-      \label{fig:ex:vert:sweep7}
+      \includegraphics[width=\textwidth]{examples/img/smallExample/smallExample-7}
+      \caption{Terminating the sweepcycle step of the algorithm.}
+      \label{fig:ex:simple:7}
     \end{subfigure}
     ~
     \begin{subfigure}[b]{.9 \textwidth}
-      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/sweep8}
-      \caption{}
-      \label{fig:ex:vert:sweep8}
+      \includegraphics[width=\textwidth]{examples/img/smallExample/smallExample-8}
+      \caption{The flips we make during blue face subdivision.}
+      \label{fig:ex:simple:8}
     \end{subfigure}
   \caption{The steps of the algorithm.}
-  \label{}
+  \label{fig:ex:simple}
 
 \end{figure}
 
 
 
-\begin{figure}
-    \ContinuedFloat
-    \begin{subfigure}[b]{.9 \textwidth}
-      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/sweepfinal}
-      \caption{}
-      \label{fig:ex:vert:sweepfinal}
-    \end{subfigure}
-    ~
-    \begin{subfigure}[b]{.9 \textwidth}
-      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/subdiv1}
-      \caption{}
-      \label{fig:ex:vert:subdiv1}
-    \end{subfigure}
-  \caption{The steps of the algorithm.}
-  \label{}
-\end{figure}
 
-
-
-\begin{figure}
-    \ContinuedFloat
-    \begin{subfigure}[b]{.9 \textwidth}
-      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/subdivfinal}
-      \caption{}
-      \label{fig:ex:vert:subdivfinal}
-    \end{subfigure}
-  \caption{The steps of the algorithm.}
-  \label{}
-\end{figure}
+%\subsection{A example containing a large red face}
+%
+%Consider the graph given in Figure~\ref{fig:ex:vert:graph} this graph has as highest degree %vertices two vertices of degree 12. We show how the proposed algorithm handles this graph.
+%
+%The way in which the algorithm handles this graph is far from ideal leading to a 10-sided face. %While the provided upperbound would lead to (at worst) a 11-sided \fxnote{11 or 12?} face. %Furthermore the approach in this graph is scaleabale as is shown in Figure~\ref{some figure TODO %Show where to scale using dashed lines etc..}
+%
+%\begin{figure}[h]
+%  \centering
+%  \includegraphics[width=\textwidth]{examples/img/vertWorstCase/graph}
+%  \caption{}
+%  \label{fig:ex:vert:graph}
+%\end{figure}
+%
+%The application of the algorithm to this graph is straightforward. Figures \ref{fig:ex:vert:sweep1} %to \ref{fig:ex:vert:sweepfinal} are steps in the sweepline algorithm. This graph does not permit %any topfanflips since all large topfans are either incident to a pole or starting above a split %vertex. \fxnote{In a sense a pole is a splitvertex}
+%Then finally the subdivision of large red faces happen in Figures \ref{fig:ex:vert:subdiv1} and %\ref{fig:ex:vert:subdivfinal}.
+%
+%In the captions of the subfigures of Figure~\ref{fig:ex:vert} more details about each step can be %found.
+%
+%
+%\begin{figure}
+%    \centering
+%    \begin{subfigure}[b]{.9 \textwidth}
+%      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/sweep1}
+%      \caption{The initial sweepcycle.}
+%      \label{fig:ex:vert:sweep1}
+%    \end{subfigure}
+%    ~
+%    \begin{subfigure}[b]{.9 \textwidth}
+%      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/sweep2}
+%      \caption{Advancing by one update of the sweepcycle.}
+%      \label{fig:ex:vert:sweep2}
+%    \end{subfigure}
+%    \label{fig:ex:vert}
+%    \caption{The steps of the algorithm.}
+%\end{figure}
+%
+%\begin{figure}
+%    \ContinuedFloat
+%    \begin{subfigure}[b]{.9 \textwidth}
+%      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/sweep3}
+%      \caption{This update the candidate path had a chord leading to this smaller update step.}
+%      \label{fig:ex:vert:sweep3}
+%    \end{subfigure}
+%    ~
+%    \begin{subfigure}[b]{.9 \textwidth}
+%      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/sweep4}
+%      \caption{Several similar update steps combined into one figure.}
+%      \label{fig:ex:vert:sweep4}
+%    \end{subfigure}
+%    \caption{The steps of the algorithm.}
+%\end{figure}
+%
+%\begin{figure}
+%    \ContinuedFloat
+%    \begin{subfigure}[b]{.9 \textwidth}
+%      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/sweep5}
+%      \caption{An update step, this time without violating chords.}
+%      \label{fig:ex:vert:sweep5}
+%    \end{subfigure}
+%    ~
+%    \begin{subfigure}[b]{.9 \textwidth}
+%      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/sweep6}
+%      \caption{Another update step. Note that the original candidate path would have a polebound %2-chord with the edge $\pE \pS$.}
+%      \label{fig:ex:vert:sweep6}
+%    \end{subfigure}
+%    \caption{The steps of the algorithm.}
+%\end{figure}
+%
+%\begin{figure}
+%    \ContinuedFloat
+%    \begin{subfigure}[b]{.9 \textwidth}
+%      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/sweep7}
+%      \caption{}
+%      \label{fig:ex:vert:sweep7}
+%    \end{subfigure}
+%    ~
+%    \begin{subfigure}[b]{.9 \textwidth}
+%      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/sweep8}
+%      \caption{}
+%      \label{fig:ex:vert:sweep8}
+%    \end{subfigure}
+%  \caption{The steps of the algorithm.}
+%  \label{}
+%
+%\end{figure}
+%
+%
+%
+%\begin{figure}
+%    \ContinuedFloat
+%    \begin{subfigure}[b]{.9 \textwidth}
+%      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/sweepfinal}
+%      \caption{}
+%      \label{fig:ex:vert:sweepfinal}
+%    \end{subfigure}
+%    ~
+%    \begin{subfigure}[b]{.9 \textwidth}
+%      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/subdiv1}
+%      \caption{}
+%      \label{fig:ex:vert:subdiv1}
+%    \end{subfigure}
+%  \caption{The steps of the algorithm.}
+%  \label{}
+%\end{figure}
+%
+%
+%
+%\begin{figure}
+%    \ContinuedFloat
+%    \begin{subfigure}[b]{.9 \textwidth}
+%      \includegraphics[width=\textwidth]{examples/img/vertWorstCase/subdivfinal}
+%      \caption{}
+%      \label{fig:ex:vert:subdivfinal}
+%    \end{subfigure}
+%  \caption{The steps of the algorithm.}
+%  \label{}
+%\end{figure}
+%
