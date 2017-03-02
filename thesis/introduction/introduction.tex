@@ -52,7 +52,7 @@
   We can represent the adjacencies of map regions by an \emph{adjacency graph} $G$ where each region is represented by a vertex and two vertices are connected by an edge exactly when their regions are adjacent.
   Similarly, in the \emph{adjacency graph} $\dualgraph{\L}$ of a rectangular layout $\L$ each rectangle is represented by a vertex and two vertices are connected by an edge exactly when their rectangles are adjacent.
   A layout $\L$ is a \emph{rectangular dual} of a graph $G$ if we have that $G = \dualgraph{\L}$.
-  In general, a single graph can have mutiple non-equivalent rectangular duals. An example of this is the graph in Figure~\ref{fig:intro:nonuniqueRectDual}.
+  In general, a single graph can have multiple non-equivalent rectangular duals. An example of this is the graph in Figure~\ref{fig:intro:nonuniqueRectDual}.
 
   Rinsma found a graph in~\cite{Rinsma1987}, displayed in Figure~\ref{fig:intro:rinsma}, that has no area-universal rectangular duals.
   That is, all rectangular layouts with this graph as adjacency graph are not area-universal.
@@ -67,7 +67,7 @@
 \mypar{One-sided layouts}
   So, unfortunately not all graphs admit area-universal duals.
   We would like to know which graphs do.
-  Before we can state this we need to define one-sided layouts.
+  Before we can state this, we need to define one-sided layouts.
   Note that the interior of a rectangular layout contains vertical and horizontal line segments.
   Any line segment that can not extend any farther on either side is a \emph{maximal segment}.
   A rectangular layout is \emph{one-sided} if every maximal segment has only one rectangle on one of its sides.
@@ -125,8 +125,8 @@
   This generalization is useful because, when changing the areas of rectangles in a $k$-sided layout fewer adjacencies change, in general, if $k$ is small then if $k$ is large.
 
   We illustrate this by comparing a typical $2$-sided and a typical $10$-sided segment.
-  Let us first consider the $2$-sided segment in Figure~\ref{fig:intro:2sidedBefore}, if the size of $a$ doubles only two adjacencies change, namely $dA$ disappears and $cB$ appears, as can been seen in Figure~\ref{fig:intro:2sidedAfter}.
-  While for a typical $10$-sided segment doubling the size of $a$ leads to $15$ changed adjacencies, namely $aC$ $aD$ $ bB$ $ bC$ $ bD$ $ bE$ $ cC$ $ cD$ $ cE$ $ cF$ $ dE$ $ dG$ $ eF$ $ eH$ $ fG$, as can been seen in Figure~\ref{fig:intro:10sided}.
+  Let us first consider the $2$-sided segment in Figure~\ref{fig:intro:2sidedBefore}, if the size of $a$ doubles only two adjacencies change, namely $dA$ disappears and $cB$ appears, as can be seen in Figure~\ref{fig:intro:2sidedAfter}.
+  While for a typical $10$-sided segment doubling the size of $a$ leads to $15$ changed adjacencies, namely $aC$ $aD$ $ bB$ $ bC$ $ bD$ $ bE$ $ cC$ $ cD$ $ cE$ $ cF$ $ dE$ $ dG$ $ eF$ $ eH$ $ fG$, as can be seen in Figure~\ref{fig:intro:10sided}.
   Hence we would like to find $k$-sided layouts for all graphs with $k$ as small as possible.
 
 
@@ -185,7 +185,7 @@
   Nevertheless, not all problems are intractable on graphs with a separating $4$-cycle.
   The problem of finding an area-universal rectangular dual of a graph, already mentioned above, was investigated by Eppstein et al.  in~\cite{Eppstein2012}.
   They managed to find such a rectangular dual, when it exists, for any graph $G$.
-  This result does affect graphs containing separating $4$-cycles since there are such graphs that admit area-universal duals, as can been seen in Figure~\ref{fig:intro:areauniv}.
+  This result does affect graphs containing separating $4$-cycles since there are such graphs that admit area-universal duals, as can be seen in Figure~\ref{fig:intro:areauniv}.
 
 
   \begin{wrapfigure}[]{r}{8cm}
@@ -231,10 +231,10 @@
   \end{wrapfigure}
 
   That being said, during our research we did not find any graphs without separating $4$-cycles that did not admit any $2$-sided layouts.
-  For example, the graph, by Rinsma, without an one-sided dual does have a $2$-sided dual, as can been seen in Figure~\ref{fig:intro:rinsma2Sided}.
+  For example, the graph, by Rinsma, without a one-sided dual does have a $2$-sided dual, as can be seen in Figure~\ref{fig:intro:rinsma2Sided}.
   We thus conjecture that these graphs admit a $2$-sided layout and it is just the algorithm for finding them that eludes us.
 
-  Its worthy of note, that the bound obtained by the algorithm is not stronger then the bound provided by the counterexample. That is, there might be an algorithm providing $O(d)$-sided layouts for all graphs $G$ admitting a rectangular dual.
+  Its worthy of note, that the bound obtained by the algorithm is not stronger than the bound provided by the counterexample. That is, there might be an algorithm providing $O(d)$-sided layouts for all graphs $G$ admitting a rectangular dual.
 
 \mypar{Overview}
   The rest of this thesis is focused on obtaining these two results.

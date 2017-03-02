@@ -27,14 +27,14 @@
   Graphs $G$ that have a corner assignment $\ext G$ without separating 4-cycles are $d-1$-sided, where $d$ is the maximal degree of the vertices of $G$ in $\ext G$.
   \end{thrm}
 
-  Our algorithm will need a number of steps to get to the stated result. In Figure~\ref{fig:algo:algoflow} we can see the four main step we need for finding an $d-1$ sided layout. In every step we ensure new restrictions while maintaining the old ones. In the last step, "Blue Face Subdivision", we can than use these accumulated restrictions to build a $d-1$ sided layout.
+  Our algorithm will need a number of steps to get to the stated result. In Figure~\ref{fig:algo:algoflow} we can see the four main step we need for finding a $d-1$ sided layout. In every step we ensure new restrictions while maintaining the old ones. In the last step, "Blue Face Subdivision", we can then use these accumulated restrictions to build a $d-1$ sided layout.
 
   The first step is finding a regular edge labeling with a certain restriction on \emph{splitvertices}, vertices having more than one blue outgoing edge.
-  We show that these splitvertices can not be next to something we call the handle of a large topfan, that is, a vertex that has more then two incoming red edges.
+  We show that these splitvertices can not be next to something we call the handle of a large topfan, that is, a vertex that has more than two incoming red edges.
 
-  In the second step we will make sure that our regular edge labeling $L$ is \emph{vertically one-sided}. That is, all vertical segments in the corresponding rectangular layout are one-sided segemnts.
+  In the second step we will make sure that our regular edge labeling $L$ is \emph{vertically one-sided}. That is, all vertical segments in the corresponding rectangular layout are one-sided segments.
   We can translate this to a condition on the red faces of $L$, and this condition can then be translated to the existence of a structure we call a \emph{blue $Z$}. In this step we resolve all occurrences of such blue $Z$'s.
-  We suspect that this step is not necessary because the regular edge labeling provided by the sweepcycle algorithm is already vertically one-sided. However, we were unable to proof this.
+  We suspect that this step is not necessary because the regular edge labeling provided by the sweepcycle algorithm is already vertically one-sided. However, we were unable to prove this.
 
   \begin{wrapfigure}{r}{6cm}
     \centering
@@ -48,9 +48,9 @@
   Such a topfan is \emph{large} when this has at least three incoming red edges.
   In Figure~\ref{fig:algo:topfanExample} an example of a large topfan is given by the thick edges.
   This is the most difficult for those topfans that are adjacent to a splitvertex and hence we have to ignore some of these.
-  If we would have been able to handle all topfans, finding a $k$-sided layout would have been easier.
+  If we had been able to handle all topfans, finding a $k$-sided layout would have been easier.
 
-  However, due to the restriction on split vertices we have maintained during the algorithm and the fact that all remaining topfans are adjacent to such splitvertices we are still able to produce an $d-1$ sided layout in the last step.
+  However, due to the restriction on split vertices we have maintained during the algorithm and the fact that all remaining topfans are adjacent to such splitvertices we are still able to produce a $d-1$ sided layout in the last step.
 
 \mypar{Overview}
-  To describe our algorithm we introduce the notion of right neighbor paths in Section~\ref{ss:rightNeighbour}. This notion will be heavily used in the sweepcycle algorithm in Section~\ref{ss:sweep}. In the rest of the section we describe the rest of the algorithm, please refer to Figure~\ref{fig:algo:algoflow} to see which steps are describe in what section.
+  To describe our algorithm we introduce the notion of right neighbor paths in Section~\ref{ss:rightNeighbour}. This notion will be heavily used in the sweepcycle algorithm in Section~\ref{ss:sweep}. In the rest of the section we describe the rest of the algorithm, please refer to Figure~\ref{fig:algo:algoflow} to see which steps are described in what section.

@@ -17,20 +17,19 @@ One might, for example, hope to show that all corner assignments without separat
 
 Another challenging problem is finding an algorithm that has traction on graphs containing (nested) separating 4-cycles.
 For these graphs there might be an algorithm that gives a $d$-sided layout, since the family of graphs provided in the proof of Theorem \ref{fix:th:family} has unbounded maximal degree.
-However, Theorem \ref{fix:th:family} prevent us from finding an algorithm generating a $k$-sided layout for all graphs admitting a rectangular layout, for any constant $k$.
+However, Theorem \ref{fix:th:family} prevents us from finding an algorithm generating a $k$-sided layout for all graphs admitting a rectangular layout, for any constant $k$.
 
-I also wonder whether the second step in our algorithm, Flipping blue $Z$'s, is necessary.
-Since I suspect that result of the sweepcycle algorithm in the first step is vertically one-sided.
+I also wonder whether the second step in our algorithm, Flipping blue $Z$'s, is necessary since I suspect that result of the sweepcycle algorithm in the first step is vertically one-sided.
 
 \mypar{Sweepcycle algorithms}
 I feel the full potential of sweepcycle algorithms is not yet unlocked in this work and the work by Fusy \cite{Fusy2006}.
 Since the current algorithm needs many steps to be able to repair those blue faces that are too large, it might be beneficial to concentrate more on the shape of the blue faces, the horizontal segments in the rectangular dual, in the initial sweepcycle algorithm.
 
 One might try to build a better sweepcycle algorithm by directly finding blue faces with short enough boundary paths, hopefully without creating large red faces during its execution by choosing the right invariants.
-To obtain these invariants one could try to first find an sweepcycle algorithm that provides an regular edge labeling that is horizontally, instead of vertically, one-sided (or horizontally $k$-sided while maintaining reasonable vertical segments).
+To obtain these invariants one could try to first find a sweepcycle algorithm that provides a regular edge labeling that is horizontally, instead of vertically, one-sided (or horizontally $k$-sided while maintaining reasonable vertical segments).
 This way an algorithm obtaining a $k$-sided layout, for some constant $k \in \N$, for any corner assignment without separating $4$-cycles may be possible.
 
-Another approach would be to update the sweepcycle with paths that are not entirely blue (horizontal segments in an dual), but partially blue and partially red (corners in an rectangular dual).
+Another approach would be to update the sweepcycle with paths that are not entirely blue (horizontal segments in an dual), but partially blue and partially red (corners in a rectangular dual).
 
 On the other hand, there is also an unexplored world of algorithms working directly on the rectangular dual. Maybe some cross-pollination between such an algorithm and an algorithm manipulating a regular edge labeling will lead to success.
 
@@ -39,4 +38,4 @@ On the other hand, there is also an unexplored world of algorithms working direc
 \section*{Acknowledgments}
 I would not have been able to write this thesis without my two daily supervisors Bettina Speckmann and Kevin Verbeek. They always provided suggestions and motivation when I was stuck and helped bring structure in the mess that this thesis first was. I also want to thank Jesper Nederlof and
 Rudi Pendavingh for making this project possible by guaranteeing that it is sufficiently mathematical.
-Moreover, I want to thank Wouter Ligtenberg and Hans Beekhuis for reading trough my thesis and finding many mistakes. Last but not least I would like to thank Kaylee, my friends and my family for being a outlet for my frustrations and sharing my joys.
+Moreover, I want to thank Wouter Ligtenberg and Hans Beekhuis for reading trough my thesis and finding many mistakes. Last but not least I would like to thank Kaylee, my friends and my family for being an outlet for my frustrations and sharing my joys.

@@ -1,11 +1,12 @@
 \newif\ifimagen\imagentrue
 \documentclass[a4paper]{article}
-\usepackage{fancyhdr}\usepackage{paralist}\usepackage{datetime}\usepackage{makeidx}\usepackage{hyperref}\usepackage{amsmath}\usepackage{amsthm}\usepackage[utf8]{inputenc}\usepackage{csquotes}\usepackage[english]{babel}\usepackage{graphicx}\usepackage{enumitem}\usepackage{subcaption}\usepackage{wrapfig}\usepackage{fnpct}\usepackage[draft]{fixme}\newcommand{\fxinnote}[1]{\fxnote[inline, nomargin]{#1}}
-\usepackage[backend=biber, giveninits =true, isbn=false, url=false, maxbibnames=100]{biblatex}\usepackage{hyperref}\usepackage{accents}\usepackage[absolute]{textpos}\usepackage{listings}\newtheorem{thrm}{Theorem}
+\usepackage{marvosym}\usepackage{a4wide}\usepackage{fancyhdr}\usepackage{paralist}\usepackage{datetime}\usepackage{makeidx}\usepackage{hyperref}\usepackage{amsmath}\usepackage{amsthm}\usepackage[utf8]{inputenc}\usepackage{csquotes}\usepackage[english]{babel}\usepackage{graphicx}\usepackage{enumitem}\usepackage{subcaption}\usepackage{wrapfig}\usepackage{fnpct}\usepackage{fixme}\newcommand{\fxinnote}[1]{\fxnote[inline, nomargin]{#1}}
+\usepackage[backend=biber, giveninits =true, isbn=false, url=false, maxbibnames=100]{biblatex}\usepackage{hyperref}\usepackage{accents}\usepackage[absolute]{textpos}\newtheorem{thrm}{Theorem}
 \newtheorem{con}[thrm]{Conjecture}
 \newtheorem{lemma}[thrm]{Lemma}
 \newtheorem{prop}[thrm]{Proposition}
 \newtheorem{remark}[thrm]{Remark}
+\newtheorem{observation}[thrm]{Observation}
 \usepackage{amsmath}\usepackage{amssymb}\usepackage{amsopn}\newcommand{\scr}[1]{\mathcal{#1}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\F}{\mathbb{F}}
@@ -39,7 +40,7 @@
 \newcommand{\tightext}[1]{\bar{#1}_t}
 \newcommand{\dualgraph}[1]{\G(#1)}
 \newcommand{\extdualgraph}[1]{\G_{\scr E}(#1)}
-\newcommand{\mypar}[1]{{\bfseries #1.}}
+\newcommand{\mypar}[1]{\medbreak \noindent {\bfseries #1.}}
 \newcommand{\rev}[1]{\accentset{\leftharpoonup}{#1}}
 \newcommand{\W}{\scr W}
 \renewcommand{\P}{\scr P}
@@ -58,116 +59,152 @@
 \newenvironment{invariants}{\refstepcounter{thrm}\paragraph{Invariants~\theprop}\renewcommand*{\theenumi}{\theprop\,(I\arabic{enumi})}\renewcommand*{\labelenumi}{(I\arabic{enumi})}\enumerate
 }{\endenumerate
 }
-\newcommand{\shortdoctitle}{$\mathbf{k}$-Sided Rectangular Duals}
-\newcommand{\doctitle}{$\mathbf{k}$-Sided Rectangular Duals}
+\usepackage{titlesec}\newcommand{\shortdoctitle}{$\mathbf{k}$-Sided Rectangular Duals}
+\newcommand{\doctitle}{On $\mathbf{k}$-Sided Rectangular Duals}
 \newcommand{\docsubtitle}{}
-\newcommand{\me}{Sander Beekhuis}
-\newcommand{\keywords}{keyword1, keyword2, keyword3}
-\newcommand{\version}{Version Draft 1.5}
-\newcommand{\monthYear}{Feb 2017}
-\newcommand{\firstCommitteeMember}{Your First Committee Member}
-\newcommand{\secondCommitteeMember}{Your Second Committee Member, usually the daily supervisor}
-\newcommand{\thirdCommitteeMember}{Your Third Committee Member, usually the external member}
+\newcommand{\me}{S.\ J. Beekhuis}
+\newcommand{\keywords}{rectangular cartogram, k-sided, regular edge labeling, one-sided}
+\newcommand{\version}{Version Draft 2}
+\newcommand{\monthYear}{March 9, 2017}
+\newcommand{\firstCommitteeMember}{prof. dr. B. Speckmann}
+\newcommand{\secondCommitteeMember}{dr. K.\ A.\ B. Verbeek}
+\newcommand{\thirdCommitteeMember}{dr. J. Nederlof}
+\newcommand{\fourthCommitteeMember}{dr. R.\ A. Pendavingh}
 
 \pagestyle{empty}
 \thispagestyle{empty}
 \begin{document}
 \includegraphics[height=2cm]{tue-logo-high}
 \clearpage% page: 0
-\setcounter{page}{0}
-\includegraphics[scale=1]{rectangularDuals/img/segmentdefs}
+\includegraphics{./titleimage.pdf}
 \clearpage% page: 1
-\includegraphics[scale=1]{rectangularDuals/img/vertonesided}
+\setcounter{tocdepth}{2}
+\setcounter{page}{0}
+\includegraphics[scale=.8]{./introduction/img/cartogram.png}
 \clearpage% page: 2
-\includegraphics[scale=.5]{./introduction/img/cartogram.png}
+\includegraphics[width = 6cm]{./introduction/img/areaunivLayout.pdf}
 \clearpage% page: 3
-\includegraphics[scale=.15]{./introduction/img/rinsma.png}
+\includegraphics[width=6cm]{./introduction/img/nonuniqueRectDual.pdf}
 \clearpage% page: 4
-\includegraphics[width = \textwidth]{./rectangularDuals/img/interiorcondition.pdf}
+\includegraphics[scale=.16]{./introduction/img/rinsma.png}
 \clearpage% page: 5
-\includegraphics[width =\textwidth]{./rectangularDuals/img/exteriorCondition.pdf}
+\includegraphics[width=\textwidth]{./introduction/img/2sidedBefore.pdf}
 \clearpage% page: 6
-\includegraphics[scale=1]{rectangularDuals/img/relSegmentFaceRescale}
+\includegraphics[width=\textwidth]{./introduction/img/2sidedAfter.pdf}
 \clearpage% page: 7
-\includegraphics[scale=0.5]{fixExtension/img/scafold}
+\includegraphics[width=\textwidth]{./introduction/img/10sidedBefore.pdf}
 \clearpage% page: 8
-\includegraphics[scale=1]{fixExtension/img/manymanybase}
+\includegraphics[width=\textwidth]{./introduction/img/10sidedAfter.pdf}
 \clearpage% page: 9
-\includegraphics[width=\textwidth]{fixExtension/img/manymany1}
+\includegraphics[width = \textwidth]{./introduction/img/4cycle.pdf}
 \clearpage% page: 10
-\includegraphics[width=\textwidth]{fixExtension/img/manymany2}
+\includegraphics[width = \textwidth]{./introduction/img/sep4cycle.pdf}
 \clearpage% page: 11
-\includegraphics[width=\textwidth]{fixExtension/img/manymany3}
+\includegraphics[width =\textwidth]{./introduction/img/nest4cycle.pdf}
 \clearpage% page: 12
-\includegraphics[scale=1]{fixExtension/img/manymany4}
+\includegraphics[scale=1]{./introduction/img/areaunivGraph.pdf}
 \clearpage% page: 13
-\includegraphics[scale=1]{unifiedAlgo/img/rightNeighbourwalk/rotation}
+\includegraphics[scale=1]{./introduction/img/areaunivDual.pdf}
 \clearpage% page: 14
-\includegraphics[scale=1]{./unifiedAlgo/img/rightNeighbourwalk/chords.pdf}
+\includegraphics[scale=.3]{./introduction/img/caGraph.pdf}
 \clearpage% page: 15
-\includegraphics[scale=1]{./unifiedAlgo/img/rightNeighbourwalk/pHasRightNeighbor.pdf}
+\includegraphics[scale=.3]{./introduction/img/caCa.pdf}
 \clearpage% page: 16
-\includegraphics[scale=1]{./unifiedAlgo/img/rightNeighbourwalk/neighborPath.pdf}
+\includegraphics[scale=.3]{./introduction/img/caDual.pdf}
 \clearpage% page: 17
-\includegraphics[width=\linewidth]{unifiedAlgo/img/walkProofA}
+\includegraphics[]{./introduction/img/rinsma2Sided.pdf}
 \clearpage% page: 18
-\includegraphics[width=\linewidth]{unifiedAlgo/img/walkProofB}
+\includegraphics[width = \textwidth]{./rectangularDuals/img/interiorcondition.pdf}
 \clearpage% page: 19
-\includegraphics[scale=1]{./unifiedAlgo/img/rightNeighbourwalk/neighborPathisPath.pdf}
+\includegraphics[width =\textwidth]{./rectangularDuals/img/exteriorCondition.pdf}
 \clearpage% page: 20
-\includegraphics[scale=1]{unifiedAlgo/img/rightNeighbourwalk/neighbourWalkChords}
+\includegraphics[scale=1]{rectangularDuals/img/relSegmentFaceRescale}
 \clearpage% page: 21
-\includegraphics[scale=1]{unifiedAlgo/img/sweep/cases/noIrregularity}
+\includegraphics[width=5cm]{./fixExtension/img/sep4cycle.pdf}
 \clearpage% page: 22
-\includegraphics[scale=1]{./unifiedAlgo/img/sweep/noChordOnExtriorVertex.pdf}
+\includegraphics[scale=0.4]{fixExtension/img/scafold}
 \clearpage% page: 23
-\includegraphics[scale=1]{unifiedalgo/img/sweep/chordsOnCandidatePath}
+\includegraphics[scale=.7]{fixExtension/img/manymanybase}
 \clearpage% page: 24
-\includegraphics[scale=1]{unifiedAlgo/img/sweep/cases/chordUpdate}
+\includegraphics[width=\textwidth]{fixExtension/img/manymany1}
 \clearpage% page: 25
-\includegraphics[scale=1]{unifiedAlgo/img/sweep/cases/2chordInChordUpdate}
+\includegraphics[width=\textwidth]{fixExtension/img/manymany2}
 \clearpage% page: 26
-\includegraphics[scale=1]{unifiedAlgo/img/sweep/cases/pEBound}
+\includegraphics[width=\textwidth]{fixExtension/img/manymany3}
 \clearpage% page: 27
-\includegraphics[scale=1]{unifiedAlgo/img/sweep/cases/free2chord}
+\includegraphics[scale=.75]{fixExtension/img/manymany4}
 \clearpage% page: 28
-\includegraphics[width = \textwidth]{./unifiedAlgo/img/sweep/updateBefore.pdf}
+\includegraphics[scale=.37]{./unifiedAlgo/img/algoflowext2.pdf}
 \clearpage% page: 29
-\includegraphics[width =\textwidth]{./unifiedAlgo/img/sweep/updateAfter.pdf}
+\includegraphics[]{./unifiedAlgo/img/topfanExample.pdf}
 \clearpage% page: 30
-\includegraphics[width = \textwidth]{./unifiedAlgo/img/sweep/terminateBefore.pdf}
+\includegraphics[scale=1]{unifiedAlgo/img/rightNeighbourwalk/rotation}
 \clearpage% page: 31
-\includegraphics[width =\textwidth]{./unifiedAlgo/img/sweep/terminateAfter.pdf}
+\includegraphics[scale=1]{./unifiedAlgo/img/rightNeighbourwalk/chords.pdf}
 \clearpage% page: 32
-\includegraphics[scale=.9]{rectangularDuals/img/fans}
+\includegraphics[scale=1]{./unifiedAlgo/img/rightNeighbourwalk/pHasRightNeighbor.pdf}
 \clearpage% page: 33
-\includegraphics[scale=1]{rectangularDuals/img/fanterms}
+\includegraphics[scale=1]{./unifiedAlgo/img/rightNeighbourwalk/neighborPath.pdf}
 \clearpage% page: 34
-\includegraphics[scale=.9]{./unifiedAlgo/img/sweep/bottompath.pdf}
+\includegraphics[]{unifiedAlgo/img/walkProofA}
 \clearpage% page: 35
-\includegraphics[scale=1]{./unifiedAlgo/img/sweep/bottompathChord.pdf}
+\includegraphics[]{unifiedAlgo/img/walkProofB}
 \clearpage% page: 36
-\includegraphics[scale=1]{./unifiedAlgo/img/zflip/blueZ.pdf}
+\includegraphics[scale=1]{./unifiedAlgo/img/rightNeighbourwalk/neighborPathisPath.pdf}
 \clearpage% page: 37
-\includegraphics[scale=1]{./unifiedAlgo/img/zflip/flip.pdf}
+\includegraphics[scale=1]{unifiedAlgo/img/rightNeighbourwalk/neighbourWalkChords}
 \clearpage% page: 38
-\includegraphics[width = \textwidth]{topFanFlips/img/regular}
+\includegraphics[scale=1]{unifiedAlgo/img/sweep/cases/noIrregularity}
 \clearpage% page: 39
-\includegraphics[width = \textwidth]{topFanFlips/img/merge}
+\includegraphics[scale=1]{./unifiedAlgo/img/sweep/noChordOnExtriorVertex.pdf}
 \clearpage% page: 40
-\includegraphics[width =\textwidth]{topFanFlips/img/mergeend}
+\includegraphics[scale=1]{unifiedalgo/img/sweep/chordsOnCandidatePath}
 \clearpage% page: 41
-\includegraphics[width = \textwidth]{topFanFlips/img/split}
+\includegraphics[scale=1]{unifiedAlgo/img/sweep/cases/chordUpdate}
 \clearpage% page: 42
-\includegraphics[width =\textwidth]{topFanFlips/img/splitfront}
+\includegraphics[scale=1]{unifiedAlgo/img/sweep/cases/2chordInChordUpdate}
 \clearpage% page: 43
-\includegraphics[scale=1]{./blueFaceSubdivision/img/puttingTroughLoad.pdf}
+\includegraphics[scale=1]{unifiedAlgo/img/sweep/cases/pEBound}
 \clearpage% page: 44
-\includegraphics[scale=1]{blueFaceSubdivision/img/worstCaseWithTopFan}
+\includegraphics[scale=1]{unifiedAlgo/img/sweep/cases/free2chord}
 \clearpage% page: 45
-\includegraphics[scale=1]{blueFaceSubdivision/img/sampleExecution}
+\includegraphics[width = \textwidth]{./unifiedAlgo/img/sweep/updateBefore.pdf}
 \clearpage% page: 46
-\includegraphics[scale=1]{./blueFaceSubdivision/img/forcedFlips.pdf}
+\includegraphics[width =\textwidth]{./unifiedAlgo/img/sweep/updateAfter.pdf}
 \clearpage% page: 47
+\includegraphics[width = \textwidth]{./unifiedAlgo/img/sweep/terminateBefore.pdf}
+\clearpage% page: 48
+\includegraphics[width =\textwidth]{./unifiedAlgo/img/sweep/terminateAfter.pdf}
+\clearpage% page: 49
+\includegraphics[scale=.9]{rectangularDuals/img/fans}
+\clearpage% page: 50
+\includegraphics[scale=1]{rectangularDuals/img/fanterms}
+\clearpage% page: 51
+\includegraphics[scale=.9]{./unifiedAlgo/img/sweep/bottompath.pdf}
+\clearpage% page: 52
+\includegraphics[scale=1]{./unifiedAlgo/img/sweep/bottompathChord.pdf}
+\clearpage% page: 53
+\includegraphics[scale=1]{./unifiedAlgo/img/zflip/blueZ.pdf}
+\clearpage% page: 54
+\includegraphics[scale=1]{./unifiedAlgo/img/zflip/flip.pdf}
+\clearpage% page: 55
+\includegraphics[width = \textwidth]{topFanFlips/img/regular}
+\clearpage% page: 56
+\includegraphics[width = \textwidth]{topFanFlips/img/merge}
+\clearpage% page: 57
+\includegraphics[width =\textwidth]{topFanFlips/img/mergeend}
+\clearpage% page: 58
+\includegraphics[width = \textwidth]{topFanFlips/img/split}
+\clearpage% page: 59
+\includegraphics[width =\textwidth]{topFanFlips/img/splitfront}
+\clearpage% page: 60
+\includegraphics[scale=1]{./blueFaceSubdivision/img/puttingTroughLoad.pdf}
+\clearpage% page: 61
+\includegraphics[scale=1]{blueFaceSubdivision/img/worstCaseWithTopFan}
+\clearpage% page: 62
+\includegraphics[scale=1]{blueFaceSubdivision/img/sampleExecution}
+\clearpage% page: 63
+\includegraphics[scale=1]{./blueFaceSubdivision/img/forcedFlips.pdf}
+\clearpage% page: 64
 %Options: 
 \end{document}

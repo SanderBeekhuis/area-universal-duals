@@ -59,10 +59,10 @@ At that point we can terminate the algorithm by coloring the edges of the cycle 
 
   Before we can show how to evade these structures, we first introduce more notation. We orient $P$ from $v_i \in \C$ (the vertex closest to $\pW$) to $v_j \in \C$ (the vertex closest to $\pE$) and denote its vertices by $p_1 \ldots p_r$.
   The \emph{index} of a vertex $p_m \in P$ is its position in the path, that is, the index of $p_m$ is $m$.
-  The \emph{start index} of an violating chord $C$ is the index of the first vertex in $P$ that is also in $C$. Similarly, the \emph{end index} is the index of the last vertex in $P$ that is also in $C$.
-  The \emph{range} of an violating chord is given by its start and end index. We update the sweepcycle with some \emph{update path} $P'$, depending on the violating chords we find on the candidate path $P$. This update is described in Section~\ref{sss:sweep:update}.
+  The \emph{start index} of a violating chord $C$ is the index of the first vertex in $P$ that is also in $C$. Similarly, the \emph{end index} is the index of the last vertex in $P$ that is also in $C$.
+  The \emph{range} of a violating chord is given by its start and end index. We update the sweepcycle with some \emph{update path} $P'$, depending on the violating chords we find on the candidate path $P$. This update is described in Section~\ref{sss:sweep:update}.
 
-  While describing how the updating path $P$ depends on the violating chords of $P$ we show that the following two lemmas hold in every case.
+  While describing how the updating path $P$ depends on the violating chords of $P$, we show that the following two lemmas hold in every case.
 
   \begin{lemma}
     The updating path has no violating chords
@@ -110,7 +110,7 @@ At that point we can terminate the algorithm by coloring the edges of the cycle 
     What we do now depends on whether a separating 2-chord shows up in the interior of the chord concatenated to the candidate path $P|_{m, n} \oplus \rev{{C}}$.
 
     \emph{No separating 2-chord.}
-      If there is no separating 2-chord in the interior of $P|_{i, j} \oplus \rev{{C}}$ we let $v_k$ be the shared neighbor in $\C$ of $p_{m}$ and $p_{m +1}$ and we let $v_\ell$ the shared neighbor in $\C$ of $p_{n -1}$ and $p_{n}$.
+      If there is no separating 2-chord in the interior of $P|_{i, j} \oplus \rev{{C}}$, we let $v_k$ be the shared neighbor in $\C$ of $p_{m}$ and $p_{m +1}$ and we let $v_\ell$ the shared neighbor in $\C$ of $p_{n -1}$ and $p_{n}$.
       The updating path $P'$ is the right neighbor path of $\cpath|_{v_k, v_\ell}$.
       See Figure~\ref{fig:sweep:chordUpdate}.
 
@@ -149,8 +149,8 @@ At that point we can terminate the algorithm by coloring the edges of the cycle 
       Let $v_k$ be the shared neighbor on the sweepcycle of $p_{m}$ and $p_{m +1}$. The updating path is the right neighbor path of $\cpath|_{v_k, v_j}$. See Figure~\ref{fig:sweep:pEBound}.
 
       $P'$ starts inside the separating $2$-chord adjacent to $v_j$ with the highest start index. $P'$ has no chords since $P$ already had none.
-      However $P'$ can have separating $2$-chords that are not adjacent to $v_j$.
-      If this is the case we find the $2$-chord with the lowest end index $n$.
+      However, $P'$ can have separating $2$-chords that are not adjacent to $v_j$.
+      If this is the case, we find the $2$-chord with the lowest end index $n$.
       Let $v_\ell$ be the shared neighbor on the sweepcycle of $p_{n}$ and $p_{n-1}$.
       The updating path is the right neighbor path of $\cpath|_{v_k, v_\ell}$.
 
@@ -220,7 +220,7 @@ At that point we can terminate the algorithm by coloring the edges of the cycle 
     Hence, $\C'$ is a valid new sweepcycle.
   \end{proof}
 
-  If after the update the new sweepcycle $\C'$ has no interior vertices we terminate the algorithm,  this is described in Section~\ref{sss:terminating}.
+  If after the update the new sweepcycle $\C'$ has no interior vertices, we terminate the algorithm;  this is described in Section~\ref{sss:terminating}.
   Otherwise, we start the update loop again by finding a new candidate path.
 
 \subsubsection{Terminating the algorithm}
@@ -291,13 +291,13 @@ At that point we can terminate the algorithm by coloring the edges of the cycle 
 
     The \emph{left} of the fan is the part closest to the split vertex and the \emph{right} of the fan is the part closest to the merge vertex.
 
-    In faces we alternately encounter bottomfans and topfans. If we would have two adjacent fans of the same type, we would just have a single larger fan of that type.
+    In faces, we alternately encounter bottomfans and topfans. If we would have two adjacent fans of the same type, we would just have a single larger fan of that type.
     In Figure~\ref{fig:uni:fans} we see a blue face consisting of subsequently a bottomfan of size $3$, a topfan of size 2, a bottomfan of size $2$, a topfan of size $6$, a bottomfan of size $3$ and a topfan of size $3$.
 
    We introduce some more terminology for fans: \emph{outer edges}, \emph{fan handles} and the \emph{rim} as can be seen in Figure~\ref{fig:rect:fanTerms}. The \emph{fan handle} $v$ is the vertex shared by all edges in the fan. Let $H$ be the induced subgraph of vertices incident to the edges in the fan. $H$ contains no edges not belonging to $F$ since these would lead to separating 3-cycles. The \emph{rim} is the path given by $F\sm{v}$.
    The \emph{outer rim} are the two extreme edges of this path and the \emph{outer edges} are the edges between the fan handles and the extreme vertices of the \emph{rim}.
 
-   A similar discussion can be given for red faces. However then we have \emph{right fans} and \emph{left fans} instead of bottom and top fans.
+   A similar discussion can be given for red faces. However, then we have \emph{right fans} and \emph{left fans} instead of bottom and top fans.
 
 %\newpage\fxerror{check this new page}
   \mypar{The property}
@@ -322,10 +322,10 @@ At that point we can terminate the algorithm by coloring the edges of the cycle 
     \begin{proof}
       There are two possible causes of $v$ being a splitvertex, $v$ is either adjacent to $\pS$ or $v$ is a splitvertex due to a chord.
 
-      If $v$ is a splitvertex because it is adjacent to $\pS$ then since $w$ is on the bottom path it also has to be adjacent to $\pS$ by the definition of the bottom path.
+      If $v$ is a splitvertex because it is adjacent to $\pS$, then since $w$ is on the bottom path it also has to be adjacent to $\pS$ by the definition of the bottom path.
       Hence, $w$ is not the handle of a large topfan.
 
-      If $v$ is a splitvertex due to a chord $v a b x$ we can continue the bottom path past $w$ as a bottom path that eventually goes to $x$ since every chord is evaded by a single path from $v_k$ to $v_\ell$ in the algorithm.
+      If $v$ is a splitvertex due to a chord $v a b x$, we can continue the bottom path past $w$ as a bottom path that eventually goes to $x$ since every chord is evaded by a single path from $v_k$ to $v_\ell$ in the algorithm.
       We denote this extended bottom path by $\P$.
       The situation is depicted in Figure~\ref{fig:sweep:botomPathChord}.
 
