@@ -288,7 +288,9 @@ We repeat these steps until the sweepcycle does not contain anymore interior ver
     We use \emph{fans} to refer to both these \emph{types} of fans (i.e. topfans and bottomfans).
     We call a fan of size $3$ or larger a \emph{large fan} and a fan of size $2$ a \emph{small fan}.
 
-    In a face we alternately encounter bottomfans and topfans. If we would have two adjacent fans of the same type, we would just have a single larger fan of that type.
+    The \emph{left} of the fan is the part closest to the split vertex and the \emph{right} of the fan is the part closest to the merge vertex.
+
+    In faces we alternately encounter bottomfans and topfans. If we would have two adjacent fans of the same type, we would just have a single larger fan of that type.
     In Figure~\ref{fig:uni:fans} we see a blue face consisting of subsequently a bottomfan of size $3$, a topfan of size 2, a bottomfan of size $2$, a topfan of size $6$, a bottomfan of size $3$ and a topfan of size $3$.
 
    We introduce some more terminology for fans: \emph{outer edges}, \emph{fan handles} and the \emph{rim} as can be seen in Figure~\ref{fig:rect:fanTerms}. The \emph{fan handle} $v$ is the vertex shared by all edges in the fan. Let $H$ be the induced subgraph of vertices incident to the edges in the fan. $H$ contains no edges not belonging to $F$ since these would lead to separating 3-cycles. The \emph{rim} is the path given by $F\sm{v}$.

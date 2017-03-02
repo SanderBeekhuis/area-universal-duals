@@ -8,34 +8,33 @@ In this thesis we proved the following two theorems
 
 \begin{enumerate}
   \item There is a family of graphs $G_k$ that for any $k \in \N$ has members that are not $k$-sided (Theorem \ref{fix:th:family}).
-  \item Graphs $G$ that have a corner assignment without separating 4-cycles are $d-1$-sided, where $d$ is the maximal degree of the vertices of $G$. (Theorem \ref{th:dsided})
+  \item Graphs $G$ that have a corner assignment without separating 4-cycles are $d-1$-sided, where $d$ is the maximal degree of the vertices of $G$ in $\ext G$. (Theorem \ref{th:dsided})
 \end{enumerate}
 
 \mypar{Open Questions}
-One might hope to show that all corner assignments without separating $4$-cycles admit a $2$-sided rectangular layout. Failing this, a proof these corner assignments, or their underlying graphs, have a $k$-sided layout for any constant $k\in \N$ would also be nice.
+One might hope to show that all corner assignments without separating $4$-cycles admit a $2$-sided rectangular layout. Failing this, a proof these corner assignments, or their underlying graphs, have a $k$-sided layout for any constant $k\in \N$ would already be nice.
 
-Another challenging problem is to find an algorithm that has some traction on graphs containing (nested) separating 4-cycles.
-For these graphs there might be an algorithm that gives $d$-sided layouts since the family of graphs provided in the proof of Theorem \ref{fix:th:family} has unbounded maximal degree.
-However, Theorem \ref{fix:th:family} prevent us from finding an algorithm generating a $k$-sided layout for all graphs admitting a rectangular layout, for all possible constants $k$.
+Another challenging problem finding an algorithm that has traction on graphs containing (nested) separating 4-cycles.
+For these graphs there might be an algorithm that gives a $d$-sided layout, since the family of graphs provided in the proof of Theorem \ref{fix:th:family} has unbounded maximal degree.
+However, Theorem \ref{fix:th:family} prevent us from finding an algorithm generating a $k$-sided layout for all graphs admitting a rectangular layout, for any possible constant $k$.
 
-I also wonder whether the second step in the algorithm, Flipping blue $Z$'s, is necessary.
+I also wonder whether the second step in our algorithm, Flipping blue $Z$'s, is necessary.
 Since I suspect that result of the sweepcycle algorithm is vertically one-sided.
 
 \mypar{Sweepcycle algorithms}
 I feel the full potential of sweepcycle algorithms is not yet unlocked in this work and the work by Fusy \cite{Fusy2006}.
-Since the current algorithm needs many steps to be able to repair those blue faces that are to large, it might be beneficial to concentrate more on the shape of the blue faces, horizontal segments in the rectangular dual, in the initial sweepcycle algorithm.
+Since the current algorithm needs many steps to be able to repair those blue faces that are too large, it might be beneficial to concentrate more on the shape of the blue faces, horizontal segments in the rectangular dual, in the initial sweepcycle algorithm.
+
 One might try to build a better sweepcycle algorithm by directly finding blue faces with short enough boundary paths, hopefully without creating large red faces during its execution by choosing the right invariants.
 To obtain these invariants one could try to first find an sweepcycle algorithm that provides an regular edge labeling that is vertically, instead of horizontally, one-sided.
 This way an algorithm obtaining a $k$-sided layout, for some constant $k \in \N$, for any corner assignment without separating $4$-cycles may be possible.
 
 Another approach would be one where we do not update the sweepcycle with paths that are entirely blue (horizontal segments in an dual), but with paths that are partially blue and partially red (corners in an rectangular dual).
 
-\fxnote{Check againts wirtings in chapters 4 and 1 when im done}
-\fxnote{Work with rel and dual}
-\fxnote{Vertically one-sided using sweep}
+On the other hand, the there is also an unexplored world of algorithms working directly on the rectangular dual. Maybe some cross-pollination between such an algorithm and an algorithm manipulating a regular edge labeling will lead to success.
 
 \newpage
 \thispagestyle{plain}
 \section*{Acknowledgments}
 I would not have been able to write this thesis without my two supervisors Bettina Speckmann and Kevin Verbeek. They always provided suggestions and motivation when I was stuck and helped bring structure in the mess that this thesis first was. I also want to thank Jesper Nederlof for making this project possible by guaranteeing that this project is sufficiently mathematical.
-Moreover, I want to thank Wouter Ligtenberg, Hans Beekhuis and Kaylee Cox for reading trough my thesis and finding many mistakes. Last but not least I would like to thank Kaylee, friends and family for being a outlet for my frustrations.
+Moreover, I want to thank Wouter Ligtenberg and Hans Beekhuis for reading trough my thesis and finding many mistakes. Last but not least I would like to thank Kaylee, friends and family for being a outlet for my frustrations.
