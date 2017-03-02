@@ -3,9 +3,9 @@
 \section*{Abstract}
 \thispagestyle{plain}
 
-  A  \emph{rectangular layout} (or simply \emph{layout}) $\L$ is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles. Rectangular layouts have many applications, for example as rectangular cartograms in cartography, chip designs and floorplans in architecture.
+  A  \emph{rectangular layout} (or simply \emph{layout}) $\L$ is a partition of a rectangle into a finite set of interior-disjoint rectangles. Rectangular layouts have many applications, for example as rectangular cartograms in cartography, chip designs in VLSI and floorplans in architecture. A rectangular cartogram is a map in which the regions are replaced by scaled rectangles representing some quantity.
 
-  In the rectangular cartogram application it is desirable to find a layout that always keeps the same adjacencies between the interior rectangles when their sizes change. For example, when displaying a cartogram of a single quantity at different points in time, we prefer to do this using layouts with the same adjacencies. Such layouts are \emph{area-universal}.
+  In the rectangular cartogram application it is desirable to find a layout that always keeps the same adjacencies between the interior rectangles when their sizes change. For example, when displaying a cartogram of a single quantity at different points in time, we prefer to do this using a set of layouts with the same adjacencies. Such layouts are \emph{area-universal}.
 
   The interior of a rectangular layout contains vertical and horizontal line segments.
   Any line segment that can not extend farther on either side is a \emph{maximal segment}.
@@ -14,7 +14,8 @@
   A necessary and sufficient condition for a layout to be area-universal is that it is \emph{one-sided}, that is $k$-sided with $k=1$.
   Unfortunately, not all graphs with a rectangular dual have an one-sided dual.
 
-  For graphs without an one-sided dual a $k$-sided dual with $k$ as small as possible is often a dual that has the smallest risk of adjacencies changing when the size of the interior rectangles changes.
+  For graphs without an one-sided dual, a $k$-sided dual with $k$ as small as possible is often a dual that has the smallest risk of adjacencies changing when changing the size of the interior rectangles.
 
-  In this thesis we find that we can not hope to find a $k$-sided rectangular dual for all graphs admitting a rectangular dual, no matter the constant $k$.
-  For certain graphs, namely those without separating $4$-cycles, this might be possible. However, we do not quite obtain this result. Instead we present an algorithm giving a $d-1$-sided dual, with $d$ the maximal degree of the vertices of $G$ in $\ext G$, a so-called corner assignment.
+  In this thesis we prove that we can not find a $k$-sided rectangular dual for all graphs admitting a rectangular dual, no matter the constant $k$.
+  However, for certain graphs, namely those without separating $4$-cycles, this might be possible.
+  We do not quite obtain this result. Instead we present an algorithm giving a $d-1$-sided dual, with $d$ the maximal degree of the vertices of $G$ in $\ext G$, a so-called corner assignment.

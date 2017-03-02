@@ -4,7 +4,8 @@
 \label{s:rel}
 \thispagestyle{plain}
 \mypar{Adjacency graphs of layouts}
-  The \emph{adjacency graph} $\dualgraph{\L}$ of a layout $\L$ each rectangle is represented by a vertex. In an adjacency graph we connect two vertices by an edge exactly when their rectangles are adjacent.
+  In an \emph{adjacency graph} $\dualgraph{\L}$ of a layout $\L$ each rectangle is represented by a vertex.
+  In an adjacency graph we connect two vertices by an edge exactly when their rectangles are adjacent.
   In the \emph{extended adjacency graph} $\extdualgraph{\L}$ we also add $4$ vertices $\pN, \pE, \pS, \pW$ (so-called \emph{poles}) in the outer face, one associated to the north, east, south, west boundary segment of the outer rectangle, respectively.
   In this graph two vertices are connected if their rectangles or boundary segments intersect.
   If we take the \emph{extended adjacency graph} of a layout and remove the $4$ vertices corresponding to the outer face we end up with the regular \emph{adjacency graph} of that layout.
@@ -21,12 +22,12 @@
   If we color the edge blue we orient it from the leftmost rectangle to the rightmost rectangle and if we color it red we orient from bottom to top.
   We neither color nor orient the edges between the poles.
 
-  From the nature of the adjacencies in a rectangular layout we can deduce the following two rules for a regular edge labeling.
+  From the nature of the adjacencies in a rectangular layout we can deduce the following two rules, both illustrated in Figure~\ref{fig:rel:conditions}, for a regular edge labeling.
+
   \begin{enumerate}
     \item (Interior vertex) In the angular order of every interior vertex we have the following subsequent non-empty sets: Incoming red edges, incoming blue edges, outgoing red edges and outgoing blue edges and these are the only sets that exist.
-    \item (Pole) $\pN$ has only incoming red edges, $\pE$ has only incoming blue edges, $\pS$ has only outgoing red edges and $\pW$ has only outgoing blue edges ,except for the uncolored edges between the poles.
+    \item (Pole) $\pN$ has only incoming red edges, $\pE$ has only incoming blue edges, $\pS$ has only outgoing red edges and $\pW$ has only outgoing blue edges, except for the uncolored edges between the poles.
   \end{enumerate}
-  Both rules are illustrated in Figure~\ref{fig:rel:conditions}.
 
   \begin{figure}
       \centering
@@ -45,10 +46,10 @@
   In \cite{He1993} He showed that given a regular edge labeling of a corner assignment we can reconstruct a rectangular layout represented by this regular edge labeling.
 
   \mypar{Combinatorially equivalent}
-    We say two layouts are  \emph{combinatorially equivalent} or simply \emph{equivalent} when they give raise to the same regular edge labelling. That is, their rectangles have the same adjacencies with the same orientation (horizontal or vertical).
+    We say two duals of $G$ are  \emph{combinatorially equivalent} or simply \emph{equivalent} when they give raise to the same regular edge labeling of $\ext G$. That is, their rectangles have the same adjacencies with the same orientation (horizontal or vertical).
 
   \mypar{Properties}
-    Since we often use regular edge labellings in this thesis we prove some properties we can reuse later for them. We show that a regular edge labeling has no mono-colored triangles and that the red and blue subgraph of a regular edge labeling both form a $st$-planar graph.
+    Since we often use regular edge labellings in this thesis we prove some properties for them. We show that a regular edge labeling has no mono-colored triangles and that the red and blue subgraph of a regular edge labeling both form a $st$-planar graph.
 
   \begin{observation}[Fusy, \cite{Fusy2009}]
     \label{obs:rel:noMonoColoredTriangles}
@@ -61,7 +62,8 @@
 
   \mypar{$\mathbf{st}$-planar graphs}
     In this thesis we repeatedly use regular edge labellings, so it is a good idea to investigate their structure.
-    Kant and He \cite{Kant1997} and Fusy \cite{Fusy2009} both note that a regular edge labeling is closely linked to a pair of \emph{$st$-planar graphs}. $st$-planar graphs are also known under the name of  We state this observation in the same way it is stated by Fusy, which is slightly different from the way Kant and He state it.
+    Kant and He \cite{Kant1997} and Fusy \cite{Fusy2009} both note that a regular edge labeling is closely linked to a pair of \emph{$st$-planar graphs}. $st$-planar graphs are also known under the name of \emph{bipolar orientations}.
+    We state this observation in the same way it is stated by Fusy, which is slightly different from the way Kant and He state it.
     An $st$-planar graph is an oriented planar graph with one source (in-degree 0) $s$ and one sink (out-degree 0) $t$. Both $s$ and $t$ lie on the outer face. Moreover, such an $st$-planar graph has no directed cycles.
 
     \begin{observation}[Fusy, \cite{Fusy2009}]
@@ -88,7 +90,7 @@
       \label{fig:rect:relSegmentFace}
     \end{figure}
 
-    Consider a face corresponding to a maximal segment.
+    Let us consider a face corresponding to a maximal segment.
     The number of internal vertices of both boundary paths without counting the split and merge vertices is the number of rectangles on the respective sides of the maximal segment.
     Hence, a one-sided maximal segment corresponds to a face with one boundary path of length $2$  and a $k$-sided maximal segment to a face with a shortest boundary path of length at most $k+1$.
     We can not have faces with a boundary path of length $1$ since such a face can not enclose a valid segment.
@@ -98,7 +100,7 @@
       No face can have a boundary path of length $1$.
     \end{observation}
     \begin{proof}
-      A boundary path can not have length $1$ since by construction of a regular edge labeling a red or blue face encloses a maximal segment and thus has to go trough at least one intermediate rectangle,and thus trough at least one intermediate vertex.
+      A boundary path can not have length $1$ since by construction of a regular edge labeling a red or blue face encloses a maximal segment and thus has to go trough at least one intermediate rectangle, and thus trough at least one intermediate vertex.
     \end{proof}
 
     This observation generalizes the observation that we can not have monochromatic triangles.

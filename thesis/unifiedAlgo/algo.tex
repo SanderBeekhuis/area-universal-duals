@@ -10,7 +10,7 @@
   Unfortunately his proof of this algorithm is rather concise, leaving rather much room for the reader to fill in the details.
 
   In this algorithm Fusy starts by denoting the outer cycle of $\ext G \sm{\pN}$ as the sweepcycle $\C$. He then shrinks this sweepcycle by updating it with interior paths of $\C$. During this update he maintains invariants on the structure of both the cycle and its exterior.
-  After doing a finite amount of updates, the sweepcycle has no more interior vertices. At this point he completes the algorithm and obtains a regular edge labeling.
+  After doing a finite amount of updates, the sweepcycle has no more interior vertices. At this point Fusy completes the algorithm and obtains a regular edge labeling.
 
   \begin{wrapfigure}[33]{r}{8.2cm}
     \hfill
@@ -53,4 +53,4 @@
   However, due to the restriction on split vertices we have maintained during the algorithm and the fact that all remaining topfans are adjacent to such splitvertices we are still able to produce an $d-1$ sided layout in the last step.
 
 \mypar{Overview}
-  To describe our algorithm we introduce the notion of right neighbor paths in Section~\ref{ss:rightNeighbour}. This notion will be heavily used in the sweepcycle algorithm is Section~\ref{ss:sweep}. In the rest of the section we describe the rest of the algorithm, please refer to Figure~\ref{fig:algo:algoflow} to see which steps are describe in what section.
+  To describe our algorithm we introduce the notion of right neighbor paths in Section~\ref{ss:rightNeighbour}. This notion will be heavily used in the sweepcycle algorithm in Section~\ref{ss:sweep}. In the rest of the section we describe the rest of the algorithm, please refer to Figure~\ref{fig:algo:algoflow} to see which steps are describe in what section.

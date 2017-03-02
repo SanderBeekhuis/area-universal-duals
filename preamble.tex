@@ -49,7 +49,7 @@
 % header!
 
 %Common header attributes - see also http://en.wikibooks.org/wiki/LaTeX/Page_Layout
-\fancyfoot[L]{\doctitle}
+\fancyfoot[L]{On $\mathrm{k}$-Sided Rectangular Duals}
 \fancyfoot[C]{}
 %\fancyfoot[RE,LO]{\me}
 \fancyfoot[R]{\thepage}
@@ -143,7 +143,6 @@
 \newcommand{\extdualgraph}[1]{\G_{\scr E}(#1)}
 
 \newcommand{\mypar}[1]{\medbreak \noindent {\bfseries #1.}}
-\renewcommand{\paragraph}{\mypar}
 \newcommand{\rev}[1]{\accentset{\leftharpoonup}{#1}}
 
 
@@ -172,7 +171,7 @@
 %invariant environment
 \newenvironment{invariants}{%
   \refstepcounter{thrm}%
-  {\bfseries Invariants~\theprop}%
+  \paragraph{Invariants~\theprop}%
   \renewcommand*{\theenumi}{\theprop\,(I\arabic{enumi})}%
   \renewcommand*{\labelenumi}{(I\arabic{enumi})}%
   \enumerate

@@ -19,7 +19,7 @@
 
   \mypar{Angular orders}
     We assume a fixed embedding for $G$. Recall that the order at a vertex $v$ is the clockwise order of the edges incident to $v$ and that two vertices $x, y$ are said to be \emph{consecutive} in the angular order at $v$ when the edges $vx$ and $vy$ are consecutive in the angular order.
-    Sometimes, we want to denote number of subsequent vertices, which we call an \emph{interval}, in the angular order. We let $[x,y]$ denote all the vertices in the angular order of $v$ from $x$ to $y$ and we let the \emph{exclusive interval} $(x,y)$ denote the same vertices without $x$ and $y$. In Figure~\ref{fig:right:rot} for example the interval $[v,p_{i+1}]$ consists of the vertices $v,w,p_{i+1}$ and $(w,u)$ consists of the vertices $p_{i+1}, x$.
+    Sometimes, we want to denote number of subsequent vertices, which we call an \emph{interval}, in the angular order. We let $[x,y]$ denote all the vertices in the angular order of $v$ from $x$ to $y$ and we let the \emph{exclusive interval} $(x,y)$ denote the same vertices without $x$ and $y$. In Figure~\ref{fig:right:rot}, for example, the interval $[v,p_{i+1}]$ consists of the vertices $v,w,p_{i+1}$ and $(w,u)$ consists of the vertices $p_{i+1}, x$.
 
     Given a path $P$ and an internal vertex $p_i \in P$. A neighbor $v \nin \P$ of $p_i$ lies on the \emph{left} of $P$ if it lies in the interval $(p_{i-1}, p_{i+1})$ in the angular order of $p_{i}$. Otherwise, $v$ lies in the interval $(p_{i+1}, p_{i-1})$ in the angular order of $p_i$. In this case $v$ lies on the \emph{right} of $P$.
     We use the same notion of left and right for edges. That is, an edge $e\nin P$ adjacent to $p_i$ lies to left or right if its other end point lies to the left or right, respectively. In Figure~\ref{fig:right:rot} $v$ and $p_i v$ lie on the left of $P$ and $u$ and $p_i u$ lie on the right of $P$.
@@ -44,7 +44,7 @@
     Note that $P|_{p_i, p_j} \oplus \rev{C}$ is a cycle.
     A ($k$-)chord $C$ is \emph{separating} if this cycle is separating.
     In Figure~\ref{fig:right:chord} there are two $2$-chords, $p_3 u p_5$ and $p_3 v p_5$, but only one of them is separating, namely $p_3 v p_5$.
-    The \emph{violating chords} are all chords and separating 2-chords together, since we can not find a right neighbor path when we have such violating chords. In Figure~\ref{fig:right:chord} $p_1p_3$ and $p_3 v p_5$ are violating chords.
+    The \emph{violating chords} are given by all chords and separating 2-chords together. We use this name since we can not find a right neighbor path when we have such violating chords. In Figure~\ref{fig:right:chord} $p_1p_3$ and $p_3 v p_5$ are violating chords while $p_3 u p_5$ is not.
 
   \mypar{Right neighbor paths}
     We already mentioned that in the sweepcycle step we use the right neighbor path of a path $P$. Recall that we assumed $P$ has no internal vertices incident to the outer face and no chords or separating 2-chords on the right.
@@ -80,7 +80,7 @@
       \label{fig:right:neighborPath}
     \end{figure}
 
-    To break the proof that $Q$ is a path into two parts we define a \emph{walk} as a path without the constraint that the same vertex does not occur twice. Hence, a walk is a sequence of vertices that are connected to each other but vertices may repeatedly occur.
+    To break the proof that $Q$ is a path into two parts we define a \emph{walk} as a path without the constraint that the same vertex does not occur twice. Hence, a walk is still a sequence of vertices that are connected to each other, but vertices may repeatedly occur.
 
     \begin{lemma}
       \label{lm:right:neighborWalk}
@@ -123,7 +123,7 @@
       The right neighbor path $Q$ is a path.
     \end{lemma}
     \begin{proof}
-      We already know $Q$ is a path by Lemma \ref{lm:right:neighborWalk}. Hence, we only have to show that $Q$ contains no duplicate vertices.
+      We already know $Q$ is a walk by Lemma \ref{lm:right:neighborWalk}. Hence, we only have to show that $Q$ contains no duplicate vertices.
 
       \vspace{2pt}
       \noindent
@@ -164,7 +164,7 @@
 
     \begin{lemma}
       \label{lm:right:leftNeighborsOfTheRightNeighborPath}
-      Every internal vertex of a right neighbor path $Q$ has a left neighbor.
+      Every internal vertex $q$ of a right neighbor path $Q$ has a left neighbor.
     \end{lemma}
     \begin{proof}
       Let $q$ be an interior vertex of $Q$.
