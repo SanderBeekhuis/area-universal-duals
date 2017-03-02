@@ -17,20 +17,20 @@
   Moreover, it would be even better if the nature of these adjacencies, that is whether the rectangles border in a vertical or horizontal manner, does not change.
   This raises the question: When is this possible?
 
+  \begin{figure}[!b]
+    \centering
+    \includegraphics[scale=.8]{introduction/img/cartogram.png}
+    \caption{A cartogram by Raisz~\cite{Raisz1934} made in 1934.}
+    \label{fig:intro:raisz}
+  \end{figure}
+
+\pagebreak[2]
   \begin{wrapfigure}{r}{7cm} %[6]
     \centering
     \includegraphics[width = 6cm]{introduction/img/areaunivLayout.pdf}
     \caption{Three area-universal layouts.}
     \label{fig:intro:areaunivLayout}
   \end{wrapfigure}
-
-  \begin{figure}[!b]
-    \centering
-    \includegraphics[scale=.7]{introduction/img/cartogram.png}
-    \caption{A cartogram by Raisz~\cite{Raisz1934} made in 1934.}
-    \label{fig:intro:raisz}
-  \end{figure}
-
 \mypar{Rectangular layout}
   Mathematically, a rectangular cartogram is a  \emph{rectangular layout} (or simply \emph{layout}).
   A layout $\L$ is a partition of an axis-parallel rectangle into a finite set of interior-disjoint axis-parallel rectangles.
@@ -40,12 +40,6 @@
   The question above then becomes: For which maps can we create area-universal layouts?
   Clearly not those maps that that do not have any corresponding layouts with the same adjacencies. However, it will turn out there are more maps without a corresponding area-universal layout.
 
-\mypar{Adjacency graphs}
-  We can represent the adjacencies of map regions by an \emph{adjacency graph} $G$ where each region is represented by a vertex and two vertices are connected by an edge exactly when their regions are adjacent.
-  Similarly, in the \emph{adjacency graph} $\dualgraph{\L}$ of a rectangular layout $\L$ each rectangle is represented by a vertex and two vertices are connected by an edge exactly when their rectangles are adjacent.
-  A layout $\L$ is a \emph{rectangular dual} of a graph $G$ if we have that $G = \dualgraph{\L}$.
-  In general, a single graph can have mutiple non-equivalent rectangular duals. An example of this is the graph in Figure~\ref{fig:intro:nonuniqueRectDual}.
-
   \begin{wrapfigure}[8]{r}{7cm}
     \centering
     \includegraphics[width=6cm]{introduction/img/nonuniqueRectDual.pdf}
@@ -53,10 +47,16 @@
     \label{fig:intro:nonuniqueRectDual}
   \end{wrapfigure}
 
+\mypar{Adjacency graphs}
+  We can represent the adjacencies of map regions by an \emph{adjacency graph} $G$ where each region is represented by a vertex and two vertices are connected by an edge exactly when their regions are adjacent.
+  Similarly, in the \emph{adjacency graph} $\dualgraph{\L}$ of a rectangular layout $\L$ each rectangle is represented by a vertex and two vertices are connected by an edge exactly when their rectangles are adjacent.
+  A layout $\L$ is a \emph{rectangular dual} of a graph $G$ if we have that $G = \dualgraph{\L}$.
+  In general, a single graph can have mutiple non-equivalent rectangular duals. An example of this is the graph in Figure~\ref{fig:intro:nonuniqueRectDual}.
+
   Rinsma found a graph in~\cite{Rinsma1987}, displayed in Figure~\ref{fig:intro:rinsma}, that has no area-universal rectangular duals.
   That is, all rectangular layouts with this graph as adjacency graph are not area-universal.
 
-  \begin{wrapfigure}{r}{5cm}  %[13]
+  \begin{wrapfigure}[14]{r}{5cm}  %[13]
     \includegraphics[scale=.15]{introduction/img/rinsma.png}
     \caption{The graph by Rinsma~\cite{Rinsma1987} that is not one-sided.}
     \label{fig:intro:rinsma}
@@ -76,7 +76,7 @@
 
 
 \mypar{$\mathbf{k}$-sided layouts}
-  \begin{figure}[b]
+  \begin{figure}[t]
     \quad
     \begin{subfigure}[b]{0.45 \textwidth}
       \centering
@@ -124,7 +124,7 @@
 
   We illustrate this by comparing a typical $2$-sided and a typical $10$-sided segment.
   Let us first consider the $2$-sided segment in Figure~\ref{fig:intro:2sidedBefore}, if the size of $a$ doubles only two adjacencies change, namely $dA$ disappears and $cB$ appears, as can been seen in Figure~\ref{fig:intro:2sidedAfter}.
-  While for a typical $10$-sided segment doubling the size of $a$ leads to $15$ changed adjacencies, namely $aC\ aD\ bB\ bC\ bD\ bE\ cC\ cD\ cE\ cF\ dE\ dG\ eF\ eH\ fG$, as can been seen in Figure~\ref{fig:intro:10sided}.
+  While for a typical $10$-sided segment doubling the size of $a$ leads to $15$ changed adjacencies, namely $aC$ $aD$ $ bB$ $ bC$ $ bD$ $ bE$ $ cC$ $ cD$ $ cE$ $ cF$ $ dE$ $ dG$ $ eF$ $ eH$ $ fG$, as can been seen in Figure~\ref{fig:intro:10sided}.
   Hence we would like to find $k$-sided layouts for all graphs with $k$ as small as possible.
 
 
