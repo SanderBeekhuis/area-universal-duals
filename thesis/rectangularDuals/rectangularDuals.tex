@@ -8,7 +8,7 @@
   In an adjacency graph we connect two vertices by an edge exactly when their rectangles are adjacent.
   In the \emph{extended adjacency graph} $\extdualgraph{\L}$ we also add $4$ vertices $\pN, \pE, \pS, \pW$ (so-called \emph{poles}) in the outer face, one associated to the north, east, south, west boundary segment of the outer rectangle, respectively.
   In this graph two vertices are connected if their rectangles or boundary segments intersect.
-  If we take the \emph{extended adjacency graph} of a layout and remove the $4$ vertices corresponding to the outer face we end up with the regular \emph{adjacency graph} of that layout.
+  If we take the \emph{extended adjacency graph} of a layout and remove the $4$ vertices corresponding to the outer face, we end up with the regular \emph{adjacency graph} of that layout.
   In this setting a layout $\L$ is a \emph{rectangular dual} of a graph $G$ if we have that $G = \dualgraph{\L}$.
 
 \mypar{Regular edge labellings}
@@ -19,7 +19,7 @@
   A \emph{regular edge labeling} is a coloring and orientation of the edges of the extended adjacency graph $\extdualgraph{\L}$.
   This coloring and orientation is given by the following procedure.
   For every edge $vw$ in $\extdualgraph{\L}$ we consider whether the shared boundary of the rectangles is vertical or horizontal and we color the corresponding edge blue or red, respectively.
-  If we color the edge blue we orient it from the leftmost rectangle to the rightmost rectangle and if we color it red we orient from bottom to top.
+  If we color the edge blue, we orient it from the leftmost rectangle to the rightmost rectangle and if we color it red, we orient from bottom to top.
   We neither color nor orient the edges between the poles.
 
   From the nature of the adjacencies in a rectangular layout we can deduce the following two rules, both illustrated in Figure~\ref{fig:rel:conditions}, for a regular edge labeling.

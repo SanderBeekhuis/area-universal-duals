@@ -10,7 +10,7 @@
 
 
   A \emph{blue $Z$} is a path of three blue edges all in the same red face. A $Z$ has a \emph{middle} edge, this is the second edge in this path.
-  If the current regular edge labeling is not one-sided there must be a blue $Z$ as is shown in Lemma \ref{lm:zflip:blueZNorVertOneSided}.
+  If the current regular edge labeling is not one-sided, there must be a blue $Z$ as is shown in Lemma \ref{lm:zflip:blueZNorVertOneSided}.
   \begin{lemma}
     \label{lm:zflip:blueZNorVertOneSided}
     A regular edge labeling is not one sided if and only if it contains a blue $Z$
@@ -33,7 +33,7 @@
   \end{figure}
 
   As long as the regular edge labeling is not vertically one-sided we find such a blue $Z$ and recolor its middle edge as in Figure~\ref{fig:zflip:flip}. We call this a \emph{flip} and we will say that this edge is \emph{flipped}.
-  Note that both flips transfer a valid regular edge labeling to another valid regular edge labeling. If the interior vertex condition was fulfilled in Figure~\ref{fig:zflip:blueZ} then it is also fulfilled in Figure~\ref{fig:zflip:flip}.
+  Note that both flips transfer a valid regular edge labeling to another valid regular edge labeling. If the interior vertex condition was fulfilled in Figure~\ref{fig:zflip:blueZ}, then it is also fulfilled in Figure~\ref{fig:zflip:flip}.
 
   We repeat these flips until the regular edge labeling is vertically one-sided.
   Since every flip reduces the number of blue edges by one, this is a finite procedure.
@@ -45,7 +45,7 @@
   \end{lemma}
   \begin{proof}
     We still have a regular edge labeling since the flips maintain a regular edge labeling.
-    By construction, we flip all blue $Z$'s. If we do not have anymore $Z$'s then the remaining regular edge labeling is vertically one-sided by Lemma \ref{lm:zflip:blueZNorVertOneSided}.
+    By construction, we flip all blue $Z$'s. If we do not have anymore $Z$'s, then the remaining regular edge labeling is vertically one-sided by Lemma \ref{lm:zflip:blueZNorVertOneSided}.
   \end{proof}
 
   \begin{lemma}
