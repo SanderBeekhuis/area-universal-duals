@@ -311,7 +311,7 @@ At that point we can terminate the algorithm by coloring the edges of the cycle 
 
     Before finally discussing the property, we introduce one more definition.
     Recall a \emph{splitvertex} is a vertex with more than one outgoing blue edge.
-    Given a splitvertex $v$, the \emph{bottom} path is the path that comes in trough the first edge in the interval of incoming blue edges in the rotation at $v$ and leaves through the last edge in the interval of outgoing blue edge in the rotation at $v$.
+    Given a splitvertex $v$, the \emph{bottom} path is the path that comes in through the first edge in the interval of incoming blue edges in the rotation at $v$ and leaves through the last edge in the interval of outgoing blue edge in the rotation at $v$.
     See Figure~\ref{fig:sweep:bottomPath}.
 
     \begin{lemma}
@@ -329,7 +329,7 @@ At that point we can terminate the algorithm by coloring the edges of the cycle 
       We denote this extended bottom path by $\P$.
       The situation is depicted in Figure~\ref{fig:sweep:botomPathChord}.
 
-      The interior of  $vabx \oplus \rev \P$ has no vertices. Suppose there would be such a vertex . Then, since $\P$ is a bottom path the blue path going trough this vertex has to start at $a$ and end at $b$. But this gives a blue face with only one edge on its bottom boundary path violating Observation \ref{obs:rel:noBpOfLength1}. Since our graph is a regular edge labeling, $vabx \oplus \rev \P$ has no interior vertices.
+      The interior of  $vabx \oplus \rev \P$ has no vertices. Suppose there would be such a vertex . Then, since $\P$ is a bottom path the blue path going through this vertex has to start at $a$ and end at $b$. But this gives a blue face with only one edge on its bottom boundary path violating Observation \ref{obs:rel:noBpOfLength1}. Since our graph is a regular edge labeling, $vabx \oplus \rev \P$ has no interior vertices.
 
       This also implies all interior edges are red (by the definition of bottom path) and thus that $ab$ is blue otherwise we would get a monochromatic triangle.
 

@@ -392,7 +392,7 @@ We can not have faces with a boundary path of length 1 since such a face can not
 </em><a id="obs:rel:noBpOfLength1"></a><em>
 No face can have a boundary path of length </em>1<em>.
 </em></div><p><span style="font-weight:bold">Proof.</span>
-A boundary path can not have length 1 since by construction of a regular edge labeling a red or blue face encloses a maximal segment and thus has to go trough at least one intermediate rectangle, and thus trough at least one intermediate vertex.
+A boundary path can not have length 1 since by construction of a regular edge labeling a red or blue face encloses a maximal segment and thus has to go through at least one intermediate rectangle, and thus through at least one intermediate vertex.
 </p><p><br>
 </p><p>This observation generalizes the observation that we can not have monochromatic triangles.
 </p>
@@ -461,7 +461,7 @@ We focus on the centered black edge <span style="font-style:italic">e</span>, <s
 
   [t]0.3@percent
 <img src="thesis027.png">
-<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 14: Propagate trough the separating 4-cycle.</td></tr>
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 14: Propagate through the separating 4-cycle.</td></tr>
 </table></div>
 <a id="fig:fix:manymany2"></a>
 
@@ -848,7 +848,7 @@ The bottom path of this splitvertex is given in bold.
 <a id="fig:sweep:bottomPath"></a>
 </p><p>Before finally discussing the property, we introduce one more definition.
 Recall a <em>splitvertex</em> is a vertex with more than one outgoing blue edge.
-Given a splitvertex <span style="font-style:italic">v</span>, the <em>bottom</em> path is the path that comes in trough the first edge in the interval of incoming blue edges in the rotation at <span style="font-style:italic">v</span> and leaves through the last edge in the interval of outgoing blue edge in the rotation at <span style="font-style:italic">v</span>.
+Given a splitvertex <span style="font-style:italic">v</span>, the <em>bottom</em> path is the path that comes in through the first edge in the interval of incoming blue edges in the rotation at <span style="font-style:italic">v</span> and leaves through the last edge in the interval of outgoing blue edge in the rotation at <span style="font-style:italic">v</span>.
 See Figure <a href="#fig%3Asweep%3AbottomPath">??</a>.</p><div class="theorem"><span style="font-weight:bold">Lemma 18</span>  <em>
 </em><a id="lm:sweep:NoTwoSplitsAboveEachOther"></a><em>
 Let </em><span style="font-style:italic">v</span><em> be any splitvertex. Then the subsequent vertex on the bottom path </em><span style="font-style:italic">w</span><em> can not be the handle of a large topfan.
@@ -856,7 +856,7 @@ Let </em><span style="font-style:italic">v</span><em> be any splitvertex. Then t
 There are two possible causes of <span style="font-style:italic">v</span> being a splitvertex, <span style="font-style:italic">v</span> is either adjacent to <span style="font-style:italic">S</span> or <span style="font-style:italic">v</span> is a splitvertex due to a chord.</p><p>If <span style="font-style:italic">v</span> is a splitvertex because it is adjacent to <span style="font-style:italic">S</span>, then since <span style="font-style:italic">w</span> is on the bottom path it also has to be adjacent to <span style="font-style:italic">S</span> by the definition of the bottom path.
 Hence, <span style="font-style:italic">w</span> is not the handle of a large topfan.</p><p>If <span style="font-style:italic">v</span> is a splitvertex due to a chord <span style="font-style:italic">v</span> <span style="font-style:italic">a</span> <span style="font-style:italic">b</span> <span style="font-style:italic">x</span>, we can continue the bottom path past <span style="font-style:italic">w</span> as a bottom path that eventually goes to <span style="font-style:italic">x</span> since every chord is evaded by a single path from <span style="font-style:italic">v</span><sub><span style="font-style:italic">k</span></sub> to <span style="font-style:italic">v</span><sub>ℓ</sub> in the algorithm.
 We denote this extended bottom path by <span style="color:red"><span style="font-style:italic">P</span></span>.
-The situation is depicted in Figure <a href="#fig%3Asweep%3AbotomPathChord">??</a>.</p><p>The interior of <span style="font-style:italic">vabx</span> ⊕ ↼<span style="color:red"><span style="font-style:italic">P</span></span> has no vertices. Suppose there would be such a vertex . Then, since <span style="color:red"><span style="font-style:italic">P</span></span> is a bottom path the blue path going trough this vertex has to start at <span style="font-style:italic">a</span> and end at <span style="font-style:italic">b</span>. But this gives a blue face with only one edge on its bottom boundary path violating Observation <a href="#obs%3Arel%3AnoBpOfLength1">??</a>. Since our graph is a regular edge labeling, <span style="font-style:italic">vabx</span> ⊕ ↼<span style="color:red"><span style="font-style:italic">P</span></span> has no interior vertices.</p><p>This also implies all interior edges are red (by the definition of bottom path) and thus that <span style="font-style:italic">ab</span> is blue otherwise we would get a monochromatic triangle.</p><p>Now <span style="font-style:italic">w</span> can not be connected to any vertex in <span style="color:red"><span style="font-style:italic">P</span></span> since that would again give a face with a boundary path of length 1 by Observation <a href="#obs%3Arel%3AnoBpOfLength1">??</a>.
+The situation is depicted in Figure <a href="#fig%3Asweep%3AbotomPathChord">??</a>.</p><p>The interior of <span style="font-style:italic">vabx</span> ⊕ ↼<span style="color:red"><span style="font-style:italic">P</span></span> has no vertices. Suppose there would be such a vertex . Then, since <span style="color:red"><span style="font-style:italic">P</span></span> is a bottom path the blue path going through this vertex has to start at <span style="font-style:italic">a</span> and end at <span style="font-style:italic">b</span>. But this gives a blue face with only one edge on its bottom boundary path violating Observation <a href="#obs%3Arel%3AnoBpOfLength1">??</a>. Since our graph is a regular edge labeling, <span style="font-style:italic">vabx</span> ⊕ ↼<span style="color:red"><span style="font-style:italic">P</span></span> has no interior vertices.</p><p>This also implies all interior edges are red (by the definition of bottom path) and thus that <span style="font-style:italic">ab</span> is blue otherwise we would get a monochromatic triangle.</p><p>Now <span style="font-style:italic">w</span> can not be connected to any vertex in <span style="color:red"><span style="font-style:italic">P</span></span> since that would again give a face with a boundary path of length 1 by Observation <a href="#obs%3Arel%3AnoBpOfLength1">??</a>.
 So <span style="font-style:italic">w</span> can only be connected to <span style="font-style:italic">a</span> and <span style="font-style:italic">b</span> and is thus a topfan of size at most 2.
 (If it is a topfan at all, since we do not consider topfans of size 1 as topfans.)
 </p><p><br>
@@ -904,7 +904,7 @@ Let </em><span style="font-style:italic">v</span><em> be any splitvertex. Then t
 This is the same statement as in Lemma <a href="#lm%3Asweep%3ANoTwoSplitsAboveEachOther">??</a>. We will show that the operation of flipping <span style="font-style:italic">Z</span>’s does not compromise the validity of this statement.</p><p>The flips in this section can only reduce the number of split vertices.
 Hence it suffices, to show that the statement still holds for all previously existing split vertices.</p><p>For a split vertex <span style="font-style:italic">v</span> adjacent to <span style="font-style:italic">S</span> we can note that the edge <span style="font-style:italic">vw</span> will not be flipped because it can not be a middle edge.
 Hence, <span style="font-style:italic">w</span> is still on the bottom path and still not the handle of a big topfan.</p><p>If <span style="font-style:italic">v</span> is a split vertex due to a chord the edges of <span style="color:red"><span style="font-style:italic">P</span></span> and <span style="font-style:italic">ab</span> in Figure <a href="#fig%3Asweep%3AbotomPathChord">??</a> can not have been flipped since then we would find a monochromatic red triangle while a flip leads to another valid regular edge labeling.
-Hence, <span style="font-style:italic">w</span> is still on the bottom path trough <span style="font-style:italic">v</span> and still can not be the handle of a large topfan.
+Hence, <span style="font-style:italic">w</span> is still on the bottom path through <span style="font-style:italic">v</span> and still can not be the handle of a large topfan.
 </p><p><br>
 
 </p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
@@ -1004,10 +1004,10 @@ We try to avoid flipping above these edges in future iterations of the algorithm
 Then we continue with the next face in the creation order.</p><p><span style="font-weight:bold">Loads.</span>
 As is mentioned above we mark some edges with so-called <em>loads</em>, we refer to these edges as <em>loaded</em> in the rest of the section.
 The exact use of these loaded edges becomes clear in the rest of this section.</p><p>It is important to note that if we load any blue edge we regard any other blue edge sharing at least one vertex with this edge to be loaded as well.
-The occurrence of this phenomenon is called <em>putting trough a load</em>.
-An example can be seen in Figure <a href="#fig%3Asubdiv%3AputTrougLoad">??</a> where we flipped the thick edge, and hence marked <span style="font-style:italic">uv</span> as loaded and because of putting trough load also marked <span style="font-style:italic">uw</span> as loaded.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+The occurrence of this phenomenon is called <em>putting through a load</em>.
+An example can be seen in Figure <a href="#fig%3Asubdiv%3AputTrougLoad">??</a> where we flipped the thick edge, and hence marked <span style="font-style:italic">uv</span> as loaded and because of putting through load also marked <span style="font-style:italic">uw</span> as loaded.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
 <img src="thesis062.png">
-<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 48: Putting trough load.</td></tr>
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 48: Putting through load.</td></tr>
 </table></div>
 <a id="fig:subdiv:putTrougLoad"></a>
 <div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p><span style="font-weight:bold">Step requirements.</span>
@@ -1016,7 +1016,7 @@ We never load the two edges next to a split or merge vertex on the top boundary 
 </li><li class="li-enumerate">We never load two adjacent edges on the top boundary path.
 </li></ol><p>If we flip edges in line with the step requirements for every face then the following lemma holds for the bottom boundary path of yet untreated faces.</p><div class="theorem"><span style="font-weight:bold">Lemma 25</span>  <em>
 </em><a id="lm:"></a><em>
-On the bottom boundary path of a face we never find two subsequent loaded edges. Even when we put trough loads on splits and merges.
+On the bottom boundary path of a face we never find two subsequent loaded edges. Even when we put through loads on splits and merges.
 </em></div><p><span style="font-weight:bold">Proof.</span>
 A single face would never load two subsequent edges. Hence, the only way to get two subsequent loaded edges is using different faces and thus splits and merges.
 However, due to never flipping the two edges next to a split or merge we neither get subsequent loaded edges in such a case.
@@ -1097,7 +1097,7 @@ This way an algorithm obtaining a <span style="font-style:italic">k</span>-sided
 <h2 id="sec23" class="section">Acknowledgments</h2><!--SEC END --><p>
 I would not have been able to write this thesis without my two daily supervisors Bettina Speckmann and Kevin Verbeek. They always provided suggestions and motivation when I was stuck and helped bring structure in the mess that this thesis first was. I also want to thank Jesper Nederlof and
 Rudi Pendavingh for making this project possible by guaranteeing that it is sufficiently mathematical.
-Moreover, I want to thank Wouter Ligtenberg and Hans Beekhuis for reading trough my thesis and finding many mistakes. Last but not least I would like to thank Kaylee, my friends and my family for being a outlet for my frustrations and sharing my joys.
+Moreover, I want to thank Wouter Ligtenberg and Hans Beekhuis for reading through my thesis and finding many mistakes. Last but not least I would like to thank Kaylee, my friends and my family for being a outlet for my frustrations and sharing my joys.
 </p><p>1em
 </p><!--CUT END -->
 <!--HTMLFOOT-->

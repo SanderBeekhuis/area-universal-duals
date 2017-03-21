@@ -7,11 +7,11 @@
 
   \begin{thrm}
     \label{fix:th:family}
-      There is a family of graphs $G_k$ that, for any $k \in \N$, has members that are not $k$-sided.
+      There is a family of planar graphs $G_k$ that, for any $k \in \N$, has members that are not $k$-sided.
   \end{thrm}
 
   All members of this family $G_k$ contain separating $4$-cycles.
-  The maximum vertex degree, $d$, of $G_k$ is about $2k+O(1)$. This also means that in principle it might be possible to create an algorithm providing $O(d)$-sided layouts for any corner assignment; that our algorithm in Section~\ref{s:algo} only works for corner assignments without separating $4$-cycles.
+  The maximum vertex degree, $d$, of $G_k$ is about $2k+O(1)$. This also means that in principle it might be possible to create an algorithm providing $O(d)$-sided layouts for any corner assignment. However, our algorithm in Section~\ref{s:algo} only works for corner assignments without separating $4$-cycles.
 
   \begin{wrapfigure}[16]{r}{6cm}
     \centering
@@ -28,7 +28,7 @@
 
   \begin{lemma}
     \label{lm:fix:fourCycleInteriorColor}
-    Let $\C$ be a separating $4$-cycle of $\ext G$ with interior $\I$. We can label the vertices of $I$ by $a$, $b$, $c$ and $d$ in clockwise order such that all interior edges incident to $a, b, c$ and $d$ are incoming red, incoming blue, outgoing red and outgoing blue, respectively.
+    Let $\C$ be a separating $4$-cycle of $\ext G$ with interior $\I$. We can label the vertices of $\C$ by $a$, $b$, $c$ and $d$ in clockwise order such that all interior edges incident to $a, b, c$ and $d$ are incoming red, incoming blue, outgoing red and outgoing blue, respectively.
   \end{lemma}
   \begin{proof}
     The interior $I$ of $\C$ is represented by some rectilinear shape in every rectangular dual $\L$ of $\ext G$. Such a shape must have at least $4$ clockwise right turns if we travel along its boundary in a clockwise direction otherwise the shape is not closed.
@@ -114,7 +114,7 @@
     \quad
     \begin{subfigure}[t]{0.3\textwidth}
       \includegraphics[width=\textwidth]{fixExtension/img/manymany2}
-      \caption{Propagate trough the separating $4$-cycle.}
+      \caption{Propagate through the separating $4$-cycle.}
       \label{fig:fix:manymany2}
     \end{subfigure}
     \quad

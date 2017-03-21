@@ -118,3 +118,51 @@ Refer to Figure~\ref{fig:fanflip:fanflips} for a first glance at the different k
 \begin{proof}
   All topfans are manipulated in such a way that they start a new face, or are colored blue entirely, unless the left outer rim vertex is a split. Since in that case we do not flip at all, but then the left outer rim vertex is indeed a split.
 \end{proof}
+
+\mypar{An unfortanate note}
+After submitting my thesis we discovered that this step is actually incorrect. We say that no blue $Z$'s are formed. Unfortunately, this is not true as can be seen in Figure \ref{fig:fanflip:fanflips}. Instead on has to find another set of flips that maintain the same properties. That is, eliminating all topfans except for those we can handle in the last step.
+We propose the flips in Figure \ref{fig:fanflip:newflip}. But finding the exact working setup is unfortunately left as an exercise for the reader.
+
+
+
+\begin{figure}[!b]
+    \centering
+    \begin{subfigure}[t]{0.45 \textwidth}
+        \includegraphics[width = \textwidth]{topFanFlips/img/newFlip/aBefore.pdf}
+        \caption{Case a) before.}
+    \end{subfigure}
+
+    \begin{subfigure}[t]{0.45 \textwidth}
+        \includegraphics[width =\textwidth]{topFanFlips/img/newFlip/aAfter}
+        \caption{Case a) after.}
+    \end{subfigure}
+
+    \begin{subfigure}[t]{0.45 \textwidth}
+        \includegraphics[width = \textwidth]{topFanFlips/img/newFlip/bBefore}
+        \caption{Case b) before.}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[t]{0.45 \textwidth}
+        \includegraphics[width = \textwidth]{topFanFlips/img/newFlip/bAfter}
+        \caption{Case b) after.}
+    \end{subfigure}
+
+    \centering
+    \begin{subfigure}[t]{0.23 \textwidth}
+        \includegraphics[width = \textwidth]{topFanFlips/img/newFlip/aBigBefore}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[t]{0.23 \textwidth}
+        \includegraphics[width =\textwidth]{topFanFlips/img/newFlip/aBigAfter}
+    \end{subfigure}
+
+    \begin{subfigure}[t]{0.23 \textwidth}
+        \includegraphics[width = \textwidth]{topFanFlips/img/newFlip/bBigBefore}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[t]{0.23 \textwidth}
+        \includegraphics[width =\textwidth]{topFanFlips/img/newFlip/bBigAfter}
+    \end{subfigure}
+    ~
+    \caption{Topfan Flips.}
+\end{figure}

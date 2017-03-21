@@ -18,13 +18,13 @@
   The exact use of these loaded edges becomes clear in the rest of this section.
 
   It is important to note that if we load any blue edge we regard any other blue edge sharing at least one vertex with this edge to be loaded as well.
-  The occurrence of this phenomenon is called \emph{putting trough a load}.
-  An example can be seen in Figure~\ref{fig:subdiv:putTrougLoad} where we flipped the thick edge, and hence marked $uv$ as loaded and because of putting trough load also marked $uw$ as loaded.
+  The occurrence of this phenomenon is called \emph{putting through a load}.
+  An example can be seen in Figure~\ref{fig:subdiv:putTrougLoad} where we flipped the thick edge, and hence marked $uv$ as loaded and because of putting through load also marked $uw$ as loaded.
 
   \begin{figure}[h]
     \centering
-    \includegraphics[scale=1]{blueFaceSubdivision/img/puttingTroughLoad.pdf}
-    \caption{Putting trough load.}
+    \includegraphics[scale=1]{blueFaceSubdivision/img/puttingthroughLoad.pdf}
+    \caption{Putting through load.}
     \label{fig:subdiv:putTrougLoad}
   \end{figure}
 
@@ -41,7 +41,7 @@
 
   \begin{lemma}
     \label{lm:}
-    On the bottom boundary path of a face we never find two subsequent loaded edges. Even when we put trough loads on splits and merges.
+    On the bottom boundary path of a face we never find two subsequent loaded edges. Even when we put through loads on splits and merges.
   \end{lemma}
   \begin{proof}
     A single face would never load two subsequent edges. Hence, the only way to get two subsequent loaded edges is using different faces and thus splits and merges.
